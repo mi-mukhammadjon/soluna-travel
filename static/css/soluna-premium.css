@@ -1,0 +1,772 @@
+/* ============================================================
+   SoLuna — Premium UI/UX & Motion Enhancement Layer
+   Faylni main.css ga @import yoki <link> orqali qo'shing
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   1. KENGAYTIRILGAN DIZAYN TOKENLARI
+   ────────────────────────────────────────────── */
+
+:root {
+  /* Asosiy brend ranglari */
+  --green-deep:    #0D3B2E;
+  --green-mid:     #1A5C45;
+  --green-light:   #2A7A5E;
+  --gold:          #C9A84C;
+  --gold-light:    #E8C97A;
+  --gold-subtle:   #F5E8C0;
+  --cream:         #FAF7F0;
+  --cream-dark:    #F0EBE0;
+  --dark-footer:   #071F18;
+
+  /* Glassmorphism uchun shaffof versiyalar */
+  --glass-green-1: rgba(13, 59, 46, 0.72);
+  --glass-green-2: rgba(26, 92, 69, 0.55);
+  --glass-gold:    rgba(201, 168, 76, 0.18);
+  --glass-cream:   rgba(250, 247, 240, 0.08);
+  --glass-cream-strong: rgba(250, 247, 240, 0.14);
+
+  /* Border ranglari */
+  --border-gold:   rgba(201, 168, 76, 0.40);
+  --border-gold-hover: rgba(201, 168, 76, 0.75);
+  --border-green:  rgba(42, 122, 94, 0.35);
+  --border-cream:  rgba(250, 247, 240, 0.12);
+
+  /* Soyalar — yashil toned */
+  --shadow-card:   0 4px 24px rgba(7, 31, 24, 0.28), 0 1px 6px rgba(7, 31, 24, 0.18);
+  --shadow-card-hover: 0 12px 40px rgba(7, 31, 24, 0.42), 0 2px 10px rgba(201, 168, 76, 0.18);
+  --shadow-gold:   0 0 32px rgba(201, 168, 76, 0.22);
+
+  /* Typografiya */
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body:    'Jost', 'Inter', sans-serif;
+
+  /* Animatsiya easinglari */
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-premium: cubic-bezier(0.45, 0, 0.15, 1);
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:   180ms;
+  --duration-base:   320ms;
+  --duration-slow:   560ms;
+  --duration-page:   700ms;
+}
+
+/* prefers-reduced-motion — accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
+/* ──────────────────────────────────────────────
+   2. GLASSMORPHISM KARTOCHKALAR
+   Eski oq/standart kartochkalarni almashtiradi
+   ────────────────────────────────────────────── */
+
+.card,
+.tour-card,
+.region-card,
+.package-card {
+  background: var(--glass-green-1);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  position: relative;
+  transition:
+    transform var(--duration-base) var(--ease-out-expo),
+    box-shadow var(--duration-base) var(--ease-out-expo),
+    border-color var(--duration-base) ease;
+}
+
+/* Oltin ichki yaltiroq chiziq — top edge */
+.card::before,
+.tour-card::before,
+.region-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.10) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card > *,
+.tour-card > *,
+.region-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Rasm hover effekti (kartochka ichida) ── */
+.card .card-img,
+.tour-card .tour-img,
+.region-card .region-img,
+.card img:first-child,
+.tour-card img:first-child,
+.region-card img:first-child {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transform: scale(1);
+  transition:
+    transform var(--duration-slow) var(--ease-out-expo),
+    filter var(--duration-slow) ease;
+  will-change: transform;
+}
+
+/* Oltin gradient overlay — hover'da yuqoriga ko'tariladi */
+.card .img-wrapper,
+.tour-card .img-wrapper,
+.region-card .img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.card .img-wrapper::after,
+.tour-card .img-wrapper::after,
+.region-card .img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(201, 168, 76, 0.55) 0%,
+    rgba(13, 59, 46, 0.30) 45%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--duration-base) var(--ease-out-expo),
+    transform var(--duration-base) var(--ease-out-expo);
+}
+
+/* Hover holati */
+.card:hover,
+.tour-card:hover,
+.region-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-gold-hover);
+}
+
+.card:hover .card-img,
+.tour-card:hover .tour-img,
+.region-card:hover .region-img,
+.card:hover img:first-child,
+.tour-card:hover img:first-child,
+.region-card:hover img:first-child {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+}
+
+.card:hover .img-wrapper::after,
+.tour-card:hover .img-wrapper::after,
+.region-card:hover .img-wrapper::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Krem rangli variant — lighter fon kerak joylarda */
+.card--cream {
+  background: var(--glass-cream-strong);
+  border-color: var(--border-cream);
+}
+
+
+/* ──────────────────────────────────────────────
+   3. FORMA ELEMENTLARI — Oltin + Yashil Focus
+   ────────────────────────────────────────────── */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  background: rgba(13, 59, 46, 0.45);
+  border: 1px solid var(--border-green);
+  border-radius: 10px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  transition:
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    background var(--duration-fast) ease;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(250, 247, 240, 0.40);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--border-gold);
+  background: rgba(13, 59, 46, 0.55);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--gold);
+  background: rgba(13, 59, 46, 0.60);
+  box-shadow:
+    0 0 0 3px rgba(201, 168, 76, 0.18),
+    0 0 16px rgba(201, 168, 76, 0.10);
+}
+
+/* Select arrow — oltin */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Form label */
+.form-label,
+label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+}
+
+/* Form group spacing */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+/* Error holati */
+input.is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+  border-color: rgba(220, 80, 60, 0.70);
+  box-shadow: 0 0 0 3px rgba(220, 80, 60, 0.14);
+}
+
+.invalid-feedback {
+  font-size: 0.80rem;
+  color: rgba(255, 120, 100, 0.90);
+  margin-top: 0.3rem;
+}
+
+
+/* ──────────────────────────────────────────────
+   4. TUGMALAR — Premium stil
+   ────────────────────────────────────────────── */
+
+.btn,
+button[type="submit"] {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  cursor: pointer;
+  transition:
+    transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast) ease,
+    background var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
+}
+
+.btn-primary,
+button[type="submit"] {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--green-deep);
+  border: none;
+  padding: 0.75rem 2rem;
+}
+
+.btn-primary:hover,
+button[type="submit"]:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 24px rgba(201, 168, 76, 0.40);
+}
+
+.btn-primary:active,
+button[type="submit"]:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--border-gold);
+  padding: 0.72rem 1.8rem;
+}
+
+.btn-outline:hover {
+  background: var(--glass-gold);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Loading holati — oltin spinner o'rniga progress chiziq */
+.btn--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn--loading::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(201, 168, 76, 0.25);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin-gold 0.7s linear infinite;
+}
+
+@keyframes spin-gold {
+  to { transform: rotate(360deg); }
+}
+
+/* Sahifa yuklanish chiziq — top bar */
+.page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+  z-index: 9999;
+  transition: width 0.3s var(--ease-out-expo);
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.60);
+}
+
+.page-loader.complete {
+  width: 100%;
+  opacity: 0;
+  transition: width 0.2s ease, opacity 0.4s ease 0.2s;
+}
+
+
+/* ──────────────────────────────────────────────
+   5. SCROLL REVEAL ANIMATSIYALARI
+   IntersectionObserver bilan ishlaydi
+   ────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-expo),
+    transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-expo),
+    transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92) translateY(16px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-expo),
+    transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-scale.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Kechikish classlari */
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 260ms; }
+.delay-4 { transition-delay: 380ms; }
+.delay-5 { transition-delay: 520ms; }
+.delay-6 { transition-delay: 680ms; }
+
+
+/* ──────────────────────────────────────────────
+   6. SAHIFA O'TISH OVERLAY — Page Transition
+   ────────────────────────────────────────────── */
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-deep);
+
+  /* Chiqish animatsiyasi boshlang'ich holat */
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: none;
+}
+
+/* Sahifadan chiqish — oltin chiziqli yashil parda */
+.page-transition-overlay.exit-active {
+  opacity: 1;
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path var(--duration-page) var(--ease-in-out-premium);
+}
+
+/* Logo / belgi overlay markazida */
+.page-transition-overlay::before {
+  content: '';
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all 0.3s ease 0.3s;
+}
+
+.page-transition-overlay.exit-active::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Kirish animatsiyasi — silliq paydo bo'lish */
+body.page-entering {
+  animation: page-enter var(--duration-page) var(--ease-out-expo) forwards;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ──────────────────────────────────────────────
+   7. NAVBAR — Scroll blur effekti
+   ────────────────────────────────────────────── */
+
+.navbar,
+header nav {
+  transition:
+    background var(--duration-base) ease,
+    backdrop-filter var(--duration-base) ease,
+    box-shadow var(--duration-base) ease,
+    padding var(--duration-base) ease;
+}
+
+.navbar.scrolled,
+header nav.scrolled {
+  background: rgba(13, 59, 46, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(201, 168, 76, 0.25), 0 4px 24px rgba(7, 31, 24, 0.35);
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+
+/* ──────────────────────────────────────────────
+   8. HERO SECTION
+   ────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Parallax container */
+.hero-bg {
+  position: absolute;
+  inset: -8%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* Hero matn kirishlar */
+.hero-eyebrow {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: hero-in var(--duration-slow) var(--ease-out-expo) 200ms forwards;
+}
+
+.hero-title {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: hero-in var(--duration-slow) var(--ease-out-expo) 420ms forwards;
+}
+
+.hero-subtitle {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-in var(--duration-slow) var(--ease-out-expo) 600ms forwards;
+}
+
+.hero-cta {
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  animation: hero-in var(--duration-slow) var(--ease-out-expo) 780ms forwards;
+}
+
+@keyframes hero-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ──────────────────────────────────────────────
+   9. YUKLANISH INDIKATORLARI
+   Spinner o'rniga premium chiziqli loader
+   ────────────────────────────────────────────── */
+
+/* Inline loader — forma submit yoki to'lov paytida */
+.loader-line {
+  width: 100%;
+  height: 2px;
+  background: rgba(201, 168, 76, 0.18);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), transparent);
+  animation: loader-slide 1.2s var(--ease-in-out-premium) infinite;
+}
+
+@keyframes loader-slide {
+  to { left: 100%; }
+}
+
+/* To'lov sahifasi — katta loader */
+.payment-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem;
+}
+
+.payment-loader__ring {
+  width: 52px;
+  height: 52px;
+  border: 2px solid rgba(201, 168, 76, 0.20);
+  border-top-color: var(--gold);
+  border-right-color: var(--gold-light);
+  border-radius: 50%;
+  animation: spin-gold 1s var(--ease-in-out-premium) infinite;
+}
+
+.payment-loader__text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* Skeleton loader — kontentni kutayotganda */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(42, 122, 94, 0.20) 25%,
+    rgba(201, 168, 76, 0.12) 50%,
+    rgba(42, 122, 94, 0.20) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+
+/* ──────────────────────────────────────────────
+   10. TUR NARX VA BADGE ELEMENTLARI
+   ────────────────────────────────────────────── */
+
+.price-badge {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--green-deep);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.featured-badge {
+  background: var(--glass-gold);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-light);
+  font-family: var(--font-body);
+  font-size: 0.70rem;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.75rem;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+}
+
+.difficulty-badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+}
+
+.difficulty-badge--easy   { background: rgba(30, 150, 80, 0.20); color: #7AE0A0; border: 1px solid rgba(30, 150, 80, 0.30); }
+.difficulty-badge--medium { background: rgba(201, 168, 76, 0.20); color: var(--gold-light); border: 1px solid rgba(201, 168, 76, 0.30); }
+.difficulty-badge--hard   { background: rgba(200, 70, 50, 0.20); color: #F0A090; border: 1px solid rgba(200, 70, 50, 0.30); }
+
+
+/* ──────────────────────────────────────────────
+   11. YULDUZCHA REYTING
+   ────────────────────────────────────────────── */
+
+.star-rating {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.star-rating .star {
+  color: rgba(201, 168, 76, 0.30);
+  font-size: 0.95rem;
+  transition: color 0.15s ease, transform 0.15s var(--ease-spring);
+}
+
+.star-rating .star.filled {
+  color: var(--gold);
+}
+
+.star-rating:not([data-readonly]) .star:hover {
+  color: var(--gold-light);
+  transform: scale(1.25);
+}
+
+
+/* ──────────────────────────────────────────────
+   12. SCROLLBAR — Brend ranglarda
+   ────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-footer);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green-mid);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+
+/* ──────────────────────────────────────────────
+   13. YORDAMCHI UTILITY CLASSLARI
+   ────────────────────────────────────────────── */
+
+.text-gold        { color: var(--gold); }
+.text-gold-light  { color: var(--gold-light); }
+.text-cream       { color: var(--cream); }
+.text-muted       { color: rgba(250, 247, 240, 0.55); }
+
+.bg-glass         { background: var(--glass-green-1); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.bg-glass-light   { background: var(--glass-green-2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.bg-gold-glass    { background: var(--glass-gold); }
+
+.border-gold      { border: 1px solid var(--border-gold); }
+.border-gold-top  { border-top: 1px solid var(--border-gold); }
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+  border: none;
+  margin: 2rem 0;
+}
+
+/* Oltin chiziq — sarlavha ostiga */
+.title-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.title-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.title-underline:hover::after,
+.title-underline.active::after {
+  transform: scaleX(1);
+}

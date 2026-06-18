@@ -1,0 +1,28 @@
+# 1. Muhit va maxfiy ma'lumotlar
+.env
+venv/
+env/
+
+# 2. Python kesh fayllari
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 3. Ma'lumotlar bazasi va media
+db.sqlite3
+media/
+staticfiles/
+
+# 4. Katta hajmdagi arxivlar (GitHub xatolik bermasligi uchun)
+*.tar
+postgres15.tar
+redis7.tar
+python311.tar
+
+# 5. Offline kutubxonalar papkasi
+wheels/
+
+# 6. Operatsion tizim kesh fayllari
+.DS_Store
+Thumbs.db

@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}SoLuna — {% trans "Journeys filled with inspiration" %}{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg" style="background-image: url('{% static 'img/hero-bg.jpg' %}');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-ornament" aria-hidden="true">☽</div>
+
+  <div class="container">
+    <div class="hero-content">
+      {# hero-enter: JS klass qo'shadi, inline style yo'q #}
+      <p class="eyebrow hero-enter">SoLuna · Uzbekistan</p>
+      <h1 class="hero-enter">
+        {% trans "Discover" %}<br>
+        <em>{% trans "the Silk Road" %}</em><br>
+        {% trans "Your Way" %}
+      </h1>
+      <p class="hero-desc hero-enter">
+        {% trans "Samarkand, Bukhara, Khiva — cities where every stone breathes centuries of history. We craft journeys as unique as you are." %}
+      </p>
+      <div class="hero-actions hero-enter">
+        <a href="{% url 'tours:tour-list' %}" class="btn btn-gold btn-lg">{% trans "Explore Tours" %}</a>
+        <a href="{% url 'messages_app:contact' %}" class="btn btn-outline-gold btn-lg">{% trans "Plan My Trip" %}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>{% trans "Scroll" %}</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ STATS BAR ══════════════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number" data-count="500" data-suffix="+">0</span>
+        <span class="stat-label">{% trans "Happy Travelers" %}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="15" data-suffix="+">0</span>
+        <span class="stat-label">{% trans "Unique Tours" %}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="14">0</span>
+        <span class="stat-label">{% trans "Regions" %}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="9">0</span>
+        <span class="stat-label">{% trans "Languages" %}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ FEATURED TOURS ══════════════════ -->
+{% if featured_tours %}
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">{% trans "Curated Experiences" %}</p>
+      <h2>{% trans "Signature Tours" %}</h2>
+      <p>{% trans "Hand-picked journeys that capture the soul of Uzbekistan" %}</p>
+    </div>
+
+    {% comment %}stagger-grid: kechikishlar CSS nth-child orqali —
+    delay-N klass muammosi (5 tadan keyin ishlamasdi) hal qilindi{% endcomment %}
+    <div class="tours-grid stagger-grid">
+      {% for tour in featured_tours %}
+      <a href="{% url 'tours:tour-detail' tour.slug %}" class="reveal">
+        <article class="tour-card">
+          <div class="tour-card-img">
+            {% if tour.cover_image %}
+              <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
+            {% else %}
+              <div class="tour-card-img-placeholder" aria-hidden="true">🕌</div>
+            {% endif %}
+            {% if tour.is_featured %}
+              <span class="tour-badge">{% trans "Featured" %}</span>
+            {% elif tour.category %}
+              <span class="tour-badge">{{ tour.category.name }}</span>
+            {% endif %}
+          </div>
+          <div class="tour-card-body">
+            <div class="tour-card-meta">
+              <span>📅 {{ tour.duration_days }} {% trans "days" %}</span>
+              <span>👥 {% trans "Max" %} {{ tour.max_group_size }}</span>
+              {% if tour.avg_rating %}<span>⭐ {{ tour.avg_rating|floatformat:1 }}</span>{% endif %}
+            </div>
+            <h3>{{ tour.title }}</h3>
+            <p>{{ tour.short_description|truncatewords:20 }}</p>
+          </div>
+          <div class="tour-card-footer">
+            <div class="tour-price">
+              ${{ tour.price }}
+              <small>{% trans "per person" %}</small>
+            </div>
+            <span class="btn btn-green-dark btn-sm">{% trans "Details" %}</span>
+          </div>
+        </article>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="text-center reveal" style="margin-top:3rem;">
+      <a href="{% url 'tours:tour-list' %}" class="btn btn-gold btn-lg">{% trans "View All Tours" %}</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ══════════════════ REGIONS ══════════════════ -->
+{% if regions %}
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">{% trans "Destinations" %}</p>
+      <h2>{% trans "Legendary Regions" %}</h2>
+      <p>{% trans "From ancient desert cities to lush mountain valleys — Uzbekistan's diversity awaits" %}</p>
+    </div>
+
+    <div class="regions-grid stagger-grid">
+      {% for region in regions %}
+      <a href="{% url 'regions:region-detail' region.slug %}" class="reveal-scale">
+        <div class="region-card">
+          {% if region.image %}
+            <img src="{{ region.image.url }}" alt="{{ region.name }}" loading="lazy">
+          {% else %}
+            <div class="region-card-placeholder" aria-hidden="true"></div>
+          {% endif %}
+          <div class="region-overlay">
+            <h3>{{ region.name }}</h3>
+            {% comment %}FIX (N+1): view'da annotate ishlating —
+            regions = Region.objects.filter(is_active=True).annotate(attractions_count=Count('attractions')){% endcomment %}
+            <p>{{ region.attractions_count|default:region.attractions.count }} {% trans "attractions" %}</p>
+            <div class="region-explore">{% trans "Explore" %}</div>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ══════════════════ WHY SOLUNA ══════════════════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">{% trans "Why SoLuna" %}</p>
+      <h2>{% trans "Your Journey, Our Passion" %}</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal delay-1">
+        <span class="why-icon" aria-hidden="true">🎯</span>
+        <h4>{% trans "Personalized" %}</h4>
+        <p>{% trans "Every itinerary is crafted specifically for you — your pace, your interests, your budget." %}</p>
+      </div>
+      <div class="why-item reveal delay-2">
+        <span class="why-icon" aria-hidden="true">🛡️</span>
+        <h4>{% trans "Trusted" %}</h4>
+        <p>{% trans "Licensed operator with 500+ satisfied travelers. Your safety and comfort come first." %}</p>
+      </div>
+      <div class="why-item reveal delay-3">
+        <span class="why-icon" aria-hidden="true">🌙</span>
+        <h4>{% trans "Authentic" %}</h4>
+        <p>{% trans "Local guides, genuine experiences, hidden gems — we take you beyond the tourist trail." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CTA STRIP ══════════════════ -->
+<section class="section-sm section-gold text-center">
+  <div class="container reveal">
+    <p class="eyebrow" style="color:rgba(13,59,46,0.65);">{% trans "Ready to travel?" %}</p>
+    <h2 class="mb-2">{% trans "Start Planning Your Journey" %}</h2>
+    <p style="color:rgba(13,59,46,0.65); max-width:460px; margin:0 auto 2rem;">
+      {% trans "Contact Oygul and let's create your perfect Uzbekistan experience together." %}
+    </p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="{% url 'messages_app:contact' %}" class="btn btn-green-dark btn-lg">{% trans "Get in Touch" %}</a>
+      <a href="{% url 'tours:tour-list' %}" class="btn btn-outline-dark btn-lg">{% trans "Browse Tours" %}</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ region.name }} — SoLuna{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<div style="height:55vh;min-height:380px;position:relative;background:var(--green-deep);overflow:hidden;">
+  {% if region.image %}
+    <img src="{{ region.image.url }}" alt="{{ region.name }}"
+      style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
+  {% endif %}
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,59,46,0.97) 0%,rgba(13,59,46,0.4) 60%,transparent 100%);"></div>
+  <div class="container" style="position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);width:100%;">
+    <a href="{% url 'regions:region-list' %}" style="color:rgba(255,255,255,0.5);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1rem;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">← {% trans "All Regions" %}</a>
+    <h1 style="color:#FAF7F0;font-weight:300;">{{ region.name }}</h1>
+    {% if region.description %}
+      <p style="color:rgba(255,255,255,0.65);margin-top:0.75rem;max-width:580px;">{{ region.description }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Attractions -->
+{% if attractions %}
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">{% trans "Discover" %}</p>
+      <h2>{% trans "Attractions" %}</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;">
+      {% for attraction in attractions %}
+      <div class="tour-card reveal delay-{{ forloop.counter }}">
+        <div class="tour-card-img">
+          {% if attraction.image %}
+            <img src="{{ attraction.image.url }}" alt="{{ attraction.name }}" loading="lazy">
+          {% else %}
+            <div class="tour-card-img-placeholder">🏛️</div>
+          {% endif %}
+        </div>
+        <div class="tour-card-body">
+          <h3>{{ attraction.name }}</h3>
+          {% if attraction.description %}
+            <p>{{ attraction.description|truncatewords:20 }}</p>
+          {% endif %}
+          {% if attraction.latitude and attraction.longitude %}
+            <a href="https://2gis.uz/search/{{ attraction.latitude }},{{ attraction.longitude }}" target="_blank" rel="noopener"
+               class="btn btn-outline-dark btn-sm" style="margin-top:0.75rem;">🗺 {% trans "View on Map" %}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Tours in this region -->
+{% if tours %}
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">{% trans "Explore" %}</p>
+      <h2>{% trans "Tours in" %} {{ region.name }}</h2>
+    </div>
+    <div class="tours-grid">
+      {% for tour in tours %}
+      <a href="{% url 'tours:tour-detail' tour.slug %}">
+        <article class="tour-card reveal delay-{{ forloop.counter }}">
+          <div class="tour-card-img">
+            {% if tour.cover_image %}<img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
+            {% else %}<div class="tour-card-img-placeholder">🕌</div>{% endif %}
+            {% if tour.is_featured %}<span class="tour-badge">{% trans "Featured" %}</span>{% endif %}
+          </div>
+          <div class="tour-card-body">
+            <div class="tour-card-meta">
+              <span>📅 {{ tour.duration_days }} {% trans "days" %}</span>
+              <span>👥 {{ tour.max_group_size }}</span>
+            </div>
+            <h3>{{ tour.title }}</h3>
+            <p>{{ tour.short_description|truncatewords:16 }}</p>
+          </div>
+          <div class="tour-card-footer">
+            <div class="tour-price">${{ tour.price }}<small>{% trans "per person" %}</small></div>
+            <span class="btn btn-green-dark btn-sm">{% trans "Details" %}</span>
+          </div>
+        </article>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Write a Review" %} - SoLuna{% endblock %}
+
+{% block content %}
+<div class="review-form-container" style="max-width: 600px; margin: 60px auto; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); font-family: var(--font-body, 'Jost', sans-serif);">
+    
+    <div class="form-header" style="text-align: center; margin-bottom: 30px;">
+        <h1 style="color: #0D3B2E; font-size: 28px; font-weight: 600; margin-bottom: 10px;">
+            {% if form.instance.pk %}{% trans "Update Your Review" %}{% else %}{% trans "Share Your Experience" %}{% endif %}
+        </h1>
+        <p style="color: #666666; font-size: 15px;">
+            {% trans "Tour" %}: <strong style="color: #C9A84C;">{{ tour.title|default:form.instance.tour.title }}</strong>
+        </p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger" style="background-color: #fde8e8; color: #e53e3e; padding: 12px; border-radius: 6px; margin-bottom: 20px; font-size: 14px;">
+                {% for error in form.non_field_errors %}
+                    <p style="margin: 0;">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% for field in form %}
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="{{ field.id_for_label }}" style="display: block; color: #0D3B2E; font-weight: 500; font-size: 15px; margin-bottom: 8px;">
+                    {{ field.label }}
+                    {% if field.field.required %}<span style="color: #e53e3e;">*</span>{% endif %}
+                </label>
+                
+                <div class="input-wrapper">
+                    {# 1. RATING MAYDONI UCHUN MAXSUS INTERAKTIV YULDUZCHALAR #}
+                    {% if field.name == 'rating' %}
+                        <div class="star-rating-wrapper" style="direction: rtl; display: flex; justify-content: flex-end; gap: 5px; margin-bottom: 5px;">
+                            <input type="radio" id="star5" name="{{ field.name }}" value="5" {% if field.value|slugify == "5" %}checked{% endif %} class="star-input" style="display: none;" />
+                            <label for="star5" class="star-label" title="5 stars" style="font-size: 32px; color: #ccc; cursor: pointer; transition: color 0.2s ease;">★</label>
+
+                            <input type="radio" id="star4" name="{{ field.name }}" value="4" {% if field.value|slugify == "4" %}checked{% endif %} class="star-input" style="display: none;" />
+                            <label for="star4" class="star-label" title="4 stars" style="font-size: 32px; color: #ccc; cursor: pointer; transition: color 0.2s ease;">★</label>
+
+                            <input type="radio" id="star3" name="{{ field.name }}" value="3" {% if field.value|slugify == "3" %}checked{% endif %} class="star-input" style="display: none;" />
+                            <label for="star3" class="star-label" title="3 stars" style="font-size: 32px; color: #ccc; cursor: pointer; transition: color 0.2s ease;">★</label>
+
+                            <input type="radio" id="star2" name="{{ field.name }}" value="2" {% if field.value|slugify == "2" %}checked{% endif %} class="star-input" style="display: none;" />
+                            <label for="star2" class="star-label" title="2 stars" style="font-size: 32px; color: #ccc; cursor: pointer; transition: color 0.2s ease;">★</label>
+
+                            <input type="radio" id="star1" name="{{ field.name }}" value="1" {% if field.value|slugify == "1" %}checked{% endif %} class="star-input" style="display: none;" />
+                            <label for="star1" class="star-label" title="1 star" style="font-size: 32px; color: #ccc; cursor: pointer; transition: color 0.2s ease;">★</label>
+                        </div>
+
+                    {# 2. BODY / TEXTAREA MAYDONI UCHUN #}
+                    {% elif field.widget_type == 'textarea' or field.name == 'body' %}
+                        <textarea name="{{ field.name }}" id="{{ field.id_for_label }}" rows="5" class="form-control" style="width: 100%; padding: 12px; border: 1px solid #cccccc; border-radius: 6px; font-size: 15px; outline: none; transition: border-color 0.3s ease; box-sizing: border-box;" placeholder="{% trans 'Write your detailed review here...' %}">{{ field.value|default:'' }}</textarea>
+                    
+                    {# 3. TITLE VA BOSHQA STANDART INPUTLAR UCHUN #}
+                    {% else %}
+                        <input type="{{ field.field.widget.input_type|default:'text' }}" name="{{ field.name }}" id="{{ field.id_for_label }}" value="{{ field.value|default:'' }}" class="form-control" style="width: 100%; padding: 12px; border: 1px solid #cccccc; border-radius: 6px; font-size: 15px; outline: none; transition: border-color 0.3s ease; box-sizing: border-box;">
+                    {% endif %}
+                </div>
+
+                {% if field.help_text %}
+                    <small style="display: block; color: #888888; font-size: 12px; margin-top: 4px;">{{ field.help_text }}</small>
+                {% endif %}
+
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <span style="display: block; color: #e53e3e; font-size: 13px; margin-top: 4px;">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <div class="form-actions" style="display: flex; gap: 15px; margin-top: 30px;">
+            <button type="submit" class="btn btn-gold" style="flex: 1; background-color: #C9A84C; color: #ffffff; border: none; padding: 14px; border-radius: 6px; font-size: 16px; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease;">
+                {% trans "Submit Review" %}
+            </button>
+            <a href="{{ request.META.HTTP_REFERER|default:'/' }}" class="btn btn-outline" style="flex: 1; text-align: center; border: 1px solid #cccccc; color: #666666; padding: 14px; border-radius: 6px; font-size: 16px; font-weight: 500; text-decoration: none; transition: all 0.3s ease; box-sizing: border-box;">
+                {% trans "Cancel" %}
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Yulduzchalar ustiga bosilganda va sichqoncha kelganda oltin rangga kirishi (CSS orqali) */
+    .star-input:checked ~ .star-label {
+        color: #C9A84C !important;
+    }
+    .star-label:hover,
+    .star-label:hover ~ .star-label {
+        color: #C9A84C !important;
+    }
+    .star-input:checked + .star-label:hover,
+    .star-input:checked + .star-label:hover ~ .star-label,
+    .star-input:checked ~ .star-label:hover,
+    .star-input:checked ~ .star-label:hover ~ .star-label,
+    .star-label:hover ~ .star-input:checked ~ .star-label {
+        color: #b2933e !important;
+    }
+
+    /* Standart form boshqaruvi elementlari fokusi */
+    .form-control:focus {
+        border-color: #C9A84C !important;
+        box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+    }
+    .btn-gold:hover {
+        background-color: #b2933e !important;
+    }
+    .btn-outline:hover {
+        background-color: #f5f5f5;
+        color: #333333 !important;
+    }
+</style>
+{% endblock %}

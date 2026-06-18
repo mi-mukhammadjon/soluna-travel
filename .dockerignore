@@ -1,0 +1,19 @@
+# Kesh va virtual muhitlar
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Katta hajmdagi offline arxivlar
+*.tar
+postgres15.tar
+redis7.tar
+python311.tar
+
+# Offline kutubxonalar va skriptlar
+wheels/
+download_wheels.ps1
+
+# Docker maxfiy ma'lumotlari
+.env
+.git

@@ -1,0 +1,383 @@
+{% extends "admin/base_site.html" %}
+{% load static i18n %}
+
+{% block title %}Boshqaruv paneli | SoLuna Admin{% endblock %}
+{% block content_title %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+/* ============================================================
+   SoLuna Dashboard — barcha selectorlar .sl-db ichida
+   namespace qilingan, admin'ning boshqa sahifalariga
+   MUTLAQO ta'sir qilmaydi. !important YO'Q.
+   ============================================================ */
+.sl-db { padding: 4px 0 24px; }
+
+/* ── Hero ── */
+.sl-db .sl-hero {
+  background: linear-gradient(135deg, #0D3B2E 0%, #1A5C45 50%, #071F18 100%);
+  border-radius: 8px;
+  padding: 32px 36px;
+  margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  box-shadow: 0 8px 24px rgba(13, 59, 46, 0.15);
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+.sl-db .sl-hero::before {
+  content: '☽';
+  position: absolute; right: -20px; top: -50px;
+  font-family: Georgia, serif;
+  font-size: 240px; line-height: 1;
+  color: rgba(201, 168, 76, 0.04);
+  pointer-events: none;
+}
+.sl-db .sl-hero-text { position: relative; z-index: 2; }
+.sl-db .sl-hero h1 {
+  font-family: Georgia, serif;
+  font-size: 2rem; font-weight: 400;
+  color: #FAF7F0;
+  margin: 0 0 8px; letter-spacing: 0.02em;
+}
+.sl-db .sl-hero h1 em { color: #C9A84C; font-style: italic; }
+.sl-db .sl-hero p { color: rgba(250, 247, 240, 0.7); font-size: 0.9rem; margin: 0; }
+
+.sl-db .sl-hero-action { position: relative; z-index: 2; display: flex; gap: 12px; flex-wrap: wrap; }
+.sl-db .sl-hero-btn {
+  padding: 10px 24px; border-radius: 4px;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.sl-db .sl-hero-btn-gold { background: #C9A84C; color: #0D3B2E; box-shadow: 0 4px 12px rgba(201,168,76,0.2); }
+.sl-db .sl-hero-btn-gold:hover { background: #E8C97A; color: #0D3B2E; transform: translateY(-2px); }
+.sl-db .sl-hero-btn-out { border: 1px solid rgba(201, 168, 76, 0.5); color: #E8C97A; }
+.sl-db .sl-hero-btn-out:hover { border-color: #C9A84C; color: #FFFFFF; background: rgba(201, 168, 76, 0.1); }
+
+/* ── KPI ── */
+.sl-db .sl-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.sl-db .sl-kpi-card {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(13, 59, 46, 0.04);
+  border: 1px solid rgba(13, 59, 46, 0.06);
+  border-top: 3px solid var(--kpi-accent, #C9A84C);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.sl-db .sl-kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(13, 59, 46, 0.1);
+  border-color: rgba(201, 168, 76, 0.3);
+}
+.sl-db .sl-kpi-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+.sl-db .sl-kpi-icon {
+  width: 42px; height: 42px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.sl-db .sl-kpi-trend {
+  font-size: 0.7rem; padding: 3px 10px;
+  border-radius: 100px; font-weight: 600; letter-spacing: 0.05em;
+  background: rgba(201,168,76,0.12); color: #0D3B2E;
+}
+.sl-db .sl-kpi-num {
+  font-family: Georgia, serif;
+  font-size: 2.5rem; font-weight: 600;
+  color: #0D3B2E; line-height: 1; margin-bottom: 4px;
+}
+.sl-db .sl-kpi-label {
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #777777; margin-bottom: 12px;
+}
+.sl-db .sl-kpi-link { font-size: 0.75rem; color: #C9A84C; font-weight: 500; }
+.sl-db .sl-kpi-link:hover { color: #0D3B2E; }
+
+/* ── Quick actions ── */
+.sl-db .sl-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px; margin-bottom: 24px;
+}
+.sl-db .sl-quick-card {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 18px 12px;
+  text-align: center;
+  border: 1px solid rgba(13, 59, 46, 0.08);
+  box-shadow: 0 4px 10px rgba(13, 59, 46, 0.03);
+  text-decoration: none; display: block;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.sl-db .sl-quick-card:hover {
+  background: #0D3B2E;
+  transform: translateY(-4px);
+  border-color: #C9A84C;
+  box-shadow: 0 8px 20px rgba(13, 59, 46, 0.15);
+}
+.sl-db .sl-qi { font-size: 1.6rem; display: block; margin-bottom: 8px; transition: transform 0.3s ease; }
+.sl-db .sl-quick-card:hover .sl-qi { transform: scale(1.1); }
+.sl-db .sl-ql {
+  font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #0D3B2E; font-weight: 600;
+  transition: color 0.3s ease;
+}
+.sl-db .sl-quick-card:hover .sl-ql { color: #E8C97A; }
+
+/* ── Ro'yxat kartalari ── */
+.sl-db .sl-grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.sl-db .sl-card {
+  background: #FFFFFF;
+  border-radius: 8px;
+  border: 1px solid rgba(13, 59, 46, 0.08);
+  box-shadow: 0 4px 15px rgba(13, 59, 46, 0.03);
+  overflow: hidden;
+}
+.sl-db .sl-card-head {
+  background: #0D3B2E;
+  padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid #C9A84C;
+}
+.sl-db .sl-card-head h3 {
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #E8C97A; margin: 0; font-weight: 600;
+}
+.sl-db .sl-card-head a { font-size: 0.75rem; color: rgba(250, 247, 240, 0.7); }
+.sl-db .sl-card-head a:hover { color: #FFFFFF; }
+
+.sl-db .sl-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #F0F2F2;
+  font-size: 0.85rem;
+  color: #444444;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.sl-db .sl-row:hover { background: #F4F8F6; }
+.sl-db .sl-row:last-child { border-bottom: none; }
+.sl-db .sl-row-main { min-width: 0; }
+.sl-db .sl-row-title { font-weight: 600; color: #0D3B2E; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sl-db .sl-row-sub { font-size: 0.75rem; color: #888888; }
+.sl-db .sl-status {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px; border-radius: 100px;
+  white-space: nowrap;
+}
+.sl-db .sl-status-pending   { background: rgba(201,168,76,0.18); color: #7d6420; }
+.sl-db .sl-status-confirmed { background: rgba(42,122,92,0.14); color: #1A5C45; }
+.sl-db .sl-status-completed { background: rgba(13,59,46,0.10); color: #0D3B2E; }
+.sl-db .sl-status-cancelled { background: rgba(192,57,43,0.12); color: #922b21; }
+
+.sl-db .sl-empty { padding: 32px; text-align: center; color: #9CA3AF; font-size: 0.85rem; font-style: italic; }
+
+@media (max-width: 767px) {
+  .sl-db .sl-hero { padding: 24px; }
+  .sl-db .sl-hero h1 { font-size: 1.5rem; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="sl-db">
+
+  <div class="sl-hero">
+    <div class="sl-hero-text">
+      <h1>{% now "H" as hour %}{% if hour < "12" %}Xayrli tong{% elif hour < "18" %}Xayrli kun{% else %}Xayrli kech{% endif %}, <em>SoLuna</em></h1>
+      <p>{% now "l, d F Y" %} · Boshqaruv paneli</p>
+    </div>
+    <div class="sl-hero-action">
+      <a href="/" target="_blank" rel="noopener" class="sl-hero-btn sl-hero-btn-gold">Saytni ko'rish →</a>
+      <a href="{% url 'admin:tours_tour_add' %}" class="sl-hero-btn sl-hero-btn-out">+ Tur qo'shish</a>
+    </div>
+  </div>
+
+  <div class="sl-kpi">
+    <div class="sl-kpi-card" style="--kpi-accent:#C9A84C;">
+      <div class="sl-kpi-top">
+        <div class="sl-kpi-icon" style="background:rgba(201,168,76,0.15);">🧳</div>
+        <span class="sl-kpi-trend" id="booking-trend">faol</span>
+      </div>
+      <div class="sl-kpi-num" id="kpi-bookings">—</div>
+      <div class="sl-kpi-label">Jami bronlar</div>
+      <a href="{% url 'admin:bookings_booking_changelist' %}" class="sl-kpi-link">Barchasi →</a>
+    </div>
+
+    <div class="sl-kpi-card" style="--kpi-accent:#1A5C45;">
+      <div class="sl-kpi-top">
+        <div class="sl-kpi-icon" style="background:rgba(26,92,69,0.1);">✉️</div>
+        <span class="sl-kpi-trend" id="msg-trend">kutilmoqda</span>
+      </div>
+      <div class="sl-kpi-num" id="kpi-messages">—</div>
+      <div class="sl-kpi-label">Yangi xabarlar</div>
+      <a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new" class="sl-kpi-link">Ko'rish →</a>
+    </div>
+
+    <div class="sl-kpi-card" style="--kpi-accent:#0D3B2E;">
+      <div class="sl-kpi-top">
+        <div class="sl-kpi-icon" style="background:rgba(13,59,46,0.1);">🗺️</div>
+        <span class="sl-kpi-trend">aktiv</span>
+      </div>
+      <div class="sl-kpi-num" id="kpi-tours">—</div>
+      <div class="sl-kpi-label">Turlar</div>
+      <a href="{% url 'admin:tours_tour_changelist' %}" class="sl-kpi-link">Ko'rish →</a>
+    </div>
+
+    <div class="sl-kpi-card" style="--kpi-accent:#A88D3F;">
+      <div class="sl-kpi-top">
+        <div class="sl-kpi-icon" style="background:rgba(168,141,63,0.1);">👥</div>
+        <span class="sl-kpi-trend">mijozlar</span>
+      </div>
+      <div class="sl-kpi-num" id="kpi-users">—</div>
+      <div class="sl-kpi-label">Mijozlar</div>
+      <a href="{% url 'admin:accounts_user_changelist' %}" class="sl-kpi-link">Ko'rish →</a>
+    </div>
+  </div>
+
+  <div class="sl-quick-grid">
+    <a href="{% url 'admin:tours_tour_add' %}" class="sl-quick-card"><span class="sl-qi">🧳</span><span class="sl-ql">Tur qo'shish</span></a>
+    <a href="{% url 'admin:regions_region_add' %}" class="sl-quick-card"><span class="sl-qi">🗺️</span><span class="sl-ql">Region qo'shish</span></a>
+    <a href="{% url 'admin:bookings_booking_changelist' %}?status__exact=pending" class="sl-quick-card"><span class="sl-qi">⏳</span><span class="sl-ql">Kutilayotgan</span></a>
+    <a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new" class="sl-quick-card"><span class="sl-qi">📬</span><span class="sl-ql">Yangi xabarlar</span></a>
+    <a href="{% url 'admin:reviews_review_changelist' %}?is_approved__exact=0" class="sl-quick-card"><span class="sl-qi">⭐</span><span class="sl-ql">Izohlar</span></a>
+    <a href="{% url 'admin:accounts_user_changelist' %}" class="sl-quick-card"><span class="sl-qi">👤</span><span class="sl-ql">Mijozlar</span></a>
+  </div>
+
+  <div class="sl-grid2">
+    <div class="sl-card">
+      <div class="sl-card-head">
+        <h3>Oxirgi bronlar</h3>
+        <a href="{% url 'admin:bookings_booking_changelist' %}">Barchasi</a>
+      </div>
+      <div id="recent-bookings"><div class="sl-empty">Yuklanmoqda…</div></div>
+    </div>
+    <div class="sl-card">
+      <div class="sl-card-head">
+        <h3>Yangi xabarlar</h3>
+        <a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new">Barchasi</a>
+      </div>
+      <div id="recent-messages"><div class="sl-empty">Yuklanmoqda…</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   FIX: HTML scraping (4 ta to'liq sahifa + regex) o'rniga —
+   BITTA JSON endpoint: /admin/dashboard-stats/
+   (qarang: config/admin_dashboard.py)
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const STATS_URL = '{% url "admin-dashboard-stats" %}';
+
+  function animNum(el, target) {
+    const n = parseInt(target, 10);
+    if (Number.isNaN(n) || n === 0) { el.textContent = n || '0'; return; }
+    const start = performance.now();
+    const update = (now) => {
+      const p = Math.min((now - start) / 800, 1);
+      el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * n);
+      if (p < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  /* XSS himoyasi: ma'lumotlar textContent orqali joylanadi,
+     innerHTML ga foydalanuvchi matni hech qachon qo'yilmaydi */
+  function rowEl({ url, title, sub, status }) {
+    const a = document.createElement('a');
+    a.className = 'sl-row';
+    a.href = url;
+
+    const main = document.createElement('div');
+    main.className = 'sl-row-main';
+    const t = document.createElement('div');
+    t.className = 'sl-row-title';
+    t.textContent = title;
+    const s = document.createElement('div');
+    s.className = 'sl-row-sub';
+    s.textContent = sub;
+    main.append(t, s);
+    a.append(main);
+
+    if (status) {
+      const badge = document.createElement('span');
+      badge.className = 'sl-status sl-status-' + status;
+      badge.textContent = status;
+      a.append(badge);
+    }
+    return a;
+  }
+
+  function fill(containerId, items, mapFn) {
+    const box = document.getElementById(containerId);
+    box.textContent = '';
+    if (!items.length) {
+      const empty = document.createElement('div');
+      empty.className = 'sl-empty';
+      empty.textContent = "Hozircha yozuvlar yo'q";
+      box.append(empty);
+      return;
+    }
+    items.forEach((item) => box.append(rowEl(mapFn(item))));
+  }
+
+  async function loadStats() {
+    try {
+      const r = await fetch(STATS_URL, { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+      if (!r.ok) throw new Error(r.status);
+      const data = await r.json();
+
+      animNum(document.getElementById('kpi-bookings'), data.kpi.bookings);
+      animNum(document.getElementById('kpi-messages'), data.kpi.new_messages);
+      animNum(document.getElementById('kpi-tours'), data.kpi.active_tours);
+      animNum(document.getElementById('kpi-users'), data.kpi.users);
+
+      if (data.kpi.new_messages > 0) {
+        document.getElementById('msg-trend').textContent = data.kpi.new_messages + ' ta yangi';
+      }
+      if (data.kpi.pending_bookings > 0) {
+        document.getElementById('booking-trend').textContent = data.kpi.pending_bookings + ' ta kutmoqda';
+      }
+
+      fill('recent-bookings', data.recent_bookings, (b) => ({
+        url: b.url,
+        title: b.tour,
+        sub: b.user + ' · ' + b.number,
+        status: b.status,
+      }));
+
+      fill('recent-messages', data.recent_messages, (m) => ({
+        url: m.url,
+        title: m.subject,
+        sub: m.name,
+      }));
+    } catch (err) {
+      document.querySelectorAll('.sl-empty').forEach((el) => {
+        el.textContent = "Statistika yuklanmadi";
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadStats);
+})();
+</script>
+{% endblock %}

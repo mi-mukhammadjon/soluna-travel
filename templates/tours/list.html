@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Tours" %} — SoLuna{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div style="background:var(--green-deep);padding:130px 0 60px;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);background-size:22px 22px;"></div>
+  <div style="position:absolute;right:-80px;bottom:-80px;font-family:'Cormorant Garamond',serif;font-size:300px;color:rgba(201,168,76,0.04);line-height:1;pointer-events:none;">☽</div>
+  <div class="container" style="position:relative;z-index:2;">
+    <p class="eyebrow" style="color:var(--gold);margin-bottom:1rem;">SoLuna</p>
+    <h1 style="color:#FAF7F0;font-weight:300;">{% trans "Our Tours" %}</h1>
+    <p style="color:rgba(255,255,255,0.6);margin-top:0.75rem;font-size:1.05rem;">
+      {% blocktrans count count=total_count %}{{ count }} tour found{% plural %}{{ count }} tours found{% endblocktrans %}
+    </p>
+  </div>
+</div>
+
+<!-- Filters -->
+<div style="background:var(--white);border-bottom:1px solid rgba(13,59,46,0.08);position:sticky;top:76px;z-index:100;">
+  <div class="container">
+    <form method="get" style="display:flex;flex-wrap:wrap;gap:1rem;padding:1rem 0;align-items:center;">
+
+      <input type="text" name="q" value="{{ filters.q }}" placeholder="{% trans 'Search tours...' %}"
+        class="form-control" style="max-width:220px;padding:0.55rem 1rem;font-size:0.85rem;">
+
+      <select name="region" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
+        <option value="">{% trans "All Regions" %}</option>
+        {% for region in regions %}
+          <option value="{{ region.slug }}" {% if filters.region == region.slug %}selected{% endif %}>{{ region.name }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="category" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
+        <option value="">{% trans "All Categories" %}</option>
+        {% for cat in categories %}
+          <option value="{{ cat.slug }}" {% if filters.category == cat.slug %}selected{% endif %}>{{ cat.name }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="duration" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
+        <option value="">{% trans "Any Duration" %}</option>
+        <option value="1-3" {% if filters.duration == '1-3' %}selected{% endif %}>{% trans "1–3 days" %}</option>
+        <option value="4-7" {% if filters.duration == '4-7' %}selected{% endif %}>{% trans "4–7 days" %}</option>
+        <option value="8+" {% if filters.duration == '8+' %}selected{% endif %}>{% trans "8+ days" %}</option>
+      </select>
+
+      <select name="sort" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
+        <option value="-created_at" {% if filters.sort == '-created_at' %}selected{% endif %}>{% trans "Newest" %}</option>
+        <option value="price" {% if filters.sort == 'price' %}selected{% endif %}>{% trans "Price ↑" %}</option>
+        <option value="-price" {% if filters.sort == '-price' %}selected{% endif %}>{% trans "Price ↓" %}</option>
+        <option value="duration_days" {% if filters.sort == 'duration_days' %}selected{% endif %}>{% trans "Duration ↑" %}</option>
+      </select>
+
+      <button type="submit" class="btn btn-gold btn-sm">{% trans "Filter" %}</button>
+      {% if filters.q or filters.region or filters.category or filters.duration %}
+        <a href="{% url 'tours:tour-list' %}" class="btn btn-outline-dark btn-sm">{% trans "Clear" %}</a>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+<!-- Tour Cards -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    {% if tours %}
+      <div class="tours-grid">
+        {% for tour in tours %}
+        <a href="{% url 'tours:tour-detail' tour.slug %}">
+          <article class="tour-card reveal delay-{{ forloop.counter0|add:1 }}">
+            <div class="tour-card-img">
+              {% if tour.cover_image %}
+                <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
+              {% else %}
+                <div class="tour-card-img-placeholder">🕌</div>
+              {% endif %}
+              {% if tour.is_featured %}
+                <span class="tour-badge">{% trans "Featured" %}</span>
+              {% elif tour.category %}
+                <span class="tour-badge">{{ tour.category.name }}</span>
+              {% endif %}
+            </div>
+            <div class="tour-card-body">
+              <div class="tour-card-meta">
+                <span>📅 {{ tour.duration_days }} {% trans "d" %}</span>
+                <span>👥 {{ tour.max_group_size }}</span>
+                <span>🧭 {{ tour.get_difficulty_display }}</span>
+                {% if tour.avg_rating %}<span>⭐ {{ tour.avg_rating|floatformat:1 }}</span>{% endif %}
+              </div>
+              <h3>{{ tour.title }}</h3>
+              <p>{{ tour.short_description|truncatewords:18 }}</p>
+            </div>
+            <div class="tour-card-footer">
+              <div class="tour-price">
+                ${{ tour.price }}
+                <small>{% trans "per person" %}</small>
+              </div>
+              <span class="btn btn-green-dark btn-sm">{% trans "Details" %}</span>
+            </div>
+          </article>
+        </a>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      {% if is_paginated %}
+      <div style="display:flex;justify-content:center;align-items:center;gap:0.5rem;margin-top:3rem;">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}{% if filters.q %}&q={{ filters.q }}{% endif %}" class="btn btn-outline-dark btn-sm">← {% trans "Prev" %}</a>
+        {% endif %}
+        <span style="font-size:0.85rem;color:var(--text-mid);padding:0 1rem;">
+          {% trans "Page" %} {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+        </span>
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}{% if filters.q %}&q={{ filters.q }}{% endif %}" class="btn btn-outline-dark btn-sm">{% trans "Next" %} →</a>
+        {% endif %}
+      </div>
+      {% endif %}
+
+    {% else %}
+      <div style="text-align:center;padding:5rem 2rem;">
+        <p style="font-size:3rem;margin-bottom:1rem;">🗺️</p>
+        <h3>{% trans "No tours found" %}</h3>
+        <p style="color:var(--text-mid);margin-top:0.5rem;">{% trans "Try adjusting your filters" %}</p>
+        <a href="{% url 'tours:tour-list' %}" class="btn btn-gold" style="margin-top:2rem;">{% trans "View All Tours" %}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

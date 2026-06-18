@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Message Sent" %} — SoLuna{% endblock %}
+{% block content %}
+<section style="min-height:80vh;display:flex;align-items:center;background:var(--cream);">
+  <div class="container" style="text-align:center;padding:4rem 2rem;">
+    <div style="width:72px;height:72px;border-radius:50%;background:var(--green-deep);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-size:1.8rem;">✓</div>
+    <h1 style="font-weight:300;margin-bottom:1rem;">{% trans "Message Sent!" %}</h1>
+    <p style="color:var(--text-mid);max-width:420px;margin:0 auto 2.5rem;line-height:1.8;">
+      {% trans "Thank you for reaching out. Oygul will get back to you within 24 hours." %}
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="{% url 'tours:tour-list' %}" class="btn btn-gold btn-lg">{% trans "Explore Tours" %}</a>
+      <a href="{% url 'home' %}" class="btn btn-outline-dark btn-lg">{% trans "Back to Home" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

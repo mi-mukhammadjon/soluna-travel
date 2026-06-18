@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "My Profile" %} — SoLuna{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <div class="container profile-head-flex">
+    {% if profile_user.avatar %}
+      <img src="{{ profile_user.avatar.url }}" alt="{{ profile_user.get_full_name }}" class="profile-avatar">
+    {% else %}
+      <div class="profile-avatar profile-avatar--initial" aria-hidden="true">
+        {{ profile_user.get_full_name|default:profile_user.username|first|upper }}
+      </div>
+    {% endif %}
+    <div>
+      <p class="eyebrow" style="margin-bottom:0.5rem;">{% trans "Account" %}</p>
+      <h1>{{ profile_user.get_full_name|default:profile_user.username }}</h1>
+      <p class="page-head-sub">{{ profile_user.email }}</p>
+    </div>
+  </div>
+</div>
+
+<section class="section section-cream">
+  <div class="container">
+    <div class="profile-layout">
+
+      <!-- Sidebar -->
+      <div class="reveal">
+        {% comment %}FIX: eski for/empty hack olib tashlandi — kontent
+        empty blokida edi, context'da sidebar_links paydo bo'lsa
+        sahifa bo'shab qolardi{% endcomment %}
+        <nav class="panel profile-nav" aria-label="{% trans 'Profile menu' %}">
+          <a href="#bookings">🧳 {% trans "My Bookings" %}</a>
+          <a href="#reviews">⭐ {% trans "My Reviews" %}</a>
+          <a href="{% url 'accounts:profile-edit' %}">✏️ {% trans "Edit Profile" %}</a>
+          <a href="{% url 'accounts:password-change' %}">🔒 {% trans "Change Password" %}</a>
+          {# XAVFSIZLIK: logout POST orqali #}
+          <form action="{% url 'account_logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">🚪 {% trans "Logout" %}</button>
+          </form>
+        </nav>
+
+        <div class="notice-strip {% if profile_user.is_verified %}notice-strip--ok{% else %}notice-strip--warn{% endif %}">
+          {% if profile_user.is_verified %}✓ {% trans "Email verified" %}{% else %}⚠ {% trans "Email not verified" %}{% endif %}
+        </div>
+      </div>
+
+      <!-- Main -->
+      <div>
+        <!-- Recent Bookings -->
+        <div id="bookings" class="panel panel-pad reveal" style="margin-bottom:2rem;">
+          <div class="panel-title-row">
+            <h2>{% trans "Recent Bookings" %}</h2>
+            <a href="{% url 'bookings:booking-list' %}" class="btn btn-outline-dark btn-sm">{% trans "View All" %}</a>
+          </div>
+
+          {% for booking in bookings %}
+          <div class="list-row">
+            <div class="list-row-thumb">
+              {% if booking.tour.cover_image %}
+                <img src="{{ booking.tour.cover_image.url }}" alt="">
+              {% else %}
+                <div class="ph" aria-hidden="true">🕌</div>
+              {% endif %}
+            </div>
+            <div class="list-row-main">
+              <p class="list-row-title">{{ booking.tour.title }}</p>
+              <p class="list-row-sub">{{ booking.travel_date }} · ${{ booking.total_price }}</p>
+            </div>
+            <span class="status-badge status-badge--{{ booking.status|default:'default' }}">
+              {{ booking.get_status_display }}
+            </span>
+          </div>
+          {% empty %}
+          <p class="empty-note">
+            {% trans "No bookings yet." %}
+            <a href="{% url 'tours:tour-list' %}">{% trans "Explore tours" %}</a>
+          </p>
+          {% endfor %}
+        </div>
+
+        <!-- Reviews -->
+        <div id="reviews" class="panel panel-pad reveal delay-2">
+          <h2 style="font-size:1.4rem;margin-bottom:1.5rem;">{% trans "My Reviews" %}</h2>
+
+          {% for review in reviews %}
+          <div class="review-item">
+            <div class="review-head">
+              <a href="{% url 'tours:tour-detail' review.tour.slug %}">{{ review.tour.title }}</a>
+              <span class="review-stars" aria-label="{{ review.rating }}/5">{% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
+            </div>
+            <p class="review-body">{{ review.body|truncatewords:20 }}</p>
+            <p class="review-date">{{ review.created_at|date:"d M Y" }}</p>
+          </div>
+          {% empty %}
+          <p class="empty-note">{% trans "You haven't written any reviews yet." %}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

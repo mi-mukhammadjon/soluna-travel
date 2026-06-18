@@ -1,0 +1,336 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ tour.title }} — SoLuna{% endblock %}
+{% block meta_desc %}{{ tour.short_description }}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Loyihaning asosiy ranglar palitrasi */
+:root {
+    --green-deep: #0D3B2E;
+    --green-mid: #145344;
+    --gold: #C9A84C;
+    --gold-dark: #B2933E;
+    --cream: #FAF7F0;
+    --white: #ffffff;
+    --text-dark: #222222;
+    --text-mid: #555555;
+    --text-light: #888888;
+}
+
+/* Galereya uslublari */
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1.5rem; }
+@media (max-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+.gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: 6px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.gallery-item:hover img { transform: scale(1.08); }
+
+/* Grid konfiguratsiyasi - Elementlar sig'ishi va sinmasligi kafolatlanadi */
+.detail-grid { display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start; }
+@media (max-width: 992px) { .detail-grid { grid-template-columns: 1fr; gap: 2rem; } .detail-sidebar { position: static !important; max-width: 100% !important; } }
+.detail-sidebar { position: sticky; top: 100px; width: 100%; max-width: 380px; box-sizing: border-box; }
+
+/* Booking Card dizayni */
+.booking-card { 
+    background: var(--white); 
+    border: 1px solid rgba(201, 168, 76, 0.2); 
+    border-radius: 8px; 
+    padding: 2rem; 
+    box-shadow: 0 10px 40px rgba(13, 59, 46, 0.08); 
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100% !important;
+}
+
+/* Kiritilgan / Kiritilmagan xizmatlar ro'yxati */
+.include-list li { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.6rem 0; font-size: 0.92rem; color: var(--text-mid); border-bottom: 1px solid rgba(13, 59, 46, 0.06); }
+.include-list li:last-child { border: none; }
+.include-list li::before { content: '✓'; color: #2ecc71; font-weight: 600; flex-shrink: 0; }
+.exclude-list li::before { content: '✗'; color: #e74c3c; }
+
+/* Mukammal vizual timeline (Kunlik dastur) */
+.itinerary-timeline { position: relative; padding-left: 1rem; }
+.day-item { position: relative; display: flex; gap: 1.5rem; padding-bottom: 2rem; }
+.day-item:last-child { padding-bottom: 0; }
+.day-item::before { content: ''; position: absolute; left: 24px; top: 48px; bottom: 0; width: 2px; background: rgba(13, 59, 46, 0.1); }
+.day-item:last-child::before { display: none; }
+.day-number { width: 48px; height: 48px; border-radius: 50%; background: var(--green-deep); color: var(--gold); font-family: var(--font-display), serif; font-size: 1.2rem; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 2; box-shadow: 0 4px 10px rgba(13, 59, 46, 0.15); }
+
+/* Sharhlar qismi */
+.review-item { padding: 1.5rem 0; border-bottom: 1px solid rgba(13, 59, 46, 0.08); }
+.review-item:last-child { border: none; }
+.stars { color: var(--gold); letter-spacing: 2px; font-size: 0.95rem; }
+.rating-bar { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+.rating-bar-fill { height: 6px; background: var(--gold); border-radius: 3px; transition: width 1s ease-in-out; }
+.rating-bar-bg { flex: 1; height: 6px; background: rgba(201, 168, 76, 0.15); border-radius: 3px; overflow: hidden; }
+
+/* Dinamik qiyinchilik darajasi badorlari */
+.badge-difficulty { padding: 0.3rem 0.75rem; border-radius: 4px; font-size: 0.85rem; font-weight: 500; text-transform: capitalize; }
+.badge-easy { background: #e8f5e9; color: #2e7d32; }
+.badge-medium { background: #fffde7; color: #f57f17; }
+.badge-hard { background: #ffebee; color: #c62828; }
+
+/* Maxfiy Lightbox (Galereya oynasi) */
+.soluna-lightbox { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(13, 59, 46, 0.95); align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
+.soluna-lightbox.active { display: flex; opacity: 1; }
+.soluna-lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+.soluna-lightbox-close { position: absolute; top: 20px; right: 30px; color: var(--cream); font-size: 40px; font-weight: 300; cursor: pointer; transition: color 0.2s; }
+.soluna-lightbox-close:hover { color: var(--gold); }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Banner Qismi -->
+<div style="min-height:70vh; padding: 6rem 0 4rem 0; position:relative; background:var(--green-deep); overflow:hidden; display:flex; align-items:flex-end; box-sizing:border-box;">
+  {% if tour.cover_image %}
+    <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}"
+      style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.35; transform:scale(1); transition:transform 6s cubic-bezier(0.16, 1, 0.3, 1);">
+  {% endif %}
+  <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(13,59,46,1) 0%, rgba(13,59,46,0.4) 70%, transparent 100%);"></div>
+  
+  <div class="container" style="position:relative; z-index:5; width:100%;">
+    <div style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
+      
+      <!-- TUZATISH: Ustma-ust tushishning oldini olish uchun position va margin boshqarildi -->
+      {% if tour.category %}
+          <span class="tour-badge" style="display:inline-block !important; position:relative !important; top:0 !important; left:0 !important; background:var(--gold); color:var(--green-deep); padding:0.4rem 1rem; border-radius:4px; font-size:0.8rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin:0 0 0.5rem 0 !important;">
+              {{ tour.category.name }}
+          </span>
+      {% endif %}
+      
+      <h1 style="color:#FAF7F0; font-weight:300; max-width:850px; font-size:calc(2rem + 1.8vw); line-height:1.2; margin:0 !important; font-family:var(--font-display), serif; position:relative !important;">
+          {{ tour.title }}
+      </h1>
+      
+      <div style="display:flex; gap:1.5rem; margin-top:0.5rem; flex-wrap:wrap; align-items:center;">
+        <span style="color:rgba(255,255,255,0.85); font-size:0.95rem; display:flex; align-items:center; gap:6px;">📅 {{ tour.duration_days }} {% translate "days" %}</span>
+        <span style="color:rgba(255,255,255,0.85); font-size:0.95rem; display:flex; align-items:center; gap:6px;">👥 {% translate "Max" %} {{ tour.max_group_size }} {% translate "people" %}</span>
+        <span class="badge-difficulty badge-{{ tour.difficulty|default:'easy' }}">{{ tour.get_difficulty_display }}</span>
+        {% if avg_rating %}
+          <span style="color:var(--gold); font-size:0.95rem; font-weight:500; display:flex; align-items:center; gap:4px;">⭐ {{ avg_rating|floatformat:1 }} ({{ review_count }} {% translate "reviews" %})</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--cream); padding: 4rem 0;">
+  <div class="container">
+    <div class="detail-grid">
+
+      <!-- Chap ustun (Asosiy kontent) -->
+      <div>
+        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; margin-bottom:2rem; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
+          <h2 style="font-size:1.6rem; color:var(--green-deep); margin-top:0; margin-bottom:1.2rem; font-family:var(--font-display), serif;">{% translate "About This Tour" %}</h2>
+          <div style="color:var(--text-mid); line-height:1.8; font-size:0.98rem;">{{ tour.description|linebreaks }}</div>
+        </div>
+
+        {% if tour.images.all %}
+        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; margin-bottom:2rem; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
+          <h2 style="font-size:1.6rem; color:var(--green-deep); margin-top:0; margin-bottom:0.5rem; font-family:var(--font-display), serif;">{% translate "Gallery" %}</h2>
+          <p style="color:var(--text-light); font-size:0.88rem; margin-bottom:1.5rem;">{% translate "Click on any image to view it in full size." %}</p>
+          <div class="gallery-grid">
+            {% for img in tour.images.all %}
+            <div class="gallery-item" onclick="openLightbox('{{ img.image.url }}')">
+              <img src="{{ img.image.url }}" alt="{{ img.caption|default:tour.title }}" loading="lazy">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if tour.itinerary %}
+        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; margin-bottom:2rem; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
+          <h2 style="font-size:1.6rem; color:var(--green-deep); margin-top:0; margin-bottom:2rem; font-family:var(--font-display), serif;">{% translate "Day by Day Itinerary" %}</h2>
+          <div class="itinerary-timeline">
+            {% for day in tour.itinerary %}
+            <div class="day-item">
+              <div class="day-number">{{ forloop.counter }}</div>
+              <div style="padding-top: 0.4rem;">
+                <h3 style="margin:0 0 0.6rem 0; font-size:1.2rem; color:var(--green-deep);">{{ day.title }}</h3>
+                <p style="color:var(--text-mid); font-size:0.94rem; line-height:1.7; margin:0;">{{ day.content }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if tour.includes or tour.excludes %}
+        <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2rem;">
+          {% if tour.includes %}
+          <div style="background:var(--white); padding:2rem; border-radius:8px; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
+            <h3 style="margin-top:0; margin-bottom:1.2rem; color:var(--green-mid); font-size:1.25rem;">{% translate "Included" %}</h3>
+            <ul class="include-list" style="list-style:none; padding:0; margin:0;">
+              {% for item in tour.includes.splitlines %}{% if item %}<li>{{ item }}</li>{% endif %}{% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          
+          {% if tour.excludes %}
+          <div style="background:var(--white); padding:2rem; border-radius:8px; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
+            <h3 style="margin-top:0; margin-bottom:1.2rem; color:#e74c3c; font-size:1.25rem;">{% translate "Not Included" %}</h3>
+            <ul class="include-list exclude-list" style="list-style:none; padding:0; margin:0;">
+              {% for item in tour.excludes.splitlines %}{% if item %}<li>{{ item }}</li>{% endif %}{% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+            <h2 style="font-size:1.6rem; color:var(--green-deep); margin:0; font-family:var(--font-display), serif;">{% translate "Customer Reviews" %} {% if review_count %}({{ review_count }}){% endif %}</h2>
+            {% if user.is_authenticated %}
+              <a href="{% url 'reviews:create' tour.slug %}" class="btn" style="background:var(--gold); color:var(--white); padding:0.6rem 1.2rem; border-radius:4px; text-decoration:none; font-size:0.88rem; font-weight:500; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">{% translate "Write a Review" %}</a>
+            {% endif %}
+          </div>
+
+          {% if avg_rating %}
+          <div style="display:flex; align-items:center; gap:2rem; margin-bottom:2.5rem; padding:1.5rem; background:var(--cream); border-radius:6px;">
+            <div style="text-align:center; min-width:110px;">
+              <div style="font-family:var(--font-display), serif; font-size:3.5rem; font-weight:600; color:var(--green-deep); line-height:1;">{{ avg_rating|floatformat:1 }}</div>
+              <div class="stars" style="margin: 0.4rem 0;">{% for i in "12345" %}{% if forloop.counter <= avg_rating %}★{% else %}☆{% endif %}{% endfor %}</div>
+              <div style="font-size:0.78rem; color:var(--text-light);">{{ review_count }} {% translate "reviews" %}</div>
+            </div>
+            <div style="flex:1;">
+              {% for star, data in rating_dist.items %}
+              <div class="rating-bar">
+                <span style="font-size:0.82rem; color:var(--text-mid); width:15px; font-weight:500;">{{ star }}</span>
+                <div class="rating-bar-bg"><div class="rating-bar-fill" style="width:{{ data.percent }}%;"></div></div>
+                <span style="font-size:0.82rem; color:var(--text-light); width:30px; text-align:right;">{{ data.count }}</span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          {% for review in reviews %}
+          <div class="review-item">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
+              <div>
+                <strong style="font-size:0.95rem; color:var(--text-dark);">{{ review.user.get_full_name|default:review.user.username }}</strong>
+                {% if review.title %}<p style="font-style:italic; font-family:var(--font-display), serif; font-size:1.05rem; margin:2px 0 0 0; color:var(--green-mid);">"{{ review.title }}"</p>{% endif %}
+              </div>
+              <div style="text-align:right;">
+                <div class="stars" style="font-size:0.85rem;">{% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</div>
+                <div style="font-size:0.78rem; color:var(--text-light); margin-top:4px;">{{ review.created_at|date:"d M Y" }}</div>
+              </div>
+            </div>
+            <p style="color:var(--text-mid); font-size:0.92rem; line-height:1.7; margin:0; white-space:pre-line;">{{ review.body }}</p>
+          </div>
+          {% empty %}
+          <p style="text-align:center; padding:2rem 0; color:var(--text-light); margin:0;">{% translate "No reviews yet. Be the first to share your feedback!" %}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- O'ng ustun (Sidebar) -->
+      <div class="detail-sidebar reveal">
+        <div class="booking-card">
+          
+          <!-- Narx bloki -->
+          <div style="margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid rgba(201,168,76,0.15); width:100% !important; display:block !important;">
+            <div style="font-family:var(--font-display), serif; font-size:2.6rem; font-weight:600; color:var(--green-deep); line-height:1;">${{ tour.price|floatformat:0 }}</div>
+            {% if tour.price_uzs %}
+                <div style="font-size:1.1rem; color:var(--gold-dark); font-weight:600; margin-top:6px;">{{ tour.price_uzs|floatformat:0 }} {% translate "UZS" %}</div>
+            {% endif %}
+            <div style="font-size:0.75rem; color:var(--text-light); margin-top:6px; text-transform:uppercase; letter-spacing:0.05em;">{% translate "per person" %}</div>
+          </div>
+
+          <!-- Kichik info qutichalar -->
+          <div style="display:grid !important; grid-template-columns: repeat(2, 1fr) !important; gap:0.6rem !important; margin-bottom:1.5rem; font-size:0.85rem; width:100% !important; box-sizing:border-box;">
+            
+            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
+              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Duration" %}</div>
+              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">{{ tour.duration_days }} {% translate "Days" %}</strong>
+            </div>
+            
+            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
+              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Group Size" %}</div>
+              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">{% translate "Max" %} {{ tour.max_group_size }}</strong>
+            </div>
+            
+            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
+              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Difficulty" %}</div>
+              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">{{ tour.get_difficulty_display }}</strong>
+            </div>
+            
+            {% if avg_rating %}
+            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
+              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Rating" %}</div>
+              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">⭐ {{ avg_rating|floatformat:1 }}</strong>
+            </div>
+            {% endif %}
+            
+          </div>
+
+          <!-- Tugmalar -->
+          <div style="display:flex !important; flex-direction:column !important; gap:0.75rem !important; width:100% !important; box-sizing:border-box;">
+            {% if user.is_authenticated %}
+              <a href="{% url 'bookings:booking-create' tour.slug %}" style="display:flex !important; width:100% !important; justify-content:center; align-items:center; background:var(--gold); color:var(--white); padding:1rem; border-radius:4px; text-decoration:none; font-weight:500; box-sizing:border-box; box-shadow:0 4px 12px rgba(201,168,76,0.2); text-align:center; white-space:nowrap;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">{% translate "Book This Tour" %}</a>
+            {% else %}
+              <a href="{% url 'account_login' %}?next={% url 'bookings:booking-create' tour.slug %}" style="display:flex !important; width:100% !important; justify-content:center; align-items:center; background:var(--green-deep); color:var(--white); padding:1rem; border-radius:4px; text-decoration:none; font-weight:500; box-sizing:border-box; text-align:center; white-space:nowrap;" onmouseover="this.style.background='var(--green-mid)'" onmouseout="this.style.background='var(--green-deep)'">{% translate "Login to Book" %}</a>
+            {% endif %}
+
+            <a href="{% url 'messages_app:contact' %}" style="display:flex !important; width:100% !important; justify-content:center; align-items:center; border:1px solid var(--green-deep); color:var(--green-deep); padding:0.8rem; border-radius:4px; text-decoration:none; font-weight:500; font-size:0.9rem; background:#fff; box-sizing:border-box; text-align:center; white-space:nowrap;" onmouseover="this.style.background='rgba(13,59,46,0.03)'" onmouseout="this.style.background='#fff'">{% translate "Ask a Question" %}</a>
+          </div>
+
+          <!-- Hududlar bloki -->
+          {% if tour.regions.all %}
+          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(201,168,76,0.15); width:100% !important; display:block !important;">
+            <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-light); margin-bottom:0.75rem; font-weight:600;">{% translate "Covered Regions" %}</p>
+            <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+              {% for region in tour.regions.all %}
+              <a href="{% url 'regions:region-detail' region.slug %}" style="background:var(--cream); border:1px solid rgba(201,168,76,0.2); padding:0.35rem 0.8rem; border-radius:100px; font-size:0.8rem; color:var(--green-deep); text-decoration:none; font-weight:500; transition:all 0.25s;" onmouseover="this.style.background='var(--gold)'; this.style.color='var(--white)'; this.style.borderColor='var(--gold)';" onmouseout="this.style.background='var(--cream)'; this.style.color='var(--green-deep)'; this.style.borderColor='rgba(201,168,76,0.2)';">{{ region.name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- Yordam / Telefon bloki -->
+          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(201,168,76,0.15); text-align:center; width:100% !important; display:block !important;">
+            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.4rem 0;">{% translate "Need personal assistance?" %}</p>
+            <a href="tel:+998950666233" style="font-family:var(--font-display), serif; font-size:1.2rem; color:var(--green-deep); font-weight:600; text-decoration:none; transition:color 0.2s; white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--green-deep)'">+998 95 066 62 33</a>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="solunaLightbox" class="soluna-lightbox" onclick="closeLightbox()">
+    <span class="soluna-lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img class="soluna-lightbox-content" id="lightboxImage" src="" alt="SoLuna High Resolution Tour Image">
+</div>
+
+<script type="text/javascript">
+function openLightbox(imageUrl) {
+    const lightbox = document.getElementById('solunaLightbox');
+    const lightboxImg = document.getElementById('lightboxImage');
+    if(lightbox && lightboxImg) {
+        lightboxImg.src = imageUrl;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+function closeLightbox() {
+    const lightbox = document.getElementById('solunaLightbox');
+    if(lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") { closeLightbox(); }
+});
+</script>
+
+{% endblock %}

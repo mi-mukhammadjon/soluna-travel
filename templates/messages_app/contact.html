@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Contact" %} — SoLuna{% endblock %}
+
+{% block content %}
+
+<!-- Header -->
+<div style="background:var(--green-deep);padding:130px 0 60px;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);background-size:22px 22px;"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <p class="eyebrow" style="color:var(--gold);margin-bottom:1rem;">SoLuna</p>
+    <h1 style="color:#FAF7F0;font-weight:300;">{% trans "Get in Touch" %}</h1>
+    <p style="color:rgba(255,255,255,0.6);margin-top:0.75rem;max-width:480px;">
+      {% trans "Ready to plan your dream journey? We'd love to hear from you." %}
+    </p>
+  </div>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:start;">
+
+      <!-- Contact Form -->
+      <div class="reveal">
+        <div style="background:var(--white);padding:2.5rem;border-radius:4px;box-shadow:0 4px 24px rgba(13,59,46,0.08);">
+          <h2 style="font-size:1.7rem;margin-bottom:0.5rem;">{% trans "Send a Message" %}</h2>
+          <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:2rem;">{% trans "We'll reply within 24 hours." %}</p>
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">{% trans "Your Name" %} *</label>
+                <input type="text" name="name" value="{{ form.name.value|default:'' }}" class="form-control" required placeholder="Oygul Axatova">
+                {% if form.name.errors %}<p style="color:#e74c3c;font-size:0.8rem;margin-top:4px;">{{ form.name.errors.0 }}</p>{% endif %}
+              </div>
+              <div class="form-group">
+                <label class="form-label">{% trans "Phone" %}</label>
+                <input type="tel" name="phone" value="{{ form.phone.value|default:'' }}" class="form-control" placeholder="+998 90 123 45 67">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">{% trans "Email" %} *</label>
+              <input type="email" name="email" value="{{ form.email.value|default:'' }}" class="form-control" required placeholder="email@example.com">
+              {% if form.email.errors %}<p style="color:#e74c3c;font-size:0.8rem;margin-top:4px;">{{ form.email.errors.0 }}</p>{% endif %}
+            </div>
+            <div class="form-group">
+              <label class="form-label">{% trans "Subject" %} *</label>
+              <input type="text" name="subject" value="{{ form.subject.value|default:'' }}" class="form-control" required placeholder="{% trans 'I want to book a tour...' %}">
+            </div>
+            <div class="form-group">
+              <label class="form-label">{% trans "Message" %} *</label>
+              <textarea name="body" class="form-control" required placeholder="{% trans 'Tell us about your travel plans, dates, group size...' %}">{{ form.body.value|default:'' }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-gold btn-lg" style="width:100%;justify-content:center;">
+              {% trans "Send Message" %} →
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="reveal delay-2">
+        <!-- Oygul card -->
+        <div style="background:var(--green-deep);padding:2rem;border-radius:4px;margin-bottom:1.5rem;color:var(--white);">
+          <p style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:0.75rem;">{% trans "Your Guide" %}</p>
+          <h3 style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold-light);margin-bottom:0.25rem;">Oygul Axatova</h3>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;">{% trans "Touroperator · SoLuna" %}</p>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <a href="tel:+998950666233" style="display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.8);font-size:0.9rem;transition:color 0.25s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">
+              <span style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-size:0.85rem;">📞</span>
+              +998 95 066 62 33
+            </a>
+            <a href="mailto:oygulakhatovas@gmail.com" style="display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.8);font-size:0.9rem;transition:color 0.25s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">
+              <span style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-size:0.85rem;">✉️</span>
+              oygulakhatovas@gmail.com
+            </a>
+            <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.8);font-size:0.9rem;transition:color 0.25s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">
+              <span style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-size:0.85rem;">📸</span>
+              @Oygul.axatova
+            </a>
+            <a href="https://wa.me/998950666233" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.8);font-size:0.9rem;transition:color 0.25s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">
+              <span style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-size:0.85rem;">💬</span>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div style="background:var(--gold-pale);padding:1.75rem;border-radius:4px;border-left:3px solid var(--gold);">
+          <p style="font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-deep);margin-bottom:1rem;font-weight:500;">{% trans "Quick Actions" %}</p>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <a href="{% url 'tours:tour-list' %}" class="btn btn-green-dark btn-sm" style="justify-content:center;">{% trans "Browse All Tours" %}</a>
+            <a href="https://wa.me/998950666233?text=Hello%20SoLuna!" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" style="justify-content:center;">{% trans "Chat on WhatsApp" %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

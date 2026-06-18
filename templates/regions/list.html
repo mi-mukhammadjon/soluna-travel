@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Regions" %} — SoLuna{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div style="background:var(--green-deep);padding:130px 0 60px;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);background-size:22px 22px;"></div>
+  <div style="position:absolute;right:-80px;top:-40px;font-family:'Cormorant Garamond',serif;font-size:320px;color:rgba(201,168,76,0.04);line-height:1;pointer-events:none;">☽</div>
+  <div class="container" style="position:relative;z-index:2;">
+    <p class="eyebrow" style="color:var(--gold);margin-bottom:1rem;">SoLuna</p>
+    <h1 style="color:#FAF7F0;font-weight:300;">{% trans "Regions of Uzbekistan" %}</h1>
+    <p style="color:rgba(255,255,255,0.6);margin-top:0.75rem;max-width:520px;">
+      {% trans "From ancient Silk Road cities to breathtaking mountain landscapes — explore Uzbekistan's diverse regions." %}
+    </p>
+  </div>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    {% if regions %}
+    <div class="regions-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));">
+      {% for region in regions %}
+      <a href="{% url 'regions:region-detail' region.slug %}">
+        <div class="region-card reveal delay-{{ forloop.counter0|add:1 }}" style="aspect-ratio:3/4;">
+          {% if region.image %}
+            <img src="{{ region.image.url }}" alt="{{ region.name }}" loading="lazy">
+          {% else %}
+            <div class="region-card-placeholder"></div>
+          {% endif %}
+          <div class="region-overlay">
+            <h3>{{ region.name }}</h3>
+            <p>{{ region.attractions.count }} {% trans "attractions" %} · {{ region.tours.count }} {% trans "tours" %}</p>
+            {% if region.description %}
+              <p style="margin-top:4px;font-size:0.78rem;color:rgba(255,255,255,0.5);">{{ region.description|truncatewords:10 }}</p>
+            {% endif %}
+            <div class="region-explore">{% trans "Explore" %}</div>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align:center;padding:5rem;">
+      <p style="font-size:3rem;">🗺️</p>
+      <h3 style="margin-top:1rem;">{% trans "No regions yet" %}</h3>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

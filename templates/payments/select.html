@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Payment" %} — SoLuna{% endblock %}
+
+{% block content %}
+<div class="page-head">
+  <div class="container">
+    <p class="eyebrow">{% trans "Secure Payment" %}</p>
+    <h1>{% trans "Choose Payment Method" %}</h1>
+  </div>
+</div>
+
+<section class="section section-cream">
+  <div class="container" style="max-width:680px;">
+
+    <!-- Bron xulosasi -->
+    <div class="panel payment-summary reveal" style="margin-bottom:2rem;">
+      {% if booking.tour.cover_image %}
+        <img src="{{ booking.tour.cover_image.url }}" alt="{{ booking.tour.title }}">
+      {% endif %}
+      <div style="flex:1;min-width:0;">
+        <p class="booking-card-num">{{ booking.booking_number }}</p>
+        <h3 style="font-size:1.1rem;margin-bottom:0.4rem;">{{ booking.tour.title }}</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);margin:0;">📅 {{ booking.travel_date }} · 👥 {{ booking.num_adults }} {% trans "adults" %}</p>
+      </div>
+      <div style="text-align:right;">
+        <div class="price-note-num">${{ booking.total_price }}</div>
+        <div style="font-size:0.75rem;color:var(--text-light);">{% trans "Total" %}</div>
+      </div>
+    </div>
+
+    <!-- To'lov usullari -->
+    {% comment %}data-loading: yuborilganda tugma is-loading + oltin
+    loader-line (main.js dagi forma handleri orqali){% endcomment %}
+    <form method="post" class="reveal delay-1" data-loading>
+      {% csrf_token %}
+
+      {% comment %}FIX: tanlangan holat endi sof CSS — input:checked +
+      .payment-card. Eski JS inline style'larni qo'lda o'zgartirardi.{% endcomment %}
+      <div class="payment-grid">
+
+        <label class="payment-option">
+          <input type="radio" name="provider" value="click" required>
+          <div class="payment-card">
+            <div class="payment-card-icon" aria-hidden="true">💳</div>
+            <h4>Click</h4>
+            <p>{% trans "Pay via Click" %}</p>
+            <div class="check-mark" aria-hidden="true">✓</div>
+          </div>
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="provider" value="payme" required>
+          <div class="payment-card">
+            <div class="payment-card-icon" aria-hidden="true">📱</div>
+            <h4>Payme</h4>
+            <p>{% trans "Pay via Payme" %}</p>
+            <div class="check-mark" aria-hidden="true">✓</div>
+          </div>
+        </label>
+
+      </div>
+
+      <button type="submit" class="btn btn-gold btn-lg btn-block" id="payBtn" disabled>
+        {% trans "Proceed to Payment" %} →
+      </button>
+      <p class="secure-note">🔒 {% trans "Secure 256-bit SSL encryption" %}</p>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  'use strict';
+  // JS faqat tugmani yoqadi — vizual holat CSS :checked da
+  const payBtn = document.getElementById('payBtn');
+  document.querySelectorAll('input[name="provider"]').forEach((radio) => {
+    radio.addEventListener('change', () => { payBtn.disabled = false; });
+  });
+})();
+</script>
+{% endblock %}

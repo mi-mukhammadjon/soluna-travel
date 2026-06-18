@@ -1,0 +1,35 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}
+    {% blocktrans with provider.name as provider_name %}Sign In Via {{ provider_name }}{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<div class="auth-container" style="background: var(--cream); padding: 5rem 0; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+    <div class="auth-card" style="background: var(--white); border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 8px; max-width: 450px; width: 100%; padding: 2.5rem; box-shadow: 0 10px 40px rgba(13, 59, 46, 0.06); text-align: center; box-sizing: border-box;">
+        
+        <div style="background: var(--green-deep); color: var(--gold); padding: 1.5rem; border-radius: 6px 6px 0 0; margin: -2.5rem -2.5rem 2rem -2.5rem;">
+            <h2 style="margin: 0; font-family: var(--font-display), serif; font-size: 1.5rem; font-weight: 400;">
+                {% blocktrans with provider.name as provider_name %}{{ provider_name }} orqali kirish{% endblocktrans %}
+            </h2>
+        </div>
+
+        <p style="color: var(--text-mid); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
+            {% blocktrans with provider.name as provider_name %}Siz SoLuna tizimiga uchinchi tomon ({{ provider_name }}) akkauntingiz orqali kirmoqchisiz. Davom etish tugmasini bosing.{% endblocktrans %}
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn" style="width: 100%; background: var(--gold); color: var(--white); padding: 0.9rem; border: none; border-radius: 4px; font-weight: 500; font-size: 1rem; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">
+                {% trans "Davom etish" %}
+            </button>
+        </form>
+
+        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(13, 59, 46, 0.08);">
+            <a href="{% url 'account_login' %}" style="color: var(--green-deep); text-decoration: none; font-size: 0.9rem; font-weight: 500;">← {% trans "Orqaga qaytish" %}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
