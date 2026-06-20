@@ -233,28 +233,32 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '{levelname} {asctime} {module}: {message}',
+            'format': '{levelname} {asctime} {module} {message}',
             'style': '{',
         },
     },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
         },
+        # DIQQAT: Mana shu pastdagi 'payments_file' qismini butunlay O'CHIRIB tashlang:
         # 'payments_file': {
-        #     'level': 'INFO',
-        #     'class': 'logging.handlers.RotatingFileHandler',
+        #     'class': 'logging.FileHandler',
         #     'filename': 'logs/payments.log',
-        #     'maxBytes': 1024*1024*5,  # 5 MB
-        #     'backupCount': 5,
         #     'formatter': 'verbose',
         # },
     },
     'loggers': {
         'payments': {
-            'handlers': ['console'],
+            'handlers': ['console'], # BU YERDA FAQAT 'console' QOLSIN!
             'level': 'INFO',
             'propagate': True,
+        },
+        # Boshqa ilovalar bo'lsa, ularda ham faqat 'console' qolsin
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
         },
     },
 }
