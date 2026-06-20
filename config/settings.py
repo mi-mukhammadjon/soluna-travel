@@ -242,12 +242,7 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        # DIQQAT: Mana shu pastdagi 'payments_file' qismini butunlay O'CHIRIB tashlang:
-        # 'payments_file': {
-        #     'class': 'logging.FileHandler',
-        #     'filename': 'logs/payments.log',
-        #     'formatter': 'verbose',
-        # },
+
     },
     'loggers': {
         'payments': {
