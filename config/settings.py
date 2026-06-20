@@ -252,7 +252,7 @@ LOGGING = {
     },
     'loggers': {
         'payments': {
-            'handlers': ['payments_file'],
+            'handlers': ['console'],
             'level': 'INFO',
             'propagate': True,
         },
