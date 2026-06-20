@@ -238,14 +238,17 @@ LOGGING = {
         },
     },
     'handlers': {
-        'payments_file': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'logs/payments.log',
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'verbose',
+        'console': {
+            'class': 'logging.StreamHandler',
         },
+        # 'payments_file': {
+        #     'level': 'INFO',
+        #     'class': 'logging.handlers.RotatingFileHandler',
+        #     'filename': 'logs/payments.log',
+        #     'maxBytes': 1024*1024*5,  # 5 MB
+        #     'backupCount': 5,
+        #     'formatter': 'verbose',
+        # },
     },
     'loggers': {
         'payments': {
@@ -256,5 +259,5 @@ LOGGING = {
     },
 }
  
- 
+
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
