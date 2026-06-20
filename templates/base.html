@@ -3,107 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}SoLuna — {% trans "Journeys filled with inspiration" %}{% endblock %}</title>
-  <meta name="description" content="{% block meta_desc %}SoLuna — premium touroperator. {% trans 'Discover the Silk Road with us.' %}{% endblock %}">
+  <title>{% block title %}SoLuna — {% trans "Your Gateway to Extraordinary Adventures" %}{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}SoLuna — premium tours across Uzbekistan and the Silk Road.{% endblock %}">
 
-  {# Shriftlar FAQAT shu yerda yuklanadi — main.css dagi @import olib tashlandi #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  {# YAGONA stylesheet — soluna-premium.css main.css ga birlashtirildi #}
+  {# Tabler icons — yengil iconlar #}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
   {% block extra_css %}{% endblock %}
 </head>
 <body>
 
 <a href="#main-content" class="skip-link">{% trans "Skip to content" %}</a>
-
-{# YAGONA page-transition overlay — JS .exiting/.entering klasslar bilan boshqaradi #}
 <div class="page-transition" id="pageTransition" aria-hidden="true"></div>
 
-<!-- ══════════════════ NAVBAR ══════════════════ -->
-{% load i18n %}
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header class="header" id="header">
 
-<nav class="navbar" id="navbar" aria-label="{% trans 'Main navigation' %}">
-  <div class="navbar-inner">
-    <a href="{% url 'home' %}" class="navbar-logo">
-      <span class="logo-text">SoLuna</span>
-      <span class="logo-sub">Touroperator</span>
+  {# ── Top bar ── #}
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <a href="tel:+998950666233"><i class="ti ti-phone"></i> +998 95 066 62 33</a>
+        <a href="mailto:oygulakhatovas@gmail.com"><i class="ti ti-mail"></i> oygulakhatovas@gmail.com</a>
+      </div>
+
+      <div class="topbar-promo">
+        <i class="ti ti-bolt" style="color:#000;"></i>
+        <span>{% trans "Unlock the Magic of Travel with SoLuna — Your Gateway to Extraordinary Experiences" %}</span>
+        <a href="{% url 'tours:tour-list' %}" style="color:var(--c-orange);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+          {% trans "Get This Now" %} <i class="ti ti-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="topbar-right">
+        <div class="topbar-right-item">
+          <i class="ti ti-world"></i>
+          <form action="{% url 'set_language' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            {% get_available_languages as LANGUAGES %}
+            <select name="language" class="topbar-select" onchange="this.form.submit()">
+              {% for code, name in LANGUAGES %}
+                <option value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>{{ code|upper }}</option>
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+        <div class="topbar-right-item">
+          <select class="topbar-select" aria-label="{% trans 'Currency' %}">
+            <option>USD</option><option>UZS</option><option>EUR</option>
+          </select>
+        </div>
+        <button type="button" class="topbar-select" aria-label="{% trans 'Theme' %}" style="padding:0;">
+          <i class="ti ti-sun"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {# ── Navbar ── #}
+  <nav class="navbar" aria-label="{% trans 'Main' %}">
+    <a href="{% url 'home' %}" class="logo">
+      <span class="logo-mark">☾</span>
+      <span>SoLuna</span>
     </a>
 
-    <ul class="nav-links">
-      <li><a href="{% url 'tours:tour-list' %}">{% trans "Tours" %}</a></li>
-      <li><a href="{% url 'regions:region-list' %}">{% trans "Regions" %}</a></li>
-      <li><a href="{% url 'messages_app:contact' %}">{% trans "Contact" %}</a></li>
-      {% if user.is_authenticated %}
-        <li><a href="{% url 'bookings:booking-list' %}">{% trans "My Bookings" %}</a></li>
-      {% endif %}
-    </ul>
-
-    <div class="navbar-actions">
-      
-      <form action="{% url 'set_language' %}" method="post" class="lang-form">
-        {% csrf_token %}
-        <input name="next" type="hidden" value="{{ request.get_full_path }}">
-        {% get_available_languages as LANGUAGES %}
-        <select name="language" class="lang-select" aria-label="{% trans 'Language' %}" onchange="this.form.submit()">
-          {% for lang_code, lang_name in LANGUAGES %}
-            <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
-              {% if lang_code == 'uz' %}
-                UZ
-              {% elif lang_code == 'en' %}
-                EN
-              {% elif lang_code == 'zh-hans' %}
-                ZH
-              {% else %}
-                {{ lang_code|upper }}
-              {% endif %}
-            </option>
-          {% endfor %}
-        </select>
-      </form>
-
-      {% if user.is_authenticated %}
-        <a href="{% url 'accounts:profile' %}" class="btn btn-outline-gold btn-sm">
-          {{ user.get_full_name|default:user.username }}
-        </a>
-        
-        <form action="{% url 'account_logout' %}" method="post" style="display: inline; margin: 0; padding: 0;">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-gold btn-sm" style="cursor: pointer;">
-            {% trans "Logout" %}
-          </button>
-        </form>
-      {% else %}
-        <a href="{% url 'account_login' %}" class="btn btn-gold btn-sm">
-          {% trans "Book Now" %}
-        </a>
-      {% endif %}
+    <div class="nav">
+      <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      <a href="{% url 'tours:tour-list' %}">{% trans "Tours" %} <span class="chev">▾</span></a>
+      <a href="{% url 'regions:region-list' %}">{% trans "Destinations" %} <span class="chev">▾</span></a>
+      <a href="#activities">{% trans "Activities" %} <span class="chev">▾</span></a>
+      <a href="#hotel">{% trans "Hotel" %} <span class="chev">▾</span></a>
+      <a href="#blog">{% trans "Blog" %} <span class="chev">▾</span></a>
+      <a href="{% url 'messages_app:contact' %}">{% trans "Contact" %}</a>
     </div>
 
-    <button class="nav-toggle" id="navToggle" aria-label="{% trans 'Menu' %}" aria-expanded="false" aria-controls="navDrawer">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</nav>
+    <div class="nav-actions">
+      {% if user.is_authenticated %}
+        <a href="{% url 'accounts:profile' %}" class="nav-cta">{{ user.get_full_name|default:user.username|truncatechars:14 }}</a>
+        <form action="{% url 'account_logout' %}" method="post" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn-icon-circle" aria-label="{% trans 'Logout' %}"><i class="ti ti-logout"></i></button>
+        </form>
+      {% else %}
+        <a href="{% url 'account_login' %}" class="nav-cta">{% trans "Sign In" %}</a>
+      {% endif %}
 
-<!-- Mobil drawer -->
-<div class="nav-drawer" id="navDrawer">
-  <a href="{% url 'tours:tour-list' %}">{% trans "Tours" %}</a>
-  <a href="{% url 'regions:region-list' %}">{% trans "Regions" %}</a>
-  <a href="{% url 'messages_app:contact' %}">{% trans "Contact" %}</a>
-  {% if user.is_authenticated %}
-    <a href="{% url 'bookings:booking-list' %}">{% trans "My Bookings" %}</a>
-    <a href="{% url 'accounts:profile' %}">{% trans "My Profile" %}</a>
-  {% else %}
-    <a href="{% url 'account_signup' %}" style="color:var(--gold)">{% trans "Book Now" %}</a>
-  {% endif %}
-</div>
+      <button class="nav-menu-btn" id="navToggle" aria-label="{% trans 'Menu' %}">
+        <i class="ti ti-grid-dots"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 
-<!-- Django flash messages -->
+{# Flash messages #}
 {% if messages %}
 <div class="messages-container" role="status">
   {% for message in messages %}
@@ -120,64 +118,67 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
+
       <div class="footer-brand reveal">
-        <span class="footer-logo">SoLuna</span>
-        <p>{% trans "Journeys filled with the sun and inspiration. Discover Uzbekistan's timeless Silk Road heritage with your personal guide." %}</p>
-        <p class="footer-tagline">Путешествия, наполненные солнцем и вдохновением</p>
-        <div class="social-row">
-          <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" class="social-btn" title="Instagram" data-no-transition>
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-          <a href="https://t.me/soluna_uz" target="_blank" rel="noopener" class="social-btn" title="Telegram" data-no-transition>
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-          <a href="https://wa.me/998950666233" target="_blank" rel="noopener" class="social-btn" title="WhatsApp" data-no-transition>
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="reveal delay-1">
-        <span class="footer-title">{% trans "Explore" %}</span>
-        <ul class="footer-links">
-          <li><a href="{% url 'tours:tour-list' %}">{% trans "All Tours" %}</a></li>
-          <li><a href="{% url 'regions:region-list' %}">{% trans "Regions" %}</a></li>
+        <a href="{% url 'home' %}" class="logo">
+          <span class="logo-mark">☾</span>
+          <span class="logo-text">SoLuna</span>
+        </a>
+        <p>{% trans "Dive into local recommendations for a truly authentic Silk Road experience across Uzbekistan." %}</p>
+        <ul class="footer-contact">
+          <li><i class="ti ti-map-pin"></i> Tashkent, Uzbekistan</li>
+          <li><i class="ti ti-clock"></i> {% trans "Hours" %}: 8:00 – 18:00, Mon – Sat</li>
+          <li><i class="ti ti-mail"></i> oygulakhatovas@gmail.com</li>
         </ul>
       </div>
 
-      <div class="reveal delay-2">
-        <span class="footer-title">{% trans "Company" %}</span>
-        <ul class="footer-links">
-          <li><a href="{% url 'messages_app:contact' %}">{% trans "Contact Us" %}</a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'bookings:booking-list' %}">{% trans "My Bookings" %}</a></li>
-          <li><a href="{% url 'accounts:profile' %}">{% trans "My Profile" %}</a></li>
-          {% else %}
-          <li><a href="{% url 'account_signup' %}">{% trans "Register" %}</a></li>
-          <li><a href="{% url 'account_login' %}">{% trans "Login" %}</a></li>
-          {% endif %}
+      <div class="footer-col reveal delay-1">
+        <h4>{% trans "Company" %}</h4>
+        <ul>
+          <li><a href="#about">{% trans "About Us" %}</a></li>
+          <li><a href="{% url 'tours:tour-list' %}">{% trans "Our Tours" %}</a></li>
+          <li><a href="{% url 'regions:region-list' %}">{% trans "Destinations" %}</a></li>
+          <li><a href="#blog">{% trans "Blog" %}</a></li>
+          <li><a href="{% url 'messages_app:contact' %}">{% trans "Contact" %}</a></li>
         </ul>
       </div>
 
-      <div class="reveal delay-3">
-        <span class="footer-title">{% trans "Get in Touch" %}</span>
-        <ul class="footer-links">
-          <li><a href="tel:+998950666233">+998 95 066 62 33</a></li>
-          <li><a href="mailto:oygulakhatovas@gmail.com">oygulakhatovas@gmail.com</a></li>
-          <li><a href="https://instagram.com/Oygul.axatova" data-no-transition>@Oygul.axatova</a></li>
-          <li class="footer-domain">soluna.uz</li>
+      <div class="footer-col reveal delay-2">
+        <h4>{% trans "Services" %}</h4>
+        <ul>
+          <li><a href="{% url 'tours:tour-list' %}">{% trans "Tour Booking" %}</a></li>
+          <li><a href="#hotel">{% trans "Hotel Booking" %}</a></li>
+          <li><a href="#ticket">{% trans "Ticket Booking" %}</a></li>
+          <li><a href="#rental">{% trans "Rental Services" %}</a></li>
+          <li><a href="#help">{% trans "Help & Support" %}</a></li>
         </ul>
       </div>
+
+      <div class="footer-col reveal delay-3">
+        <h4>{% trans "Newsletter" %}</h4>
+        <form method="post" action="#newsletter" class="newsletter">
+          {% csrf_token %}
+          <input type="email" name="email" placeholder="{% trans 'Enter your email' %}" required aria-label="{% trans 'Email' %}">
+          <button type="submit" class="newsletter-btn">{% trans "Subscribe" %}</button>
+        </form>
+      </div>
+
     </div>
 
     <div class="footer-bottom">
-      <span>© {% now "Y" %} SoLuna Touroperator. {% trans "All rights reserved." %}</span>
-      <span class="tagline-italic">Путешествия, наполненные солнцем и вдохновением</span>
+      <p>© {% now "Y" %} "SoLuna Prime" MCHJ. {% trans "All rights reserved." %}</p>
+      <div class="social-row">
+        <span>{% trans "Follow us" %}</span>
+        <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram" data-no-transition><i class="ti ti-brand-instagram"></i></a>
+        <a href="https://t.me/soluna_uz" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram" data-no-transition><i class="ti ti-brand-telegram"></i></a>
+        <a href="https://wa.me/998950666233" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp" data-no-transition><i class="ti ti-brand-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook" data-no-transition><i class="ti ti-brand-facebook"></i></a>
+      </div>
     </div>
+
   </div>
 </footer>
 
-{# YAGONA JS fayl — barcha inline scriptlar shu faylga ko'chirildi #}
 <script defer src="{% static 'js/main.js' %}"></script>
 {% block extra_js %}{% endblock %}
 </body>

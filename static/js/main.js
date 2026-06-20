@@ -1,218 +1,193 @@
-/**
- * SoLuna — static/js/main.js
- * Saytning YAGONA JS fayli. base.html dagi inline <script> va
- * soluna-motion.js shu faylga birlashtirildi (DRY).
- * Ulash: <script defer src="{% static 'js/main.js' %}"></script>
- */
-
+/* ============================================================
+   SoLuna main.js — Travila interactions
+   ============================================================ */
 (function () {
   'use strict';
 
-  const prefersReducedMotion =
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ── 1. Scroll Reveal ───────────────────────────────────── */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 
-  /* ════════════════════════════════════════
-     1. NAVBAR — scroll holati
-     ════════════════════════════════════════ */
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    let ticking = false;
-    const updateNavbar = () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateNavbar);
-        ticking = true;
-      }
-    }, { passive: true });
-    updateNavbar();
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
   }
 
-  /* ════════════════════════════════════════
-     2. MOBIL MENYU
-     ════════════════════════════════════════ */
-  const toggle = document.getElementById('navToggle');
-  const drawer = document.getElementById('navDrawer');
-
-  function closeDrawer() {
-    toggle?.classList.remove('open');
-    drawer?.classList.remove('open');
-    toggle?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  toggle?.addEventListener('click', () => {
-    const isOpen = drawer.classList.toggle('open');
-    toggle.classList.toggle('open', isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
-
-  drawer?.querySelectorAll('a').forEach((link) =>
-    link.addEventListener('click', closeDrawer)
-  );
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDrawer();
-  });
-
-  /* ════════════════════════════════════════
-     3. SCROLL REVEAL — yagona observer, yagona klass (.revealed)
-     ════════════════════════════════════════ */
-  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
-  if (revealEls.length) {
-    if (prefersReducedMotion) {
-      revealEls.forEach((el) => el.classList.add('revealed'));
-    } else {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('revealed');
-            revealObserver.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-      revealEls.forEach((el) => revealObserver.observe(el));
-    }
-  }
-
-  /* ════════════════════════════════════════
-     4. SAHIFA O'TISH — yagona overlay (#pageTransition)
-     ════════════════════════════════════════ */
+  /* ── 2. Page Transition Overlay ─────────────────────────── */
   const overlay = document.getElementById('pageTransition');
+  const isInternalLink = (a) => {
+    if (!a) return false;
+    if (a.target === '_blank') return false;
+    if (a.dataset.noTransition !== undefined) return false;
+    if (a.hasAttribute('download')) return false;
+    const href = a.getAttribute('href');
+    if (!href) return false;
+    if (href.startsWith('#')) return false;
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) return false;
+    if (href.startsWith('http') && !href.startsWith(window.location.origin)) return false;
+    return true;
+  };
 
-  if (overlay && !prefersReducedMotion) {
-    // Event delegation — har bir <a> ga alohida listener emas
+  if (overlay) {
+    // Animate IN on load
+    requestAnimationFrame(() => {
+      overlay.classList.add('entering');
+      setTimeout(() => overlay.classList.remove('entering', 'exiting'), 600);
+    });
+
+    // Animate OUT on internal link click
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href]');
-      if (!link) return;
-
-      const href = link.getAttribute('href');
-      if (
-        !href ||
-        href.startsWith('#') ||
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:') ||
-        href.startsWith('javascript:') ||
-        (href.startsWith('http') && !href.startsWith(window.location.origin)) ||
-        link.target === '_blank' ||
-        link.hasAttribute('download') ||
-        link.dataset.noTransition !== undefined ||
-        e.metaKey || e.ctrlKey || e.shiftKey
-      ) return;
+      const a = e.target.closest('a');
+      if (!isInternalLink(a)) return;
 
       e.preventDefault();
-      overlay.classList.remove('entering');
       overlay.classList.add('exiting');
-      setTimeout(() => { window.location.href = href; }, 430);
-    });
-
-    // bfcache (orqaga tugmasi) bilan ham ishlaydi
-    window.addEventListener('pageshow', () => {
-      overlay.classList.remove('exiting');
-      overlay.classList.add('entering');
+      setTimeout(() => { window.location.href = a.href; }, 380);
     });
   }
 
-  /* ════════════════════════════════════════
-     5. FLASH XABARLAR — avto yashirish
-     ════════════════════════════════════════ */
-  const alerts = document.querySelectorAll('.messages-container .alert');
-  if (alerts.length) {
-    setTimeout(() => {
-      alerts.forEach((el) => {
-        el.style.transition = 'opacity 0.5s, transform 0.5s';
-        el.style.opacity = '0';
-        el.style.transform = 'translateX(20px)';
-        setTimeout(() => el.remove(), 500);
+  /* ── 3. Header shadow on scroll ─────────────────────────── */
+  const header = document.getElementById('header');
+  if (header) {
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 20) header.classList.add('is-scrolled');
+      else header.classList.remove('is-scrolled');
+      lastY = y;
+    }, { passive: true });
+  }
+
+  /* ── 4. Mobile Nav Toggle ───────────────────────────────── */
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      document.body.classList.toggle('nav-open');
+    });
+  }
+
+  /* ── 5. Search Tabs (Tours / Hotels / Tickets / ...) ───── */
+  document.querySelectorAll('.search-tabs').forEach(group => {
+    const tabs = group.querySelectorAll('.search-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
       });
-    }, 4500);
-  }
-
-  /* ════════════════════════════════════════
-     6. COUNTER — data-count + data-suffix
-     FIX: suffix endi float qiymatlarga ham qo'shiladi
-     ════════════════════════════════════════ */
-  function animateCounter(el) {
-    const raw = el.getAttribute('data-count');
-    const target = parseFloat(raw);
-    if (Number.isNaN(target)) return;
-
-    const isFloat = raw.includes('.');
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 1800;
-    const start = performance.now();
-
-    const update = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = eased * target;
-      el.textContent = (isFloat ? value.toFixed(1) : Math.round(value)) + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    };
-    requestAnimationFrame(update);
-  }
-
-  const counterEls = document.querySelectorAll('[data-count]');
-  if (counterEls.length) {
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting && !e.target.dataset.counted) {
-          e.target.dataset.counted = '1';
-          animateCounter(e.target);
-          counterObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counterEls.forEach((el) => counterObserver.observe(el));
-  }
-
-  /* ════════════════════════════════════════
-     7. HERO — kirish animatsiyasi + parallax
-     FIX: parallax endi --parallax-y custom property orqali,
-     scale transformini buzmaydi; rAF bilan throttle qilingan
-     ════════════════════════════════════════ */
-  document.querySelectorAll('.hero-enter').forEach((el, i) => {
-    setTimeout(() => el.classList.add('entered'), 200 + i * 200);
+    });
   });
 
-  const heroBg = document.getElementById('heroBg');
-  if (heroBg) {
-    heroBg.classList.add('loaded');
+  /* ── 6. Tour Card Favorite (heart icon toggle) ─────────── */
+  document.addEventListener('click', (e) => {
+    const fav = e.target.closest('.tour-card-fav');
+    if (!fav) return;
+    e.preventDefault();
+    e.stopPropagation();
+    fav.classList.toggle('is-fav');
+    const icon = fav.querySelector('i');
+    if (icon) {
+      if (fav.classList.contains('is-fav')) {
+        icon.className = 'ti ti-heart-filled';
+        // TODO: POST to /api/favorites/<id>/toggle/
+      } else {
+        icon.className = 'ti ti-heart';
+      }
+    }
+  });
 
-    if (!prefersReducedMotion) {
-      let parallaxTicking = false;
-      window.addEventListener('scroll', () => {
-        if (!parallaxTicking) {
-          requestAnimationFrame(() => {
-            heroBg.style.setProperty('--parallax-y', `${window.scrollY * 0.25}px`);
-            parallaxTicking = false;
+  /* ── 7. Tabs on tour detail (#overview / #itinerary / ...) ─ */
+  const tabLinks = document.querySelectorAll('.td-tab');
+  if (tabLinks.length) {
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Visual active state
+        tabLinks.forEach(t => t.classList.remove('is-active'));
+        link.classList.add('is-active');
+      });
+    });
+
+    // Auto-highlight on scroll
+    if ('IntersectionObserver' in window) {
+      const sections = document.querySelectorAll('.td-section');
+      if (sections.length) {
+        const sectIo = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              const id = e.target.id;
+              tabLinks.forEach(t => {
+                t.classList.toggle('is-active', t.getAttribute('href') === '#' + id);
+              });
+            }
           });
-          parallaxTicking = true;
-        }
-      }, { passive: true });
+        }, { threshold: 0.25, rootMargin: '-100px 0px -50% 0px' });
+        sections.forEach(s => sectIo.observe(s));
+      }
     }
   }
 
-  /* ════════════════════════════════════════
-     8. FORMA SUBMIT — loading holati
-     ════════════════════════════════════════ */
-  document.querySelectorAll('form[data-loading]').forEach((form) => {
-    form.addEventListener('submit', () => {
-      const btn = form.querySelector('[type="submit"]');
-      if (btn) {
-        btn.classList.add('is-loading');
-        btn.disabled = true;
-      }
-      if (!form.querySelector('.loader-line')) {
-        const line = document.createElement('div');
-        line.className = 'loader-line';
-        line.style.marginTop = '1rem';
-        form.appendChild(line);
-      }
+  /* ── 8. Auto-hide flash messages ──────────────────────── */
+  document.querySelectorAll('.messages-container .alert').forEach((el, i) => {
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(20px)';
+      setTimeout(() => el.remove(), 400);
+    }, 4000 + i * 500);
+  });
+
+  /* ── 9. Counter animation (stat numbers) ───────────────── */
+  if ('IntersectionObserver' in window) {
+    const animateNumber = (el) => {
+      const text = el.textContent.trim();
+      const match = text.match(/^([\d,.]+)([+KMB]*)$/);
+      if (!match) return;
+      const target = parseFloat(match[1].replace(/,/g, ''));
+      const suffix = match[2] || '';
+      if (isNaN(target)) return;
+
+      const duration = 1400;
+      const start = performance.now();
+      el.textContent = '0' + suffix;
+
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const cur = target * eased;
+        const display = cur >= 1000 ? Math.round(cur).toLocaleString() : (target % 1 ? cur.toFixed(1) : Math.round(cur));
+        el.textContent = display + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const statIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateNumber(e.target);
+          statIo.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.stat-num').forEach(el => statIo.observe(el));
+  }
+
+  /* ── 10. Smooth scroll for in-page anchors ─────────────── */
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 110;
+      window.scrollTo({ top, behavior: 'smooth' });
     });
   });
 

@@ -1,133 +1,303 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{% trans "Tours" %} — SoLuna{% endblock %}
+{% block title %}{% trans "All Tours" %} | SoLuna{% endblock %}
 
 {% block content %}
 
-<!-- Page Header -->
-<div style="background:var(--green-deep);padding:130px 0 60px;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);background-size:22px 22px;"></div>
-  <div style="position:absolute;right:-80px;bottom:-80px;font-family:'Cormorant Garamond',serif;font-size:300px;color:rgba(201,168,76,0.04);line-height:1;pointer-events:none;">☽</div>
-  <div class="container" style="position:relative;z-index:2;">
-    <p class="eyebrow" style="color:var(--gold);margin-bottom:1rem;">SoLuna</p>
-    <h1 style="color:#FAF7F0;font-weight:300;">{% trans "Our Tours" %}</h1>
-    <p style="color:rgba(255,255,255,0.6);margin-top:0.75rem;font-size:1.05rem;">
-      {% blocktrans count count=total_count %}{{ count }} tour found{% plural %}{{ count }} tours found{% endblocktrans %}
-    </p>
-  </div>
-</div>
-
-<!-- Filters -->
-<div style="background:var(--white);border-bottom:1px solid rgba(13,59,46,0.08);position:sticky;top:76px;z-index:100;">
+{# ══════════════════ PAGE HEADER ══════════════════ #}
+<section style="background:var(--c-bg-alt);padding:50px 0 30px;">
   <div class="container">
-    <form method="get" style="display:flex;flex-wrap:wrap;gap:1rem;padding:1rem 0;align-items:center;">
+    <nav aria-label="breadcrumb" style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:14px;">
+      <a href="{% url 'home' %}" style="color:var(--c-text-muted);">{% trans "Home" %}</a>
+      <span style="margin:0 8px;">/</span>
+      <span style="color:var(--c-text);font-weight:600;">{% trans "Tours" %}</span>
+    </nav>
 
-      <input type="text" name="q" value="{{ filters.q }}" placeholder="{% trans 'Search tours...' %}"
-        class="form-control" style="max-width:220px;padding:0.55rem 1rem;font-size:0.85rem;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
+      <div>
+        <h1 style="margin-bottom:8px;">{% trans "All Tours" %}</h1>
+        <p style="color:var(--c-text-muted);font-size:1.05rem;">
+          {{ tours.paginator.count|default:tours|length }} {% trans "tours found" %}
+        </p>
+      </div>
 
-      <select name="region" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
-        <option value="">{% trans "All Regions" %}</option>
-        {% for region in regions %}
-          <option value="{{ region.slug }}" {% if filters.region == region.slug %}selected{% endif %}>{{ region.name }}</option>
-        {% endfor %}
-      </select>
-
-      <select name="category" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
-        <option value="">{% trans "All Categories" %}</option>
-        {% for cat in categories %}
-          <option value="{{ cat.slug }}" {% if filters.category == cat.slug %}selected{% endif %}>{{ cat.name }}</option>
-        {% endfor %}
-      </select>
-
-      <select name="duration" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
-        <option value="">{% trans "Any Duration" %}</option>
-        <option value="1-3" {% if filters.duration == '1-3' %}selected{% endif %}>{% trans "1–3 days" %}</option>
-        <option value="4-7" {% if filters.duration == '4-7' %}selected{% endif %}>{% trans "4–7 days" %}</option>
-        <option value="8+" {% if filters.duration == '8+' %}selected{% endif %}>{% trans "8+ days" %}</option>
-      </select>
-
-      <select name="sort" class="form-control" style="max-width:160px;padding:0.55rem 1rem;font-size:0.85rem;">
-        <option value="-created_at" {% if filters.sort == '-created_at' %}selected{% endif %}>{% trans "Newest" %}</option>
-        <option value="price" {% if filters.sort == 'price' %}selected{% endif %}>{% trans "Price ↑" %}</option>
-        <option value="-price" {% if filters.sort == '-price' %}selected{% endif %}>{% trans "Price ↓" %}</option>
-        <option value="duration_days" {% if filters.sort == 'duration_days' %}selected{% endif %}>{% trans "Duration ↑" %}</option>
-      </select>
-
-      <button type="submit" class="btn btn-gold btn-sm">{% trans "Filter" %}</button>
-      {% if filters.q or filters.region or filters.category or filters.duration %}
-        <a href="{% url 'tours:tour-list' %}" class="btn btn-outline-dark btn-sm">{% trans "Clear" %}</a>
-      {% endif %}
-    </form>
+      {# Sort + View toggle #}
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <span style="font-size:0.85rem;color:var(--c-text-muted);">{% trans "Sort by" %}:</span>
+        <form method="get" style="display:inline;">
+          {% for key, value in request.GET.items %}
+            {% if key != 'sort' %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endif %}
+          {% endfor %}
+          <select name="sort" onchange="this.form.submit()" class="form-control" style="width:auto;padding:8px 16px;border-radius:var(--r-pill);">
+            <option value="popular" {% if request.GET.sort == 'popular' %}selected{% endif %}>{% trans "Most Popular" %}</option>
+            <option value="newest" {% if request.GET.sort == 'newest' %}selected{% endif %}>{% trans "Newest" %}</option>
+            <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>{% trans "Price: Low to High" %}</option>
+            <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>{% trans "Price: High to Low" %}</option>
+            <option value="rating" {% if request.GET.sort == 'rating' %}selected{% endif %}>{% trans "Highest Rated" %}</option>
+          </select>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- Tour Cards -->
-<section class="section" style="background:var(--cream);">
+{# ══════════════════ MAIN GRID: SIDEBAR + TOURS ══════════════════ #}
+<section class="section" style="padding-top:40px;">
   <div class="container">
-    {% if tours %}
-      <div class="tours-grid">
-        {% for tour in tours %}
-        <a href="{% url 'tours:tour-detail' tour.slug %}">
-          <article class="tour-card reveal delay-{{ forloop.counter0|add:1 }}">
+    <div class="tl-layout">
+
+      {# ── SIDEBAR FILTERS ── #}
+      <aside class="tl-sidebar" id="tlSidebar">
+        <form method="get" id="filterForm">
+          {% if request.GET.sort %}<input type="hidden" name="sort" value="{{ request.GET.sort }}">{% endif %}
+
+          <div class="tl-filter">
+            <h3 class="tl-filter-title">{% trans "Search" %}</h3>
+            <div style="position:relative;">
+              <i class="ti ti-search" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--c-text-muted);"></i>
+              <input type="text" name="q" value="{{ request.GET.q|default:'' }}" placeholder="{% trans 'Search tours...' %}" class="form-control" style="padding-left:42px;border-radius:var(--r-pill);">
+            </div>
+          </div>
+
+          <div class="tl-filter">
+            <h3 class="tl-filter-title">{% trans "Categories" %}</h3>
+            <ul class="tl-check-list">
+              {% for cat in categories %}
+              <li>
+                <label class="tl-check">
+                  <input type="checkbox" name="category" value="{{ cat.slug }}" {% if cat.slug in request.GET.getlist.category %}checked{% endif %} onchange="document.getElementById('filterForm').submit()">
+                  <span class="tl-check-mark"></span>
+                  <span class="tl-check-label">{{ cat.name }}</span>
+                  <span class="tl-check-count">({{ cat.tour_count|default:"0" }})</span>
+                </label>
+              </li>
+              {% empty %}
+              {# Kategoriyalar bo'sh — admin panelda qo'shing #}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="tl-filter">
+            <h3 class="tl-filter-title">{% trans "Price Range" %}</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+              <input type="number" name="min_price" value="{{ request.GET.min_price|default:'' }}" placeholder="$ {% trans 'Min' %}" class="form-control" style="padding:10px 14px;">
+              <input type="number" name="max_price" value="{{ request.GET.max_price|default:'' }}" placeholder="$ {% trans 'Max' %}" class="form-control" style="padding:10px 14px;">
+            </div>
+            <button type="submit" class="btn btn-dark btn-block btn-sm">{% trans "Apply" %}</button>
+          </div>
+
+          <div class="tl-filter">
+            <h3 class="tl-filter-title">{% trans "Duration" %}</h3>
+            <ul class="tl-check-list">
+              <li><label class="tl-check"><input type="radio" name="duration" value="1-3" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">1-3 {% trans "days" %}</span></label></li>
+              <li><label class="tl-check"><input type="radio" name="duration" value="4-7" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">4-7 {% trans "days" %}</span></label></li>
+              <li><label class="tl-check"><input type="radio" name="duration" value="8-14" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">8-14 {% trans "days" %}</span></label></li>
+              <li><label class="tl-check"><input type="radio" name="duration" value="15+" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">15+ {% trans "days" %}</span></label></li>
+            </ul>
+          </div>
+
+          <div class="tl-filter">
+            <h3 class="tl-filter-title">{% trans "Rating" %}</h3>
+            <ul class="tl-check-list">
+              {% for n in "54321"|make_list %}
+              <li>
+                <label class="tl-check">
+                  <input type="checkbox" name="rating" value="{{ n }}" onchange="document.getElementById('filterForm').submit()">
+                  <span class="tl-check-mark"></span>
+                  <span class="tl-check-label">
+                    {% for i in "12345"|make_list %}{% if forloop.counter <= n|add:0 %}<i class="ti ti-star" style="color:var(--c-star);"></i>{% else %}<i class="ti ti-star" style="color:var(--c-border);"></i>{% endif %}{% endfor %}
+                  </span>
+                </label>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          {% if request.GET %}
+          <a href="{% url 'tours:tour-list' %}" class="btn btn-light btn-block btn-sm">
+            <i class="ti ti-x"></i> {% trans "Clear all" %}
+          </a>
+          {% endif %}
+        </form>
+      </aside>
+
+      {# ── TOURS GRID ── #}
+      <div class="tl-results">
+        {% if tours %}
+        <div class="tour-grid">
+          {% for tour in tours %}
+          <article class="tour-card reveal">
             <div class="tour-card-img">
               {% if tour.cover_image %}
                 <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
-              {% else %}
-                <div class="tour-card-img-placeholder">🕌</div>
               {% endif %}
-              {% if tour.is_featured %}
-                <span class="tour-badge">{% trans "Featured" %}</span>
-              {% elif tour.category %}
-                <span class="tour-badge">{{ tour.category.name }}</span>
+
+              {% if tour.is_top_rated %}
+                <span class="tour-card-badge tour-card-badge--top">{% trans "Top Rated" %}</span>
+              {% elif tour.discount_percent %}
+                <span class="tour-card-badge tour-card-badge--off">{{ tour.discount_percent }}% Off</span>
+              {% elif tour.is_best_sale %}
+                <span class="tour-card-badge tour-card-badge--sale">{% trans "Best Sale" %}</span>
               {% endif %}
+
+              <button class="tour-card-fav" aria-label="{% trans 'Add to favorites' %}" data-tour-id="{{ tour.id }}">
+                <i class="ti ti-heart"></i>
+              </button>
             </div>
+
             <div class="tour-card-body">
+              <div class="tour-card-rating">
+                <span class="star"><i class="ti ti-star"></i></span>
+                <span>{{ tour.rating|default:"4.96" }}</span>
+                <span class="muted">({{ tour.review_count|default:"0" }} {% trans "reviews" %})</span>
+              </div>
+
+              <h3 class="tour-card-title">
+                <a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title }}</a>
+              </h3>
+
               <div class="tour-card-meta">
-                <span>📅 {{ tour.duration_days }} {% trans "d" %}</span>
-                <span>👥 {{ tour.max_group_size }}</span>
-                <span>🧭 {{ tour.get_difficulty_display }}</span>
-                {% if tour.avg_rating %}<span>⭐ {{ tour.avg_rating|floatformat:1 }}</span>{% endif %}
+                <span class="tour-card-meta-item"><i class="ti ti-clock"></i> {{ tour.duration|default:"3 days" }}</span>
+                <span class="tour-card-meta-item"><i class="ti ti-users"></i> {{ tour.group_size|default:"4-6" }}</span>
               </div>
-              <h3>{{ tour.title }}</h3>
-              <p>{{ tour.short_description|truncatewords:18 }}</p>
-            </div>
-            <div class="tour-card-footer">
-              <div class="tour-price">
-                ${{ tour.price }}
-                <small>{% trans "per person" %}</small>
+
+              <div class="tour-card-foot">
+                <div class="tour-card-price">
+                  ${{ tour.price }}<small>/ {% trans "person" %}</small>
+                </div>
+                <a href="{% url 'bookings:booking-create' tour.slug %}" class="btn btn-light btn-sm">{% trans "Book Now" %}</a>
               </div>
-              <span class="btn btn-green-dark btn-sm">{% trans "Details" %}</span>
             </div>
           </article>
-        </a>
-        {% endfor %}
+          {% endfor %}
+        </div>
+
+        {# ── PAGINATION ── #}
+        {% if is_paginated %}
+        <nav class="tl-pagination" aria-label="{% trans 'Pagination' %}">
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}" class="tl-page-btn">
+              <i class="ti ti-chevron-left"></i>
+            </a>
+          {% endif %}
+
+          {% for num in paginator.page_range %}
+            {% if num == page_obj.number %}
+              <span class="tl-page-btn is-active">{{ num }}</span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <a href="?page={{ num }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}" class="tl-page-btn">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}" class="tl-page-btn">
+              <i class="ti ti-chevron-right"></i>
+            </a>
+          {% endif %}
+        </nav>
+        {% endif %}
+
+        {% else %}
+        {# ── EMPTY STATE ── #}
+        <div class="tl-empty">
+          <div class="tl-empty-icon"><i class="ti ti-search-off"></i></div>
+          <h3>{% trans "No tours found" %}</h3>
+          <p>{% trans "Try adjusting your filters or search criteria." %}</p>
+          <a href="{% url 'tours:tour-list' %}" class="btn btn-dark">{% trans "Reset filters" %}</a>
+        </div>
+        {% endif %}
       </div>
 
-      <!-- Pagination -->
-      {% if is_paginated %}
-      <div style="display:flex;justify-content:center;align-items:center;gap:0.5rem;margin-top:3rem;">
-        {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}{% if filters.q %}&q={{ filters.q }}{% endif %}" class="btn btn-outline-dark btn-sm">← {% trans "Prev" %}</a>
-        {% endif %}
-        <span style="font-size:0.85rem;color:var(--text-mid);padding:0 1rem;">
-          {% trans "Page" %} {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
-        </span>
-        {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}{% if filters.q %}&q={{ filters.q }}{% endif %}" class="btn btn-outline-dark btn-sm">{% trans "Next" %} →</a>
-        {% endif %}
-      </div>
-      {% endif %}
-
-    {% else %}
-      <div style="text-align:center;padding:5rem 2rem;">
-        <p style="font-size:3rem;margin-bottom:1rem;">🗺️</p>
-        <h3>{% trans "No tours found" %}</h3>
-        <p style="color:var(--text-mid);margin-top:0.5rem;">{% trans "Try adjusting your filters" %}</p>
-        <a href="{% url 'tours:tour-list' %}" class="btn btn-gold" style="margin-top:2rem;">{% trans "View All Tours" %}</a>
-      </div>
-    {% endif %}
+    </div>
   </div>
 </section>
+
+<style>
+.tl-layout { display: grid; grid-template-columns: 300px 1fr; gap: 36px; }
+@media (max-width: 1024px) { .tl-layout { grid-template-columns: 260px 1fr; gap: 24px; } }
+@media (max-width: 768px)  { .tl-layout { grid-template-columns: 1fr; } }
+
+.tl-sidebar {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  position: sticky; top: 130px;
+  align-self: start;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+@media (max-width: 768px) { .tl-sidebar { position: static; max-height: none; } }
+
+.tl-filter { padding: 18px 0; border-bottom: 1px solid var(--c-border-soft); }
+.tl-filter:first-child { padding-top: 0; }
+.tl-filter:last-child { border-bottom: none; padding-bottom: 4px; }
+
+.tl-filter-title {
+  font-size: 0.95rem; font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--c-text);
+}
+
+.tl-check-list { display: flex; flex-direction: column; gap: 4px; }
+.tl-check {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.tl-check input { position: absolute; opacity: 0; }
+.tl-check-mark {
+  width: 18px; height: 18px; border-radius: 4px;
+  border: 1.5px solid var(--c-border);
+  background: #fff;
+  flex-shrink: 0;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  position: relative;
+}
+.tl-check input[type=radio] + .tl-check-mark { border-radius: 50%; }
+.tl-check input:checked + .tl-check-mark { background: var(--c-text); border-color: var(--c-text); }
+.tl-check input:checked + .tl-check-mark::after {
+  content: ''; position: absolute; left: 5px; top: 1px;
+  width: 5px; height: 10px;
+  border: solid #fff; border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.tl-check input[type=radio]:checked + .tl-check-mark::after {
+  content: ''; left: 4px; top: 4px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #fff; border: none; transform: none;
+}
+.tl-check-label { flex: 1; color: var(--c-text); }
+.tl-check-count { color: var(--c-text-muted); font-size: 0.8rem; }
+
+.tl-pagination {
+  display: flex; justify-content: center; gap: 8px;
+  margin-top: 50px; flex-wrap: wrap;
+}
+.tl-page-btn {
+  min-width: 42px; height: 42px;
+  padding: 0 14px;
+  border-radius: 50%;
+  background: var(--c-bg-alt);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem;
+  color: var(--c-text);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.tl-page-btn:hover { background: var(--c-border); }
+.tl-page-btn.is-active { background: var(--c-text); color: #fff; }
+
+.tl-empty {
+  text-align: center; padding: 80px 20px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+}
+.tl-empty-icon { font-size: 4rem; color: var(--c-border); margin-bottom: 16px; }
+.tl-empty h3 { margin-bottom: 8px; }
+.tl-empty p { margin-bottom: 24px; }
+</style>
 
 {% endblock %}

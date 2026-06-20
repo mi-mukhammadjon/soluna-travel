@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import Q, Avg, Count
-from .models import Tour, TourCategory
+from .models import Tour, TourCategory, CompanyStatistic, CompanyAdvantage
 from regions.models import Region
 
 
@@ -9,10 +9,51 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # 1. Barcha turlarni olamiz
+        tours = Tour.objects.filter(is_active=True)
+
+        # 2. URL'dan GET parametrlarni o'qiymiz
+        category = self.request.GET.get('category')
+        duration = self.request.GET.get('duration')
+        price = self.request.GET.get('price')
+
+        # 3. Kategoriya bo'yicha filter
+        if category:
+            # Agar modelingizda kategoriya maydoni boshqacha nomlangan bo'lsa, shunga moslang (masalan category__name)
+            tours = tours.filter(category__slug=category) 
+
+        # 4. Davomiylik bo'yicha filter (duration maydoni qanday turda ekanligiga qarab o'zgartirasiz)
+        if duration:
+            if duration == '1-3':
+                tours = tours.filter(duration_days__lte=3)
+            elif duration == '4-7':
+                tours = tours.filter(duration_days__gte=4, duration_days__lte=7)
+            elif duration == '8+':
+                tours = tours.filter(duration_days__gte=8)
+
+        # 5. Narx bo'yicha filter
+        if price:
+            if price == '0-500':
+                tours = tours.filter(price__lte=500)
+            elif price == '500-1000':
+                tours = tours.filter(price__gt=500, price__lte=1000)
+            elif price == '1000+':
+                tours = tours.filter(price__gt=1000)
+        
+        # 1. Kategoriyalarni va ularning ichidagi turlar sonini hisoblab 8 tasini olamiz
+        # DIQQAT: 'tour' so'zi Tour modelingizning related_name'iga qarab 'tours' yoki 'tour_set' bo'lishi mumkin.
+        context['categories'] = TourCategory.objects.annotate(
+            tour_count=Count('tour') 
+        )[:8]
+        
         context['featured_tours'] = Tour.objects.filter(
             is_active=True, is_featured=True
         ).select_related('category').prefetch_related('regions')[:6]
-        context['regions'] = Region.objects.filter(is_active=True)[:8]
+        
+        context['regions'] = Region.objects.annotate(tour_count=Count('tours'))
+        context['company_stats'] = CompanyStatistic.objects.all()[:4]
+        context['company_advantages'] = CompanyAdvantage.objects.all()[:4]
         return context
 
 
@@ -75,7 +116,7 @@ class TourListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = TourCategory.objects.all()
+        context['categories'] = TourCategory.objects.annotate(tour_count=Count('tour'))
         context['regions'] = Region.objects.filter(is_active=True)
         
         # OPTIMIZATSIYA: self.get_queryset().count() o'rniga allaqachon chaqirilgan object_list dan foydalanamiz

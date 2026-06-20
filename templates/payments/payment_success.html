@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Payment Successful" %} | SoLuna{% endblock %}
+
+{% block content %}
+<section class="ps-section">
+  <div class="container">
+    <div class="ps-card">
+
+      {# Animated success #}
+      <div class="ps-icon-wrap">
+        <svg class="ps-checkmark" viewBox="0 0 52 52">
+          <circle class="ps-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="ps-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+
+      <h1 class="ps-title">{% trans "Payment Successful!" %}</h1>
+      <p class="ps-subtitle">
+        {% trans "Your booking has been confirmed. We've sent the details to your email." %}
+      </p>
+
+      <div class="ps-stepper">
+        <div class="ps-step is-done">
+          <span class="ps-step-num"><i class="ti ti-check"></i></span>
+          <span class="ps-step-label">{% trans "Details" %}</span>
+        </div>
+        <div class="ps-step-line is-done"></div>
+        <div class="ps-step is-done">
+          <span class="ps-step-num"><i class="ti ti-check"></i></span>
+          <span class="ps-step-label">{% trans "Payment" %}</span>
+        </div>
+        <div class="ps-step-line is-done"></div>
+        <div class="ps-step is-active">
+          <span class="ps-step-num"><i class="ti ti-flag"></i></span>
+          <span class="ps-step-label">{% trans "Confirmed" %}</span>
+        </div>
+      </div>
+
+      <div class="ps-receipt">
+        <div class="ps-receipt-row">
+          <span>{% trans "Booking #" %}</span>
+          <strong>{{ booking.booking_number }}</strong>
+        </div>
+        <div class="ps-receipt-row">
+          <span>{% trans "Tour" %}</span>
+          <strong>{{ booking.tour.title|truncatechars:40 }}</strong>
+        </div>
+        <div class="ps-receipt-row">
+          <span>{% trans "Travel date" %}</span>
+          <strong>{{ booking.travel_date|date:"d M Y" }}</strong>
+        </div>
+        <div class="ps-receipt-row">
+          <span>{% trans "Guests" %}</span>
+          <strong>{{ booking.num_adults }}{% if booking.num_children %} + {{ booking.num_children }}{% endif %}</strong>
+        </div>
+        <div class="ps-receipt-divider"></div>
+        <div class="ps-receipt-row ps-receipt-total">
+          <span>{% trans "Paid" %}</span>
+          <strong>{% if booking.currency == 'USD' %}${% endif %}{{ booking.total_price|floatformat:0 }}{% if booking.currency != 'USD' %} {{ booking.currency }}{% endif %}</strong>
+        </div>
+      </div>
+
+      <div class="ps-actions">
+        <a href="{% url 'bookings:booking-detail' booking.id %}" class="btn btn-dark btn-lg">
+          {% trans "View Booking Details" %} <i class="ti ti-arrow-right"></i>
+        </a>
+        <a href="{% url 'tours:tour-list' %}" class="btn btn-light btn-lg">
+          {% trans "Explore More Tours" %}
+        </a>
+      </div>
+
+      <div class="ps-next">
+        <h4><i class="ti ti-mail"></i> {% trans "What happens next?" %}</h4>
+        <ul>
+          <li>{% trans "We'll send a confirmation email with full itinerary" %}</li>
+          <li>{% trans "Our team will contact you 48 hours before the trip" %}</li>
+          <li>{% trans "Check your booking anytime in your profile" %}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.ps-section {
+  background: linear-gradient(180deg, var(--c-bg-alt) 0%, #fff 100%);
+  padding: 60px 0 80px;
+  min-height: calc(100vh - 200px);
+}
+.ps-card {
+  max-width: 600px; margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.1);
+}
+@media (max-width:600px) { .ps-card { padding: 32px 24px; } }
+
+.ps-icon-wrap {
+  width: 100px; height: 100px;
+  margin: 0 auto 24px;
+  background: #D1FAE5;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.ps-icon-wrap::before, .ps-icon-wrap::after {
+  content: ''; position: absolute;
+  border: 2px solid #10B981; border-radius: 50%;
+  opacity: 0;
+}
+.ps-icon-wrap::before { inset: -10px; animation: psRing 2s ease-out infinite; }
+.ps-icon-wrap::after  { inset: -20px; animation: psRing 2s ease-out infinite 0.5s; }
+@keyframes psRing {
+  0% { opacity: 0.6; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+.ps-checkmark {
+  width: 60px; height: 60px;
+  display: block;
+}
+.ps-checkmark-circle {
+  stroke: #10B981; stroke-width: 3; stroke-miterlimit: 10;
+  stroke-dasharray: 166; stroke-dashoffset: 166;
+  animation: psStroke 0.6s cubic-bezier(0.65,0,0.45,1) forwards;
+}
+.ps-checkmark-check {
+  stroke: #10B981; stroke-width: 4; stroke-linecap: round;
+  stroke-dasharray: 48; stroke-dashoffset: 48;
+  animation: psStroke 0.3s cubic-bezier(0.65,0,0.45,1) 0.6s forwards;
+}
+@keyframes psStroke { to { stroke-dashoffset: 0; } }
+
+.ps-title { font-size: 2rem; margin-bottom: 12px; }
+.ps-subtitle { color: var(--c-text-muted); font-size: 1.05rem; margin-bottom: 32px; }
+
+.ps-stepper {
+  display: flex; align-items: center; gap: 8px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.ps-step { display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0.4; }
+.ps-step.is-done, .ps-step.is-active { opacity: 1; }
+.ps-step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--c-border);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; flex-shrink: 0;
+}
+.ps-step.is-done .ps-step-num { background: #10B981; color: #fff; }
+.ps-step.is-active .ps-step-num { background: var(--c-yellow); color: #000; }
+.ps-step-label { font-size: 0.75rem; font-weight: 600; }
+.ps-step-line { width: 40px; height: 2px; background: var(--c-border); }
+.ps-step-line.is-done { background: #10B981; }
+
+.ps-receipt {
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+  padding: 20px;
+  text-align: left;
+  margin-bottom: 28px;
+}
+.ps-receipt-row {
+  display: flex; justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.9rem;
+}
+.ps-receipt-row span { color: var(--c-text-muted); }
+.ps-receipt-divider { border-top: 1px dashed var(--c-border); margin: 8px 0; }
+.ps-receipt-total { font-size: 1.05rem; }
+.ps-receipt-total strong { font-size: 1.3rem; }
+
+.ps-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.ps-next {
+  text-align: left;
+  padding: 20px;
+  background: #FFFBEB;
+  border-left: 3px solid var(--c-yellow);
+  border-radius: var(--r-md);
+}
+.ps-next h4 {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 1rem; margin-bottom: 12px;
+}
+.ps-next ul { list-style: none; padding: 0; margin: 0; }
+.ps-next li {
+  position: relative; padding-left: 24px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+}
+.ps-next li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--c-success); font-weight: 700;
+}
+.ps-next li:last-child { margin-bottom: 0; }
+</style>
+{% endblock %}

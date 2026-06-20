@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Verify Email" %} | SoLuna{% endblock %}
+
+{% block content %}
+<section style="min-height:calc(100vh - 200px);background:var(--c-bg-alt);display:flex;align-items:center;padding:60px 0;">
+  <div class="container" style="max-width:480px;text-align:center;">
+    <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:48px 32px;box-shadow:var(--sh-md);">
+      <div style="width:80px;height:80px;background:#FEF3C7;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i class="ti ti-mail" style="font-size:2.5rem;color:#92400E;"></i>
+      </div>
+
+      <h2 style="margin-bottom:12px;">{% trans "Verify your email" %}</h2>
+      <p style="color:var(--c-text-muted);margin-bottom:28px;">
+        {% trans "We've sent a verification email. Please click the link in the email to activate your account." %}
+      </p>
+
+      <a href="{% url 'account_login' %}" class="btn btn-dark">{% trans "Back to sign in" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

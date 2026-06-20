@@ -1,3 +1,4 @@
+# bookings/views.py
 from django.views.generic import ListView, DetailView, CreateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
@@ -11,7 +12,7 @@ from tours.models import Tour
 
 class BookingListView(LoginRequiredMixin, ListView):
     model = Booking
-    template_name = 'bookings/list.html'
+    template_name = 'bookings/booking_list.html'   # ← MOSLASHTIRILDI
     context_object_name = 'bookings'
 
     def get_queryset(self):
@@ -22,7 +23,7 @@ class BookingListView(LoginRequiredMixin, ListView):
 
 class BookingDetailView(LoginRequiredMixin, DetailView):
     model = Booking
-    template_name = 'bookings/detail.html'
+    template_name = 'bookings/booking_detail.html'  # ← MOSLASHTIRILDI
     context_object_name = 'booking'
 
     def get_queryset(self):
@@ -32,7 +33,7 @@ class BookingDetailView(LoginRequiredMixin, DetailView):
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
     form_class = BookingForm
-    template_name = 'bookings/create.html'
+    template_name = 'bookings/booking_create.html'  # ← MOSLASHTIRILDI
 
     def dispatch(self, request, *args, **kwargs):
         self.tour = get_object_or_404(Tour, slug=kwargs['tour_slug'], is_active=True)
@@ -41,7 +42,6 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tour'] = self.tour
-        # Narx hisoblash preview uchun
         num_adults = int(self.request.GET.get('adults', 1))
         context['estimated_price'] = self.tour.price * num_adults
         return context
@@ -55,15 +55,25 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         booking.status = 'pending'
         booking.save()
 
-        # Email yuborish (Celery orqali)
-        from .tasks import send_booking_confirmation_email
-        send_booking_confirmation_email.delay(booking.pk)
+        try:
+            from .tasks import send_booking_confirmation_email
+            send_booking_confirmation_email.delay(booking.pk)
+        except Exception:
+            pass  # Celery ishlamasa ham bron yaratilsin
 
         messages.success(
             self.request,
             f"Bron muvaffaqiyatli yaratildi! Raqam: {booking.booking_number}"
         )
         return redirect(reverse('bookings:booking-detail', kwargs={'pk': booking.pk}))
+
+    def form_invalid(self, form):
+        # XATOLARNI BOSHQA SAHIFAGA YUBORISH O'RNIGA SHU SAHIFADA KO'RSATISH
+        messages.error(
+            self.request,
+            "Iltimos, formada xato bo'lgan maydonlarni to'g'rilang."
+        )
+        return super().form_invalid(form)
 
 
 class BookingCancelView(LoginRequiredMixin, View):
@@ -80,8 +90,11 @@ class BookingCancelView(LoginRequiredMixin, View):
         booking.cancelled_at = timezone.now()
         booking.save()
 
-        from .tasks import send_booking_cancellation_email
-        send_booking_cancellation_email.delay(booking.pk)
+        try:
+            from .tasks import send_booking_cancellation_email
+            send_booking_cancellation_email.delay(booking.pk)
+        except Exception:
+            pass
 
         messages.success(request, "Bron bekor qilindi.")
         return redirect(reverse('bookings:booking-list'))

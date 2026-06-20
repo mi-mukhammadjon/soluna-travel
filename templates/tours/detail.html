@@ -1,336 +1,604 @@
 {% extends 'base.html' %}
-{% load static i18n %}
+{% load static i18n l10n %}
 
-{% block title %}{{ tour.title }} — SoLuna{% endblock %}
-{% block meta_desc %}{{ tour.short_description }}{% endblock %}
-
-{% block extra_css %}
-<style>
-/* Loyihaning asosiy ranglar palitrasi */
-:root {
-    --green-deep: #0D3B2E;
-    --green-mid: #145344;
-    --gold: #C9A84C;
-    --gold-dark: #B2933E;
-    --cream: #FAF7F0;
-    --white: #ffffff;
-    --text-dark: #222222;
-    --text-mid: #555555;
-    --text-light: #888888;
-}
-
-/* Galereya uslublari */
-.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1.5rem; }
-@media (max-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-.gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: 6px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-.gallery-item:hover img { transform: scale(1.08); }
-
-/* Grid konfiguratsiyasi - Elementlar sig'ishi va sinmasligi kafolatlanadi */
-.detail-grid { display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start; }
-@media (max-width: 992px) { .detail-grid { grid-template-columns: 1fr; gap: 2rem; } .detail-sidebar { position: static !important; max-width: 100% !important; } }
-.detail-sidebar { position: sticky; top: 100px; width: 100%; max-width: 380px; box-sizing: border-box; }
-
-/* Booking Card dizayni */
-.booking-card { 
-    background: var(--white); 
-    border: 1px solid rgba(201, 168, 76, 0.2); 
-    border-radius: 8px; 
-    padding: 2rem; 
-    box-shadow: 0 10px 40px rgba(13, 59, 46, 0.08); 
-    box-sizing: border-box;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    width: 100% !important;
-}
-
-/* Kiritilgan / Kiritilmagan xizmatlar ro'yxati */
-.include-list li { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.6rem 0; font-size: 0.92rem; color: var(--text-mid); border-bottom: 1px solid rgba(13, 59, 46, 0.06); }
-.include-list li:last-child { border: none; }
-.include-list li::before { content: '✓'; color: #2ecc71; font-weight: 600; flex-shrink: 0; }
-.exclude-list li::before { content: '✗'; color: #e74c3c; }
-
-/* Mukammal vizual timeline (Kunlik dastur) */
-.itinerary-timeline { position: relative; padding-left: 1rem; }
-.day-item { position: relative; display: flex; gap: 1.5rem; padding-bottom: 2rem; }
-.day-item:last-child { padding-bottom: 0; }
-.day-item::before { content: ''; position: absolute; left: 24px; top: 48px; bottom: 0; width: 2px; background: rgba(13, 59, 46, 0.1); }
-.day-item:last-child::before { display: none; }
-.day-number { width: 48px; height: 48px; border-radius: 50%; background: var(--green-deep); color: var(--gold); font-family: var(--font-display), serif; font-size: 1.2rem; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 2; box-shadow: 0 4px 10px rgba(13, 59, 46, 0.15); }
-
-/* Sharhlar qismi */
-.review-item { padding: 1.5rem 0; border-bottom: 1px solid rgba(13, 59, 46, 0.08); }
-.review-item:last-child { border: none; }
-.stars { color: var(--gold); letter-spacing: 2px; font-size: 0.95rem; }
-.rating-bar { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
-.rating-bar-fill { height: 6px; background: var(--gold); border-radius: 3px; transition: width 1s ease-in-out; }
-.rating-bar-bg { flex: 1; height: 6px; background: rgba(201, 168, 76, 0.15); border-radius: 3px; overflow: hidden; }
-
-/* Dinamik qiyinchilik darajasi badorlari */
-.badge-difficulty { padding: 0.3rem 0.75rem; border-radius: 4px; font-size: 0.85rem; font-weight: 500; text-transform: capitalize; }
-.badge-easy { background: #e8f5e9; color: #2e7d32; }
-.badge-medium { background: #fffde7; color: #f57f17; }
-.badge-hard { background: #ffebee; color: #c62828; }
-
-/* Maxfiy Lightbox (Galereya oynasi) */
-.soluna-lightbox { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(13, 59, 46, 0.95); align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
-.soluna-lightbox.active { display: flex; opacity: 1; }
-.soluna-lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
-.soluna-lightbox-close { position: absolute; top: 20px; right: 30px; color: var(--cream); font-size: 40px; font-weight: 300; cursor: pointer; transition: color 0.2s; }
-.soluna-lightbox-close:hover { color: var(--gold); }
-</style>
-{% endblock %}
+{% block title %}{{ tour.title }} | SoLuna{% endblock %}
 
 {% block content %}
 
-<!-- Hero Banner Qismi -->
-<div style="min-height:70vh; padding: 6rem 0 4rem 0; position:relative; background:var(--green-deep); overflow:hidden; display:flex; align-items:flex-end; box-sizing:border-box;">
-  {% if tour.cover_image %}
-    <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}"
-      style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.35; transform:scale(1); transition:transform 6s cubic-bezier(0.16, 1, 0.3, 1);">
-  {% endif %}
-  <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(13,59,46,1) 0%, rgba(13,59,46,0.4) 70%, transparent 100%);"></div>
-  
-  <div class="container" style="position:relative; z-index:5; width:100%;">
-    <div style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
-      
-      <!-- TUZATISH: Ustma-ust tushishning oldini olish uchun position va margin boshqarildi -->
-      {% if tour.category %}
-          <span class="tour-badge" style="display:inline-block !important; position:relative !important; top:0 !important; left:0 !important; background:var(--gold); color:var(--green-deep); padding:0.4rem 1rem; border-radius:4px; font-size:0.8rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin:0 0 0.5rem 0 !important;">
-              {{ tour.category.name }}
-          </span>
-      {% endif %}
-      
-      <h1 style="color:#FAF7F0; font-weight:300; max-width:850px; font-size:calc(2rem + 1.8vw); line-height:1.2; margin:0 !important; font-family:var(--font-display), serif; position:relative !important;">
-          {{ tour.title }}
-      </h1>
-      
-      <div style="display:flex; gap:1.5rem; margin-top:0.5rem; flex-wrap:wrap; align-items:center;">
-        <span style="color:rgba(255,255,255,0.85); font-size:0.95rem; display:flex; align-items:center; gap:6px;">📅 {{ tour.duration_days }} {% translate "days" %}</span>
-        <span style="color:rgba(255,255,255,0.85); font-size:0.95rem; display:flex; align-items:center; gap:6px;">👥 {% translate "Max" %} {{ tour.max_group_size }} {% translate "people" %}</span>
-        <span class="badge-difficulty badge-{{ tour.difficulty|default:'easy' }}">{{ tour.get_difficulty_display }}</span>
-        {% if avg_rating %}
-          <span style="color:var(--gold); font-size:0.95rem; font-weight:500; display:flex; align-items:center; gap:4px;">⭐ {{ avg_rating|floatformat:1 }} ({{ review_count }} {% translate "reviews" %})</span>
-        {% endif %}
-      </div>
-    </div>
+{# ══════════════════ BREADCRUMBS ══════════════════ #}
+<div style="background:var(--c-bg-alt);padding:20px 0;border-bottom:1px solid var(--c-border);">
+  <div class="container">
+    <nav aria-label="breadcrumb" style="font-size:0.85rem;color:var(--c-text-muted);">
+      <a href="{% url 'home' %}" style="color:var(--c-text-muted);">{% trans "Home" %}</a>
+      <span style="margin:0 8px;">/</span>
+      <a href="{% url 'tours:tour-list' %}" style="color:var(--c-text-muted);">{% trans "Tours" %}</a>
+      <span style="margin:0 8px;">/</span>
+      <span style="color:var(--c-text);font-weight:600;">{{ tour.title|truncatechars:50 }}</span>
+    </nav>
   </div>
 </div>
 
-<section class="section" style="background:var(--cream); padding: 4rem 0;">
+{# ══════════════════ TOUR HERO ══════════════════ #}
+<section style="padding:40px 0 30px;">
   <div class="container">
-    <div class="detail-grid">
 
-      <!-- Chap ustun (Asosiy kontent) -->
-      <div>
-        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; margin-bottom:2rem; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
-          <h2 style="font-size:1.6rem; color:var(--green-deep); margin-top:0; margin-bottom:1.2rem; font-family:var(--font-display), serif;">{% translate "About This Tour" %}</h2>
-          <div style="color:var(--text-mid); line-height:1.8; font-size:0.98rem;">{{ tour.description|linebreaks }}</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:24px;">
+      <div style="flex:1;min-width:280px;">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+          {% if tour.is_top_rated %}<span class="tour-card-badge tour-card-badge--top" style="position:static;">{% trans "Top Rated" %}</span>{% endif %}
+          <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.9rem;">
+            <i class="ti ti-star" style="color:var(--c-star);"></i>
+            <strong>{{ tour.rating|default:"4.96" }}</strong>
+            <span style="color:var(--c-text-muted);">({{ tour.review_count|default:"672" }} {% trans "reviews" %})</span>
+          </div>
+          <span style="color:var(--c-text-muted);font-size:0.9rem;display:inline-flex;align-items:center;gap:6px;">
+            <i class="ti ti-map-pin"></i> {{ tour.location|default:"Uzbekistan" }}
+          </span>
         </div>
 
-        {% if tour.images.all %}
-        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; margin-bottom:2rem; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
-          <h2 style="font-size:1.6rem; color:var(--green-deep); margin-top:0; margin-bottom:0.5rem; font-family:var(--font-display), serif;">{% translate "Gallery" %}</h2>
-          <p style="color:var(--text-light); font-size:0.88rem; margin-bottom:1.5rem;">{% translate "Click on any image to view it in full size." %}</p>
-          <div class="gallery-grid">
-            {% for img in tour.images.all %}
-            <div class="gallery-item" onclick="openLightbox('{{ img.image.url }}')">
-              <img src="{{ img.image.url }}" alt="{{ img.caption|default:tour.title }}" loading="lazy">
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        {% endif %}
-
-        {% if tour.itinerary %}
-        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; margin-bottom:2rem; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
-          <h2 style="font-size:1.6rem; color:var(--green-deep); margin-top:0; margin-bottom:2rem; font-family:var(--font-display), serif;">{% translate "Day by Day Itinerary" %}</h2>
-          <div class="itinerary-timeline">
-            {% for day in tour.itinerary %}
-            <div class="day-item">
-              <div class="day-number">{{ forloop.counter }}</div>
-              <div style="padding-top: 0.4rem;">
-                <h3 style="margin:0 0 0.6rem 0; font-size:1.2rem; color:var(--green-deep);">{{ day.title }}</h3>
-                <p style="color:var(--text-mid); font-size:0.94rem; line-height:1.7; margin:0;">{{ day.content }}</p>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        {% endif %}
-
-        {% if tour.includes or tour.excludes %}
-        <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2rem;">
-          {% if tour.includes %}
-          <div style="background:var(--white); padding:2rem; border-radius:8px; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
-            <h3 style="margin-top:0; margin-bottom:1.2rem; color:var(--green-mid); font-size:1.25rem;">{% translate "Included" %}</h3>
-            <ul class="include-list" style="list-style:none; padding:0; margin:0;">
-              {% for item in tour.includes.splitlines %}{% if item %}<li>{{ item }}</li>{% endif %}{% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-          
-          {% if tour.excludes %}
-          <div style="background:var(--white); padding:2rem; border-radius:8px; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
-            <h3 style="margin-top:0; margin-bottom:1.2rem; color:#e74c3c; font-size:1.25rem;">{% translate "Not Included" %}</h3>
-            <ul class="include-list exclude-list" style="list-style:none; padding:0; margin:0;">
-              {% for item in tour.excludes.splitlines %}{% if item %}<li>{{ item }}</li>{% endif %}{% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-        </div>
-        {% endif %}
-
-        <div class="reveal" style="background:var(--white); padding:2.5rem; border-radius:8px; box-shadow:0 4px 20px rgba(13,59,46,0.04);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
-            <h2 style="font-size:1.6rem; color:var(--green-deep); margin:0; font-family:var(--font-display), serif;">{% translate "Customer Reviews" %} {% if review_count %}({{ review_count }}){% endif %}</h2>
-            {% if user.is_authenticated %}
-              <a href="{% url 'reviews:create' tour.slug %}" class="btn" style="background:var(--gold); color:var(--white); padding:0.6rem 1.2rem; border-radius:4px; text-decoration:none; font-size:0.88rem; font-weight:500; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">{% translate "Write a Review" %}</a>
-            {% endif %}
-          </div>
-
-          {% if avg_rating %}
-          <div style="display:flex; align-items:center; gap:2rem; margin-bottom:2.5rem; padding:1.5rem; background:var(--cream); border-radius:6px;">
-            <div style="text-align:center; min-width:110px;">
-              <div style="font-family:var(--font-display), serif; font-size:3.5rem; font-weight:600; color:var(--green-deep); line-height:1;">{{ avg_rating|floatformat:1 }}</div>
-              <div class="stars" style="margin: 0.4rem 0;">{% for i in "12345" %}{% if forloop.counter <= avg_rating %}★{% else %}☆{% endif %}{% endfor %}</div>
-              <div style="font-size:0.78rem; color:var(--text-light);">{{ review_count }} {% translate "reviews" %}</div>
-            </div>
-            <div style="flex:1;">
-              {% for star, data in rating_dist.items %}
-              <div class="rating-bar">
-                <span style="font-size:0.82rem; color:var(--text-mid); width:15px; font-weight:500;">{{ star }}</span>
-                <div class="rating-bar-bg"><div class="rating-bar-fill" style="width:{{ data.percent }}%;"></div></div>
-                <span style="font-size:0.82rem; color:var(--text-light); width:30px; text-align:right;">{{ data.count }}</span>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-          {% endif %}
-
-          {% for review in reviews %}
-          <div class="review-item">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.6rem;">
-              <div>
-                <strong style="font-size:0.95rem; color:var(--text-dark);">{{ review.user.get_full_name|default:review.user.username }}</strong>
-                {% if review.title %}<p style="font-style:italic; font-family:var(--font-display), serif; font-size:1.05rem; margin:2px 0 0 0; color:var(--green-mid);">"{{ review.title }}"</p>{% endif %}
-              </div>
-              <div style="text-align:right;">
-                <div class="stars" style="font-size:0.85rem;">{% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</div>
-                <div style="font-size:0.78rem; color:var(--text-light); margin-top:4px;">{{ review.created_at|date:"d M Y" }}</div>
-              </div>
-            </div>
-            <p style="color:var(--text-mid); font-size:0.92rem; line-height:1.7; margin:0; white-space:pre-line;">{{ review.body }}</p>
-          </div>
-          {% empty %}
-          <p style="text-align:center; padding:2rem 0; color:var(--text-light); margin:0;">{% translate "No reviews yet. Be the first to share your feedback!" %}</p>
-          {% endfor %}
-        </div>
+        <h1 style="margin-bottom:8px;">{{ tour.title }}</h1>
       </div>
 
-      <!-- O'ng ustun (Sidebar) -->
-      <div class="detail-sidebar reveal">
-        <div class="booking-card">
-          
-          <!-- Narx bloki -->
-          <div style="margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid rgba(201,168,76,0.15); width:100% !important; display:block !important;">
-            <div style="font-family:var(--font-display), serif; font-size:2.6rem; font-weight:600; color:var(--green-deep); line-height:1;">${{ tour.price|floatformat:0 }}</div>
-            {% if tour.price_uzs %}
-                <div style="font-size:1.1rem; color:var(--gold-dark); font-weight:600; margin-top:6px;">{{ tour.price_uzs|floatformat:0 }} {% translate "UZS" %}</div>
-            {% endif %}
-            <div style="font-size:0.75rem; color:var(--text-light); margin-top:6px; text-transform:uppercase; letter-spacing:0.05em;">{% translate "per person" %}</div>
-          </div>
-
-          <!-- Kichik info qutichalar -->
-          <div style="display:grid !important; grid-template-columns: repeat(2, 1fr) !important; gap:0.6rem !important; margin-bottom:1.5rem; font-size:0.85rem; width:100% !important; box-sizing:border-box;">
-            
-            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
-              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Duration" %}</div>
-              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">{{ tour.duration_days }} {% translate "Days" %}</strong>
-            </div>
-            
-            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
-              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Group Size" %}</div>
-              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">{% translate "Max" %} {{ tour.max_group_size }}</strong>
-            </div>
-            
-            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
-              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Difficulty" %}</div>
-              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">{{ tour.get_difficulty_display }}</strong>
-            </div>
-            
-            {% if avg_rating %}
-            <div style="padding:0.6rem; background:var(--cream); border-radius:4px; border:1px solid rgba(13, 59, 46, 0.03); box-sizing:border-box; overflow:hidden;">
-              <div style="color:var(--text-light); font-size:0.65rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{% translate "Rating" %}</div>
-              <strong style="color:var(--green-deep); display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">⭐ {{ avg_rating|floatformat:1 }}</strong>
-            </div>
-            {% endif %}
-            
-          </div>
-
-          <!-- Tugmalar -->
-          <div style="display:flex !important; flex-direction:column !important; gap:0.75rem !important; width:100% !important; box-sizing:border-box;">
-            {% if user.is_authenticated %}
-              <a href="{% url 'bookings:booking-create' tour.slug %}" style="display:flex !important; width:100% !important; justify-content:center; align-items:center; background:var(--gold); color:var(--white); padding:1rem; border-radius:4px; text-decoration:none; font-weight:500; box-sizing:border-box; box-shadow:0 4px 12px rgba(201,168,76,0.2); text-align:center; white-space:nowrap;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">{% translate "Book This Tour" %}</a>
-            {% else %}
-              <a href="{% url 'account_login' %}?next={% url 'bookings:booking-create' tour.slug %}" style="display:flex !important; width:100% !important; justify-content:center; align-items:center; background:var(--green-deep); color:var(--white); padding:1rem; border-radius:4px; text-decoration:none; font-weight:500; box-sizing:border-box; text-align:center; white-space:nowrap;" onmouseover="this.style.background='var(--green-mid)'" onmouseout="this.style.background='var(--green-deep)'">{% translate "Login to Book" %}</a>
-            {% endif %}
-
-            <a href="{% url 'messages_app:contact' %}" style="display:flex !important; width:100% !important; justify-content:center; align-items:center; border:1px solid var(--green-deep); color:var(--green-deep); padding:0.8rem; border-radius:4px; text-decoration:none; font-weight:500; font-size:0.9rem; background:#fff; box-sizing:border-box; text-align:center; white-space:nowrap;" onmouseover="this.style.background='rgba(13,59,46,0.03)'" onmouseout="this.style.background='#fff'">{% translate "Ask a Question" %}</a>
-          </div>
-
-          <!-- Hududlar bloki -->
-          {% if tour.regions.all %}
-          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(201,168,76,0.15); width:100% !important; display:block !important;">
-            <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-light); margin-bottom:0.75rem; font-weight:600;">{% translate "Covered Regions" %}</p>
-            <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
-              {% for region in tour.regions.all %}
-              <a href="{% url 'regions:region-detail' region.slug %}" style="background:var(--cream); border:1px solid rgba(201,168,76,0.2); padding:0.35rem 0.8rem; border-radius:100px; font-size:0.8rem; color:var(--green-deep); text-decoration:none; font-weight:500; transition:all 0.25s;" onmouseover="this.style.background='var(--gold)'; this.style.color='var(--white)'; this.style.borderColor='var(--gold)';" onmouseout="this.style.background='var(--cream)'; this.style.color='var(--green-deep)'; this.style.borderColor='rgba(201,168,76,0.2)';">{{ region.name }}</a>
-              {% endfor %}
-            </div>
-          </div>
-          {% endif %}
-
-          <!-- Yordam / Telefon bloki -->
-          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(201,168,76,0.15); text-align:center; width:100% !important; display:block !important;">
-            <p style="font-size:0.8rem; color:var(--text-light); margin:0 0 0.4rem 0;">{% translate "Need personal assistance?" %}</p>
-            <a href="tel:+998950666233" style="font-family:var(--font-display), serif; font-size:1.2rem; color:var(--green-deep); font-weight:600; text-decoration:none; transition:color 0.2s; white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--green-deep)'">+998 95 066 62 33</a>
-          </div>
-          
-        </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-icon-circle" aria-label="{% trans 'Share' %}"><i class="ti ti-share"></i></button>
+        <button class="btn-icon-circle" aria-label="{% trans 'Save' %}"><i class="ti ti-heart"></i></button>
       </div>
-      
+    </div>
+
+    {# ── GALLERY ── #}
+    <div class="td-gallery">
+      <div class="td-gallery-main">
+        {% if tour.cover_image %}
+          <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="eager">
+        {% endif %}
+      </div>
+      <div class="td-gallery-side">
+        {% for img in tour.images.all|slice:":4" %}
+          <div class="td-gallery-item">
+            <img src="{{ img.image.url }}" alt="" loading="lazy">
+            {% if forloop.last and tour.images.count > 4 %}
+              <button class="td-gallery-more">
+                <i class="ti ti-photo"></i> {% trans "See all" %} {{ tour.images.count }} {% trans "photos" %}
+              </button>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Lightbox Modal -->
-<div id="solunaLightbox" class="soluna-lightbox" onclick="closeLightbox()">
-    <span class="soluna-lightbox-close" onclick="closeLightbox()">&times;</span>
-    <img class="soluna-lightbox-content" id="lightboxImage" src="" alt="SoLuna High Resolution Tour Image">
-</div>
+{# ══════════════════ MAIN GRID ══════════════════ #}
+<section style="padding:30px 0 80px;">
+  <div class="container">
+    <div class="td-layout">
 
-<script type="text/javascript">
-function openLightbox(imageUrl) {
-    const lightbox = document.getElementById('solunaLightbox');
-    const lightboxImg = document.getElementById('lightboxImage');
-    if(lightbox && lightboxImg) {
-        lightboxImg.src = imageUrl;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+      {# ── MAIN CONTENT ── #}
+      <article class="td-main">
+
+        {# Quick facts row #}
+        <div class="td-facts">
+          <div class="td-fact">
+            <i class="ti ti-clock"></i>
+            <div>
+              <div class="td-fact-label">{% trans "Duration" %}</div>
+              <div class="td-fact-value">{{ tour.duration|default:"3 days" }}</div>
+            </div>
+          </div>
+          <div class="td-fact">
+            <i class="ti ti-users"></i>
+            <div>
+              <div class="td-fact-label">{% trans "Group Size" %}</div>
+              <div class="td-fact-value">{{ tour.group_size|default:"4-6" }} {% trans "people" %}</div>
+            </div>
+          </div>
+          <div class="td-fact">
+            <i class="ti ti-language"></i>
+            <div>
+              <div class="td-fact-label">{% trans "Languages" %}</div>
+              <div class="td-fact-value">{{ tour.languages|default:"EN, RU, UZ" }}</div>
+            </div>
+          </div>
+          <div class="td-fact">
+            <i class="ti ti-map-2"></i>
+            <div>
+              <div class="td-fact-label">{% trans "Tour Type" %}</div>
+              <div class="td-fact-value">{{ tour.tour_type|default:"Cultural" }}</div>
+            </div>
+          </div>
+        </div>
+
+        {# Tabs nav #}
+        <nav class="td-tabs">
+          <a href="#overview" class="td-tab is-active">{% trans "Overview" %}</a>
+          <a href="#itinerary" class="td-tab">{% trans "Itinerary" %}</a>
+          <a href="#included" class="td-tab">{% trans "What's included" %}</a>
+          <a href="#location" class="td-tab">{% trans "Location" %}</a>
+          <a href="#reviews" class="td-tab">{% trans "Reviews" %}</a>
+        </nav>
+
+        {# Overview #}
+        <div id="overview" class="td-section">
+          <h2>{% trans "Overview" %}</h2>
+          <div class="td-prose">
+            {{ tour.description|linebreaks|default:"" }}
+          </div>
+
+          {% if tour.highlights.all %}
+          <h3 style="margin-top:32px;margin-bottom:16px;">{% trans "Highlights" %}</h3>
+          <ul class="td-highlights">
+            {% for hl in tour.highlights.all %}
+            <li><i class="ti ti-check"></i> {{ hl.text }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        {# Itinerary #}
+        {% if tour.itinerary.all %}
+        <div id="itinerary" class="td-section">
+          <h2>{% trans "Itinerary" %}</h2>
+          <div class="td-timeline">
+            {% for day in tour.itinerary.all %}
+            <details class="td-day" {% if forloop.first %}open{% endif %}>
+              <summary>
+                <span class="td-day-num">{% trans "Day" %} {{ forloop.counter }}</span>
+                <span class="td-day-title">{{ day.title }}</span>
+                <i class="ti ti-chevron-down td-day-chev"></i>
+              </summary>
+              <div class="td-day-body">
+                {{ day.description|linebreaks }}
+              </div>
+            </details>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# Included / Not Included #}
+        <div id="included" class="td-section">
+          <h2>{% trans "What's included" %}</h2>
+          <div class="td-incl-grid">
+            <div>
+              <h4 style="margin-bottom:14px;color:var(--c-success);">
+                <i class="ti ti-circle-check"></i> {% trans "Included" %}
+              </h4>
+              <ul class="td-list">
+                {% for item in tour.included.all %}
+                <li><i class="ti ti-check"></i> {{ item.text }}</li>
+                {% empty %}
+                <li><i class="ti ti-check"></i> {% trans "Professional guide" %}</li>
+                <li><i class="ti ti-check"></i> {% trans "Transport (A/C vehicle)" %}</li>
+                <li><i class="ti ti-check"></i> {% trans "Entrance fees" %}</li>
+                <li><i class="ti ti-check"></i> {% trans "Hotel accommodation" %}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div>
+              <h4 style="margin-bottom:14px;color:#E24B4A;">
+                <i class="ti ti-circle-x"></i> {% trans "Not Included" %}
+              </h4>
+              <ul class="td-list">
+                {% for item in tour.excluded.all %}
+                <li><i class="ti ti-x"></i> {{ item.text }}</li>
+                {% empty %}
+                <li><i class="ti ti-x"></i> {% trans "International flights" %}</li>
+                <li><i class="ti ti-x"></i> {% trans "Travel insurance" %}</li>
+                <li><i class="ti ti-x"></i> {% trans "Personal expenses" %}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {# Location #}
+        <div id="location" class="td-section">
+          <h2>{% trans "Location" %}</h2>
+          <div class="td-map">
+            {% if tour.latitude and tour.longitude %}
+              <iframe loading="lazy" style="border:0;width:100%;height:100%;"
+                src="https://maps.google.com/maps?q={{ tour.latitude }},{{ tour.longitude }}&z=12&output=embed"></iframe>
+            {% else %}
+              <div class="td-map-placeholder">
+                <i class="ti ti-map-pin"></i> {{ tour.location|default:"Uzbekistan" }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {# Reviews #}
+        <div id="reviews" class="td-section">
+          <h2>{% trans "Reviews" %}</h2>
+          <div class="td-rating-summary">
+            <div class="td-rating-big">
+              <div class="td-rating-num">{{ tour.rating|default:"4.96" }}</div>
+              <div class="td-rating-stars">
+                {% for i in "12345"|make_list %}<i class="ti ti-star" style="color:var(--c-star);"></i>{% endfor %}
+              </div>
+              <div style="color:var(--c-text-muted);font-size:0.9rem;margin-top:6px;">
+                {{ tour.review_count|default:"672" }} {% trans "reviews" %}
+              </div>
+            </div>
+            <div style="flex:1;">
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Excellent" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:85%;"></div></div><span>85%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Good" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:10%;"></div></div><span>10%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Average" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:3%;"></div></div><span>3%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Poor" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:1%;"></div></div><span>1%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Terrible" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:1%;"></div></div><span>1%</span></div>
+            </div>
+          </div>
+
+          <div class="td-reviews">
+            {% for review in tour.reviews.all|slice:":5" %}
+            <div class="td-review">
+              <div class="td-review-head">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  {% if review.user.avatar %}
+                    <img src="{{ review.user.avatar.url }}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+                  {% else %}
+                    <div style="width:48px;height:48px;border-radius:50%;background:var(--c-bg-alt);display:flex;align-items:center;justify-content:center;font-weight:700;">
+                      {{ review.user.username|first|upper }}
+                    </div>
+                  {% endif %}
+                  <div>
+                    <div style="font-weight:700;">{{ review.user.get_full_name|default:review.user.username }}</div>
+                    <div style="font-size:0.8rem;color:var(--c-text-muted);">{{ review.created_at|date:"d M Y" }}</div>
+                  </div>
+                </div>
+                <div>
+                  {% for i in "12345"|make_list %}{% if forloop.counter <= review.rating %}<i class="ti ti-star" style="color:var(--c-star);"></i>{% else %}<i class="ti ti-star" style="color:var(--c-border);"></i>{% endif %}{% endfor %}
+                </div>
+              </div>
+              <p style="margin-top:12px;color:var(--c-text);">{{ review.comment }}</p>
+            </div>
+            {% empty %}
+            <p style="color:var(--c-text-muted);text-align:center;padding:30px 0;">
+              {% trans "No reviews yet. Be the first to share your experience!" %}
+            </p>
+            {% endfor %}
+          </div>
+
+          {% if user.is_authenticated %}
+          <a href="#" class="btn btn-light" style="margin-top:20px;">
+            <i class="ti ti-edit"></i> {% trans "Write a review" %}
+          </a>
+          {% endif %}
+        </div>
+
+      </article>
+
+      {# ── BOOKING SIDEBAR ── #}
+      <aside class="td-sidebar">
+        <div class="td-book-card">
+          <div class="td-book-price">
+            {% if tour.original_price %}
+              <span class="td-price-old">${{ tour.original_price }}</span>
+            {% endif %}
+            <span class="td-price-now">${{ tour.price }}</span>
+            <span class="td-price-unit">/ {% trans "person" %}</span>
+          </div>
+
+          <form action="{% url 'bookings:booking-create' tour.slug %}" method="get" class="td-book-form">
+            <label class="form-label">{% trans "Date" %}</label>
+            <input type="date" name="date" class="form-control" required>
+
+            <label class="form-label">{% trans "Guests" %}</label>
+            <div class="td-counter-grid">
+              <div class="td-counter">
+                <label>{% trans "Adults" %}</label>
+                <div class="td-counter-ctrl">
+                  <button type="button" data-step="-1" data-target="adults">−</button>
+                  <input type="number" name="adults" id="adults" value="2" min="1" max="20" readonly>
+                  <button type="button" data-step="1" data-target="adults">+</button>
+                </div>
+              </div>
+              <div class="td-counter">
+                <label>{% trans "Children" %}</label>
+                <div class="td-counter-ctrl">
+                  <button type="button" data-step="-1" data-target="children">−</button>
+                  <input type="number" name="children" id="children" value="0" min="0" max="10" readonly>
+                  <button type="button" data-step="1" data-target="children">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="td-book-summary">
+              <div style="display:flex;justify-content:space-between;font-size:0.9rem;color:var(--c-text-muted);">
+                <span>${{ tour.price }} × <span id="totalGuests">2</span> {% trans "guests" %}</span>
+                <span id="subtotal">${{ tour.price|floatformat:0 }}</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:1.125rem;font-weight:700;padding-top:14px;margin-top:14px;border-top:1px solid var(--c-border);">
+                <span>{% trans "Total" %}</span>
+                <span id="total" data-price="{{ tour.price|unlocalize }}">${{ tour.price|floatformat:0 }}</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-block btn-lg" style="margin-top:18px;">
+              {% trans "Book Now" %} <i class="ti ti-arrow-right"></i>
+            </button>
+          </form>
+
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--c-border);text-align:center;">
+            <p style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:8px;">{% trans "Need help booking?" %}</p>
+            <a href="tel:+998950666233" style="color:var(--c-orange);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+              <i class="ti ti-phone"></i> +998 95 066 62 33
+            </a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+{# ══════════════════ RELATED TOURS ══════════════════ #}
+{% if related_tours %}
+<section class="section section-bg">
+  <div class="container">
+    <div class="section-header"><h2>{% trans "Related tours" %}</h2></div>
+    <div class="tour-grid">
+      {% for t in related_tours|slice:":3" %}
+      <article class="tour-card">
+        <div class="tour-card-img">
+          {% if t.cover_image %}<img src="{{ t.cover_image.url }}" alt="{{ t.title }}" loading="lazy">{% endif %}
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-card-rating">
+            <span class="star"><i class="ti ti-star"></i></span>
+            <span>{{ t.rating|default:"4.9" }}</span>
+            <span class="muted">({{ t.review_count|default:"0" }})</span>
+          </div>
+          <h3 class="tour-card-title"><a href="{% url 'tours:tour-detail' t.slug %}">{{ t.title }}</a></h3>
+          <div class="tour-card-foot">
+            <div class="tour-card-price">${{ t.price }}<small>/ {% trans "person" %}</small></div>
+            <a href="{% url 'tours:tour-detail' t.slug %}" class="btn btn-light btn-sm">{% trans "View" %}</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<style>
+/* ── Gallery ── */
+.td-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  height: 480px;
+  border-radius: var(--r-lg);
+  overflow: hidden;
 }
-function closeLightbox() {
-    const lightbox = document.getElementById('solunaLightbox');
-    if(lightbox) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+@media (max-width: 768px) { .td-gallery { grid-template-columns: 1fr; height: auto; } }
+
+.td-gallery-main { overflow: hidden; border-radius: var(--r-md); }
+.td-gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+
+.td-gallery-side {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
 }
-document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") { closeLightbox(); }
-});
+.td-gallery-item { position: relative; overflow: hidden; border-radius: var(--r-md); }
+.td-gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+.td-gallery-more {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-weight: 700; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.td-gallery-more:hover { background: rgba(0,0,0,0.65); }
+
+/* ── Layout ── */
+.td-layout { display: grid; grid-template-columns: 1fr 380px; gap: 40px; }
+@media (max-width: 1024px) { .td-layout { grid-template-columns: 1fr; } }
+
+.td-facts {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 22px;
+  margin-bottom: 30px;
+}
+@media (max-width: 700px) { .td-facts { grid-template-columns: repeat(2, 1fr); } }
+.td-fact { display: flex; align-items: center; gap: 12px; }
+.td-fact i { font-size: 1.6rem; color: var(--c-orange); }
+.td-fact-label { font-size: 0.75rem; color: var(--c-text-muted); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+.td-fact-value { font-weight: 700; font-size: 0.95rem; }
+
+/* ── Tabs ── */
+.td-tabs {
+  display: flex; gap: 4px;
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+.td-tab {
+  padding: 14px 22px;
+  font-weight: 600; font-size: 0.95rem;
+  color: var(--c-text-muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.td-tab:hover { color: var(--c-text); }
+.td-tab.is-active { color: var(--c-text); border-bottom-color: var(--c-text); }
+
+.td-section { padding: 30px 0; scroll-margin-top: 120px; }
+.td-section h2 { margin-bottom: 16px; font-size: 1.75rem; }
+.td-prose p { font-size: 1rem; line-height: 1.7; color: var(--c-text); margin-bottom: 14px; }
+
+.td-highlights {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px;
+  list-style: none; padding: 0;
+}
+@media (max-width: 600px) { .td-highlights { grid-template-columns: 1fr; } }
+.td-highlights li { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; }
+.td-highlights i { color: var(--c-success); flex-shrink: 0; margin-top: 4px; }
+
+/* ── Itinerary ── */
+.td-timeline { display: flex; flex-direction: column; gap: 12px; }
+.td-day {
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.td-day summary {
+  list-style: none;
+  padding: 18px 22px;
+  display: flex; align-items: center; gap: 16px;
+  cursor: pointer;
+  background: var(--c-bg-alt);
+}
+.td-day summary::-webkit-details-marker { display: none; }
+.td-day-num {
+  background: var(--c-text); color: #fff;
+  padding: 4px 12px; border-radius: var(--r-sm);
+  font-size: 0.8rem; font-weight: 700;
+}
+.td-day-title { flex: 1; font-weight: 700; }
+.td-day-chev { transition: transform 0.3s ease; }
+.td-day[open] .td-day-chev { transform: rotate(180deg); }
+.td-day-body { padding: 18px 22px; background: #fff; }
+
+/* ── Included ── */
+.td-incl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 600px) { .td-incl-grid { grid-template-columns: 1fr; } }
+.td-list { list-style: none; padding: 0; }
+.td-list li { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; font-size: 0.95rem; }
+.td-list i { flex-shrink: 0; margin-top: 4px; }
+.td-list li i.ti-check { color: var(--c-success); }
+.td-list li i.ti-x { color: #E24B4A; }
+
+/* ── Map ── */
+.td-map {
+  height: 360px;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--c-bg-alt);
+}
+.td-map-placeholder {
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; color: var(--c-text-muted);
+}
+
+/* ── Reviews ── */
+.td-rating-summary {
+  display: flex; gap: 40px; align-items: center;
+  padding: 24px;
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+  margin-bottom: 24px;
+}
+@media (max-width: 600px) { .td-rating-summary { flex-direction: column; gap: 20px; } }
+.td-rating-big { text-align: center; min-width: 120px; }
+.td-rating-num { font-size: 3rem; font-weight: 800; line-height: 1; }
+.td-rating-stars { margin-top: 8px; }
+.td-rating-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; font-size: 0.85rem; }
+.td-bar { flex: 1; height: 6px; background: var(--c-border); border-radius: 3px; overflow: hidden; }
+.td-bar-fill { height: 100%; background: var(--c-star); }
+
+.td-reviews { display: flex; flex-direction: column; gap: 20px; }
+.td-review { padding: 20px; border: 1px solid var(--c-border); border-radius: var(--r-md); }
+.td-review-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+
+/* ── Booking sidebar ── */
+.td-sidebar {
+  position: sticky; top: 130px;
+  align-self: start;
+}
+@media (max-width: 1024px) { .td-sidebar { position: static; } }
+
+.td-book-card {
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  box-shadow: var(--sh-md);
+}
+.td-book-price {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--c-border);
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+}
+.td-price-old { text-decoration: line-through; color: var(--c-text-muted); font-size: 1.2rem; }
+.td-price-now { font-size: 2.25rem; font-weight: 800; }
+.td-price-unit { color: var(--c-text-muted); font-size: 1rem; }
+
+.td-book-form { display: flex; flex-direction: column; gap: 6px; }
+.td-counter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px; }
+.td-counter label { font-size: 0.8rem; color: var(--c-text-muted); display: block; margin-bottom: 6px; }
+.td-counter-ctrl {
+  display: flex; align-items: center;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.td-counter-ctrl button {
+  width: 36px; height: 40px;
+  background: var(--c-bg-alt);
+  font-size: 1.2rem; font-weight: 700;
+  border: none;
+  transition: background 0.15s ease;
+}
+.td-counter-ctrl button:hover { background: var(--c-border); }
+.td-counter-ctrl input {
+  flex: 1; text-align: center;
+  border: none; outline: none;
+  font-weight: 700; font-size: 1rem;
+  background: #fff;
+}
+
+.td-book-summary {
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+  padding: 16px;
+  margin-top: 18px;
+}
+</style>
+
+<script>
+// Counter + total calculation
+(function () {
+  const totalEl = document.getElementById('total');
+  const subEl = document.getElementById('subtotal');
+  const guestsEl = document.getElementById('totalGuests');
+  const price = parseFloat(totalEl?.dataset.price || '0');
+
+  function recalc() {
+    const a = parseInt(document.getElementById('adults').value, 10) || 0;
+    const c = parseInt(document.getElementById('children').value, 10) || 0;
+    const total = price * (a + c * 0.5);
+    if (subEl)    subEl.textContent    = '$' + Math.round(total);
+    if (totalEl)  totalEl.textContent  = '$' + Math.round(total);
+    if (guestsEl) guestsEl.textContent = a + c;
+  }
+
+  document.querySelectorAll('[data-step]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      const step = parseInt(btn.dataset.step, 10);
+      const min = parseInt(target.min, 10);
+      const max = parseInt(target.max, 10);
+      const cur = parseInt(target.value, 10) || 0;
+      const next = Math.max(min, Math.min(max, cur + step));
+      target.value = next;
+      recalc();
+    });
+  });
+
+  // Tabs scroll
+  document.querySelectorAll('.td-tab').forEach(tab => {
+    tab.addEventListener('click', e => {
+      document.querySelectorAll('.td-tab').forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+    });
+  });
+})();
 </script>
 
 {% endblock %}

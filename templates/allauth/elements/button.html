@@ -1,0 +1,18 @@
+{% load allauth %}
+{% if attrs.href %}
+  <a
+    href="{{ attrs.href }}"
+    class="btn {% if attrs.tags|first == 'primary' %}btn-dark{% else %}btn-light{% endif %} {% if attrs.tags|length > 0 and attrs.tags.1 == 'block' %}btn-block{% endif %}"
+  >
+    {% if slots.default %}{% slot %}{% endslot %}{% endif %}
+  </a>
+{% else %}
+  <button
+    type="{{ attrs.type|default:'submit' }}"
+    {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
+    {% if attrs.form %}form="{{ attrs.form }}"{% endif %}
+    class="btn {% if attrs.tags|first == 'primary' %}btn-dark{% else %}btn-light{% endif %} {% if attrs.tags|length > 0 and attrs.tags.1 == 'block' %}btn-block{% endif %}"
+  >
+    {% if slots.default %}{% slot %}{% endslot %}{% endif %}
+  </button>
+{% endif %}

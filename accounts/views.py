@@ -6,44 +6,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from django.urls import reverse_lazy
 from .models import User
-from .forms import RegisterForm, ProfileUpdateForm
-
-
-# class RegisterView(CreateView):
-#     model = User
-#     form_class = RegisterForm
-#     template_name = 'accounts/register.html'
-#     success_url = reverse_lazy('home')
-
-#     def dispatch(self, request, *args, **kwargs):
-#         if request.user.is_authenticated:
-#             return redirect('home')
-#         return super().dispatch(request, *args, **kwargs)
-
-#     def form_valid(self, form):
-#         user = form.save()
-#         login(self.request, user)
-
-#         # Email tasdiqlash va xush kelibsiz xabarlari
-#         from .tasks import send_verification_email, send_welcome_email
-#         send_verification_email.delay(user.pk)
-#         send_welcome_email.delay(user.pk)
-
-#         messages.success(self.request, f"Xush kelibsiz, {user.get_full_name()}! Emailingizni tasdiqlang.")
-#         return redirect(self.success_url)
-
-
-# class CustomLoginView(LoginView):
-#     template_name = 'accounts/login.html'
-
-#     def dispatch(self, request, *args, **kwargs):
-#         if request.user.is_authenticated:
-#             return redirect('home')
-#         return super().dispatch(request, *args, **kwargs)
-
-#     def get_success_url(self):
-#         next_url = self.request.GET.get('next')
-#         return next_url or reverse_lazy('home')
+from .forms import ProfileUpdateForm
 
 
 class ProfileView(LoginRequiredMixin, DetailView):

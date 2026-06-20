@@ -1,76 +1,95 @@
 {% extends 'base.html' %}
-{% load i18n %}
-{% block title %}{% trans "Edit Profile" %} — SoLuna{% endblock %}
+{% load static i18n %}
+
+{% block title %}{% trans "Edit Profile" %} | SoLuna{% endblock %}
 
 {% block content %}
-<div class="page-head">
-  <div class="container">
-    <p class="eyebrow">{% trans "Account" %}</p>
-    <h1>{% trans "Edit Profile" %}</h1>
-  </div>
-</div>
+<section style="background:var(--c-bg-alt);padding:40px 0 80px;">
+  <div class="container" style="max-width:780px;">
 
-<section class="section section-cream">
-  <div class="container" style="max-width:680px;">
-    <div class="panel panel-pad-lg reveal">
-      <form method="post" enctype="multipart/form-data" novalidate data-loading>
+    <nav style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:14px;">
+      <a href="{% url 'accounts:profile' %}" style="color:var(--c-text-muted);">{% trans "Profile" %}</a>
+      <span style="margin:0 8px;">/</span>
+      <span style="color:var(--c-text);font-weight:600;">{% trans "Edit" %}</span>
+    </nav>
+
+    <div class="bk-card">
+      <h2 style="margin-bottom:6px;">{% trans "Edit Profile" %}</h2>
+      <p style="color:var(--c-text-muted);margin-bottom:28px;">
+        {% trans "Update your personal information and preferences." %}
+      </p>
+
+      <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {% if form.non_field_errors %}
-          <div class="alert alert-error">{{ form.non_field_errors.0 }}</div>
-        {% endif %}
 
-        <div class="form-grid-2">
+        {# Avatar #}
+        <div style="display:flex;align-items:center;gap:24px;margin-bottom:30px;padding-bottom:24px;border-bottom:1px solid var(--c-border);">
+          {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="" style="width:88px;height:88px;border-radius:50%;object-fit:cover;">
+          {% else %}
+            <div style="width:88px;height:88px;border-radius:50%;background:var(--c-yellow);display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:800;">
+              {{ user.username|first|upper }}
+            </div>
+          {% endif %}
+          <div style="flex:1;">
+            <h4 style="margin-bottom:8px;">{% trans "Profile photo" %}</h4>
+            <p style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:12px;">
+              {% trans "JPG, PNG. Max 2MB." %}
+            </p>
+            <label class="btn btn-light btn-sm" style="cursor:pointer;">
+              <i class="ti ti-upload"></i> {% trans "Upload" %}
+              <input type="file" name="avatar" accept="image/*" hidden>
+            </label>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
           <div class="form-group">
             <label class="form-label" for="id_first_name">{% trans "First Name" %}</label>
-            <input type="text" name="first_name" id="id_first_name" class="form-control"
-                   value="{{ form.first_name.value|default:'' }}" autocomplete="given-name">
-            {% if form.first_name.errors %}<p class="field-error">{{ form.first_name.errors.0 }}</p>{% endif %}
+            <input type="text" name="first_name" id="id_first_name" class="form-control" value="{{ user.first_name }}">
           </div>
           <div class="form-group">
             <label class="form-label" for="id_last_name">{% trans "Last Name" %}</label>
-            <input type="text" name="last_name" id="id_last_name" class="form-control"
-                   value="{{ form.last_name.value|default:'' }}" autocomplete="family-name">
-            {% if form.last_name.errors %}<p class="field-error">{{ form.last_name.errors.0 }}</p>{% endif %}
+            <input type="text" name="last_name" id="id_last_name" class="form-control" value="{{ user.last_name }}">
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="id_email">{% trans "Email" %}</label>
-          <input type="email" name="email" id="id_email" class="form-control"
-                 value="{{ form.email.value|default:'' }}" autocomplete="email">
-          {% if form.email.errors %}<p class="field-error">{{ form.email.errors.0 }}</p>{% endif %}
+          <input type="email" name="email" id="id_email" class="form-control" value="{{ user.email }}" readonly>
+          <small style="color:var(--c-text-muted);font-size:0.8rem;">{% trans "Email cannot be changed." %}</small>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="id_phone">{% trans "Phone" %}</label>
-          <input type="tel" name="phone" id="id_phone" class="form-control"
-                 value="{{ form.phone.value|default:'' }}" autocomplete="tel" placeholder="+998 90 123 45 67">
-          {% if form.phone.errors %}<p class="field-error">{{ form.phone.errors.0 }}</p>{% endif %}
+          <input type="tel" name="phone" id="id_phone" class="form-control" value="{{ user.phone|default:'' }}" placeholder="+998 ...">
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+          <div class="form-group">
+            <label class="form-label" for="id_country">{% trans "Country" %}</label>
+            <input type="text" name="country" id="id_country" class="form-control" value="{{ user.country|default:'' }}">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="id_city">{% trans "City" %}</label>
+            <input type="text" name="city" id="id_city" class="form-control" value="{{ user.city|default:'' }}">
+          </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="id_avatar">{% trans "Avatar" %}</label>
-          <input type="file" name="avatar" id="id_avatar" accept="image/*" class="form-control">
-          {% if form.avatar.errors %}<p class="field-error">{{ form.avatar.errors.0 }}</p>{% endif %}
+          <label class="form-label" for="id_bio">{% trans "About yourself" %}</label>
+          <textarea name="bio" id="id_bio" class="form-control" rows="4" placeholder="{% trans 'Tell us a bit about yourself...' %}">{{ user.bio|default:'' }}</textarea>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="id_preferred_language">{% trans "Preferred Language" %}</label>
-          {% comment %}FIX: widget.choices ga qo'lda kirish o'rniga formaning
-          o'zi render qiladi — widget o'zgarsa template buzilmaydi{% endcomment %}
-          {{ form.preferred_language }}
-          {% if form.preferred_language.errors %}<p class="field-error">{{ form.preferred_language.errors.0 }}</p>{% endif %}
-        </div>
-
-        <div style="display:flex;gap:1rem;margin-top:0.5rem;flex-wrap:wrap;">
-          <button type="submit" class="btn btn-gold btn-lg">{% trans "Save Changes" %}</button>
-          <a href="{% url 'accounts:profile' %}" class="btn btn-outline-dark btn-lg">{% trans "Cancel" %}</a>
+        <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:28px;padding-top:24px;border-top:1px solid var(--c-border);">
+          <a href="{% url 'accounts:profile' %}" class="btn btn-light">{% trans "Cancel" %}</a>
+          <button type="submit" class="btn btn-dark">
+            <i class="ti ti-check"></i> {% trans "Save Changes" %}
+          </button>
         </div>
       </form>
     </div>
+
   </div>
 </section>
 {% endblock %}
-
-{% comment %}Eslatma: forms.py da select uchun class bering —
-preferred_language widget=forms.Select(attrs={'class': 'form-control'}){% endcomment %}

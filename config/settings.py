@@ -203,12 +203,15 @@ SITE_URL = os.getenv('SITE_URL', 'http://localhost:8000')
 ESKIZ_EMAIL = os.getenv('ESKIZ_EMAIL', '')
 ESKIZ_PASSWORD = os.getenv('ESKIZ_PASSWORD', '')
 
-CLICK_SERVICE_ID = os.getenv('CLICK_SERVICE_ID', '')
-CLICK_MERCHANT_ID = os.getenv('CLICK_MERCHANT_ID', '')
-CLICK_SECRET_KEY = os.getenv('CLICK_SECRET_KEY', '')
-
-PAYME_ID = os.getenv('PAYME_ID', '')
-PAYME_KEY = os.getenv('PAYME_KEY', '')
+CLICK_MERCHANT_ID = os.environ.get('CLICK_MERCHANT_ID', '')
+CLICK_SERVICE_ID = os.environ.get('CLICK_SERVICE_ID', '')
+CLICK_SECRET_KEY = os.environ.get('CLICK_SECRET_KEY', '')
+CLICK_MERCHANT_USER_ID = os.environ.get('CLICK_MERCHANT_USER_ID', '')
+ 
+# Ro'yxatdan o'tish: https://business.payme.uz/
+PAYME_MERCHANT_ID = os.environ.get('PAYME_MERCHANT_ID', '')
+PAYME_SECRET_KEY = os.environ.get('PAYME_SECRET_KEY', '')
+PAYME_TEST_KEY = os.environ.get('PAYME_TEST_KEY', '')  # Sandbox uchun
 
 DGIS_API_KEY = os.getenv('DGIS_API_KEY', '')
 
@@ -223,4 +226,35 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
+
+# ════ LOGGING ════
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module}: {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'payments_file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/payments.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'payments': {
+            'handlers': ['payments_file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+ 
+ 
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True

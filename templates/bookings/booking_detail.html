@@ -1,0 +1,811 @@
+{% extends 'base.html' %}
+{% load static i18n l10n %}
+
+{% block title %}{% trans "Booking" %} #{{ booking.booking_number }} | SoLuna{% endblock %}
+
+{% block content %}
+
+{# ════ STATUS HERO ════ #}
+<section class="bd-hero bd-hero-{{ booking.status }}">
+  <div class="container">
+    <nav class="bd-crumbs">
+      <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      <i class="ti ti-chevron-right"></i>
+      <a href="{% url 'bookings:booking-list' %}">{% trans "My Bookings" %}</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>#{{ booking.booking_number }}</span>
+    </nav>
+
+    <div class="bd-hero-grid">
+      <div>
+        {# Status badge with icon #}
+        <div class="bd-status-badge">
+          {% if booking.status == 'confirmed' %}
+            <span class="bd-status-icon"><i class="ti ti-check"></i></span>
+            <span>{% trans "Confirmed" %}</span>
+          {% elif booking.status == 'pending' %}
+            <span class="bd-status-icon"><i class="ti ti-clock"></i></span>
+            <span>{% trans "Pending payment" %}</span>
+          {% elif booking.status == 'completed' %}
+            <span class="bd-status-icon"><i class="ti ti-flag-check"></i></span>
+            <span>{% trans "Completed" %}</span>
+          {% elif booking.status == 'cancelled' %}
+            <span class="bd-status-icon"><i class="ti ti-x"></i></span>
+            <span>{% trans "Cancelled" %}</span>
+          {% else %}
+            <span class="bd-status-icon"><i class="ti ti-circle"></i></span>
+            <span>{{ booking.status }}</span>
+          {% endif %}
+        </div>
+
+        <h1 class="bd-hero-title">
+          {% if booking.status == 'confirmed' %}{% trans "Your trip is booked!" %}
+          {% elif booking.status == 'pending' %}{% trans "Almost there!" %}
+          {% elif booking.status == 'completed' %}{% trans "Welcome back!" %}
+          {% elif booking.status == 'cancelled' %}{% trans "Booking cancelled" %}
+          {% else %}{% trans "Booking details" %}{% endif %}
+        </h1>
+
+        <p class="bd-hero-sub">
+          {% if booking.status == 'pending' %}{% trans "Complete your payment to confirm this booking." %}
+          {% elif booking.status == 'confirmed' %}{% trans "Get ready for an unforgettable journey. We've sent details to your email." %}
+          {% elif booking.status == 'cancelled' %}{% trans "This booking has been cancelled." %}
+          {% else %}{% trans "All your trip information in one place." %}{% endif %}
+        </p>
+
+        <div class="bd-hero-meta">
+          <div>
+            <span class="bd-hero-meta-label">{% trans "Booking #" %}</span>
+            <span class="bd-hero-meta-value">{{ booking.booking_number }}</span>
+          </div>
+          <div>
+            <span class="bd-hero-meta-label">{% trans "Booked" %}</span>
+            <span class="bd-hero-meta-value">{{ booking.created_at|date:"d M Y" }}</span>
+          </div>
+          <div>
+            <span class="bd-hero-meta-label">{% trans "Travel date" %}</span>
+            <span class="bd-hero-meta-value">{{ booking.travel_date|date:"d M Y" }}</span>
+          </div>
+        </div>
+      </div>
+
+      {# E-Ticket decorative card #}
+      <div class="bd-hero-deco">
+        <div class="bd-ticket-card">
+          <div class="bd-ticket-top">
+            <div class="bd-ticket-mark">SL</div>
+            <div>
+              <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.6;">SoLuna</div>
+              <div style="font-weight:700;font-size:0.95rem;">{% trans "E-Ticket" %}</div>
+            </div>
+          </div>
+          <div class="bd-ticket-divider"></div>
+          <div class="bd-ticket-body">
+            <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:6px;">{% trans "Destination" %}</div>
+            <div style="font-size:1.3rem;font-weight:800;line-height:1.2;margin-bottom:14px;">
+              {% if booking.tour.region %}{{ booking.tour.region.name|upper }}{% else %}UZBEKISTAN{% endif %}
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.75rem;">
+              <div>
+                <div style="opacity:0.5;margin-bottom:2px;">{% trans "GUESTS" %}</div>
+                <div style="font-weight:700;font-size:0.95rem;">{{ booking.num_adults }}{% if booking.num_children %}+{{ booking.num_children }}{% endif %}</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="opacity:0.5;margin-bottom:2px;">{% trans "DURATION" %}</div>
+                <div style="font-weight:700;font-size:0.95rem;">{% if booking.tour.duration_days %}{{ booking.tour.duration_days }}d{% else %}—{% endif %}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ════ BODY ════ #}
+<section style="background:var(--c-bg-alt);padding:32px 0 80px;">
+  <div class="container">
+
+    {# Action bar #}
+    <div class="bd-actions">
+      <a href="{% url 'bookings:booking-list' %}" class="bd-back">
+        <i class="ti ti-arrow-left"></i> {% trans "Back to bookings" %}
+      </a>
+      <div class="bd-actions-right">
+        {% if booking.status == 'pending' %}
+          <a href="{% url 'payments:select' booking.id %}" class="btn btn-yellow">
+            <i class="ti ti-credit-card"></i> {% trans "Pay now" %}
+          </a>
+        {% endif %}
+        <button onclick="window.print()" class="btn btn-light btn-sm">
+          <i class="ti ti-printer"></i> {% trans "Print" %}
+        </button>
+        {% if booking.can_cancel %}
+          <button onclick="document.getElementById('cancelModal').classList.add('is-open')" class="btn btn-light btn-sm" style="color:#E24B4A;">
+            <i class="ti ti-x"></i> {% trans "Cancel" %}
+          </button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="bd-grid">
+
+      {# ── MAIN COLUMN ── #}
+      <div class="bd-main">
+
+        {# Tour card #}
+        <article class="bd-card bd-tour-card">
+          <div class="bd-tour-img">
+            {% if booking.tour.cover_image %}
+              <img src="{{ booking.tour.cover_image.url }}" alt="{{ booking.tour.title }}">
+            {% else %}
+              <div class="bd-tour-img-fallback"><i class="ti ti-mountain"></i></div>
+            {% endif %}
+            <div class="bd-tour-img-overlay"></div>
+            <div class="bd-tour-img-tag">
+              <i class="ti ti-star"></i> {{ booking.tour.rating|default:"4.96" }}
+            </div>
+            {% if booking.tour.tour_type %}
+            <div class="bd-tour-img-type">{{ booking.tour.tour_type }}</div>
+            {% endif %}
+          </div>
+          <div class="bd-tour-body">
+            <div class="bd-tour-meta-top">
+              <i class="ti ti-map-pin"></i>
+              {% if booking.tour.region %}{{ booking.tour.region.name }}{% else %}Uzbekistan{% endif %}
+            </div>
+            <h2 class="bd-tour-title">
+              <a href="{% url 'tours:tour-detail' booking.tour.slug %}">{{ booking.tour.title }}</a>
+            </h2>
+            {% if booking.tour.short_description %}
+            <p class="bd-tour-desc">{{ booking.tour.short_description|truncatewords:30 }}</p>
+            {% endif %}
+            <div class="bd-tour-tags">
+              {% if booking.tour.duration_days %}
+              <span><i class="ti ti-clock"></i> {{ booking.tour.duration_days }} {% trans "days" %}</span>
+              {% endif %}
+              <span><i class="ti ti-users"></i> {{ booking.num_adults }} {% trans "adults" %}{% if booking.num_children %}, {{ booking.num_children }} {% trans "children" %}{% endif %}</span>
+              <a href="{% url 'tours:tour-detail' booking.tour.slug %}" class="bd-tour-link">
+                {% trans "View tour" %} <i class="ti ti-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        {# Trip info card #}
+        <article class="bd-card">
+          <div class="bd-card-head">
+            <div class="bd-card-icon"><i class="ti ti-route"></i></div>
+            <div>
+              <h2>{% trans "Trip Information" %}</h2>
+              <p>{% trans "Your travel details" %}</p>
+            </div>
+          </div>
+          <div class="bd-detail-grid">
+            <div class="bd-detail">
+              <div class="bd-detail-icon"><i class="ti ti-calendar-event"></i></div>
+              <div>
+                <div class="bd-detail-label">{% trans "Travel Date" %}</div>
+                <div class="bd-detail-value">{{ booking.travel_date|date:"l, d F Y" }}</div>
+              </div>
+            </div>
+            <div class="bd-detail">
+              <div class="bd-detail-icon"><i class="ti ti-users"></i></div>
+              <div>
+                <div class="bd-detail-label">{% trans "Guests" %}</div>
+                <div class="bd-detail-value">
+                  {{ booking.num_adults }} {% trans "adults" %}
+                  {% if booking.num_children %} + {{ booking.num_children }} {% trans "children" %}{% endif %}
+                </div>
+              </div>
+            </div>
+            {% if booking.tour.duration_days %}
+            <div class="bd-detail">
+              <div class="bd-detail-icon"><i class="ti ti-clock"></i></div>
+              <div>
+                <div class="bd-detail-label">{% trans "Duration" %}</div>
+                <div class="bd-detail-value">
+                  {{ booking.tour.duration_days }} {% trans "days" %}{% if booking.tour.duration_nights %} / {{ booking.tour.duration_nights }} {% trans "nights" %}{% endif %}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            <div class="bd-detail">
+              <div class="bd-detail-icon"><i class="ti ti-map-2"></i></div>
+              <div>
+                <div class="bd-detail-label">{% trans "Destination" %}</div>
+                <div class="bd-detail-value">
+                  {% if booking.tour.region %}{{ booking.tour.region.name }}{% else %}Uzbekistan{% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {# Booking info card #}
+        <article class="bd-card">
+          <div class="bd-card-head">
+            <div class="bd-card-icon"><i class="ti ti-user-circle"></i></div>
+            <div>
+              <h2>{% trans "Booking Info" %}</h2>
+              <p>{% trans "Contact and reference" %}</p>
+            </div>
+          </div>
+
+          <div class="bd-account-box">
+            <div class="bd-avatar">
+              {% if booking.user.first_name %}{{ booking.user.first_name.0|upper }}{% else %}{{ booking.user.username.0|upper }}{% endif %}
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div class="bd-account-name">
+                {% if booking.user.get_full_name %}{{ booking.user.get_full_name }}{% else %}{{ booking.user.username }}{% endif %}
+              </div>
+              <div class="bd-account-email"><i class="ti ti-mail"></i> {{ booking.user.email }}</div>
+            </div>
+            <div class="bd-booking-ref">
+              <div class="bd-booking-ref-label">{% trans "Reference" %}</div>
+              <div class="bd-booking-ref-num">#{{ booking.booking_number }}</div>
+            </div>
+          </div>
+
+          {% if booking.special_requests %}
+          <div class="bd-notes">
+            <div class="bd-notes-label"><i class="ti ti-note"></i> {% trans "Special Requests" %}</div>
+            <div class="bd-notes-text">{{ booking.special_requests|linebreaks }}</div>
+          </div>
+          {% endif %}
+        </article>
+
+        {# Cancellation info #}
+        {% if booking.status == 'cancelled' and booking.cancellation_reason %}
+        <article class="bd-card bd-card-cancel">
+          <div class="bd-card-head">
+            <div class="bd-card-icon" style="background:#FEE2E2;color:#E24B4A;"><i class="ti ti-info-circle"></i></div>
+            <div>
+              <h2 style="color:#7F1D1D;">{% trans "Cancellation Details" %}</h2>
+              <p>{% trans "Cancelled on" %} {{ booking.cancelled_at|date:"d M Y, H:i" }}</p>
+            </div>
+          </div>
+          <div style="padding:14px 18px;background:#FEF2F2;border-radius:var(--r-md);">
+            {{ booking.cancellation_reason }}
+          </div>
+        </article>
+        {% endif %}
+
+      </div>
+
+      {# ── SIDEBAR ── #}
+      <aside class="bd-side">
+
+        {# Payment Summary #}
+        <div class="bd-card bd-summary">
+          <div class="bd-card-head">
+            <div class="bd-card-icon"><i class="ti ti-receipt"></i></div>
+            <div>
+              <h2>{% trans "Payment Summary" %}</h2>
+              <p>{% trans "Price breakdown" %}</p>
+            </div>
+          </div>
+
+          <div class="bd-summary-row">
+            <span>{% if booking.currency == 'USD' %}${% endif %}{{ booking.price_per_person|floatformat:0 }} × {{ booking.num_adults }} {% trans "adults" %}</span>
+            <span>{% if booking.currency == 'USD' %}${% endif %}{{ booking.total_price|floatformat:0 }}</span>
+          </div>
+          {% if booking.num_children %}
+          <div class="bd-summary-row">
+            <span>{% trans "Children" %} × {{ booking.num_children }}</span>
+            <span>{% trans "Included" %}</span>
+          </div>
+          {% endif %}
+          <div class="bd-summary-row">
+            <span>{% trans "Service fee" %}</span>
+            <span>$0</span>
+          </div>
+          <div class="bd-summary-row">
+            <span>{% trans "Tax" %}</span>
+            <span>{% trans "Included" %}</span>
+          </div>
+
+          <div class="bd-summary-divider"></div>
+
+          <div class="bd-summary-total">
+            <span>{% trans "Total" %}</span>
+            <span class="bd-summary-amount">
+              {% if booking.currency == 'USD' %}${% endif %}{{ booking.total_price|floatformat:0 }}{% if booking.currency != 'USD' %} {{ booking.currency }}{% endif %}
+            </span>
+          </div>
+
+          {# Payment status pill #}
+          <div class="bd-pay-pill bd-pay-pill-{{ booking.status }}">
+            {% if booking.status == 'pending' %}
+              <i class="ti ti-clock"></i> {% trans "Payment pending" %}
+            {% elif booking.status == 'confirmed' or booking.status == 'completed' %}
+              <i class="ti ti-circle-check"></i> {% trans "Paid" %}
+            {% elif booking.status == 'cancelled' %}
+              <i class="ti ti-x"></i> {% trans "Refunded" %}
+            {% endif %}
+          </div>
+
+          {% if booking.status == 'pending' %}
+          <a href="{% url 'payments:select' booking.id %}" class="btn btn-dark btn-block btn-lg" style="margin-top:16px;">
+            {% trans "Complete Payment" %} <i class="ti ti-arrow-right"></i>
+          </a>
+          {% endif %}
+        </div>
+
+        {# Reassurance / Help #}
+        <div class="bd-card bd-help">
+          <div class="bd-help-icon"><i class="ti ti-headset"></i></div>
+          <h4>{% trans "Need help?" %}</h4>
+          <p>{% trans "Our support team is available 24/7 to assist with your booking." %}</p>
+
+          <div class="bd-help-list">
+            <a href="{% url 'messages_app:contact' %}" class="bd-help-item">
+              <i class="ti ti-mail"></i>
+              <span>{% trans "Email support" %}</span>
+              <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
+            </a>
+            <a href="tel:+998901234567" class="bd-help-item">
+              <i class="ti ti-phone"></i>
+              <span>+998 90 123 45 67</span>
+              <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
+            </a>
+            <a href="#chat" class="bd-help-item">
+              <i class="ti ti-message-circle"></i>
+              <span>{% trans "Live chat" %}</span>
+              <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        {# Trust badges #}
+        <div class="bd-trust-card">
+          <div class="bd-trust-item">
+            <i class="ti ti-shield-check"></i>
+            <div>
+              <strong>{% trans "Secure booking" %}</strong>
+              <span>{% trans "256-bit SSL encryption" %}</span>
+            </div>
+          </div>
+          <div class="bd-trust-item">
+            <i class="ti ti-rotate-clockwise"></i>
+            <div>
+              <strong>{% trans "Free cancellation" %}</strong>
+              <span>{% trans "Up to 3 days before travel" %}</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{# ════ CANCEL MODAL ════ #}
+{% if booking.can_cancel %}
+<div class="bd-modal" id="cancelModal">
+  <div class="bd-modal-card">
+    <button class="bd-modal-close" onclick="document.getElementById('cancelModal').classList.remove('is-open')"><i class="ti ti-x"></i></button>
+    <div style="text-align:center;">
+      <div class="bd-modal-icon"><i class="ti ti-alert-triangle"></i></div>
+      <h3 style="margin:14px 0 8px;">{% trans "Cancel this booking?" %}</h3>
+      <p style="color:var(--c-text-muted);margin-bottom:24px;">{% trans "This action cannot be undone. Refunds depend on the cancellation policy." %}</p>
+    </div>
+    <form method="post" action="{% url 'bookings:booking-cancel' booking.id %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label class="form-label">{% trans "Reason (optional)" %}</label>
+        <textarea name="reason" rows="3" class="form-control" placeholder="{% trans 'Why are you cancelling?' %}"></textarea>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:18px;">
+        <button type="button" onclick="document.getElementById('cancelModal').classList.remove('is-open')" class="btn btn-light" style="flex:1;">
+          {% trans "Keep booking" %}
+        </button>
+        <button type="submit" class="btn btn-dark" style="flex:1;background:#E24B4A;border-color:#E24B4A;">
+          <i class="ti ti-x"></i> {% trans "Confirm cancel" %}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+
+<style>
+/* ═══ HERO ═══ */
+.bd-hero { padding: 40px 0 70px; color: #fff; position: relative; overflow: hidden; }
+.bd-hero-confirmed { background: linear-gradient(135deg, #0F1419 0%, #1E2A2E 60%, #2C5F2D 100%); }
+.bd-hero-pending   { background: linear-gradient(135deg, #1A1410 0%, #2E2820 60%, #8B6F1E 100%); }
+.bd-hero-completed { background: linear-gradient(135deg, #0F1419 0%, #1A1F2E 60%, #1E40AF 100%); }
+.bd-hero-cancelled { background: linear-gradient(135deg, #1A0E0E 0%, #2E1A1A 60%, #7F1D1D 100%); }
+.bd-hero::before {
+  content: ''; position: absolute; right: -100px; top: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(254,250,23,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bd-crumbs {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+  color: rgba(255,255,255,0.5);
+}
+.bd-crumbs a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.bd-crumbs a:hover { color: var(--c-yellow); }
+.bd-crumbs i { font-size: 0.7rem; opacity: 0.4; }
+.bd-crumbs span { color: var(--c-yellow); font-weight: 600; font-family: 'Space Mono', monospace; }
+
+.bd-hero-grid {
+  display: grid; grid-template-columns: 1fr 320px; gap: 40px;
+  align-items: center; position: relative;
+}
+@media (max-width:900px) { .bd-hero-grid { grid-template-columns: 1fr; } .bd-hero-deco { display: none; } }
+
+.bd-status-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 18px 8px 8px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  font-weight: 700; font-size: 0.85rem;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.bd-status-icon {
+  width: 30px; height: 30px;
+  background: var(--c-yellow); color: #000;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.bd-hero-cancelled .bd-status-icon { background: #E24B4A; color: #fff; }
+
+.bd-hero-title { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; margin-bottom: 12px; }
+.bd-hero-sub { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 28px; max-width: 480px; }
+
+.bd-hero-meta {
+  display: flex; gap: 32px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);
+}
+.bd-hero-meta > div { display: flex; flex-direction: column; gap: 4px; }
+.bd-hero-meta-label { font-size: 0.72rem; opacity: 0.5; letter-spacing: 0.1em; text-transform: uppercase; }
+.bd-hero-meta-value { font-weight: 700; font-size: 0.95rem; font-family: 'Space Mono', monospace; }
+
+/* ═══ TICKET CARD ═══ */
+.bd-ticket-card {
+  background: #fff; color: var(--c-text);
+  border-radius: var(--r-lg);
+  padding: 22px;
+  box-shadow: 0 30px 60px -10px rgba(0,0,0,0.4);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.bd-ticket-card:hover { transform: rotate(0deg) scale(1.02); }
+.bd-ticket-card::before,
+.bd-ticket-card::after {
+  content: ''; position: absolute;
+  width: 24px; height: 24px;
+  background: var(--c-bg-alt);
+  border-radius: 50%;
+  top: 50%; transform: translateY(-50%);
+}
+.bd-ticket-card::before { left: -12px; }
+.bd-ticket-card::after { right: -12px; }
+.bd-ticket-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.bd-ticket-mark {
+  width: 44px; height: 44px;
+  background: var(--c-yellow);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 1rem;
+}
+.bd-ticket-divider { border-top: 2px dashed var(--c-border); margin: 14px -22px; }
+.bd-ticket-body { padding-top: 4px; }
+
+/* ═══ ACTIONS BAR ═══ */
+.bd-actions {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px; gap: 14px; flex-wrap: wrap;
+}
+.bd-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--c-text-muted); font-weight: 600; font-size: 0.9rem;
+  text-decoration: none;
+}
+.bd-back:hover { color: var(--c-text); }
+.bd-actions-right { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ═══ LAYOUT ═══ */
+.bd-grid { display: grid; grid-template-columns: 1fr 380px; gap: 24px; }
+@media (max-width:1024px) { .bd-grid { grid-template-columns: 1fr; } }
+.bd-main { display: flex; flex-direction: column; gap: 18px; }
+.bd-side { display: flex; flex-direction: column; gap: 18px; }
+@media (min-width:1025px) { .bd-side > .bd-summary { position: sticky; top: 130px; } }
+
+/* ═══ CARDS ═══ */
+.bd-card {
+  background: #fff; border: 1px solid var(--c-border);
+  border-radius: var(--r-lg); padding: 24px;
+  transition: box-shadow 0.2s ease;
+}
+.bd-card:hover { box-shadow: var(--sh-md); }
+
+.bd-card-head {
+  display: flex; gap: 14px; align-items: center;
+  margin-bottom: 18px;
+}
+.bd-card-icon {
+  width: 44px; height: 44px;
+  background: var(--c-yellow);
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.bd-card-head h2 { font-size: 1.15rem; margin-bottom: 2px; }
+.bd-card-head p { font-size: 0.82rem; color: var(--c-text-muted); margin: 0; }
+
+/* ═══ TOUR CARD ═══ */
+.bd-tour-card { padding: 0; overflow: hidden; }
+.bd-tour-img { position: relative; aspect-ratio: 21/9; background: var(--c-bg-alt); overflow: hidden; }
+.bd-tour-img img { width: 100%; height: 100%; object-fit: cover; }
+.bd-tour-img-fallback {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2E2E33, #1A1A1F);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.2); font-size: 4rem;
+}
+.bd-tour-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%);
+}
+.bd-tour-img-tag {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+  padding: 6px 12px; border-radius: 50px;
+  font-weight: 700; font-size: 0.85rem;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.bd-tour-img-tag i { color: var(--c-star); }
+.bd-tour-img-type {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--c-yellow); color: #000;
+  padding: 6px 12px; border-radius: 50px;
+  font-weight: 800; font-size: 0.75rem;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.bd-tour-body { padding: 24px; }
+.bd-tour-meta-top {
+  font-size: 0.8rem; color: var(--c-text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 8px;
+}
+.bd-tour-title { font-size: 1.4rem; line-height: 1.2; margin-bottom: 10px; }
+.bd-tour-title a { color: var(--c-text); text-decoration: none; }
+.bd-tour-title a:hover { color: var(--c-orange); }
+.bd-tour-desc { color: var(--c-text-muted); font-size: 0.92rem; margin-bottom: 16px; }
+.bd-tour-tags { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; font-size: 0.85rem; color: var(--c-text-muted); }
+.bd-tour-tags > span { display: inline-flex; align-items: center; gap: 6px; }
+.bd-tour-link {
+  margin-left: auto;
+  font-weight: 700; color: var(--c-text);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: color 0.2s;
+}
+.bd-tour-link:hover { color: var(--c-orange); }
+
+/* ═══ DETAIL GRID ═══ */
+.bd-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width:640px) { .bd-detail-grid { grid-template-columns: 1fr; } }
+.bd-detail {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px;
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+  transition: transform 0.2s ease;
+}
+.bd-detail:hover { transform: translateY(-2px); }
+.bd-detail-icon {
+  width: 38px; height: 38px;
+  background: #fff;
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+  color: var(--c-text);
+}
+.bd-detail-label {
+  font-size: 0.72rem; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--c-text-muted);
+  margin-bottom: 2px; font-weight: 600;
+}
+.bd-detail-value { font-weight: 600; font-size: 0.95rem; }
+
+/* ═══ ACCOUNT BOX ═══ */
+.bd-account-box {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--c-bg-alt) 0%, #fff 100%);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+}
+.bd-avatar {
+  width: 48px; height: 48px;
+  background: var(--c-text); color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.bd-account-name { font-weight: 700; font-size: 1rem; }
+.bd-account-email {
+  font-size: 0.85rem; color: var(--c-text-muted);
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 2px;
+}
+.bd-booking-ref { text-align: right; flex-shrink: 0; }
+.bd-booking-ref-label {
+  font-size: 0.7rem; color: var(--c-text-muted);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.bd-booking-ref-num {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 0.9rem;
+  background: var(--c-text); color: #fff;
+  padding: 4px 10px; border-radius: 50px;
+  margin-top: 4px;
+  display: inline-block;
+}
+@media (max-width:520px) { .bd-booking-ref { display: none; } }
+
+/* ═══ NOTES ═══ */
+.bd-notes {
+  margin-top: 16px; padding: 16px;
+  background: #FFFBEB; border-radius: var(--r-md);
+  border-left: 3px solid var(--c-yellow);
+}
+.bd-notes-label {
+  font-weight: 700; font-size: 0.85rem;
+  margin-bottom: 6px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.bd-notes-text { color: var(--c-text-muted); font-size: 0.9rem; }
+.bd-notes-text p:last-child { margin-bottom: 0; }
+
+.bd-card-cancel { border-left: 3px solid #E24B4A; }
+
+/* ═══ SUMMARY ═══ */
+.bd-summary { padding: 24px; }
+.bd-summary-row {
+  display: flex; justify-content: space-between;
+  font-size: 0.9rem; color: var(--c-text-muted);
+  padding: 8px 0;
+}
+.bd-summary-divider { margin: 14px 0; border-top: 1px dashed var(--c-border); }
+.bd-summary-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #FFFEF2 0%, #FEFA17 100%);
+  border-radius: var(--r-md);
+}
+.bd-summary-total > span:first-child { font-weight: 700; font-size: 0.95rem; }
+.bd-summary-amount { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+
+.bd-pay-pill {
+  margin-top: 16px; padding: 12px 16px;
+  border-radius: var(--r-md);
+  font-weight: 700; font-size: 0.9rem;
+  display: inline-flex; align-items: center; gap: 8px;
+  width: 100%; justify-content: center;
+}
+.bd-pay-pill-pending   { background: #FEF3C7; color: #92400E; }
+.bd-pay-pill-confirmed,
+.bd-pay-pill-completed { background: #D1FAE5; color: #065F46; }
+.bd-pay-pill-cancelled { background: #FEE2E2; color: #7F1D1D; }
+
+/* ═══ HELP CARD ═══ */
+.bd-help { text-align: center; padding: 28px 24px; }
+.bd-help-icon {
+  width: 56px; height: 56px;
+  background: var(--c-yellow);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+.bd-help h4 { font-size: 1.05rem; margin-bottom: 6px; }
+.bd-help > p { color: var(--c-text-muted); font-size: 0.85rem; margin-bottom: 18px; }
+.bd-help-list { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.bd-help-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+  color: var(--c-text);
+  text-decoration: none;
+  font-weight: 600; font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.bd-help-item:hover { background: var(--c-yellow); }
+.bd-help-item > i:first-child { color: var(--c-text); font-size: 1.1rem; }
+
+/* ═══ TRUST CARD ═══ */
+.bd-trust-card {
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.bd-trust-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 0.8rem;
+}
+.bd-trust-item > i {
+  width: 32px; height: 32px;
+  background: #D1FAE5;
+  color: var(--c-success);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.bd-trust-item div { display: flex; flex-direction: column; line-height: 1.4; }
+.bd-trust-item strong { font-size: 0.85rem; }
+.bd-trust-item span { color: var(--c-text-muted); }
+
+/* ═══ MODAL ═══ */
+.bd-modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.bd-modal.is-open { display: flex; }
+.bd-modal-card {
+  background: #fff; border-radius: var(--r-lg);
+  padding: 32px; max-width: 480px; width: 100%;
+  position: relative;
+  animation: bdModalIn 0.3s var(--ease);
+}
+@keyframes bdModalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.bd-modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--c-bg-alt); border: none;
+  width: 36px; height: 36px; border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.bd-modal-close:hover { background: var(--c-border); }
+.bd-modal-icon {
+  width: 64px; height: 64px;
+  background: #FEE2E2; color: #E24B4A;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+}
+
+@media print {
+  .bd-hero { background: #fff !important; color: #000; }
+  .bd-hero-meta-label, .bd-hero-sub, .bd-status-badge { color: #555; }
+  .bd-actions, .bd-help, .bd-trust-card, .bd-modal { display: none !important; }
+  .bd-grid { grid-template-columns: 1fr; }
+  .bd-card { break-inside: avoid; box-shadow: none; }
+}
+</style>
+
+<script>
+document.getElementById('cancelModal')?.addEventListener('click', function (e) {
+  if (e.target === this) this.classList.remove('is-open');
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') document.getElementById('cancelModal')?.classList.remove('is-open');
+});
+</script>
+{% endblock %}

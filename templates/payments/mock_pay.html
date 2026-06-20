@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Payment Gateway" %} | SoLuna{% endblock %}
+
+{% block content %}
+
+<section class="mp-hero">
+  <div class="container">
+    <div class="mp-mock-banner">
+      <i class="ti ti-test-pipe"></i>
+      <div>
+        <strong>{% trans "TEST MODE" %}</strong>
+        <span>{% trans "Real payment gateways are not configured. This is a simulation." %}</span>
+      </div>
+    </div>
+
+    <div class="mp-gateway-bar">
+      <div class="mp-gateway-logo">
+        {% if payment.method == 'click' %}
+          <span style="background:linear-gradient(135deg,#0088FF,#0066CC);">Click</span>
+        {% elif payment.method == 'payme' %}
+          <span style="background:linear-gradient(135deg,#37C2FF,#00A8E8);">Payme</span>
+        {% else %}
+          <span style="background:var(--c-text);">Card</span>
+        {% endif %}
+      </div>
+      <div class="mp-gateway-info">
+        <div class="mp-gateway-merchant">SoLuna Tours LLC</div>
+        <div class="mp-gateway-amount">{{ payment.amount_uzs_formatted }} {% trans "soums" %}</div>
+      </div>
+      <div class="mp-gateway-secure">
+        <i class="ti ti-lock"></i> <span>Secure</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--c-bg-alt);padding:30px 0 80px;">
+  <div class="container">
+    <div class="mp-layout">
+
+      <div>
+        {% if error %}
+        <div class="mp-error">
+          <i class="ti ti-alert-circle"></i>
+          <div>
+            <strong>{% trans "Payment failed" %}</strong>
+            <span>{{ error }}</span>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Test cards info #}
+        <div class="mp-test-cards">
+          <div class="mp-test-cards-head">
+            <i class="ti ti-info-circle"></i>
+            <strong>{% trans "Test cards" %}</strong>
+            <button type="button" class="mp-test-cards-toggle" onclick="toggleTestCards()">
+              <i class="ti ti-chevron-down"></i>
+            </button>
+          </div>
+          <div class="mp-test-cards-list" id="testCardsList">
+            <button type="button" class="mp-test-card" data-card="4242424242424242" onclick="fillCard(this)">
+              <span class="mp-test-card-status mp-status-ok">✓</span>
+              <div>
+                <div class="mp-test-card-num">4242 4242 4242 4242</div>
+                <div class="mp-test-card-label">{% trans "Always success" %}</div>
+              </div>
+            </button>
+            <button type="button" class="mp-test-card" data-card="4000000000000002" onclick="fillCard(this)">
+              <span class="mp-test-card-status mp-status-fail">✗</span>
+              <div>
+                <div class="mp-test-card-num">4000 0000 0000 0002</div>
+                <div class="mp-test-card-label">{% trans "Declined by bank" %}</div>
+              </div>
+            </button>
+            <button type="button" class="mp-test-card" data-card="4000000000009995" onclick="fillCard(this)">
+              <span class="mp-test-card-status mp-status-fail">✗</span>
+              <div>
+                <div class="mp-test-card-num">4000 0000 0000 9995</div>
+                <div class="mp-test-card-label">{% trans "Insufficient funds" %}</div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <form method="post" id="mockForm" class="mp-card">
+          {% csrf_token %}
+
+          <h2 class="mp-form-title">
+            <i class="ti ti-credit-card"></i> {% trans "Enter card details" %}
+          </h2>
+
+          <div class="form-group">
+            <label class="form-label">{% trans "Card number" %}</label>
+            <div class="mp-card-input">
+              <input type="text" name="card_number" id="cardNumber" class="form-control"
+                     placeholder="1234 5678 9012 3456" inputmode="numeric"
+                     maxlength="23" autocomplete="cc-number" required>
+              <div class="mp-card-brand" id="cardBrand"></div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="form-group">
+              <label class="form-label">{% trans "Expiry" %}</label>
+              <input type="text" name="card_expiry" id="cardExpiry" class="form-control"
+                     placeholder="MM / YY" maxlength="7" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">CVV</label>
+              <input type="password" name="card_cvv" id="cardCvv" class="form-control"
+                     placeholder="•••" maxlength="4" inputmode="numeric" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">{% trans "Cardholder name" %}</label>
+            <input type="text" name="card_name" class="form-control"
+                   placeholder="JOHN DOE" autocomplete="cc-name"
+                   style="text-transform:uppercase;">
+          </div>
+
+          <div class="mp-amount-bar">
+            <div>
+              <div style="font-size:0.75rem;color:var(--c-text-muted);letter-spacing:0.05em;text-transform:uppercase;">{% trans "Amount to pay" %}</div>
+              <div style="font-size:1.6rem;font-weight:800;font-family:'Space Mono',monospace;">
+                {{ payment.amount_uzs_formatted }} <small style="font-size:0.7rem;font-weight:600;opacity:0.6;">{% trans "soums" %}</small>
+              </div>
+              <div style="font-size:0.8rem;color:var(--c-text-muted);">≈ ${{ payment.amount_usd|floatformat:0 }}</div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-dark btn-block btn-lg mp-submit" id="payBtn">
+            <span><i class="ti ti-lock"></i> {% trans "Pay" %} {{ payment.amount_uzs_formatted }} {% trans "soums" %}</span>
+            <i class="ti ti-arrow-right"></i>
+          </button>
+
+          <a href="{% url 'payments:select' payment.booking.id %}" class="mp-cancel">
+            <i class="ti ti-arrow-left"></i> {% trans "Cancel and choose another method" %}
+          </a>
+        </form>
+      </div>
+
+      <aside class="mp-side">
+        <div class="mp-side-card">
+          <div class="mp-trust-icon"><i class="ti ti-shield-lock"></i></div>
+          <h4>{% trans "Secure payment" %}</h4>
+          <p>{% trans "Your card information is encrypted with 256-bit SSL and never stored on our servers." %}</p>
+        </div>
+
+        <div class="mp-side-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <strong style="font-size:0.85rem;">{% trans "Booking" %}</strong>
+            <span style="font-family:'Space Mono',monospace;font-size:0.85rem;">#{{ payment.booking.booking_number }}</span>
+          </div>
+          <div style="font-size:0.9rem;margin-bottom:6px;">{{ payment.booking.tour.title|truncatechars:40 }}</div>
+          <div style="font-size:0.8rem;color:var(--c-text-muted);">
+            <i class="ti ti-calendar-event"></i> {{ payment.booking.travel_date|date:"d M Y" }}
+            · {{ payment.booking.num_adults }}{% if payment.booking.num_children %}+{{ payment.booking.num_children }}{% endif %} {% trans "guests" %}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+.mp-hero{background:linear-gradient(135deg,#0F1419,#1E2A2E);color:#fff;padding:24px 0;}
+
+.mp-mock-banner{background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:var(--r-md);padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;color:#FCD34D;}
+.mp-mock-banner i{font-size:1.4rem;}
+.mp-mock-banner strong{display:block;font-size:0.85rem;letter-spacing:0.05em;}
+.mp-mock-banner span{font-size:0.8rem;opacity:0.85;}
+
+.mp-gateway-bar{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:16px 20px;backdrop-filter:blur(10px);flex-wrap:wrap;}
+.mp-gateway-logo span{display:inline-block;padding:8px 16px;border-radius:var(--r-sm);font-weight:800;color:#fff;font-size:1rem;}
+.mp-gateway-info{flex:1;min-width:0;}
+.mp-gateway-merchant{font-size:0.8rem;opacity:0.6;letter-spacing:0.05em;text-transform:uppercase;}
+.mp-gateway-amount{font-size:1.4rem;font-weight:800;font-family:'Space Mono',monospace;}
+.mp-gateway-secure{display:flex;align-items:center;gap:6px;font-size:0.85rem;color:#10B981;font-weight:600;}
+
+.mp-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;}
+@media (max-width:900px){.mp-layout{grid-template-columns:1fr;}}
+
+.mp-error{display:flex;gap:12px;align-items:flex-start;background:#FEE2E2;border-left:4px solid #E24B4A;border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px;color:#7F1D1D;}
+.mp-error i{font-size:1.4rem;flex-shrink:0;}
+.mp-error strong{display:block;font-size:0.95rem;margin-bottom:2px;}
+.mp-error span{font-size:0.85rem;}
+
+.mp-test-cards{background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--r-md);margin-bottom:16px;overflow:hidden;}
+.mp-test-cards-head{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;font-size:0.9rem;}
+.mp-test-cards-head i:first-child{color:#92400E;}
+.mp-test-cards-head strong{flex:1;color:#78350F;}
+.mp-test-cards-toggle{background:none;border:none;cursor:pointer;color:#78350F;font-size:1.1rem;transition:transform 0.2s;}
+.mp-test-cards.is-open .mp-test-cards-toggle{transform:rotate(180deg);}
+.mp-test-cards-list{display:none;padding:0 16px 16px;flex-direction:column;gap:8px;}
+.mp-test-cards.is-open .mp-test-cards-list{display:flex;}
+.mp-test-card{display:flex;align-items:center;gap:12px;padding:10px 12px;background:#fff;border:1px solid #FDE68A;border-radius:var(--r-sm);cursor:pointer;text-align:left;width:100%;transition:transform 0.2s;}
+.mp-test-card:hover{transform:translateX(4px);}
+.mp-test-card-status{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;flex-shrink:0;}
+.mp-status-ok{background:#D1FAE5;color:#065F46;}
+.mp-status-fail{background:#FEE2E2;color:#7F1D1D;}
+.mp-test-card-num{font-family:'Space Mono',monospace;font-size:0.85rem;font-weight:700;}
+.mp-test-card-label{font-size:0.75rem;color:var(--c-text-muted);}
+
+.mp-card{background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:28px;}
+.mp-form-title{font-size:1.1rem;display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+.mp-form-title i{color:var(--c-text-muted);}
+
+.mp-card-input{position:relative;}
+.mp-card-brand{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-weight:800;font-size:0.85rem;color:var(--c-text-muted);letter-spacing:0.05em;}
+
+.mp-amount-bar{background:linear-gradient(135deg,#FFFEF2,#FEFA17);padding:16px 20px;border-radius:var(--r-md);margin:18px 0;}
+
+.mp-submit{display:flex;align-items:center;justify-content:space-between;font-size:1rem;}
+.mp-submit:disabled{opacity:0.6;cursor:wait;}
+
+.mp-cancel{display:block;text-align:center;margin-top:14px;color:var(--c-text-muted);font-size:0.85rem;text-decoration:none;}
+.mp-cancel:hover{color:var(--c-text);}
+
+.mp-side{display:flex;flex-direction:column;gap:14px;}
+.mp-side-card{background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:20px;font-size:0.85rem;}
+.mp-side-card h4{font-size:0.95rem;margin-bottom:6px;}
+.mp-side-card p{color:var(--c-text-muted);}
+.mp-trust-icon{width:44px;height:44px;background:#D1FAE5;color:#065F46;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:10px;}
+
+@media (max-width:600px){.mp-gateway-bar{padding:14px;}}
+</style>
+
+<script>
+function toggleTestCards() {
+  document.querySelector('.mp-test-cards').classList.toggle('is-open');
+}
+
+function fillCard(btn) {
+  const num = btn.dataset.card;
+  const cardEl = document.getElementById('cardNumber');
+  cardEl.value = num.match(/.{1,4}/g).join(' ');
+  document.getElementById('cardExpiry').value = '12 / 26';
+  document.getElementById('cardCvv').value = '123';
+  cardEl.dispatchEvent(new Event('input'));
+}
+
+// Card number format + brand detect
+const cardNumber = document.getElementById('cardNumber');
+const cardBrand = document.getElementById('cardBrand');
+cardNumber.addEventListener('input', function (e) {
+  let v = e.target.value.replace(/\s/g, '').replace(/[^\d]/g, '');
+  e.target.value = v.match(/.{1,4}/g)?.join(' ') || '';
+  let brand = '';
+  if (/^4/.test(v)) brand = 'VISA';
+  else if (/^5[1-5]/.test(v)) brand = 'MC';
+  else if (/^8600/.test(v)) brand = 'UZCARD';
+  else if (/^9860/.test(v)) brand = 'HUMO';
+  else if (/^62/.test(v)) brand = 'UPI';
+  cardBrand.textContent = brand;
+});
+
+// Expiry format
+document.getElementById('cardExpiry').addEventListener('input', function (e) {
+  let v = e.target.value.replace(/\D/g, '');
+  if (v.length >= 2) v = v.substring(0,2) + ' / ' + v.substring(2,4);
+  e.target.value = v;
+});
+
+// Submit
+document.getElementById('mockForm').addEventListener('submit', function () {
+  const btn = document.getElementById('payBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span><i class="ti ti-loader"></i> Processing payment...</span>';
+});
+
+// Auto-open test cards on load
+window.addEventListener('load', () => {
+  setTimeout(() => document.querySelector('.mp-test-cards').classList.add('is-open'), 300);
+});
+</script>
+{% endblock %}

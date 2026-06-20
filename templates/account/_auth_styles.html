@@ -1,0 +1,404 @@
+{# Shared styles for login/signup #}
+<style>
+.au-section { min-height: 100vh; background: var(--c-bg-alt); }
+.au-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 980px) {
+  .au-grid { grid-template-columns: 1fr; }
+  .au-visual { display: none !important; }
+}
+
+/* ═══ LEFT VISUAL ═══ */
+.au-visual {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.au-visual-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1591708594806-1eaa84a8e4f8?w=1400&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.85);
+}
+.au-visual-signup .au-visual-bg {
+  background-image: url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1400&q=80');
+}
+.au-visual-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(15,20,25,0.92) 0%, rgba(30,42,46,0.85) 60%, rgba(45,74,82,0.7) 100%);
+}
+.au-visual-content {
+  position: relative;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+@media (max-height: 800px) { .au-visual-content { padding: 36px; } }
+
+.au-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: #fff; text-decoration: none;
+  font-size: 1.4rem; font-weight: 800;
+}
+.au-logo-mark {
+  width: 40px; height: 40px;
+  background: var(--c-yellow); color: #000;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+
+.au-visual-text { max-width: 460px; }
+.au-visual-title {
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  font-weight: 800;
+}
+.au-highlight {
+  color: var(--c-yellow);
+  background: linear-gradient(135deg, var(--c-yellow), #FFEB3B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.au-visual-sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Features list (login) */
+.au-visual-features {
+  display: flex; flex-direction: column; gap: 16px;
+  margin: 30px 0;
+}
+.au-feature {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.9rem;
+}
+.au-feature i {
+  width: 44px; height: 44px;
+  background: rgba(254,250,23,0.15);
+  color: var(--c-yellow);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.au-feature strong { display: block; margin-bottom: 2px; font-weight: 700; }
+.au-feature span { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
+
+/* Perks (signup) */
+.au-perks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 30px 0;
+}
+@media (max-width: 1200px) { .au-perks { grid-template-columns: 1fr; } }
+.au-perk {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-md);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s;
+}
+.au-perk:hover { transform: translateY(-2px); background: rgba(255,255,255,0.1); }
+.au-perk-icon {
+  width: 36px; height: 36px;
+  background: var(--c-yellow);
+  color: #000;
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.au-perk strong { display: block; font-size: 0.88rem; margin-bottom: 2px; }
+.au-perk span { color: rgba(255,255,255,0.65); font-size: 0.78rem; }
+
+.au-visual-footer {
+  display: flex; align-items: center; gap: 8px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.85rem;
+}
+.au-visual-footer span { color: rgba(255,255,255,0.5); }
+.au-visual-footer strong { color: var(--c-yellow); }
+
+/* ═══ RIGHT FORM ═══ */
+.au-form-side {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow-y: auto;
+}
+.au-form-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 50px;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (max-width: 640px) { .au-form-wrap { padding: 24px 20px; } }
+
+.au-form-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px;
+}
+.au-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--c-text-muted);
+  font-weight: 600; font-size: 0.85rem;
+  text-decoration: none;
+}
+.au-back:hover { color: var(--c-text); }
+
+.au-form { flex: 1; }
+.au-form-title {
+  font-size: 1.8rem;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.au-form-sub {
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+/* ═══ SOCIAL BUTTONS ═══ */
+.au-socials {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 22px;
+}
+.au-social-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-md);
+  color: var(--c-text);
+  font-weight: 600; font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  justify-content: center;
+}
+.au-social-btn:hover {
+  border-color: var(--c-text);
+  transform: translateY(-1px);
+  box-shadow: var(--sh-md);
+}
+.au-social-btn svg { flex-shrink: 0; }
+
+/* ═══ DIVIDER ═══ */
+.au-divider {
+  display: flex; align-items: center;
+  margin: 22px 0;
+  color: var(--c-text-muted);
+  font-size: 0.82rem;
+}
+.au-divider::before,
+.au-divider::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--c-border);
+}
+.au-divider span { padding: 0 14px; }
+
+/* ═══ FORM INPUTS ═══ */
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600; font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-md);
+  font-size: 0.95rem;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--c-text);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+}
+
+.au-pwd-input { position: relative; }
+.au-pwd-input .form-control { padding-right: 44px; }
+.au-pwd-toggle {
+  position: absolute; right: 4px; top: 50%;
+  transform: translateY(-50%);
+  width: 36px; height: 36px;
+  background: none; border: none; cursor: pointer;
+  color: var(--c-text-muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  border-radius: var(--r-sm);
+  transition: background 0.2s, color 0.2s;
+}
+.au-pwd-toggle:hover { background: var(--c-bg-alt); color: var(--c-text); }
+
+.au-forgot {
+  font-size: 0.82rem;
+  color: var(--c-orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+.au-forgot:hover { text-decoration: underline; }
+
+/* Password strength */
+.au-pwd-strength {
+  margin-top: 8px;
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+.au-pwd-strength.is-visible { display: flex; }
+.au-pwd-bars {
+  display: flex; gap: 3px; flex: 1;
+}
+.au-pwd-bars span {
+  flex: 1; height: 4px;
+  background: var(--c-border);
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.au-pwd-bars .is-weak { background: #E24B4A; }
+.au-pwd-bars .is-fair { background: #F59E0B; }
+.au-pwd-bars .is-good { background: #3B82F6; }
+.au-pwd-bars .is-strong { background: #10B981; }
+.au-pwd-label {
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+  white-space: nowrap;
+}
+.au-pwd-label strong { color: var(--c-text); }
+
+.au-pwd-match {
+  font-size: 0.78rem;
+  margin-top: 4px;
+  display: inline-flex; align-items: center; gap: 4px;
+  font-weight: 600;
+}
+.au-pwd-match.is-match { color: #10B981; }
+.au-pwd-match.is-nomatch { color: #E24B4A; }
+
+/* Checkboxes */
+.au-remember, .au-terms {
+  display: flex; gap: 10px; align-items: flex-start;
+  cursor: pointer;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+.au-remember input, .au-terms input { display: none; }
+.au-check-mark {
+  width: 20px; height: 20px;
+  border: 2px solid var(--c-border);
+  border-radius: 5px;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: transparent;
+  transition: all 0.2s;
+  margin-top: 1px;
+}
+.au-remember input:checked + .au-check-mark,
+.au-terms input:checked + .au-check-mark {
+  background: var(--c-text); border-color: var(--c-text); color: #fff;
+}
+.au-terms a {
+  color: var(--c-orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+.au-terms a:hover { text-decoration: underline; }
+
+.field-error {
+  color: #E24B4A;
+  font-size: 0.78rem;
+  margin-top: 4px;
+}
+
+.au-error {
+  display: flex; gap: 12px; align-items: flex-start;
+  margin-bottom: 18px;
+  padding: 12px 16px;
+  background: #FEE2E2;
+  border-left: 3px solid #E24B4A;
+  border-radius: var(--r-md);
+  color: #7F1D1D;
+  font-size: 0.88rem;
+}
+.au-error i { font-size: 1.2rem; flex-shrink: 0; }
+
+/* Submit button */
+.au-submit {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 6px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Bottom link */
+.au-bottom {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.92rem;
+  color: var(--c-text-muted);
+}
+.au-bottom a {
+  color: var(--c-text);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 6px;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.au-bottom a:hover { color: var(--c-orange); }
+
+.au-form-footer {
+  display: flex; gap: 14px; justify-content: center;
+  margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid var(--c-border);
+  font-size: 0.8rem;
+}
+.au-form-footer a {
+  color: var(--c-text-muted);
+  text-decoration: none;
+}
+.au-form-footer a:hover { color: var(--c-text); }
+.au-form-footer span { color: var(--c-border); }
+</style>
+
+<script>
+// Password show/hide toggle
+function togglePwd(id, btn) {
+  const input = document.getElementById(id);
+  if (!input) return;
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerHTML = '<i class="ti ti-eye-off"></i>';
+  } else {
+    input.type = 'password';
+    btn.innerHTML = '<i class="ti ti-eye"></i>';
+  }
+}
+</script>

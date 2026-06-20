@@ -1,35 +1,308 @@
-{% extends "account/base.html" %}
-{% load i18n %}
-{% load account socialaccount %}
+{% extends 'base.html' %}
+{% load i18n account socialaccount %}
 
-{% block head_title %}
-    {% blocktrans with provider.name as provider_name %}Sign In Via {{ provider_name }}{% endblocktrans %}
-{% endblock %}
+{% block title %}{% blocktrans with provider.name as provider_name %}Sign In via {{ provider_name }}{% endblocktrans %} | SoLuna{% endblock %}
 
 {% block content %}
-<div class="auth-container" style="background: var(--cream); padding: 5rem 0; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
-    <div class="auth-card" style="background: var(--white); border: 1px solid rgba(201, 168, 76, 0.2); border-radius: 8px; max-width: 450px; width: 100%; padding: 2.5rem; box-shadow: 0 10px 40px rgba(13, 59, 46, 0.06); text-align: center; box-sizing: border-box;">
-        
-        <div style="background: var(--green-deep); color: var(--gold); padding: 1.5rem; border-radius: 6px 6px 0 0; margin: -2.5rem -2.5rem 2rem -2.5rem;">
-            <h2 style="margin: 0; font-family: var(--font-display), serif; font-size: 1.5rem; font-weight: 400;">
-                {% blocktrans with provider.name as provider_name %}{{ provider_name }} orqali kirish{% endblocktrans %}
-            </h2>
+<section class="sl-section">
+  <div class="sl-bg"></div>
+  <div class="sl-bg-overlay"></div>
+
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="sl-wrap">
+
+      <a href="{% url 'home' %}" class="sl-logo">
+        <span class="sl-logo-mark">☾</span>
+        <span>SoLuna</span>
+      </a>
+
+      <div class="sl-card">
+        {# Provider icon ribbon #}
+        <div class="sl-provider-ribbon">
+          {% if provider.id == 'google' %}
+            <div class="sl-provider-icon sl-icon-google">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+            </div>
+          {% elif provider.id == 'facebook' %}
+            <div class="sl-provider-icon sl-icon-fb">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="#1877F2">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </div>
+          {% else %}
+            <div class="sl-provider-icon sl-icon-generic">
+              <i class="ti ti-key"></i>
+            </div>
+          {% endif %}
+
+          {# Connecting dots animation #}
+          <div class="sl-dots">
+            <span></span><span></span><span></span>
+          </div>
+
+          <div class="sl-provider-icon sl-icon-soluna">☾</div>
         </div>
 
-        <p style="color: var(--text-mid); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
-            {% blocktrans with provider.name as provider_name %}Siz SoLuna tizimiga uchinchi tomon ({{ provider_name }}) akkauntingiz orqali kirmoqchisiz. Davom etish tugmasini bosing.{% endblocktrans %}
-        </p>
+        <div class="sl-content">
+          <h1 class="sl-title">
+            {% blocktrans with provider.name as provider_name %}Continue with {{ provider_name }}{% endblocktrans %}
+          </h1>
+          <p class="sl-sub">
+            {% blocktrans with provider.name as provider_name %}You're about to sign in to SoLuna using your {{ provider_name }} account. Click continue to proceed securely.{% endblocktrans %}
+          </p>
 
-        <form method="post">
+          {# Permission preview #}
+          <div class="sl-perms">
+            <div class="sl-perms-head">
+              <i class="ti ti-shield-check"></i>
+              <strong>{% trans "We'll receive" %}</strong>
+            </div>
+            <ul>
+              <li><i class="ti ti-mail"></i> {% trans "Your email address" %}</li>
+              <li><i class="ti ti-user"></i> {% trans "Your name and profile photo" %}</li>
+            </ul>
+            <div class="sl-perms-note">
+              <i class="ti ti-lock"></i>
+              {% trans "We will never post anything without your permission." %}
+            </div>
+          </div>
+
+          <form method="post" class="sl-form">
             {% csrf_token %}
-            <button type="submit" class="btn" style="width: 100%; background: var(--gold); color: var(--white); padding: 0.9rem; border: none; border-radius: 4px; font-weight: 500; font-size: 1rem; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">
-                {% trans "Davom etish" %}
+            <button type="submit" class="btn btn-dark btn-block btn-lg sl-submit" id="continueBtn">
+              <span>{% trans "Continue" %}</span>
+              <i class="ti ti-arrow-right"></i>
             </button>
-        </form>
+          </form>
 
-        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(13, 59, 46, 0.08);">
-            <a href="{% url 'account_login' %}" style="color: var(--green-deep); text-decoration: none; font-size: 0.9rem; font-weight: 500;">← {% trans "Orqaga qaytish" %}</a>
+          <a href="{% url 'account_login' %}" class="sl-back">
+            <i class="ti ti-arrow-left"></i> {% trans "Back to sign in" %}
+          </a>
         </div>
+      </div>
+
+      <div class="sl-footer">
+        <i class="ti ti-shield-check"></i>
+        {% trans "Secure connection · Your data is encrypted" %}
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
+<style>
+.sl-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+}
+.sl-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1591708594806-1eaa84a8e4f8?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px) saturate(0.85);
+  transform: scale(1.05);
+}
+.sl-bg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(15,20,25,0.95) 0%, rgba(30,42,46,0.92) 60%, rgba(45,74,82,0.88) 100%);
+}
+
+.sl-wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sl-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.4rem; font-weight: 800;
+  margin-bottom: 28px;
+}
+.sl-logo-mark {
+  width: 40px; height: 40px;
+  background: var(--c-yellow); color: #000;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+
+/* ═══ CARD ═══ */
+.sl-card {
+  background: #fff;
+  border-radius: var(--r-lg);
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+/* ═══ PROVIDER RIBBON (top section) ═══ */
+.sl-provider-ribbon {
+  background: linear-gradient(135deg, #F8F9FA 0%, #FFFEF2 100%);
+  padding: 36px 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.sl-provider-icon {
+  width: 72px; height: 72px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center; justify-content: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.sl-icon-soluna {
+  background: var(--c-yellow);
+  color: #000;
+  font-size: 2.2rem;
+}
+
+/* Animated dots between icons */
+.sl-dots {
+  display: flex; gap: 6px;
+}
+.sl-dots span {
+  width: 8px; height: 8px;
+  background: var(--c-text-muted);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: slDot 1.4s ease-in-out infinite;
+}
+.sl-dots span:nth-child(1) { animation-delay: 0s; }
+.sl-dots span:nth-child(2) { animation-delay: 0.2s; }
+.sl-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes slDot {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); background: var(--c-yellow); }
+}
+
+/* ═══ CONTENT ═══ */
+.sl-content { padding: 30px 32px 32px; }
+
+.sl-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.sl-sub {
+  color: var(--c-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* ═══ PERMISSIONS ═══ */
+.sl-perms {
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+.sl-perms-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+.sl-perms-head i {
+  color: var(--c-success);
+  font-size: 1rem;
+}
+.sl-perms ul {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex; flex-direction: column;
+  gap: 6px;
+}
+.sl-perms li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.88rem;
+  color: var(--c-text);
+}
+.sl-perms li i {
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.sl-perms-note {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 12px; padding-top: 10px;
+  border-top: 1px solid var(--c-border);
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
+}
+.sl-perms-note i {
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* ═══ SUBMIT ═══ */
+.sl-form { margin-bottom: 16px; }
+.sl-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.sl-submit:disabled { opacity: 0.6; cursor: wait; }
+
+.sl-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--c-text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.sl-back:hover { color: var(--c-text); }
+
+/* ═══ FOOTER ═══ */
+.sl-footer {
+  margin-top: 22px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.sl-footer i {
+  color: var(--c-yellow);
+}
+
+@media (max-width: 560px) {
+  .sl-provider-ribbon { padding: 28px 20px 22px; gap: 12px; }
+  .sl-provider-icon { width: 60px; height: 60px; }
+  .sl-content { padding: 24px 22px 26px; }
+  .sl-title { font-size: 1.3rem; }
+}
+</style>
+
+<script>
+document.querySelector('.sl-form').addEventListener('submit', function () {
+  const btn = document.getElementById('continueBtn');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<span><i class="ti ti-loader"></i> {% trans "Redirecting..." %}</span>';
+  }
+});
+</script>
 {% endblock %}

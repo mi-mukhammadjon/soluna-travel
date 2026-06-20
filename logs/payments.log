@@ -1,0 +1,56 @@
+ERROR 2026-06-20 13:30:03,249 views: Gateway URL generation failed
+Traceback (most recent call last):
+  File "/app/payments/views.py", line 96, in post
+    gateway_url = ClickService.generate_payment_url(payment, return_url=return_url)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 70, in generate_payment_url
+    merchant_id = cls.get_merchant_id()
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 54, in get_merchant_id
+    return cls._get_setting('CLICK_MERCHANT_ID')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 49, in _get_setting
+    raise ClickError(f"settings.{key} sozlanmagan")
+payments.gateways.click.ClickError: settings.CLICK_MERCHANT_ID sozlanmagan
+ERROR 2026-06-20 13:30:46,668 views: Gateway URL generation failed
+Traceback (most recent call last):
+  File "/app/payments/views.py", line 98, in post
+    gateway_url = PaymeService.generate_payment_url(payment, return_url=return_url)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/payme.py", line 94, in generate_payment_url
+    merchant_id = cls.get_merchant_id()
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/payme.py", line 62, in get_merchant_id
+    return cls._get_setting('PAYME_MERCHANT_ID')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/payme.py", line 57, in _get_setting
+    raise Exception(f"settings.{key} sozlanmagan")
+Exception: settings.PAYME_MERCHANT_ID sozlanmagan
+ERROR 2026-06-20 13:33:27,263 views: Gateway URL generation failed
+Traceback (most recent call last):
+  File "/app/payments/views.py", line 96, in post
+    gateway_url = ClickService.generate_payment_url(payment, return_url=return_url)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 70, in generate_payment_url
+    merchant_id = cls.get_merchant_id()
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 54, in get_merchant_id
+    return cls._get_setting('CLICK_MERCHANT_ID')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 49, in _get_setting
+    raise ClickError(f"settings.{key} sozlanmagan")
+payments.gateways.click.ClickError: settings.CLICK_MERCHANT_ID sozlanmagan
+ERROR 2026-06-20 13:33:30,419 views: Gateway URL generation failed
+Traceback (most recent call last):
+  File "/app/payments/views.py", line 96, in post
+    gateway_url = ClickService.generate_payment_url(payment, return_url=return_url)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 70, in generate_payment_url
+    merchant_id = cls.get_merchant_id()
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 54, in get_merchant_id
+    return cls._get_setting('CLICK_MERCHANT_ID')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/payments/gateways/click.py", line 49, in _get_setting
+    raise ClickError(f"settings.{key} sozlanmagan")
+payments.gateways.click.ClickError: settings.CLICK_MERCHANT_ID sozlanmagan

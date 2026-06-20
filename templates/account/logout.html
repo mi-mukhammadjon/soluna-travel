@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Sign Out" %} | SoLuna{% endblock %}
+
+{% block content %}
+<section style="min-height:calc(100vh - 200px);background:var(--c-bg-alt);display:flex;align-items:center;padding:60px 0;">
+  <div class="container" style="max-width:480px;text-align:center;">
+    <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:48px 32px;box-shadow:var(--sh-md);">
+      <h2 style="margin-bottom:12px;">{% trans "Sign out?" %}</h2>
+      <p style="color:var(--c-text-muted);margin-bottom:28px;">
+        {% trans "Are you sure you want to sign out?" %}
+      </p>
+
+      <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+        {% endif %}
+        <div style="display:flex;gap:12px;justify-content:center;">
+          <a href="{% url 'home' %}" class="btn btn-light">{% trans "Cancel" %}</a>
+          <button type="submit" class="btn btn-dark">
+            <i class="ti ti-logout"></i> {% trans "Sign Out" %}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

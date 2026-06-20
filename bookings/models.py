@@ -42,8 +42,8 @@ class Booking(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        verbose_name = 'Booking'
-        verbose_name_plural = 'Bookings'
+        verbose_name = 'Бронирование'
+        verbose_name_plural = 'Бронирования'
 
     def __str__(self):
         return f"{self.booking_number} — {self.user.email}"

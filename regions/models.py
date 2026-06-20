@@ -11,8 +11,8 @@ class Region(models.Model):
 
     class Meta:
         ordering = ['order', 'name']
-        verbose_name = 'Region'
-        verbose_name_plural = 'Regions'
+        verbose_name = 'Регион'
+        verbose_name_plural = 'Регионы'
 
     def __str__(self):
         return self.name
@@ -31,8 +31,8 @@ class Attraction(models.Model):
 
     class Meta:
         ordering = ['order', 'name']
-        verbose_name = 'Attraction'
-        verbose_name_plural = 'Attractions'
+        verbose_name = 'Достопримечательность'
+        verbose_name_plural = 'Достопримечательностей'
 
     def __str__(self):
         return f"{self.region.name} - {self.name}"

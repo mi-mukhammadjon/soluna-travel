@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Tour, TourCategory, TourImage
+from .models import Tour, TourCategory, TourImage, CompanyStatistic, CompanyAdvantage
 from modeltranslation.admin import TranslationAdmin
 
 class TourImageInline(admin.TabularInline):
@@ -67,3 +67,14 @@ class TourAdmin(TranslationAdmin):
     def review_count_display(self, obj):
         return obj.review_count
     review_count_display.short_description = 'Reviews'
+
+
+@admin.register(CompanyStatistic)
+class CompanyStatisticAdmin(TranslationAdmin):
+    list_display = ('number', 'label', 'order')
+    list_editable = ('order',)
+
+@admin.register(CompanyAdvantage)
+class CompanyAdvantageAdmin(TranslationAdmin):
+    list_display = ('title', 'icon', 'color', 'order')
+    list_editable = ('order',)

@@ -1,54 +1,117 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{% trans "Regions" %} — SoLuna{% endblock %}
+{% block title %}{% trans "Destinations" %} | SoLuna{% endblock %}
 
 {% block content %}
 
-<!-- Page Header -->
-<div style="background:var(--green-deep);padding:130px 0 60px;position:relative;overflow:hidden;">
-  <div style="position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);background-size:22px 22px;"></div>
-  <div style="position:absolute;right:-80px;top:-40px;font-family:'Cormorant Garamond',serif;font-size:320px;color:rgba(201,168,76,0.04);line-height:1;pointer-events:none;">☽</div>
-  <div class="container" style="position:relative;z-index:2;">
-    <p class="eyebrow" style="color:var(--gold);margin-bottom:1rem;">SoLuna</p>
-    <h1 style="color:#FAF7F0;font-weight:300;">{% trans "Regions of Uzbekistan" %}</h1>
-    <p style="color:rgba(255,255,255,0.6);margin-top:0.75rem;max-width:520px;">
-      {% trans "From ancient Silk Road cities to breathtaking mountain landscapes — explore Uzbekistan's diverse regions." %}
+{# ══════════════════ HERO BANNER ══════════════════ #}
+<section style="background:var(--c-bg-alt);padding:60px 0 50px;text-align:center;">
+  <div class="container">
+    <nav aria-label="breadcrumb" style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:20px;">
+      <a href="{% url 'home' %}" style="color:var(--c-text-muted);">{% trans "Home" %}</a>
+      <span style="margin:0 8px;">/</span>
+      <span style="color:var(--c-text);font-weight:600;">{% trans "Destinations" %}</span>
+    </nav>
+
+    <span class="pill-yellow" style="margin-bottom:20px;">
+      <i class="ti ti-world"></i> {% trans "Explore the Silk Road" %}
+    </span>
+    <h1 style="margin-bottom:14px;">{% trans "Discover Uzbekistan's Most Beautiful Destinations" %}</h1>
+    <p style="font-size:1.125rem;color:var(--c-text-muted);max-width:600px;margin:0 auto;">
+      {% trans "From ancient Samarkand to the deserts of Karakalpakstan — find your next adventure." %}
     </p>
   </div>
-</div>
+</section>
 
-<section class="section" style="background:var(--cream);">
+{# ══════════════════ REGIONS GRID ══════════════════ #}
+<section class="section">
   <div class="container">
+
     {% if regions %}
-    <div class="regions-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));">
+    <div class="rg-grid">
       {% for region in regions %}
-      <a href="{% url 'regions:region-detail' region.slug %}">
-        <div class="region-card reveal delay-{{ forloop.counter0|add:1 }}" style="aspect-ratio:3/4;">
+      <a href="{% url 'regions:region-detail' region.slug %}" class="rg-card reveal">
+        <div class="rg-card-img">
           {% if region.image %}
             <img src="{{ region.image.url }}" alt="{{ region.name }}" loading="lazy">
-          {% else %}
-            <div class="region-card-placeholder"></div>
           {% endif %}
-          <div class="region-overlay">
-            <h3>{{ region.name }}</h3>
-            <p>{{ region.attractions.count }} {% trans "attractions" %} · {{ region.tours.count }} {% trans "tours" %}</p>
-            {% if region.description %}
-              <p style="margin-top:4px;font-size:0.78rem;color:rgba(255,255,255,0.5);">{{ region.description|truncatewords:10 }}</p>
-            {% endif %}
-            <div class="region-explore">{% trans "Explore" %}</div>
+          <span class="rg-card-tag">
+            <i class="ti ti-map-pin"></i> {{ region.country|default:"Uzbekistan" }}
+          </span>
+        </div>
+        <div class="rg-card-body">
+          <h3>{{ region.name }}</h3>
+          <p>{{ region.short_description|default:region.description|truncatewords:14 }}</p>
+          <div class="rg-card-foot">
+            <span style="color:var(--c-text-muted);font-size:0.9rem;">
+              <i class="ti ti-route"></i> {{ region.tour_count|default:"0" }} {% trans "Tours available" %}
+            </span>
+            <span class="dest-card-arrow"><i class="ti ti-arrow-up-right"></i></span>
           </div>
         </div>
       </a>
       {% endfor %}
     </div>
     {% else %}
-    <div style="text-align:center;padding:5rem;">
-      <p style="font-size:3rem;">🗺️</p>
-      <h3 style="margin-top:1rem;">{% trans "No regions yet" %}</h3>
+    <div class="tl-empty">
+      <div class="tl-empty-icon"><i class="ti ti-map-off"></i></div>
+      <h3>{% trans "No destinations yet" %}</h3>
+      <p>{% trans "Check back soon for new destinations." %}</p>
     </div>
     {% endif %}
+
   </div>
 </section>
+
+<style>
+.rg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 1024px) { .rg-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .rg-grid { grid-template-columns: 1fr; } }
+
+.rg-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex; flex-direction: column;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.rg-card:hover { transform: translateY(-6px); box-shadow: var(--sh-md); }
+
+.rg-card-img {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--c-bg-alt);
+}
+.rg-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+.rg-card:hover .rg-card-img img { transform: scale(1.06); }
+
+.rg-card-tag {
+  position: absolute; left: 16px; top: 16px;
+  background: rgba(255,255,255,0.95);
+  border-radius: var(--r-pill);
+  padding: 6px 14px;
+  font-size: 0.8rem; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+
+.rg-card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.rg-card-body h3 { font-size: 1.375rem; margin-bottom: 8px; }
+.rg-card-body p { color: var(--c-text-muted); margin-bottom: 18px; font-size: 0.95rem; flex: 1; }
+
+.rg-card-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--c-border-soft);
+}
+</style>
 
 {% endblock %}

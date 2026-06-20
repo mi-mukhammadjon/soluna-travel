@@ -1,0 +1,389 @@
+{% extends 'base.html' %}
+{% load static i18n l10n %}
+
+{% block title %}{% trans "Payment" %} | SoLuna{% endblock %}
+
+{% block content %}
+
+<section class="pm-hero">
+  <div class="container">
+    <nav class="pm-crumbs">
+      <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      <i class="ti ti-chevron-right"></i>
+      <a href="{% url 'bookings:booking-detail' booking.id %}">#{{ booking.booking_number }}</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>{% trans "Payment" %}</span>
+    </nav>
+
+    <h1 class="pm-hero-title">{% trans "Secure checkout" %}</h1>
+    <p class="pm-hero-sub">{% trans "Choose your payment method. All payments are in Uzbek Som (UZS)." %}</p>
+
+    <div class="pm-stepper">
+      <div class="pm-step is-done">
+        <span class="pm-step-num"><i class="ti ti-check"></i></span>
+        <div>
+          <div class="pm-step-label">{% trans "Trip Details" %}</div>
+          <div class="pm-step-sub">{% trans "Completed" %}</div>
+        </div>
+      </div>
+      <div class="pm-step-line is-done"></div>
+      <div class="pm-step is-active">
+        <span class="pm-step-num">2</span>
+        <div>
+          <div class="pm-step-label">{% trans "Payment" %}</div>
+          <div class="pm-step-sub">{% trans "Secure checkout" %}</div>
+        </div>
+      </div>
+      <div class="pm-step-line"></div>
+      <div class="pm-step">
+        <span class="pm-step-num">3</span>
+        <div>
+          <div class="pm-step-label">{% trans "Confirmation" %}</div>
+          <div class="pm-step-sub">{% trans "All set!" %}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--c-bg-alt);padding:40px 0 80px;">
+  <div class="container">
+
+    <div class="pm-layout">
+
+      <div>
+        <form method="post" action="{% url 'payments:initiate' booking.id %}" id="payForm">
+          {% csrf_token %}
+
+          {# Exchange rate notice #}
+          <div class="pm-rate-notice">
+            <i class="ti ti-info-circle"></i>
+            <div>
+              <strong>{% trans "Conversion to UZS" %}</strong>
+              <span>${{ booking.total_price|floatformat:0 }} ≈ {{ amount_uzs_formatted }} {% trans "soums" %}</span>
+            </div>
+          </div>
+
+          <article class="pm-card">
+            <div class="pm-card-head">
+              <div class="pm-card-icon"><i class="ti ti-credit-card"></i></div>
+              <div>
+                <h2>{% trans "Choose payment method" %}</h2>
+                <p>{% trans "Secure payment in Uzbek Som" %}</p>
+              </div>
+            </div>
+
+            <div class="pm-list">
+
+              {# Click — first because most popular #}
+              <label class="pm-option" data-method="click">
+                <input type="radio" name="method" value="click" checked>
+                <div class="pm-option-inner">
+                  <div class="pm-option-icon pm-icon-click">
+                    <i class="ti ti-device-mobile"></i>
+                  </div>
+                  <div class="pm-option-info">
+                    <h4>Click</h4>
+                    <p>{% trans "Pay via Click app, card or balance" %}</p>
+                    <div class="pm-option-cards">
+                      <span class="pm-card-chip">UZCARD</span>
+                      <span class="pm-card-chip">HUMO</span>
+                      <span class="pm-card-chip">VISA</span>
+                    </div>
+                  </div>
+                  <div class="pm-option-badge pm-badge-popular">{% trans "Popular" %}</div>
+                  <div class="pm-option-check"><i class="ti ti-check"></i></div>
+                </div>
+              </label>
+
+              {# Payme #}
+              <label class="pm-option" data-method="payme">
+                <input type="radio" name="method" value="payme">
+                <div class="pm-option-inner">
+                  <div class="pm-option-icon pm-icon-payme">
+                    <i class="ti ti-wallet"></i>
+                  </div>
+                  <div class="pm-option-info">
+                    <h4>Payme</h4>
+                    <p>{% trans "Pay via Payme app or card" %}</p>
+                    <div class="pm-option-cards">
+                      <span class="pm-card-chip">UZCARD</span>
+                      <span class="pm-card-chip">HUMO</span>
+                      <span class="pm-card-chip">VISA</span>
+                    </div>
+                  </div>
+                  <div class="pm-option-check"><i class="ti ti-check"></i></div>
+                </div>
+              </label>
+
+              {# Cash #}
+              <label class="pm-option" data-method="cash">
+                <input type="radio" name="method" value="cash">
+                <div class="pm-option-inner">
+                  <div class="pm-option-icon pm-icon-cash">
+                    <i class="ti ti-cash"></i>
+                  </div>
+                  <div class="pm-option-info">
+                    <h4>{% trans "Pay at office" %}</h4>
+                    <p>{% trans "Visit our Tashkent office" %}</p>
+                  </div>
+                  <div class="pm-option-check"><i class="ti ti-check"></i></div>
+                </div>
+              </label>
+
+            </div>
+          </article>
+
+          {# Gateway redirect notice #}
+          <div class="pm-redirect-notice" id="redirectNotice">
+            <i class="ti ti-external-link"></i>
+            <div>
+              <strong>{% trans "You'll be redirected" %}</strong>
+              <span id="redirectMessage">{% trans "After clicking Pay, you'll be redirected to the secure gateway page to complete the transaction." %}</span>
+            </div>
+          </div>
+
+          <div class="pm-trust-banner">
+            <div class="pm-trust-item">
+              <i class="ti ti-shield-lock"></i>
+              <span>{% trans "256-bit SSL" %}</span>
+            </div>
+            <div class="pm-trust-item">
+              <i class="ti ti-lock"></i>
+              <span>{% trans "PCI DSS" %}</span>
+            </div>
+            <div class="pm-trust-item">
+              <i class="ti ti-shield-check"></i>
+              <span>{% trans "Money-back guarantee" %}</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-dark btn-block btn-lg pm-submit" id="payBtn">
+            <span><i class="ti ti-lock"></i> {% trans "Pay" %} <span class="pm-pay-amount">{{ amount_uzs_formatted }} {% trans "soums" %}</span></span>
+            <i class="ti ti-arrow-right"></i>
+          </button>
+
+          <p style="text-align:center;color:var(--c-text-muted);font-size:0.8rem;margin-top:14px;">
+            <i class="ti ti-info-circle"></i>
+            {% trans "By proceeding, you accept the booking terms." %}
+          </p>
+        </form>
+      </div>
+
+      {# ── ORDER SUMMARY ── #}
+      <aside class="pm-summary-wrap">
+        <div class="pm-summary">
+
+          <div class="pm-tour-mini">
+            <div class="pm-tour-mini-img">
+              {% if booking.tour.cover_image %}
+                <img src="{{ booking.tour.cover_image.url }}" alt="">
+              {% else %}
+                <div class="pm-tour-mini-fallback"><i class="ti ti-mountain"></i></div>
+              {% endif %}
+              <div class="pm-tour-mini-badge">#{{ booking.booking_number }}</div>
+            </div>
+            <h3 class="pm-tour-mini-title">{{ booking.tour.title|truncatechars:50 }}</h3>
+            <div class="pm-tour-mini-meta">
+              <span><i class="ti ti-calendar-event"></i> {{ booking.travel_date|date:"d M Y" }}</span>
+              <span>•</span>
+              <span><i class="ti ti-users"></i> {{ booking.num_adults }}{% if booking.num_children %}+{{ booking.num_children }}{% endif %}</span>
+            </div>
+          </div>
+
+          <div class="pm-summary-divider"></div>
+
+          <div class="pm-summary-section">
+            <h4 class="pm-summary-heading">{% trans "Price Details" %}</h4>
+            <div class="pm-summary-row">
+              <span>{% trans "Tour price" %}</span>
+              <span>${{ booking.total_price|floatformat:0 }}</span>
+            </div>
+            <div class="pm-summary-row pm-rate-row">
+              <span><i class="ti ti-arrows-exchange"></i> {% trans "Conversion" %}</span>
+              <span>≈ {{ amount_uzs_formatted }} {% trans "soums" %}</span>
+            </div>
+            <div class="pm-summary-row">
+              <span>{% trans "Service fee" %}</span>
+              <span>{% trans "Free" %}</span>
+            </div>
+          </div>
+
+          <div class="pm-summary-divider"></div>
+
+          <div class="pm-summary-total">
+            <div>
+              <span class="pm-summary-total-label">{% trans "Total" %}</span>
+              <span class="pm-summary-total-secondary">${{ booking.total_price|floatformat:0 }}</span>
+            </div>
+            <span class="pm-summary-amount">{{ amount_uzs_formatted }} <small>{% trans "soum" %}</small></span>
+          </div>
+
+          <div class="pm-cancellation">
+            <i class="ti ti-rotate-clockwise"></i>
+            <div>
+              <strong>{% trans "Free cancellation" %}</strong>
+              <span>{% trans "Until 3 days before travel" %}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pm-help">
+          <i class="ti ti-headset"></i>
+          <div>
+            <strong>{% trans "Need help?" %}</strong>
+            <a href="{% url 'messages_app:contact' %}">{% trans "Contact support" %}</a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.pm-hero{background:linear-gradient(135deg,#0F1419,#1E2A2E 60%,#2D4A52);color:#fff;padding:40px 0 60px;position:relative;overflow:hidden;}
+.pm-hero::before{content:'';position:absolute;right:-200px;top:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(254,250,23,0.06),transparent 70%);pointer-events:none;}
+.pm-crumbs{display:flex;align-items:center;gap:6px;font-size:0.85rem;margin-bottom:20px;color:rgba(255,255,255,0.5);}
+.pm-crumbs a{color:rgba(255,255,255,0.7);text-decoration:none;}
+.pm-crumbs a:hover{color:var(--c-yellow);}
+.pm-crumbs i{font-size:0.7rem;opacity:0.4;}
+.pm-crumbs span{color:var(--c-yellow);font-weight:600;}
+.pm-hero-title{font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.1;margin-bottom:8px;}
+.pm-hero-sub{color:rgba(255,255,255,0.7);font-size:1rem;margin-bottom:32px;}
+
+.pm-stepper{display:flex;align-items:center;gap:16px;padding:20px 24px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);backdrop-filter:blur(10px);flex-wrap:wrap;}
+.pm-step{display:flex;align-items:center;gap:14px;opacity:0.5;}
+.pm-step.is-active,.pm-step.is-done{opacity:1;}
+.pm-step-num{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem;flex-shrink:0;}
+.pm-step.is-active .pm-step-num{background:var(--c-yellow);color:#000;box-shadow:0 0 0 4px rgba(254,250,23,0.2);}
+.pm-step.is-done .pm-step-num{background:#10B981;color:#fff;}
+.pm-step-label{font-weight:700;font-size:0.95rem;margin-bottom:2px;}
+.pm-step-sub{font-size:0.75rem;opacity:0.6;}
+.pm-step-line{flex:1;height:2px;background:rgba(255,255,255,0.1);min-width:30px;}
+.pm-step-line.is-done{background:#10B981;}
+@media (max-width:700px){.pm-step-sub{display:none;}}
+
+.pm-layout{display:grid;grid-template-columns:1fr 380px;gap:28px;}
+@media (max-width:1024px){.pm-layout{grid-template-columns:1fr;}}
+
+.pm-rate-notice{display:flex;gap:12px;align-items:center;padding:14px 18px;background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border:1px solid #FDE68A;border-radius:var(--r-md);margin-bottom:18px;}
+.pm-rate-notice i{width:36px;height:36px;background:#FDE68A;color:#92400E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.pm-rate-notice div{display:flex;flex-direction:column;font-size:0.9rem;}
+.pm-rate-notice strong{font-size:0.95rem;}
+.pm-rate-notice span{color:var(--c-text-muted);font-family:'Space Mono',monospace;font-size:0.85rem;margin-top:2px;}
+
+.pm-card{background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:28px;margin-bottom:18px;}
+.pm-card-head{display:flex;gap:14px;align-items:center;margin-bottom:22px;}
+.pm-card-icon{width:44px;height:44px;background:var(--c-yellow);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.pm-card-head h2{font-size:1.2rem;margin-bottom:2px;}
+.pm-card-head p{font-size:0.85rem;color:var(--c-text-muted);margin:0;}
+
+.pm-list{display:flex;flex-direction:column;gap:12px;}
+.pm-option{display:block;cursor:pointer;}
+.pm-option input{display:none;}
+.pm-option-inner{display:flex;align-items:center;gap:14px;padding:18px;border:2px solid var(--c-border);border-radius:var(--r-md);background:#fff;transition:all 0.2s;position:relative;}
+.pm-option:hover .pm-option-inner{border-color:var(--c-text);transform:translateY(-1px);box-shadow:var(--sh-md);}
+.pm-option input:checked + .pm-option-inner{border-color:var(--c-text);background:linear-gradient(135deg,#FFFEF2,#FFFCE0);box-shadow:0 0 0 3px rgba(254,250,23,0.2);}
+
+.pm-option-icon{width:48px;height:48px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.pm-icon-click{background:linear-gradient(135deg,#0088FF,#0066CC);color:#fff;}
+.pm-icon-payme{background:linear-gradient(135deg,#37C2FF,#00A8E8);color:#fff;}
+.pm-icon-cash{background:linear-gradient(135deg,#10B981,#059669);color:#fff;}
+
+.pm-option-info{flex:1;min-width:0;}
+.pm-option-info h4{font-size:1rem;margin-bottom:2px;}
+.pm-option-info p{font-size:0.85rem;color:var(--c-text-muted);margin:0 0 6px 0;}
+
+.pm-option-cards{display:flex;gap:4px;flex-wrap:wrap;}
+.pm-card-chip{background:var(--c-bg-alt);padding:2px 8px;border-radius:4px;font-size:0.65rem;font-weight:700;letter-spacing:0.05em;color:var(--c-text-muted);}
+
+.pm-option-badge{padding:4px 10px;border-radius:50px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+.pm-badge-popular{background:var(--c-yellow);color:#000;}
+
+.pm-option-check{width:24px;height:24px;border-radius:50%;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;color:transparent;transition:all 0.2s;}
+.pm-option input:checked + .pm-option-inner .pm-option-check{background:var(--c-text);border-color:var(--c-text);color:#fff;}
+
+@media (max-width:560px){.pm-option-inner{flex-wrap:wrap;}.pm-option-badge{display:none;}}
+
+.pm-redirect-notice{display:flex;gap:12px;align-items:center;padding:14px 18px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:var(--r-md);margin-bottom:18px;font-size:0.88rem;}
+.pm-redirect-notice i{width:32px;height:32px;background:#3B82F6;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.pm-redirect-notice strong{display:block;color:#1E40AF;}
+.pm-redirect-notice span{color:#1E3A8A;font-size:0.82rem;}
+
+.pm-trust-banner{display:flex;align-items:center;justify-content:space-around;gap:14px;padding:16px 20px;background:#fff;border:1px solid var(--c-border);border-radius:var(--r-md);margin-bottom:20px;}
+.pm-trust-item{display:inline-flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;}
+.pm-trust-item i{color:var(--c-success);font-size:1.2rem;}
+@media (max-width:600px){.pm-trust-banner{flex-direction:column;align-items:flex-start;}}
+
+.pm-submit{display:flex;align-items:center;justify-content:space-between;font-size:1.05rem;}
+.pm-submit:disabled{opacity:0.6;cursor:wait;}
+.pm-pay-amount{font-family:'Space Mono',monospace;}
+
+.pm-summary-wrap{position:sticky;top:130px;align-self:start;display:flex;flex-direction:column;gap:16px;}
+@media (max-width:1024px){.pm-summary-wrap{position:static;}}
+.pm-summary{background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-md);}
+.pm-tour-mini{padding:22px;}
+.pm-tour-mini-img{aspect-ratio:16/10;border-radius:var(--r-md);overflow:hidden;background:var(--c-bg-alt);position:relative;margin-bottom:14px;}
+.pm-tour-mini-img img{width:100%;height:100%;object-fit:cover;}
+.pm-tour-mini-fallback{width:100%;height:100%;background:linear-gradient(135deg,#2E2E33,#1A1A1F);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.2);font-size:3rem;}
+.pm-tour-mini-badge{position:absolute;top:12px;left:12px;font-family:'Space Mono',monospace;font-weight:700;font-size:0.78rem;color:#fff;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);padding:4px 10px;border-radius:50px;}
+.pm-tour-mini-title{font-size:1.05rem;line-height:1.3;margin-bottom:10px;}
+.pm-tour-mini-meta{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--c-text-muted);flex-wrap:wrap;}
+.pm-tour-mini-meta span{display:inline-flex;align-items:center;gap:4px;}
+
+.pm-summary-divider{border-top:1px dashed var(--c-border);margin:0 22px;}
+.pm-summary-section{padding:18px 22px;}
+.pm-summary-heading{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-text-muted);font-weight:700;margin-bottom:12px;}
+.pm-summary-row{display:flex;justify-content:space-between;font-size:0.9rem;color:var(--c-text-muted);padding:6px 0;}
+.pm-rate-row{color:var(--c-text);font-weight:600;}
+.pm-rate-row i{font-size:0.85rem;}
+
+.pm-summary-total{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:linear-gradient(135deg,#FFFEF2,#FEFA17);}
+.pm-summary-total > div{display:flex;flex-direction:column;gap:2px;}
+.pm-summary-total-label{font-weight:700;font-size:0.95rem;}
+.pm-summary-total-secondary{font-size:0.78rem;color:var(--c-text-muted);}
+.pm-summary-amount{font-size:1.4rem;font-weight:800;line-height:1;color:var(--c-text);font-family:'Space Mono',monospace;text-align:right;}
+.pm-summary-amount small{font-size:0.7rem;font-weight:600;display:block;margin-top:2px;opacity:0.6;font-family:inherit;letter-spacing:0.05em;}
+
+.pm-cancellation{display:flex;gap:12px;align-items:flex-start;padding:16px 22px;background:var(--c-bg-alt);font-size:0.85rem;}
+.pm-cancellation i{width:32px;height:32px;background:#fff;color:var(--c-success);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.pm-cancellation div{display:flex;flex-direction:column;}
+.pm-cancellation strong{font-size:0.9rem;}
+.pm-cancellation span{color:var(--c-text-muted);font-size:0.78rem;}
+
+.pm-help{display:flex;gap:14px;align-items:center;padding:16px 20px;background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);}
+.pm-help > i{width:40px;height:40px;background:var(--c-yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.pm-help div{display:flex;flex-direction:column;gap:4px;font-size:0.85rem;}
+.pm-help strong{font-size:0.92rem;}
+.pm-help a{color:var(--c-orange);font-weight:700;text-decoration:none;}
+.pm-help a:hover{text-decoration:underline;}
+</style>
+
+<script>
+(function () {
+  const messages = {
+    click: "{% trans 'You will be redirected to Click payment page. Complete the payment via your card or Click app.' %}",
+    payme: "{% trans 'You will be redirected to Payme. Complete the payment via your card or Payme app.' %}",
+    cash:  "{% trans 'Visit our office in Tashkent to complete payment in cash. Your booking will remain pending until paid.' %}",
+  };
+
+  function updateNotice() {
+    const checked = document.querySelector('input[name="method"]:checked')?.value;
+    const msg = messages[checked] || messages.click;
+    const el = document.getElementById('redirectMessage');
+    if (el) el.textContent = msg;
+  }
+  document.querySelectorAll('input[name="method"]').forEach(r => r.addEventListener('change', updateNotice));
+  updateNotice();
+
+  document.getElementById('payForm').addEventListener('submit', function () {
+    const btn = document.getElementById('payBtn');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span><i class="ti ti-loader"></i> {% trans "Redirecting to gateway..." %}</span>';
+    }
+  });
+})();
+</script>
+{% endblock %}

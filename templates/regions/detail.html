@@ -1,96 +1,242 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{{ region.name }} — SoLuna{% endblock %}
+{% block title %}{{ region.name }} | SoLuna{% endblock %}
 
 {% block content %}
 
-<!-- Hero -->
-<div style="height:55vh;min-height:380px;position:relative;background:var(--green-deep);overflow:hidden;">
+{# ══════════════════ REGION HERO ══════════════════ #}
+<section class="rd-hero">
   {% if region.image %}
-    <img src="{{ region.image.url }}" alt="{{ region.name }}"
-      style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
+    <div class="rd-hero-bg" style="background-image:url('{{ region.image.url }}');"></div>
   {% endif %}
-  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,59,46,0.97) 0%,rgba(13,59,46,0.4) 60%,transparent 100%);"></div>
-  <div class="container" style="position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);width:100%;">
-    <a href="{% url 'regions:region-list' %}" style="color:rgba(255,255,255,0.5);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1rem;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">← {% trans "All Regions" %}</a>
-    <h1 style="color:#FAF7F0;font-weight:300;">{{ region.name }}</h1>
-    {% if region.description %}
-      <p style="color:rgba(255,255,255,0.65);margin-top:0.75rem;max-width:580px;">{{ region.description }}</p>
-    {% endif %}
-  </div>
-</div>
+  <div class="rd-hero-overlay"></div>
 
-<!-- Attractions -->
-{% if attractions %}
-<section class="section" style="background:var(--white);">
+  <div class="container rd-hero-content">
+    <nav style="font-size:0.85rem;color:rgba(255,255,255,0.8);margin-bottom:20px;">
+      <a href="{% url 'home' %}" style="color:rgba(255,255,255,0.8);">{% trans "Home" %}</a>
+      <span style="margin:0 8px;">/</span>
+      <a href="{% url 'regions:region-list' %}" style="color:rgba(255,255,255,0.8);">{% trans "Destinations" %}</a>
+      <span style="margin:0 8px;">/</span>
+      <span style="color:#fff;font-weight:600;">{{ region.name }}</span>
+    </nav>
+
+    <span class="pill-yellow" style="margin-bottom:24px;">
+      <i class="ti ti-map-pin"></i> {{ region.country|default:"Uzbekistan" }}
+    </span>
+    <h1 style="color:#fff;margin-bottom:14px;">{{ region.name }}</h1>
+    <p style="color:rgba(255,255,255,0.9);font-size:1.25rem;max-width:680px;">
+      {{ region.short_description|default:region.description|truncatewords:25 }}
+    </p>
+  </div>
+</section>
+
+{# ══════════════════ REGION INFO ══════════════════ #}
+<section class="section">
   <div class="container">
-    <div class="section-header reveal">
-      <p class="eyebrow">{% trans "Discover" %}</p>
-      <h2>{% trans "Attractions" %}</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;">
-      {% for attraction in attractions %}
-      <div class="tour-card reveal delay-{{ forloop.counter }}">
-        <div class="tour-card-img">
-          {% if attraction.image %}
-            <img src="{{ attraction.image.url }}" alt="{{ attraction.name }}" loading="lazy">
-          {% else %}
-            <div class="tour-card-img-placeholder">🏛️</div>
+    <div class="rd-layout">
+
+      {# ── MAIN CONTENT ── #}
+      <article>
+        <h2 style="margin-bottom:20px;">{% trans "About" %} {{ region.name }}</h2>
+        <div class="td-prose" style="margin-bottom:40px;">
+          {{ region.description|linebreaks }}
+        </div>
+
+        {# Highlights / Why visit #}
+        {% if region.highlights.all %}
+        <h3 style="margin-bottom:20px;">{% trans "Why visit" %} {{ region.name }}?</h3>
+        <div class="rd-highlights">
+          {% for hl in region.highlights.all %}
+          <div class="rd-highlight">
+            <div class="rd-highlight-icon"><i class="ti ti-{{ hl.icon|default:'sparkles' }}"></i></div>
+            <h4>{{ hl.title }}</h4>
+            <p>{{ hl.description }}</p>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {# Tours in this region #}
+        {% if tours %}
+        <div style="margin-top:60px;">
+          <div class="section-header section-header--row" style="margin-bottom:30px;">
+            <h2 style="margin:0;">{% trans "Tours in" %} {{ region.name }}</h2>
+            <span style="color:var(--c-text-muted);">{{ tours|length }} {% trans "tours" %}</span>
+          </div>
+
+          <div class="tour-grid">
+            {% for tour in tours %}
+            <article class="tour-card">
+              <div class="tour-card-img">
+                {% if tour.cover_image %}<img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">{% endif %}
+                {% if tour.is_top_rated %}<span class="tour-card-badge tour-card-badge--top">{% trans "Top Rated" %}</span>{% endif %}
+              </div>
+              <div class="tour-card-body">
+                <div class="tour-card-rating">
+                  <span class="star"><i class="ti ti-star"></i></span>
+                  <span>{{ tour.rating|default:"4.96" }}</span>
+                </div>
+                <h3 class="tour-card-title"><a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title }}</a></h3>
+                <div class="tour-card-meta">
+                  <span class="tour-card-meta-item"><i class="ti ti-clock"></i> {{ tour.duration|default:"3 days" }}</span>
+                </div>
+                <div class="tour-card-foot">
+                  <div class="tour-card-price">${{ tour.price }}<small>/ {% trans "person" %}</small></div>
+                  <a href="{% url 'tours:tour-detail' tour.slug %}" class="btn btn-light btn-sm">{% trans "View" %}</a>
+                </div>
+              </div>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </article>
+
+      {# ── INFO SIDEBAR ── #}
+      <aside class="rd-sidebar">
+        <div class="rd-info-card">
+          <h3 style="margin-bottom:18px;">{% trans "Quick Facts" %}</h3>
+          <ul class="rd-info-list">
+            <li>
+              <i class="ti ti-map-pin"></i>
+              <div>
+                <span>{% trans "Country" %}</span>
+                <strong>{{ region.country|default:"Uzbekistan" }}</strong>
+              </div>
+            </li>
+            {% if region.population %}
+            <li>
+              <i class="ti ti-users"></i>
+              <div>
+                <span>{% trans "Population" %}</span>
+                <strong>{{ region.population }}</strong>
+              </div>
+            </li>
+            {% endif %}
+            {% if region.best_time %}
+            <li>
+              <i class="ti ti-calendar"></i>
+              <div>
+                <span>{% trans "Best time to visit" %}</span>
+                <strong>{{ region.best_time }}</strong>
+              </div>
+            </li>
+            {% endif %}
+            {% if region.language %}
+            <li>
+              <i class="ti ti-language"></i>
+              <div>
+                <span>{% trans "Language" %}</span>
+                <strong>{{ region.language }}</strong>
+              </div>
+            </li>
+            {% endif %}
+            {% if region.currency %}
+            <li>
+              <i class="ti ti-currency-dollar"></i>
+              <div>
+                <span>{% trans "Currency" %}</span>
+                <strong>{{ region.currency }}</strong>
+              </div>
+            </li>
+            {% endif %}
+          </ul>
+
+          {% if region.latitude and region.longitude %}
+          <div class="rd-map">
+            <iframe loading="lazy" style="border:0;width:100%;height:200px;border-radius:var(--r-md);"
+              src="https://maps.google.com/maps?q={{ region.latitude }},{{ region.longitude }}&z=10&output=embed"></iframe>
+          </div>
           {% endif %}
         </div>
-        <div class="tour-card-body">
-          <h3>{{ attraction.name }}</h3>
-          {% if attraction.description %}
-            <p>{{ attraction.description|truncatewords:20 }}</p>
-          {% endif %}
-          {% if attraction.latitude and attraction.longitude %}
-            <a href="https://2gis.uz/search/{{ attraction.latitude }},{{ attraction.longitude }}" target="_blank" rel="noopener"
-               class="btn btn-outline-dark btn-sm" style="margin-top:0.75rem;">🗺 {% trans "View on Map" %}</a>
-          {% endif %}
+
+        <div class="rd-cta-card">
+          <h3 style="color:#fff;margin-bottom:10px;">{% trans "Need help planning?" %}</h3>
+          <p style="color:rgba(255,255,255,0.8);margin-bottom:18px;font-size:0.95rem;">
+            {% trans "Our local experts can craft a custom tour for you." %}
+          </p>
+          <a href="{% url 'messages_app:contact' %}" class="btn btn-yellow btn-block">
+            {% trans "Contact us" %} <i class="ti ti-arrow-right"></i>
+          </a>
         </div>
-      </div>
-      {% endfor %}
+      </aside>
+
     </div>
   </div>
 </section>
-{% endif %}
 
-<!-- Tours in this region -->
-{% if tours %}
-<section class="section" style="background:var(--cream);">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="eyebrow">{% trans "Explore" %}</p>
-      <h2>{% trans "Tours in" %} {{ region.name }}</h2>
-    </div>
-    <div class="tours-grid">
-      {% for tour in tours %}
-      <a href="{% url 'tours:tour-detail' tour.slug %}">
-        <article class="tour-card reveal delay-{{ forloop.counter }}">
-          <div class="tour-card-img">
-            {% if tour.cover_image %}<img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
-            {% else %}<div class="tour-card-img-placeholder">🕌</div>{% endif %}
-            {% if tour.is_featured %}<span class="tour-badge">{% trans "Featured" %}</span>{% endif %}
-          </div>
-          <div class="tour-card-body">
-            <div class="tour-card-meta">
-              <span>📅 {{ tour.duration_days }} {% trans "days" %}</span>
-              <span>👥 {{ tour.max_group_size }}</span>
-            </div>
-            <h3>{{ tour.title }}</h3>
-            <p>{{ tour.short_description|truncatewords:16 }}</p>
-          </div>
-          <div class="tour-card-footer">
-            <div class="tour-price">${{ tour.price }}<small>{% trans "per person" %}</small></div>
-            <span class="btn btn-green-dark btn-sm">{% trans "Details" %}</span>
-          </div>
-        </article>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
+<style>
+.rd-hero {
+  position: relative;
+  min-height: 480px;
+  background: #0A0A0A;
+  color: #fff;
+  display: flex; align-items: center;
+  padding: 80px 0;
+  overflow: hidden;
+}
+.rd-hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0.6;
+}
+.rd-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+.rd-hero-content { position: relative; z-index: 2; }
+
+.rd-layout { display: grid; grid-template-columns: 1fr 360px; gap: 40px; }
+@media (max-width: 1024px) { .rd-layout { grid-template-columns: 1fr; } }
+
+.rd-highlights {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+}
+@media (max-width: 600px) { .rd-highlights { grid-template-columns: 1fr; } }
+.rd-highlight {
+  padding: 24px;
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+}
+.rd-highlight-icon {
+  width: 48px; height: 48px;
+  background: var(--c-yellow);
+  border-radius: var(--r-sm);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 14px;
+}
+.rd-highlight h4 { font-size: 1.1rem; margin-bottom: 8px; }
+.rd-highlight p { color: var(--c-text-muted); font-size: 0.9rem; }
+
+.rd-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 130px; align-self: start; }
+@media (max-width: 1024px) { .rd-sidebar { position: static; } }
+
+.rd-info-card {
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 24px;
+}
+.rd-info-list { list-style: none; padding: 0; }
+.rd-info-list li {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--c-border-soft);
+}
+.rd-info-list li:last-child { border-bottom: none; }
+.rd-info-list i { font-size: 1.3rem; color: var(--c-orange); flex-shrink: 0; }
+.rd-info-list span { display: block; font-size: 0.8rem; color: var(--c-text-muted); margin-bottom: 2px; }
+.rd-info-list strong { display: block; font-size: 0.95rem; }
+
+.rd-map { margin-top: 16px; }
+
+.rd-cta-card {
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+  color: #fff;
+  border-radius: var(--r-lg);
+  padding: 28px;
+}
+</style>
 
 {% endblock %}

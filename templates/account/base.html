@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{# Allauth ba'zi sahifalar shu base'ni qidiradi #}
+{% block content %}
+<section style="background:var(--c-bg-alt);min-height:calc(100vh - 200px);padding:60px 0;">
+  <div class="container" style="max-width:560px;">
+    <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:40px;box-shadow:var(--sh-md);">
+      {% block head_title %}{% endblock %}
+      {% block inner %}{% endblock %}
+    </div>
+  </div>
+</section>
+{% endblock %}

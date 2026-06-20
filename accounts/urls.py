@@ -22,7 +22,4 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('profile/edit/', views.ProfileUpdateView.as_view(), name='profile-edit'),
     path('password/change/', views.PasswordChangeView.as_view(), name='password-change'),
-
-    # Email tasdiqlash (agar custom view bo'lsa)
-    path('verify/<uuid:token>/', views.EmailVerifyView.as_view(), name='verify-email'),
 ]

@@ -1,194 +1,451 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}SoLuna — {% trans "Journeys filled with inspiration" %}{% endblock %}
+{% block title %}SoLuna — {% trans "Your Gateway to Extraordinary Adventures" %}{% endblock %}
 
 {% block content %}
 
-<!-- ══════════════════ HERO ══════════════════ -->
-<section class="hero" id="hero">
-  <div class="hero-bg" id="heroBg" style="background-image: url('{% static 'img/hero-bg.jpg' %}');"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-pattern"></div>
-  <div class="hero-ornament" aria-hidden="true">☽</div>
+{# ══════════════════ 1. HERO + SEARCH ══════════════════ #}
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('{% static "img/hero.jpg" %}');"></div>
 
-  <div class="container">
-    <div class="hero-content">
-      {# hero-enter: JS klass qo'shadi, inline style yo'q #}
-      <p class="eyebrow hero-enter">SoLuna · Uzbekistan</p>
-      <h1 class="hero-enter">
-        {% trans "Discover" %}<br>
-        <em>{% trans "the Silk Road" %}</em><br>
-        {% trans "Your Way" %}
-      </h1>
-      <p class="hero-desc hero-enter">
-        {% trans "Samarkand, Bukhara, Khiva — cities where every stone breathes centuries of history. We craft journeys as unique as you are." %}
-      </p>
-      <div class="hero-actions hero-enter">
-        <a href="{% url 'tours:tour-list' %}" class="btn btn-gold btn-lg">{% trans "Explore Tours" %}</a>
-        <a href="{% url 'messages_app:contact' %}" class="btn btn-outline-gold btn-lg">{% trans "Plan My Trip" %}</a>
+  <div class="container hero-content">
+    <span class="hero-eyebrow"><i class="ti ti-world"></i> {% trans "Explore the World" %}</span>
+    <h1>{% trans "Your Gateway to Extraordinary Adventures" %}</h1>
+    <p class="hero-desc">{% trans "Pack your bags and let SoLuna redefine your travel experience. Where every journey is a story waiting to be told." %}</p>
+
+    <div class="search-box">
+      <div class="search-tabs">
+        <span class="search-tab is-active">{% trans "Tours" %}</span>
+        <span class="search-tab">{% trans "Hotels" %}</span>
+        <span class="search-tab">{% trans "Tickets" %}</span>
+        <span class="search-tab">{% trans "Rental" %}</span>
+        <span class="search-tab">{% trans "Activities" %}</span>
+        <span class="search-help"><i class="ti ti-help-circle"></i> {% trans "Need some help?" %}</span>
       </div>
-    </div>
-  </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <span>{% trans "Scroll" %}</span>
-    <div class="hero-scroll-line"></div>
+      <form class="search-form" action="{% url 'tours:tour-list' %}" method="get">
+        <div class="search-field">
+          <label class="search-field-label">{% trans "Location" %}</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <i class="ti ti-map-pin" style="color:#737373;"></i>
+            <input type="text" name="location" class="search-field-value" placeholder="{% trans 'Samarkand, Uzbekistan' %}">
+          </div>
+        </div>
+
+        <div class="search-field">
+          <label class="search-field-label">{% trans "Check In" %}</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <i class="ti ti-calendar" style="color:#737373;"></i>
+            <input type="date" name="check_in" class="search-field-value">
+          </div>
+        </div>
+
+        <div class="search-field">
+          <label class="search-field-label">{% trans "Check Out" %}</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <i class="ti ti-calendar" style="color:#737373;"></i>
+            <input type="date" name="check_out" class="search-field-value">
+          </div>
+        </div>
+
+        <div class="search-field">
+          <label class="search-field-label">{% trans "Guest" %}</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <i class="ti ti-users" style="color:#737373;"></i>
+            <input type="text" name="guests" class="search-field-value" value="2 {% trans 'adults' %}, 2 {% trans 'children' %}">
+          </div>
+        </div>
+
+        <button type="submit" class="search-submit">
+          <i class="ti ti-search"></i> {% trans "Search" %}
+        </button>
+      </form>
+    </div>
   </div>
 </section>
 
-<!-- ══════════════════ STATS BAR ══════════════════ -->
-<div class="stats-bar">
+{# ══════════════════ 2. TOP SEARCHED DESTINATIONS ══════════════════ #}
+<section class="section">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-number" data-count="500" data-suffix="+">0</span>
-        <span class="stat-label">{% trans "Happy Travelers" %}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-count="15" data-suffix="+">0</span>
-        <span class="stat-label">{% trans "Unique Tours" %}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-count="14">0</span>
-        <span class="stat-label">{% trans "Regions" %}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-count="9">0</span>
-        <span class="stat-label">{% trans "Languages" %}</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════ FEATURED TOURS ══════════════════ -->
-{% if featured_tours %}
-<section class="section section-white">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="eyebrow">{% trans "Curated Experiences" %}</p>
-      <h2>{% trans "Signature Tours" %}</h2>
-      <p>{% trans "Hand-picked journeys that capture the soul of Uzbekistan" %}</p>
+    <div class="section-header">
+      <h2>{% trans "Top Searched Destinations" %}</h2>
+      <p>{% trans "Favorite destinations of professional travelers" %}</p>
     </div>
 
-    {% comment %}stagger-grid: kechikishlar CSS nth-child orqali —
-    delay-N klass muammosi (5 tadan keyin ishlamasdi) hal qilindi{% endcomment %}
-    <div class="tours-grid stagger-grid">
-      {% for tour in featured_tours %}
-      <a href="{% url 'tours:tour-detail' tour.slug %}" class="reveal">
-        <article class="tour-card">
-          <div class="tour-card-img">
-            {% if tour.cover_image %}
-              <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
-            {% else %}
-              <div class="tour-card-img-placeholder" aria-hidden="true">🕌</div>
-            {% endif %}
-            {% if tour.is_featured %}
-              <span class="tour-badge">{% trans "Featured" %}</span>
-            {% elif tour.category %}
-              <span class="tour-badge">{{ tour.category.name }}</span>
-            {% endif %}
+    <div class="dest-grid">
+      {% for region in regions|slice:":8" %}
+      <a href="{% url 'regions:region-detail' region.slug %}" class="dest-card reveal">
+        {% if region.image %}
+          <img src="{{ region.image.url }}" alt="{{ region.name }}" class="dest-card-img" loading="lazy">
+        {% else %}
+          <div class="dest-card-img"></div>
+        {% endif %}
+        <div class="dest-card-body">
+          <div class="dest-card-name">{{ region.name }}</div>
+          <div class="dest-card-meta">
+            <i class="ti ti-flag"></i>
+            {{ region.tours.count }} {% trans "Tours" %}
           </div>
-          <div class="tour-card-body">
-            <div class="tour-card-meta">
-              <span>📅 {{ tour.duration_days }} {% trans "days" %}</span>
-              <span>👥 {% trans "Max" %} {{ tour.max_group_size }}</span>
-              {% if tour.avg_rating %}<span>⭐ {{ tour.avg_rating|floatformat:1 }}</span>{% endif %}
-            </div>
-            <h3>{{ tour.title }}</h3>
-            <p>{{ tour.short_description|truncatewords:20 }}</p>
-          </div>
-          <div class="tour-card-footer">
-            <div class="tour-price">
-              ${{ tour.price }}
-              <small>{% trans "per person" %}</small>
-            </div>
-            <span class="btn btn-green-dark btn-sm">{% trans "Details" %}</span>
-          </div>
-        </article>
+        </div>
+        <span class="dest-card-arrow"><i class="ti ti-arrow-up-right"></i></span>
       </a>
+      {% empty %}
+        {# Hozircha regionlar bo'sh — admin panelda qo'shing #}
       {% endfor %}
     </div>
+  </div>
+</section>
 
-    <div class="text-center reveal" style="margin-top:3rem;">
-      <a href="{% url 'tours:tour-list' %}" class="btn btn-gold btn-lg">{% trans "View All Tours" %}</a>
+{# ══════════════════ 3. FEATURED TOURS ══════════════════ #}
+<section class="section section-bg">
+  <div class="container">
+    <div class="section-header section-header--row">
+      <div>
+        <h2>{% trans "Our Featured Tours" %}</h2>
+        <p>{% trans "Favorite destinations based on customer reviews" %}</p>
+      </div>
+      <div class="filter-pills">
+        <form method="GET" action="." class="filter-pills">
+          {# Kategoriyalar uchun #}
+          <select name="category" class="filter-pill" onchange="this.form.submit()" style="appearance:auto; cursor:pointer;">
+            <option value="">{% trans "Categories" %}</option>
+            <option value="cultural" {% if request.GET.category == 'cultural' %}selected{% endif %}>Cultural</option>
+            <option value="adventure" {% if request.GET.category == 'adventure' %}selected{% endif %}>Adventure</option>
+            <option value="nature" {% if request.GET.category == 'nature' %}selected{% endif %}>Nature</option>
+          </select>
+
+          {# Davomiylik uchun #}
+          <select name="duration" class="filter-pill" onchange="this.form.submit()" style="appearance:auto; cursor:pointer;">
+            <option value="">{% trans "Duration" %}</option>
+            <option value="1-3" {% if request.GET.duration == '1-3' %}selected{% endif %}>1 - 3 {% trans "days" %}</option>
+            <option value="4-7" {% if request.GET.duration == '4-7' %}selected{% endif %}>4 - 7 {% trans "days" %}</option>
+            <option value="8+" {% if request.GET.duration == '8+' %}selected{% endif %}>8+ {% trans "days" %}</option>
+          </select>
+
+          {# Narx uchun #}
+          <select name="price" class="filter-pill" onchange="this.form.submit()" style="appearance:auto; cursor:pointer;">
+            <option value="">{% trans "Price range" %}</option>
+            <option value="0-500" {% if request.GET.price == '0-500' %}selected{% endif %}>$0 - $500</option>
+            <option value="500-1000" {% if request.GET.price == '500-1000' %}selected{% endif %}>$500 - $1000</option>
+            <option value="1000+" {% if request.GET.price == '1000+' %}selected{% endif %}>$1000+</option>
+          </select>
+          
+          {# Filterni tozalash tugmasi (agar bironta filter tanlangan bo'lsa chiqadi) #}
+          {% if request.GET.category or request.GET.duration or request.GET.price %}
+            <a href="?" class="filter-pill" style="color:var(--c-orange); text-decoration:none;">
+              <i class="ti ti-x"></i> {% trans "Clear" %}
+            </a>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+
+    <div class="tour-grid">
+      {% for tour in featured_tours|slice:":6" %}
+      <article class="tour-card reveal">
+        <div class="tour-card-img">
+          {% if tour.cover_image %}
+            <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
+          {% endif %}
+
+          {% with badge_class=forloop.counter0|divisibleby:3|yesno:"tour-card-badge--off,tour-card-badge--top" %}
+          {% if forloop.counter0|divisibleby:3 %}
+            <span class="tour-card-badge tour-card-badge--off">25% Off</span>
+          {% elif forloop.counter|divisibleby:2 %}
+            <span class="tour-card-badge tour-card-badge--sale">{% trans "Best Sale" %}</span>
+          {% else %}
+            <span class="tour-card-badge tour-card-badge--top">{% trans "Top Rated" %}</span>
+          {% endif %}
+          {% endwith %}
+
+          <button class="tour-card-fav" aria-label="{% trans 'Add to favorites' %}">
+            <i class="ti ti-heart"></i>
+          </button>
+        </div>
+
+        <div class="tour-card-body">
+          <div class="tour-card-rating">
+            <span class="star"><i class="ti ti-star"></i></span>
+            <span>{{ tour.rating|default:"4.96" }}</span>
+            <span class="muted">({{ tour.review_count|default:"672" }} {% trans "reviews" %})</span>
+          </div>
+
+          <h3 class="tour-card-title">
+            <a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title }}</a>
+          </h3>
+
+          <div class="tour-card-meta">
+            <span class="tour-card-meta-item"><i class="ti ti-clock"></i> {{ tour.duration|default:"3 days 3 nights" }}</span>
+            <span class="tour-card-meta-item"><i class="ti ti-users"></i> {{ tour.group_size|default:"4-6 guest" }}</span>
+          </div>
+
+          <div class="tour-card-foot">
+            <div class="tour-card-price">
+              ${{ tour.price }}<small>/ {% trans "person" %}</small>
+            </div>
+            <a href="{% url 'bookings:booking-create' tour.slug %}" class="btn btn-light btn-sm">{% trans "Book Now" %}</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
-{% endif %}
 
-<!-- ══════════════════ REGIONS ══════════════════ -->
-{% if regions %}
-<section class="section section-cream">
+{# ══════════════════ 4. WE OFFER TOURS / EASY PAYMENT ══════════════════ #}
+<section class="section">
   <div class="container">
-    <div class="section-header reveal">
-      <p class="eyebrow">{% trans "Destinations" %}</p>
-      <h2>{% trans "Legendary Regions" %}</h2>
-      <p>{% trans "From ancient desert cities to lush mountain valleys — Uzbekistan's diversity awaits" %}</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+
+      <div class="reveal">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <img src="{% static 'img/payment-1.avif' %}" alt="" style="border-radius:8px;width:100%;aspect-ratio:1;object-fit:cover;" loading="lazy"
+               onerror="this.style.background='var(--c-bg-alt)';">
+          <img src="{% static 'img/picture-2.png' %}" alt="" style="border-radius:8px;width:100%;aspect-ratio:1;object-fit:cover;margin-top:40px;" loading="lazy"
+               onerror="this.style.background='var(--c-bg-alt)';">
+          <img src="{% static 'img/picture-3.png' %}" alt="" style="border-radius:8px;width:100%;aspect-ratio:1;object-fit:cover;" loading="lazy"
+               onerror="this.style.background='var(--c-bg-alt)';">
+          <img src="{% static 'img/picture-4.png' %}" alt="" style="border-radius:8px;width:100%;aspect-ratio:1;object-fit:cover;margin-top:40px;" loading="lazy"
+               onerror="this.style.background='var(--c-bg-alt)';">
+        </div>
+      </div>
+
+      <div class="reveal delay-1">
+        <span class="filter-pill" style="margin-bottom:24px;">
+          <i class="ti ti-credit-card"></i> {% trans "Easy payment" %}
+        </span>
+        <h2 style="margin:16px 0 24px;">{% trans "We offer tours in a range of locations" %}</h2>
+        <p style="font-size:1.25rem;color:#000;line-height:1.6;margin-bottom:32px;">
+          {% trans "Choose one style or create a package, fill your passports with adventures together." %}
+        </p>
+
+        <ul style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px;list-style:none;padding:0;margin:0 0 32px;">
+          <li style="display:flex;align-items:center;gap:10px;padding:6px 0;"><i class="ti ti-check" style="color:var(--c-success);font-size:20px;"></i> {% trans "Security Assurance" %}</li>
+          <li style="display:flex;align-items:center;gap:10px;padding:6px 0;"><i class="ti ti-check" style="color:var(--c-success);font-size:20px;"></i> {% trans "Customer Support" %}</li>
+          <li style="display:flex;align-items:center;gap:10px;padding:6px 0;"><i class="ti ti-check" style="color:var(--c-success);font-size:20px;"></i> {% trans "Transparent Policies" %}</li>
+          <li style="display:flex;align-items:center;gap:10px;padding:6px 0;"><i class="ti ti-check" style="color:var(--c-success);font-size:20px;"></i> {% trans "Reputable Affiliations" %}</li>
+        </ul>
+
+        <div>
+          <p style="font-size:0.875rem;font-weight:700;color:var(--c-text);margin-bottom:14px;">{% trans "Payment is secure and safe" %}</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            
+            <!-- VISA -->
+            <span style="display:flex;align-items:center;justify-content:center;width:100px;height:45px;border:1px solid var(--c-border);border-radius:5px;background:#fff;">
+              <!-- Agar VISA baribir kichik ko'rinsa, pastdagi height: 26px ni 30px yoki 35px gacha ko'taring -->
+              <img src="{% static 'img/logos/visa-logo.svg' %}" alt="VISA" style="height:26px;width:auto;object-fit:contain;">
+            </span>
+
+            <!-- Mastercard -->
+            <span style="display:flex;align-items:center;justify-content:center;width:100px;height:45px;border:1px solid var(--c-border);border-radius:5px;background:#fff;">
+              <img src="{% static 'img/logos/mastercard-logo.svg' %}" alt="Mastercard" style="height:26px;width:auto;object-fit:contain;">
+            </span>
+          
+            <!-- Click -->
+            <span style="display:flex;align-items:center;justify-content:center;width:100px;height:45px;border:1px solid var(--c-border);border-radius:5px;background:#fff;">
+              <img src="{% static 'img/logos/click-logo.svg' %}" alt="Click" style="height:24px;width:auto;object-fit:contain;">
+            </span>
+
+            <!-- Payme -->
+            <span style="display:flex;align-items:center;justify-content:center;width:100px;height:45px;border:1px solid var(--c-border);border-radius:5px;background:#fff;">
+              <img src="{% static 'img/logos/payme-logo.svg' %}" alt="Payme" style="height:26px;width:auto;object-fit:contain;">
+            </span>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ══════════════════ 5. TOP CATEGORIES ══════════════════ #}
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--row">
+      <div>
+        <h2>{% trans "Top Categories of Tours" %}</h2>
+        <p>{% trans "Favorite destinations based on customer reviews" %}</p>
+      </div>
+      <a href="{% url 'tours:tour-list' %}" class="btn btn-dark">
+        {% trans "View More" %} <i class="ti ti-arrow-up-right"></i>
+      </a>
     </div>
 
-    <div class="regions-grid stagger-grid">
-      {% for region in regions %}
-      <a href="{% url 'regions:region-detail' region.slug %}" class="reveal-scale">
-        <div class="region-card">
-          {% if region.image %}
-            <img src="{{ region.image.url }}" alt="{{ region.name }}" loading="lazy">
-          {% else %}
-            <div class="region-card-placeholder" aria-hidden="true"></div>
-          {% endif %}
-          <div class="region-overlay">
-            <h3>{{ region.name }}</h3>
-            {% comment %}FIX (N+1): view'da annotate ishlating —
-            regions = Region.objects.filter(is_active=True).annotate(attractions_count=Count('attractions')){% endcomment %}
-            <p>{{ region.attractions_count|default:region.attractions.count }} {% trans "attractions" %}</p>
-            <div class="region-explore">{% trans "Explore" %}</div>
+    <div class="cat-grid">
+      {% for cat in categories %}
+      <a href="{% url 'tours:tour-list' %}?category={{ cat.slug }}" class="cat-card reveal">
+        <div class="cat-card-img">
+          {% if cat.image %}<img src="{{ cat.image.url }}" alt="{{ cat.name }}" loading="lazy">{% endif %}
+        </div>
+        <div class="cat-card-body">
+          <div>
+            <div class="cat-card-name">{{ cat.name }}</div>
+            <div class="cat-card-meta">{{ cat.tour_count }} {% trans "Tours" %}</div>
           </div>
+          <span class="dest-card-arrow"><i class="ti ti-arrow-up-right"></i></span>
         </div>
       </a>
       {% endfor %}
     </div>
   </div>
 </section>
-{% endif %}
 
-<!-- ══════════════════ WHY SOLUNA ══════════════════ -->
-<section class="section section-dark">
+{# ══════════════════ 6. EMBRACING ADVENTURE + STATS ══════════════════ #}
+<section class="section">
   <div class="container">
-    <div class="section-header reveal">
-      <p class="eyebrow">{% trans "Why SoLuna" %}</p>
-      <h2>{% trans "Your Journey, Our Passion" %}</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-item reveal delay-1">
-        <span class="why-icon" aria-hidden="true">🎯</span>
-        <h4>{% trans "Personalized" %}</h4>
-        <p>{% trans "Every itinerary is crafted specifically for you — your pace, your interests, your budget." %}</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+
+      <div class="reveal">
+        <span class="pill-yellow" style="margin-bottom:30px;">
+          <i class="ti ti-world"></i> {% trans "Why book at SoLuna?" %}
+        </span>
+        <h2 style="margin:24px 0;">{% trans "Embracing Adventure Since 2003" %}</h2>
+        <p style="font-size:1.25rem;color:#000;line-height:1.6;margin-bottom:30px;max-width:572px;">
+          {% trans "Choose one style or create a package, fill your passports with adventures together." %}
+        </p>
+
+        <div class="stats-grid">
+          {% for stat in company_stats %}
+          <div>
+            <div class="stat-num">{{ stat.number }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      <div class="why-item reveal delay-2">
-        <span class="why-icon" aria-hidden="true">🛡️</span>
-        <h4>{% trans "Trusted" %}</h4>
-        <p>{% trans "Licensed operator with 500+ satisfied travelers. Your safety and comfort come first." %}</p>
+
+      <div class="why-grid reveal delay-1">
+        {% for adv in company_advantages %}
+        <div class="why-card why-card--{{ adv.color }}">
+          
+          <div class="why-card-icon">
+            <i class="ti {{ adv.icon }}" 
+               {% if adv.color == 'orange' %}style="color:#F09814;"
+               {% elif adv.color == 'blue' %}style="color:#0182FC;"
+               {% elif adv.color == 'teal' %}style="color:#1D9E75;"
+               {% elif adv.color == 'purple' %}style="color:#7F77DD;"{% endif %}>
+            </i>
+          </div>
+          
+          <h4>{{ adv.title }}</h4>
+          <p>{{ adv.description }}</p>
+        </div>
+        {% endfor %}
       </div>
-      <div class="why-item reveal delay-3">
-        <span class="why-icon" aria-hidden="true">🌙</span>
-        <h4>{% trans "Authentic" %}</h4>
-        <p>{% trans "Local guides, genuine experiences, hidden gems — we take you beyond the tourist trail." %}</p>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ══════════════════ CTA STRIP ══════════════════ -->
-<section class="section-sm section-gold text-center">
-  <div class="container reveal">
-    <p class="eyebrow" style="color:rgba(13,59,46,0.65);">{% trans "Ready to travel?" %}</p>
-    <h2 class="mb-2">{% trans "Start Planning Your Journey" %}</h2>
-    <p style="color:rgba(13,59,46,0.65); max-width:460px; margin:0 auto 2rem;">
-      {% trans "Contact Oygul and let's create your perfect Uzbekistan experience together." %}
-    </p>
-    <div class="hero-actions" style="justify-content:center;">
-      <a href="{% url 'messages_app:contact' %}" class="btn btn-green-dark btn-lg">{% trans "Get in Touch" %}</a>
-      <a href="{% url 'tours:tour-list' %}" class="btn btn-outline-dark btn-lg">{% trans "Browse Tours" %}</a>
+{# ══════════════════ 7. DOWNLOAD APP BANNER ══════════════════ #}
+<!-- <section class="section">
+  <div class="container">
+    <div style="background:#9DD3FB;border-radius:var(--r-lg);padding:80px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;overflow:hidden;">
+      <div class="reveal">
+        <span class="pill-yellow" style="margin-bottom:24px;">
+          <i class="ti ti-gift"></i> {% trans "Install APP & Get discount code" %}
+        </span>
+        <h3 style="font-size:1.75rem;margin-bottom:32px;line-height:1.3;">
+          {% trans "Up to 55% Discount and lots of special gifts" %}
+        </h3>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="#" style="background:#000;color:#fff;padding:14px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:12px;text-decoration:none;">
+            <i class="ti ti-brand-google-play" style="font-size:24px;"></i>
+            <div style="text-align:left;line-height:1.1;">
+              <div style="font-size:0.7rem;">GET IT ON</div>
+              <div style="font-size:1.1rem;font-weight:700;">Google Play</div>
+            </div>
+          </a>
+          <a href="#" style="background:#000;color:#fff;padding:14px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:12px;text-decoration:none;">
+            <i class="ti ti-brand-apple" style="font-size:24px;"></i>
+            <div style="text-align:left;line-height:1.1;">
+              <div style="font-size:0.7rem;">Download on the</div>
+              <div style="font-size:1.1rem;font-weight:700;">App Store</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <img src="{% static 'img/app-mockup.png' %}" alt="" style="max-width:100%;height:auto;" loading="lazy"
+             onerror="this.style.display='none';">
+      </div>
+    </div>
+  </div>
+</section> -->
+
+{# ══════════════════ 8. TRENDING DESTINATIONS (full-width cards) ══════════════════ #}
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>{% trans "Trending Destinations" %}</h2>
+      <p>{% trans "Most popular choices for travelers" %}</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
+      {% for region in regions|slice:":4" %}
+      <a href="{% url 'regions:region-detail' region.slug %}" class="reveal" style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:inherit;position:relative;aspect-ratio:16/9;display:block;">
+        {% if region.image %}
+          <img src="{{ region.image.url }}" alt="{{ region.name }}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        {% endif %}
+
+        <div style="position:absolute;left:16px;right:16px;bottom:16px;background:#fff;border-radius:8px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div style="min-width:0;">
+            <div style="font-size:1.125rem;font-weight:700;margin-bottom:4px;">{{ region.name }}</div>
+            <div style="font-size:0.875rem;color:var(--c-text-muted);">{{ region.tour_count|default:"356" }} {% trans "Tours" %}</div>
+          </div>
+          <span class="dest-card-arrow"><i class="ti ti-arrow-up-right"></i></span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ══════════════════ 9. BLOG / INSPIRATION ══════════════════ #}
+<section class="section section-bg">
+  <div class="container">
+    <div class="section-header section-header--row">
+      <div>
+        <h2>{% trans "Get inspiration for your next trip" %}</h2>
+        <p>{% trans "Favorite stories based on customer reviews" %}</p>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-icon-circle" aria-label="prev"><i class="ti ti-chevron-left"></i></button>
+        <button class="btn-icon-circle" aria-label="next"><i class="ti ti-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      {% for post in blog_posts|slice:":3" %}
+      <article class="tour-card reveal">
+        <div class="tour-card-img">
+          {% if post.image %}<img src="{{ post.image.url }}" alt="{{ post.title }}" loading="lazy">{% endif %}
+          <span class="tour-card-badge" style="color:#000;">{{ post.category|default:"Cultural" }}</span>
+        </div>
+        <div class="tour-card-body" style="padding:24px 28px;">
+          <div style="display:flex;gap:16px;font-size:0.875rem;color:#000;margin-bottom:16px;">
+            <span><i class="ti ti-calendar" style="color:#8E8E8E;"></i> {{ post.date|date:"d M Y" }}</span>
+            <span><i class="ti ti-clock" style="color:#8E8E8E;"></i> {{ post.read_time|default:"6 mins" }}</span>
+          </div>
+          <h3 class="tour-card-title" style="min-height:64px;">{{ post.title|truncatechars:60 }}</h3>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;border-top:1px solid var(--c-border-soft);">
+            <div style="display:flex;align-items:center;gap:10px;">
+              {% if post.author_avatar %}<img src="{{ post.author_avatar.url }}" style="width:32px;height:32px;border-radius:50%;">{% endif %}
+              <span style="font-weight:700;font-size:0.875rem;">{{ post.author|default:"SoLuna Team" }}</span>
+            </div>
+            <a href="#" class="btn btn-light btn-sm">{% trans "Keep Reading" %}</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div style="text-align:center;margin-top:50px;">
+      <a href="#blog" class="btn btn-dark btn-lg">
+        {% trans "View More" %} <i class="ti ti-arrow-up-right"></i>
+      </a>
     </div>
   </div>
 </section>

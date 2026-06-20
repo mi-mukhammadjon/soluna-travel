@@ -1,26 +1,24 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 from .models import User
-
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = [
-        'username', 'email', 'phone', 'role',
-        'is_verified', 'is_active', 'created_at'
-    ]
-    list_filter = ['role', 'is_verified', 'is_active', 'created_at']
+    list_display = ['username', 'email', 'get_full_name', 'phone', 'role', 'is_active', 'created_at']
+    list_filter = ['role', 'is_active', 'created_at']
     search_fields = ['username', 'email', 'phone', 'first_name', 'last_name']
-    readonly_fields = ['created_at', 'email_verification_token', 'avatar_preview']
+    readonly_fields = ['created_at', 'avatar_preview']
+
+    # Allauth emailni tasdiqlaganini ko'rsatish uchun:
+    # list_display da user.emailaddress_set.filter(primary=True, verified=True).exists() ni ishlatish tavsiya qilinadi
 
     fieldsets = UserAdmin.fieldsets + (
-        ('Qo\'shimcha', {
+        (_('Дополнительная информация'), {
             'fields': (
                 'phone', 'avatar', 'avatar_preview',
-                'role', 'preferred_language',
-                'is_verified', 'email_verification_token',
-                'created_at'
+                'role', 'preferred_language', 'created_at'
             )
         }),
     )
@@ -32,4 +30,4 @@ class CustomUserAdmin(UserAdmin):
                 obj.avatar.url
             )
         return '—'
-    avatar_preview.short_description = 'Avatar'
+    avatar_preview.short_description = _('Аватар')

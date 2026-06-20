@@ -1,5 +1,2 @@
-{% extends "base.html" %}
-{% load i18n %}
-{% block title %}{% block head_title %}{% endblock head_title %} — SoLuna{% endblock %}
-{% block extra_css %}{% block extra_head %}{% endblock extra_head %}{% endblock %}
-{% block extra_js %}{% block extra_body %}{% endblock extra_body %}{% endblock %}
+{% extends 'base.html' %}
+{% block content %}{% block head_title %}{% endblock %}{% block body %}{% endblock %}{% endblock %}

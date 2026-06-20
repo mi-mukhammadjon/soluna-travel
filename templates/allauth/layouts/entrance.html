@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<section style="min-height:calc(100vh - 200px);background:var(--c-bg-alt);display:flex;align-items:center;padding:60px 0;">
+  <div class="container" style="max-width:560px;">
+    <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:40px;box-shadow:var(--sh-md);">
+      {% block head_title %}{% endblock %}
+      {% block body %}{% endblock %}
+    </div>
+  </div>
+</section>
+{% endblock %}

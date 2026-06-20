@@ -1,43 +1,37 @@
 {% load allauth %}
-{% if attrs.errors %}
-<div class="field-error" style="margin-bottom:4px;">{{ attrs.errors }}</div>
-{% endif %}
 <div class="form-group">
-    {% if attrs.type == "textarea" %}
-        <label class="form-label" for="{{ attrs.id }}">{% slot label %}{% endslot %}</label>
-        <textarea class="form-control{% if attrs.errors %} is-invalid{% endif %}"
-                  {% if attrs.required %}required{% endif %}
-                  {% if attrs.rows %}rows="{{ attrs.rows }}"{% endif %}
-                  {% if attrs.disabled %}disabled{% endif %}
-                  {% if attrs.readonly %}readonly{% endif %}
-                  {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
-                  {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
-                  {% if attrs.placeholder %}placeholder="{{ attrs.placeholder }}"{% endif %}>{% slot value %}{% endslot %}</textarea>
-    {% elif attrs.type == "checkbox" or attrs.type == "radio" %}
-        <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
-            <input type="{{ attrs.type }}"
-                   {% if attrs.required %}required{% endif %}
-                   {% if attrs.disabled %}disabled{% endif %}
-                   {% if attrs.checked %}checked{% endif %}
-                   {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
-                   {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
-                   {% if attrs.value is not None %}value="{{ attrs.value }}"{% endif %}>
-            {% slot label %}{% endslot %}
-        </label>
-    {% else %}
-        <label class="form-label" for="{{ attrs.id }}">{% slot label %}{% endslot %}</label>
-        <input class="form-control{% if attrs.errors %} is-invalid{% endif %}"
-               type="{{ attrs.type }}"
-               {% if attrs.required %}required{% endif %}
-               {% if attrs.disabled %}disabled{% endif %}
-               {% if attrs.readonly %}readonly{% endif %}
-               {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
-               {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
-               {% if attrs.placeholder %}placeholder="{{ attrs.placeholder }}"{% endif %}
-               {% if attrs.autocomplete %}autocomplete="{{ attrs.autocomplete }}"{% endif %}
-               {% if attrs.value is not None %}value="{{ attrs.value }}"{% endif %}>
+  {% if attrs.type != "checkbox" and attrs.type != "radio" %}
+    {% if slots.label %}
+      <label for="{{ attrs.id }}" class="form-label">{% slot label %}{% endslot %}</label>
     {% endif %}
+    <input
+      {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
+      {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
+      {% if attrs.type %}type="{{ attrs.type }}"{% else %}type="text"{% endif %}
+      {% if attrs.value != None %}value="{{ attrs.value|default_if_none:'' }}"{% endif %}
+      {% if attrs.placeholder %}placeholder="{{ attrs.placeholder }}"{% endif %}
+      {% if attrs.required %}required{% endif %}
+      {% if attrs.autocomplete %}autocomplete="{{ attrs.autocomplete }}"{% endif %}
+      {% if attrs.autofocus %}autofocus{% endif %}
+      class="form-control"
+    >
     {% if slots.help_text %}
-    <span style="font-size:0.78rem;color:var(--text-light);margin-top:4px;display:block;">{% slot help_text %}{% endslot %}</span>
+      <small style="color:var(--c-text-muted);font-size:0.8rem;display:block;margin-top:4px;">{% slot help_text %}{% endslot %}</small>
     {% endif %}
+    {% if slots.errors %}
+      <div class="field-error">{% slot errors %}{% endslot %}</div>
+    {% endif %}
+  {% else %}
+    <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.9rem;">
+      <input
+        {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
+        {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
+        type="{{ attrs.type }}"
+        {% if attrs.value %}value="{{ attrs.value }}"{% endif %}
+        {% if attrs.checked %}checked{% endif %}
+        {% if attrs.required %}required{% endif %}
+      >
+      <span>{% if slots.label %}{% slot label %}{% endslot %}{% endif %}</span>
+    </label>
+  {% endif %}
 </div>

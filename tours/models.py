@@ -8,13 +8,26 @@ class TourCategory(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     icon = models.CharField(max_length=50, blank=True)
+    image = models.ImageField(upload_to='categories/images/', null=True, blank=True)
 
     class Meta:
-        verbose_name = 'Tour Category'
-        verbose_name_plural = 'Tour Categories'
+        verbose_name = 'Категория тура'
+        verbose_name_plural = 'Категории туров'
 
     def __str__(self):
         return self.name
+    
+    @property
+    def tour_count(self):
+        # Agar View ichida annotate bilan (masalan: Count('tour_set')) hisoblangan bo'lsa
+        if hasattr(self, '_tour_count'):
+            return self._tour_count
+        # Aks holda, sekinroq, dinamik bazaga murojaat qilib hisoblaydi
+        return self.tour.filter(is_active=True).count()
+
+    @tour_count.setter
+    def tour_count(self, value):
+        self._tour_count = value
 
 
 class Tour(models.Model):
@@ -47,8 +60,8 @@ class Tour(models.Model):
 
     class Meta:
         ordering = ['-is_featured', '-created_at']
-        verbose_name = 'Tour'
-        verbose_name_plural = 'Tours'
+        verbose_name = 'Тур'
+        verbose_name_plural = 'Туры'
 
     def __str__(self):
         return self.title
@@ -100,3 +113,48 @@ class TourImage(models.Model):
 
     def __str__(self):
         return f"{self.tour.title} - {self.order}"
+
+class ItineraryDay(models.Model):
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='days')
+    day = models.PositiveIntegerField()
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    class Meta:
+        ordering = ['day']
+
+
+class CompanyStatistic(models.Model):
+    number = models.CharField(max_length=20, help_text="Masalan: 45+, 29K, 168K")
+    label = models.CharField(max_length=100, help_text="Masalan: Global Branches")
+    order = models.PositiveIntegerField(default=0, help_text="Saytda chiqish ketma-ketligi")
+
+    class Meta:
+        ordering = ['order']
+        verbose_name = 'Статистика компании'
+        verbose_name_plural = 'Статистика компании'
+
+    def __str__(self):
+        return f"{self.number} - {self.label}"
+
+
+class CompanyAdvantage(models.Model):
+    COLOR_CHOICES = [
+        ('orange', 'Orange (To''q sariq)'),
+        ('blue', 'Blue (Ko''k)'),
+        ('teal', 'Teal (Yashil)'),
+        ('purple', 'Purple (Siyohrang)'),
+    ]
+    
+    icon = models.CharField(max_length=50, help_text="Tabler icon klassi (masalan: ti-camera, ti-thumb-up)")
+    color = models.CharField(max_length=20, choices=COLOR_CHOICES, default='orange')
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+        verbose_name = 'Преимущество компании'
+        verbose_name_plural = 'Преимущества компании'
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,701 @@
+{% extends 'base.html' %}
+{% load static i18n l10n %}
+
+{% block title %}{% trans "Book" %} {{ tour.title }} | SoLuna{% endblock %}
+
+{% block content %}
+
+{# ════ HERO ════ #}
+<section class="bc-hero">
+  <div class="container">
+    <nav class="bc-crumbs">
+      <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      <i class="ti ti-chevron-right"></i>
+      <a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title|truncatechars:30 }}</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>{% trans "Booking" %}</span>
+    </nav>
+
+    <h1 class="bc-hero-title">{% trans "Complete Your Booking" %}</h1>
+    <p class="bc-hero-sub">{% trans "Just a few details and you're ready to start your adventure" %}</p>
+
+    {# Stepper #}
+    <div class="bc-stepper">
+      <div class="bc-step is-active">
+        <span class="bc-step-num">1</span>
+        <div>
+          <div class="bc-step-label">{% trans "Trip Details" %}</div>
+          <div class="bc-step-sub">{% trans "Travel info" %}</div>
+        </div>
+      </div>
+      <div class="bc-step-line"></div>
+      <div class="bc-step">
+        <span class="bc-step-num">2</span>
+        <div>
+          <div class="bc-step-label">{% trans "Payment" %}</div>
+          <div class="bc-step-sub">{% trans "Secure checkout" %}</div>
+        </div>
+      </div>
+      <div class="bc-step-line"></div>
+      <div class="bc-step">
+        <span class="bc-step-num">3</span>
+        <div>
+          <div class="bc-step-label">{% trans "Confirmation" %}</div>
+          <div class="bc-step-sub">{% trans "All set!" %}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--c-bg-alt);padding:40px 0 80px;">
+  <div class="container">
+
+    {% if form.errors or form.non_field_errors %}
+    <div class="bc-error-banner">
+      <div class="bc-error-icon"><i class="ti ti-alert-triangle"></i></div>
+      <div>
+        <strong>{% trans "Iltimos, quyidagi xatolarni to'g'rilang:" %}</strong>
+        <ul style="margin:8px 0 0 16px;padding:0;">
+          {% for field, errs in form.errors.items %}
+            {% for err in errs %}<li>{% if field != '__all__' %}<strong>{{ field }}:</strong>{% endif %} {{ err }}</li>{% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="bc-layout">
+
+      {# ── FORM SIDE ── #}
+      <div>
+        <form method="post" action="{% url 'bookings:booking-create' tour.slug %}" novalidate>
+          {% csrf_token %}
+
+          {# ── Trip Details ── #}
+          <article class="bc-card">
+            <div class="bc-card-head">
+              <div class="bc-card-icon"><i class="ti ti-route"></i></div>
+              <div>
+                <h2>{% trans "Trip Details" %}</h2>
+                <p>{% trans "When and how many guests" %}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="id_travel_date">
+                <i class="ti ti-calendar-event" style="color:var(--c-text-muted);"></i>
+                {% trans "Travel Date" %} *
+              </label>
+              <input type="date" name="travel_date" id="id_travel_date" class="form-control"
+                     required min="{% now 'Y-m-d' %}"
+                     value="{{ form.travel_date.value|default_if_none:'' }}">
+              {% if form.travel_date.errors %}<div class="field-error">{{ form.travel_date.errors.0 }}</div>{% endif %}
+              <small style="color:var(--c-text-muted);font-size:0.78rem;margin-top:6px;display:block;">
+                <i class="ti ti-info-circle"></i> {% trans "Choose your preferred starting date" %}
+              </small>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+              <div class="form-group">
+                <label class="form-label" for="id_num_adults">
+                  <i class="ti ti-user" style="color:var(--c-text-muted);"></i>
+                  {% trans "Adults" %} *
+                </label>
+                <div class="bc-counter">
+                  <button type="button" class="bc-counter-btn" data-action="dec" data-target="id_num_adults">−</button>
+                  <input type="number" name="num_adults" id="id_num_adults" class="form-control bc-counter-input"
+                         min="1" max="20" required
+                         value="{{ form.num_adults.value|default_if_none:'2' }}">
+                  <button type="button" class="bc-counter-btn" data-action="inc" data-target="id_num_adults">+</button>
+                </div>
+                {% if form.num_adults.errors %}<div class="field-error">{{ form.num_adults.errors.0 }}</div>{% endif %}
+                <small style="color:var(--c-text-muted);font-size:0.78rem;margin-top:6px;display:block;">{% trans "Age 12+" %}</small>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="id_num_children">
+                  <i class="ti ti-mood-kid" style="color:var(--c-text-muted);"></i>
+                  {% trans "Children" %}
+                </label>
+                <div class="bc-counter">
+                  <button type="button" class="bc-counter-btn" data-action="dec" data-target="id_num_children">−</button>
+                  <input type="number" name="num_children" id="id_num_children" class="form-control bc-counter-input"
+                         min="0" max="10"
+                         value="{{ form.num_children.value|default_if_none:'0' }}">
+                  <button type="button" class="bc-counter-btn" data-action="inc" data-target="id_num_children">+</button>
+                </div>
+                <small style="color:var(--c-text-muted);font-size:0.78rem;margin-top:6px;display:block;">{% trans "Age 2-11" %}</small>
+              </div>
+            </div>
+          </article>
+
+          {# ── Contact Info ── #}
+          <article class="bc-card">
+            <div class="bc-card-head">
+              <div class="bc-card-icon"><i class="ti ti-user-circle"></i></div>
+              <div>
+                <h2>{% trans "Contact Information" %}</h2>
+                <p>{% trans "We'll send confirmation to your account" %}</p>
+              </div>
+            </div>
+
+            <div class="bc-account-box">
+              <div class="bc-avatar">
+                {% if user.first_name %}{{ user.first_name.0|upper }}{% else %}{{ user.username.0|upper }}{% endif %}
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div class="bc-account-name">
+                  {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.username }}{% endif %}
+                </div>
+                <div class="bc-account-email"><i class="ti ti-mail"></i> {{ user.email }}</div>
+              </div>
+              <a href="{% url 'accounts:profile-edit' %}" class="bc-account-edit" title="{% trans 'Edit profile' %}">
+                <i class="ti ti-pencil"></i>
+              </a>
+            </div>
+
+            <div class="form-group" style="margin-top:20px;">
+              <label class="form-label" for="id_special_requests">
+                <i class="ti ti-note" style="color:var(--c-text-muted);"></i>
+                {% trans "Special Requests" %}
+                <span style="color:var(--c-text-muted);font-weight:400;font-size:0.85rem;">({% trans "optional" %})</span>
+              </label>
+              <textarea name="special_requests" id="id_special_requests" class="form-control" rows="4"
+                        placeholder="{% trans 'Dietary needs, accessibility requirements, special occasions...' %}">{{ form.special_requests.value|default_if_none:'' }}</textarea>
+              {% if form.special_requests.errors %}<div class="field-error">{{ form.special_requests.errors.0 }}</div>{% endif %}
+            </div>
+          </article>
+
+          {# ── Payment preview ── #}
+          <article class="bc-card">
+            <div class="bc-card-head">
+              <div class="bc-card-icon"><i class="ti ti-credit-card"></i></div>
+              <div>
+                <h2>{% trans "Payment" %}</h2>
+                <p>{% trans "Choose payment method on the next step" %}</p>
+              </div>
+            </div>
+
+            <div class="bc-pay-preview">
+              <div class="bc-pay-method-icons">
+                <div class="bc-pay-icon"><i class="ti ti-credit-card"></i><span>{% trans "Card" %}</span></div>
+                <div class="bc-pay-icon"><i class="ti ti-device-mobile"></i><span>Click</span></div>
+                <div class="bc-pay-icon"><i class="ti ti-wallet"></i><span>Payme</span></div>
+                <div class="bc-pay-icon"><i class="ti ti-brand-paypal"></i><span>PayPal</span></div>
+                <div class="bc-pay-icon"><i class="ti ti-cash"></i><span>{% trans "Cash" %}</span></div>
+              </div>
+              <p style="font-size:0.85rem;color:var(--c-text-muted);margin-top:14px;text-align:center;">
+                <i class="ti ti-shield-lock" style="color:var(--c-success);"></i>
+                {% trans "All payments are encrypted and secure" %}
+              </p>
+            </div>
+          </article>
+
+          {# ── Terms checkbox ── #}
+          <label class="bc-terms">
+            <input type="checkbox" required>
+            <span class="bc-terms-mark"><i class="ti ti-check"></i></span>
+            <span class="bc-terms-text">
+              {% trans "I agree to SoLuna's" %}
+              <a href="#terms">{% trans "Terms of Service" %}</a>,
+              <a href="#privacy">{% trans "Privacy Policy" %}</a>
+              {% trans "and" %}
+              <a href="#cancellation">{% trans "Cancellation Policy" %}</a>
+            </span>
+          </label>
+
+          <button type="submit" class="btn btn-dark btn-block btn-lg bc-submit" id="confirmBtn">
+            <span><i class="ti ti-lock"></i> {% trans "Confirm Booking" %}</span>
+            <i class="ti ti-arrow-right"></i>
+          </button>
+
+          <p style="text-align:center;color:var(--c-text-muted);font-size:0.8rem;margin-top:14px;">
+            <i class="ti ti-shield-check" style="color:var(--c-success);"></i>
+            {% trans "Free cancellation up to 3 days before travel date" %}
+          </p>
+        </form>
+      </div>
+
+      {# ── SUMMARY SIDEBAR ── #}
+      <aside class="bc-summary-wrap">
+        <div class="bc-summary">
+
+          {# Tour preview #}
+          <div class="bc-tour-mini">
+            <div class="bc-tour-mini-img">
+              {% if tour.cover_image %}
+                <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}">
+              {% else %}
+                <div class="bc-tour-mini-fallback"><i class="ti ti-mountain"></i></div>
+              {% endif %}
+              {% if tour.discount_percent %}
+                <div class="bc-tour-mini-badge">−{{ tour.discount_percent }}%</div>
+              {% endif %}
+            </div>
+            <h3 class="bc-tour-mini-title">{{ tour.title }}</h3>
+            <div class="bc-tour-mini-meta">
+              <span><i class="ti ti-star" style="color:var(--c-star);"></i> {{ tour.rating|default:"4.96" }}</span>
+              <span>•</span>
+              <span>
+                <i class="ti ti-map-pin"></i>
+                {% if tour.region %}{{ tour.region.name }}{% else %}Uzbekistan{% endif %}
+              </span>
+            </div>
+            <div class="bc-tour-mini-tags">
+              {% if tour.duration_days %}
+              <span><i class="ti ti-clock"></i> {{ tour.duration_days }} {% trans "days" %}</span>
+              {% endif %}
+              {% if tour.tour_type %}
+              <span><i class="ti ti-category"></i> {{ tour.tour_type }}</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="bc-summary-divider"></div>
+
+          {# Price breakdown #}
+          <div class="bc-summary-section">
+            <h4 style="margin-bottom:12px;font-size:0.85rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--c-text-muted);">
+              {% trans "Price Details" %}
+            </h4>
+            <div class="bc-summary-row">
+              <span>${{ tour.price }} × <span id="bkGuests">2</span> {% trans "adults" %}</span>
+              <span id="bkSubtotal">${{ tour.price|floatformat:0 }}</span>
+            </div>
+            <div class="bc-summary-row">
+              <span><span id="bkKids">0</span> {% trans "children" %}</span>
+              <span>{% trans "Free" %}</span>
+            </div>
+            <div class="bc-summary-row">
+              <span>{% trans "Service fee" %}</span>
+              <span>$0</span>
+            </div>
+            <div class="bc-summary-row">
+              <span>{% trans "Taxes" %}</span>
+              <span>{% trans "Included" %}</span>
+            </div>
+          </div>
+
+          <div class="bc-summary-divider"></div>
+
+          <div class="bc-summary-total">
+            <span>{% trans "Total" %}</span>
+            <span class="bc-summary-amount" id="bkTotal" data-price="{{ tour.price|unlocalize }}">${{ tour.price|floatformat:0 }}</span>
+          </div>
+
+          {# Reassurance #}
+          <div class="bc-reassure">
+            <div class="bc-reassure-item">
+              <i class="ti ti-shield-check"></i>
+              <div>
+                <strong>{% trans "Secure booking" %}</strong>
+                <span>{% trans "256-bit SSL encryption" %}</span>
+              </div>
+            </div>
+            <div class="bc-reassure-item">
+              <i class="ti ti-rotate-clockwise"></i>
+              <div>
+                <strong>{% trans "Free cancellation" %}</strong>
+                <span>{% trans "Up to 3 days before" %}</span>
+              </div>
+            </div>
+            <div class="bc-reassure-item">
+              <i class="ti ti-headset"></i>
+              <div>
+                <strong>{% trans "24/7 support" %}</strong>
+                <span>{% trans "We're here to help" %}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ═══ HERO ═══ */
+.bc-hero {
+  background: linear-gradient(135deg, #0F1419 0%, #1E2A2E 60%, #2D4A52 100%);
+  color: #fff;
+  padding: 40px 0 60px;
+  position: relative; overflow: hidden;
+}
+.bc-hero::before {
+  content: ''; position: absolute; right: -200px; top: -150px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(254,250,23,0.06), transparent 70%);
+  pointer-events: none;
+}
+.bc-crumbs {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.5);
+}
+.bc-crumbs a { color: rgba(255,255,255,0.7); text-decoration: none; }
+.bc-crumbs a:hover { color: var(--c-yellow); }
+.bc-crumbs i { font-size: 0.7rem; opacity: 0.4; }
+.bc-crumbs span { color: var(--c-yellow); font-weight: 600; }
+
+.bc-hero-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem); line-height: 1.1; margin-bottom: 8px; }
+.bc-hero-sub { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 32px; }
+
+/* ═══ STEPPER ═══ */
+.bc-stepper {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+}
+.bc-step {
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0.5;
+}
+.bc-step.is-active { opacity: 1; }
+.bc-step-num {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 1.05rem;
+  flex-shrink: 0;
+}
+.bc-step.is-active .bc-step-num {
+  background: var(--c-yellow); color: #000;
+  box-shadow: 0 0 0 4px rgba(254,250,23,0.2);
+}
+.bc-step-label { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+.bc-step-sub { font-size: 0.75rem; opacity: 0.6; }
+.bc-step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.1); min-width: 30px; }
+@media (max-width:700px) { .bc-step-sub { display: none; } .bc-step { gap: 10px; } }
+
+/* ═══ ERROR BANNER ═══ */
+.bc-error-banner {
+  display: flex; gap: 14px; align-items: flex-start;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: #FEE2E2;
+  border-left: 4px solid #E24B4A;
+  border-radius: var(--r-md);
+  color: #7F1D1D;
+}
+.bc-error-icon {
+  width: 36px; height: 36px;
+  background: #E24B4A; color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+
+/* ═══ LAYOUT ═══ */
+.bc-layout { display: grid; grid-template-columns: 1fr 380px; gap: 28px; }
+@media (max-width:1024px) { .bc-layout { grid-template-columns: 1fr; } }
+
+/* ═══ CARDS ═══ */
+.bc-card {
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  margin-bottom: 18px;
+  transition: box-shadow 0.2s ease;
+}
+.bc-card:hover { box-shadow: var(--sh-md); }
+.bc-card-head {
+  display: flex; gap: 14px; align-items: center;
+  margin-bottom: 22px;
+}
+.bc-card-icon {
+  width: 44px; height: 44px;
+  background: var(--c-yellow);
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.bc-card-head h2 { font-size: 1.2rem; margin-bottom: 2px; }
+.bc-card-head p { font-size: 0.85rem; color: var(--c-text-muted); margin: 0; }
+
+.form-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* ═══ COUNTER ═══ */
+.bc-counter {
+  display: flex; align-items: stretch;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: #fff;
+}
+.bc-counter-btn {
+  width: 44px;
+  background: var(--c-bg-alt);
+  border: none;
+  font-size: 1.3rem; font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: var(--c-text);
+}
+.bc-counter-btn:hover { background: var(--c-yellow); }
+.bc-counter-btn:active { transform: scale(0.95); }
+.bc-counter-input {
+  flex: 1;
+  border: none !important;
+  border-radius: 0 !important;
+  text-align: center;
+  font-weight: 700;
+  -moz-appearance: textfield;
+}
+.bc-counter-input::-webkit-outer-spin-button,
+.bc-counter-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ═══ ACCOUNT BOX ═══ */
+.bc-account-box {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--c-bg-alt) 0%, #fff 100%);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+}
+.bc-avatar {
+  width: 48px; height: 48px;
+  background: var(--c-text); color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.bc-account-name { font-weight: 700; font-size: 1rem; }
+.bc-account-email {
+  font-size: 0.85rem; color: var(--c-text-muted);
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 2px;
+}
+.bc-account-edit {
+  width: 36px; height: 36px;
+  background: #fff; color: var(--c-text);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid var(--c-border);
+}
+.bc-account-edit:hover { background: var(--c-text); color: #fff; }
+
+/* ═══ PAYMENT PREVIEW ═══ */
+.bc-pay-preview {
+  padding: 20px;
+  background: var(--c-bg-alt);
+  border-radius: var(--r-md);
+}
+.bc-pay-method-icons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+@media (max-width:520px) { .bc-pay-method-icons { grid-template-columns: repeat(3, 1fr); } }
+.bc-pay-icon {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 12px 6px;
+  background: #fff;
+  border-radius: var(--r-sm);
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--c-text-muted);
+  transition: transform 0.2s, color 0.2s;
+}
+.bc-pay-icon:hover { transform: translateY(-2px); color: var(--c-text); }
+.bc-pay-icon i { font-size: 1.4rem; }
+
+/* ═══ TERMS ═══ */
+.bc-terms {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: border-color 0.2s;
+}
+.bc-terms:hover { border-color: var(--c-text); }
+.bc-terms input { display: none; }
+.bc-terms-mark {
+  width: 22px; height: 22px;
+  border: 2px solid var(--c-border);
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: transparent;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  margin-top: 1px;
+}
+.bc-terms input:checked + .bc-terms-mark {
+  background: var(--c-text); border-color: var(--c-text); color: #fff;
+}
+.bc-terms-text { font-size: 0.88rem; line-height: 1.5; }
+.bc-terms-text a { color: var(--c-orange); font-weight: 600; text-decoration: none; }
+.bc-terms-text a:hover { text-decoration: underline; }
+
+/* ═══ SUBMIT BUTTON ═══ */
+.bc-submit {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 1rem;
+}
+.bc-submit:disabled { opacity: 0.6; cursor: wait; }
+
+/* ═══ SUMMARY ═══ */
+.bc-summary-wrap { position: sticky; top: 130px; align-self: start; }
+@media (max-width:1024px) { .bc-summary-wrap { position: static; } }
+
+.bc-summary {
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--sh-md);
+}
+
+.bc-tour-mini { padding: 22px; }
+.bc-tour-mini-img {
+  aspect-ratio: 16/10;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--c-bg-alt);
+  position: relative;
+  margin-bottom: 16px;
+}
+.bc-tour-mini-img img { width: 100%; height: 100%; object-fit: cover; }
+.bc-tour-mini-fallback {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2E2E33, #1A1A1F);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.2); font-size: 3rem;
+}
+.bc-tour-mini-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: #E24B4A; color: #fff;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-weight: 800; font-size: 0.85rem;
+}
+.bc-tour-mini-title { font-size: 1.1rem; line-height: 1.3; margin-bottom: 10px; }
+.bc-tour-mini-meta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; color: var(--c-text-muted);
+  margin-bottom: 14px;
+}
+.bc-tour-mini-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.bc-tour-mini-tags {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.bc-tour-mini-tags span {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px;
+  background: var(--c-bg-alt);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.bc-summary-divider { border-top: 1px dashed var(--c-border); margin: 0 22px; }
+
+.bc-summary-section { padding: 18px 22px; }
+.bc-summary-row {
+  display: flex; justify-content: space-between;
+  font-size: 0.9rem; color: var(--c-text-muted);
+  padding: 6px 0;
+}
+
+.bc-summary-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, #FFFEF2 0%, #FEFA17 100%);
+}
+.bc-summary-total > span:first-child { font-weight: 700; font-size: 0.95rem; }
+.bc-summary-amount {
+  font-size: 1.8rem; font-weight: 800; line-height: 1;
+  color: var(--c-text);
+}
+
+/* Reassurance */
+.bc-reassure {
+  padding: 20px 22px;
+  background: var(--c-bg-alt);
+  display: flex; flex-direction: column; gap: 14px;
+}
+.bc-reassure-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 0.8rem;
+}
+.bc-reassure-item i {
+  width: 32px; height: 32px;
+  background: #fff;
+  color: var(--c-success);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.bc-reassure-item div { display: flex; flex-direction: column; line-height: 1.4; }
+.bc-reassure-item strong { font-size: 0.85rem; }
+.bc-reassure-item span { color: var(--c-text-muted); }
+
+.field-error { color: #E24B4A; font-size: 0.8rem; margin-top: 4px; }
+</style>
+
+<script>
+(function () {
+  const totalEl = document.getElementById('bkTotal');
+  const subEl = document.getElementById('bkSubtotal');
+  const guestsEl = document.getElementById('bkGuests');
+  const kidsEl = document.getElementById('bkKids');
+  const price = parseFloat(totalEl?.dataset.price) || 0;
+  const a = document.getElementById('id_num_adults');
+  const c = document.getElementById('id_num_children');
+
+  function recalc() {
+    const adults = parseInt(a.value, 10) || 0;
+    const kids = parseInt(c.value, 10) || 0;
+    const total = price * adults;
+    if (subEl) subEl.textContent = '$' + Math.round(total);
+    if (totalEl) totalEl.textContent = '$' + Math.round(total);
+    if (guestsEl) guestsEl.textContent = adults;
+    if (kidsEl) kidsEl.textContent = kids;
+  }
+  if (a) a.addEventListener('input', recalc);
+  if (c) c.addEventListener('input', recalc);
+  recalc();
+
+  // Counter buttons
+  document.querySelectorAll('.bc-counter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      if (!input) return;
+      let val = parseInt(input.value, 10) || 0;
+      const min = parseInt(input.min, 10) || 0;
+      const max = parseInt(input.max, 10) || 99;
+      if (btn.dataset.action === 'inc' && val < max) val++;
+      else if (btn.dataset.action === 'dec' && val > min) val--;
+      input.value = val;
+      input.dispatchEvent(new Event('input'));
+    });
+  });
+
+  // Submit feedback
+  document.querySelector('form').addEventListener('submit', function () {
+    const btn = document.getElementById('confirmBtn');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<span><i class="ti ti-loader"></i> Processing...</span>';
+    }
+  });
+})();
+</script>
+{% endblock %}
