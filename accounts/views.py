@@ -12,9 +12,12 @@ from .forms import ProfileUpdateForm
 class CustomSignupView(AllauthSignupView):
     """Signup dan keyin login sahifasiga redirect"""
 
-    def get_success_url(self):
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        from django.contrib.auth import logout
+        logout(self.request)
         messages.success(self.request, "Hisobingiz yaratildi! Endi tizimga kiring.")
-        return reverse('account_login')
+        return redirect(reverse('account_login'))
 
 
 class ProfileView(LoginRequiredMixin, DetailView):

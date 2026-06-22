@@ -126,7 +126,7 @@ SITE_ID = 1
 # --------------------------------------------------------------------------
 ACCOUNT_LOGIN_METHOD = 'email'                    # email bilan login
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'     # Email tasdiqlash shart — signup dan keyin login sahifasiga redirect
+ACCOUNT_EMAIL_VERIFICATION = 'none'      # Email tasdiqlash yoq — signup dan keyin login ga redirect
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 
