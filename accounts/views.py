@@ -1,10 +1,20 @@
+from django.shortcuts import redirect
 from django.views.generic import UpdateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from allauth.account.views import SignupView as AllauthSignupView
 from .models import User
 from .forms import ProfileUpdateForm
+
+
+class CustomSignupView(AllauthSignupView):
+    """Signup dan keyin login sahifasiga redirect"""
+
+    def get_success_url(self):
+        messages.success(self.request, "Hisobingiz yaratildi! Endi tizimga kiring.")
+        return reverse('account_login')
 
 
 class ProfileView(LoginRequiredMixin, DetailView):

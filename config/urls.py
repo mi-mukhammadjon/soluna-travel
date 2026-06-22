@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from config.admin_dashboard import dashboard_stats
+from accounts.views import CustomSignupView
 
 
 urlpatterns = [
@@ -16,14 +17,13 @@ urlpatterns += i18n_patterns(
     path('solunasuperuse/', admin.site.urls),
 
     # ── Auth ──────────────────────────────────────────────
-    # Allauth BIRINCHI — login, signup, logout, password reset,
-    # social login (Google) hammasini boshqaradi.
-    # URL nomlari: account_login, account_signup, account_logout, ...
+    # Custom signup — allauth'dan oldin, shunda custom view ishlatiladi
+    path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
+
+    # Allauth — login, logout, password reset, social login
     path('accounts/', include('allauth.urls')),
 
-    # Custom accounts app — FAQAT profil sahifalari.
-    # Login/signup/logout shu yerdan OLIB TASHLANGAN (allauth da bor).
-    # URL nomlari: accounts:profile, accounts:profile-edit, accounts:password-change
+    # Custom accounts app — FAQAT profil sahifalari
     path('accounts/', include('accounts.urls')),
 
     # ── Boshqa applar ────────────────────────────────────
