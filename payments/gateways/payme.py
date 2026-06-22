@@ -21,7 +21,7 @@ from datetime import datetime
 
 
 # Payme error codes
-class PaymeError:
+class PaymeErrorCode:
     INTERNAL_ERROR = -32400
     METHOD_NOT_FOUND = -32601
     INVALID_AMOUNT = -31001
@@ -126,13 +126,13 @@ class PaymeService:
         try:
             payment = Payment.objects.get(id=payment_id)
         except (Payment.DoesNotExist, ValueError):
-            raise PaymeError(PaymeError.ORDER_NOT_FOUND, "Order not found", {'uz': "Buyurtma topilmadi"})
+            raise PaymeError(PaymeErrorCode.ORDER_NOT_FOUND, "Order not found", {'uz': "Buyurtma topilmadi"})
 
         if payment.amount_uzs != amount:
-            raise PaymeError(PaymeError.INVALID_AMOUNT, "Invalid amount")
+            raise PaymeError(PaymeErrorCode.INVALID_AMOUNT, "Invalid amount")
 
         if payment.status == 'paid':
-            raise PaymeError(PaymeError.UNABLE_TO_PERFORM, "Already paid")
+            raise PaymeError(PaymeErrorCode.UNABLE_TO_PERFORM, "Already paid")
 
         return {'allow': True}
 
@@ -153,17 +153,17 @@ class PaymeService:
         try:
             payment = Payment.objects.get(id=payment_id)
         except (Payment.DoesNotExist, ValueError):
-            raise PaymeError(PaymeError.ORDER_NOT_FOUND, "Order not found")
+            raise PaymeError(PaymeErrorCode.ORDER_NOT_FOUND, "Order not found")
 
         if payment.amount_uzs != amount:
-            raise PaymeError(PaymeError.INVALID_AMOUNT, "Invalid amount")
+            raise PaymeError(PaymeErrorCode.INVALID_AMOUNT, "Invalid amount")
 
         if payment.status == 'paid':
-            raise PaymeError(PaymeError.UNABLE_TO_PERFORM, "Already paid")
+            raise PaymeError(PaymeErrorCode.UNABLE_TO_PERFORM, "Already paid")
 
         # Tranzaksiya yaratilgan
         if payment.gateway_transaction_id and payment.gateway_transaction_id != transaction_id:
-            raise PaymeError(PaymeError.PENDING_PAYMENT, "Another transaction pending")
+            raise PaymeError(PaymeErrorCode.PENDING_PAYMENT, "Another transaction pending")
 
         payment.gateway_transaction_id = transaction_id
         payment.status = 'processing'
@@ -188,7 +188,7 @@ class PaymeService:
         try:
             payment = Payment.objects.get(gateway_transaction_id=transaction_id)
         except Payment.DoesNotExist:
-            raise PaymeError(PaymeError.TRANSACTION_NOT_FOUND, "Transaction not found")
+            raise PaymeError(PaymeErrorCode.TRANSACTION_NOT_FOUND, "Transaction not found")
 
         if payment.status == 'paid':
             # Idempotent — javobni qaytaramiz
@@ -200,7 +200,7 @@ class PaymeService:
             }
 
         if payment.status in ('cancelled', 'refunded', 'failed'):
-            raise PaymeError(PaymeError.UNABLE_TO_PERFORM, "Cannot perform")
+            raise PaymeError(PaymeErrorCode.UNABLE_TO_PERFORM, "Cannot perform")
 
         # Muvaffaqiyatli
         payment.mark_paid(transaction_id=transaction_id, gateway_data={'perform_time': int(time.time() * 1000)})
@@ -222,7 +222,7 @@ class PaymeService:
         try:
             payment = Payment.objects.get(gateway_transaction_id=transaction_id)
         except Payment.DoesNotExist:
-            raise PaymeError(PaymeError.TRANSACTION_NOT_FOUND, "Transaction not found")
+            raise PaymeError(PaymeErrorCode.TRANSACTION_NOT_FOUND, "Transaction not found")
 
         cancel_time = int(time.time() * 1000)
         was_paid = payment.status == 'paid'
@@ -258,7 +258,7 @@ class PaymeService:
         try:
             payment = Payment.objects.get(gateway_transaction_id=transaction_id)
         except Payment.DoesNotExist:
-            raise PaymeError(PaymeError.TRANSACTION_NOT_FOUND, "Transaction not found")
+            raise PaymeError(PaymeErrorCode.TRANSACTION_NOT_FOUND, "Transaction not found")
 
         state_map = {
             'created': PaymeTransactionState.CREATED,

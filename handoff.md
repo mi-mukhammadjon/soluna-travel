@@ -46,7 +46,7 @@ tour_agency/
 
 | Servis | Image | Port | Vazifa |
 |--------|-------|------|--------|
-| web | python:3.11-slim | 8000 | Django server |
+| web | python:3.11-slim | 8008 | Django server |
 | db | postgres:15-alpine | 5432 | Ma'lumotlar bazasi |
 | redis | redis:7-alpine | 6379 | Cache + Celery broker |
 | celery | python:3.11-slim | — | Async vazifalar (email, SMS) |
@@ -82,7 +82,7 @@ docker compose logs -f web
 # Django
 SECRET_KEY=your-secret-key
 DEBUG=False
-ALLOWED_HOSTS=soluna.uz,www.soluna.uz
+ALLOWED_HOSTS=solunatravel.uz,www.solunatravel.uz
 
 # Database
 DB_NAME=tour_agency
@@ -120,7 +120,7 @@ GOOGLE_CLIENT_ID=
 GOOGLE_SECRET=
 
 # Sayt URL
-SITE_URL=https://soluna.uz
+SITE_URL=https://solunatravel.uz
 ```
 
 ---
@@ -257,9 +257,9 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 
 ### Google OAuth
 1. [console.cloud.google.com](https://console.cloud.google.com) → Credentials → OAuth 2.0
-2. Redirect URI: `https://soluna.uz/uz/accounts/google/login/callback/`
+2. Redirect URI: `https://solunatravel.uz/uz/accounts/google/login/callback/`
 3. `.env` ga `GOOGLE_CLIENT_ID` va `GOOGLE_SECRET` qo'ying
-4. Admin panelda: **Sites** → domain `soluna.uz` qo'ying
+4. Admin panelda: **Sites** → domain `solunatravel.uz` qo'ying
 5. Admin panelda: **Social Applications** → Google app qo'ying
 
 ---
@@ -305,16 +305,16 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 ```nginx
 server {
     listen 80;
-    server_name soluna.uz www.soluna.uz;
+    server_name solunatravel.uz www.solunatravel.uz;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl;
-    server_name soluna.uz www.soluna.uz;
+    server_name solunatravel.uz www.solunatravel.uz;
 
-    ssl_certificate /etc/letsencrypt/live/soluna.uz/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/soluna.uz/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/solunatravel.uz/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/solunatravel.uz/privkey.pem;
 
     location /static/ { alias /app/staticfiles/; }
     location /media/  { alias /app/media/; }
@@ -334,7 +334,7 @@ ALLOWED_HOSTS = ['soluna.uz', 'www.soluna.uz']
 
 ### SSL sertifikat:
 ```bash
-certbot --nginx -d soluna.uz -d www.soluna.uz
+certbot --nginx -d solunatravel.uz -d www.solunatravel.uz
 ```
 
 ---

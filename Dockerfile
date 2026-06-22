@@ -63,10 +63,10 @@ RUN mkdir -p /app/logs /app/staticfiles /app/media
 COPY . .
 
 # 7. entrypoint.sh — Windows CRLF'ni LF'ga + executable
-RUN dos2unix /app/entrypoint.sh \
-    && chmod +x /app/entrypoint.sh
+RUN dos2unix /app/entrypoint.sh /app/start.sh \
+    && chmod +x /app/entrypoint.sh /app/start.sh
 
 EXPOSE 8008
 
 # Shell orqali ishga tushirish (permission'dan qat'iy nazar ishlaydi)
-CMD ["sh", "/app/entrypoint.sh"]
+CMD ["sh", "/app/start.sh"]

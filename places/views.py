@@ -23,7 +23,10 @@ class NearbyPlacesAPIView(View):
             return JsonResponse({'error': 'lat va lon kerak'}, status=400)
 
         category = request.GET.get('category', 'cafe')
-        radius = min(int(request.GET.get('radius', 1000)), 5000)  # max 5km
+        try:
+            radius = min(int(request.GET.get('radius', 1000)), 5000)
+        except (ValueError, TypeError):
+            radius = 1000
 
         if not lat or not lon:
             return JsonResponse({'error': 'lat va lon noto\'g\'ri'}, status=400)
@@ -66,7 +69,10 @@ class AttractionNearbyView(View):
             return JsonResponse({'error': 'Bu attraksiyada koordinatalar yo\'q'}, status=400)
 
         category = request.GET.get('category', 'cafe')
-        radius = int(request.GET.get('radius', 1000))
+        try:
+            radius = int(request.GET.get('radius', 1000))
+        except (ValueError, TypeError):
+            radius = 1000
 
         results = search_nearby(
             float(attraction.latitude),

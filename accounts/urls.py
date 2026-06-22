@@ -21,5 +21,5 @@ urlpatterns = [
     # Profil sahifalari — faqat authenticated foydalanuvchilar uchun
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('profile/edit/', views.ProfileUpdateView.as_view(), name='profile-edit'),
-    path('password/change/', views.PasswordChangeView.as_view(), name='password-change'),
+    path('password/change/', views.CustomPasswordChangeView.as_view(), name='password-change'),
 ]

@@ -42,7 +42,10 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tour'] = self.tour
-        num_adults = int(self.request.GET.get('adults', 1))
+        try:
+            num_adults = max(1, int(self.request.GET.get('adults', 1)))
+        except (ValueError, TypeError):
+            num_adults = 1
         context['estimated_price'] = self.tour.price * num_adults
         return context
 

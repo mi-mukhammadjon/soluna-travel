@@ -51,9 +51,9 @@ class Booking(models.Model):
     def save(self, *args, **kwargs):
         if not self.booking_number:
             self.booking_number = 'BK' + uuid.uuid4().hex[:8].upper()
-        if not self.price_per_person:
+        if self.price_per_person is None:
             self.price_per_person = self.tour.price
-        if not self.total_price:
+        if self.total_price is None:
             self.total_price = self.tour.price * self.num_adults
         super().save(*args, **kwargs)
 

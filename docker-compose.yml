@@ -44,9 +44,8 @@ services:
       - "8008:8008"
     volumes:
       - .:/app
-      # ⭐ Static va media — nginx ham ko'radigan joyga yoziladi
-      - /var/www/soluna-travel/staticfiles:/app/staticfiles
-      - /var/www/soluna-travel/media:/app/media
+      - staticfiles:/app/staticfiles
+      - media:/app/media
     depends_on:
       db:
         condition: service_healthy
@@ -65,7 +64,7 @@ services:
     command: ["sh", "-c", "python /app/wait_for_db.py && celery -A config worker -l info"]
     volumes:
       - .:/app
-      - /var/www/soluna-travel/media:/app/media   # Celery ham media bilan ishlasa
+      - media:/app/media
     depends_on:
       db:
         condition: service_healthy
@@ -98,3 +97,5 @@ services:
 volumes:
   postgres_data:
   redis_data:
+  staticfiles:
+  media:

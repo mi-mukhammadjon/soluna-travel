@@ -1,6 +1,6 @@
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
@@ -37,7 +37,6 @@ class ContactView(CreateView):
 
 class ContactSuccessView(View):
     def get(self, request):
-        from django.shortcuts import render
         return render(request, 'messages_app/contact_success.html')
 
 
@@ -48,7 +47,6 @@ class MessageReplyView(UserPassesTestMixin, View):
         return self.request.user.is_staff
 
     def get(self, request, pk):
-        from django.shortcuts import render
         msg = get_object_or_404(ContactMessage, pk=pk)
         form = ReplyForm(instance=msg)
         return render(request, 'messages_app/reply.html', {'msg': msg, 'form': form})
@@ -69,5 +67,4 @@ class MessageReplyView(UserPassesTestMixin, View):
             messages.success(request, "Javob yuborildi.")
             return redirect(reverse('admin:messages_app_contactmessage_change', args=[pk]))
 
-        from django.shortcuts import render
         return render(request, 'messages_app/reply.html', {'msg': msg, 'form': form})

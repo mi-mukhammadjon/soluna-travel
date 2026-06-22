@@ -10,14 +10,21 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
-    'modeltranslation',
+    'django_celery_beat',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.apple',
     'accounts',
     'regions',
     'tours',
@@ -70,6 +77,12 @@ LANGUAGES = [
     ('uz', 'O\'zbek'),
     ('ru', 'Русский'),
     ('en', 'English'),
+    ('zh-hans', '中文'),
+    ('ar', 'العربية'),
+    ('de', 'Deutsch'),
+    ('fr', 'Français'),
+    ('ja', '日本語'),
+    ('ko', '한국어'),
 ]
 USE_I18N = True
 TIME_ZONE = 'Asia/Tashkent'

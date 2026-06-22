@@ -17,7 +17,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-me-in-production')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS dagi ortiqcha bo'shliqlarni olib tashlaydigan variant
-ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS').split(',')]
+_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+ALLOWED_HOSTS = [host.strip() for host in _raw.split(',') if host.strip()]
 INSTALLED_APPS = [
     'modeltranslation',
     'django.contrib.admin',
@@ -123,7 +124,7 @@ SITE_ID = 1
 # --------------------------------------------------------------------------
 # django-allauth sozlamalari
 # --------------------------------------------------------------------------
-ACCOUNT_LOGIN_METHODS = {'email'}           # email bilan login
+ACCOUNT_LOGIN_METHOD = 'email'                    # email bilan login
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'optional'     # 'mandatory' qilsangiz email tasdiqlanadi
 ACCOUNT_UNIQUE_EMAIL = True
@@ -131,7 +132,7 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/uz/accounts/login/'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -171,7 +172,6 @@ LANGUAGES = [
     ('fr', 'Français'),
     ('ja', '日本語'),
     ('ko', '한국어'),
-    ('es', 'Spanish'),
 ]
 
 # Agar biron bir maydon tanlangan tilda to'ldirilmagan bo'lsa, standart o'zbek tilidagi qiymat ko'rinadi
@@ -197,7 +197,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ADMIN_SITE = 'config.admin.SoLunaAdminSite'
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
 EMAIL_USE_TLS = True
@@ -268,26 +274,27 @@ LOGGING = {
 
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
-# HTTPS sozlamalari
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# HTTPS sozlamalari — faqat production (DEBUG=False) da
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+else:
+    X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
-
-CORS_ORIGIN_ALLOW_ALL = False
-
-CORS_ALLOWED_ORIGINS = [
-    "https://solunatravel.uz",
-    "https://www.solunatravel.uz",
-    # Agar alohida frontend domeningiz bo'lsa, uni ham qo'shasiz
-]
+# django-cors-headers paketi o'rnatilgandan keyin ishlatiladi:
+# pip install django-cors-headers va INSTALLED_APPS ga 'corsheaders' qo'shish
+# CORS_ALLOWED_ORIGINS = [
+#     "https://solunatravel.uz",
+#     "https://www.solunatravel.uz",
+# ]
 
 sentry_sdk.init(
-    dsn=os.getenv('SENTRY_DNS', ''),
-    traces_sample_rate=1.0,
+    dsn=os.getenv('SENTRY_DSN', ''),
+    traces_sample_rate=0.1,
     send_default_pii=True,
 )

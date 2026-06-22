@@ -22,10 +22,10 @@ logger = logging.getLogger('payments')
 
 
 def is_mock_mode():
-    """Click/Payme kalitlari yo'q bo'lsa — mock rejim"""
+    """Click YOKI Payme kalitlari yo'q bo'lsa — mock rejim"""
     return not (
         getattr(settings, 'CLICK_MERCHANT_ID', '')
-        and getattr(settings, 'PAYME_MERCHANT_ID', '')
+        or getattr(settings, 'PAYME_MERCHANT_ID', '')
     )
 
 

@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import Q, Avg, Count
 from .models import Tour, TourCategory, CompanyStatistic, CompanyAdvantage
@@ -107,16 +108,6 @@ class TourListView(ListView):
             qs = qs.filter(duration_days__gte=8, duration_days__lte=14)
         elif duration == '15+':
             qs = qs.filter(duration_days__gte=15)
-
-        # ── tour_type (Cultural / Adventure / Premium) ──
-        tour_type = self.request.GET.get('type', '').strip()
-        if tour_type:
-            qs = qs.filter(tour_type__iexact=tour_type)
-
-        # ── activity_type (alohida URL: ?featured=1&activity_type=...) ──
-        activity = self.request.GET.get('activity_type', '').strip()
-        if activity:
-            qs = qs.filter(tour_type__iexact=activity)
 
         # ── featured (Activities tab) ──
         if self.request.GET.get('featured') == '1':
