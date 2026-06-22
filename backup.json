@@ -1,0 +1,2438 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-06-19T10:20:54.348Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "3",
+        "object_repr": "Classic Uzbekistan (Tashkent тАУ Khiva тАУ Bukhara тАУ Samarkand)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description [uz]\", \"Description [ru]\", \"Description [en]\", \"Description [ko]\", \"Regions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-06-19T10:21:20.572Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "1",
+        "object_repr": "Uzbekistan Tour: Tashkent тАУ Samarkand тАУ Bukhara",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description [uz]\", \"Description [ru]\", \"Description [en]\", \"Description [ko]\", \"Regions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-06-19T10:45:28.901Z",
+        "user": 1,
+        "content_type": 19,
+        "object_id": "3",
+        "object_repr": "Bukhara",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-06-19T10:48:20.857Z",
+        "user": 1,
+        "content_type": 19,
+        "object_id": "5",
+        "object_repr": "Nukus & Aral Sea",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-06-19T10:48:54.987Z",
+        "user": 1,
+        "content_type": 19,
+        "object_id": "4",
+        "object_repr": "Khiva",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-06-19T10:49:49.323Z",
+        "user": 1,
+        "content_type": 19,
+        "object_id": "2",
+        "object_repr": "Samarkand",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-06-19T10:50:24.487Z",
+        "user": 1,
+        "content_type": 19,
+        "object_id": "1",
+        "object_repr": "Tashkent",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-06-19T10:51:05.177Z",
+        "user": 1,
+        "content_type": 19,
+        "object_id": "6",
+        "object_repr": "Urgench",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-06-19T11:03:39.479Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "6",
+        "object_repr": "Classic Uzbekistan тАФ Ending in Samarkand (TAS-SKD)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description [uz]\", \"Description [ru]\", \"Description [en]\", \"Description [ko]\", \"Cover image\", \"Regions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-06-19T11:17:29.987Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "4",
+        "object_repr": "Silk Road: Uzbekistan Group Tour 2026",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description [uz]\", \"Description [ru]\", \"Description [en]\", \"Description [ko]\", \"Cover image\", \"Regions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-06-19T11:21:49.707Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "5",
+        "object_repr": "Uzbekistan Premium: with Spanish-speaking guide",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description [uz]\", \"Description [ru]\", \"Description [en]\", \"Description [ko]\", \"Cover image\", \"Regions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-06-19T11:26:09.999Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "3",
+        "object_repr": "Classic Uzbekistan (Tashkent тАУ Khiva тАУ Bukhara тАУ Samarkand)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Regions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-06-19T11:31:53.965Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "2",
+        "object_repr": "Aral Sea Adventure тАФ 3 days",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description [uz]\", \"Description [ru]\", \"Description [en]\", \"Description [ko]\", \"Cover image\", \"Regions\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-06-19T11:37:52.176Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "1",
+        "object_repr": "Uzbekistan Tour: Tashkent тАУ Samarkand тАУ Bukhara",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Cover image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-06-19T13:03:32.353Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "6",
+        "object_repr": "Classic Uzbekistan тАФ Ending in Samarkand (TAS-SKD)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-06-19T13:26:33.104Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "3",
+        "object_repr": "Desert & Safari",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-06-19T13:29:07.594Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "2",
+        "object_repr": "Aral Sea Adventure тАФ 3 days",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-06-19T13:36:02.078Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "1",
+        "object_repr": "Historical Tours",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-06-19T13:39:03.784Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "2",
+        "object_repr": "Mountain Tours",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-06-19T13:41:17.934Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "10",
+        "object_repr": "Silk Road Journey",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [de]\", \"Name [ja]\", \"Name [ko]\", \"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-06-19T13:44:16.088Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "9",
+        "object_repr": "Family Vacation",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [ja]\", \"Name [ko]\", \"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-06-19T13:44:21.660Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "9",
+        "object_repr": "Family Vacation",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-06-19T13:46:23.919Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "8",
+        "object_repr": "Lakes & Recreation",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [ja]\", \"Name [ko]\", \"Name [es]\", \"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-06-19T13:47:42.907Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "7",
+        "object_repr": "Winter Sports",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [ja]\", \"Name [ko]\", \"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-06-19T13:48:52.734Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "6",
+        "object_repr": "Eco Tourism",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [de]\", \"Name [fr]\", \"Name [ja]\", \"Name [ko]\", \"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-06-19T13:48:57.875Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "6",
+        "object_repr": "Eco Tourism",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-06-19T13:49:03.218Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "6",
+        "object_repr": "Eco Tourism",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-06-19T13:50:37.070Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "5",
+        "object_repr": "Pilgrimage Tours",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [fr]\", \"Name [ja]\", \"Name [ko]\", \"Name [es]\", \"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-06-19T13:51:47.357Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "4",
+        "object_repr": "Gastronomic Tours",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [ja]\", \"Name [ko]\", \"Name [es]\", \"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-06-19T13:52:40.037Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "3",
+        "object_repr": "Desert & Safari",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [de]\", \"Name [fr]\", \"Name [ja]\", \"Name [ko]\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-06-19T13:53:29.718Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "2",
+        "object_repr": "Mountain Tours",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [ja]\", \"Name [ko]\", \"Name [es]\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-06-19T13:54:29.701Z",
+        "user": 1,
+        "content_type": 21,
+        "object_id": "1",
+        "object_repr": "Historical Tours",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name [ru]\", \"Name [zh-hans]\", \"Name [ar]\", \"Name [ja]\", \"Name [ko]\", \"Name [es]\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-06-19T14:06:22.861Z",
+        "user": 1,
+        "content_type": 31,
+        "object_id": "1",
+        "object_repr": "45+ - Global Branches",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-06-19T14:06:58.311Z",
+        "user": 1,
+        "content_type": 31,
+        "object_id": "2",
+        "object_repr": "29K - Destinations",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-06-19T14:07:46.081Z",
+        "user": 1,
+        "content_type": 31,
+        "object_id": "3",
+        "object_repr": "20+ - Years Experience",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2026-06-19T14:08:58.034Z",
+        "user": 1,
+        "content_type": 31,
+        "object_id": "4",
+        "object_repr": "168K - Happy Customers",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2026-06-19T14:11:17.767Z",
+        "user": 1,
+        "content_type": 30,
+        "object_id": "1",
+        "object_repr": "300,000+ Experiences | Make memories around the world.",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2026-06-19T14:12:28.561Z",
+        "user": 1,
+        "content_type": 30,
+        "object_id": "2",
+        "object_repr": "Reserve now, Pay later | Book your spot first, pay later.",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2026-06-19T14:13:28.551Z",
+        "user": 1,
+        "content_type": 30,
+        "object_id": "3",
+        "object_repr": "Trusted Reviews | 4.8 stars from 160,000+ reviews.",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2026-06-19T14:14:30.074Z",
+        "user": 1,
+        "content_type": 30,
+        "object_id": "4",
+        "object_repr": "Security Assurance | Data security through encryption.",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2026-06-20T08:29:34.564Z",
+        "user": 1,
+        "content_type": 32,
+        "object_id": "1",
+        "object_repr": "000 (12700)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2026-06-20T08:29:59.465Z",
+        "user": 1,
+        "content_type": 32,
+        "object_id": "1",
+        "object_repr": "UZS (12700.0000)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Code\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2026-06-20T10:54:05.089Z",
+        "user": 1,
+        "content_type": 22,
+        "object_id": "6",
+        "object_repr": "Classic Uzbekistan тАФ Ending in Samarkand (TAS-SKD)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Regions\"]}}, {\"added\": {\"name\": \"tour image\", \"object\": \"Klassik O'zbekiston \\u2014 Samarqandda yakun (TAS-SKD) - 1\"}}]"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "2zmgmpxz6fi94fyju7g56ymkfvuugjl5",
+    "fields": {
+        "session_data": ".eJxVjU1vhCAURf_LWxsr4Ae6nKSz62batIumIfgApRqYEWyaGP97MZku5i3vOfe-DYJHK2eJ6FcXRYgy6gDdBtP6Nr1fbqfXZz6c-fkDus8NrotHHRKH2Q_WQQZKRgmdW-c5g-uEWqBXWvzoxRqrl3_i9G9MpSfYM9Jw0pZNW5Z5S1lbM_a1ZyDkGkexBr0Iq5JJ4CHrJU7aHUB9Szf4HL2Li-3zQ8nvNOQv6fd8ursPA6MM49FWJWsU7YlBNEbTJp3hFJEWhjGDtOK8Loyqa0JR1Q1pK1agolVBqEwY9j-jpmPJ:1wassn:Y2b20_HtTypWPj_c1Qqwbk711yHGlgPm5DDUTp9eAmk",
+        "expire_date": "2026-07-04T10:25:01.850Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "uxig0ca2mb1hrr0xtietzwpkwn6egmgi",
+    "fields": {
+        "session_data": ".eJxVjUFPxCAUhP_LOzcNUEq7PbrejK4HPRlD6ANa3AY2QDVx0_8ujXvZyTvNNzPvCimgU4tCDKvPMmWVTYLhCpf3x59Xh6fwe5zeXp5OMHwUMwY0qXBYwuQ8VKBVVjD4dVkquJzRSAzayG8TnXUm_pOtol1fjhNKatFyzsnhc6tAqjXPck0mSqfLJoU7b1R4Nn4H-kv5KdQYfI5urPdIfaOpfi4Pl4db9m5gVmne25o3nWYjtYjWGtYV2Z4hMmKbxiJr-14Qq4WgDLXo6KFtCGrWEspUwbD9ATx7YUc:1waCsx:HgTEeUFdMMm4YTlrzyxGqEcpqhgSeIpGnGyzlzdgs9M",
+        "expire_date": "2026-07-02T13:34:23.628Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "wfq4wexe1zrkcyspovo50dcn12byhheo",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyGwyI8evfcZCN1lpWpoUtqT8d0tSQ86x_m-mbeIaVtL3Fpe4kTiKrQ4_XZjwmeuHdAj1fssca7rMo2yK_KgTQ4z5dftcP8OSmqlr-lsPMGoGZE5g9_DARBBsTGMYENwisk5DUjO64s1Cgms0pB2LD5f-tI3_Q:1waWIu:rdoAoiI598kLk4L1EuwHe_DEgAPThuLTutoBFkbMYQQ",
+        "expire_date": "2026-07-03T10:18:28.755Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "xs9l4bxhiomoquguequxgofn9nxvgfje",
+    "fields": {
+        "session_data": ".eJytzU0OgjAQQOG7zLohBStFDqARWRkW_oSQWgZtLAyhRRaEu0viFUze7lu8GRxpo6zSmsbOV84rjw7SGYqj3ORNe50KumRU3CC9z9APpNGtDpaepgMGtfIK0m60lkH_1lhpqrH64GAag8NPFhbKZE1wHgZRLGQcypLB9PC7vT0k2bnNX-6E_zlsA5FEPC6X5QtaWkjE:1waBPh:eCIbkXnA4D3NOwoKjXobI7lhJsM426oVYDbedkfSEHs",
+        "expire_date": "2026-07-02T12:00:05.482Z"
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$k4pyZIvOurHKzKvPuicnS5$x2d7fC9VBfSN6eOfkfsp5914t7g8BCeqjZ32vFjBSr8=",
+        "last_login": "2026-06-20T10:25:01.843Z",
+        "is_superuser": true,
+        "username": "soluna",
+        "first_name": "",
+        "last_name": "",
+        "email": "soluna@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-18T13:34:17.316Z",
+        "phone": "",
+        "avatar": "",
+        "role": "user",
+        "preferred_language": "uz",
+        "created_at": "2026-06-18T13:34:17.498Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "regions.region",
+    "pk": 1,
+    "fields": {
+        "name": "Toshkent",
+        "name_uz": "Toshkent",
+        "name_ru": "╨в╨░╤И╨║╨╡╨╜╤В",
+        "name_en": "Tashkent",
+        "name_zh_hans": null,
+        "name_ar": null,
+        "name_de": null,
+        "name_fr": null,
+        "name_ja": null,
+        "name_ko": "эГАьКИь╝ДэК╕",
+        "name_es": null,
+        "slug": "tashkent",
+        "description": "O'zbekiston poytaxti, zamonaviy va qadimiy uyg'unligi. Xast-Imom majmuasi, Chorsu bozori, Mustaqillik maydoni va Amir Temur xiyoboni.",
+        "description_uz": "O'zbekiston poytaxti, zamonaviy va qadimiy uyg'unligi. Xast-Imom majmuasi, Chorsu bozori, Mustaqillik maydoni va Amir Temur xiyoboni.",
+        "description_ru": "╨б╤В╨╛╨╗╨╕╤Ж╨░ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜╨░, ╨│╨░╤А╨╝╨╛╨╜╨╕╤П ╤Б╨╛╨▓╤А╨╡╨╝╨╡╨╜╨╜╨╛╤Б╤В╨╕ ╨╕ ╨┤╤А╨╡╨▓╨╜╨╛╤Б╤В╨╕. ╨Ъ╨╛╨╝╨┐╨╗╨╡╨║╤Б ╨е╨░╤Б╤В-╨Ш╨╝╨░╨╝, ╨▒╨░╨╖╨░╤А ╨з╨╛╤А╤Б╤Г, ╨┐╨╗╨╛╤Й╨░╨┤╤М ╨Э╨╡╨╖╨░╨▓╨╕╤Б╨╕╨╝╨╛╤Б╤В╨╕ ╨╕ ╤Б╨║╨▓╨╡╤А ╨Р╨╝╨╕╤А╨░ ╨в╨╡╨╝╤Г╤А╨░.",
+        "description_en": "Capital of Uzbekistan, where ancient meets modern. Visit Khast-Imam complex, Chorsu bazaar, Independence Square, and Amir Temur square.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ьЪ░ьжИы▓аэВдьКдэГДьЭШ ьИШыПД, ъ│аыМАьЩА эШДыМАьЭШ ьб░эЩФ. эХШьКдэК╕ьЭ┤ызШ ыЛиьзА, ь┤Иые┤ьИШ ьЛЬьЮе, ыПЕыж╜ъ┤СьЮе, ьХДып╕ые┤ эЛ░ым┤ые┤ ъ┤СьЮеьЭД ы░йым╕эХШьД╕ьЪФ.",
+        "description_es": "",
+        "image": "regions/tashkent.jpg",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "regions.region",
+    "pk": 2,
+    "fields": {
+        "name": "Samarqand",
+        "name_uz": "Samarqand",
+        "name_ru": "╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤",
+        "name_en": "Samarkand",
+        "name_zh_hans": null,
+        "name_ar": null,
+        "name_de": null,
+        "name_fr": null,
+        "name_ja": null,
+        "name_ko": "ьВмызИые┤ь╣╕эК╕",
+        "name_es": null,
+        "slug": "samarkand",
+        "description": "Buyuk Ipak yo'lining marvaridi, UNESCO ro'yxatidagi shahar. Registon maydoni, Bibi-Xonim masjidi, Shohi-Zinda nekropoli va Go'ri Amir maqbarasi.",
+        "description_uz": "Buyuk Ipak yo'lining marvaridi, UNESCO ro'yxatidagi shahar. Registon maydoni, Bibi-Xonim masjidi, Shohi-Zinda nekropoli va Go'ri Amir maqbarasi.",
+        "description_ru": "╨Ц╨╡╨╝╤З╤Г╨╢╨╕╨╜╨░ ╨Т╨╡╨╗╨╕╨║╨╛╨│╨╛ ╤И╤С╨╗╨║╨╛╨▓╨╛╨│╨╛ ╨┐╤Г╤В╨╕, ╨│╨╛╤А╨╛╨┤ ╨╕╨╖ ╤Б╨┐╨╕╤Б╨║╨░ ╨о╨Э╨Х╨б╨Ъ╨Ю. ╨Я╨╗╨╛╤Й╨░╨┤╤М ╨а╨╡╨│╨╕╤Б╤В╨░╨╜, ╨╝╨╡╤З╨╡╤В╤М ╨С╨╕╨▒╨╕-╨е╨░╨╜╤Л╨╝, ╨╜╨╡╨║╤А╨╛╨┐╨╛╨╗╤М ╨и╨░╤Е╨╕-╨Ч╨╕╨╜╨┤╨░ ╨╕ ╨╝╨░╨▓╨╖╨╛╨╗╨╡╨╣ ╨У╤Г╤А-╨н╨╝╨╕╤А.",
+        "description_en": "Pearl of the Great Silk Road, UNESCO World Heritage city. Registan Square, Bibi-Khanym Mosque, Shah-i-Zinda necropolis, and Gur-e-Amir mausoleum.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ьЬДыМАэХЬ ьЛдэБмыбЬыУЬьЭШ ьзДьг╝, ьЬаыДдьКдь╜Ф ьД╕ъ│ДьЬаьВ░ ыПДьЛЬ. ыаИъ╕░ьКдэГД ъ┤СьЮе, ы╣Ды╣ДэХШыКа ыкиьКдэБм, ьГдэЮИьзДыЛд ыДдэБмыбЬэП┤ыжмьКд, ъ╡мые┤ ьЧРып╕ые┤ ьШБымШ.",
+        "description_es": "",
+        "image": "regions/samarqand.jpg",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "regions.region",
+    "pk": 3,
+    "fields": {
+        "name": "Buxoro",
+        "name_uz": "Buxoro",
+        "name_ru": "╨С╤Г╤Е╨░╤А╨░",
+        "name_en": "Bukhara",
+        "name_zh_hans": null,
+        "name_ar": null,
+        "name_de": null,
+        "name_fr": null,
+        "name_ja": null,
+        "name_ko": "ы╢АэХШыЭ╝",
+        "name_es": null,
+        "slug": "bukhara",
+        "description": "2500 yillik tarixga ega muqaddas shahar, butun shahar ochiq osmon ostidagi muzey. Po'i-Kalon majmuasi, Ark qal'asi, Labi-Hovuz va savdo gumbazlari.",
+        "description_uz": "2500 yillik tarixga ega muqaddas shahar, butun shahar ochiq osmon ostidagi muzey. Po'i-Kalon majmuasi, Ark qal'asi, Labi-Hovuz va savdo gumbazlari.",
+        "description_ru": "╨б╨▓╤П╤Й╨╡╨╜╨╜╤Л╨╣ ╨│╨╛╤А╨╛╨┤ ╤Б 2500-╨╗╨╡╤В╨╜╨╡╨╣ ╨╕╤Б╤В╨╛╤А╨╕╨╡╨╣, ╤Ж╨╡╨╗╤Л╨╣ ╨│╨╛╤А╨╛╨┤ тАФ ╨╝╤Г╨╖╨╡╨╣ ╨┐╨╛╨┤ ╨╛╤В╨║╤А╤Л╤В╤Л╨╝ ╨╜╨╡╨▒╨╛╨╝. ╨Ъ╨╛╨╝╨┐╨╗╨╡╨║╤Б ╨Я╨╛╨╕-╨Ъ╨░╨╗╤П╨╜, ╨║╤А╨╡╨┐╨╛╤Б╤В╤М ╨Р╤А╨║, ╨Ы╤П╨▒╨╕-╨е╨░╤Г╨╖ ╨╕ ╤В╨╛╤А╨│╨╛╨▓╤Л╨╡ ╨║╤Г╨┐╨╛╨╗╨░.",
+        "description_en": "Sacred city with 2,500 years of history тАФ an open-air museum. Poi-Kalyan complex, Ark fortress, Lyab-i-Hauz, and trading domes.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "2500ыЕД ьЧньВмьЭШ ьЛаьД▒эХЬ ыПДьЛЬ, ьХ╝ьЩ╕ ы░Хым╝ъ┤А ьаДь▓┤. эПмьЭ┤ь╣╝ыЮА ыЛиьзА, ьХДые┤эБм ьЪФьГИ, ыЭ╝ы╣ДэХШьЪ░ьжИ, ым┤ьЧн ыПФ.",
+        "description_es": "",
+        "image": "regions/buxara.jpg",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "regions.region",
+    "pk": 4,
+    "fields": {
+        "name": "Xiva",
+        "name_uz": "Xiva",
+        "name_ru": "╨е╨╕╨▓╨░",
+        "name_en": "Khiva",
+        "name_zh_hans": null,
+        "name_ar": null,
+        "name_de": null,
+        "name_fr": null,
+        "name_ja": null,
+        "name_ko": "эЮИы░Ф",
+        "name_es": null,
+        "slug": "khiva",
+        "description": "Ichan-Qal'a тАФ devor bilan o'ralgan qadimiy shahar, UNESCO yodgorligi. Kalta-Minor minorasi, Muhammad Aminxon madrasasi, Toshhovli saroyi.",
+        "description_uz": "Ichan-Qal'a тАФ devor bilan o'ralgan qadimiy shahar, UNESCO yodgorligi. Kalta-Minor minorasi, Muhammad Aminxon madrasasi, Toshhovli saroyi.",
+        "description_ru": "╨Ш╤З╨░╨╜-╨Ъ╨░╨╗╨░ тАФ ╨┤╤А╨╡╨▓╨╜╨╕╨╣ ╨│╨╛╤А╨╛╨┤ ╨╖╨░ ╤Б╤В╨╡╨╜╨░╨╝╨╕, ╨╛╨▒╤К╨╡╨║╤В ╨о╨Э╨Х╨б╨Ъ╨Ю. ╨Ь╨╕╨╜╨░╤А╨╡╤В ╨Ъ╨░╨╗╤М╤В╨░-╨Ь╨╕╨╜╨╛╤А, ╨╝╨╡╨┤╤А╨╡╤Б╨╡ ╨Ь╤Г╤Е╨░╨╝╨╝╨░╨┤ ╨Р╨╝╨╕╨╜-╤Е╨░╨╜╨░, ╨┤╨▓╨╛╤А╨╡╤Ж ╨в╨░╤И-╨е╨╛╨▓╨╗╨╕.",
+        "description_en": "Ichan-Kala тАФ ancient walled city, UNESCO World Heritage. Kalta-Minor minaret, Mohammed Amin Khan madrasah, Tash-Hauli palace.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ьЭ┤ь░мь╣╝ыЭ╝ тАФ ьД▒ы▓╜ьЬ╝ыбЬ ыСШыЯмьЛ╕ьЭ╕ ъ│аыМА ыПДьЛЬ, ьЬаыДдьКдь╜Ф ьД╕ъ│ДьЬаьВ░. ь╣╝эГАып╕ыЕ╕ые┤ ып╕ыВШыаИэК╕, ым┤эХиызИыУЬ ьХДып╝ ь╣╕ ызИыУЬыЭ╝ьВм, эГАьЛЬэХШьЪ╕ыжм ъ╢БьаД.",
+        "description_es": "",
+        "image": "regions/khiva.jpg",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "regions.region",
+    "pk": 5,
+    "fields": {
+        "name": "Nukus va Orol",
+        "name_uz": "Nukus va Orol",
+        "name_ru": "╨Э╤Г╨║╤Г╤Б ╨╕ ╨Р╤А╨░╨╗",
+        "name_en": "Nukus & Aral Sea",
+        "name_zh_hans": null,
+        "name_ar": null,
+        "name_de": null,
+        "name_fr": null,
+        "name_ja": null,
+        "name_ko": "ыИДь┐аьКд & ьХДыЮДэХ┤",
+        "name_es": null,
+        "slug": "nukus-aral",
+        "description": "Qoraqalpog'iston poytaxti va Orol dengizi sarguzashti. Mo'ynoq kemalar qabristoni, Ustyurt platosi, Mizdaxkon nekropoli.",
+        "description_uz": "Qoraqalpog'iston poytaxti va Orol dengizi sarguzashti. Mo'ynoq kemalar qabristoni, Ustyurt platosi, Mizdaxkon nekropoli.",
+        "description_ru": "╨б╤В╨╛╨╗╨╕╤Ж╨░ ╨Ъ╨░╤А╨░╨║╨░╨╗╨┐╨░╨║╤Б╤В╨░╨╜╨░ ╨╕ ╨┐╤А╨╕╨║╨╗╤О╤З╨╡╨╜╨╕╨╡ ╨║ ╨Р╤А╨░╨╗╤М╤Б╨║╨╛╨╝╤Г ╨╝╨╛╤А╤О. ╨Ъ╨╗╨░╨┤╨▒╨╕╤Й╨╡ ╨║╨╛╤А╨░╨▒╨╗╨╡╨╣ ╨▓ ╨Ь╤Г╨╣╨╜╨░╨║╨╡, ╨┐╨╗╨░╤В╨╛ ╨г╤Б╤В╤О╤А╤В, ╨╜╨╡╨║╤А╨╛╨┐╨╛╨╗╤М ╨Ь╨╕╨╖╨┤╨░╤Е╨║╨░╨╜.",
+        "description_en": "Capital of Karakalpakstan and adventure to the Aral Sea. Moynaq ship cemetery, Ustyurt plateau, Mizdakhan necropolis.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ь╣┤ыЭ╝ь╣╝эМНьКдэГДьЭШ ьИШыПДьЩА ьХДыЮДэХ┤ ыкиэЧШ. ыкиьЭ┤ыВЩ ьДаы░Х ымШьзА, ьЪ░ьКдэКЬые┤эК╕ ъ│аьЫР, ып╕ьжИыЛдь╣╕ ыДдэБмыбЬэП┤ыжмьКд.",
+        "description_es": "",
+        "image": "regions/aral.webp",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "regions.region",
+    "pk": 6,
+    "fields": {
+        "name": "Urganch",
+        "name_uz": "Urganch",
+        "name_ru": "╨г╤А╨│╨╡╨╜╤З",
+        "name_en": "Urgench",
+        "name_zh_hans": null,
+        "name_ar": null,
+        "name_de": null,
+        "name_fr": null,
+        "name_ja": null,
+        "name_ko": "ьЪ░ые┤ъ▓Рь╣Ш",
+        "name_es": null,
+        "slug": "urgench",
+        "description": "Xorazm viloyati markazi, Xivaga eshik. Aviakompaniyalar boyog'i, qadimiy Xorazm madaniyatining vorisi.",
+        "description_uz": "Xorazm viloyati markazi, Xivaga eshik. Aviakompaniyalar boyog'i, qadimiy Xorazm madaniyatining vorisi.",
+        "description_ru": "╨ж╨╡╨╜╤В╤А ╨е╨╛╤А╨╡╨╖╨╝╤Б╨║╨╛╨╣ ╨╛╨▒╨╗╨░╤Б╤В╨╕, ╨▓╨╛╤А╨╛╤В╨░ ╨▓ ╨е╨╕╨▓╤Г. ╨Р╨▓╨╕╨░╤Ж╨╕╨╛╨╜╨╜╤Л╨╣ ╤Г╨╖╨╡╨╗, ╨╜╨░╤Б╨╗╨╡╨┤╨╜╨╕╨║ ╨┤╤А╨╡╨▓╨╜╨╡╨╣ ╤Е╨╛╤А╨╡╨╖╨╝╤Б╨║╨╛╨╣ ╨║╤Г╨╗╤М╤В╤Г╤А╤Л.",
+        "description_en": "Capital of Khorezm region, gateway to Khiva. Air travel hub, heir to ancient Khorezm culture.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "эШ╕ыаИьжШ ьзАы░йьЭШ ьИШыПД, эЮИы░ФыбЬ ъ░АыКФ ъ┤Аым╕. эХнъ│╡ эЧИы╕М, ъ│аыМА эШ╕ыаИьжШ ым╕эЩФьЭШ ъ│ДьК╣ьЮР.",
+        "description_es": "",
+        "image": "regions/urgench.jpg",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 1,
+    "fields": {
+        "name": "Tarixiy turlar",
+        "name_uz": "Tarixiy turlar",
+        "name_ru": "╨Ш╤Б╤В╨╛╤А╨╕╤З╨╡╤Б╨║╨╕╨╡ ╤В╤Г╤А╤Л",
+        "name_en": "Historical Tours",
+        "name_zh_hans": "хОЖхП▓ц╕╕шзИ",
+        "name_ar": "╪м┘И┘Д╪з╪к ╪к╪з╪▒┘К╪о┘К╪й",
+        "name_de": "Historische Touren",
+        "name_fr": "Visites historiques",
+        "name_ja": "цн┤хП▓уГДуВвуГ╝",
+        "name_ko": "ьЧньВм эИмьЦ┤",
+        "name_es": "Recorridos hist├│ricos",
+        "slug": "historical",
+        "icon": "fa-solid fa-landmark",
+        "image": "categories/images/historical-cat.jpg"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 2,
+    "fields": {
+        "name": "Tog' sayohati",
+        "name_uz": "Tog' sayohati",
+        "name_ru": "╨У╨╛╤А╨╜╤Л╨╡ ╤В╤Г╤А╤Л",
+        "name_en": "Mountain Tours",
+        "name_zh_hans": "х▒▒хМ║цЧЕц╕╕",
+        "name_ar": "╪м┘И┘Д╪з╪к ╪м╪и┘Д┘К╪й",
+        "name_de": "Bergtouren",
+        "name_fr": "Tours en montagne",
+        "name_ja": "уГЮуВжуГ│уГЖуГ│уГДуВвуГ╝",
+        "name_ko": "ьВ░ьХЕ эИмьЦ┤",
+        "name_es": "Tours de monta├▒a",
+        "slug": "mountain",
+        "icon": "fa-solid fa-mountain",
+        "image": "categories/images/mountain-cat.jpg"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 3,
+    "fields": {
+        "name": "Sahro va Safari",
+        "name_uz": "Sahro va Safari",
+        "name_ru": "╨Я╤Г╤Б╤В╤Л╨╜╤П ╨╕ ╨б╨░╤Д╨░╤А╨╕",
+        "name_en": "Desert & Safari",
+        "name_zh_hans": "ц▓Щц╝аф╕ОщЗОчФЯхКичЙйхЫн",
+        "name_ar": "╪╡╪н╪▒╪з╪б ┘И╪│┘Б╪з╪▒┘К",
+        "name_de": "W├╝ste & Safari",
+        "name_fr": "D├йsert et Safari",
+        "name_ja": "чаВц╝ауБиуВ╡уГХуВбуГк",
+        "name_ko": "ьВмызЙ ы░П ьВмэММыжм",
+        "name_es": "Desierto y Safari",
+        "slug": "desert-safari",
+        "icon": "fa-solid fa-truck-monster",
+        "image": "categories/images/desert-cat.jpg"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 4,
+    "fields": {
+        "name": "Gastronomik",
+        "name_uz": "Gastronomik",
+        "name_ru": "╨У╨░╤Б╤В╤А╨╛╨╜╨╛╨╝╨╕╤З╨╡╤Б╨║╨╕╨╡ ╤В╤Г╤А╤Л",
+        "name_en": "Gastronomic Tours",
+        "name_zh_hans": "ч╛ОщгЯф╣ЛцЧЕ",
+        "name_ar": "╪м┘И┘Д╪з╪к ╪к╪░┘И┘В ╪з┘Д╪╖╪╣╪з┘Е",
+        "name_de": "Gastronomische Touren",
+        "name_fr": "Tours gastronomiques",
+        "name_ja": "уВмуВ╣уГИуГнуГОуГЯуГ╝уГДуВвуГ╝",
+        "name_ko": "ып╕ьЛЭ эИмьЦ┤",
+        "name_es": "Tours gastron├│micos",
+        "slug": "gastronomic",
+        "icon": "fa-solid fa-utensils",
+        "image": "categories/images/Gastronomik-cat.png"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 5,
+    "fields": {
+        "name": "Ziyorat turizmi",
+        "name_uz": "Ziyorat turizmi",
+        "name_ru": "╨Я╨░╨╗╨╛╨╝╨╜╨╕╤З╨╡╤Б╨║╨╕╨╡ ╤В╤Г╤А╤Л",
+        "name_en": "Pilgrimage Tours",
+        "name_zh_hans": "цЬЭхЬгф╣ЛцЧЕ",
+        "name_ar": "╪м┘И┘Д╪з╪к ╪з┘Д╪н╪м",
+        "name_de": "Pilgerreisen",
+        "name_fr": "Tours de p├иlerinage",
+        "name_ja": "х╖бчд╝уГДуВвуГ╝",
+        "name_ko": "ьД▒ьзА ьИЬыбА эИмьЦ┤",
+        "name_es": "Rutas de peregrinaci├│n",
+        "slug": "pilgrimage",
+        "icon": "fa-solid fa-mosque",
+        "image": "categories/images/Ziyorat_turizmi-cat.webp"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 6,
+    "fields": {
+        "name": "Ekoturizm",
+        "name_uz": "Ekoturizm",
+        "name_ru": "╨н╨║╨╛╤В╤Г╤А╨╕╨╖╨╝",
+        "name_en": "Eco Tourism",
+        "name_zh_hans": "чФЯцАБцЧЕц╕╕",
+        "name_ar": "╪з┘Д╪│┘К╪з╪н╪й ╪з┘Д╪и┘К╪ж┘К╪й",
+        "name_de": "├Цkotourismus",
+        "name_fr": "├Йcotourisme",
+        "name_ja": "уВиуВ│уГДуГ╝уГкуВ║уГа",
+        "name_ko": "ьГЭэГЬ ъ┤Аъ┤С",
+        "name_es": "Ecoturismo",
+        "slug": "eco-tourism",
+        "icon": "fa-solid fa-leaf",
+        "image": "categories/images/Ekoturizm-cat.jpg"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 7,
+    "fields": {
+        "name": "Qishki sport",
+        "name_uz": "Qishki sport",
+        "name_ru": "╨Ч╨╕╨╝╨╜╨╕╨╡ ╨║╤Г╤А╨╛╤А╤В╤Л",
+        "name_en": "Winter Sports",
+        "name_zh_hans": "хЖмхнгш┐РхКи",
+        "name_ar": "╪▒┘К╪з╪╢╪з╪к ╪┤╪к┘И┘К╪й",
+        "name_de": "Wintersport",
+        "name_fr": "Sports d'hiver",
+        "name_ja": "уВжуВгуГ│уВ┐уГ╝уВ╣уГЭуГ╝уГД",
+        "name_ko": "ъ▓иьЪ╕ ьКдэПмь╕а",
+        "name_es": "Deportes de invierno",
+        "slug": "winter-sports",
+        "icon": "fa-solid fa-person-skiing",
+        "image": "categories/images/Winter_Sports-cat.webp"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 8,
+    "fields": {
+        "name": "Ko'llar va Dam olish",
+        "name_uz": "Ko'llar va Dam olish",
+        "name_ru": "╨Ю╨╖╨╡╤А╨░ ╨╕ ╨Ю╤В╨┤╤Л╤Е",
+        "name_en": "Lakes & Recreation",
+        "name_zh_hans": "ц╣Цц│Кф╕Оф╝СщЧ▓",
+        "name_ar": "╪и╪н┘К╪▒╪з╪к ┘И╪к╪▒┘Б┘К┘З",
+        "name_de": "Seen & Erholung",
+        "name_fr": "Lacs et Loisirs",
+        "name_ja": "ц╣ЦуБиуГмуВпуГкуВиуГ╝уВ╖уГзуГ│",
+        "name_ko": "эШ╕ьИШ ы░П эЬ┤ьЦС",
+        "name_es": "Lagos y Recreaci├│n",
+        "slug": "lakes-recreation",
+        "icon": "fa-solid fa-water-ladder",
+        "image": "categories/images/Lakes__Recreation-cat.jpg"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 9,
+    "fields": {
+        "name": "Oilaviy sayohat",
+        "name_uz": "Oilaviy sayohat",
+        "name_ru": "╨б╨╡╨╝╨╡╨╣╨╜╤Л╨╣ ╨╛╤В╨┤╤Л╤Е",
+        "name_en": "Family Vacation",
+        "name_zh_hans": "хо╢х║нх║жхБЗ",
+        "name_ar": "╪▒╪н┘Д╪й ╪╣╪з╪ж┘Д┘К╪й",
+        "name_de": "Familienurlaub",
+        "name_fr": "Vacances en famille",
+        "name_ja": "хо╢цЧПцЧЕшбМ",
+        "name_ko": "ъ░Аьб▒ ьЧмэЦЙ",
+        "name_es": "Vacaciones en familia",
+        "slug": "family",
+        "icon": "fa-solid fa-people-roof",
+        "image": "categories/images/family-cat.jpg"
+    }
+},
+{
+    "model": "tours.tourcategory",
+    "pk": 10,
+    "fields": {
+        "name": "Ipak yo'li bo'ylab",
+        "name_uz": "Ipak yo'li bo'ylab",
+        "name_ru": "╨Я╨╛ ╨и╨╡╨╗╨║╨╛╨▓╨╛╨╝╤Г ╨┐╤Г╤В╨╕",
+        "name_en": "Silk Road Journey",
+        "name_zh_hans": "ф╕Эч╗╕ф╣Лш╖пф╣ЛцЧЕ",
+        "name_ar": "╪▒╪н┘Д╪й ╪╖╪▒┘К┘В ╪з┘Д╪н╪▒┘К╪▒",
+        "name_de": "Entlang der Seidenstra├Яe",
+        "name_fr": "Voyage sur la Route de la Soie",
+        "name_ja": "уВ╖уГлуВпуГнуГ╝уГЙуБоцЧЕ",
+        "name_ko": "ьЛдэБмыбЬыУЬ ьЧмьаХ",
+        "name_es": "Viaje por la Ruta de la Seda",
+        "slug": "silk-road",
+        "icon": "fa-solid fa-route",
+        "image": "categories/images/ipakyuli-cat.jpg"
+    }
+},
+{
+    "model": "tours.tour",
+    "pk": 1,
+    "fields": {
+        "title": "O'zbekiston bo'ylab tur: Toshkent тАУ Samarqand тАУ Buxoro",
+        "title_uz": "O'zbekiston bo'ylab tur: Toshkent тАУ Samarqand тАУ Buxoro",
+        "title_ru": "╨в╤Г╤А ╨┐╨╛ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜╤Г: ╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤ тАУ ╨С╤Г╤Е╨░╤А╨░",
+        "title_en": "Uzbekistan Tour: Tashkent тАУ Samarkand тАУ Bukhara",
+        "title_zh_hans": null,
+        "title_ar": null,
+        "title_de": null,
+        "title_fr": null,
+        "title_ja": null,
+        "title_ko": "ьЪ░ьжИы▓аэВдьКдэГД эИмьЦ┤: эГАьКИь╝ДэК╕ тАУ ьВмызИые┤ь╣╕эК╕ тАУ ы╢АэХШыЭ╝",
+        "title_es": null,
+        "slug": "uzbekistan-tashkent-samarkand-bukhara-8d",
+        "category": null,
+        "description": "8 kunlik klassik O'zbekiston turi.\r\n\r\nMarshrut: Toshkent тАУ Samarqand тАУ Buxoro тАУ Toshkent\r\nDavomiyligi: 8 kun / 7 tun\r\n\r\nTashriflar:\r\nтАв Toshkent: Xast-Imom maydoni, Baroqxon madrasasi, Tilla-Shayx masjidi, Chorsu bozori, Mustaqillik maydoni, Amir Temur xiyoboni\r\nтАв Samarqand: Registon maydoni, Go'ri Amir maqbarasi, Bibi-Xonim masjidi, Siyob bozori, Shohi-Zinda nekropoli, Ulug'bek rasadxonasi\r\nтАв Buxoro: Labi-Hovuz, Ko'kaldosh madrasasi, savdo gumbazlari, Ark qal'asi, Bolo-Hovuz masjidi, Po'i-Kalon majmuasi, Somoniylar maqbarasi",
+        "description_uz": "8 kunlik klassik O'zbekiston turi.\r\n\r\nMarshrut: Toshkent тАУ Samarqand тАУ Buxoro тАУ Toshkent\r\nDavomiyligi: 8 kun / 7 tun\r\n\r\nTashriflar:\r\nтАв Toshkent: Xast-Imom maydoni, Baroqxon madrasasi, Tilla-Shayx masjidi, Chorsu bozori, Mustaqillik maydoni, Amir Temur xiyoboni\r\nтАв Samarqand: Registon maydoni, Go'ri Amir maqbarasi, Bibi-Xonim masjidi, Siyob bozori, Shohi-Zinda nekropoli, Ulug'bek rasadxonasi\r\nтАв Buxoro: Labi-Hovuz, Ko'kaldosh madrasasi, savdo gumbazlari, Ark qal'asi, Bolo-Hovuz masjidi, Po'i-Kalon majmuasi, Somoniylar maqbarasi",
+        "description_ru": "8-╨┤╨╜╨╡╨▓╨╜╤Л╨╣ ╨║╨╗╨░╤Б╤Б╨╕╤З╨╡╤Б╨║╨╕╨╣ ╤В╤Г╤А ╨┐╨╛ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜╤Г.\r\n\r\n╨Ь╨░╤А╤И╤А╤Г╤В: ╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤ тАУ ╨С╤Г╤Е╨░╤А╨░ тАУ ╨в╨░╤И╨║╨╡╨╜╤В\r\n╨Я╤А╨╛╨┤╨╛╨╗╨╢╨╕╤В╨╡╨╗╤М╨╜╨╛╤Б╤В╤М: 8 ╨┤╨╜╨╡╨╣ / 7 ╨╜╨╛╤З╨╡╨╣\r\n\r\n╨Я╨╛╤Б╨╡╤Й╨╡╨╜╨╕╤П:\r\nтАв ╨в╨░╤И╨║╨╡╨╜╤В: ╨┐╨╗╨╛╤Й╨░╨┤╤М ╨е╨░╤Б╤В-╨Ш╨╝╨░╨╝, ╨╝╨╡╨┤╤А╨╡╤Б╨╡ ╨С╨░╤А╨░╨║╤Е╨░╨╜, ╨╝╨╡╤З╨╡╤В╤М ╨в╨╕╨╗╨╗╤П-╨и╨╡╨╣╤Е, ╨▒╨░╨╖╨░╤А ╨з╨╛╤А╤Б╤Г, ╨┐╨╗╨╛╤Й╨░╨┤╤М ╨Э╨╡╨╖╨░╨▓╨╕╤Б╨╕╨╝╨╛╤Б╤В╨╕, ╤Б╨║╨▓╨╡╤А ╨Р╨╝╨╕╤А╨░ ╨в╨╡╨╝╤Г╤А╨░\r\nтАв ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤: ╨┐╨╗╨╛╤Й╨░╨┤╤М ╨а╨╡╨│╨╕╤Б╤В╨░╨╜, ╨╝╨░╨▓╨╖╨╛╨╗╨╡╨╣ ╨У╤Г╤А-╨н╨╝╨╕╤А, ╨╝╨╡╤З╨╡╤В╤М ╨С╨╕╨▒╨╕-╨е╨░╨╜╤Л╨╝, ╨б╨╕╨░╨▒╤Б╨║╨╕╨╣ ╨▒╨░╨╖╨░╤А, ╨╜╨╡╨║╤А╨╛╨┐╨╛╨╗╤М ╨и╨░╤Е╨╕-╨Ч╨╕╨╜╨┤╨░, ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╤П ╨г╨╗╤Г╨│╨▒╨╡╨║╨░\r\nтАв ╨С╤Г╤Е╨░╤А╨░: ╨Ы╤П╨▒╨╕-╨е╨░╤Г╨╖, ╨╝╨╡╨┤╤А╨╡╤Б╨╡ ╨Ъ╤Г╨║╨╡╨╗╤М╨┤╨░╤И, ╤В╨╛╤А╨│╨╛╨▓╤Л╨╡ ╨║╤Г╨┐╨╛╨╗╨░, ╨║╤А╨╡╨┐╨╛╤Б╤В╤М ╨Р╤А╨║, ╨╝╨╡╤З╨╡╤В╤М ╨С╨╛╨╗╨╛-╨е╨░╤Г╨╖, ╨║╨╛╨╝╨┐╨╗╨╡╨║╤Б ╨Я╨╛╨╕-╨Ъ╨░╨╗╤П╨╜, ╨╝╨░╨▓╨╖╨╛╨╗╨╡╨╣ ╨б╨░╨╝╨░╨╜╨╕╨┤╨╛╨▓",
+        "description_en": "8-day classic Uzbekistan tour.\r\n\r\nRoute: Tashkent тАУ Samarkand тАУ Bukhara тАУ Tashkent\r\nDuration: 8 days / 7 nights\r\n\r\nHighlights:\r\nтАв Tashkent: Khast-Imam square, Barak-Khan madrasah, Tilla-Sheikh mosque, Chorsu bazaar, Independence square, Amir Temur square\r\nтАв Samarkand: Registan Square, Gur-e-Amir mausoleum, Bibi-Khanym mosque, Siab bazaar, Shah-i-Zinda necropolis, Ulugh Beg observatory\r\nтАв Bukhara: Lyab-i-Hauz, Kukeldash madrasah, trading domes, Ark fortress, Bolo-Hauz mosque, Poi-Kalyan complex, Samanid mausoleum",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "8ьЭ╝ эБ┤ыЮШьЛЭ ьЪ░ьжИы▓аэВдьКдэГД эИмьЦ┤.\r\n\r\nыгиэК╕: эГАьКИь╝ДэК╕ тАУ ьВмызИые┤ь╣╕эК╕ тАУ ы╢АэХШыЭ╝ тАУ эГАьКИь╝ДэК╕\r\nъ╕░ъ░Д: 8ьЭ╝ / 7ы░Х\r\n\r\nэХШьЭ┤ыЭ╝ьЭ┤эК╕:\r\nтАв эГАьКИь╝ДэК╕: эХШьКдэК╕ьЭ┤ызШ ъ┤СьЮе, ы░ФыЭ╝эБмь╣╕ ызИыУЬыЭ╝ьВм, эЛ╕ыЭ╝ьЕ░ьЭ┤эБм ыкиьКдэБм, ь┤Иые┤ьИШ ьЛЬьЮе, ыПЕыж╜ъ┤СьЮе, ьХДып╕ые┤ эЛ░ым┤ые┤ ъ┤СьЮе\r\nтАв ьВмызИые┤ь╣╕эК╕: ыаИъ╕░ьКдэГД ъ┤СьЮе, ъ╡мые┤ ьЧРып╕ые┤ ьШБымШ, ы╣Ды╣ДэХШыКа ыкиьКдэБм, ьЛЬьХХ ьЛЬьЮе, ьГдэЮИьзДыЛд ыДдэБмыбЬэП┤ыжмьКд, ьЪ╕ыгиъ╖╕ы▓б ь▓Ьым╕ыМА\r\nтАв ы╢АэХШыЭ╝: ыЭ╝ы╣ДэХШьЪ░ьжИ, ь┐аь╝ИыЛдьЛЬ ызИыУЬыЭ╝ьВм, ым┤ьЧн ыПФ, ьХДые┤эБм ьЪФьГИ, ы│╝ыбЬэХШьЪ░ьжИ ыкиьКдэБм, эПмьЭ┤ь╣╝ыЮА ыЛиьзА, ьВмызИыЛИыУЬ ьШБымШ",
+        "description_es": "",
+        "short_description": "8 kun / 7 tun. Toshkent, Samarqand va Buxoroni o'z ichiga olgan klassik tur. Afrosiyob tezyurar poyezdida sayohat.",
+        "short_description_uz": "8 kun / 7 tun. Toshkent, Samarqand va Buxoroni o'z ichiga olgan klassik tur. Afrosiyob tezyurar poyezdida sayohat.",
+        "short_description_ru": "8 ╨┤╨╜╨╡╨╣ / 7 ╨╜╨╛╤З╨╡╨╣. ╨Ъ╨╗╨░╤Б╤Б╨╕╤З╨╡╤Б╨║╨╕╨╣ ╤В╤Г╤А ╤Б ╨┐╨╛╤Б╨╡╤Й╨╡╨╜╨╕╨╡╨╝ ╨в╨░╤И╨║╨╡╨╜╤В╨░, ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤╨░ ╨╕ ╨С╤Г╤Е╨░╤А╤Л. ╨Я╨╛╨╡╨╖╨┤╨║╨╕ ╨╜╨░ ╤Б╨║╨╛╤А╨╛╤Б╤В╨╜╨╛╨╝ ╨┐╨╛╨╡╨╖╨┤╨╡ ┬л╨Р╤Д╤А╨╛╤Б╨╕╨░╨▒┬╗.",
+        "short_description_en": "8 days / 7 nights. Classic tour covering Tashkent, Samarkand, and Bukhara. Travel by Afrosiyob high-speed train.",
+        "short_description_zh_hans": null,
+        "short_description_ar": null,
+        "short_description_de": null,
+        "short_description_fr": null,
+        "short_description_ja": null,
+        "short_description_ko": "8ьЭ╝ / 7ы░Х. эГАьКИь╝ДэК╕, ьВмызИые┤ь╣╕эК╕, ы╢АэХШыЭ╝ые╝ эПмэХиэХШыКФ эБ┤ыЮШьЛЭ эИмьЦ┤. ьХДэФДыбЬьЛЬьЦН ъ│аьЖНьЧ┤ь░и ьЭ┤ыПЩ.",
+        "short_description_es": null,
+        "cover_image": "tours/covers/tour2.jpg",
+        "price": "1190.00",
+        "price_uzs": null,
+        "duration_days": 8,
+        "max_group_size": 15,
+        "difficulty": "easy",
+        "includes": "",
+        "includes_uz": "",
+        "includes_ru": "",
+        "includes_en": "",
+        "includes_zh_hans": "",
+        "includes_ar": "",
+        "includes_de": "",
+        "includes_fr": "",
+        "includes_ja": "",
+        "includes_ko": "",
+        "includes_es": "",
+        "excludes": "",
+        "excludes_uz": "",
+        "excludes_ru": "",
+        "excludes_en": "",
+        "excludes_zh_hans": "",
+        "excludes_ar": "",
+        "excludes_de": "",
+        "excludes_fr": "",
+        "excludes_ja": "",
+        "excludes_ko": "",
+        "excludes_es": "",
+        "itinerary": [],
+        "itinerary_uz": [],
+        "itinerary_ru": [],
+        "itinerary_en": [],
+        "itinerary_zh_hans": [],
+        "itinerary_ar": [],
+        "itinerary_de": [],
+        "itinerary_fr": [],
+        "itinerary_ja": [],
+        "itinerary_ko": [],
+        "itinerary_es": [],
+        "is_active": true,
+        "is_featured": true,
+        "created_at": "2026-06-19T10:09:06.613Z",
+        "updated_at": "2026-06-19T11:37:52.165Z",
+        "regions": [
+            3,
+            5,
+            2
+        ],
+        "attractions": []
+    }
+},
+{
+    "model": "tours.tour",
+    "pk": 2,
+    "fields": {
+        "title": "Orol dengizi sarguzashti тАФ 3 kun",
+        "title_uz": "Orol dengizi sarguzashti тАФ 3 kun",
+        "title_ru": "╨Р╤А╨░╨╗╤М╤Б╨║╨╛╨╡ ╨╝╨╛╤А╨╡ тАФ 3 ╨┤╨╜╤П",
+        "title_en": "Aral Sea Adventure тАФ 3 days",
+        "title_zh_hans": null,
+        "title_ar": null,
+        "title_de": null,
+        "title_fr": null,
+        "title_ja": null,
+        "title_ko": "ьХДыЮДэХ┤ ьЦ┤ыУЬы▓дь▓Ш тАФ 3ьЭ╝",
+        "title_es": null,
+        "slug": "aral-sea-3d-adventure",
+        "category": 3,
+        "description": "Ekologik halokat zonasiga unutilmas sarguzasht.\r\n\r\nMarshrut: Toshkent тАУ Nukus тАУ Mo'ynoq тАУ Ustyurt platosi тАУ Orol dengizi тАУ Nukus тАУ Toshkent\r\nDavomiyligi: 3 kun / 2 tun\r\nMavsum: 20 aprel тАУ 20 oktyabr\r\n\r\n1-kun: Nukusga uchish, Mo'ynoqqa borish (kemalar qabristoni va muzey), Ustyurt platosi kanyoni, yurtada tunash.\r\n2-kun: Sudochye ko'li, Mizdaxkon nekropoli, Nukusga qaytish va Toshkentga uchish.\r\n3-kun: Nonushta, aeroportga transfer.\r\n\r\nDIQQAT: Yo'l mobil aloqasi va mehmonxonasiz hududdan o'tadi.",
+        "description_uz": "Ekologik halokat zonasiga unutilmas sarguzasht.\r\n\r\nMarshrut: Toshkent тАУ Nukus тАУ Mo'ynoq тАУ Ustyurt platosi тАУ Orol dengizi тАУ Nukus тАУ Toshkent\r\nDavomiyligi: 3 kun / 2 tun\r\nMavsum: 20 aprel тАУ 20 oktyabr\r\n\r\n1-kun: Nukusga uchish, Mo'ynoqqa borish (kemalar qabristoni va muzey), Ustyurt platosi kanyoni, yurtada tunash.\r\n2-kun: Sudochye ko'li, Mizdaxkon nekropoli, Nukusga qaytish va Toshkentga uchish.\r\n3-kun: Nonushta, aeroportga transfer.\r\n\r\nDIQQAT: Yo'l mobil aloqasi va mehmonxonasiz hududdan o'tadi.",
+        "description_ru": "╨Э╨╡╨╖╨░╨▒╤Л╨▓╨░╨╡╨╝╨╛╨╡ ╨┐╤А╨╕╨║╨╗╤О╤З╨╡╨╜╨╕╨╡ ╨▓ ╨╖╨╛╨╜╤Г ╤Н╨║╨╛╨╗╨╛╨│╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨║╨░╤В╨░╤Б╤В╤А╨╛╤Д╤Л.\r\n\r\n╨Ь╨░╤А╤И╤А╤Г╤В: ╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨Э╤Г╨║╤Г╤Б тАУ ╨Ь╤Г╨╣╨╜╨░╨║ тАУ ╨Я╨╗╨░╤В╨╛ ╨г╤Б╤В╤О╤А╤В тАУ ╨Р╤А╨░╨╗╤М╤Б╨║╨╛╨╡ ╨╝╨╛╤А╨╡ тАУ ╨Э╤Г╨║╤Г╤Б тАУ ╨в╨░╤И╨║╨╡╨╜╤В\r\n╨Я╤А╨╛╨┤╨╛╨╗╨╢╨╕╤В╨╡╨╗╤М╨╜╨╛╤Б╤В╤М: 3 ╨┤╨╜╤П / 2 ╨╜╨╛╤З╨╕\r\n╨б╨╡╨╖╨╛╨╜: 20 ╨░╨┐╤А╨╡╨╗╤П тАУ 20 ╨╛╨║╤В╤П╨▒╤А╤П\r\n\r\n╨Ф╨╡╨╜╤М 1: ╨Я╨╡╤А╨╡╨╗╤С╤В ╨▓ ╨Э╤Г╨║╤Г╤Б, ╨┐╨╛╨╡╨╖╨┤╨║╨░ ╨▓ ╨Ь╤Г╨╣╨╜╨░╨║ (╨║╨╗╨░╨┤╨▒╨╕╤Й╨╡ ╨║╨╛╤А╨░╨▒╨╗╨╡╨╣ ╨╕ ╨╝╤Г╨╖╨╡╨╣), ╨║╨░╨╜╤М╨╛╨╜ ╨┐╨╗╨░╤В╨╛ ╨г╤Б╤В╤О╤А╤В, ╨╜╨╛╤З╤С╨▓╨║╨░ ╨▓ ╤О╤А╤В╨╡.\r\n╨Ф╨╡╨╜╤М 2: ╨Ю╨╖╨╡╤А╨╛ ╨б╤Г╨┤╨╛╤З╤М╨╡, ╨╜╨╡╨║╤А╨╛╨┐╨╛╨╗╤М ╨Ь╨╕╨╖╨┤╨░╤Е╨║╨░╨╜, ╨▓╨╛╨╖╨▓╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨▓ ╨Э╤Г╨║╤Г╤Б ╨╕ ╨▓╤Л╨╗╨╡╤В ╨▓ ╨в╨░╤И╨║╨╡╨╜╤В.\r\n╨Ф╨╡╨╜╤М 3: ╨Ч╨░╨▓╤В╤А╨░╨║, ╤В╤А╨░╨╜╤Б╤Д╨╡╤А ╨▓ ╨░╤Н╤А╨╛╨┐╨╛╤А╤В.\r\n\r\n╨Т╨Э╨Ш╨Ь╨Р╨Э╨Ш╨Х: ╨Ь╨░╤А╤И╤А╤Г╤В ╨┐╤А╨╛╤Е╨╛╨┤╨╕╤В ╨┐╨╛ ╨╝╨╡╤Б╤В╨╜╨╛╤Б╤В╨╕ ╨▒╨╡╨╖ ╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╤Б╨▓╤П╨╖╨╕ ╨╕ ╨│╨╛╤Б╤В╨╕╨╜╨╕╤Ж.",
+        "description_en": "Unforgettable adventure to the zone of ecological catastrophe.\r\n\r\nRoute: Tashkent тАУ Nukus тАУ Moynaq тАУ Ustyurt Plateau тАУ Aral Sea тАУ Nukus тАУ Tashkent\r\nDuration: 3 days / 2 nights\r\nSeason: April 20 тАУ October 20\r\n\r\nDay 1: Flight to Nukus, drive to Moynaq (ship cemetery and museum), Ustyurt plateau canyon, overnight in yurt camp.\r\nDay 2: Sudochie lake, Mizdakhan necropolis, return to Nukus and flight to Tashkent.\r\nDay 3: Breakfast, airport transfer.\r\n\r\nNOTE: Route passes through areas without mobile coverage or hotels.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ьГЭэГЬ ьЮмьХЩ ьзАьЧньЬ╝ыбЬьЭШ ьЮКьЭД ьИШ ьЧЖыКФ ыкиэЧШ.\r\n\r\nыгиэК╕: эГАьКИь╝ДэК╕ тАУ ыИДь┐аьКд тАУ ыкиьЭ┤ыВЩ тАУ ьЪ░ьКдэКЬые┤эК╕ ъ│аьЫР тАУ ьХДыЮДэХ┤ тАУ ыИДь┐аьКд тАУ эГАьКИь╝ДэК╕\r\nъ╕░ъ░Д: 3ьЭ╝ / 2ы░Х\r\nьЛЬьжМ: 4ьЫФ 20ьЭ╝ тАУ 10ьЫФ 20ьЭ╝\r\n\r\n1ьЭ╝ь░и: ыИДь┐аьКдыбЬ ы╣ДэЦЙ, ыкиьЭ┤ыВЩьЬ╝ыбЬ ьЭ┤ыПЩ (ьДаы░Х ымШьзАьЩА ы░Хым╝ъ┤А), ьЪ░ьКдэКЬые┤эК╕ ъ│аьЫР эШСъ│б, ьЬаые┤эК╕ ь║аэФД ьИЩы░Х.\r\n2ьЭ╝ь░и: ьИШыПДь╣ШьЧР эШ╕ьИШ, ып╕ьжИыЛдь╣╕ ыДдэБмыбЬэП┤ыжмьКд, ыИДь┐аьКдыбЬ ыПМьХДьЩА эГАьКИь╝ДэК╕эЦЙ ы╣ДэЦЙ.\r\n3ьЭ╝ь░и: ьб░ьЛЭ, ъ│╡эХн эК╕ыЮЬьКдэН╝.\r\n\r\nьг╝ьЭШ: ыгиэК╕ыКФ ыкиы░ФьЭ╝ эЖ╡ьЛаъ│╝ эШ╕эЕФьЭ┤ ьЧЖыКФ ьзАьЧньЭД эЖ╡ъ│╝эХйыЛИыЛд.",
+        "description_es": "",
+        "short_description": "3 kun / 2 tun. Mo'ynoq kemalar qabristoni, Ustyurt platosi va yurtada tunash bilan jip-tur 4├Ч4.",
+        "short_description_uz": "3 kun / 2 tun. Mo'ynoq kemalar qabristoni, Ustyurt platosi va yurtada tunash bilan jip-tur 4├Ч4.",
+        "short_description_ru": "3 ╨┤╨╜╤П / 2 ╨╜╨╛╤З╨╕. ╨Ъ╨╗╨░╨┤╨▒╨╕╤Й╨╡ ╨║╨╛╤А╨░╨▒╨╗╨╡╨╣ ╨▓ ╨Ь╤Г╨╣╨╜╨░╨║╨╡, ╨┐╨╗╨░╤В╨╛ ╨г╤Б╤В╤О╤А╤В ╨╕ ╨╜╨╛╤З╤С╨▓╨║╨░ ╨▓ ╤О╤А╤В╨╡ тАФ ╨┤╨╢╨╕╨┐-╤В╤Г╤А 4├Ч4.",
+        "short_description_en": "3 days / 2 nights. Moynaq ship cemetery, Ustyurt plateau and yurt camp overnight тАФ 4├Ч4 jeep tour.",
+        "short_description_zh_hans": null,
+        "short_description_ar": null,
+        "short_description_de": null,
+        "short_description_fr": null,
+        "short_description_ja": null,
+        "short_description_ko": "3ьЭ╝ / 2ы░Х. ыкиьЭ┤ыВЩ ьДаы░Х ымШьзА, ьЪ░ьКдэКЬые┤эК╕ ъ│аьЫР, ьЬаые┤эК╕ ь║аэФД ьИЩы░Х тАФ 4├Ч4 ьзАэФД эИмьЦ┤.",
+        "short_description_es": null,
+        "cover_image": "tours/covers/aralsee.jpg",
+        "price": "600.00",
+        "price_uzs": null,
+        "duration_days": 3,
+        "max_group_size": 15,
+        "difficulty": "easy",
+        "includes": "",
+        "includes_uz": "",
+        "includes_ru": "",
+        "includes_en": "",
+        "includes_zh_hans": "",
+        "includes_ar": "",
+        "includes_de": "",
+        "includes_fr": "",
+        "includes_ja": "",
+        "includes_ko": "",
+        "includes_es": "",
+        "excludes": "",
+        "excludes_uz": "",
+        "excludes_ru": "",
+        "excludes_en": "",
+        "excludes_zh_hans": "",
+        "excludes_ar": "",
+        "excludes_de": "",
+        "excludes_fr": "",
+        "excludes_ja": "",
+        "excludes_ko": "",
+        "excludes_es": "",
+        "itinerary": [],
+        "itinerary_uz": [],
+        "itinerary_ru": [],
+        "itinerary_en": [],
+        "itinerary_zh_hans": [],
+        "itinerary_ar": [],
+        "itinerary_de": [],
+        "itinerary_fr": [],
+        "itinerary_ja": [],
+        "itinerary_ko": [],
+        "itinerary_es": [],
+        "is_active": true,
+        "is_featured": true,
+        "created_at": "2026-06-19T10:09:06.637Z",
+        "updated_at": "2026-06-19T13:29:07.552Z",
+        "regions": [
+            5
+        ],
+        "attractions": []
+    }
+},
+{
+    "model": "tours.tour",
+    "pk": 3,
+    "fields": {
+        "title": "Klassik O'zbekiston (Toshkent тАУ Xiva тАУ Buxoro тАУ Samarqand)",
+        "title_uz": "Klassik O'zbekiston (Toshkent тАУ Xiva тАУ Buxoro тАУ Samarqand)",
+        "title_ru": "╨Ъ╨╗╨░╤Б╤Б╨╕╤З╨╡╤Б╨║╨╕╨╣ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜ (╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨е╨╕╨▓╨░ тАУ ╨С╤Г╤Е╨░╤А╨░ тАУ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤)",
+        "title_en": "Classic Uzbekistan (Tashkent тАУ Khiva тАУ Bukhara тАУ Samarkand)",
+        "title_zh_hans": null,
+        "title_ar": null,
+        "title_de": null,
+        "title_fr": null,
+        "title_ja": null,
+        "title_ko": "эБ┤ыЮШьЛЭ ьЪ░ьжИы▓аэВдьКдэГД (эГАьКИь╝ДэК╕ тАУ эЮИы░Ф тАУ ы╢АэХШыЭ╝ тАУ ьВмызИые┤ь╣╕эК╕)",
+        "title_es": null,
+        "slug": "classic-uzbekistan-tas-tas-8d",
+        "category": null,
+        "description": "O'zbekistonning eng to'liq klassik tur.\r\n\r\nMarshrut: Toshkent тАУ Urganch тАУ Xiva тАУ Buxoro тАУ Samarqand тАУ Toshkent\r\nJo'nashlar: Har shanba\r\nEng kam: 2 ishtirokchi\r\n\r\nAsosiy ko'rinishlar:\r\nтАв Toshkent: Xast-Imom, Chorsu, Mustaqillik\r\nтАв Xiva: Ichan-Qal'a (UNESCO), Kalta-Minor, Toshhovli\r\nтАв Buxoro: Somoniylar maqbarasi, Po'i-Kalon, Ark\r\nтАв Samarqand: Registon, Go'ri Amir, Shohi-Zinda, Bibi-Xonim\r\nтАв Samarqanddan Toshkentga tezyurar poyezd",
+        "description_uz": "O'zbekistonning eng to'liq klassik tur.\r\n\r\nMarshrut: Toshkent тАУ Urganch тАУ Xiva тАУ Buxoro тАУ Samarqand тАУ Toshkent\r\nJo'nashlar: Har shanba\r\nEng kam: 2 ishtirokchi\r\n\r\nAsosiy ko'rinishlar:\r\nтАв Toshkent: Xast-Imom, Chorsu, Mustaqillik\r\nтАв Xiva: Ichan-Qal'a (UNESCO), Kalta-Minor, Toshhovli\r\nтАв Buxoro: Somoniylar maqbarasi, Po'i-Kalon, Ark\r\nтАв Samarqand: Registon, Go'ri Amir, Shohi-Zinda, Bibi-Xonim\r\nтАв Samarqanddan Toshkentga tezyurar poyezd",
+        "description_ru": "╨б╨░╨╝╤Л╨╣ ╨┐╨╛╨╗╨╜╤Л╨╣ ╨║╨╗╨░╤Б╤Б╨╕╤З╨╡╤Б╨║╨╕╨╣ ╤В╤Г╤А ╨┐╨╛ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜╤Г.\r\n\r\n╨Ь╨░╤А╤И╤А╤Г╤В: ╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨г╤А╨│╨╡╨╜╤З тАУ ╨е╨╕╨▓╨░ тАУ ╨С╤Г╤Е╨░╤А╨░ тАУ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤ тАУ ╨в╨░╤И╨║╨╡╨╜╤В\r\n╨Ч╨░╨╡╨╖╨┤╤Л: ╨║╨░╨╢╨┤╤Г╤О ╤Б╤Г╨▒╨▒╨╛╤В╤Г\r\n╨Ь╨╕╨╜╨╕╨╝╤Г╨╝: 2 ╤Г╤З╨░╤Б╤В╨╜╨╕╨║╨░\r\n\r\n╨У╨╗╨░╨▓╨╜╤Л╨╡ ╨┤╨╛╤Б╤В╨╛╨┐╤А╨╕╨╝╨╡╤З╨░╤В╨╡╨╗╤М╨╜╨╛╤Б╤В╨╕:\r\nтАв ╨в╨░╤И╨║╨╡╨╜╤В: ╨е╨░╤Б╤В-╨Ш╨╝╨░╨╝, ╨з╨╛╤А╤Б╤Г, ╨Э╨╡╨╖╨░╨▓╨╕╤Б╨╕╨╝╨╛╤Б╤В╤М\r\nтАв ╨е╨╕╨▓╨░: ╨Ш╤З╨░╨╜-╨Ъ╨░╨╗╨░ (╨о╨Э╨Х╨б╨Ъ╨Ю), ╨Ъ╨░╨╗╤М╤В╨░-╨Ь╨╕╨╜╨╛╤А, ╨в╨░╤И-╨е╨╛╨▓╨╗╨╕\r\nтАв ╨С╤Г╤Е╨░╤А╨░: ╨╝╨░╨▓╨╖╨╛╨╗╨╡╨╣ ╨б╨░╨╝╨░╨╜╨╕╨┤╨╛╨▓, ╨Я╨╛╨╕-╨Ъ╨░╨╗╤П╨╜, ╨Р╤А╨║\r\nтАв ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤: ╨а╨╡╨│╨╕╤Б╤В╨░╨╜, ╨У╤Г╤А-╨н╨╝╨╕╤А, ╨и╨░╤Е╨╕-╨Ч╨╕╨╜╨┤╨░, ╨С╨╕╨▒╨╕-╨е╨░╨╜╤Л╨╝\r\nтАв ╨б╨║╨╛╤А╨╛╤Б╤В╨╜╨╛╨╣ ╨┐╨╛╨╡╨╖╨┤ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤ тАУ ╨в╨░╤И╨║╨╡╨╜╤В",
+        "description_en": "The most comprehensive classic tour of Uzbekistan.\r\n\r\nRoute: Tashkent тАУ Urgench тАУ Khiva тАУ Bukhara тАУ Samarkand тАУ Tashkent\r\nDepartures: Every Saturday\r\nMinimum: 2 participants\r\n\r\nMain highlights:\r\nтАв Tashkent: Khast-Imam, Chorsu, Independence\r\nтАв Khiva: Ichan-Kala (UNESCO), Kalta-Minor, Tash-Hauli\r\nтАв Bukhara: Samanid mausoleum, Poi-Kalyan, Ark\r\nтАв Samarkand: Registan, Gur-e-Amir, Shah-i-Zinda, Bibi-Khanym\r\nтАв High-speed train Samarkand тАУ Tashkent",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ъ░АьЮе ьвЕэХйьаБьЭ╕ эБ┤ыЮШьЛЭ ьЪ░ьжИы▓аэВдьКдэГД эИмьЦ┤.\r\n\r\nыгиэК╕: эГАьКИь╝ДэК╕ тАУ ьЪ░ые┤ъ▓Рь╣Ш тАУ эЮИы░Ф тАУ ы╢АэХШыЭ╝ тАУ ьВмызИые┤ь╣╕эК╕ тАУ эГАьКИь╝ДэК╕\r\nь╢Ьы░Ь: ыздьг╝ эЖаьЪФьЭ╝\r\nь╡ЬьЖМ: 2ыкЕ\r\n\r\nьг╝ьЪФ ыкЕьЖМ:\r\nтАв эГАьКИь╝ДэК╕: эХШьКдэК╕ьЭ┤ызШ, ь┤Иые┤ьИШ, ыПЕыж╜ъ┤СьЮе\r\nтАв эЮИы░Ф: ьЭ┤ь░мь╣╝ыЭ╝ (ьЬаыДдьКдь╜Ф), ь╣╝эГАып╕ыЕ╕ые┤, эГАьЛЬэХШьЪ╕ыжм\r\nтАв ы╢АэХШыЭ╝: ьВмызИыЛИыУЬ ьШБымШ, эПмьЭ┤ь╣╝ыЮА, ьХДые┤эБм\r\nтАв ьВмызИые┤ь╣╕эК╕: ыаИъ╕░ьКдэГД, ъ╡мые┤ ьЧРып╕ые┤, ьГдэЮИьзДыЛд, ы╣Ды╣ДэХШыКа\r\nтАв ьВмызИые┤ь╣╕эК╕ тАУ эГАьКИь╝ДэК╕ ъ│аьЖНьЧ┤ь░и",
+        "description_es": "",
+        "short_description": "8 kun / 7 tun guruh turi. To'rtta UNESCO shahriga sayohat. Har shanba jo'nash.",
+        "short_description_uz": "8 kun / 7 tun guruh turi. To'rtta UNESCO shahriga sayohat. Har shanba jo'nash.",
+        "short_description_ru": "8 ╨┤╨╜╨╡╨╣ / 7 ╨╜╨╛╤З╨╡╨╣ ╨│╤А╤Г╨┐╨┐╨╛╨▓╨╛╨╣ ╤В╤Г╤А. ╨Я╨╛╤Б╨╡╤Й╨╡╨╜╨╕╨╡ ╤З╨╡╤В╤Л╤А╤С╤Е ╨│╨╛╤А╨╛╨┤╨╛╨▓ ╨о╨Э╨Х╨б╨Ъ╨Ю. ╨Ч╨░╨╡╨╖╨┤╤Л ╨║╨░╨╢╨┤╤Г╤О ╤Б╤Г╨▒╨▒╨╛╤В╤Г.",
+        "short_description_en": "8 days / 7 nights group tour visiting four UNESCO cities. Saturday departures.",
+        "short_description_zh_hans": null,
+        "short_description_ar": null,
+        "short_description_de": null,
+        "short_description_fr": null,
+        "short_description_ja": null,
+        "short_description_ko": "8ьЭ╝ / 7ы░Х ъ╖╕ыг╣ эИмьЦ┤, 4ъ░ЬьЭШ ьЬаыДдьКдь╜Ф ыПДьЛЬ ы░йым╕. эЖаьЪФьЭ╝ ь╢Ьы░Ь.",
+        "short_description_es": null,
+        "cover_image": "tours/covers/classic_uzbekistan.jpg",
+        "price": "1190.00",
+        "price_uzs": null,
+        "duration_days": 8,
+        "max_group_size": 15,
+        "difficulty": "easy",
+        "includes": "",
+        "includes_uz": "",
+        "includes_ru": "",
+        "includes_en": "",
+        "includes_zh_hans": "",
+        "includes_ar": "",
+        "includes_de": "",
+        "includes_fr": "",
+        "includes_ja": "",
+        "includes_ko": "",
+        "includes_es": "",
+        "excludes": "",
+        "excludes_uz": "",
+        "excludes_ru": "",
+        "excludes_en": "",
+        "excludes_zh_hans": "",
+        "excludes_ar": "",
+        "excludes_de": "",
+        "excludes_fr": "",
+        "excludes_ja": "",
+        "excludes_ko": "",
+        "excludes_es": "",
+        "itinerary": [],
+        "itinerary_uz": [],
+        "itinerary_ru": [],
+        "itinerary_en": [],
+        "itinerary_zh_hans": [],
+        "itinerary_ar": [],
+        "itinerary_de": [],
+        "itinerary_fr": [],
+        "itinerary_ja": [],
+        "itinerary_ko": [],
+        "itinerary_es": [],
+        "is_active": true,
+        "is_featured": true,
+        "created_at": "2026-06-19T10:09:06.644Z",
+        "updated_at": "2026-06-19T11:26:09.986Z",
+        "regions": [
+            3,
+            5,
+            2,
+            1,
+            6,
+            4
+        ],
+        "attractions": []
+    }
+},
+{
+    "model": "tours.tour",
+    "pk": 4,
+    "fields": {
+        "title": "Ipak yo'li: O'zbekiston bo'ylab guruh turi 2026",
+        "title_uz": "Ipak yo'li: O'zbekiston bo'ylab guruh turi 2026",
+        "title_ru": "╨и╤С╨╗╨║╨╛╨▓╤Л╨╣ ╨┐╤Г╤В╤М: ╨У╤А╤Г╨┐╨┐╨╛╨▓╨╛╨╣ ╤В╤Г╤А ╨┐╨╛ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜╤Г 2026",
+        "title_en": "Silk Road: Uzbekistan Group Tour 2026",
+        "title_zh_hans": null,
+        "title_ar": null,
+        "title_de": null,
+        "title_fr": null,
+        "title_ja": null,
+        "title_ko": "ьЛдэБмыбЬыУЬ: ьЪ░ьжИы▓аэВдьКдэГД ъ╖╕ыг╣ эИмьЦ┤ 2026",
+        "title_es": null,
+        "slug": "silk-road-uzbekistan-8d",
+        "category": null,
+        "description": "O'zbekiston bo'ylab Buyuk Ipak yo'lining toshlari ustidan o'tuvchi sayohat.\r\n\r\nMarshrut: Toshkent тАУ Samarqand тАУ Buxoro тАУ Xiva тАУ Urganch\r\nJo'nashlar: Har dushanba\r\nDavomiyligi: 8 kun\r\n\r\nBu tur ispanzabon gid bilan ham mavjud. Qizilqum cho'li orqali Xivaga o'tish kabi maxsus marshrut.",
+        "description_uz": "O'zbekiston bo'ylab Buyuk Ipak yo'lining toshlari ustidan o'tuvchi sayohat.\r\n\r\nMarshrut: Toshkent тАУ Samarqand тАУ Buxoro тАУ Xiva тАУ Urganch\r\nJo'nashlar: Har dushanba\r\nDavomiyligi: 8 kun\r\n\r\nBu tur ispanzabon gid bilan ham mavjud. Qizilqum cho'li orqali Xivaga o'tish kabi maxsus marshrut.",
+        "description_ru": "╨Я╤Г╤В╨╡╤И╨╡╤Б╤В╨▓╨╕╨╡ ╨┐╨╛ ╨║╨░╨╝╨╜╤П╨╝ ╨Т╨╡╨╗╨╕╨║╨╛╨│╨╛ ╤И╤С╨╗╨║╨╛╨▓╨╛╨│╨╛ ╨┐╤Г╤В╨╕ ╨▓ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜╨╡.\r\n\r\n╨Ь╨░╤А╤И╤А╤Г╤В: ╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤ тАУ ╨С╤Г╤Е╨░╤А╨░ тАУ ╨е╨╕╨▓╨░ тАУ ╨г╤А╨│╨╡╨╜╤З\r\n╨Ч╨░╨╡╨╖╨┤╤Л: ╨║╨░╨╢╨┤╤Л╨╣ ╨┐╨╛╨╜╨╡╨┤╨╡╨╗╤М╨╜╨╕╨║\r\n╨Я╤А╨╛╨┤╨╛╨╗╨╢╨╕╤В╨╡╨╗╤М╨╜╨╛╤Б╤В╤М: 8 ╨┤╨╜╨╡╨╣\r\n\r\n╨в╤Г╤А ╨┤╨╛╤Б╤В╤Г╨┐╨╡╨╜ ╨╕ ╤Б ╨╕╤Б╨┐╨░╨╜╨╛╨│╨╛╨▓╨╛╤А╤П╤Й╨╕╨╝ ╨│╨╕╨┤╨╛╨╝. ╨Ю╤Б╨╛╨▒╨╡╨╜╨╜╤Л╨╣ ╨╝╨░╤А╤И╤А╤Г╤В тАФ ╨┐╨╡╤А╨╡╤Е╨╛╨┤ ╤З╨╡╤А╨╡╨╖ ╨┐╤Г╤Б╤В╤Л╨╜╤О ╨Ъ╤Л╨╖╤Л╨╗╨║╤Г╨╝ ╨▓ ╨е╨╕╨▓╤Г.",
+        "description_en": "Journey through the stones of the Great Silk Road in Uzbekistan.\r\n\r\nRoute: Tashkent тАУ Samarkand тАУ Bukhara тАУ Khiva тАУ Urgench\r\nDepartures: Every Monday\r\nDuration: 8 days\r\n\r\nAvailable with Spanish-speaking guide. Unique route тАФ crossing the Kyzylkum desert to Khiva.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ьЪ░ьжИы▓аэВдьКдэГДьЭШ ьЬДыМАэХЬ ьЛдэБмыбЬыУЬьЭШ ыПМыУдьЭД ыФ░ыЭ╝ъ░АыКФ ьЧмэЦЙ.\r\n\r\nыгиэК╕: эГАьКИь╝ДэК╕ тАУ ьВмызИые┤ь╣╕эК╕ тАУ ы╢АэХШыЭ╝ тАУ эЮИы░Ф тАУ ьЪ░ые┤ъ▓Рь╣Ш\r\nь╢Ьы░Ь: ыздьг╝ ьЫФьЪФьЭ╝\r\nъ╕░ъ░Д: 8ьЭ╝\r\n\r\nьКдэОШьЭ╕ьЦ┤ ъ░АьЭ┤ыУЬыПД ъ░АыКе. эВдьзИь┐░ ьВмызЙьЭД ъ▒┤ыДИ эЮИы░ФыбЬ ъ░АыКФ эК╣ы│ДэХЬ ыгиэК╕.",
+        "description_es": "",
+        "short_description": "8 kunlik tarixiy Ipak yo'li sayohat. Har dushanba jo'nash. Eng yaxshi narx тАФ 900 USD.",
+        "short_description_uz": "8 kunlik tarixiy Ipak yo'li sayohat. Har dushanba jo'nash. Eng yaxshi narx тАФ 900 USD.",
+        "short_description_ru": "8-╨┤╨╜╨╡╨▓╨╜╨╛╨╡ ╨┐╤Г╤В╨╡╤И╨╡╤Б╤В╨▓╨╕╨╡ ╨┐╨╛ ╨╕╤Б╤В╨╛╤А╨╕╤З╨╡╤Б╨║╨╛╨╝╤Г ╨и╤С╨╗╨║╨╛╨▓╨╛╨╝╤Г ╨┐╤Г╤В╨╕. ╨Ч╨░╨╡╨╖╨┤╤Л ╨║╨░╨╢╨┤╤Л╨╣ ╨┐╨╛╨╜╨╡╨┤╨╡╨╗╤М╨╜╨╕╨║. ╨Ы╤Г╤З╤И╨░╤П ╤Ж╨╡╨╜╨░ тАФ 900 USD.",
+        "short_description_en": "8-day historic Silk Road journey. Monday departures. Best price тАФ $900.",
+        "short_description_zh_hans": null,
+        "short_description_ar": null,
+        "short_description_de": null,
+        "short_description_fr": null,
+        "short_description_ja": null,
+        "short_description_ko": "8ьЭ╝ ьЧньВмьаБьЭ╕ ьЛдэБмыбЬыУЬ ьЧмэЦЙ. ьЫФьЪФьЭ╝ ь╢Ьы░Ь. ь╡Ьъ│а ъ░Аъ▓й тАФ $900.",
+        "short_description_es": null,
+        "cover_image": "tours/covers/ipak_yoli.jpg",
+        "price": "900.00",
+        "price_uzs": null,
+        "duration_days": 8,
+        "max_group_size": 15,
+        "difficulty": "easy",
+        "includes": "",
+        "includes_uz": "",
+        "includes_ru": "",
+        "includes_en": "",
+        "includes_zh_hans": "",
+        "includes_ar": "",
+        "includes_de": "",
+        "includes_fr": "",
+        "includes_ja": "",
+        "includes_ko": "",
+        "includes_es": "",
+        "excludes": "",
+        "excludes_uz": "",
+        "excludes_ru": "",
+        "excludes_en": "",
+        "excludes_zh_hans": "",
+        "excludes_ar": "",
+        "excludes_de": "",
+        "excludes_fr": "",
+        "excludes_ja": "",
+        "excludes_ko": "",
+        "excludes_es": "",
+        "itinerary": [],
+        "itinerary_uz": [],
+        "itinerary_ru": [],
+        "itinerary_en": [],
+        "itinerary_zh_hans": [],
+        "itinerary_ar": [],
+        "itinerary_de": [],
+        "itinerary_fr": [],
+        "itinerary_ja": [],
+        "itinerary_ko": [],
+        "itinerary_es": [],
+        "is_active": true,
+        "is_featured": true,
+        "created_at": "2026-06-19T10:09:06.651Z",
+        "updated_at": "2026-06-19T11:17:29.971Z",
+        "regions": [
+            3,
+            2
+        ],
+        "attractions": []
+    }
+},
+{
+    "model": "tours.tour",
+    "pk": 5,
+    "fields": {
+        "title": "O'zbekiston Premium: Ispanzabon gid bilan",
+        "title_uz": "O'zbekiston Premium: Ispanzabon gid bilan",
+        "title_ru": "╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜ ╨Я╤А╨╡╨╝╨╕╤Г╨╝: ╤Б ╨╕╤Б╨┐╨░╨╜╨╛╨│╨╛╨▓╨╛╤А╤П╤Й╨╕╨╝ ╨│╨╕╨┤╨╛╨╝",
+        "title_en": "Uzbekistan Premium: with Spanish-speaking guide",
+        "title_zh_hans": null,
+        "title_ar": null,
+        "title_de": null,
+        "title_fr": null,
+        "title_ja": null,
+        "title_ko": "ьЪ░ьжИы▓аэВдьКдэГД эФДыжмып╕ьЧД: ьКдэОШьЭ╕ьЦ┤ ъ░АьЭ┤ыУЬ ыПЩэЦЙ",
+        "title_es": null,
+        "slug": "uzbekistan-premium-spanish-8d",
+        "category": null,
+        "description": "Ispaniyalik mehmonlar uchun maxsus premium tur.\r\n\r\nMarshrut: Madrid тАУ Toshkent тАУ Samarqand тАУ Buxoro тАУ Xiva тАУ Urganch тАУ Madrid\r\nDavomiyligi: 8 kun\r\nAviakompaniya: Uzbekistan Airways (HY)\r\n\r\nBoshlanish: Dushanba kuni Madriddan 18:35 da uchish, seshanba 04:40 da Toshkentda qo'nish.",
+        "description_uz": "Ispaniyalik mehmonlar uchun maxsus premium tur.\r\n\r\nMarshrut: Madrid тАУ Toshkent тАУ Samarqand тАУ Buxoro тАУ Xiva тАУ Urganch тАУ Madrid\r\nDavomiyligi: 8 kun\r\nAviakompaniya: Uzbekistan Airways (HY)\r\n\r\nBoshlanish: Dushanba kuni Madriddan 18:35 da uchish, seshanba 04:40 da Toshkentda qo'nish.",
+        "description_ru": "╨Я╤А╨╡╨╝╨╕╤Г╨╝-╤В╤Г╤А ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╤М╨╜╨╛ ╨┤╨╗╤П ╨│╨╛╤Б╤В╨╡╨╣ ╨╕╨╖ ╨Ш╤Б╨┐╨░╨╜╨╕╨╕.\r\n\r\n╨Ь╨░╤А╤И╤А╤Г╤В: ╨Ь╨░╨┤╤А╨╕╨┤ тАУ ╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤ тАУ ╨С╤Г╤Е╨░╤А╨░ тАУ ╨е╨╕╨▓╨░ тАУ ╨г╤А╨│╨╡╨╜╤З тАУ ╨Ь╨░╨┤╤А╨╕╨┤\r\n╨Я╤А╨╛╨┤╨╛╨╗╨╢╨╕╤В╨╡╨╗╤М╨╜╨╛╤Б╤В╤М: 8 ╨┤╨╜╨╡╨╣\r\n╨Р╨▓╨╕╨░╨║╨╛╨╝╨┐╨░╨╜╨╕╤П: Uzbekistan Airways (HY)\r\n\r\n╨Э╨░╤З╨░╨╗╨╛: ╨▓╤Л╨╗╨╡╤В ╨╕╨╖ ╨Ь╨░╨┤╤А╨╕╨┤╨░ ╨▓ ╨┐╨╛╨╜╨╡╨┤╨╡╨╗╤М╨╜╨╕╨║ ╨▓ 18:35, ╨┐╤А╨╕╨▒╤Л╤В╨╕╨╡ ╨▓ ╨в╨░╤И╨║╨╡╨╜╤В ╨▓╨╛ ╨▓╤В╨╛╤А╨╜╨╕╨║ ╨▓ 04:40.",
+        "description_en": "Premium tour specially designed for Spanish guests.\r\n\r\nRoute: Madrid тАУ Tashkent тАУ Samarkand тАУ Bukhara тАУ Khiva тАУ Urgench тАУ Madrid\r\nDuration: 8 days\r\nAirline: Uzbekistan Airways (HY)\r\n\r\nStart: Departure from Madrid on Monday at 18:35, arrival in Tashkent on Tuesday at 04:40.",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ьКдэОШьЭ╕ ьЖРыЛШьЭД ьЬДэХ┤ эК╣ы│ДэЮИ ьДдъ│ДыРЬ эФДыжмып╕ьЧД эИмьЦ┤.\r\n\r\nыгиэК╕: ызИыУЬыжмыУЬ тАУ эГАьКИь╝ДэК╕ тАУ ьВмызИые┤ь╣╕эК╕ тАУ ы╢АэХШыЭ╝ тАУ эЮИы░Ф тАУ ьЪ░ые┤ъ▓Рь╣Ш тАУ ызИыУЬыжмыУЬ\r\nъ╕░ъ░Д: 8ьЭ╝\r\nэХнъ│╡ьВм: ьЪ░ьжИы▓аэВдьКдэГД эХнъ│╡ (HY)\r\n\r\nьЛЬьЮС: ьЫФьЪФьЭ╝ ызИыУЬыжмыУЬ 18:35 ь╢Ьы░Ь, эЩФьЪФьЭ╝ эГАьКИь╝ДэК╕ 04:40 ыПДь░й.",
+        "description_es": "",
+        "short_description": "8 kun premium tur. Madrid тАУ Toshkent uchish. Uzbekistan Airways bilan. Har dushanba jo'nash.",
+        "short_description_uz": "8 kun premium tur. Madrid тАУ Toshkent uchish. Uzbekistan Airways bilan. Har dushanba jo'nash.",
+        "short_description_ru": "8 ╨┤╨╜╨╡╨╣ ╨┐╤А╨╡╨╝╨╕╤Г╨╝-╤В╤Г╤А. ╨Я╨╡╤А╨╡╨╗╤С╤В ╨Ь╨░╨┤╤А╨╕╨┤ тАУ ╨в╨░╤И╨║╨╡╨╜╤В. Uzbekistan Airways. ╨Ч╨░╨╡╨╖╨┤╤Л ╨║╨░╨╢╨┤╤Л╨╣ ╨┐╨╛╨╜╨╡╨┤╨╡╨╗╤М╨╜╨╕╨║.",
+        "short_description_en": "8-day premium tour. Madrid тАУ Tashkent flight. Uzbekistan Airways. Monday departures.",
+        "short_description_zh_hans": null,
+        "short_description_ar": null,
+        "short_description_de": null,
+        "short_description_fr": null,
+        "short_description_ja": null,
+        "short_description_ko": "8ьЭ╝ эФДыжмып╕ьЧД эИмьЦ┤. ызИыУЬыжмыУЬ тАУ эГАьКИь╝ДэК╕ эХнъ│╡. ьЪ░ьжИы▓аэВдьКдэГД эХнъ│╡. ьЫФьЪФьЭ╝ ь╢Ьы░Ь.",
+        "short_description_es": null,
+        "cover_image": "tours/covers/premium.png",
+        "price": "1450.00",
+        "price_uzs": null,
+        "duration_days": 8,
+        "max_group_size": 15,
+        "difficulty": "easy",
+        "includes": "",
+        "includes_uz": "",
+        "includes_ru": "",
+        "includes_en": "",
+        "includes_zh_hans": "",
+        "includes_ar": "",
+        "includes_de": "",
+        "includes_fr": "",
+        "includes_ja": "",
+        "includes_ko": "",
+        "includes_es": "",
+        "excludes": "",
+        "excludes_uz": "",
+        "excludes_ru": "",
+        "excludes_en": "",
+        "excludes_zh_hans": "",
+        "excludes_ar": "",
+        "excludes_de": "",
+        "excludes_fr": "",
+        "excludes_ja": "",
+        "excludes_ko": "",
+        "excludes_es": "",
+        "itinerary": [],
+        "itinerary_uz": [],
+        "itinerary_ru": [],
+        "itinerary_en": [],
+        "itinerary_zh_hans": [],
+        "itinerary_ar": [],
+        "itinerary_de": [],
+        "itinerary_fr": [],
+        "itinerary_ja": [],
+        "itinerary_ko": [],
+        "itinerary_es": [],
+        "is_active": true,
+        "is_featured": true,
+        "created_at": "2026-06-19T10:09:06.658Z",
+        "updated_at": "2026-06-19T11:21:49.694Z",
+        "regions": [
+            3,
+            5,
+            2,
+            1,
+            6,
+            4
+        ],
+        "attractions": []
+    }
+},
+{
+    "model": "tours.tour",
+    "pk": 6,
+    "fields": {
+        "title": "Klassik O'zbekiston тАФ Samarqandda yakun (TAS-SKD)",
+        "title_uz": "Klassik O'zbekiston тАФ Samarqandda yakun (TAS-SKD)",
+        "title_ru": "╨Ъ╨╗╨░╤Б╤Б╨╕╤З╨╡╤Б╨║╨╕╨╣ ╨г╨╖╨▒╨╡╨║╨╕╤Б╤В╨░╨╜ тАФ ╨д╨╕╨╜╨╕╤И ╨▓ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤╨╡ (TAS-SKD)",
+        "title_en": "Classic Uzbekistan тАФ Ending in Samarkand (TAS-SKD)",
+        "title_zh_hans": null,
+        "title_ar": null,
+        "title_de": null,
+        "title_fr": null,
+        "title_ja": null,
+        "title_ko": "эБ┤ыЮШьЛЭ ьЪ░ьжИы▓аэВдьКдэГД тАФ ьВмызИые┤ь╣╕эК╕ьЧРьДЬ ьвЕыгМ (TAS-SKD)",
+        "title_es": null,
+        "slug": "classic-uzbekistan-tas-skd-8d",
+        "category": 10,
+        "description": "Toshkent-Samarqand yo'nalishidagi guruh turi.\r\n\r\nMarshrut: Toshkent тАУ Urganch тАУ Xiva тАУ Buxoro тАУ Samarqand\r\nJo'nashlar: Har shanba\r\nEng kam: 2 ishtirokchi\r\n\r\nTAS-TAS variantidan farqi: Tur Samarqandda tugaydi va u yerdan to'g'ridan-to'g'ri uchish mumkin. ToshkentтАУSamarqand poyezd chiptasi kerak emas, narx bir xil.\r\n\r\nQo'shimcha ekskursiyalar:\r\nтАв Usmon Qur'oni muzeyiga ekskursiya тАФ 40 USD\r\nтАв \"Happy Hour\" тАФ quyosh botishida vino тАФ 10 USD",
+        "description_uz": "Toshkent-Samarqand yo'nalishidagi guruh turi.\r\n\r\nMarshrut: Toshkent тАУ Urganch тАУ Xiva тАУ Buxoro тАУ Samarqand\r\nJo'nashlar: Har shanba\r\nEng kam: 2 ishtirokchi\r\n\r\nTAS-TAS variantidan farqi: Tur Samarqandda tugaydi va u yerdan to'g'ridan-to'g'ri uchish mumkin. ToshkentтАУSamarqand poyezd chiptasi kerak emas, narx bir xil.\r\n\r\nQo'shimcha ekskursiyalar:\r\nтАв Usmon Qur'oni muzeyiga ekskursiya тАФ 40 USD\r\nтАв \"Happy Hour\" тАФ quyosh botishida vino тАФ 10 USD",
+        "description_ru": "╨У╤А╤Г╨┐╨┐╨╛╨▓╨╛╨╣ ╤В╤Г╤А ╤Б ╤Д╨╕╨╜╨╕╤И╨╡╨╝ ╨▓ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤╨╡.\r\n\r\n╨Ь╨░╤А╤И╤А╤Г╤В: ╨в╨░╤И╨║╨╡╨╜╤В тАУ ╨г╤А╨│╨╡╨╜╤З тАУ ╨е╨╕╨▓╨░ тАУ ╨С╤Г╤Е╨░╤А╨░ тАУ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤\r\n╨Ч╨░╨╡╨╖╨┤╤Л: ╨║╨░╨╢╨┤╤Г╤О ╤Б╤Г╨▒╨▒╨╛╤В╤Г\r\n╨Ь╨╕╨╜╨╕╨╝╤Г╨╝: 2 ╤Г╤З╨░╤Б╤В╨╜╨╕╨║╨░\r\n\r\n╨Ю╤В╨╗╨╕╤З╨╕╨╡ ╨╛╤В TAS-TAS: ╤В╤Г╤А ╨╖╨░╨║╨░╨╜╤З╨╕╨▓╨░╨╡╤В╤Б╤П ╨▓ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤╨╡ ╤Б ╨▓╨╛╨╖╨╝╨╛╨╢╨╜╨╛╤Б╤В╤М╤О ╨┐╤А╤П╨╝╨╛╨│╨╛ ╨▓╤Л╨╗╨╡╤В╨░. ╨С╨╕╨╗╨╡╤В ╨╜╨░ ╨┐╨╛╨╡╨╖╨┤ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤-╨в╨░╤И╨║╨╡╨╜╤В ╨╜╨╡ ╨╜╤Г╨╢╨╡╨╜, ╤Ж╨╡╨╜╨░ ╤В╨░ ╨╢╨╡.\r\n\r\n╨Ф╨╛╨┐╨╛╨╗╨╜╨╕╤В╨╡╨╗╤М╨╜╤Л╨╡ ╤Н╨║╤Б╨║╤Г╤А╤Б╨╕╨╕:\r\nтАв ╨Ь╤Г╨╖╨╡╨╣ ╨Ъ╨╛╤А╨░╨╜╨░ ╨Ю╤Б╨╝╨░╨╜╨░ тАФ 40 USD\r\nтАв ┬лHappy Hour┬╗ тАФ ╨▒╨╛╨║╨░╨╗ ╨▓╨╕╨╜╨░ ╨╜╨░ ╨╖╨░╨║╨░╤В╨╡ тАФ 10 USD",
+        "description_en": "Group tour ending in Samarkand.\r\n\r\nRoute: Tashkent тАУ Urgench тАУ Khiva тАУ Bukhara тАУ Samarkand\r\nDepartures: Every Saturday\r\nMinimum: 2 participants\r\n\r\nDifference from TAS-TAS: tour ends in Samarkand with direct flight option. No need for Samarkand-Tashkent train, same price.\r\n\r\nOptional excursions:\r\nтАв Quran of Uthman Museum тАФ $40\r\nтАв \"Happy Hour\" тАФ glass of wine at sunset тАФ $10",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "ьВмызИые┤ь╣╕эК╕ьЧРьДЬ ьвЕыгМыРШыКФ ъ╖╕ыг╣ эИмьЦ┤.\r\n\r\nыгиэК╕: эГАьКИь╝ДэК╕ тАУ ьЪ░ые┤ъ▓Рь╣Ш тАУ эЮИы░Ф тАУ ы╢АэХШыЭ╝ тАУ ьВмызИые┤ь╣╕эК╕\r\nь╢Ьы░Ь: ыздьг╝ эЖаьЪФьЭ╝\r\nь╡ЬьЖМ: 2ыкЕ\r\n\r\nTAS-TAS ьЩА ь░иьЭ┤: эИмьЦ┤ыКФ ьВмызИые┤ь╣╕эК╕ьЧРьДЬ ьвЕыгМыРШьЦ┤ ьзБэХнэО╕ ьЭ┤ьЪй ъ░АыКе. ьВмызИые┤ь╣╕эК╕-эГАьКИь╝ДэК╕ ъ╕░ь░иэСЬ ы╢ИэХДьЪФ, ъ░Аъ▓й ыПЩьЭ╝.\r\n\r\nьДаэГЭ ъ┤Аъ┤С:\r\nтАв ьЪ░ьКдызМ ь┐аыЮА ы░Хым╝ъ┤А тАФ $40\r\nтАв \"эХ┤эФ╝ьХДьЫМ\" тАФ ьЭ╝ык░ьЭШ ьЩАьЭ╕ эХЬьЮФ тАФ $10",
+        "description_es": "",
+        "short_description": "8 kun / 7 tun. Toshkentdan boshlanib, Samarqand aeroportidan jo'nash. Tezyurar poyezdsiz, ko'proq vaqt Samarqandda.",
+        "short_description_uz": "8 kun / 7 tun. Toshkentdan boshlanib, Samarqand aeroportidan jo'nash. Tezyurar poyezdsiz, ko'proq vaqt Samarqandda.",
+        "short_description_ru": "8 ╨┤╨╜╨╡╨╣ / 7 ╨╜╨╛╤З╨╡╨╣. ╨б╤В╨░╤А╤В ╨╕╨╖ ╨в╨░╤И╨║╨╡╨╜╤В╨░, ╨▓╤Л╨╗╨╡╤В ╨╕╨╖ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤╨░. ╨С╨╡╨╖ ╨╛╨▒╤А╨░╤В╨╜╨╛╨│╨╛ ╨┐╨╛╨╡╨╖╨┤╨░ тАФ ╨▒╨╛╨╗╤М╤И╨╡ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ ╨▓ ╨б╨░╨╝╨░╤А╨║╨░╨╜╨┤╨╡.",
+        "short_description_en": "8 days / 7 nights. Starts in Tashkent, departs from Samarkand. No return train тАФ more time in Samarkand.",
+        "short_description_zh_hans": null,
+        "short_description_ar": null,
+        "short_description_de": null,
+        "short_description_fr": null,
+        "short_description_ja": null,
+        "short_description_ko": "8ьЭ╝ / 7ы░Х. эГАьКИь╝ДэК╕ьЧРьДЬ ьЛЬьЮС, ьВмызИые┤ь╣╕эК╕ьЧРьДЬ ь╢Ьы░Ь. ъ╖АэЩШ ъ╕░ь░и ьЧЖьЭМ тАФ ьВмызИые┤ь╣╕эК╕ьЧРьДЬ ыНФ ызОьЭА ьЛЬъ░Д.",
+        "short_description_es": null,
+        "cover_image": "tours/covers/historical_uzb.jpg",
+        "price": "1190.00",
+        "price_uzs": null,
+        "duration_days": 8,
+        "max_group_size": 15,
+        "difficulty": "easy",
+        "includes": "",
+        "includes_uz": "",
+        "includes_ru": "",
+        "includes_en": "",
+        "includes_zh_hans": "",
+        "includes_ar": "",
+        "includes_de": "",
+        "includes_fr": "",
+        "includes_ja": "",
+        "includes_ko": "",
+        "includes_es": "",
+        "excludes": "",
+        "excludes_uz": "",
+        "excludes_ru": "",
+        "excludes_en": "",
+        "excludes_zh_hans": "",
+        "excludes_ar": "",
+        "excludes_de": "",
+        "excludes_fr": "",
+        "excludes_ja": "",
+        "excludes_ko": "",
+        "excludes_es": "",
+        "itinerary": [],
+        "itinerary_uz": [],
+        "itinerary_ru": [],
+        "itinerary_en": [],
+        "itinerary_zh_hans": [],
+        "itinerary_ar": [],
+        "itinerary_de": [],
+        "itinerary_fr": [],
+        "itinerary_ja": [],
+        "itinerary_ko": [],
+        "itinerary_es": [],
+        "is_active": true,
+        "is_featured": true,
+        "created_at": "2026-06-19T10:35:01.998Z",
+        "updated_at": "2026-06-20T10:54:05.032Z",
+        "regions": [
+            3,
+            2,
+            1
+        ],
+        "attractions": []
+    }
+},
+{
+    "model": "tours.tourimage",
+    "pk": 1,
+    "fields": {
+        "tour": 6,
+        "image": "tours/gallery/Ekoturizm-cat.jpg",
+        "caption": "kjhskjfhsfkdsfskdfk",
+        "order": 1
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 1,
+    "fields": {
+        "tour": 1,
+        "day": 1,
+        "title": "Toshkentga kelish",
+        "description": "Aeroportda kutib olish, mehmonxonaga transfer. 14:00 dan keyin joylashish. Bo'sh vaqt. Toshkentda tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 2,
+    "fields": {
+        "tour": 1,
+        "day": 2,
+        "title": "Toshkent ekskursiyasi",
+        "description": "Nonushta. Toshkent bo'ylab ekskursiya: Xast-Imom maydoni, Baroqxon madrasasi, Tilla-Shayx masjidi, Chorsu bozori, Mustaqillik maydoni, Amir Temur xiyoboni. Toshkentda tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 3,
+    "fields": {
+        "tour": 1,
+        "day": 3,
+        "title": "Toshkent тЖТ Samarqand",
+        "description": "Nonushta. Afrosiyob tezyurar poyezdida Samarqandga. Joylashish. Registon maydoni va Go'ri Amir maqbarasi. Samarqandda tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 4,
+    "fields": {
+        "tour": 1,
+        "day": 4,
+        "title": "Samarqand ekskursiyasi",
+        "description": "Nonushta. Bibi-Xonim masjidi, Siyob bozori, Shohi-Zinda nekropoli, Ulug'bek rasadxonasi. Samarqandda tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 5,
+    "fields": {
+        "tour": 1,
+        "day": 5,
+        "title": "Samarqand тЖТ Buxoro",
+        "description": "Nonushta. Poyezdda Buxoroga. Joylashish. Eski shahar bo'ylab ekskursiya: Labi-Hovuz ansambli, Ko'kaldosh madrasasi, savdo gumbazlari. Buxoroda tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 6,
+    "fields": {
+        "tour": 1,
+        "day": 6,
+        "title": "Buxoro to'liq kuni",
+        "description": "Nonushta. To'liq kun ekskursiya: Ark qal'asi, Bolo-Hovuz masjidi, Po'i-Kalon majmuasi, Somoniylar maqbarasi, Chashma-Ayub. Buxoroda tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 7,
+    "fields": {
+        "tour": 1,
+        "day": 7,
+        "title": "Buxoro тЖТ Toshkent",
+        "description": "Nonushta. Tezyurar poyezdda Toshkentga. Joylashish. Sayrlar, xaridlar va milliy taomlar uchun bo'sh vaqt. Toshkentda tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 8,
+    "fields": {
+        "tour": 1,
+        "day": 8,
+        "title": "Jo'nash",
+        "description": "Nonushta. 12:00 gacha xona bo'shatish. Xalqaro aeroportga transfer. Uchish."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 9,
+    "fields": {
+        "tour": 2,
+        "day": 1,
+        "title": "Toshkent тЬИ Nukus тАУ Mo'ynoq тАУ Ustyurt тАУ Orol (jip-tur)",
+        "description": "Aeroportga transfer va Nukusga ichki reys. Orol dengizining ekologik halokat zonasiga 450 km, 8 soatlik sayohat. Mo'ynoq тАФ kemalar qabristoni va muzey. Tushlik. Ustyurt platosi kanyoni. Yurtada kechki ovqat va tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 10,
+    "fields": {
+        "tour": 2,
+        "day": 2,
+        "title": "Orol тАУ Sudochye тАУ Mizdaxkon тАУ Nukus тЬИ Toshkent",
+        "description": "Yurtada nonushta. Nukusga qaytish (450 km, 8 soat). Yo'lda: Qurgancha-Qal'a karvonsaroyi (XIII asr), Sudochye ko'li, Urga qishlog'i. Kunqirad shaharchasida tushlik. Mizdaxkon nekropoli ('Apokalipsis soatlari', Nazlumxon maqbarasi). Aeroportga transfer va Toshkentga reys."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 11,
+    "fields": {
+        "tour": 2,
+        "day": 3,
+        "title": "Toshkent тЖТ Keyingi nuqtaga",
+        "description": "Mehmonxonada nonushta. Aeroportga transfer. Dasturning yakuni."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 12,
+    "fields": {
+        "tour": 3,
+        "day": 1,
+        "title": "Toshkentga uchish",
+        "description": "Yashash mamlakatidan Toshkentga uchish. Samolyot bortida tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 13,
+    "fields": {
+        "tour": 3,
+        "day": 2,
+        "title": "Toshkent",
+        "description": "Aeroportda kutib olish, erta joylashish. Eski shahar bo'ylab ekskursiya: Xast-Imom majmuasi, Baroqxon madrasasi, Tilla-Shayx masjidi, Chorsu bozori. Tushlikdan keyin zamonaviy Toshkent: Mustaqillik maydoni, Ikkinchi jahon urushi memoriali, Romanovlar saroyi, Opera maydoni, Amir Temur xiyoboni."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 14,
+    "fields": {
+        "tour": 3,
+        "day": 3,
+        "title": "Toshkent тАУ Urganch тАУ Xiva",
+        "description": "Urganchga parvoz va Xivaga o'tish. Ichan-Qal'a qal'asi (UNESCO): Kalta-Minor minorasi, Muhammad Aminxon madrasasi, Juma masjidi, Pahlavon Mahmud maqbarasi, Toshhovli saroyi."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 15,
+    "fields": {
+        "tour": 3,
+        "day": 4,
+        "title": "Xiva тАУ Buxoro",
+        "description": "Buxoroga o'tish (~450 km, 7-7,5 soat). Yo'lda tushlik / lunch box. Mehmonxonada joylashish."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 16,
+    "fields": {
+        "tour": 3,
+        "day": 5,
+        "title": "Buxoro",
+        "description": "Buxoro ekskursiyasi (UNESCO): Somoniylar maqbarasi, Chashma-Ayub, Bolo-Hovuz masjidi, Ark qal'asi, Labi-Hovuz ansambli, Ko'kaldosh madrasasi, savdo gumbazlari, Ulug'bek va Abdulazizxon madrasalari, Po'i-Kalon majmuasi."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 17,
+    "fields": {
+        "tour": 3,
+        "day": 6,
+        "title": "Buxoro тАУ Samarqand",
+        "description": "Samarqandga o'tish. Ulug'bek rasadxonasi, Go'ri Amir maqbarasi va Registon maydoni (Ulug'bek, Sherdor, Tillakori madrasalari). Kechqurun yoritilgan Registonga tashqi qarash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 18,
+    "fields": {
+        "tour": 3,
+        "day": 7,
+        "title": "Samarqand тАУ Toshkent",
+        "description": "'Meros' qog'oz fabrikasi, Shohi-Zinda majmuasi, Bibi-Xonim masjidi va Siyob bozori. Tushlikdan keyin tezyurar poyezdda Toshkentga. Mehmonxonada joylashish."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 19,
+    "fields": {
+        "tour": 3,
+        "day": 8,
+        "title": "Vatanga uchish",
+        "description": "Aeroportga transfer va xizmat ko'rsatishning yakuni."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 20,
+    "fields": {
+        "tour": 4,
+        "day": 1,
+        "title": "Dushanba тАФ Uchish",
+        "description": "O'zbekistonning poytaxti Toshkentga uchish. Samolyot bortida tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 21,
+    "fields": {
+        "tour": 4,
+        "day": 2,
+        "title": "Seshanba тАФ Toshkentga kelish",
+        "description": "Toshkent aeroportiga kelish. Pasport nazoratidan o'tish va gid bilan uchrashish. Mehmonxonada nonushta. Eski shahar bo'ylab ekskursiya: Xast-Imom majmuasi, Baroqxon madrasasi, Kafal Shoshiy madrasasi, Tilla-Shayx masjidi, Usmon Qur'oni muzeyi va Chorsu bozori. Zamonaviy Toshkent ekskursiyasi: Mustaqillik maydoni, Romanovlar saroyi (tashqi), Navoiy opera teatri, Amir Temur xiyoboni."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 22,
+    "fields": {
+        "tour": 4,
+        "day": 3,
+        "title": "Chorshanba тАФ Toshkent тАУ Samarqand",
+        "description": "Samarqandga o'tish. Mehmonxonada joylashish. Registon maydoni ekskursiyasi (Ulug'bek, Sherdor va Tillakori madrasalari) va Amir Temur va oilasining maqbarasi тАФ Go'ri Amir."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 23,
+    "fields": {
+        "tour": 4,
+        "day": 4,
+        "title": "Payshanba тАФ Samarqand тАУ Buxoro",
+        "description": "Ulug'bek rasadxonasi va muzeyi, Shohi-Zinda majmuasi, Bibi-Xonim masjidi va Siyob bozori. Buxoroga o'tish va mehmonxonada joylashish."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 24,
+    "fields": {
+        "tour": 4,
+        "day": 5,
+        "title": "Juma тАФ Buxoro",
+        "description": "Buxoro ekskursiyasi: Somoniylar maqbarasi, Chashma-Ayub maqbarasi va muqaddas buloq, Bolo-Hovuz masjidi, Ark qal'asi, Po'i-Kalon majmuasi, XVI asr savdo gumbazlari, Ulug'bek va Abdulazizxon madrasalari, Labi-Hovuz ansambli va Magoki-Attori masjidi."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 25,
+    "fields": {
+        "tour": 4,
+        "day": 6,
+        "title": "Shanba тАФ Buxoro тАУ Xiva",
+        "description": "Qizilqum cho'li orqali Xivaga o'tish. Mehmonxonada joylashish."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 26,
+    "fields": {
+        "tour": 4,
+        "day": 7,
+        "title": "Yakshanba тАФ Xiva",
+        "description": "Ichan-Qal'a ekskursiyasi: Kalta-Minor minorasi, Muhammad Aminxon madrasasi, Muhammad Rahimxon madrasasi, Kunya-Ark qal'asi, Juma masjidi, Islom-Xo'ja minorasi va madrasasi, Pahlavon Mahmud maqbarasi, Allaqulixon karvonsaroyi va Toshhovli saroyi."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 27,
+    "fields": {
+        "tour": 4,
+        "day": 8,
+        "title": "Dushanba тАФ Xiva тАУ Urganch тЬИ Uy",
+        "description": "Urganch aeroportiga transfer va uyga uchish. Dasturning yakuni."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 28,
+    "fields": {
+        "tour": 5,
+        "day": 1,
+        "title": "Madrid тЖТ Toshkent",
+        "description": "18:35 Madriddan Toshkentga uchish (Uzbekistan Airways HY242). Bortida tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 29,
+    "fields": {
+        "tour": 5,
+        "day": 2,
+        "title": "Toshkentga kelish",
+        "description": "04:40 Toshkent xalqaro aeroportiga qo'nish (HY242). Pasport nazoratidan o'tish va gid bilan uchrashish. ~07:00 mehmonxonaga transfer va nonushta. Eski shahar ekskursiyasi: Xast-Imom majmuasi (XVI-XVII), Baroqxon madrasasi, Kafal Shoshiy madrasasi, Tilla-Shayx masjidi va Usmon Qur'oni muzeyi, Chorsu bozori. Zamonaviy Toshkent: Mustaqillik maydoni, Romanovlar saroyi, Opera maydoni, Amir Temur xiyoboni."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 30,
+    "fields": {
+        "tour": 5,
+        "day": 3,
+        "title": "Toshkent тЖТ Samarqand",
+        "description": "Samarqandga ketish (350 km, 5 soat) yoki ixtiyoriy Afrosiyob/Sharq tezyurar poyezdi. Mehmonxonada joylashish. Mashhur shahar bo'ylab ekskursiya: Registon maydoni тАФ uchta katta madrasa (Ulug'bek XV asr, Sherdor XVII asr, Tillakori XVII asr); Go'ri Amir maqbarasi тАФ Amir Temur va oilasining maqbarasi."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 31,
+    "fields": {
+        "tour": 5,
+        "day": 4,
+        "title": "Samarqand тЖТ Buxoro",
+        "description": "Ulug'bek rasadxonasi (XV asr) va muzeyi тАФ Ulug'bek Amir Temurning nabirasi, jahonga mashhur astronom. Shohi-Zinda majmuasi (IX-XV asr) тАФ payg'ambar Muhammadning amakivachchasi Qusam ibn Abbosning maqbarasi. Bibi-Xonim masjidi (XV asr) va Siyob bozori. Buxoroga o'tish (260 km, 5 soat)."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 32,
+    "fields": {
+        "tour": 5,
+        "day": 5,
+        "title": "Buxoro",
+        "description": "To'liq kun Buxoroda: Somoniylar maqbarasi, Chashma-Ayub, Bolo-Hovuz masjidi, Ark qal'asi, Po'i-Kalon majmuasi (Kalon minorasi, Kalon masjidi, Mir-Arab madrasasi), savdo gumbazlari, Labi-Hovuz ansambli, Ko'kaldosh madrasasi."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 33,
+    "fields": {
+        "tour": 5,
+        "day": 6,
+        "title": "Buxoro тЖТ Xiva",
+        "description": "Qizilqum cho'li orqali Xivaga o'tish (~450 km, 7-8 soat). Mehmonxonada joylashish."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 34,
+    "fields": {
+        "tour": 5,
+        "day": 7,
+        "title": "Xiva",
+        "description": "Ichan-Qal'a ekskursiyasi: Kalta-Minor minorasi, Muhammad Aminxon madrasasi, Kunya-Ark, Juma masjidi, Islom-Xo'ja minorasi va madrasasi, Pahlavon Mahmud maqbarasi, Toshhovli saroyi."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 35,
+    "fields": {
+        "tour": 5,
+        "day": 8,
+        "title": "Xiva тЖТ Urganch тЬИ Madrid",
+        "description": "Urganch aeroportiga transfer. Toshkent orqali Madridga uchish. Dasturning yakuni."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 36,
+    "fields": {
+        "tour": 6,
+        "day": 1,
+        "title": "Toshkentga uchish",
+        "description": "Yashash mamlakatidan Toshkentga uchish. Bortida tunash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 37,
+    "fields": {
+        "tour": 6,
+        "day": 2,
+        "title": "Toshkent",
+        "description": "Aeroportda kutib olish, erta joylashish. Eski va zamonaviy Toshkent ekskursiyasi. Qo'shimcha: Usmon Qur'oni muzeyiga ekskursiya тАФ 40 USD."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 38,
+    "fields": {
+        "tour": 6,
+        "day": 3,
+        "title": "Toshkent тАУ Urganch тАУ Xiva",
+        "description": "Urganchga parvoz va Xivaga o'tish. Ichan-Qal'a ekskursiyasi. Ixtiyoriy 'Happy Hour' тАФ quyosh botishida vino тАФ 10 USD."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 39,
+    "fields": {
+        "tour": 6,
+        "day": 4,
+        "title": "Xiva тАУ Buxoro",
+        "description": "Buxoroga o'tish (~450 km, 7-7,5 soat). Lunch box. Mehmonxonada joylashish."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 40,
+    "fields": {
+        "tour": 6,
+        "day": 5,
+        "title": "Buxoro",
+        "description": "Buxoro ekskursiyasi: Somoniylar, Chashma-Ayub, Bolo-Hovuz, Ark qal'asi, Labi-Hovuz, Ko'kaldosh, savdo gumbazlari, Po'i-Kalon."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 41,
+    "fields": {
+        "tour": 6,
+        "day": 6,
+        "title": "Buxoro тАУ Samarqand",
+        "description": "Samarqandga o'tish. Ulug'bek rasadxonasi, Go'ri Amir maqbarasi, Registon maydoni. Kechqurun yoritilgan Registonga tashqi qarash."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 42,
+    "fields": {
+        "tour": 6,
+        "day": 7,
+        "title": "Samarqand",
+        "description": "'Meros' qog'oz fabrikasi, Shohi-Zinda, Bibi-Xonim masjidi, Siyob bozori. Ekskursiya 15:00 gacha."
+    }
+},
+{
+    "model": "tours.itineraryday",
+    "pk": 43,
+    "fields": {
+        "tour": 6,
+        "day": 8,
+        "title": "Samarqand тЖТ Uchish",
+        "description": "Samarqand aeroportiga transfer va xizmat ko'rsatishning yakuni."
+    }
+},
+{
+    "model": "tours.companystatistic",
+    "pk": 1,
+    "fields": {
+        "number": "45+",
+        "label": "Global filiallar",
+        "label_uz": "Global filiallar",
+        "label_ru": "╨У╨╗╨╛╨▒╨░╨╗╤М╨╜╤Л╨╡ ╤Д╨╕╨╗╨╕╨░╨╗╤Л",
+        "label_en": "Global Branches",
+        "label_zh_hans": "хЕичРГхИЖцФпцЬ║цЮД",
+        "label_ar": "┘Б╪▒┘И╪╣ ╪╣╪з┘Д┘Е┘К╪й",
+        "label_de": "Globale Filialen",
+        "label_fr": "Succursales mondiales",
+        "label_ja": "уВ░уГнуГ╝уГРуГлцФпх║Ч",
+        "label_ko": "ъ╕АыбЬы▓М ьзАьаР",
+        "label_es": "Sucursales globales",
+        "order": 0
+    }
+},
+{
+    "model": "tours.companystatistic",
+    "pk": 2,
+    "fields": {
+        "number": "29K",
+        "label": "Manzillar",
+        "label_uz": "Manzillar",
+        "label_ru": "╨Э╨░╨┐╤А╨░╨▓╨╗╨╡╨╜╨╕╤П",
+        "label_en": "Destinations",
+        "label_zh_hans": "чЫочЪДхЬ░",
+        "label_ar": "┘И╪м┘З╪з╪к",
+        "label_de": "Reiseziele",
+        "label_fr": "Destinations",
+        "label_ja": "чЫочЪДхЬ░",
+        "label_ko": "ыкйьаБьзА",
+        "label_es": "Destinos",
+        "order": 2
+    }
+},
+{
+    "model": "tours.companystatistic",
+    "pk": 3,
+    "fields": {
+        "number": "20+",
+        "label": "Yillik tajriba",
+        "label_uz": "Yillik tajriba",
+        "label_ru": "╨Ы╨╡╤В ╨╛╨┐╤Л╤В╨░",
+        "label_en": "Years Experience",
+        "label_zh_hans": "х╣┤ч╗ПщкМ",
+        "label_ar": "╪│┘Ж┘И╪з╪к ┘Е┘Ж ╪з┘Д╪о╪и╪▒╪й",
+        "label_de": "Jahre Erfahrung",
+        "label_fr": "Ann├йes d'exp├йrience",
+        "label_ja": "х╣┤уБоч╡МщиУ",
+        "label_ko": "ыЕДьЭШ ъ▓╜эЧШ",
+        "label_es": "A├▒os de experiencia",
+        "order": 3
+    }
+},
+{
+    "model": "tours.companystatistic",
+    "pk": 4,
+    "fields": {
+        "number": "168K",
+        "label": "Mamnun mijozlar",
+        "label_uz": "Mamnun mijozlar",
+        "label_ru": "╨Ф╨╛╨▓╨╛╨╗╤М╨╜╤Л╤Е ╨║╨╗╨╕╨╡╨╜╤В╨╛╨▓",
+        "label_en": "Happy Customers",
+        "label_zh_hans": "ц╗бцДПчЪДховцИ╖",
+        "label_ar": "╪╣┘Е┘Д╪з╪б ╪│╪╣╪п╪з╪б",
+        "label_de": "Zufriedene Kunden",
+        "label_fr": "Clients satisfaits",
+        "label_ja": "ц║Аш╢│уБЧуБжуБДуВЛуБКховцзШ",
+        "label_ko": "эЦЙы│╡эХЬ ъ│аъ░Э",
+        "label_es": "Clientes satisfechos",
+        "order": 4
+    }
+},
+{
+    "model": "tours.companyadvantage",
+    "pk": 1,
+    "fields": {
+        "icon": "ti-camera",
+        "color": "orange",
+        "title": "300,000+ Tajribalar | Butun dunyo bo'ylab xotiralar yarating.",
+        "title_uz": "300,000+ Tajribalar | Butun dunyo bo'ylab xotiralar yarating.",
+        "title_ru": "300,000+ ╨Т╨┐╨╡╤З╨░╤В╨╗╨╡╨╜╨╕╨╣ | ╨б╨╛╨╖╨┤╨░╨▓╨░╨╣╤В╨╡ ╨▓╨╛╤Б╨┐╨╛╨╝╨╕╨╜╨░╨╜╨╕╤П ╨┐╨╛ ╨▓╤Б╨╡╨╝╤Г ╨╝╨╕╤А╤Г.",
+        "title_en": "300,000+ Experiences | Make memories around the world.",
+        "title_zh_hans": "300,000+ ф╜УщкМ | хЬиф╕ЦчХМхРДхЬ░хИЫщАахЫЮх┐ЖуАВ",
+        "title_ar": "300,000+ ╪к╪м╪▒╪и╪й | ╪з╪╡┘Ж╪╣ ╪░┘Г╪▒┘К╪з╪к ╪н┘И┘Д ╪з┘Д╪╣╪з┘Д┘Е.",
+        "title_de": "300.000+ Erlebnisse | Schaffen Sie Erinnerungen auf der ganzen Welt.",
+        "title_fr": "300 000+ Exp├йriences | Cr├йez des souvenirs ├а travers le monde.",
+        "title_ja": "300,000ф╗еф╕КуБоф╜УщиУ | ф╕ЦчХМф╕нуБзцАЭуБДхЗ║уВТф╜ЬуВКуБ╛уБЧуВЗуБЖуАВ",
+        "title_ko": "300,000ъ░Ь ьЭ┤ьГБьЭШ ъ▓╜эЧШ | ьаД ьД╕ъ│ДьЧРьДЬ ь╢ФьЦ╡ьЭД ызМыУЬьД╕ьЪФ.",
+        "title_es": "300,000+ Experiencias | Crea recuerdos en todo el mundo.",
+        "description": "300,000+ Tajribalar | Butun dunyo bo'ylab xotiralar yarating.",
+        "description_uz": "300,000+ Tajribalar | Butun dunyo bo'ylab xotiralar yarating.",
+        "description_ru": "",
+        "description_en": "",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "",
+        "description_es": "",
+        "order": 1
+    }
+},
+{
+    "model": "tours.companyadvantage",
+    "pk": 2,
+    "fields": {
+        "icon": "ti-calendar-check",
+        "color": "blue",
+        "title": "Hozir band qiling, keyin to'lang | Oldin joyni band qiling, to'lovni keyin qiling.",
+        "title_uz": "Hozir band qiling, keyin to'lang | Oldin joyni band qiling, to'lovni keyin qiling.",
+        "title_ru": "╨С╤А╨╛╨╜╨╕╤А╤Г╨╣╤В╨╡ ╤Б╨╡╨╣╤З╨░╤Б, ╨┐╨╗╨░╤В╨╕╤В╨╡ ╨┐╨╛╤В╨╛╨╝ | ╨б╨╜╨░╤З╨░╨╗╨░ ╨╖╨░╨▒╤А╨╛╨╜╨╕╤А╤Г╨╣╤В╨╡ ╨╝╨╡╤Б╤В╨╛, ╨╖╨░╨┐╨╗╨░╤В╨╕╤В╨╡ ╨┐╨╛╨╖╨╢╨╡.",
+        "title_en": "Reserve now, Pay later | Book your spot first, pay later.",
+        "title_zh_hans": "чО░хЬищвДшовя╝МчиНхРОф╗Шцм╛ | хЕИщвДшовх║зф╜Ня╝МчиНхРОф╗Шцм╛уАВ",
+        "title_ar": "╪з╪н╪м╪▓ ╪з┘Д╪в┘Ж╪М ┘И╪з╪п┘Б╪╣ ┘Д╪з╪н┘В┘Л╪з | ╪з╪н╪м╪▓ ┘Е┘Г╪з┘Ж┘Г ╪г┘И┘Д╪з┘Л╪М ┘И╪з╪п┘Б╪╣ ┘Д╪з╪н┘В┘Л╪з.",
+        "title_de": "Jetzt reservieren, sp├дter bezahlen | Buchen Sie zuerst Ihren Platz, zahlen Sie sp├дter.",
+        "title_fr": "R├йservez maintenant, payez plus tard | R├йservez votre place d'abord, payez plus tard.",
+        "title_ja": "ф╗КуБЩуБРф║Ич┤ДуАБх╛МуБзцФпцЙХуБД | уБ╛уБЪх╕нуВТф║Ич┤ДуБЧуБжуАБх╛МуБзцФпцЙХуБДуБ╛уБЩуАВ",
+        "title_ko": "ьзАъ╕И ьШИьХ╜эХШъ│а ыВШьдСьЧР ъ▓░ьаЬ | ыи╝ьаА ьЮРыжмые╝ ьШИьХ╜эХШъ│а ыВШьдСьЧР ъ▓░ьаЬэХШьД╕ьЪФ.",
+        "title_es": "Reserva ahora, paga despu├йs | Reserva tu lugar primero, paga despu├йs.",
+        "description": "Hozir band qiling, keyin to'lang | Oldin joyni band qiling, to'lovni keyin qiling.",
+        "description_uz": "Hozir band qiling, keyin to'lang | Oldin joyni band qiling, to'lovni keyin qiling.",
+        "description_ru": "",
+        "description_en": "",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "",
+        "description_es": "",
+        "order": 2
+    }
+},
+{
+    "model": "tours.companyadvantage",
+    "pk": 3,
+    "fields": {
+        "icon": "ti-thumb-up",
+        "color": "teal",
+        "title": "Ishonchli sharhlar | 160,000+ sharhlardan 4.8 yulduz.",
+        "title_uz": "Ishonchli sharhlar | 160,000+ sharhlardan 4.8 yulduz.",
+        "title_ru": "╨Э╨░╨┤╨╡╨╢╨╜╤Л╨╡ ╨╛╤В╨╖╤Л╨▓╤Л | 4.8 ╨╖╨▓╨╡╨╖╨┤╤Л ╨╕╨╖ 160,000+ ╨╛╤В╨╖╤Л╨▓╨╛╨▓.",
+        "title_en": "Trusted Reviews | 4.8 stars from 160,000+ reviews.",
+        "title_zh_hans": "хА╝х╛Чф┐бш╡ЦчЪДшпДшо║ | цЭешЗк160,000хдЪцЭбшпДшо║чЪД4.8цШЯуАВ",
+        "title_ar": "╪к┘В┘К┘К┘Е╪з╪к ┘Е┘И╪л┘И┘В╪й | 4.8 ┘Ж╪м┘И┘Е ┘Е┘Ж ╪г┘Г╪л╪▒ ┘Е┘Ж 160,000 ╪к┘В┘К┘К┘Е.",
+        "title_de": "Vertrauensw├╝rdige Bewertungen | 4,8 Sterne aus 160.000+ Bewertungen.",
+        "title_fr": "Avis de confiance | 4,8 ├йtoiles sur plus de 160 000 avis.",
+        "title_ja": "ф┐бща╝уБзуБНуВЛуГмуГУуГеуГ╝ | 160,000ф╗╢ф╗еф╕КуБоуГмуГУуГеуГ╝уБз4.8уБдцШЯуАВ",
+        "title_ko": "ьЛаыв░эХа ьИШ ьЮИыКФ ыжмы╖░ | 160,000ъ░Ь ьЭ┤ьГБьЭШ ыжмы╖░ьЧРьДЬ 4.8ьаР.",
+        "title_es": "Rese├▒as confiables | 4.8 estrellas de m├бs de 160,000 rese├▒as.",
+        "description": "Ishonchli sharhlar | 160,000+ sharhlardan 4.8 yulduz.",
+        "description_uz": "Ishonchli sharhlar | 160,000+ sharhlardan 4.8 yulduz.",
+        "description_ru": "",
+        "description_en": "",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "",
+        "description_es": "",
+        "order": 3
+    }
+},
+{
+    "model": "tours.companyadvantage",
+    "pk": 4,
+    "fields": {
+        "icon": "ti-shield-check",
+        "color": "purple",
+        "title": "Xavfsizlik kafolati | Shifrlash orqali ma'lumotlar xavfsizligi.",
+        "title_uz": "Xavfsizlik kafolati | Shifrlash orqali ma'lumotlar xavfsizligi.",
+        "title_ru": "╨У╨░╤А╨░╨╜╤В╨╕╤П ╨▒╨╡╨╖╨╛╨┐╨░╤Б╨╜╨╛╤Б╤В╨╕ | ╨С╨╡╨╖╨╛╨┐╨░╤Б╨╜╨╛╤Б╤В╤М ╨┤╨░╨╜╨╜╤Л╤Е ╨┐╨╛╤Б╤А╨╡╨┤╤Б╤В╨▓╨╛╨╝ ╤И╨╕╤Д╤А╨╛╨▓╨░╨╜╨╕╤П.",
+        "title_en": "Security Assurance | Data security through encryption.",
+        "title_zh_hans": "хоЙхЕиф┐ЭщЪЬ | щАЪш┐ЗхКахпЖхоЮчО░цХ░цНохоЙхЕиуАВ",
+        "title_ar": "╪╢┘Е╪з┘Ж ╪з┘Д╪г┘Е╪з┘Ж | ╪г┘Е╪з┘Ж ╪з┘Д╪и┘К╪з┘Ж╪з╪к ┘Е┘Ж ╪о┘Д╪з┘Д ╪з┘Д╪к╪┤┘Б┘К╪▒.",
+        "title_de": "Sicherheitsgarantie | Datensicherheit durch Verschl├╝sselung.",
+        "title_fr": "Assurance de s├йcurit├й | S├йcurit├й des donn├йes gr├вce au cryptage.",
+        "title_ja": "уВ╗уВнуГеуГкуГЖуВгф┐Эши╝ | цЪЧхП╖хМЦуБлуВИуВЛуГЗуГ╝уВ┐уВ╗уВнуГеуГкуГЖуВгуАВ",
+        "title_ko": "ы│┤ьХИ ы│┤ьЮе | ьХФэШ╕эЩФые╝ эЖ╡эХЬ ыН░ьЭ┤эД░ ы│┤ьХИ.",
+        "title_es": "Garant├нa de seguridad | Seguridad de datos a trav├йs de encriptaci├│n.",
+        "description": "Xavfsizlik kafolati | Shifrlash orqali ma'lumotlar xavfsizligi.",
+        "description_uz": "Xavfsizlik kafolati | Shifrlash orqali ma'lumotlar xavfsizligi.",
+        "description_ru": "",
+        "description_en": "",
+        "description_zh_hans": "",
+        "description_ar": "",
+        "description_de": "",
+        "description_fr": "",
+        "description_ja": "",
+        "description_ko": "",
+        "description_es": "",
+        "order": 4
+    }
+},
+{
+    "model": "bookings.booking",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "tour": 6,
+        "booking_number": "BK721BF8D8",
+        "status": "confirmed",
+        "travel_date": "2026-06-23",
+        "num_adults": 2,
+        "num_children": 1,
+        "price_per_person": "1190.00",
+        "total_price": "2380.00",
+        "currency": "USD",
+        "special_requests": "",
+        "cancellation_reason": "",
+        "cancelled_at": null,
+        "created_at": "2026-06-19T14:52:18.866Z",
+        "updated_at": "2026-06-20T07:39:02.847Z"
+    }
+},
+{
+    "model": "bookings.booking",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "tour": 6,
+        "booking_number": "BK868ED76C",
+        "status": "confirmed",
+        "travel_date": "2026-07-01",
+        "num_adults": 2,
+        "num_children": 2,
+        "price_per_person": "1190.00",
+        "total_price": "2380.00",
+        "currency": "USD",
+        "special_requests": "",
+        "cancellation_reason": "",
+        "cancelled_at": null,
+        "created_at": "2026-06-20T04:50:49.604Z",
+        "updated_at": "2026-06-20T09:14:41.209Z"
+    }
+},
+{
+    "model": "bookings.booking",
+    "pk": 3,
+    "fields": {
+        "user": 1,
+        "tour": 4,
+        "booking_number": "BK2666CD99",
+        "status": "cancelled",
+        "travel_date": "2026-07-03",
+        "num_adults": 3,
+        "num_children": 2,
+        "price_per_person": "900.00",
+        "total_price": "2700.00",
+        "currency": "USD",
+        "special_requests": "",
+        "cancellation_reason": "",
+        "cancelled_at": "2026-06-20T04:58:59.874Z",
+        "created_at": "2026-06-20T04:58:49.467Z",
+        "updated_at": "2026-06-20T04:58:59.874Z"
+    }
+},
+{
+    "model": "bookings.booking",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "tour": 5,
+        "booking_number": "BK9942F722",
+        "status": "pending",
+        "travel_date": "2026-06-26",
+        "num_adults": 3,
+        "num_children": 1,
+        "price_per_person": "1450.00",
+        "total_price": "4350.00",
+        "currency": "USD",
+        "special_requests": "",
+        "cancellation_reason": "",
+        "cancelled_at": null,
+        "created_at": "2026-06-20T10:31:50.153Z",
+        "updated_at": "2026-06-20T10:31:50.153Z"
+    }
+},
+{
+    "model": "payments.currency",
+    "pk": 1,
+    "fields": {
+        "code": "UZS",
+        "name": "So'm",
+        "symbol": "UZS",
+        "rate_to_usd": "12700.0000",
+        "is_active": true,
+        "updated_at": "2026-06-20T08:29:59.464Z"
+    }
+},
+{
+    "model": "payments.payment",
+    "pk": "32aab237-62cd-48cc-9701-0037a5919a9e",
+    "fields": {
+        "booking": 2,
+        "user": 1,
+        "method": "click",
+        "status": "failed",
+        "amount_uzs": "3022600000.00",
+        "amount_usd": "2380.00",
+        "exchange_rate": "12700.0000",
+        "gateway_transaction_id": "",
+        "gateway_response": {},
+        "card_last4": "",
+        "card_brand": "",
+        "created_at": "2026-06-20T08:33:27.231Z",
+        "paid_at": null,
+        "cancelled_at": null
+    }
+},
+{
+    "model": "payments.payment",
+    "pk": "49632737-c49f-4c57-a373-70156be9ed77",
+    "fields": {
+        "booking": 2,
+        "user": 1,
+        "method": "payme",
+        "status": "failed",
+        "amount_uzs": "3022600000.00",
+        "amount_usd": "2380.00",
+        "exchange_rate": "12700.0000",
+        "gateway_transaction_id": "",
+        "gateway_response": {},
+        "card_last4": "",
+        "card_brand": "",
+        "created_at": "2026-06-20T08:30:46.634Z",
+        "paid_at": null,
+        "cancelled_at": null
+    }
+},
+{
+    "model": "payments.payment",
+    "pk": "4a757afa-888e-45b9-a772-08b7aa91a939",
+    "fields": {
+        "booking": 2,
+        "user": 1,
+        "method": "click",
+        "status": "paid",
+        "amount_uzs": "3022600000.00",
+        "amount_usd": "2380.00",
+        "exchange_rate": "12700.0000",
+        "gateway_transaction_id": "mock-4a757afa-888e-45b9-a772-08b7aa91a939",
+        "gateway_response": {
+            "mock": true,
+            "last4": "4242"
+        },
+        "card_last4": "4242",
+        "card_brand": "visa",
+        "created_at": "2026-06-20T09:14:05.605Z",
+        "paid_at": "2026-06-20T09:14:41.173Z",
+        "cancelled_at": null
+    }
+},
+{
+    "model": "payments.payment",
+    "pk": "5ac07401-f4bf-45d4-a1e7-24140d1bdd6c",
+    "fields": {
+        "booking": 4,
+        "user": 1,
+        "method": "click",
+        "status": "created",
+        "amount_uzs": "5524500000.00",
+        "amount_usd": "4350.00",
+        "exchange_rate": "12700.0000",
+        "gateway_transaction_id": "",
+        "gateway_response": {},
+        "card_last4": "",
+        "card_brand": "",
+        "created_at": "2026-06-20T10:35:38.107Z",
+        "paid_at": null,
+        "cancelled_at": null
+    }
+},
+{
+    "model": "payments.payment",
+    "pk": "799163fb-f1bf-4c34-9702-14d5dc00462b",
+    "fields": {
+        "booking": 2,
+        "user": 1,
+        "method": "click",
+        "status": "failed",
+        "amount_uzs": "3022600000.00",
+        "amount_usd": "2380.00",
+        "exchange_rate": "12700.0000",
+        "gateway_transaction_id": "",
+        "gateway_response": {},
+        "card_last4": "",
+        "card_brand": "",
+        "created_at": "2026-06-20T08:30:03.241Z",
+        "paid_at": null,
+        "cancelled_at": null
+    }
+},
+{
+    "model": "payments.payment",
+    "pk": "9ab7f162-8d3a-493b-8ad5-14743d7d774f",
+    "fields": {
+        "booking": 2,
+        "user": 1,
+        "method": "click",
+        "status": "failed",
+        "amount_uzs": "3022600000.00",
+        "amount_usd": "2380.00",
+        "exchange_rate": "12700.0000",
+        "gateway_transaction_id": "",
+        "gateway_response": {},
+        "card_last4": "",
+        "card_brand": "",
+        "created_at": "2026-06-20T08:33:30.414Z",
+        "paid_at": null,
+        "cancelled_at": null
+    }
+},
+{
+    "model": "payments.payment",
+    "pk": "9b74e628-c6c7-4e0a-b3fe-063420b6f416",
+    "fields": {
+        "booking": 2,
+        "user": 1,
+        "method": "cash",
+        "status": "pending",
+        "amount_uzs": "3022600000.00",
+        "amount_usd": "2380.00",
+        "exchange_rate": "12700.0000",
+        "gateway_transaction_id": "",
+        "gateway_response": {},
+        "card_last4": "",
+        "card_brand": "",
+        "created_at": "2026-06-20T08:30:31.219Z",
+        "paid_at": null,
+        "cancelled_at": null
+    }
+}
+]

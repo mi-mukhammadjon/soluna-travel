@@ -1,0 +1,486 @@
+{% load i18n static %}
+
+<style>
+/* ─── Switcher umumiy ─── */
+.sl-switcher { position: relative; display: inline-block; }
+
+.sl-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 7px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  line-height: 1;
+  white-space: nowrap;
+}
+.sl-trigger:hover { background: rgba(255,255,255,0.16); }
+.sl-switcher.is-open .sl-trigger { background: rgba(255,255,255,0.2); }
+
+[data-theme="dark"] .sl-trigger { background: rgba(255,255,255,0.06); color: #F5EBE0; }
+[data-theme="dark"] .sl-trigger:hover { background: rgba(255,255,255,0.14); }
+
+/* ─── Bayroq + fallback ─── */
+.sl-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 16px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #555, #333);
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+.sl-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sl-flag img[src=""],
+.sl-flag img:not([src]) { display: none; }
+
+.sl-symbol {
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 14px;
+  text-align: center;
+}
+
+.sl-code { font-weight: 700; letter-spacing: 0.04em; }
+
+.sl-chev {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+  margin-left: 2px;
+}
+.sl-switcher.is-open .sl-chev { transform: rotate(180deg); }
+
+/* ─── Dropdown ─── */
+.sl-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 280px;
+  background: #fff;
+  border: 1px solid #E4E6E8;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  padding: 8px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.22s, transform 0.22s, visibility 0.22s;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.sl-switcher.is-open .sl-dropdown {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+
+[data-theme="dark"] .sl-dropdown {
+  background: #2A201A;
+  border-color: #3D2E1F;
+}
+
+.sl-dropdown-head {
+  padding: 10px 12px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999;
+}
+[data-theme="dark"] .sl-dropdown-head { color: #BFA98B; }
+
+/* ─── Option ─── */
+.sl-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 12px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  text-align: left;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.sl-option:hover { background: #F2F4F6; }
+
+/* ⭐ PREMIUM ACTIVE STATE */
+.sl-option.is-active {
+  background: linear-gradient(135deg, rgba(254,250,23,0.15), rgba(240,152,20,0.08));
+  border-color: rgba(254,250,23,0.4);
+}
+[data-theme="dark"] .sl-option.is-active {
+  background: linear-gradient(135deg, rgba(191,148,93,0.18), rgba(191,148,93,0.06));
+  border-color: rgba(191,148,93,0.5);
+}
+
+[data-theme="dark"] .sl-option { color: #F5EBE0; }
+[data-theme="dark"] .sl-option:hover { background: #332821; }
+
+.sl-option-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 20px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #555, #333);
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #fff;
+}
+.sl-option-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sl-option-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+.sl-option-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: inherit;
+}
+.sl-option-cd {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: #999;
+  margin-top: 2px;
+}
+[data-theme="dark"] .sl-option-cd { color: #BFA98B; }
+
+.sl-option-symbol {
+  font-weight: 800;
+  font-size: 1.1rem;
+  min-width: 32px;
+  text-align: right;
+  color: #000;
+}
+[data-theme="dark"] .sl-option-symbol { color: #F5EBE0; }
+
+.sl-option.is-active .sl-option-symbol { color: #B8860B; }
+[data-theme="dark"] .sl-option.is-active .sl-option-symbol { color: #D4A878; }
+
+/* ⭐ PREMIUM CHECK */
+.sl-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FEFA17, #F09814);
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-left: auto;
+  box-shadow: 0 2px 8px rgba(254,250,23,0.4);
+  flex-shrink: 0;
+}
+[data-theme="dark"] .sl-check {
+  background: linear-gradient(135deg, #BF945D, #8B6B43);
+  color: #1A1410;
+}
+
+@media (max-width: 560px) {
+  .sl-dropdown { right: -10px; min-width: 260px; }
+}
+</style>
+
+
+{# ════════ LANGUAGE SWITCHER ════════ #}
+<div class="sl-switcher" id="slLang">
+  <button type="button" class="sl-trigger" id="slLangTrigger" aria-haspopup="true">
+    <span class="sl-flag" data-fallback="{{ LANGUAGE_CODE|upper }}">
+      <img src="{% static 'assets/flags/' %}{% if LANGUAGE_CODE == 'en' %}gb{% elif LANGUAGE_CODE == 'ja' %}jp{% elif LANGUAGE_CODE == 'ko' %}kr{% elif LANGUAGE_CODE == 'ar' %}sa{% elif LANGUAGE_CODE == 'zh' or LANGUAGE_CODE == 'zh-hans' %}cn{% else %}{{ LANGUAGE_CODE }}{% endif %}.svg" alt="" onerror="this.style.display='none'">
+    </span>
+    <span class="sl-code">{{ LANGUAGE_CODE|upper }}</span>
+    <i class="ti ti-chevron-down sl-chev"></i>
+  </button>
+
+  <div class="sl-dropdown">
+    <div class="sl-dropdown-head">{% trans "Choose language" %}</div>
+
+    {% get_available_languages as ALL_LANGS %}
+    {% for code, name in ALL_LANGS %}
+      <button type="button" class="sl-option {% if code == LANGUAGE_CODE %}is-active{% endif %}" data-lang="{{ code }}">
+        <span class="sl-option-flag" data-fallback="{{ code|upper }}">
+          <img src="{% static 'assets/flags/' %}{% if code == 'en' %}gb{% elif code == 'ja' %}jp{% elif code == 'ko' %}kr{% elif code == 'ar' %}sa{% elif code == 'zh' or code == 'zh-hans' %}cn{% else %}{{ code }}{% endif %}.svg" alt="" onerror="this.style.display='none';this.parentNode.textContent=this.parentNode.dataset.fallback;">
+        </span>
+        <span class="sl-option-info">
+          <span class="sl-option-name">{% if code == 'en' %}English{% elif code == 'ru' %}Русский{% elif code == 'uz' %}O'zbekcha{% elif code == 'ko' %}한국어{% elif code == 'ja' %}日本語{% elif code == 'zh' or code == 'zh-hans' %}中文{% elif code == 'ar' %}العربية{% elif code == 'de' %}Deutsch{% elif code == 'fr' %}Français{% elif code == 'es' %}Español{% elif code == 'it' %}Italiano{% elif code == 'tr' %}Türkçe{% elif code == 'kk' %}Қазақша{% elif code == 'fa' %}فارسی{% else %}{{ name }}{% endif %}</span>
+          <span class="sl-option-cd">{{ code|upper }}</span>
+        </span>
+        {% if code == LANGUAGE_CODE %}<span class="sl-check"><i class="ti ti-check"></i></span>{% endif %}
+      </button>
+    {% endfor %}
+  </div>
+
+  <form action="{% url 'set_language' %}" method="post" id="slLangForm" style="display:none;">
+    {% csrf_token %}
+    <input type="hidden" name="next" id="slLangNext" value="{{ request.get_full_path }}">
+    <input type="hidden" name="language" id="slLangValue" value="{{ LANGUAGE_CODE }}">
+  </form>
+</div>
+
+
+{# ════════ CURRENCY SWITCHER ════════ #}
+{# Faqat sizda mavjud bayroqli valyutalar — gb, ru, uz, jp, kr, cn #}
+<div class="sl-switcher" id="slCur">
+  <button type="button" class="sl-trigger" id="slCurTrigger" aria-haspopup="true">
+    <span class="sl-flag">
+      <img src="{% static 'assets/flags/gb.svg' %}" alt="" id="slCurFlagImg" onerror="this.style.display='none'">
+    </span>
+    <span class="sl-code" id="slCurCode">USD</span>
+    <i class="ti ti-chevron-down sl-chev"></i>
+  </button>
+
+  <div class="sl-dropdown">
+    <div class="sl-dropdown-head">{% trans "Choose currency" %}</div>
+
+    <button type="button" class="sl-option" data-cur="USD" data-symbol="$" data-flag="gb">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/gb.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">US Dollar</span>
+        <span class="sl-option-cd">USD</span>
+      </span>
+      <span class="sl-option-symbol">$</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="UZS" data-symbol="so'm" data-flag="uz">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/uz.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">O'zbek so'm</span>
+        <span class="sl-option-cd">UZS</span>
+      </span>
+      <span class="sl-option-symbol">so'm</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="EUR" data-symbol="€" data-flag="de">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/de.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">Euro</span>
+        <span class="sl-option-cd">EUR</span>
+      </span>
+      <span class="sl-option-symbol">€</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="RUB" data-symbol="₽" data-flag="ru">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/ru.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">Российский рубль</span>
+        <span class="sl-option-cd">RUB</span>
+      </span>
+      <span class="sl-option-symbol">₽</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="GBP" data-symbol="£" data-flag="gb">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/gb.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">British Pound</span>
+        <span class="sl-option-cd">GBP</span>
+      </span>
+      <span class="sl-option-symbol">£</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="KRW" data-symbol="₩" data-flag="kr">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/kr.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">대한민국 원</span>
+        <span class="sl-option-cd">KRW</span>
+      </span>
+      <span class="sl-option-symbol">₩</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="JPY" data-symbol="¥" data-flag="jp">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/jp.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">日本円</span>
+        <span class="sl-option-cd">JPY</span>
+      </span>
+      <span class="sl-option-symbol">¥</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="CNY" data-symbol="¥" data-flag="cn">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/cn.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">人民币</span>
+        <span class="sl-option-cd">CNY</span>
+      </span>
+      <span class="sl-option-symbol">¥</span>
+    </button>
+
+    <button type="button" class="sl-option" data-cur="SAR" data-symbol="﷼" data-flag="sa">
+      <span class="sl-option-flag"><img src="{% static 'assets/flags/sa.svg' %}" alt=""></span>
+      <span class="sl-option-info">
+        <span class="sl-option-name">ريال سعودي</span>
+        <span class="sl-option-cd">SAR</span>
+      </span>
+      <span class="sl-option-symbol">﷼</span>
+    </button>
+  </div>
+</div>
+
+
+<script>
+(function () {
+  'use strict';
+
+  const FLAGS_BASE = "{% static 'assets/flags/' %}";
+
+  function init() {
+    // Bayroq xato bo'lsa fallback (uppercase kod)
+    document.querySelectorAll('.sl-flag, .sl-option-flag').forEach(wrap => {
+      const img = wrap.querySelector('img');
+      if (!img) return;
+      img.addEventListener('error', () => {
+        img.style.display = 'none';
+        if (wrap.dataset.fallback) {
+          wrap.textContent = wrap.dataset.fallback.slice(0, 2);
+        }
+      });
+    });
+
+    // ── LANG SWITCHER ──
+    const lang = document.getElementById('slLang');
+    const langTrig = document.getElementById('slLangTrigger');
+    const langForm = document.getElementById('slLangForm');
+    const langNext = document.getElementById('slLangNext');
+    const langValue = document.getElementById('slLangValue');
+
+    if (lang && langTrig) {
+      langTrig.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.sl-switcher.is-open').forEach(s => {
+          if (s !== lang) s.classList.remove('is-open');
+        });
+        lang.classList.toggle('is-open');
+      });
+
+      lang.querySelectorAll('.sl-option').forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const newLang = opt.dataset.lang;
+          if (newLang === langValue.value) { lang.classList.remove('is-open'); return; }
+          sessionStorage.setItem('sl-scroll', window.scrollY.toString());
+          langValue.value = newLang;
+          langNext.value = buildUrl(newLang);
+          langForm.submit();
+        });
+      });
+    }
+
+    // ── CURRENCY SWITCHER ──
+    const cur = document.getElementById('slCur');
+    const curTrig = document.getElementById('slCurTrigger');
+    const curCode = document.getElementById('slCurCode');
+    const curFlagImg = document.getElementById('slCurFlagImg');
+
+    if (cur && curTrig) {
+      const saved = localStorage.getItem('sl-currency') || 'USD';
+      applyCur(saved);
+
+      curTrig.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.sl-switcher.is-open').forEach(s => {
+          if (s !== cur) s.classList.remove('is-open');
+        });
+        cur.classList.toggle('is-open');
+      });
+
+      cur.querySelectorAll('.sl-option').forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const code = opt.dataset.cur;
+          const flag = opt.dataset.flag;
+          applyCur(code, flag);
+          localStorage.setItem('sl-currency', code);
+          document.dispatchEvent(new CustomEvent('currency-changed', { detail: { code }}));
+          cur.classList.remove('is-open');
+        });
+      });
+
+      function applyCur(code, flag) {
+        if (!flag) {
+          const opt = cur.querySelector('.sl-option[data-cur="' + code + '"]');
+          if (opt) flag = opt.dataset.flag;
+        }
+        if (curCode) curCode.textContent = code;
+        if (flag && curFlagImg) {
+          curFlagImg.style.display = '';
+          curFlagImg.src = FLAGS_BASE + flag + '.svg';
+        }
+        cur.querySelectorAll('.sl-option').forEach(o => {
+          o.classList.toggle('is-active', o.dataset.cur === code);
+        });
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.sl-switcher')) {
+        document.querySelectorAll('.sl-switcher.is-open').forEach(s => s.classList.remove('is-open'));
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.sl-switcher.is-open').forEach(s => s.classList.remove('is-open'));
+      }
+    });
+
+    const saved = sessionStorage.getItem('sl-scroll');
+    if (saved) {
+      window.scrollTo({ top: parseInt(saved, 10), behavior: 'instant' });
+      sessionStorage.removeItem('sl-scroll');
+    }
+  }
+
+  function buildUrl(newLang) {
+    const path = window.location.pathname;
+    const langPattern = /^\/([a-z]{2}(?:-[a-z]{2,4})?)(\/|$)/i;
+    const match = path.match(langPattern);
+    const newPath = match ? path.replace(langPattern, `/${newLang}$2`) : `/${newLang}${path}`;
+    return newPath + window.location.search + window.location.hash;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

@@ -5,62 +5,287 @@
 
 {% block content %}
 
-{# ══════════════════ 1. HERO + SEARCH ══════════════════ #}
+{# ══════════════════ HERO + PREMIUM SEARCH v2 ══════════════════ #}
 <section class="hero">
   <div class="hero-bg" style="background-image:url('{% static "img/hero.jpg" %}');"></div>
-
+ 
   <div class="container hero-content">
     <span class="hero-eyebrow"><i class="ti ti-world"></i> {% trans "Explore the World" %}</span>
     <h1>{% trans "Your Gateway to Extraordinary Adventures" %}</h1>
     <p class="hero-desc">{% trans "Pack your bags and let SoLuna redefine your travel experience. Where every journey is a story waiting to be told." %}</p>
-
-    <div class="search-box">
+ 
+    <div class="search-box" id="searchBox">
+ 
       <div class="search-tabs">
-        <span class="search-tab is-active">{% trans "Tours" %}</span>
-        <span class="search-tab">{% trans "Hotels" %}</span>
-        <span class="search-tab">{% trans "Tickets" %}</span>
-        <span class="search-tab">{% trans "Rental" %}</span>
-        <span class="search-tab">{% trans "Activities" %}</span>
+        <button type="button" class="search-tab is-active" data-tab="tours">
+          <i class="ti ti-compass"></i> {% trans "Tours" %}
+        </button>
+        <button type="button" class="search-tab" data-tab="hotels">
+          <i class="ti ti-bed"></i> {% trans "Hotels" %}
+        </button>
+        <button type="button" class="search-tab" data-tab="tickets">
+          <i class="ti ti-ticket"></i> {% trans "Tickets" %}
+        </button>
+        <button type="button" class="search-tab" data-tab="rental">
+          <i class="ti ti-car"></i> {% trans "Rental" %}
+        </button>
+        <button type="button" class="search-tab" data-tab="activities">
+          <i class="ti ti-activity"></i> {% trans "Activities" %}
+        </button>
         <span class="search-help"><i class="ti ti-help-circle"></i> {% trans "Need some help?" %}</span>
       </div>
-
-      <form class="search-form" action="{% url 'tours:tour-list' %}" method="get">
-        <div class="search-field">
-          <label class="search-field-label">{% trans "Location" %}</label>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <i class="ti ti-map-pin" style="color:#737373;"></i>
-            <input type="text" name="location" class="search-field-value" placeholder="{% trans 'Samarkand, Uzbekistan' %}">
+ 
+      <form class="search-form-grid" action="{% url 'tours:tour-list' %}" method="get" data-form="tours">
+ 
+        {# ── LOCATION (premium popover) ── #}
+        <div class="search-field" data-popover="location">
+          <label class="search-field-label">{% trans "Destination" %}</label>
+          <div class="search-field-input">
+            <i class="ti ti-map-pin"></i>
+            <input type="text" name="q" id="locationInput" class="search-field-value"
+                   placeholder="{% trans 'Where to?' %}" autocomplete="off"
+                   value="{{ request.GET.q|default:'' }}">
+          </div>
+ 
+          <div class="dest-popover" id="destPopover">
+ 
+            {# Recent searches (mock — keyinroq backenddan keladi) #}
+            <div class="dest-popover-section">
+              <div class="dest-popover-head">
+                <i class="ti ti-history"></i>
+                <span>{% trans "Recent searches" %}</span>
+              </div>
+              <div class="dest-recent">
+                <button type="button" class="dest-recent-chip" data-value="Samarkand">
+                  <i class="ti ti-clock"></i> Samarkand
+                </button>
+                <button type="button" class="dest-recent-chip" data-value="Aral Sea">
+                  <i class="ti ti-clock"></i> Aral Sea
+                </button>
+                <button type="button" class="dest-recent-chip" data-value="Bukhara">
+                  <i class="ti ti-clock"></i> Bukhara
+                </button>
+              </div>
+            </div>
+ 
+            {# Featured destinations — large image cards #}
+            <div class="dest-popover-section">
+              <div class="dest-popover-head">
+                <i class="ti ti-star-filled" style="color:var(--c-yellow);"></i>
+                <span>{% trans "Popular destinations" %}</span>
+              </div>
+ 
+              <div class="dest-grid-pop">
+ 
+                <button type="button" class="dest-pop-card dest-pop-card-featured" data-value="Samarkand">
+                  <div class="dest-pop-img" style="background-image:url('https://images.unsplash.com/photo-1601280617940-1c8a3c69862f?w=600&q=80');"></div>
+                  <div class="dest-pop-overlay"></div>
+                  <div class="dest-pop-info">
+                    <div class="dest-pop-tag">{% trans "Most popular" %}</div>
+                    <h4>Samarkand</h4>
+                    <p><i class="ti ti-compass"></i> 24 {% trans "tours" %}</p>
+                  </div>
+                </button>
+ 
+                <button type="button" class="dest-pop-card" data-value="Bukhara">
+                  <div class="dest-pop-img" style="background-image:url('https://images.unsplash.com/photo-1600190603464-bb9d50ff15d2?w=400&q=80');"></div>
+                  <div class="dest-pop-overlay"></div>
+                  <div class="dest-pop-info">
+                    <h4>Bukhara</h4>
+                    <p><i class="ti ti-compass"></i> 18 {% trans "tours" %}</p>
+                  </div>
+                </button>
+ 
+                <button type="button" class="dest-pop-card" data-value="Khiva">
+                  <div class="dest-pop-img" style="background-image:url('https://images.unsplash.com/photo-1601233749202-95d04d5b3c00?w=400&q=80');"></div>
+                  <div class="dest-pop-overlay"></div>
+                  <div class="dest-pop-info">
+                    <h4>Khiva</h4>
+                    <p><i class="ti ti-compass"></i> 12 {% trans "tours" %}</p>
+                  </div>
+                </button>
+ 
+                <button type="button" class="dest-pop-card" data-value="Tashkent">
+                  <div class="dest-pop-img" style="background-image:url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&q=80');"></div>
+                  <div class="dest-pop-overlay"></div>
+                  <div class="dest-pop-info">
+                    <h4>Tashkent</h4>
+                    <p><i class="ti ti-compass"></i> 15 {% trans "tours" %}</p>
+                  </div>
+                </button>
+ 
+                <button type="button" class="dest-pop-card" data-value="Aral Sea">
+                  <div class="dest-pop-img" style="background-image:url('https://images.unsplash.com/photo-1604947959402-2cad12c9c5ce?w=400&q=80');"></div>
+                  <div class="dest-pop-overlay"></div>
+                  <div class="dest-pop-info">
+                    <div class="dest-pop-tag dest-pop-tag-new">{% trans "New" %}</div>
+                    <h4>Aral Sea</h4>
+                    <p><i class="ti ti-compass"></i> 6 {% trans "tours" %}</p>
+                  </div>
+                </button>
+ 
+                <button type="button" class="dest-pop-card" data-value="Fergana Valley">
+                  <div class="dest-pop-img" style="background-image:url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=400&q=80');"></div>
+                  <div class="dest-pop-overlay"></div>
+                  <div class="dest-pop-info">
+                    <h4>Fergana</h4>
+                    <p><i class="ti ti-compass"></i> 8 {% trans "tours" %}</p>
+                  </div>
+                </button>
+ 
+              </div>
+            </div>
+ 
+            {# Quick categories #}
+            <div class="dest-popover-section dest-quick">
+              <div class="dest-popover-head">
+                <i class="ti ti-bolt"></i>
+                <span>{% trans "Quick search" %}</span>
+              </div>
+              <div class="dest-quick-row">
+                <button type="button" class="dest-quick-chip" data-value="Silk Road">
+                  <i class="ti ti-route"></i> {% trans "Silk Road" %}
+                </button>
+                <button type="button" class="dest-quick-chip" data-value="Cultural">
+                  <i class="ti ti-building-monument"></i> {% trans "Cultural" %}
+                </button>
+                <button type="button" class="dest-quick-chip" data-value="Adventure">
+                  <i class="ti ti-mountain"></i> {% trans "Adventure" %}
+                </button>
+                <button type="button" class="dest-quick-chip" data-value="Desert">
+                  <i class="ti ti-sun"></i> {% trans "Desert" %}
+                </button>
+              </div>
+            </div>
+ 
           </div>
         </div>
-
+ 
+        {# ── DATE ── #}
         <div class="search-field">
-          <label class="search-field-label">{% trans "Check In" %}</label>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <i class="ti ti-calendar" style="color:#737373;"></i>
-            <input type="date" name="check_in" class="search-field-value">
+          <label class="search-field-label" for="travelDate">{% trans "Travel Date" %}</label>
+          <div class="search-field-input">
+            <i class="ti ti-calendar"></i>
+            <input type="date" name="travel_date" id="travelDate" class="search-field-value"
+                   min="{% now 'Y-m-d' %}"
+                   value="{{ request.GET.travel_date|default:'' }}">
           </div>
         </div>
-
+ 
+        {# ── DURATION ── #}
         <div class="search-field">
-          <label class="search-field-label">{% trans "Check Out" %}</label>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <i class="ti ti-calendar" style="color:#737373;"></i>
-            <input type="date" name="check_out" class="search-field-value">
+          <label class="search-field-label" for="durationSelect">{% trans "Duration" %}</label>
+          <div class="search-field-input">
+            <i class="ti ti-clock"></i>
+            <select name="duration" id="durationSelect" class="search-field-value">
+              <option value="">{% trans "Any duration" %}</option>
+              <option value="1-3" {% if request.GET.duration == '1-3' %}selected{% endif %}>1-3 {% trans "days" %}</option>
+              <option value="4-7" {% if request.GET.duration == '4-7' %}selected{% endif %}>4-7 {% trans "days" %}</option>
+              <option value="8-14" {% if request.GET.duration == '8-14' %}selected{% endif %}>8-14 {% trans "days" %}</option>
+              <option value="15+" {% if request.GET.duration == '15+' %}selected{% endif %}>15+ {% trans "days" %}</option>
+            </select>
           </div>
         </div>
-
-        <div class="search-field">
-          <label class="search-field-label">{% trans "Guest" %}</label>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <i class="ti ti-users" style="color:#737373;"></i>
-            <input type="text" name="guests" class="search-field-value" value="2 {% trans 'adults' %}, 2 {% trans 'children' %}">
+ 
+        {# ── GUESTS ── #}
+        <div class="search-field" data-popover="guests">
+          <label class="search-field-label">{% trans "Guests" %}</label>
+          <div class="search-field-input">
+            <i class="ti ti-users"></i>
+            <input type="text" id="guestsDisplay" class="search-field-value"
+                   placeholder="{% trans 'Add guests' %}" readonly>
+            <input type="hidden" name="adults" id="adultsInput" value="{{ request.GET.adults|default:'2' }}">
+            <input type="hidden" name="children" id="childrenInput" value="{{ request.GET.children|default:'0' }}">
+          </div>
+ 
+          <div class="guests-popover" id="guestsPopover">
+            <div class="guests-row">
+              <div class="guests-row-info">
+                <strong>{% trans "Adults" %}</strong>
+                <small>{% trans "Age 12 or above" %}</small>
+              </div>
+              <div class="guests-counter">
+                <button type="button" class="guests-btn" data-action="dec" data-target="adults">
+                  <i class="ti ti-minus"></i>
+                </button>
+                <span class="guests-num" id="adultsNum">2</span>
+                <button type="button" class="guests-btn" data-action="inc" data-target="adults">
+                  <i class="ti ti-plus"></i>
+                </button>
+              </div>
+            </div>
+ 
+            <div class="guests-row">
+              <div class="guests-row-info">
+                <strong>{% trans "Children" %}</strong>
+                <small>{% trans "Age 2-11" %}</small>
+              </div>
+              <div class="guests-counter">
+                <button type="button" class="guests-btn" data-action="dec" data-target="children">
+                  <i class="ti ti-minus"></i>
+                </button>
+                <span class="guests-num" id="childrenNum">0</span>
+                <button type="button" class="guests-btn" data-action="inc" data-target="children">
+                  <i class="ti ti-plus"></i>
+                </button>
+              </div>
+            </div>
+ 
+            <div class="guests-foot">
+              <button type="button" class="guests-clear" id="guestsClear">{% trans "Reset" %}</button>
+              <button type="button" class="btn btn-dark btn-sm" id="guestsDone">{% trans "Done" %}</button>
+            </div>
           </div>
         </div>
-
+ 
         <button type="submit" class="search-submit">
           <i class="ti ti-search"></i> {% trans "Search" %}
         </button>
       </form>
+ 
+      {# Other tabs placeholders #}
+      <div class="search-coming-soon" data-form="hotels" style="display:none;">
+        <div class="search-coming-icon"><i class="ti ti-bed"></i></div>
+        <h3>{% trans "Hotel booking coming soon" %}</h3>
+        <p>{% trans "We're partnering with the best hotels. Stay tuned!" %}</p>
+      </div>
+      <div class="search-coming-soon" data-form="tickets" style="display:none;">
+        <div class="search-coming-icon"><i class="ti ti-ticket"></i></div>
+        <h3>{% trans "Tickets coming soon" %}</h3>
+        <p>{% trans "Train and air tickets will be available soon." %}</p>
+      </div>
+      <div class="search-coming-soon" data-form="rental" style="display:none;">
+        <div class="search-coming-icon"><i class="ti ti-car"></i></div>
+        <h3>{% trans "Car rental coming soon" %}</h3>
+        <p>{% trans "Explore Uzbekistan on your own terms — coming soon!" %}</p>
+      </div>
+      <form class="search-form-grid" action="{% url 'tours:tour-list' %}" method="get" data-form="activities" style="display:none;">
+        <input type="hidden" name="featured" value="1">
+        <div class="search-field">
+          <label class="search-field-label">{% trans "Activity type" %}</label>
+          <div class="search-field-input">
+            <i class="ti ti-activity"></i>
+            <select name="activity_type" class="search-field-value">
+              <option value="">{% trans "All activities" %}</option>
+              <option value="adventure">{% trans "Adventure" %}</option>
+              <option value="cultural">{% trans "Cultural" %}</option>
+              <option value="culinary">{% trans "Culinary" %}</option>
+              <option value="wellness">{% trans "Wellness" %}</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-field">
+          <label class="search-field-label">{% trans "Location" %}</label>
+          <div class="search-field-input">
+            <i class="ti ti-map-pin"></i>
+            <input type="text" name="q" class="search-field-value" placeholder="{% trans 'Anywhere' %}">
+          </div>
+        </div>
+        <button type="submit" class="search-submit">
+          <i class="ti ti-search"></i> {% trans "Search" %}
+        </button>
+      </form>
+ 
     </div>
   </div>
 </section>
@@ -216,7 +441,7 @@
           <i class="ti ti-credit-card"></i> {% trans "Easy payment" %}
         </span>
         <h2 style="margin:16px 0 24px;">{% trans "We offer tours in a range of locations" %}</h2>
-        <p style="font-size:1.25rem;color:#000;line-height:1.6;margin-bottom:32px;">
+        <p style="font-size:1.25rem;color:currentColor !important; line-height:1.6;margin-bottom:32px;">
           {% trans "Choose one style or create a package, fill your passports with adventures together." %}
         </p>
 
@@ -301,8 +526,8 @@
         <span class="pill-yellow" style="margin-bottom:30px;">
           <i class="ti ti-world"></i> {% trans "Why book at SoLuna?" %}
         </span>
-        <h2 style="margin:24px 0;">{% trans "Embracing Adventure Since 2003" %}</h2>
-        <p style="font-size:1.25rem;color:#000;line-height:1.6;margin-bottom:30px;max-width:572px;">
+        <h2 style="margin:24px 0;">{% trans "Embracing Adventure Since 2025" %}</h2>
+        <p style="font-size:1.25rem;color:currentColor !important;line-height:1.6;margin-bottom:30px;max-width:572px;">
           {% trans "Choose one style or create a package, fill your passports with adventures together." %}
         </p>
 
@@ -450,4 +675,337 @@
   </div>
 </section>
 
+<style>
+.search-tab { border: none; font-family: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.search-field { cursor: pointer; position: relative; }
+.search-field-input { display: flex; align-items: center; gap: 8px; }
+.search-field-input > i { color: var(--c-text-muted); font-size: 1.1rem; }
+.search-field-value { font-family: inherit; }
+.search-field-value:read-only { cursor: pointer; }
+ 
+/* ═══ DESTINATION POPOVER (premium) ═══ */
+.dest-popover {
+  position: absolute;
+  top: calc(100% + 12px); left: 0;
+  width: 720px;
+  max-width: calc(100vw - 40px);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 50;
+  display: none;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+.search-field.is-open .dest-popover { display: block; animation: destFadeIn 0.25s var(--ease); }
+@keyframes destFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+ 
+.dest-popover-section { margin-bottom: 22px; }
+.dest-popover-section:last-child { margin-bottom: 0; }
+ 
+.dest-popover-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 4px 12px;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+.dest-popover-head i { font-size: 1rem; }
+ 
+/* Recent searches */
+.dest-recent { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 4px; }
+.dest-recent-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  background: var(--c-bg-alt);
+  border: 1px solid var(--c-border);
+  border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--c-text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--tr);
+}
+.dest-recent-chip i { font-size: 0.85rem; color: var(--c-text-muted); }
+.dest-recent-chip:hover {
+  background: var(--c-text); color: var(--c-text-inverse);
+  border-color: var(--c-text);
+  transform: translateY(-1px);
+}
+.dest-recent-chip:hover i { color: var(--c-text-inverse); }
+ 
+/* Featured grid */
+.dest-grid-pop {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 140px 140px;
+  gap: 10px;
+}
+@media (max-width: 700px) {
+  .dest-grid-pop { grid-template-columns: 1fr 1fr; grid-template-rows: 120px 120px 120px; }
+  .dest-pop-card-featured { grid-column: 1 / -1; grid-row: 1; }
+}
+ 
+.dest-pop-card {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--c-bg-alt);
+  border: none;
+  font-family: inherit;
+  padding: 0;
+  transition: transform var(--tr);
+}
+.dest-pop-card:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); }
+.dest-pop-card-featured { grid-row: 1 / span 2; }
+ 
+.dest-pop-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 0.6s var(--ease);
+}
+.dest-pop-card:hover .dest-pop-img { transform: scale(1.08); }
+ 
+.dest-pop-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+}
+ 
+.dest-pop-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 12px 14px;
+  color: #fff;
+  text-align: left;
+}
+.dest-pop-info h4 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+.dest-pop-card-featured .dest-pop-info h4 { font-size: 1.4rem; }
+.dest-pop-info p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  margin: 0;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.dest-pop-info p i { font-size: 0.85rem; }
+ 
+.dest-pop-tag {
+  display: inline-block;
+  background: var(--c-accent); color: var(--c-accent-text);
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.7rem; font-weight: 800;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.dest-pop-tag-new { background: var(--c-success); color: #fff; }
+ 
+/* Quick search */
+.dest-quick-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 0 4px;
+}
+.dest-quick-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, var(--c-bg-alt), var(--c-surface));
+  border: 1.5px solid var(--c-border);
+  border-radius: 50px;
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--c-text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--tr);
+}
+.dest-quick-chip i { font-size: 1rem; color: var(--c-orange); }
+.dest-quick-chip:hover {
+  border-color: var(--c-accent);
+  background: linear-gradient(135deg, var(--c-bg-alt), rgba(254,250,23,0.1));
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .dest-quick-chip:hover {
+  background: linear-gradient(135deg, var(--c-bg-alt), rgba(191,148,93,0.15));
+}
+ 
+/* ═══ GUESTS POPOVER (also premium) ═══ */
+.guests-popover {
+  position: absolute;
+  top: calc(100% + 12px); right: 0;
+  min-width: 360px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  padding: 8px 4px;
+  z-index: 50;
+  display: none;
+}
+.search-field.is-open .guests-popover { display: block; animation: destFadeIn 0.25s var(--ease); }
+ 
+.guests-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--c-border);
+}
+.guests-row:last-of-type { border-bottom: none; }
+.guests-row-info strong { display: block; font-weight: 700; font-size: 1rem; color: var(--c-text); }
+.guests-row-info small { font-size: 0.82rem; color: var(--c-text-muted); margin-top: 2px; display: block; }
+ 
+.guests-counter { display: flex; align-items: center; gap: 16px; }
+.guests-btn {
+  width: 36px; height: 36px;
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: 50%;
+  font-size: 1rem; color: var(--c-text);
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: all var(--tr);
+}
+.guests-btn:hover { border-color: var(--c-text); background: var(--c-text); color: var(--c-text-inverse); }
+.guests-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.guests-num {
+    color: currentColor !important; /* Mavzuga qarab avtomatik oq yoki qora bo'ladi */
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 30px;
+    display: inline-block;
+    text-align: center;
+}
+ 
+.guests-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px 10px;
+}
+.guests-clear {
+  background: none; border: none;
+  text-decoration: underline;
+  font-family: inherit; font-weight: 700; font-size: 0.85rem;
+  color: var(--c-text);
+  cursor: pointer;
+}
+ 
+/* Coming soon */
+.search-coming-soon { text-align: center; padding: 50px 20px; }
+.search-coming-icon {
+  width: 80px; height: 80px;
+  background: var(--c-bg-alt);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; color: var(--c-text-muted);
+  margin-bottom: 16px;
+}
+.search-coming-soon h3 { font-size: 1.25rem; margin-bottom: 6px; }
+.search-coming-soon p { color: var(--c-text-muted); }
+ 
+@media (max-width: 900px) {
+  .dest-popover { left: 0; right: 0; width: auto; }
+  .guests-popover { right: 0; left: 0; min-width: auto; }
+}
+</style>
+
+
+<script>
+  (function () {
+    const box = document.getElementById('searchBox');
+    if (!box) return;
+  
+    // ── Tab switching ──
+    const tabs = box.querySelectorAll('.search-tab');
+    const forms = box.querySelectorAll('[data-form]');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+        forms.forEach(f => { f.style.display = (f.dataset.form === target) ? '' : 'none'; });
+      });
+    });
+  
+    // ── Popover toggle ──
+    box.querySelectorAll('[data-popover]').forEach(field => {
+      field.addEventListener('click', (e) => {
+        if (e.target.closest('.dest-popover, .guests-popover')) return;
+        const wasOpen = field.classList.contains('is-open');
+        box.querySelectorAll('[data-popover].is-open').forEach(f => f.classList.remove('is-open'));
+        if (!wasOpen) field.classList.add('is-open');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('[data-popover]')) {
+        box.querySelectorAll('[data-popover].is-open').forEach(f => f.classList.remove('is-open'));
+      }
+    });
+  
+    // ── Destination card click ──
+    const locationInput = document.getElementById('locationInput');
+    const locationField = locationInput?.closest('[data-popover]');
+    box.querySelectorAll('.dest-pop-card, .dest-recent-chip, .dest-quick-chip').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        locationInput.value = card.dataset.value;
+        locationField?.classList.remove('is-open');
+      });
+    });
+  
+    // ── Guests counter ──
+    const guestsField = box.querySelector('[data-popover="guests"]');
+    const adultsInput = document.getElementById('adultsInput');
+    const childrenInput = document.getElementById('childrenInput');
+    const adultsNum = document.getElementById('adultsNum');
+    const childrenNum = document.getElementById('childrenNum');
+    const guestsDisplay = document.getElementById('guestsDisplay');
+  
+    function updateGuestsDisplay() {
+      const a = parseInt(adultsInput.value) || 0;
+      const c = parseInt(childrenInput.value) || 0;
+      adultsNum.textContent = a;
+      childrenNum.textContent = c;
+      let text = a + ' {% trans "adults" %}';
+      if (c > 0) text += ', ' + c + ' {% trans "children" %}';
+      guestsDisplay.value = text;
+  
+      // Update button disabled states
+      box.querySelector('[data-action="dec"][data-target="adults"]').disabled = a <= 1;
+      box.querySelector('[data-action="dec"][data-target="children"]').disabled = c <= 0;
+    }
+    updateGuestsDisplay();
+  
+    box.querySelectorAll('.guests-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const target = btn.dataset.target;
+        const input = target === 'adults' ? adultsInput : childrenInput;
+        const min = target === 'adults' ? 1 : 0;
+        const max = target === 'adults' ? 20 : 10;
+        let val = parseInt(input.value) || 0;
+        if (btn.dataset.action === 'inc' && val < max) val++;
+        else if (btn.dataset.action === 'dec' && val > min) val--;
+        input.value = val;
+        updateGuestsDisplay();
+      });
+    });
+  
+    document.getElementById('guestsClear')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      adultsInput.value = '2';
+      childrenInput.value = '0';
+      updateGuestsDisplay();
+    });
+  
+    document.getElementById('guestsDone')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      guestsField.classList.remove('is-open');
+    });
+  })();
+</script>
 {% endblock %}

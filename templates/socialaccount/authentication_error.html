@@ -1,46 +1,135 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}Xatolik - SoLuna{% endblock %}
+{% block title %}{% trans "Authentication Error" %} | SoLuna{% endblock %}
 
 {% block content %}
-<div class="social-error-wrapper" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; background-color: var(--cream, #FAF7F0); padding: 40px 15px;">
-    
-    <div class="card shadow-lg border-0" style="max-width: 450px; width: 100%; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
-        
-        <div class="card-header text-center" style="background-color: var(--green-deep, #0D3B2E); padding: 30px 20px; border-bottom: none;">
-            <h2 class="mb-0" style="font-family: var(--font-display, 'Cormorant Garamond', serif); color: var(--gold, #C9A84C); font-weight: 600;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-exclamation-triangle mb-1 me-2" viewBox="0 0 16 16">
-                  <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
-                  <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
-                </svg>
-                Tizimga Kirishda Xato
-            </h2>
+<section class="sl-section">
+  <div class="sl-bg"></div>
+  <div class="sl-bg-overlay"></div>
+
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="sl-wrap">
+
+      <a href="{% url 'home' %}" class="sl-logo">
+        <span class="sl-logo-mark">☾</span>
+        <span>SoLuna</span>
+      </a>
+
+      <div class="sl-card">
+        <div class="sl-error-ribbon">
+          <div class="sl-error-icon-wrap">
+            <div class="sl-error-icon-pulse"></div>
+            <div class="sl-error-icon"><i class="ti ti-alert-triangle"></i></div>
+          </div>
         </div>
-        
-        <div class="card-body text-center" style="padding: 40px 30px;">
-            <p style="font-family: var(--font-body, 'Jost', sans-serif); color: #4a4a4a; font-size: 17px; line-height: 1.5; margin-bottom: 30px;">
-                Uchinchi tomon akkauntingiz orqali kirishga urinishda xatolik yuz berdi. Iltimos, jarayonni boshqatdan amalga oshirib ko'ring.
-            </p>
-            
-            <a href="{% url 'account_login' %}" class="btn w-100 fw-bold d-block" style="background-color: var(--gold, #C9A84C); color: var(--green-deep, #0D3B2E); padding: 14px; border: none; border-radius: 8px; font-size: 16px; font-family: var(--font-body, 'Jost', sans-serif); text-decoration: none; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;">
-                Qayta urinib ko'rish
+
+        <div class="sl-content">
+          <h1 class="sl-title">{% trans "Authentication failed" %}</h1>
+          <p class="sl-sub">
+            {% trans "Something went wrong while signing you in. Your account is safe — no changes were made." %}
+          </p>
+
+          {# Possible reasons #}
+          <div class="sl-reasons">
+            <div class="sl-reasons-head">
+              <i class="ti ti-help-circle"></i>
+              <strong>{% trans "Possible reasons" %}</strong>
+            </div>
+            <ul>
+              <li><i class="ti ti-circle-x"></i> {% trans "You cancelled the sign-in process" %}</li>
+              <li><i class="ti ti-circle-x"></i> {% trans "The provider's session expired" %}</li>
+              <li><i class="ti ti-circle-x"></i> {% trans "Permission was denied" %}</li>
+              <li><i class="ti ti-circle-x"></i> {% trans "Network connection issue" %}</li>
+            </ul>
+          </div>
+
+          <div class="sl-actions">
+            <a href="{% url 'account_login' %}" class="btn btn-dark btn-block btn-lg sl-submit">
+              <span><i class="ti ti-refresh"></i> {% trans "Try again" %}</span>
+              <i class="ti ti-arrow-right"></i>
             </a>
-        </div>
-        
-        <div class="card-footer text-center" style="background-color: #fcfbf8; border-top: 1px solid #f0ebe1; padding: 15px;">
-            <a href="/" style="color: var(--green-mid, #1A5C45); text-decoration: none; font-size: 15px; font-family: var(--font-body, 'Jost', sans-serif); font-weight: 500;">
-                ← Bosh sahifaga qaytish
+            <a href="{% url 'messages_app:contact' %}" class="btn btn-light btn-block">
+              <i class="ti ti-headset"></i> {% trans "Contact support" %}
             </a>
+          </div>
+
+          <a href="{% url 'home' %}" class="sl-back">
+            <i class="ti ti-arrow-left"></i> {% trans "Go to homepage" %}
+          </a>
         </div>
+      </div>
+
+      <div class="sl-footer">
+        <i class="ti ti-shield-check"></i>
+        {% trans "Your account is secure" %}
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
+{% include 'socialaccount/_shared_styles.html' %}
 
 <style>
-    .card-body a.btn:hover {
-        background-color: var(--gold-light, #E8C97A) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(201, 168, 76, 0.4);
-    }
+/* Error-specific overrides */
+.sl-error-ribbon {
+  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+  padding: 40px 24px;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid #FECACA;
+}
+.sl-error-icon-wrap {
+  position: relative;
+  width: 80px; height: 80px;
+}
+.sl-error-icon {
+  position: relative;
+  width: 80px; height: 80px;
+  background: #FEE2E2;
+  border: 3px solid #E24B4A;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #E24B4A;
+  font-size: 2.4rem;
+  z-index: 2;
+}
+.sl-error-icon-pulse {
+  position: absolute; inset: 0;
+  border: 3px solid #E24B4A;
+  border-radius: 50%;
+  opacity: 0;
+  animation: slPulseError 2s ease-out infinite;
+}
+@keyframes slPulseError {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+.sl-reasons {
+  background: var(--c-bg-alt);
+  border-left: 3px solid #E24B4A;
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  text-align: left;
+}
+.sl-reasons-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+.sl-reasons-head i { color: #E24B4A; font-size: 1rem; }
+.sl-reasons ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.sl-reasons li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.85rem;
+  color: var(--c-text-muted);
+}
+.sl-reasons li i { color: #E24B4A; font-size: 0.85rem; width: 16px; flex-shrink: 0; }
+
+.sl-actions {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 18px;
+}
 </style>
 {% endblock %}

@@ -1,19 +1,33 @@
-{% load static i18n %}<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+{% load static i18n lang_tags %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FEFA17">
   <title>{% block title %}SoLuna — {% trans "Your Gateway to Extraordinary Adventures" %}{% endblock %}</title>
-  <meta name="description" content="{% block meta_desc %}SoLuna — premium tours across Uzbekistan and the Silk Road.{% endblock %}">
+  <meta name="description" content="{% block meta_desc %}{% trans 'SoLuna — premium tours across Uzbekistan and the Silk Road.' %}{% endblock %}">
 
+  {# Favicon #}
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90" fill="%23FEFA17">☾</text></svg>'>
+
+  {# Fonts #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  {# Tabler icons — yengil iconlar #}
+  {# Tabler icons #}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+  {# Quick theme/language init to prevent FOUC #}
+  <script>
+    (function () {
+      const t = localStorage.getItem('soluna-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
   {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -21,91 +35,286 @@
 <a href="#main-content" class="skip-link">{% trans "Skip to content" %}</a>
 <div class="page-transition" id="pageTransition" aria-hidden="true"></div>
 
-<!-- ══════════════════ HEADER ══════════════════ -->
+{# ════════════════════ HEADER ════════════════════ #}
 <header class="header" id="header">
 
   {# ── Top bar ── #}
   <div class="topbar">
     <div class="topbar-inner">
+
       <div class="topbar-left">
-        <a href="tel:+998950666233"><i class="ti ti-phone"></i> +998 95 066 62 33</a>
-        <a href="mailto:oygulakhatovas@gmail.com"><i class="ti ti-mail"></i> oygulakhatovas@gmail.com</a>
+        <a href="tel:+998998953536" class="topbar-link">
+          <i class="ti ti-phone"></i> +998 99 895 35 36
+        </a>
+        <a href="mailto:solunadmc@gmail.com" class="topbar-link topbar-link-hide-sm">
+          <i class="ti ti-mail"></i> solunadmc@gmail.com
+        </a>
       </div>
 
       <div class="topbar-promo">
-        <i class="ti ti-bolt" style="color:#000;"></i>
-        <span>{% trans "Unlock the Magic of Travel with SoLuna — Your Gateway to Extraordinary Experiences" %}</span>
-        <a href="{% url 'tours:tour-list' %}" style="color:var(--c-orange);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
-          {% trans "Get This Now" %} <i class="ti ti-arrow-right"></i>
+        <i class="ti ti-bolt"></i>
+        <span>{% trans "Unlock the Magic of Travel with SoLuna" %}</span>
+        <a href="{% url 'tours:tour-list' %}" class="topbar-promo-cta">
+          {% trans "Explore Now" %} <i class="ti ti-arrow-right"></i>
         </a>
       </div>
 
       <div class="topbar-right">
-        <div class="topbar-right-item">
-          <i class="ti ti-world"></i>
-          <form action="{% url 'set_language' %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.get_full_path }}">
-            {% get_available_languages as LANGUAGES %}
-            <select name="language" class="topbar-select" onchange="this.form.submit()">
-              {% for code, name in LANGUAGES %}
-                <option value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>{{ code|upper }}</option>
-              {% endfor %}
-            </select>
-          </form>
-        </div>
-        <div class="topbar-right-item">
-          <select class="topbar-select" aria-label="{% trans 'Currency' %}">
-            <option>USD</option><option>UZS</option><option>EUR</option>
-          </select>
-        </div>
-        <button type="button" class="topbar-select" aria-label="{% trans 'Theme' %}" style="padding:0;">
-          <i class="ti ti-sun"></i>
+        {# Language switcher — form-based, works without JS #}
+        {% include 'partials/lang_switcher.html' %}
+
+        {# Theme toggle (sun ↔ moon) #}
+        <button type="button" class="topbar-icon-btn" id="themeToggle" aria-label="{% trans 'Toggle theme' %}">
+          <i class="ti ti-sun" id="themeIconLight"></i>
+          <i class="ti ti-moon" id="themeIconDark" style="display:none;"></i>
         </button>
       </div>
     </div>
   </div>
 
-  {# ── Navbar ── #}
-  <nav class="navbar" aria-label="{% trans 'Main' %}">
+  {# ── Main navbar ── #}
+  <nav class="navbar" aria-label="{% trans 'Main navigation' %}">
+
+    <a href="{% url 'home' %}" class="logo" data-no-transition>
+      <span class="logo-mark">☾</span>
+      <span class="logo-text">SoLuna</span>
+    </a>
+
+    {# Desktop nav #}
+    <div class="nav" id="desktopNav">
+      <a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}is-active{% endif %}">
+        {% trans "Home" %}
+      </a>
+
+      {# Tours dropdown #}
+      <div class="nav-item nav-has-dropdown">
+        <a href="{% url 'tours:tour-list' %}" class="nav-link">
+          {% trans "Tours" %} <i class="ti ti-chevron-down nav-chev"></i>
+        </a>
+        <div class="nav-dropdown" role="menu">
+          <a href="{% url 'tours:tour-list' %}" role="menuitem">
+            <i class="ti ti-compass"></i>
+            <div>
+              <strong>{% trans "All Tours" %}</strong>
+              <span>{% trans "Browse our complete catalog" %}</span>
+            </div>
+          </a>
+          <a href="{% url 'tours:tour-list' %}?type=cultural" role="menuitem">
+            <i class="ti ti-building-monument"></i>
+            <div>
+              <strong>{% trans "Cultural" %}</strong>
+              <span>{% trans "Historic cities and heritage" %}</span>
+            </div>
+          </a>
+          <a href="{% url 'tours:tour-list' %}?type=adventure" role="menuitem">
+            <i class="ti ti-mountain"></i>
+            <div>
+              <strong>{% trans "Adventure" %}</strong>
+              <span>{% trans "Mountains, deserts and trekking" %}</span>
+            </div>
+          </a>
+          <a href="{% url 'tours:tour-list' %}?type=premium" role="menuitem">
+            <i class="ti ti-star"></i>
+            <div>
+              <strong>{% trans "Premium" %}</strong>
+              <span>{% trans "Luxury experiences" %}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {# Destinations dropdown #}
+      <div class="nav-item nav-has-dropdown">
+        <a href="{% url 'regions:region-list' %}" class="nav-link">
+          {% trans "Destinations" %} <i class="ti ti-chevron-down nav-chev"></i>
+        </a>
+        <div class="nav-dropdown" role="menu">
+          <a href="{% url 'regions:region-list' %}" role="menuitem">
+            <i class="ti ti-map-2"></i>
+            <div>
+              <strong>{% trans "All Destinations" %}</strong>
+              <span>{% trans "Explore Uzbekistan" %}</span>
+            </div>
+          </a>
+          <a href="{% url 'regions:region-list' %}?city=samarkand" role="menuitem">
+            <i class="ti ti-building-arch"></i>
+            <div>
+              <strong>Samarkand</strong>
+              <span>{% trans "City of legends" %}</span>
+            </div>
+          </a>
+          <a href="{% url 'regions:region-list' %}?city=bukhara" role="menuitem">
+            <i class="ti ti-building-mosque"></i>
+            <div>
+              <strong>Bukhara</strong>
+              <span>{% trans "Holy and ancient" %}</span>
+            </div>
+          </a>
+          <a href="{% url 'regions:region-list' %}?city=khiva" role="menuitem">
+            <i class="ti ti-building-castle"></i>
+            <div>
+              <strong>Khiva</strong>
+              <span>{% trans "Open-air museum" %}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <a href="{% url 'tours:tour-list' %}?featured=1" class="nav-link">{% trans "Activities" %}</a>
+      <a href="{% url 'messages_app:contact' %}" class="nav-link">{% trans "Contact" %}</a>
+    </div>
+
+    {# Right actions #}
+    <div class="nav-actions">
+
+      {# Search button #}
+      <button type="button" class="nav-icon-btn" id="searchToggle" aria-label="{% trans 'Search' %}">
+        <i class="ti ti-search"></i>
+      </button>
+
+      {% if user.is_authenticated %}
+        {# User dropdown #}
+        <div class="nav-user nav-has-dropdown">
+          <button type="button" class="nav-user-btn">
+            <div class="nav-avatar">
+              {% if user.first_name %}{{ user.first_name.0|upper }}{% else %}{{ user.username.0|upper }}{% endif %}
+            </div>
+            <span class="nav-user-name">{{ user.first_name|default:user.username|truncatechars:14 }}</span>
+            <i class="ti ti-chevron-down"></i>
+          </button>
+          <div class="nav-dropdown nav-dropdown-user" role="menu">
+            <div class="nav-dropdown-head">
+              <div class="nav-avatar nav-avatar-lg">
+                {% if user.first_name %}{{ user.first_name.0|upper }}{% else %}{{ user.username.0|upper }}{% endif %}
+              </div>
+              <div>
+                <div class="nav-dropdown-name">{{ user.get_full_name|default:user.username }}</div>
+                <div class="nav-dropdown-email">{{ user.email }}</div>
+              </div>
+            </div>
+            <a href="{% url 'accounts:profile' %}" role="menuitem">
+              <i class="ti ti-user"></i> {% trans "My Profile" %}
+            </a>
+            <a href="{% url 'bookings:booking-list' %}" role="menuitem">
+              <i class="ti ti-ticket"></i> {% trans "My Bookings" %}
+            </a>
+            <a href="#favorites" role="menuitem">
+              <i class="ti ti-heart"></i> {% trans "Saved Tours" %}
+            </a>
+            <a href="#settings" role="menuitem">
+              <i class="ti ti-settings"></i> {% trans "Settings" %}
+            </a>
+            <hr class="nav-dropdown-divider">
+            <form action="{% url 'account_logout' %}" method="post" class="nav-logout-form">
+              {% csrf_token %}
+              <button type="submit" role="menuitem" class="nav-dropdown-logout">
+                <i class="ti ti-logout"></i> {% trans "Sign Out" %}
+              </button>
+            </form>
+          </div>
+        </div>
+      {% else %}
+        <a href="{% url 'account_login' %}" class="nav-cta-link">{% trans "Sign In" %}</a>
+        <a href="{% url 'account_signup' %}" class="nav-cta nav-cta-primary">{% trans "Sign Up" %}</a>
+      {% endif %}
+
+      {# Mobile menu toggle #}
+      <button type="button" class="nav-menu-btn" id="navToggle" aria-label="{% trans 'Open menu' %}" aria-expanded="false">
+        <i class="ti ti-menu-2"></i>
+      </button>
+    </div>
+  </nav>
+
+  {# ── Search overlay ── #}
+  <div class="search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="search-overlay-inner">
+      <form action="{% url 'tours:tour-list' %}" method="get" class="search-form">
+        <i class="ti ti-search"></i>
+        <input type="search" name="q" placeholder="{% trans 'Search tours, destinations, activities...' %}" autocomplete="off" autofocus>
+        <button type="button" class="search-close" id="searchClose" aria-label="{% trans 'Close search' %}">
+          <i class="ti ti-x"></i>
+        </button>
+      </form>
+      <div class="search-suggestions">
+        <span class="search-suggestion-label">{% trans "Popular" %}:</span>
+        <a href="{% url 'tours:tour-list' %}?q=samarkand">Samarkand</a>
+        <a href="{% url 'tours:tour-list' %}?q=silk+road">{% trans "Silk Road" %}</a>
+        <a href="{% url 'tours:tour-list' %}?q=aral">Aral</a>
+        <a href="{% url 'tours:tour-list' %}?q=bukhara">Bukhara</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{# ════════ MOBILE DRAWER ════════ #}
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
     <a href="{% url 'home' %}" class="logo">
       <span class="logo-mark">☾</span>
       <span>SoLuna</span>
     </a>
+    <button type="button" class="drawer-close" id="drawerClose" aria-label="{% trans 'Close menu' %}">
+      <i class="ti ti-x"></i>
+    </button>
+  </div>
 
-    <div class="nav">
-      <a href="{% url 'home' %}">{% trans "Home" %}</a>
-      <a href="{% url 'tours:tour-list' %}">{% trans "Tours" %} <span class="chev">▾</span></a>
-      <a href="{% url 'regions:region-list' %}">{% trans "Destinations" %} <span class="chev">▾</span></a>
-      <a href="#activities">{% trans "Activities" %} <span class="chev">▾</span></a>
-      <a href="#hotel">{% trans "Hotel" %} <span class="chev">▾</span></a>
-      <a href="#blog">{% trans "Blog" %} <span class="chev">▾</span></a>
-      <a href="{% url 'messages_app:contact' %}">{% trans "Contact" %}</a>
+  {% if user.is_authenticated %}
+  <div class="drawer-user">
+    <div class="nav-avatar nav-avatar-lg">
+      {% if user.first_name %}{{ user.first_name.0|upper }}{% else %}{{ user.username.0|upper }}{% endif %}
     </div>
-
-    <div class="nav-actions">
-      {% if user.is_authenticated %}
-        <a href="{% url 'accounts:profile' %}" class="nav-cta">{{ user.get_full_name|default:user.username|truncatechars:14 }}</a>
-        <form action="{% url 'account_logout' %}" method="post" style="display:inline;">
-          {% csrf_token %}
-          <button type="submit" class="btn-icon-circle" aria-label="{% trans 'Logout' %}"><i class="ti ti-logout"></i></button>
-        </form>
-      {% else %}
-        <a href="{% url 'account_login' %}" class="nav-cta">{% trans "Sign In" %}</a>
-      {% endif %}
-
-      <button class="nav-menu-btn" id="navToggle" aria-label="{% trans 'Menu' %}">
-        <i class="ti ti-grid-dots"></i>
-      </button>
+    <div>
+      <div class="drawer-user-name">{{ user.get_full_name|default:user.username }}</div>
+      <div class="drawer-user-email">{{ user.email }}</div>
     </div>
+  </div>
+  {% endif %}
+
+  <nav class="drawer-nav" aria-label="{% trans 'Mobile navigation' %}">
+    <a href="{% url 'home' %}"><i class="ti ti-home"></i> {% trans "Home" %}</a>
+    <a href="{% url 'tours:tour-list' %}"><i class="ti ti-compass"></i> {% trans "Tours" %}</a>
+    <a href="{% url 'regions:region-list' %}"><i class="ti ti-map-2"></i> {% trans "Destinations" %}</a>
+    <a href="{% url 'tours:tour-list' %}?featured=1"><i class="ti ti-star"></i> {% trans "Activities" %}</a>
+    <a href="{% url 'messages_app:contact' %}"><i class="ti ti-mail"></i> {% trans "Contact" %}</a>
+
+    {% if user.is_authenticated %}
+      <div class="drawer-divider"></div>
+      <a href="{% url 'accounts:profile' %}"><i class="ti ti-user"></i> {% trans "My Profile" %}</a>
+      <a href="{% url 'bookings:booking-list' %}"><i class="ti ti-ticket"></i> {% trans "My Bookings" %}</a>
+      <form action="{% url 'account_logout' %}" method="post" class="drawer-logout-form">
+        {% csrf_token %}
+        <button type="submit"><i class="ti ti-logout"></i> {% trans "Sign Out" %}</button>
+      </form>
+    {% else %}
+      <div class="drawer-divider"></div>
+      <a href="{% url 'account_login' %}" class="drawer-cta-secondary">{% trans "Sign In" %}</a>
+      <a href="{% url 'account_signup' %}" class="drawer-cta-primary">{% trans "Sign Up" %} <i class="ti ti-arrow-right"></i></a>
+    {% endif %}
   </nav>
-</header>
 
-{# Flash messages #}
+  <div class="drawer-foot">
+    <div class="drawer-contacts">
+      <a href="tel:+998950666233"><i class="ti ti-phone"></i> +998 95 066 62 33</a>
+      <a href="mailto:oygulakhatovas@gmail.com"><i class="ti ti-mail"></i> oygulakhatovas@gmail.com</a>
+    </div>
+    <div class="drawer-socials">
+      <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+      <a href="https://t.me/soluna_uz" target="_blank" rel="noopener" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
+      <a href="https://wa.me/998950666233" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+    </div>
+  </div>
+</aside>
+
+{# ════════ FLASH MESSAGES ════════ #}
 {% if messages %}
-<div class="messages-container" role="status">
+<div class="messages-container" id="messagesContainer" role="status" aria-live="polite">
   {% for message in messages %}
-  <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+  <div class="alert alert-{{ message.tags|default:'info' }}" data-auto-dismiss>
+    <i class="ti ti-{% if message.tags == 'success' %}circle-check{% elif message.tags == 'error' %}alert-circle{% elif message.tags == 'warning' %}alert-triangle{% else %}info-circle{% endif %}"></i>
+    <span>{{ message }}</span>
+    <button type="button" class="alert-close" aria-label="{% trans 'Close' %}"><i class="ti ti-x"></i></button>
+  </div>
   {% endfor %}
 </div>
 {% endif %}
@@ -114,70 +323,90 @@
   {% block content %}{% endblock %}
 </main>
 
-<!-- ══════════════════ FOOTER ══════════════════ -->
+{# ════════════════════ FOOTER ════════════════════ #}
 <footer class="footer">
   <div class="container">
-    <div class="footer-grid">
 
-      <div class="footer-brand reveal">
+    <div class="footer-grid">
+      <div class="footer-brand">
         <a href="{% url 'home' %}" class="logo">
           <span class="logo-mark">☾</span>
           <span class="logo-text">SoLuna</span>
         </a>
         <p>{% trans "Dive into local recommendations for a truly authentic Silk Road experience across Uzbekistan." %}</p>
         <ul class="footer-contact">
-          <li><i class="ti ti-map-pin"></i> Tashkent, Uzbekistan</li>
+          <li><i class="ti ti-map-pin"></i> {% trans "Tashkent, Uzbekistan" %}</li>
           <li><i class="ti ti-clock"></i> {% trans "Hours" %}: 8:00 – 18:00, Mon – Sat</li>
           <li><i class="ti ti-mail"></i> oygulakhatovas@gmail.com</li>
+          <li><i class="ti ti-phone"></i> +998 95 066 62 33</li>
         </ul>
       </div>
 
-      <div class="footer-col reveal delay-1">
+      <div class="footer-col">
         <h4>{% trans "Company" %}</h4>
         <ul>
-          <li><a href="#about">{% trans "About Us" %}</a></li>
+          <li><a href="{% url 'messages_app:contact' %}">{% trans "About Us" %}</a></li>
           <li><a href="{% url 'tours:tour-list' %}">{% trans "Our Tours" %}</a></li>
           <li><a href="{% url 'regions:region-list' %}">{% trans "Destinations" %}</a></li>
-          <li><a href="#blog">{% trans "Blog" %}</a></li>
           <li><a href="{% url 'messages_app:contact' %}">{% trans "Contact" %}</a></li>
         </ul>
       </div>
 
-      <div class="footer-col reveal delay-2">
+      <div class="footer-col">
         <h4>{% trans "Services" %}</h4>
         <ul>
           <li><a href="{% url 'tours:tour-list' %}">{% trans "Tour Booking" %}</a></li>
-          <li><a href="#hotel">{% trans "Hotel Booking" %}</a></li>
-          <li><a href="#ticket">{% trans "Ticket Booking" %}</a></li>
-          <li><a href="#rental">{% trans "Rental Services" %}</a></li>
-          <li><a href="#help">{% trans "Help & Support" %}</a></li>
+          <li><a href="{% url 'tours:tour-list' %}?type=premium">{% trans "Premium Tours" %}</a></li>
+          <li><a href="{% url 'tours:tour-list' %}?type=adventure">{% trans "Adventure" %}</a></li>
+          <li><a href="{% url 'messages_app:contact' %}">{% trans "Help & Support" %}</a></li>
         </ul>
       </div>
 
-      <div class="footer-col reveal delay-3">
+      <div class="footer-col">
         <h4>{% trans "Newsletter" %}</h4>
+        <p class="footer-newsletter-text">{% trans "Get exclusive offers and travel inspiration." %}</p>
         <form method="post" action="#newsletter" class="newsletter">
           {% csrf_token %}
           <input type="email" name="email" placeholder="{% trans 'Enter your email' %}" required aria-label="{% trans 'Email' %}">
-          <button type="submit" class="newsletter-btn">{% trans "Subscribe" %}</button>
+          <button type="submit" class="newsletter-btn" aria-label="{% trans 'Subscribe' %}">
+            <i class="ti ti-arrow-right"></i>
+          </button>
         </form>
+        <div class="footer-payments">
+          <span>{% trans "We accept" %}:</span>
+          <span class="payment-chip">VISA</span>
+          <span class="payment-chip">MC</span>
+          <span class="payment-chip">UZCARD</span>
+          <span class="payment-chip">HUMO</span>
+        </div>
       </div>
-
     </div>
 
     <div class="footer-bottom">
       <p>© {% now "Y" %} "SoLuna Prime" MCHJ. {% trans "All rights reserved." %}</p>
+      <div class="footer-bottom-links">
+        <a href="#terms">{% trans "Terms" %}</a>
+        <span>·</span>
+        <a href="#privacy">{% trans "Privacy" %}</a>
+        <span>·</span>
+        <a href="#cookies">{% trans "Cookies" %}</a>
+      </div>
       <div class="social-row">
         <span>{% trans "Follow us" %}</span>
-        <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram" data-no-transition><i class="ti ti-brand-instagram"></i></a>
-        <a href="https://t.me/soluna_uz" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram" data-no-transition><i class="ti ti-brand-telegram"></i></a>
-        <a href="https://wa.me/998950666233" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp" data-no-transition><i class="ti ti-brand-whatsapp"></i></a>
-        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook" data-no-transition><i class="ti ti-brand-facebook"></i></a>
+        <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+        <a href="https://t.me/soluna_uz" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
+        <a href="https://wa.me/998950666233" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
       </div>
     </div>
 
   </div>
 </footer>
+
+{# Back to top button #}
+<button type="button" class="back-to-top" id="backToTop" aria-label="{% trans 'Back to top' %}">
+  <i class="ti ti-arrow-up"></i>
+</button>
 
 <script defer src="{% static 'js/main.js' %}"></script>
 {% block extra_js %}{% endblock %}

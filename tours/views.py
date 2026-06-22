@@ -2,7 +2,13 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.db.models import Q, Avg, Count
 from .models import Tour, TourCategory, CompanyStatistic, CompanyAdvantage
 from regions.models import Region
+from django.views.decorators.cache import cache_page
 
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
+
+def custom_500_view(request):
+    return render(request, '500.html', status=500)
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -54,9 +60,12 @@ class HomeView(TemplateView):
         context['regions'] = Region.objects.annotate(tour_count=Count('tours'))
         context['company_stats'] = CompanyStatistic.objects.all()[:4]
         context['company_advantages'] = CompanyAdvantage.objects.all()[:4]
+        context['popular_destinations'] = Region.objects.annotate(
+            tour_count=Count('tours')
+        ).order_by('-tour_count')[:6]
         return context
 
-
+# tours/views.py — Search filter integration
 class TourListView(ListView):
     model = Tour
     template_name = 'tours/list.html'
@@ -64,77 +73,116 @@ class TourListView(ListView):
     paginate_by = 12
 
     def get_queryset(self):
-        # Boshlang'ich QuerySet va SQL joinlarni kamaytirish uchun select_related/prefetch_related
-        # Modelda setter borligi sababli avg_rating annotatsiyasi xavfsiz ishlaydi
-        qs = Tour.objects.filter(is_active=True).select_related('category').prefetch_related('regions')
+        qs = Tour.objects.filter(is_active=True).prefetch_related('regions')
+        
+        # 1-TUZATISH: Sharhlarning o'rtacha qiymatini (avg_rating) hisoblaymiz
+        qs = qs.annotate(avg_rating=Avg('reviews__rating'))
 
-        # 1. Qidiruv (Search)
-        q = self.request.GET.get('q')
+        # ── q (location/destination/title) ──
+        q = self.request.GET.get('q', '').strip()
         if q:
-            qs = qs.filter(Q(title__icontains=q) | Q(description__icontains=q))
+            qs = qs.filter(
+                Q(title__icontains=q) |
+                Q(title_uz__icontains=q) |
+                Q(title_ru__icontains=q) |
+                Q(title_en__icontains=q) |
+                Q(short_description__icontains=q) |
+                Q(regions__name__icontains=q) |
+                Q(regions__name_uz__icontains=q) |
+                Q(regions__name_ru__icontains=q)
+            ).distinct()
 
-        # 2. Kategoriya filtri
-        category = self.request.GET.get('category')
-        if category:
-            qs = qs.filter(category__slug=category)
+        # ── travel_date (faqat shu sanada mavjud turlar) ──
+        travel_date = self.request.GET.get('travel_date', '').strip()
+        if travel_date:
+            pass
 
-        # 3. Region filtri
-        region = self.request.GET.get('region')
-        if region:
-            qs = qs.filter(regions__slug=region)
-
-        # 4. Narx filtri (Min / Max)
-        min_price = self.request.GET.get('min_price')
-        max_price = self.request.GET.get('max_price')
-        if min_price:
-            qs = qs.filter(price__gte=min_price)
-        if max_price:
-            qs = qs.filter(price__lte=max_price)
-
-        # 5. Davomiylik filtri (Duration)
-        duration = self.request.GET.get('duration')
+        # ── duration (1-3 / 4-7 / 8-14 / 15+) ──
+        duration = self.request.GET.get('duration', '').strip()
         if duration == '1-3':
-            qs = qs.filter(duration_days__lte=3)
+            qs = qs.filter(duration_days__gte=1, duration_days__lte=3)
         elif duration == '4-7':
             qs = qs.filter(duration_days__gte=4, duration_days__lte=7)
-        elif duration == '8+':
-            qs = qs.filter(duration_days__gte=8)
+        elif duration == '8-14':
+            qs = qs.filter(duration_days__gte=8, duration_days__lte=14)
+        elif duration == '15+':
+            qs = qs.filter(duration_days__gte=15)
 
-        # Filtrlar tugagandan keyin yulduzchalarni hisoblaymiz (SQL hisob-kitob to'g'ri bo'lishi uchun)
-        qs = qs.annotate(
-            avg_rating=Avg('reviews__rating'),
-            review_count=Count('reviews', distinct=True)
-        )
+        # ── tour_type (Cultural / Adventure / Premium) ──
+        tour_type = self.request.GET.get('type', '').strip()
+        if tour_type:
+            qs = qs.filter(tour_type__iexact=tour_type)
 
-        # 6. Saralash (Sorting) - endi '-avg_rating' muammosiz saralaydi
-        sort = self.request.GET.get('sort', '-created_at')
-        allowed_sorts = ['price', '-price', 'duration_days', '-duration_days', '-created_at', '-avg_rating']
-        if sort in allowed_sorts:
-            qs = qs.order_by(sort)
+        # ── activity_type (alohida URL: ?featured=1&activity_type=...) ──
+        activity = self.request.GET.get('activity_type', '').strip()
+        if activity:
+            qs = qs.filter(tour_type__iexact=activity)
 
-        return qs.distinct()
+        # ── featured (Activities tab) ──
+        if self.request.GET.get('featured') == '1':
+            qs = qs.filter(is_featured=True)
+
+        # ── price range ──
+        try:
+            price_min = self.request.GET.get('price_min')
+            if price_min:
+                qs = qs.filter(price__gte=float(price_min))
+        except ValueError:
+            pass
+            
+        try:
+            price_max = self.request.GET.get('price_max')
+            if price_max:
+                qs = qs.filter(price__lte=float(price_max))
+        except ValueError:
+            pass
+
+        # ── city query (Destinations dropdown'dan ?city=samarkand) ──
+        city = self.request.GET.get('city', '').strip()
+        if city:
+            qs = qs.filter(
+                Q(regions__slug__iexact=city) |
+                Q(regions__name__icontains=city)
+            ).distinct()
+
+        # ── Sorting ──
+        sort = self.request.GET.get('sort', 'popular')
+        if sort == 'newest':
+            qs = qs.order_by('-created_at')
+        elif sort == 'price_low':
+            qs = qs.order_by('price')
+        elif sort == 'price_high':
+            qs = qs.order_by('-price')
+        elif sort == 'rating':
+            # 2-TUZATISH: 'rating' o'rniga biz hisoblagan 'avg_rating' ishlatiladi
+            qs = qs.order_by('-avg_rating')
+        else:  # popular
+            # 3-TUZATISH: 'rating' o'rniga 'avg_rating'
+            qs = qs.order_by('-is_featured', '-avg_rating', '-created_at')
+
+        return qs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = TourCategory.objects.annotate(tour_count=Count('tour'))
-        context['regions'] = Region.objects.filter(is_active=True)
         
-        # OPTIMIZATSIYA: self.get_queryset().count() o'rniga allaqachon chaqirilgan object_list dan foydalanamiz
-        # Bu bazaga ortiqcha va og'ir takroriy so'rov yuborilishining oldini oladi
-        context['total_count'] = self.object_list.count()
-        
-        # Filtr qiymatlarini templatega qaytaramiz (Formlarda saqlanib qolishi uchun)
-        context['filters'] = {
+        context['search'] = {
             'q': self.request.GET.get('q', ''),
-            'category': self.request.GET.get('category', ''),
-            'region': self.request.GET.get('region', ''),
-            'min_price': self.request.GET.get('min_price', ''),
-            'max_price': self.request.GET.get('max_price', ''),
+            'travel_date': self.request.GET.get('travel_date', ''),
             'duration': self.request.GET.get('duration', ''),
-            'sort': self.request.GET.get('sort', '-created_at'),
+            'adults': self.request.GET.get('adults', '2'),
+            'children': self.request.GET.get('children', '0'),
+            'sort': self.request.GET.get('sort', 'popular'),
+            'tour_type': self.request.GET.get('type', ''),
+            'city': self.request.GET.get('city', ''),
         }
+        
+        context['total_count'] = self.get_queryset().count()
+        
+        context['popular_destinations'] = Region.objects.annotate(
+            tour_count=Count('tours')
+        ).order_by('-tour_count')[:6]
+        
         return context
-
 
 class TourDetailView(DetailView):
     model = Tour

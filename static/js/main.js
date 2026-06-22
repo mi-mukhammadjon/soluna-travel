@@ -1,194 +1,381 @@
-/* ============================================================
-   SoLuna main.js — Travila interactions
-   ============================================================ */
+/* ════════════════════════════════════════════════════════
+   SoLuna — Main JS
+   ════════════════════════════════════════════════════════ */
+
 (function () {
   'use strict';
 
-  /* ── 1. Scroll Reveal ───────────────────────────────────── */
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('revealed');
-          io.unobserve(e.target);
+  // ── DOM ready helper ─────────────────────────────────
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+
+    // ═══ HEADER SCROLL ═══
+    const header = document.getElementById('header');
+    if (header) {
+      const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 10);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    // ═══ THEME TOGGLE ═══
+    const themeBtn = document.getElementById('themeToggle');
+    const iconLight = document.getElementById('themeIconLight');
+    const iconDark = document.getElementById('themeIconDark');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('soluna-theme', theme);
+      if (iconLight && iconDark) {
+        if (theme === 'dark') {
+          iconLight.style.display = 'none';
+          iconDark.style.display = '';
+        } else {
+          iconLight.style.display = '';
+          iconDark.style.display = 'none';
         }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  } else {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
-  }
-
-  /* ── 2. Page Transition Overlay ─────────────────────────── */
-  const overlay = document.getElementById('pageTransition');
-  const isInternalLink = (a) => {
-    if (!a) return false;
-    if (a.target === '_blank') return false;
-    if (a.dataset.noTransition !== undefined) return false;
-    if (a.hasAttribute('download')) return false;
-    const href = a.getAttribute('href');
-    if (!href) return false;
-    if (href.startsWith('#')) return false;
-    if (href.startsWith('mailto:') || href.startsWith('tel:')) return false;
-    if (href.startsWith('http') && !href.startsWith(window.location.origin)) return false;
-    return true;
-  };
-
-  if (overlay) {
-    // Animate IN on load
-    requestAnimationFrame(() => {
-      overlay.classList.add('entering');
-      setTimeout(() => overlay.classList.remove('entering', 'exiting'), 600);
-    });
-
-    // Animate OUT on internal link click
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (!isInternalLink(a)) return;
-
-      e.preventDefault();
-      overlay.classList.add('exiting');
-      setTimeout(() => { window.location.href = a.href; }, 380);
-    });
-  }
-
-  /* ── 3. Header shadow on scroll ─────────────────────────── */
-  const header = document.getElementById('header');
-  if (header) {
-    let lastY = 0;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > 20) header.classList.add('is-scrolled');
-      else header.classList.remove('is-scrolled');
-      lastY = y;
-    }, { passive: true });
-  }
-
-  /* ── 4. Mobile Nav Toggle ───────────────────────────────── */
-  const navToggle = document.getElementById('navToggle');
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      document.body.classList.toggle('nav-open');
-    });
-  }
-
-  /* ── 5. Search Tabs (Tours / Hotels / Tickets / ...) ───── */
-  document.querySelectorAll('.search-tabs').forEach(group => {
-    const tabs = group.querySelectorAll('.search-tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('is-active'));
-        tab.classList.add('is-active');
-      });
-    });
-  });
-
-  /* ── 6. Tour Card Favorite (heart icon toggle) ─────────── */
-  document.addEventListener('click', (e) => {
-    const fav = e.target.closest('.tour-card-fav');
-    if (!fav) return;
-    e.preventDefault();
-    e.stopPropagation();
-    fav.classList.toggle('is-fav');
-    const icon = fav.querySelector('i');
-    if (icon) {
-      if (fav.classList.contains('is-fav')) {
-        icon.className = 'ti ti-heart-filled';
-        // TODO: POST to /api/favorites/<id>/toggle/
-      } else {
-        icon.className = 'ti ti-heart';
       }
     }
-  });
+    applyTheme(localStorage.getItem('soluna-theme') || 'light');
 
-  /* ── 7. Tabs on tour detail (#overview / #itinerary / ...) ─ */
-  const tabLinks = document.querySelectorAll('.td-tab');
-  if (tabLinks.length) {
-    tabLinks.forEach(link => {
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    // ═══ CURRENCY SWITCHER ═══
+    const currencySelect = document.getElementById('currencySelect');
+    if (currencySelect) {
+      const saved = localStorage.getItem('soluna-currency') || 'USD';
+      currencySelect.value = saved;
+      currencySelect.addEventListener('change', () => {
+        localStorage.setItem('soluna-currency', currencySelect.value);
+        // Notify other pages/scripts
+        document.dispatchEvent(new CustomEvent('currency-changed', { detail: currencySelect.value }));
+      });
+    }
+
+    // ═══ MOBILE DRAWER ═══
+    const navToggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('drawer');
+    const drawerClose = document.getElementById('drawerClose');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+
+    function openDrawer() {
+      drawer?.classList.add('is-open');
+      drawerBackdrop?.classList.add('is-open');
+      drawer?.setAttribute('aria-hidden', 'false');
+      navToggle?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer?.classList.remove('is-open');
+      drawerBackdrop?.classList.remove('is-open');
+      drawer?.setAttribute('aria-hidden', 'true');
+      navToggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    navToggle?.addEventListener('click', openDrawer);
+    drawerClose?.addEventListener('click', closeDrawer);
+    drawerBackdrop?.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer?.classList.contains('is-open')) closeDrawer();
+    });
+
+    // ═══ SEARCH OVERLAY ═══
+    const searchToggle = document.getElementById('searchToggle');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchClose = document.getElementById('searchClose');
+
+    function openSearch() {
+      searchOverlay?.classList.add('is-open');
+      searchOverlay?.setAttribute('aria-hidden', 'false');
+      setTimeout(() => searchOverlay?.querySelector('input')?.focus(), 100);
+    }
+    function closeSearch() {
+      searchOverlay?.classList.remove('is-open');
+      searchOverlay?.setAttribute('aria-hidden', 'true');
+    }
+    searchToggle?.addEventListener('click', openSearch);
+    searchClose?.addEventListener('click', closeSearch);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && searchOverlay?.classList.contains('is-open')) closeSearch();
+      // Ctrl/Cmd + K — open search
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+      }
+    });
+    searchOverlay?.addEventListener('click', (e) => {
+      if (e.target === searchOverlay) closeSearch();
+    });
+
+    // ═══ FLASH MESSAGES — AUTO-DISMISS ═══
+    document.querySelectorAll('[data-auto-dismiss]').forEach((alert, idx) => {
+      // Close button
+      alert.querySelector('.alert-close')?.addEventListener('click', () => dismissAlert(alert));
+      // Auto-dismiss after 6s + stagger
+      setTimeout(() => dismissAlert(alert), 6000 + idx * 500);
+    });
+    function dismissAlert(alert) {
+      alert.classList.add('is-leaving');
+      setTimeout(() => alert.remove(), 300);
+    }
+
+    // ═══ BACK TO TOP ═══
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      const onScrollBtn = () => backToTop.classList.toggle('is-visible', window.scrollY > 600);
+      onScrollBtn();
+      window.addEventListener('scroll', onScrollBtn, { passive: true });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ═══ PAGE TRANSITION ═══
+    const pageTransition = document.getElementById('pageTransition');
+    if (pageTransition) {
+      // Enter animation
+      pageTransition.classList.add('is-entering');
+      setTimeout(() => pageTransition.classList.remove('is-entering'), 500);
+
+      // Outgoing links transition
+      document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (
+          link.hasAttribute('data-no-transition') ||
+          link.target === '_blank' ||
+          !href ||
+          href.startsWith('#') ||
+          href.startsWith('mailto:') ||
+          href.startsWith('tel:') ||
+          href.startsWith('http') && !href.includes(window.location.hostname)
+        ) return;
+
+        link.addEventListener('click', (e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey) return; // open in new tab
+          e.preventDefault();
+          pageTransition.classList.add('is-leaving');
+          setTimeout(() => { window.location.href = href; }, 350);
+        });
+      });
+    }
+
+    // ═══ REVEAL ON SCROLL ═══
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    // ═══ NEWSLETTER FORM ═══
+    document.querySelectorAll('.newsletter').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        // Server tomonida hali handler yo'q bo'lsa — UI feedback
+        const input = form.querySelector('input');
+        if (!input?.value) return;
+        // Optional: AJAX submit. Hozircha standart.
+      });
+    });
+
+    // ═══ DROPDOWN — Mobile/touch support ═══
+    document.querySelectorAll('.nav-has-dropdown').forEach(item => {
+      const link = item.querySelector('.nav-link, .nav-user-btn');
+      if (!link) return;
+      // Touch device — first click opens, second navigates
       link.addEventListener('click', (e) => {
-        // Visual active state
-        tabLinks.forEach(t => t.classList.remove('is-active'));
-        link.classList.add('is-active');
-      });
-    });
-
-    // Auto-highlight on scroll
-    if ('IntersectionObserver' in window) {
-      const sections = document.querySelectorAll('.td-section');
-      if (sections.length) {
-        const sectIo = new IntersectionObserver((entries) => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              const id = e.target.id;
-              tabLinks.forEach(t => {
-                t.classList.toggle('is-active', t.getAttribute('href') === '#' + id);
-              });
-            }
-          });
-        }, { threshold: 0.25, rootMargin: '-100px 0px -50% 0px' });
-        sections.forEach(s => sectIo.observe(s));
-      }
-    }
-  }
-
-  /* ── 8. Auto-hide flash messages ──────────────────────── */
-  document.querySelectorAll('.messages-container .alert').forEach((el, i) => {
-    setTimeout(() => {
-      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-      el.style.opacity = '0';
-      el.style.transform = 'translateX(20px)';
-      setTimeout(() => el.remove(), 400);
-    }, 4000 + i * 500);
-  });
-
-  /* ── 9. Counter animation (stat numbers) ───────────────── */
-  if ('IntersectionObserver' in window) {
-    const animateNumber = (el) => {
-      const text = el.textContent.trim();
-      const match = text.match(/^([\d,.]+)([+KMB]*)$/);
-      if (!match) return;
-      const target = parseFloat(match[1].replace(/,/g, ''));
-      const suffix = match[2] || '';
-      if (isNaN(target)) return;
-
-      const duration = 1400;
-      const start = performance.now();
-      el.textContent = '0' + suffix;
-
-      const tick = (now) => {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const cur = target * eased;
-        const display = cur >= 1000 ? Math.round(cur).toLocaleString() : (target % 1 ? cur.toFixed(1) : Math.round(cur));
-        el.textContent = display + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    };
-
-    const statIo = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          animateNumber(e.target);
-          statIo.unobserve(e.target);
+        if (window.matchMedia('(hover: hover)').matches) return; // desktop
+        const dropdown = item.querySelector('.nav-dropdown');
+        if (!dropdown) return;
+        if (!item.classList.contains('is-open')) {
+          e.preventDefault();
+          document.querySelectorAll('.nav-has-dropdown.is-open').forEach(o => o.classList.remove('is-open'));
+          item.classList.add('is-open');
+        } else {
+          item.classList.remove('is-open');
         }
       });
-    }, { threshold: 0.3 });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-has-dropdown')) {
+        document.querySelectorAll('.nav-has-dropdown.is-open').forEach(o => o.classList.remove('is-open'));
+      }
+    });
 
-    document.querySelectorAll('.stat-num').forEach(el => statIo.observe(el));
+  });
+})();
+/* ════════════════════════════════════════════════════════════
+   LANG + CURRENCY SWITCHER — to'liq JS
+   main.js OXIRIGA qo'shing
+   ════════════════════════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  /* ── 10. Smooth scroll for in-page anchors ─────────────── */
-  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 110;
-      window.scrollTo({ top, behavior: 'smooth' });
+  ready(function () {
+
+    // ════ LANGUAGE SWITCHER ════
+    const langSwitcher = document.getElementById('langSwitcher');
+    const langTrigger = document.getElementById('langTrigger');
+    const langForm = document.getElementById('langForm');
+    const langNext = document.getElementById('langNext');
+    const langValue = document.getElementById('langValue');
+
+    if (langSwitcher && langTrigger) {
+      // Toggle
+      langTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Boshqa dropdownlarni yopish
+        document.querySelectorAll('.cur-switcher.is-open').forEach(s => s.classList.remove('is-open'));
+        langSwitcher.classList.toggle('is-open');
+        langTrigger.setAttribute('aria-expanded', langSwitcher.classList.contains('is-open'));
+      });
+
+      // Til tanlash
+      langSwitcher.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const newLang = option.dataset.lang;
+          const currentLang = document.documentElement.lang || langValue.value;
+
+          if (newLang === currentLang) {
+            langSwitcher.classList.remove('is-open');
+            return;
+          }
+
+          // Loading
+          option.classList.add('is-loading');
+
+          // Scroll saqlash
+          sessionStorage.setItem('soluna-scroll', window.scrollY.toString());
+
+          // Form yangilab submit
+          langValue.value = newLang;
+          langNext.value = buildLangUrl(newLang);
+          langForm.submit();
+        });
+      });
+    }
+
+    // ════ CURRENCY SWITCHER ════
+    const curSwitcher = document.getElementById('curSwitcher');
+    const curTrigger = document.getElementById('curTrigger');
+    const curSymbol = document.getElementById('curSymbol');
+    const curCode = document.getElementById('curCode');
+
+    if (curSwitcher && curTrigger) {
+      // Avval saqlangan valyutani yuklash
+      const saved = localStorage.getItem('soluna-currency') || 'USD';
+      applyCurrency(saved);
+
+      // Toggle
+      curTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.lang-switcher.is-open').forEach(s => s.classList.remove('is-open'));
+        curSwitcher.classList.toggle('is-open');
+        curTrigger.setAttribute('aria-expanded', curSwitcher.classList.contains('is-open'));
+      });
+
+      // Valyuta tanlash
+      curSwitcher.querySelectorAll('.cur-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const newCur = option.dataset.cur;
+          const symbol = option.dataset.symbol;
+
+          applyCurrency(newCur, symbol);
+          localStorage.setItem('soluna-currency', newCur);
+
+          // Boshqa komponentlarga xabar
+          document.dispatchEvent(new CustomEvent('currency-changed', {
+            detail: { code: newCur, symbol: symbol }
+          }));
+
+          curSwitcher.classList.remove('is-open');
+        });
+      });
+    }
+
+    function applyCurrency(code, symbol) {
+      if (!curSymbol || !curCode) return;
+      curCode.textContent = code;
+
+      // Symbol topish (data atributdan yoki standartdan)
+      if (!symbol) {
+        const symbols = { USD: '$', EUR: '€', GBP: '£', RUB: '₽', UZS: "so'm",
+                          KRW: '₩', JPY: '¥', TRY: '₺', KZT: '₸', CNY: '¥' };
+        symbol = symbols[code] || code;
+      }
+      curSymbol.textContent = symbol;
+
+      // Active option highlight
+      curSwitcher.querySelectorAll('.cur-option').forEach(opt => {
+        opt.classList.toggle('is-active', opt.dataset.cur === code);
+      });
+    }
+
+    // ════ OUTSIDE CLICK ════
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.lang-switcher')) {
+        langSwitcher?.classList.remove('is-open');
+      }
+      if (!e.target.closest('.cur-switcher')) {
+        curSwitcher?.classList.remove('is-open');
+      }
     });
+
+    // ════ ESC ════
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        langSwitcher?.classList.remove('is-open');
+        curSwitcher?.classList.remove('is-open');
+      }
+    });
+
+    // ════ SCROLL RESTORE (til o'zgargandan keyin) ════
+    const savedScroll = sessionStorage.getItem('soluna-scroll');
+    if (savedScroll) {
+      window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
+      sessionStorage.removeItem('soluna-scroll');
+    }
   });
+
+  /**
+   * URL'da til prefiksini almashtirish
+   * /ru/tours/ → /uz/tours/
+   */
+  function buildLangUrl(newLang) {
+    const path = window.location.pathname;
+    const search = window.location.search;
+    const hash = window.location.hash;
+    const langPattern = /^\/([a-z]{2}(?:-[a-z]{2,4})?)(\/|$)/i;
+    const match = path.match(langPattern);
+    const newPath = match
+      ? path.replace(langPattern, `/${newLang}$2`)
+      : `/${newLang}${path}`;
+    return newPath + search + hash;
+  }
 
 })();

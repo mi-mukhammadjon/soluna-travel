@@ -8,932 +8,2347 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-12 17:18+0500\n"
+"POT-Creation-Date: 2026-06-21 01:16+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\account\login.html:3 .\templates\account\login.html:56
-#: .\templates\account\signup.html:52 .\templates\accounts\register.html:90
-#: .\templates\socialaccount\signup.html:52
-msgid "Sign In"
-msgstr ""
-
-#: .\templates\account\login.html:16
-msgid "Welcome Back"
-msgstr ""
-
-#: .\templates\account\login.html:17
-msgid "Sign in to your SoLuna account"
-msgstr ""
-
-#: .\templates\account\login.html:34 .\templates\account\signup.html:24
-#: .\templates\accounts\register.html:26
-#: .\templates\socialaccount\signup.html:24
-msgid "or"
-msgstr ""
-
-#: .\templates\account\login.html:60
-msgid "Don't have an account?"
-msgstr ""
-
-#: .\templates\account\login.html:61 .\templates\account\signup.html:3
-#: .\templates\socialaccount\signup.html:3
-msgid "Sign Up"
-msgstr ""
-
-#: .\templates\account\signup.html:16 .\templates\account\signup.html:47
-#: .\templates\accounts\register.html:18 .\templates\accounts\register.html:85
-#: .\templates\socialaccount\signup.html:16
-#: .\templates\socialaccount\signup.html:47
-msgid "Create Account"
-msgstr ""
-
-#: .\templates\account\signup.html:17 .\templates\accounts\register.html:19
-#: .\templates\socialaccount\signup.html:17
-msgid "Join SoLuna and start planning your journey"
-msgstr ""
-
-#: .\templates\account\signup.html:21 .\templates\accounts\register.html:23
-#: .\templates\socialaccount\signup.html:21
-msgid "Sign up with Google"
-msgstr ""
-
-#: .\templates\account\signup.html:51 .\templates\accounts\register.html:89
-#: .\templates\socialaccount\signup.html:51
-msgid "Already have an account?"
-msgstr ""
-
-#: .\templates\accounts\password_change.html:3
-#: .\templates\accounts\password_change.html:9
-#: .\templates\accounts\profile.html:38
-msgid "Change Password"
-msgstr ""
-
-#: .\templates\accounts\password_change.html:8
-msgid "Security"
-msgstr ""
-
-#: .\templates\accounts\password_change.html:23
-msgid "Current Password"
-msgstr ""
-
-#: .\templates\accounts\password_change.html:30
-msgid "New Password"
-msgstr ""
-
-#: .\templates\accounts\password_change.html:37
-msgid "Confirm New Password"
-msgstr ""
-
-#: .\templates\accounts\password_change.html:44
-msgid "Save Password"
-msgstr ""
-
-#: .\templates\accounts\password_change.html:45
-#: .\templates\accounts\profile_edit.html:68 .\templates\bookings\list.html:53
-#: .\templates\reviews\form.html:83
-msgid "Cancel"
-msgstr ""
-
-#: .\templates\accounts\profile.html:4 .\templates\base.html:100
-#: .\templates\base.html:154
-msgid "My Profile"
-msgstr ""
-
-#: .\templates\accounts\profile.html:17
-#: .\templates\accounts\profile_edit.html:8
-msgid "Account"
-msgstr ""
-
-#: .\templates\accounts\profile.html:34
-msgid "Profile menu"
-msgstr ""
-
-#: .\templates\accounts\profile.html:35 .\templates\base.html:40
-#: .\templates\base.html:99 .\templates\base.html:153
-#: .\templates\bookings\detail.html:8 .\templates\bookings\list.html:3
-#: .\templates\bookings\list.html:9
-msgid "My Bookings"
-msgstr ""
-
-#: .\templates\accounts\profile.html:36 .\templates\accounts\profile.html:87
-msgid "My Reviews"
-msgstr ""
-
-#: .\templates\accounts\profile.html:37
-#: .\templates\accounts\profile_edit.html:3
-#: .\templates\accounts\profile_edit.html:9
-msgid "Edit Profile"
-msgstr ""
-
-#: .\templates\accounts\profile.html:42 .\templates\base.html:75
-msgid "Logout"
-msgstr ""
-
-#: .\templates\accounts\profile.html:47
-msgid "Email verified"
-msgstr ""
-
-#: .\templates\accounts\profile.html:47
-msgid "Email not verified"
-msgstr ""
-
-#: .\templates\accounts\profile.html:56
-msgid "Recent Bookings"
-msgstr ""
-
-#: .\templates\accounts\profile.html:57
-msgid "View All"
-msgstr ""
-
-#: .\templates\accounts\profile.html:79
-msgid "No bookings yet."
-msgstr ""
-
-#: .\templates\accounts\profile.html:80
-msgid "Explore tours"
-msgstr ""
-
-#: .\templates\accounts\profile.html:99
-msgid "You haven't written any reviews yet."
-msgstr ""
-
-#: .\templates\accounts\profile_edit.html:24
-#: .\templates\accounts\register.html:36
-msgid "First Name"
-msgstr ""
-
-#: .\templates\accounts\profile_edit.html:30
-#: .\templates\accounts\register.html:42
-msgid "Last Name"
-msgstr ""
-
-#: .\templates\accounts\profile_edit.html:38
-#: .\templates\accounts\register.html:57
-#: .\templates\messages_app\contact.html:44
-msgid "Email"
-msgstr ""
-
-#: .\templates\accounts\profile_edit.html:45
-#: .\templates\accounts\register.html:64
-#: .\templates\messages_app\contact.html:39
-msgid "Phone"
-msgstr ""
-
-#: .\templates\accounts\profile_edit.html:52
-msgid "Avatar"
-msgstr ""
-
-#: .\templates\accounts\profile_edit.html:58
-msgid "Preferred Language"
-msgstr ""
-
-#: .\templates\accounts\profile_edit.html:67
-msgid "Save Changes"
-msgstr ""
-
-#: .\templates\accounts\register.html:3 .\templates\base.html:156
-msgid "Register"
-msgstr ""
-
-#: .\templates\accounts\register.html:50
-msgid "Username"
-msgstr ""
-
-#: .\templates\accounts\register.html:72
-msgid "Password"
-msgstr ""
-
-#: .\templates\accounts\register.html:78
-msgid "Confirm"
-msgstr ""
-
-#: .\templates\base.html:6 .\templates\home.html:4
-msgid "Journeys filled with inspiration"
-msgstr ""
-
-#: .\templates\base.html:7
-msgid "Discover the Silk Road with us."
-msgstr ""
-
-#: .\templates\base.html:20
-msgid "Skip to content"
-msgstr ""
-
-#: .\templates\base.html:28
-msgid "Main navigation"
-msgstr ""
-
-#: .\templates\base.html:36 .\templates\base.html:95
-#: .\templates\tours\list.html:4
-msgid "Tours"
-msgstr ""
-
-#: .\templates\base.html:37 .\templates\base.html:96 .\templates\base.html:144
-#: .\templates\home.html:54 .\templates\regions\list.html:4
-msgid "Regions"
-msgstr ""
-
-#: .\templates\base.html:38 .\templates\base.html:97
-#: .\templates\messages_app\contact.html:4
-msgid "Contact"
-msgstr ""
-
-#: .\templates\base.html:50
-msgid "Language"
-msgstr ""
-
-#: .\templates\base.html:80 .\templates\base.html:102
-msgid "Book Now"
-msgstr ""
-
-#: .\templates\base.html:85
-msgid "Menu"
-msgstr ""
-
-#: .\templates\base.html:125
-msgid ""
-"Journeys filled with the sun and inspiration. Discover Uzbekistan's timeless "
-"Silk Road heritage with your personal guide."
-msgstr ""
-
-#: .\templates\base.html:141 .\templates\home.html:146
-#: .\templates\regions\detail.html:64 .\templates\regions\list.html:39
-msgid "Explore"
-msgstr ""
-
-#: .\templates\base.html:143
-msgid "All Tours"
-msgstr ""
-
-#: .\templates\base.html:149
-msgid "Company"
-msgstr ""
-
-#: .\templates\base.html:151
-msgid "Contact Us"
-msgstr ""
-
-#: .\templates\base.html:157
-msgid "Login"
-msgstr ""
-
-#: .\templates\base.html:163 .\templates\home.html:192
-#: .\templates\messages_app\contact.html:13
-msgid "Get in Touch"
-msgstr ""
-
-#: .\templates\base.html:174
-msgid "All rights reserved."
-msgstr ""
-
-#: .\templates\bookings\create.html:3
-msgid "Book"
-msgstr ""
-
-#: .\templates\bookings\create.html:8
-msgid "Booking"
-msgstr ""
-
-#: .\templates\bookings\create.html:19
-msgid "Trip Details"
-msgstr ""
-
-#: .\templates\bookings\create.html:20
-msgid "Fill in your booking details below."
-msgstr ""
-
-#: .\templates\bookings\create.html:29 .\templates\bookings\detail.html:37
+#: accounts/admin.py:18
+msgid "Дополнительная информация"
+msgstr "Información adicional"
+
+#: accounts/admin.py:33 accounts/models.py:12
+msgid "Аватар"
+msgstr "Avatar"
+
+#: accounts/apps.py:7
+msgid "Пользователи и доступы"
+msgstr "Usuarios y accesos"
+
+#: accounts/models.py:8 accounts/models.py:27
+msgid "Пользователь"
+msgstr "Usuario"
+
+#: accounts/models.py:9
+msgid "Администратор"
+msgstr "Administrador"
+
+#: accounts/models.py:11
+msgid "Номер телефона"
+msgstr "Número de teléfono"
+
+#: accounts/models.py:13
+msgid "Роль"
+msgstr "Rol"
+
+#: accounts/models.py:15
+msgid "Предпочитаемый язык"
+msgstr "Idioma preferido"
+
+#: accounts/models.py:24
+msgid "Дата регистрации"
+msgstr "Fecha de registro"
+
+#: accounts/models.py:28
+msgid "Все пользователи"
+msgstr "Todos los usuarios"
+
+#: bookings/forms.py:34
+msgid "Dietary needs, accessibility, etc."
+msgstr "Necesidades dietéticas, accesibilidad, etc."
+
+#: bookings/forms.py:38 templates/bookings/booking_create.html:88
+#: templates/bookings/booking_detail.html:188
+#: templates/bookings/booking_list.html:108
 msgid "Travel Date"
-msgstr ""
+msgstr "Fecha de viaje"
 
-#: .\templates\bookings\create.html:37
+#: bookings/forms.py:39 templates/bookings/booking_create.html:103
+#: templates/tours/detail.html:288
 msgid "Adults"
-msgstr ""
+msgstr "Adultos"
 
-#: .\templates\bookings\create.html:43
+#: bookings/forms.py:40 templates/bookings/booking_create.html:118
+#: templates/bookings/booking_detail.html:296 templates/tours/detail.html:296
 msgid "Children"
-msgstr ""
+msgstr "Niños"
 
-#: .\templates\bookings\create.html:51 .\templates\bookings\detail.html:56
+#: bookings/forms.py:41 templates/bookings/booking_create.html:160
+#: templates/bookings/booking_detail.html:253
 msgid "Special Requests"
-msgstr ""
+msgstr "Peticiones especiales"
 
-#: .\templates\bookings\create.html:53
-msgid "Dietary requirements, accessibility needs, etc."
-msgstr ""
+#: bookings/forms.py:47
+msgid "Travel date cannot be in the past."
+msgstr "La fecha de viaje no puede estar en el pasado."
 
-#: .\templates\bookings\create.html:59
-msgid "Estimated Total"
-msgstr ""
+#: bookings/forms.py:53
+msgid "At least 1 adult is required."
+msgstr "Se requiere al menos 1 adulto."
 
-#: .\templates\bookings\create.html:62
-msgid "adult(s)"
-msgstr ""
+#: payments/models.py:64
+msgid "Created"
+msgstr "Creado"
 
-#: .\templates\bookings\create.html:65
-msgid "Confirm Booking"
-msgstr ""
+#: payments/models.py:65 templates/bookings/booking_list.html:50
+#: templates/bookings/booking_list.html:83
+msgid "Pending"
+msgstr "Pendiente"
 
-#: .\templates\bookings\create.html:80 .\templates\bookings\detail.html:45
-#: .\templates\tours\detail.html:249
-msgid "Duration"
-msgstr ""
+#: payments/models.py:66
+msgid "Processing"
+msgstr "Procesando"
 
-#: .\templates\bookings\create.html:80 .\templates\bookings\detail.html:46
-#: .\templates\home.html:95 .\templates\regions\detail.html:78
-#: .\templates\tours\detail.html:110
-msgid "days"
-msgstr ""
+#: payments/models.py:67 templates/bookings/booking_detail.html:323
+#: templates/payments/payment_success.html:60
+msgid "Paid"
+msgstr "Pagado"
 
-#: .\templates\bookings\create.html:83 .\templates\tours\detail.html:254
-msgid "Group Size"
-msgstr ""
+#: payments/models.py:68
+msgid "Failed"
+msgstr "Fallido"
 
-#: .\templates\bookings\create.html:83 .\templates\home.html:96
-#: .\templates\tours\detail.html:111 .\templates\tours\detail.html:255
-msgid "Max"
-msgstr ""
+#: payments/models.py:69 templates/bookings/booking_detail.html:34
+#: templates/bookings/booking_list.html:59
+#: templates/bookings/booking_list.html:86
+msgid "Cancelled"
+msgstr "Cancelado"
 
-#: .\templates\bookings\create.html:86 .\templates\tours\detail.html:259
-msgid "Difficulty"
-msgstr ""
+#: payments/models.py:70 templates/bookings/booking_detail.html:325
+msgid "Refunded"
+msgstr "Reembolsado"
 
-#: .\templates\bookings\create.html:89
-msgid "Price/person"
-msgstr ""
+#: payments/views.py:56
+msgid "Bu bron uchun to'lov allaqachon qabul qilingan."
+msgstr "El pago de esta reserva ya ha sido aceptado."
 
-#: .\templates\bookings\detail.html:41
-msgid "Travelers"
-msgstr ""
+#: payments/views.py:83
+msgid "Ofisda to'lov qilishni tanladingiz."
+msgstr "Ha elegido pagar en la oficina."
 
-#: .\templates\bookings\detail.html:42 .\templates\bookings\list.html:36
-#: .\templates\payments\select.html:24
-msgid "adults"
-msgstr ""
+#: payments/views.py:102
+msgid "Ushbu to'lov turi hali qo'llanilmaydi."
+msgstr "Este tipo de pago aún no es aplicable."
 
-#: .\templates\bookings\detail.html:42 .\templates\bookings\list.html:36
-msgid "children"
-msgstr ""
+#: templates/404.html:4
+msgid "Page Not Found"
+msgstr "Página no encontrada"
 
-#: .\templates\bookings\detail.html:49
-msgid "Booked On"
-msgstr ""
+#: templates/404.html:16
+msgid "Oops! Page not found"
+msgstr "¡Ups! Página no encontrada"
 
-#: .\templates\bookings\detail.html:66 .\templates\bookings\detail.html:78
-msgid "Cancel Booking"
-msgstr ""
-
-#: .\templates\bookings\detail.html:68
-msgid "You can cancel this booking up to 3 days before the travel date."
-msgstr ""
-
-#: .\templates\bookings\detail.html:71
-msgid "Are you sure you want to cancel?"
-msgstr ""
-
-#: .\templates\bookings\detail.html:74
-msgid "Reason (optional)"
-msgstr ""
-
-#: .\templates\bookings\detail.html:76
-msgid "Why are you cancelling?"
-msgstr ""
-
-#: .\templates\bookings\detail.html:87
-msgid "Payment Summary"
-msgstr ""
-
-#: .\templates\bookings\detail.html:95
-msgid "Currency"
-msgstr ""
-
-#: .\templates\bookings\detail.html:102
-msgid "Total Amount"
-msgstr ""
-
-#: .\templates\bookings\detail.html:106
-msgid "Pay Now"
-msgstr ""
-
-#: .\templates\bookings\detail.html:108
-msgid "Awaiting confirmation"
-msgstr ""
-
-#: .\templates\bookings\detail.html:110
-msgid "Paid & Completed"
-msgstr ""
-
-#: .\templates\bookings\detail.html:113
-msgid "Need Help?"
-msgstr ""
-
-#: .\templates\bookings\list.html:42 .\templates\home.html:107
-#: .\templates\regions\detail.html:86 .\templates\tours\list.html:100
-msgid "Details"
-msgstr ""
-
-#: .\templates\bookings\list.html:44
-msgid "Pay"
-msgstr ""
-
-#: .\templates\bookings\list.html:51
-msgid "Cancel this booking?"
-msgstr ""
-
-#: .\templates\bookings\list.html:64
-msgid "No bookings yet"
-msgstr ""
-
-#: .\templates\bookings\list.html:65
-msgid "Start your journey today"
-msgstr ""
-
-#: .\templates\bookings\list.html:66 .\templates\home.html:28
-#: .\templates\messages_app\contact_success.html:13
-msgid "Explore Tours"
-msgstr ""
-
-#: .\templates\home.html:20 .\templates\regions\detail.html:29
-msgid "Discover"
-msgstr ""
-
-#: .\templates\home.html:21
-msgid "the Silk Road"
-msgstr ""
-
-#: .\templates\home.html:22
-msgid "Your Way"
-msgstr ""
-
-#: .\templates\home.html:25
+#: templates/404.html:18
 msgid ""
-"Samarkand, Bukhara, Khiva â cities where every stone breathes centuries of "
-"history. We craft journeys as unique as you are."
-msgstr ""
+"The page you are looking for might have been moved or doesn't exist. Let's "
+"get you back on track."
+msgstr "La página que busca puede haber sido movida o no existe. Volvamos al camino."
 
-#: .\templates\home.html:29
-msgid "Plan My Trip"
-msgstr ""
+#: templates/404.html:23 templates/500.html:21
+msgid "Go Home"
+msgstr "Ir al inicio"
 
-#: .\templates\home.html:35
-msgid "Scroll"
-msgstr ""
-
-#: .\templates\home.html:46
-msgid "Happy Travelers"
-msgstr ""
-
-#: .\templates\home.html:50
-msgid "Unique Tours"
-msgstr ""
-
-#: .\templates\home.html:58
-msgid "Languages"
-msgstr ""
-
-#: .\templates\home.html:69
-msgid "Curated Experiences"
-msgstr ""
-
-#: .\templates\home.html:70
-msgid "Signature Tours"
-msgstr ""
-
-#: .\templates\home.html:71
-msgid "Hand-picked journeys that capture the soul of Uzbekistan"
-msgstr ""
-
-#: .\templates\home.html:88 .\templates\regions\detail.html:74
-#: .\templates\tours\list.html:80
-msgid "Featured"
-msgstr ""
-
-#: .\templates\home.html:105 .\templates\regions\detail.html:85
-#: .\templates\tours\detail.html:242 .\templates\tours\list.html:98
-msgid "per person"
-msgstr ""
-
-#: .\templates\home.html:115 .\templates\tours\list.html:127
-msgid "View All Tours"
-msgstr ""
-
-#: .\templates\home.html:126
-msgid "Destinations"
-msgstr ""
-
-#: .\templates\home.html:127
-msgid "Legendary Regions"
-msgstr ""
-
-#: .\templates\home.html:128
-msgid ""
-"From ancient desert cities to lush mountain valleys â Uzbekistan's diversity "
-"awaits"
-msgstr ""
-
-#: .\templates\home.html:145 .\templates\regions\list.html:35
-msgid "attractions"
-msgstr ""
-
-#: .\templates\home.html:160
-msgid "Why SoLuna"
-msgstr ""
-
-#: .\templates\home.html:161
-msgid "Your Journey, Our Passion"
-msgstr ""
-
-#: .\templates\home.html:166
-msgid "Personalized"
-msgstr ""
-
-#: .\templates\home.html:167
-msgid ""
-"Every itinerary is crafted specifically for you â your pace, your interests, "
-"your budget."
-msgstr ""
-
-#: .\templates\home.html:171
-msgid "Trusted"
-msgstr ""
-
-#: .\templates\home.html:172
-msgid ""
-"Licensed operator with 500+ satisfied travelers. Your safety and comfort "
-"come first."
-msgstr ""
-
-#: .\templates\home.html:176
-msgid "Authentic"
-msgstr ""
-
-#: .\templates\home.html:177
-msgid ""
-"Local guides, genuine experiences, hidden gems â we take you beyond the "
-"tourist trail."
-msgstr ""
-
-#: .\templates\home.html:186
-msgid "Ready to travel?"
-msgstr ""
-
-#: .\templates\home.html:187
-msgid "Start Planning Your Journey"
-msgstr ""
-
-#: .\templates\home.html:189
-msgid ""
-"Contact Oygul and let's create your perfect Uzbekistan experience together."
-msgstr ""
-
-#: .\templates\home.html:193
+#: templates/404.html:26
 msgid "Browse Tours"
-msgstr ""
+msgstr "Explorar tours"
 
-#: .\templates\messages_app\contact.html:15
-msgid "Ready to plan your dream journey? We'd love to hear from you."
-msgstr ""
+#: templates/404.html:31 templates/base.html:154 templates/base.html:302
+#: templates/base.html:375 templates/regions/detail.html:19
+#: templates/regions/list.html:4 templates/regions/list.html:14
+msgid "Destinations"
+msgstr "Destinos"
 
-#: .\templates\messages_app\contact.html:27
-msgid "Send a Message"
-msgstr ""
+#: templates/404.html:32 templates/regions/detail.html:160
+msgid "Contact us"
+msgstr "Contáctenos"
 
-#: .\templates\messages_app\contact.html:28
-msgid "We'll reply within 24 hours."
-msgstr ""
+#: templates/404.html:33
+msgid "Help center"
+msgstr "Centro de ayuda"
 
-#: .\templates\messages_app\contact.html:34
-msgid "Your Name"
-msgstr ""
+#: templates/500.html:4
+msgid "Server Error"
+msgstr "Error del servidor"
 
-#: .\templates\messages_app\contact.html:49
-msgid "Subject"
-msgstr ""
+#: templates/500.html:14
+msgid "Something went wrong"
+msgstr "Algo salió mal"
 
-#: .\templates\messages_app\contact.html:50
-msgid "I want to book a tour..."
-msgstr ""
-
-#: .\templates\messages_app\contact.html:53
-msgid "Message"
-msgstr ""
-
-#: .\templates\messages_app\contact.html:54
-msgid "Tell us about your travel plans, dates, group size..."
-msgstr ""
-
-#: .\templates\messages_app\contact.html:57
-msgid "Send Message"
-msgstr ""
-
-#: .\templates\messages_app\contact.html:67
-msgid "Your Guide"
-msgstr ""
-
-#: .\templates\messages_app\contact.html:69
-msgid "Touroperator Â· SoLuna"
-msgstr ""
-
-#: .\templates\messages_app\contact.html:92
-msgid "Quick Actions"
-msgstr ""
-
-#: .\templates\messages_app\contact.html:94
-msgid "Browse All Tours"
-msgstr ""
-
-#: .\templates\messages_app\contact.html:95
-msgid "Chat on WhatsApp"
-msgstr ""
-
-#: .\templates\messages_app\contact_success.html:3
-msgid "Message Sent"
-msgstr ""
-
-#: .\templates\messages_app\contact_success.html:8
-msgid "Message Sent!"
-msgstr ""
-
-#: .\templates\messages_app\contact_success.html:10
-msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
-msgstr ""
-
-#: .\templates\messages_app\contact_success.html:14
-msgid "Back to Home"
-msgstr ""
-
-#: .\templates\payments\select.html:3
-msgid "Payment"
-msgstr ""
-
-#: .\templates\payments\select.html:8
-msgid "Secure Payment"
-msgstr ""
-
-#: .\templates\payments\select.html:9
-msgid "Choose Payment Method"
-msgstr ""
-
-#: .\templates\payments\select.html:28
-msgid "Total"
-msgstr ""
-
-#: .\templates\payments\select.html:49
-msgid "Pay via Click"
-msgstr ""
-
-#: .\templates\payments\select.html:59
-msgid "Pay via Payme"
-msgstr ""
-
-#: .\templates\payments\select.html:67
-msgid "Proceed to Payment"
-msgstr ""
-
-#: .\templates\payments\select.html:69
-msgid "Secure 256-bit SSL encryption"
-msgstr ""
-
-#: .\templates\regions\detail.html:16 .\templates\tours\list.html:30
-msgid "All Regions"
-msgstr ""
-
-#: .\templates\regions\detail.html:30
-msgid "Attractions"
-msgstr ""
-
-#: .\templates\regions\detail.html:49
-msgid "View on Map"
-msgstr ""
-
-#: .\templates\regions\detail.html:65
-msgid "Tours in"
-msgstr ""
-
-#: .\templates\regions\list.html:14
-msgid "Regions of Uzbekistan"
-msgstr ""
-
-#: .\templates\regions\list.html:16
+#: templates/500.html:16
 msgid ""
-"From ancient Silk Road cities to breathtaking mountain landscapes â explore "
-"Uzbekistan's diverse regions."
-msgstr ""
+"We're having trouble loading this page. Our team has been notified and we're "
+"working on it."
+msgstr "Tenemos problemas para cargar esta página. Nuestro equipo ha sido notificado y estamos trabajando en ello."
 
-#: .\templates\regions\list.html:35
-msgid "tours"
-msgstr ""
+#: templates/500.html:24 templates/account/password_reset_done.html:25
+#: templates/socialaccount/authentication_error.html:49
+msgid "Try again"
+msgstr "Intentar de nuevo"
 
-#: .\templates\regions\list.html:48
-msgid "No regions yet"
-msgstr ""
+#: templates/account/login.html:4 templates/account/login.html:163
+#: templates/accounts/register.html:90 templates/base.html:242
+#: templates/base.html:316
+msgid "Sign In"
+msgstr "Iniciar sesión"
 
-#: .\templates\reviews\form.html:4 .\templates\tours\detail.html:189
-msgid "Write a Review"
-msgstr ""
+#: templates/account/login.html:23
+msgid "Welcome back to your"
+msgstr "Bienvenido de nuevo a su"
 
-#: .\templates\reviews\form.html:11
-msgid "Update Your Review"
-msgstr ""
+#: templates/account/login.html:24
+msgid "next adventure"
+msgstr "próxima aventura"
 
-#: .\templates\reviews\form.html:11
-msgid "Share Your Experience"
-msgstr ""
-
-#: .\templates\reviews\form.html:14
-msgid "Tour"
-msgstr ""
-
-#: .\templates\reviews\form.html:58
-msgid "Write your detailed review here..."
-msgstr ""
-
-#: .\templates\reviews\form.html:80
-msgid "Submit Review"
-msgstr ""
-
-#: .\templates\socialaccount\login.html:6
-#, python-format
-msgid "Sign In Via %(provider_name)s"
-msgstr ""
-
-#: .\templates\socialaccount\login.html:15
-#, python-format
-msgid "%(provider_name)s orqali kirish"
-msgstr ""
-
-#: .\templates\socialaccount\login.html:20
-#, python-format
+#: templates/account/login.html:27
 msgid ""
-"Siz SoLuna tizimiga uchinchi tomon (%(provider_name)s) akkauntingiz orqali "
-"kirmoqchisiz. Davom etish tugmasini bosing."
-msgstr ""
+"Discover the magic of the Silk Road — ancient cities, breathtaking "
+"landscapes, and unforgettable journeys."
+msgstr "Descubra la magia de la Ruta de la Seda: ciudades antiguas, paisajes impresionantes y viajes inolvidables."
 
-#: .\templates\socialaccount\login.html:26
-msgid "Davom etish"
-msgstr ""
+#: templates/account/login.html:35
+msgid "Trusted by 50,000+"
+msgstr "Con la confianza de más de 50,000"
 
-#: .\templates\socialaccount\login.html:31
-msgid "Orqaga qaytish"
-msgstr ""
+#: templates/account/login.html:36
+msgid "travelers across 9 countries"
+msgstr "viajeros en 9 países"
 
-#: .\templates\tours\detail.html:111
-msgid "people"
-msgstr ""
+#: templates/account/login.html:42
+msgid "rating"
+msgstr "calificación"
 
-#: .\templates\tours\detail.html:114 .\templates\tours\detail.html:198
-msgid "reviews"
-msgstr ""
+#: templates/account/login.html:43
+msgid "from 8,400+ verified reviews"
+msgstr "de más de 8,400 reseñas verificadas"
 
-#: .\templates\tours\detail.html:128
-msgid "About This Tour"
-msgstr ""
+#: templates/account/login.html:49 templates/bookings/booking_create.html:305
+msgid "24/7 support"
+msgstr "Soporte 24/7"
 
-#: .\templates\tours\detail.html:134
-msgid "Gallery"
-msgstr ""
+#: templates/account/login.html:50
+msgid "in 9 languages"
+msgstr "en 9 idiomas"
 
-#: .\templates\tours\detail.html:135
-msgid "Click on any image to view it in full size."
-msgstr ""
+#: templates/account/login.html:56
+msgid "From"
+msgstr "Desde"
 
-#: .\templates\tours\detail.html:148
-msgid "Day by Day Itinerary"
-msgstr ""
+#: templates/account/login.html:57
+msgid "Tashkent · Samarkand · Bukhara · Khiva"
+msgstr "Taskent · Samarcanda · Bujará · Jiva"
 
-#: .\templates\tours\detail.html:167
-msgid "Included"
-msgstr ""
+#: templates/account/login.html:68 templates/account/signup.html:76
+#: templates/accounts/profile.html:11 templates/base.html:111
+#: templates/base.html:300 templates/bookings/booking_create.html:12
+#: templates/bookings/booking_detail.html:12
+#: templates/bookings/booking_list.html:12
+#: templates/messages_app/contact.html:12
+#: templates/payments/payment_select.html:11 templates/regions/detail.html:17
+#: templates/regions/list.html:12 templates/tours/detail.html:12
+#: templates/tours/list.html:12
+msgid "Home"
+msgstr "Inicio"
 
-#: .\templates\tours\detail.html:176
-msgid "Not Included"
-msgstr ""
+#: templates/account/login.html:73
+msgid "Welcome back"
+msgstr "Bienvenido de nuevo"
 
-#: .\templates\tours\detail.html:187
-msgid "Customer Reviews"
-msgstr ""
+#: templates/account/login.html:75
+msgid "Sign in to access your bookings and exclusive offers."
+msgstr "Inicie sesión para acceder a sus reservas y ofertas exclusivas."
 
-#: .\templates\tours\detail.html:227
-msgid "No reviews yet. Be the first to share your feedback!"
-msgstr ""
+#: templates/account/login.html:91 templates/account/login.html:106
+msgid "Continue with Google"
+msgstr "Continuar con Google"
 
-#: .\templates\tours\detail.html:240
-msgid "UZS"
-msgstr ""
+#: templates/account/login.html:111
+msgid "or sign in with email"
+msgstr "o iniciar sesión con correo electrónico"
 
-#: .\templates\tours\detail.html:250
-msgid "Days"
-msgstr ""
+#: templates/account/login.html:126 templates/account/signup.html:153
+#: templates/accounts/profile.html:105 templates/accounts/profile_edit.html:58
+#: templates/accounts/register.html:57 templates/base.html:395
+#: templates/messages_app/contact.html:40
+#: templates/messages_app/contact.html:77
+#: templates/socialaccount/signup.html:67
+msgid "Email"
+msgstr "Correo electrónico"
 
-#: .\templates\tours\detail.html:265
-msgid "Rating"
-msgstr ""
+#: templates/account/login.html:138 templates/account/signup.html:164
+#: templates/accounts/password_change.html:13
+#: templates/accounts/profile.html:48 templates/accounts/register.html:72
+msgid "Password"
+msgstr "Contraseña"
 
-#: .\templates\tours\detail.html:275
-msgid "Book This Tour"
-msgstr ""
+#: templates/account/login.html:140
+msgid "Forgot?"
+msgstr "¿La olvidó?"
 
-#: .\templates\tours\detail.html:277
-msgid "Login to Book"
-msgstr ""
+#: templates/account/login.html:155
+msgid "Keep me signed in for 30 days"
+msgstr "Mantener mi sesión iniciada por 30 días"
 
-#: .\templates\tours\detail.html:280
-msgid "Ask a Question"
-msgstr ""
+#: templates/account/login.html:168
+msgid "Don't have an account?"
+msgstr "¿No tiene una cuenta?"
 
-#: .\templates\tours\detail.html:286
-msgid "Covered Regions"
-msgstr ""
+#: templates/account/login.html:169
+msgid "Create one"
+msgstr "Crear una"
 
-#: .\templates\tours\detail.html:297
-msgid "Need personal assistance?"
-msgstr ""
+#: templates/account/login.html:174 templates/account/signup.html:205
+#: templates/account/signup.html:227 templates/base.html:413
+#: templates/socialaccount/signup.html:119
+msgid "Terms"
+msgstr "Términos"
 
-#: .\templates\tours\list.html:14
+#: templates/account/login.html:176 templates/account/signup.html:229
+#: templates/base.html:415
+msgid "Privacy"
+msgstr "Privacidad"
+
+#: templates/account/login.html:178 templates/account/signup.html:231
+msgid "Help"
+msgstr "Ayuda"
+
+#: templates/account/logout.html:4 templates/account/logout.html:23
+#: templates/base.html:236 templates/base.html:312
+msgid "Sign Out"
+msgstr "Cerrar sesión"
+
+#: templates/account/logout.html:10
+msgid "Sign out?"
+msgstr "¿Cerrar sesión?"
+
+#: templates/account/logout.html:12
+msgid "Are you sure you want to sign out?"
+msgstr "¿Está seguro de que desea cerrar sesión?"
+
+#: templates/account/logout.html:21 templates/accounts/password_change.html:47
+#: templates/accounts/profile_edit.html:85
+#: templates/bookings/booking_detail.html:125 templates/reviews/form.html:83
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/account/password_reset.html:4
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+#: templates/account/password_reset.html:15
+msgid "Forgot your password?"
+msgstr "¿Olvidó su contraseña?"
+
+#: templates/account/password_reset.html:17
+msgid "Enter your email and we'll send a link to reset your password."
+msgstr "Ingrese su correo electrónico y le enviaremos un enlace para restablecer su contraseña."
+
+#: templates/account/password_reset.html:24
+msgid "Email address"
+msgstr "Dirección de correo electrónico"
+
+#: templates/account/password_reset.html:29
+msgid "Send Reset Link"
+msgstr "Enviar enlace de restablecimiento"
+
+#: templates/account/password_reset.html:35
+#: templates/account/password_reset_done.html:20
+#: templates/account/verification_sent.html:19
+#: templates/socialaccount/login.html:84
+#: templates/socialaccount/signup.html:136
+msgid "Back to sign in"
+msgstr "Volver a iniciar sesión"
+
+#: templates/account/password_reset_done.html:4
+msgid "Email Sent"
+msgstr "Correo enviado"
+
+#: templates/account/password_reset_done.html:14
+msgid "Check your email"
+msgstr "Revise su correo electrónico"
+
+#: templates/account/password_reset_done.html:16
+msgid ""
+"We've sent a password reset link to your email address. The link will expire "
+"in 24 hours."
+msgstr "Hemos enviado un enlace de restablecimiento de contraseña a su correo electrónico. El enlace expirará en 24 horas."
+
+#: templates/account/password_reset_done.html:24
+msgid "Didn't receive an email?"
+msgstr "¿No recibió un correo electrónico?"
+
+#: templates/account/signup.html:4 templates/base.html:243
+#: templates/base.html:317
+msgid "Sign Up"
+msgstr "Registrarse"
+
+#: templates/account/signup.html:23
+msgid "Your journey to the"
+msgstr "Su viaje hacia la"
+
+#: templates/account/signup.html:24 templates/base.html:266
+msgid "Silk Road"
+msgstr "Ruta de la Seda"
+
+#: templates/account/signup.html:24
+msgid "starts here"
+msgstr "comienza aquí"
+
+#: templates/account/signup.html:27
+msgid ""
+"Join thousands of travelers exploring Uzbekistan's ancient cities, vibrant "
+"culture, and timeless landscapes."
+msgstr "Únase a miles de viajeros que exploran las antiguas ciudades, la vibrante cultura y los paisajes eternos de Uzbekistán."
+
+#: templates/account/signup.html:36
+msgid "Welcome bonus"
+msgstr "Bono de bienvenida"
+
+#: templates/account/signup.html:37
+#, python-format
+msgid "Get 5%% off your first booking"
+msgstr "Obtenga un 5%% de descuento en su primera reserva"
+
+#: templates/account/signup.html:43
+msgid "Save favorites"
+msgstr "Guardar favoritos"
+
+#: templates/account/signup.html:44
+msgid "Build your dream itinerary"
+msgstr "Construya el itinerario de sus sueños"
+
+#: templates/account/signup.html:50
+msgid "Exclusive offers"
+msgstr "Ofertas exclusivas"
+
+#: templates/account/signup.html:51
+msgid "Early access to seasonal deals"
+msgstr "Acceso anticipado a ofertas de temporada"
+
+#: templates/account/signup.html:57
+msgid "Faster checkout"
+msgstr "Pago más rápido"
+
+#: templates/account/signup.html:58
+msgid "Save payment methods securely"
+msgstr "Guarde sus métodos de pago de forma segura"
+
+#: templates/account/signup.html:64
+msgid "Free to join"
+msgstr "Unirse es gratis"
+
+#: templates/account/signup.html:65
+msgid "No credit card required"
+msgstr "No se requiere tarjeta de crédito"
+
+#: templates/account/signup.html:81
+msgid "Create your account"
+msgstr "Cree su cuenta"
+
+#: templates/account/signup.html:83
+msgid "Sign up in 30 seconds. No credit card required."
+msgstr "Regístrese en 30 segundos. No se requiere tarjeta de crédito."
+
+#: templates/account/signup.html:99 templates/account/signup.html:113
+#: templates/accounts/register.html:23
+msgid "Sign up with Google"
+msgstr "Registrarse con Google"
+
+#: templates/account/signup.html:118
+msgid "or sign up with email"
+msgstr "o registrarse con correo electrónico"
+
+#: templates/account/signup.html:134
+msgid "First name"
+msgstr "Nombre"
+
+#: templates/account/signup.html:142
+msgid "Last name"
+msgstr "Apellido"
+
+#: templates/account/signup.html:168
+msgid "At least 8 characters"
+msgstr "Al menos 8 caracteres"
+
+#: templates/account/signup.html:180
+msgid "Password strength"
+msgstr "Seguridad de la contraseña"
+
+#: templates/account/signup.html:187
+msgid "Confirm password"
+msgstr "Confirmar contraseña"
+
+#: templates/account/signup.html:191
+msgid "Repeat password"
+msgstr "Repetir contraseña"
+
+#: templates/account/signup.html:204 templates/bookings/booking_create.html:199
+#: templates/socialaccount/signup.html:118
+msgid "I agree to SoLuna's"
+msgstr "Acepto los de SoLuna"
+
+#: templates/account/signup.html:206 templates/bookings/booking_create.html:201
+#: templates/socialaccount/signup.html:120
+msgid "Privacy Policy"
+msgstr "Política de privacidad"
+
+#: templates/account/signup.html:207
+msgid "and consent to receiving travel inspiration emails"
+msgstr "y consiento recibir correos de inspiración de viaje"
+
+#: templates/account/signup.html:216 templates/accounts/register.html:18
+#: templates/accounts/register.html:85 templates/socialaccount/signup.html:130
+msgid "Create Account"
+msgstr "Crear cuenta"
+
+#: templates/account/signup.html:221 templates/accounts/register.html:89
+msgid "Already have an account?"
+msgstr "¿Ya tiene una cuenta?"
+
+#: templates/account/signup.html:222
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#: templates/account/verification_sent.html:4
+msgid "Verify Email"
+msgstr "Verificar correo electrónico"
+
+#: templates/account/verification_sent.html:14
+msgid "Verify your email"
+msgstr "Verifique su correo electrónico"
+
+#: templates/account/verification_sent.html:16
+msgid ""
+"We've sent a verification email. Please click the link in the email to "
+"activate your account."
+msgstr "Hemos enviado un correo de verificación. Haga clic en el enlace del correo para activar su cuenta."
+
+#: templates/accounts/password_change.html:4
+#: templates/accounts/password_change.html:17
+msgid "Change Password"
+msgstr "Cambiar contraseña"
+
+#: templates/accounts/password_change.html:11
+#: templates/accounts/profile.html:13 templates/accounts/profile.html:36
+#: templates/accounts/profile_edit.html:11
+#: templates/bookings/booking_list.html:14
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/accounts/password_change.html:19
+msgid "For security, choose a strong password you haven't used before."
+msgstr "Por seguridad, elija una contraseña segura que no haya usado antes."
+
+#: templates/accounts/password_change.html:26
+msgid "Current Password"
+msgstr "Contraseña actual"
+
+#: templates/accounts/password_change.html:32
+msgid "New Password"
+msgstr "Nueva contraseña"
+
+#: templates/accounts/password_change.html:36
+msgid "At least 8 characters, with letters and numbers."
+msgstr "Al menos 8 caracteres, con letras y números."
+
+#: templates/accounts/password_change.html:41
+msgid "Confirm New Password"
+msgstr "Confirmar nueva contraseña"
+
+#: templates/accounts/password_change.html:49
+msgid "Update Password"
+msgstr "Actualizar contraseña"
+
+#: templates/accounts/profile.html:4 templates/base.html:221
+#: templates/base.html:308
+msgid "My Profile"
+msgstr "Mi perfil"
+
+#: templates/accounts/profile.html:30 templates/accounts/profile_edit.html:4
+#: templates/accounts/profile_edit.html:17
+msgid "Edit Profile"
+msgstr "Editar perfil"
+
+#: templates/accounts/profile.html:39 templates/base.html:224
+#: templates/base.html:309 templates/bookings/booking_detail.html:14
+#: templates/bookings/booking_list.html:4
+#: templates/bookings/booking_list.html:16
+msgid "My Bookings"
+msgstr "Mis reservas"
+
+#: templates/accounts/profile.html:42 templates/accounts/profile.html:82
+msgid "Wishlist"
+msgstr "Lista de deseos"
+
+#: templates/accounts/profile.html:45
+msgid "My Reviews"
+msgstr "Mis reseñas"
+
+#: templates/accounts/profile.html:53
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: templates/accounts/profile.html:68
+msgid "Total Bookings"
+msgstr "Total de reservas"
+
+#: templates/accounts/profile.html:75
+msgid "Completed Trips"
+msgstr "Viajes completados"
+
+#: templates/accounts/profile.html:89 templates/tours/detail.html:117
+#: templates/tours/detail.html:211
+msgid "Reviews"
+msgstr "Reseñas"
+
+#: templates/accounts/profile.html:97
+msgid "Personal Information"
+msgstr "Información personal"
+
+#: templates/accounts/profile.html:99 templates/accounts/profile_edit.html:13
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/accounts/profile.html:103 templates/messages_app/contact.html:73
+msgid "Full Name"
+msgstr "Nombre completo"
+
+#: templates/accounts/profile.html:104 templates/accounts/register.html:50
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: templates/accounts/profile.html:106 templates/accounts/profile_edit.html:64
+#: templates/accounts/register.html:64 templates/messages_app/contact.html:33
+#: templates/messages_app/contact.html:84
+msgid "Phone"
+msgstr "Teléfono"
+
+#: templates/accounts/profile.html:107
+msgid "Joined"
+msgstr "Miembro desde"
+
+#: templates/accounts/profile.html:108 templates/accounts/profile_edit.html:70
+#: templates/regions/detail.html:104
+msgid "Country"
+msgstr "País"
+
+#: templates/accounts/profile.html:115
+msgid "Recent Bookings"
+msgstr "Reservas recientes"
+
+#: templates/accounts/profile.html:117
+msgid "View all"
+msgstr "Ver todo"
+
+#: templates/accounts/profile.html:132 templates/payments/mock_pay.html:161
+#: templates/tours/detail.html:307
+msgid "guests"
+msgstr "huéspedes"
+
+#: templates/accounts/profile.html:145
+msgid "You haven't booked any tours yet."
+msgstr "Aún no ha reservado ningún tour."
+
+#: templates/accounts/profile.html:146
+msgid "Browse tours"
+msgstr "Explorar tours"
+
+#: templates/accounts/profile_edit.html:19
+msgid "Update your personal information and preferences."
+msgstr "Actualice su información personal y preferencias."
+
+#: templates/accounts/profile_edit.html:35
+msgid "Profile photo"
+msgstr "Foto de perfil"
+
+#: templates/accounts/profile_edit.html:37
+msgid "JPG, PNG. Max 2MB."
+msgstr "JPG, PNG. Máx. 2MB."
+
+#: templates/accounts/profile_edit.html:40
+msgid "Upload"
+msgstr "Subir"
+
+#: templates/accounts/profile_edit.html:48 templates/accounts/register.html:36
+msgid "First Name"
+msgstr "Nombre"
+
+#: templates/accounts/profile_edit.html:52 templates/accounts/register.html:42
+msgid "Last Name"
+msgstr "Apellido"
+
+#: templates/accounts/profile_edit.html:60
+msgid "Email cannot be changed."
+msgstr "El correo electrónico no se puede cambiar."
+
+#: templates/accounts/profile_edit.html:74
+msgid "City"
+msgstr "Ciudad"
+
+#: templates/accounts/profile_edit.html:80
+msgid "About yourself"
+msgstr "Sobre usted"
+
+#: templates/accounts/profile_edit.html:81
+msgid "Tell us a bit about yourself..."
+msgstr "Cuéntenos un poco sobre usted..."
+
+#: templates/accounts/profile_edit.html:87
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: templates/accounts/register.html:3
+msgid "Register"
+msgstr "Registrarse"
+
+#: templates/accounts/register.html:19
+msgid "Join SoLuna and start planning your journey"
+msgstr "Únase a SoLuna y comience a planificar su viaje"
+
+#: templates/accounts/register.html:26
+msgid "or"
+msgstr "o"
+
+#: templates/accounts/register.html:78
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/base.html:7 templates/home.html:4 templates/home.html:14
+msgid "Your Gateway to Extraordinary Adventures"
+msgstr "Su puerta a aventuras extraordinarias"
+
+#: templates/base.html:8
+msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
+msgstr "SoLuna: tours premium por Uzbekistán y la Ruta de la Seda."
+
+#: templates/base.html:35
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+#: templates/base.html:56
+msgid "Unlock the Magic of Travel with SoLuna"
+msgstr "Descubra la magia de viajar con SoLuna"
+
+#: templates/base.html:58
+msgid "Explore Now"
+msgstr "Explorar ahora"
+
+#: templates/base.html:67 templates/regions/detail.html:130
+msgid "Language"
+msgstr "Idioma"
+
+#: templates/base.html:80 templates/regions/detail.html:139
+msgid "Currency"
+msgstr "Moneda"
+
+#: templates/base.html:92
+msgid "Toggle theme"
+msgstr "Cambiar tema"
+
+#: templates/base.html:101
+msgid "Main navigation"
+msgstr "Navegación principal"
+
+#: templates/base.html:117 templates/base.html:301 templates/home.html:19
+#: templates/home.html:88 templates/home.html:285 templates/home.html:396
+#: templates/tours/detail.html:14 templates/tours/list.html:14
+msgid "Tours"
+msgstr "Tours"
+
+#: templates/base.html:123 templates/tours/list.html:4
+#: templates/tours/list.html:19
+msgid "All Tours"
+msgstr "Todos los tours"
+
+#: templates/base.html:124
+msgid "Browse our complete catalog"
+msgstr "Explore nuestro catálogo completo"
+
+#: templates/base.html:130
+msgid "Cultural"
+msgstr "Cultural"
+
+#: templates/base.html:131
+msgid "Historic cities and heritage"
+msgstr "Ciudades históricas y patrimonio"
+
+#: templates/base.html:137 templates/base.html:385
+msgid "Adventure"
+msgstr "Aventura"
+
+#: templates/base.html:138
+msgid "Mountains, deserts and trekking"
+msgstr "Montañas, desiertos y senderismo"
+
+#: templates/base.html:144
+msgid "Premium"
+msgstr "Premium"
+
+#: templates/base.html:145
+msgid "Luxury experiences"
+msgstr "Experiencias de lujo"
+
+#: templates/base.html:160
+msgid "All Destinations"
+msgstr "Todos los destinos"
+
+#: templates/base.html:161
+msgid "Explore Uzbekistan"
+msgstr "Explorar Uzbekistán"
+
+#: templates/base.html:168
+msgid "City of legends"
+msgstr "Ciudad de leyendas"
+
+#: templates/base.html:175
+msgid "Holy and ancient"
+msgstr "Santa y antigua"
+
+#: templates/base.html:182
+msgid "Open-air museum"
+msgstr "Museo al aire libre"
+
+#: templates/base.html:188 templates/base.html:303 templates/home.html:23
+msgid "Activities"
+msgstr "Actividades"
+
+#: templates/base.html:189 templates/base.html:304 templates/base.html:376
+#: templates/messages_app/contact.html:14
+msgid "Contact"
+msgstr "Contacto"
+
+#: templates/base.html:196 templates/home.html:61 templates/tours/list.html:56
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/base.html:227
+msgid "Saved Tours"
+msgstr "Tours guardados"
+
+#: templates/base.html:230
+msgid "Settings"
+msgstr "Configuración"
+
+#: templates/base.html:247
+msgid "Open menu"
+msgstr "Abrir menú"
+
+#: templates/base.html:258
+msgid "Search tours, destinations, activities..."
+msgstr "Buscar tours, destinos, actividades..."
+
+#: templates/base.html:259
+msgid "Close search"
+msgstr "Cerrar búsqueda"
+
+#: templates/base.html:264 templates/payments/payment_select.html:94
+msgid "Popular"
+msgstr "Popular"
+
+#: templates/base.html:282
+msgid "Close menu"
+msgstr "Cerrar menú"
+
+#: templates/base.html:299
+msgid "Mobile navigation"
+msgstr "Navegación móvil"
+
+#: templates/base.html:341
+msgid "Close"
+msgstr "Cerrar"
+
+#: templates/base.html:361
+msgid ""
+"Dive into local recommendations for a truly authentic Silk Road experience "
+"across Uzbekistan."
+msgstr "Sumérjase en las recomendaciones locales para una experiencia verdaderamente auténtica de la Ruta de la Seda en Uzbekistán."
+
+#: templates/base.html:363
+msgid "Tashkent, Uzbekistan"
+msgstr "Taskent, Uzbekistán"
+
+#: templates/base.html:364
+msgid "Hours"
+msgstr "Horario"
+
+#: templates/base.html:371
+msgid "Company"
+msgstr "Compañía"
+
+#: templates/base.html:373
+msgid "About Us"
+msgstr "Sobre nosotros"
+
+#: templates/base.html:374
 msgid "Our Tours"
-msgstr ""
+msgstr "Nuestros tours"
 
-#: .\templates\tours\list.html:16
-#, python-format
-msgid "%(count)s tour found"
-msgid_plural "%(count)s tours found"
-msgstr[0] ""
-msgstr[1] ""
+#: templates/base.html:381
+msgid "Services"
+msgstr "Servicios"
 
-#: .\templates\tours\list.html:26
-msgid "Search tours..."
-msgstr ""
+#: templates/base.html:383
+msgid "Tour Booking"
+msgstr "Reserva de tours"
 
-#: .\templates\tours\list.html:37
-msgid "All Categories"
-msgstr ""
+#: templates/base.html:384
+msgid "Premium Tours"
+msgstr "Tours premium"
 
-#: .\templates\tours\list.html:44
-msgid "Any Duration"
-msgstr ""
+#: templates/base.html:386
+msgid "Help & Support"
+msgstr "Ayuda y soporte"
 
-#: .\templates\tours\list.html:45
-msgid "1â3 days"
-msgstr ""
+#: templates/base.html:391
+msgid "Newsletter"
+msgstr "Boletín"
 
-#: .\templates\tours\list.html:46
-msgid "4â7 days"
-msgstr ""
+#: templates/base.html:392
+msgid "Get exclusive offers and travel inspiration."
+msgstr "Obtenga ofertas exclusivas e inspiración de viaje."
 
-#: .\templates\tours\list.html:47
-msgid "8+ days"
-msgstr ""
+#: templates/base.html:395
+msgid "Enter your email"
+msgstr "Ingrese su correo electrónico"
 
-#: .\templates\tours\list.html:51
-msgid "Newest"
-msgstr ""
+#: templates/base.html:396
+msgid "Subscribe"
+msgstr "Suscribirse"
 
-#: .\templates\tours\list.html:52
-msgid "Price â"
-msgstr ""
+#: templates/base.html:401
+msgid "We accept"
+msgstr "Aceptamos"
 
-#: .\templates\tours\list.html:53
-msgid "Price â"
-msgstr ""
+#: templates/base.html:411
+msgid "All rights reserved."
+msgstr "Todos los derechos reservados."
 
-#: .\templates\tours\list.html:54
-msgid "Duration â"
-msgstr ""
+#: templates/base.html:417
+msgid "Cookies"
+msgstr "Cookies"
 
-#: .\templates\tours\list.html:57
-msgid "Filter"
-msgstr ""
+#: templates/base.html:420
+msgid "Follow us"
+msgstr "Síganos"
 
-#: .\templates\tours\list.html:59
+#: templates/base.html:432
+msgid "Back to top"
+msgstr "Volver arriba"
+
+#: templates/bookings/booking_create.html:4
+msgid "Book"
+msgstr "Reservar"
+
+#: templates/bookings/booking_create.html:16
+#: templates/bookings/booking_detail.html:4
+#: templates/payments/mock_pay.html:155
+msgid "Booking"
+msgstr "Reserva"
+
+#: templates/bookings/booking_create.html:19
+msgid "Complete Your Booking"
+msgstr "Complete su reserva"
+
+#: templates/bookings/booking_create.html:20
+msgid "Just a few details and you're ready to start your adventure"
+msgstr "Solo unos pocos detalles y estará listo para comenzar su aventura"
+
+#: templates/bookings/booking_create.html:27
+#: templates/bookings/booking_create.html:80
+#: templates/payments/payment_select.html:25
+msgid "Trip Details"
+msgstr "Detalles del viaje"
+
+#: templates/bookings/booking_create.html:28
+msgid "Travel info"
+msgstr "Información de viaje"
+
+#: templates/bookings/booking_create.html:35
+#: templates/bookings/booking_create.html:174
+#: templates/payments/payment_select.html:4
+#: templates/payments/payment_select.html:15
+#: templates/payments/payment_select.html:33
+#: templates/payments/payment_success.html:32
+msgid "Payment"
+msgstr "Pago"
+
+#: templates/bookings/booking_create.html:36
+#: templates/payments/payment_select.html:18
+#: templates/payments/payment_select.html:34
+msgid "Secure checkout"
+msgstr "Pago seguro"
+
+#: templates/bookings/booking_create.html:43
+#: templates/payments/payment_select.html:41
+msgid "Confirmation"
+msgstr "Confirmación"
+
+#: templates/bookings/booking_create.html:44
+#: templates/payments/payment_select.html:42
+msgid "All set!"
+msgstr "¡Todo listo!"
+
+#: templates/bookings/booking_create.html:58
+msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
+msgstr "Por favor, corrija los siguientes errores:"
+
+#: templates/bookings/booking_create.html:81
+msgid "When and how many guests"
+msgstr "Cuándo y cuántos huéspedes"
+
+#: templates/bookings/booking_create.html:95
+msgid "Choose your preferred starting date"
+msgstr "Elija su fecha de inicio preferida"
+
+#: templates/bookings/booking_create.html:113
+msgid "Age 12+"
+msgstr "Edad 12+"
+
+#: templates/bookings/booking_create.html:127
+msgid "Age 2-11"
+msgstr "Edad 2-11"
+
+#: templates/bookings/booking_create.html:137
+msgid "Contact Information"
+msgstr "Información de contacto"
+
+#: templates/bookings/booking_create.html:138
+msgid "We'll send confirmation to your account"
+msgstr "Enviaremos la confirmación a su cuenta"
+
+#: templates/bookings/booking_create.html:152
+msgid "Edit profile"
+msgstr "Editar perfil"
+
+#: templates/bookings/booking_create.html:161
+msgid "optional"
+msgstr "opcional"
+
+#: templates/bookings/booking_create.html:164
+msgid "Dietary needs, accessibility requirements, special occasions..."
+msgstr "Necesidades dietéticas, requisitos de accesibilidad, ocasiones especiales..."
+
+#: templates/bookings/booking_create.html:175
+msgid "Choose payment method on the next step"
+msgstr "Elija el método de pago en el siguiente paso"
+
+#: templates/bookings/booking_create.html:181
+msgid "Card"
+msgstr "Tarjeta"
+
+#: templates/bookings/booking_create.html:185
+msgid "Cash"
+msgstr "Efectivo"
+
+#: templates/bookings/booking_create.html:189
+msgid "All payments are encrypted and secure"
+msgstr "Todos los pagos están encriptados y son seguros"
+
+#: templates/bookings/booking_create.html:200
+msgid "Terms of Service"
+msgstr "Términos de servicio"
+
+#: templates/bookings/booking_create.html:202
+msgid "and"
+msgstr "y"
+
+#: templates/bookings/booking_create.html:203
+msgid "Cancellation Policy"
+msgstr "Política de cancelación"
+
+#: templates/bookings/booking_create.html:208
+msgid "Confirm Booking"
+msgstr "Confirmar reserva"
+
+#: templates/bookings/booking_create.html:214
+msgid "Free cancellation up to 3 days before travel date"
+msgstr "Cancelación gratuita hasta 3 días antes de la fecha de viaje"
+
+#: templates/bookings/booking_create.html:246
+#: templates/bookings/booking_detail.html:165
+#: templates/bookings/booking_detail.html:208
+#: templates/bookings/booking_list.html:124 templates/home.html:121
+#: templates/home.html:122 templates/home.html:123 templates/tours/list.html:93
+#: templates/tours/list.html:94 templates/tours/list.html:95
+#: templates/tours/list.html:96
+msgid "days"
+msgstr "días"
+
+#: templates/bookings/booking_create.html:259
+#: templates/payments/payment_select.html:197
+msgid "Price Details"
+msgstr "Detalles de precio"
+
+#: templates/bookings/booking_create.html:262
+#: templates/bookings/booking_detail.html:167
+#: templates/bookings/booking_detail.html:197
+#: templates/bookings/booking_detail.html:291 templates/home.html:56
+msgid "adults"
+msgstr "adultos"
+
+#: templates/bookings/booking_create.html:266
+#: templates/bookings/booking_detail.html:167
+#: templates/bookings/booking_detail.html:198 templates/home.html:56
+msgid "children"
+msgstr "niños"
+
+#: templates/bookings/booking_create.html:267
+#: templates/payments/payment_select.html:208
+msgid "Free"
+msgstr "Gratis"
+
+#: templates/bookings/booking_create.html:270
+#: templates/bookings/booking_detail.html:301
+#: templates/payments/payment_select.html:207
+msgid "Service fee"
+msgstr "Tarifa de servicio"
+
+#: templates/bookings/booking_create.html:274
+msgid "Taxes"
+msgstr "Impuestos"
+
+#: templates/bookings/booking_create.html:275
+#: templates/bookings/booking_detail.html:297
+#: templates/bookings/booking_detail.html:306 templates/tours/detail.html:164
+msgid "Included"
+msgstr "Incluido"
+
+#: templates/bookings/booking_create.html:282
+#: templates/bookings/booking_detail.html:312
+#: templates/bookings/booking_list.html:28
+#: templates/bookings/booking_list.html:133
+#: templates/payments/payment_select.html:216 templates/tours/detail.html:311
+msgid "Total"
+msgstr "Total"
+
+#: templates/bookings/booking_create.html:291
+#: templates/bookings/booking_detail.html:366
+msgid "Secure booking"
+msgstr "Reserva segura"
+
+#: templates/bookings/booking_create.html:292
+#: templates/bookings/booking_detail.html:367
+msgid "256-bit SSL encryption"
+msgstr "Cifrado SSL de 256 bits"
+
+#: templates/bookings/booking_create.html:298
+#: templates/bookings/booking_detail.html:373
+#: templates/payments/payment_select.html:225
+msgid "Free cancellation"
+msgstr "Cancelación gratuita"
+
+#: templates/bookings/booking_create.html:299
+msgid "Up to 3 days before"
+msgstr "Hasta 3 días antes"
+
+#: templates/bookings/booking_create.html:306
+msgid "We're here to help"
+msgstr "Estamos aquí para ayudar"
+
+#: templates/bookings/booking_detail.html:25
+#: templates/bookings/booking_list.html:53
+#: templates/bookings/booking_list.html:84
+#: templates/payments/payment_success.html:37
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#: templates/bookings/booking_detail.html:28
+msgid "Pending payment"
+msgstr "Pago pendiente"
+
+#: templates/bookings/booking_detail.html:31
+#: templates/bookings/booking_list.html:56
+#: templates/bookings/booking_list.html:85
+#: templates/payments/payment_select.html:26
+msgid "Completed"
+msgstr "Completado"
+
+#: templates/bookings/booking_detail.html:42
+msgid "Your trip is booked!"
+msgstr "¡Su viaje está reservado!"
+
+#: templates/bookings/booking_detail.html:43
+#: templates/socialaccount/signup.html:44
+msgid "Almost there!"
+msgstr "¡Casi listo!"
+
+#: templates/bookings/booking_detail.html:44
+msgid "Welcome back!"
+msgstr "¡Bienvenido de nuevo!"
+
+#: templates/bookings/booking_detail.html:45
+msgid "Booking cancelled"
+msgstr "Reserva cancelada"
+
+#: templates/bookings/booking_detail.html:46
+msgid "Booking details"
+msgstr "Detalles de la reserva"
+
+#: templates/bookings/booking_detail.html:50
+msgid "Complete your payment to confirm this booking."
+msgstr "Complete su pago para confirmar esta reserva."
+
+#: templates/bookings/booking_detail.html:51
+msgid ""
+"Get ready for an unforgettable journey. We've sent details to your email."
+msgstr "Prepárese para un viaje inolvidable. Hemos enviado los detalles a su correo electrónico."
+
+#: templates/bookings/booking_detail.html:52
+msgid "This booking has been cancelled."
+msgstr "Esta reserva ha sido cancelada."
+
+#: templates/bookings/booking_detail.html:53
+msgid "All your trip information in one place."
+msgstr "Toda la información de su viaje en un solo lugar."
+
+#: templates/bookings/booking_detail.html:58
+#: templates/payments/payment_success.html:43
+msgid "Booking #"
+msgstr "Reserva #"
+
+#: templates/bookings/booking_detail.html:62
+#: templates/bookings/booking_list.html:138
+msgid "Booked"
+msgstr "Reservado"
+
+#: templates/bookings/booking_detail.html:66
+#: templates/payments/payment_success.html:51
+msgid "Travel date"
+msgstr "Fecha de viaje"
+
+#: templates/bookings/booking_detail.html:79
+msgid "E-Ticket"
+msgstr "Boleto electrónico"
+
+#: templates/bookings/booking_detail.html:84
+#: templates/bookings/booking_detail.html:216
+msgid "Destination"
+msgstr "Destino"
+
+#: templates/bookings/booking_detail.html:90
+msgid "GUESTS"
+msgstr "HUÉSPEDES"
+
+#: templates/bookings/booking_detail.html:94
+msgid "DURATION"
+msgstr "DURACIÓN"
+
+#: templates/bookings/booking_detail.html:112
+msgid "Back to bookings"
+msgstr "Volver a reservas"
+
+#: templates/bookings/booking_detail.html:117
+#: templates/bookings/booking_list.html:147
+msgid "Pay now"
+msgstr "Pagar ahora"
+
+#: templates/bookings/booking_detail.html:121
+msgid "Print"
+msgstr "Imprimir"
+
+#: templates/bookings/booking_detail.html:169
+msgid "View tour"
+msgstr "Ver tour"
+
+#: templates/bookings/booking_detail.html:180
+msgid "Trip Information"
+msgstr "Información del viaje"
+
+#: templates/bookings/booking_detail.html:181
+msgid "Your travel details"
+msgstr "Detalles de su viaje"
+
+#: templates/bookings/booking_detail.html:195
+#: templates/bookings/booking_list.html:115
+#: templates/payments/payment_success.html:55 templates/tours/detail.html:285
+msgid "Guests"
+msgstr "Huéspedes"
+
+#: templates/bookings/booking_detail.html:206
+#: templates/bookings/booking_list.html:123 templates/home.html:120
+#: templates/tours/detail.html:84 templates/tours/list.html:91
+msgid "Duration"
+msgstr "Duración"
+
+#: templates/bookings/booking_detail.html:208
+msgid "nights"
+msgstr "noches"
+
+#: templates/bookings/booking_detail.html:230
+msgid "Booking Info"
+msgstr "Información de la reserva"
+
+#: templates/bookings/booking_detail.html:231
+msgid "Contact and reference"
+msgstr "Contacto y referencia"
+
+#: templates/bookings/booking_detail.html:246
+msgid "Reference"
+msgstr "Referencia"
+
+#: templates/bookings/booking_detail.html:265
+msgid "Cancellation Details"
+msgstr "Detalles de cancelación"
+
+#: templates/bookings/booking_detail.html:266
+msgid "Cancelled on"
+msgstr "Cancelado el"
+
+#: templates/bookings/booking_detail.html:285
+msgid "Payment Summary"
+msgstr "Resumen de pago"
+
+#: templates/bookings/booking_detail.html:286
+msgid "Price breakdown"
+msgstr "Desglose de precios"
+
+#: templates/bookings/booking_detail.html:305
+msgid "Tax"
+msgstr "Impuesto"
+
+#: templates/bookings/booking_detail.html:321
+msgid "Payment pending"
+msgstr "Pago pendiente"
+
+#: templates/bookings/booking_detail.html:331
+msgid "Complete Payment"
+msgstr "Completar pago"
+
+#: templates/bookings/booking_detail.html:339
+#: templates/payments/payment_select.html:234
+msgid "Need help?"
+msgstr "¿Necesita ayuda?"
+
+#: templates/bookings/booking_detail.html:340
+msgid "Our support team is available 24/7 to assist with your booking."
+msgstr "Nuestro equipo de soporte está disponible 24/7 para ayudarlo con su reserva."
+
+#: templates/bookings/booking_detail.html:345
+msgid "Email support"
+msgstr "Soporte por correo electrónico"
+
+#: templates/bookings/booking_detail.html:355
+msgid "Live chat"
+msgstr "Chat en vivo"
+
+#: templates/bookings/booking_detail.html:374
+msgid "Up to 3 days before travel"
+msgstr "Hasta 3 días antes de viajar"
+
+#: templates/bookings/booking_detail.html:390
+msgid "Cancel this booking?"
+msgstr "¿Cancelar esta reserva?"
+
+#: templates/bookings/booking_detail.html:391
+msgid ""
+"This action cannot be undone. Refunds depend on the cancellation policy."
+msgstr "Esta acción no se puede deshacer. Los reembolsos dependen de la política de cancelación."
+
+#: templates/bookings/booking_detail.html:396
+msgid "Reason (optional)"
+msgstr "Razón (opcional)"
+
+#: templates/bookings/booking_detail.html:397
+msgid "Why are you cancelling?"
+msgstr "¿Por qué está cancelando?"
+
+#: templates/bookings/booking_detail.html:401
+msgid "Keep booking"
+msgstr "Mantener reserva"
+
+#: templates/bookings/booking_detail.html:404
+msgid "Confirm cancel"
+msgstr "Confirmar cancelación"
+
+#: templates/bookings/booking_list.html:21
+msgid "Your journeys"
+msgstr "Sus viajes"
+
+#: templates/bookings/booking_list.html:22
+msgid "Track and manage all your bookings in one place"
+msgstr "Rastree y administre todas sus reservas en un solo lugar"
+
+#: templates/bookings/booking_list.html:38
+msgid "Trips"
+msgstr "Viajes"
+
+#: templates/bookings/booking_list.html:46
+msgid "All"
+msgstr "Todo"
+
+#: templates/bookings/booking_list.html:143
+msgid "View details"
+msgstr "Ver detalles"
+
+#: templates/bookings/booking_list.html:165
+msgid "No bookings yet"
+msgstr "Aún no hay reservas"
+
+#: templates/bookings/booking_list.html:166
+msgid ""
+"Your adventure is waiting. Browse our handcrafted tours and book your first "
+"trip."
+msgstr "Su aventura le espera. Explore nuestros tours hechos a mano y reserve su primer viaje."
+
+#: templates/bookings/booking_list.html:169
+#: templates/messages_app/contact_success.html:13
+msgid "Explore Tours"
+msgstr "Explorar tours"
+
+#: templates/bookings/booking_list.html:172
+msgid "Browse Destinations"
+msgstr "Explorar destinos"
+
+#: templates/home.html:13
+msgid "Explore the World"
+msgstr "Explorar el mundo"
+
+#: templates/home.html:15
+msgid ""
+"Pack your bags and let SoLuna redefine your travel experience. Where every "
+"journey is a story waiting to be told."
+msgstr "Empaque sus maletas y deje que SoLuna redefina su experiencia de viaje. Donde cada viaje es una historia esperando ser contada."
+
+#: templates/home.html:20
+msgid "Hotels"
+msgstr "Hoteles"
+
+#: templates/home.html:21
+msgid "Tickets"
+msgstr "Boletos"
+
+#: templates/home.html:22
+msgid "Rental"
+msgstr "Alquileres"
+
+#: templates/home.html:24
+msgid "Need some help?"
+msgstr "¿Necesita ayuda?"
+
+#: templates/home.html:29 templates/tours/detail.html:116
+#: templates/tours/detail.html:196
+msgid "Location"
+msgstr "Ubicación"
+
+#: templates/home.html:32
+msgid "Samarkand, Uzbekistan"
+msgstr "Samarcanda, Uzbekistán"
+
+#: templates/home.html:37
+msgid "Check In"
+msgstr "Llegada"
+
+#: templates/home.html:45
+msgid "Check Out"
+msgstr "Salida"
+
+#: templates/home.html:53
+msgid "Guest"
+msgstr "Huésped"
+
+#: templates/home.html:72
+msgid "Top Searched Destinations"
+msgstr "Destinos más buscados"
+
+#: templates/home.html:73
+msgid "Favorite destinations of professional travelers"
+msgstr "Destinos favoritos de viajeros profesionales"
+
+#: templates/home.html:105
+msgid "Our Featured Tours"
+msgstr "Nuestros tours destacados"
+
+#: templates/home.html:106 templates/home.html:269
+msgid "Favorite destinations based on customer reviews"
+msgstr "Destinos favoritos basados en reseñas de clientes"
+
+#: templates/home.html:112 templates/tours/list.html:64
+msgid "Categories"
+msgstr "Categorías"
+
+#: templates/home.html:128
+msgid "Price range"
+msgstr "Rango de precios"
+
+#: templates/home.html:137
 msgid "Clear"
-msgstr ""
+msgstr "Limpiar"
 
-#: .\templates\tours\list.html:87
-msgid "d"
-msgstr ""
+#: templates/home.html:156 templates/tours/list.html:141
+msgid "Best Sale"
+msgstr "Más vendidos"
 
-#: .\templates\tours\list.html:111
-msgid "Prev"
-msgstr ""
+#: templates/home.html:158 templates/regions/detail.html:73
+#: templates/tours/detail.html:28 templates/tours/list.html:137
+msgid "Top Rated"
+msgstr "Mejor calificados"
 
-#: .\templates\tours\list.html:114
-msgid "Page"
-msgstr ""
+#: templates/home.html:162 templates/tours/list.html:144
+msgid "Add to favorites"
+msgstr "Añadir a favoritos"
 
-#: .\templates\tours\list.html:117
-msgid "Next"
-msgstr ""
+#: templates/home.html:171 templates/tours/detail.html:32
+#: templates/tours/detail.html:219 templates/tours/list.html:153
+msgid "reviews"
+msgstr "reseñas"
 
-#: .\templates\tours\list.html:125
+#: templates/home.html:185 templates/regions/detail.html:85
+#: templates/tours/detail.html:278 templates/tours/detail.html:353
+#: templates/tours/list.html:167
+msgid "person"
+msgstr "persona"
+
+#: templates/home.html:187 templates/tours/detail.html:317
+#: templates/tours/list.html:169
+msgid "Book Now"
+msgstr "Reservar ahora"
+
+#: templates/home.html:216
+msgid "Easy payment"
+msgstr "Pago fácil"
+
+#: templates/home.html:218
+msgid "We offer tours in a range of locations"
+msgstr "Ofrecemos tours en una variedad de ubicaciones"
+
+#: templates/home.html:220 templates/home.html:306
+msgid ""
+"Choose one style or create a package, fill your passports with adventures "
+"together."
+msgstr "Elija un estilo o cree un paquete, llenen sus pasaportes de aventuras juntos."
+
+#: templates/home.html:224
+msgid "Security Assurance"
+msgstr "Garantía de seguridad"
+
+#: templates/home.html:225
+msgid "Customer Support"
+msgstr "Atención al cliente"
+
+#: templates/home.html:226
+msgid "Transparent Policies"
+msgstr "Políticas transparentes"
+
+#: templates/home.html:227
+msgid "Reputable Affiliations"
+msgstr "Afiliaciones reconocidas"
+
+#: templates/home.html:231
+msgid "Payment is secure and safe"
+msgstr "El pago es seguro y protegido"
+
+#: templates/home.html:268
+msgid "Top Categories of Tours"
+msgstr "Mejores categorías de tours"
+
+#: templates/home.html:272 templates/home.html:447
+msgid "View More"
+msgstr "Ver más"
+
+#: templates/home.html:302
+msgid "Why book at SoLuna?"
+msgstr "¿Por qué reservar en SoLuna?"
+
+#: templates/home.html:304
+msgid "Embracing Adventure Since 2025"
+msgstr "Abrazando la aventura desde 2025"
+
+#: templates/home.html:348
+msgid "Install APP & Get discount code"
+msgstr "Instale la aplicación y obtenga código de descuento"
+
+#: templates/home.html:351
+#, python-format
+msgid "Up to 55%% Discount and lots of special gifts"
+msgstr "Hasta un 55%% de descuento y muchos regalos especiales"
+
+#: templates/home.html:382
+msgid "Trending Destinations"
+msgstr "Destinos en tendencia"
+
+#: templates/home.html:383
+msgid "Most popular choices for travelers"
+msgstr "Opciones más populares para los viajeros"
+
+#: templates/home.html:411
+msgid "Get inspiration for your next trip"
+msgstr "Inspírese para su próximo viaje"
+
+#: templates/home.html:412
+msgid "Favorite stories based on customer reviews"
+msgstr "Historias favoritas basadas en reseñas de clientes"
+
+#: templates/home.html:438
+msgid "Keep Reading"
+msgstr "Seguir leyendo"
+
+#: templates/messages_app/contact.html:4
+msgid "Contact Us"
+msgstr "Contáctenos"
+
+#: templates/messages_app/contact.html:17
+msgid "Get in touch"
+msgstr "Póngase en contacto"
+
+#: templates/messages_app/contact.html:19
+msgid "We'd love to hear from you"
+msgstr "Nos encantaría saber de usted"
+
+#: templates/messages_app/contact.html:21
+msgid ""
+"Have a question or need help planning your trip? Our team is here for you."
+msgstr "¿Tiene alguna pregunta o necesita ayuda para planificar su viaje? Nuestro equipo está aquí para ayudarle."
+
+#: templates/messages_app/contact.html:34
+msgid "Mon - Sat, 8AM - 6PM"
+msgstr "Lun - Sáb, 8AM - 6PM"
+
+#: templates/messages_app/contact.html:41
+msgid "We reply within 24 hours"
+msgstr "Respondemos en 24 horas"
+
+#: templates/messages_app/contact.html:47
+msgid "Office"
+msgstr "Oficina"
+
+#: templates/messages_app/contact.html:48
+msgid "Visit us in person"
+msgstr "Visítenos en persona"
+
+#: templates/messages_app/contact.html:54
+msgid "Social"
+msgstr "Social"
+
+#: templates/messages_app/contact.html:55
+msgid "Follow us for updates"
+msgstr "Síganos para actualizaciones"
+
+#: templates/messages_app/contact.html:63
+msgid "Send us a message"
+msgstr "Envíenos un mensaje"
+
+#: templates/messages_app/contact.html:65
+msgid "Fill out the form and we'll get back to you shortly."
+msgstr "Complete el formulario y le responderemos en breve."
+
+#: templates/messages_app/contact.html:88
+msgid "Subject"
+msgstr "Asunto"
+
+#: templates/messages_app/contact.html:94
+msgid "Message"
+msgstr "Mensaje"
+
+#: templates/messages_app/contact.html:99
+msgid "Send Message"
+msgstr "Enviar mensaje"
+
+#: templates/messages_app/contact_success.html:3
+msgid "Message Sent"
+msgstr "Mensaje enviado"
+
+#: templates/messages_app/contact_success.html:8
+msgid "Message Sent!"
+msgstr "¡Mensaje enviado!"
+
+#: templates/messages_app/contact_success.html:10
+msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
+msgstr "Gracias por comunicarse. Oygul se pondrá en contacto con usted dentro de 24 horas."
+
+#: templates/messages_app/contact_success.html:14
+msgid "Back to Home"
+msgstr "Volver al inicio"
+
+#: templates/payments/mock_pay.html:4
+msgid "Payment Gateway"
+msgstr "Pasarela de pago"
+
+#: templates/payments/mock_pay.html:13
+msgid "TEST MODE"
+msgstr "MODO DE PRUEBA"
+
+#: templates/payments/mock_pay.html:14
+msgid "Real payment gateways are not configured. This is a simulation."
+msgstr "Las pasarelas de pago reales no están configuradas. Esto es una simulación."
+
+#: templates/payments/mock_pay.html:30 templates/payments/mock_pay.html:129
+#: templates/payments/mock_pay.html:136
+#: templates/payments/payment_pending.html:32
+#: templates/payments/payment_select.html:63
+#: templates/payments/payment_select.html:162
+#: templates/payments/payment_select.html:204
+msgid "soums"
+msgstr "sums"
+
+#: templates/payments/mock_pay.html:48
+msgid "Payment failed"
+msgstr "Pago fallido"
+
+#: templates/payments/mock_pay.html:58
+msgid "Test cards"
+msgstr "Tarjetas de prueba"
+
+#: templates/payments/mock_pay.html:68
+msgid "Always success"
+msgstr "Siempre exitoso"
+
+#: templates/payments/mock_pay.html:75
+msgid "Declined by bank"
+msgstr "Rechazado por el banco"
+
+#: templates/payments/mock_pay.html:82
+msgid "Insufficient funds"
+msgstr "Fondos insuficientes"
+
+#: templates/payments/mock_pay.html:92
+msgid "Enter card details"
+msgstr "Ingrese los detalles de la tarjeta"
+
+#: templates/payments/mock_pay.html:96
+msgid "Card number"
+msgstr "Número de tarjeta"
+
+#: templates/payments/mock_pay.html:107
+msgid "Expiry"
+msgstr "Vencimiento"
+
+#: templates/payments/mock_pay.html:119
+msgid "Cardholder name"
+msgstr "Nombre del titular de la tarjeta"
+
+#: templates/payments/mock_pay.html:127
+msgid "Amount to pay"
+msgstr "Monto a pagar"
+
+#: templates/payments/mock_pay.html:136
+#: templates/payments/payment_select.html:162
+msgid "Pay"
+msgstr "Pagar"
+
+#: templates/payments/mock_pay.html:141
+msgid "Cancel and choose another method"
+msgstr "Cancelar y elegir otro método"
+
+#: templates/payments/mock_pay.html:149
+msgid "Secure payment"
+msgstr "Pago seguro"
+
+#: templates/payments/mock_pay.html:150
+msgid ""
+"Your card information is encrypted with 256-bit SSL and never stored on our "
+"servers."
+msgstr "La información de su tarjeta está encriptada con SSL de 256 bits y nunca se almacena en nuestros servidores."
+
+#: templates/payments/payment_failed.html:4
+#: templates/payments/payment_failed.html:15
+msgid "Payment Failed"
+msgstr "Pago fallido"
+
+#: templates/payments/payment_failed.html:17
+msgid "Something went wrong with your payment. Your card was not charged."
+msgstr "Algo salió mal con su pago. No se le cobró a su tarjeta."
+
+#: templates/payments/payment_failed.html:21
+msgid "Possible reasons:"
+msgstr "Razones posibles:"
+
+#: templates/payments/payment_failed.html:23
+msgid "Insufficient funds on the card"
+msgstr "Fondos insuficientes en la tarjeta"
+
+#: templates/payments/payment_failed.html:24
+msgid "Card declined by the bank"
+msgstr "Tarjeta rechazada por el banco"
+
+#: templates/payments/payment_failed.html:25
+msgid "Incorrect card details"
+msgstr "Detalles de tarjeta incorrectos"
+
+#: templates/payments/payment_failed.html:26
+#: templates/socialaccount/authentication_error.html:43
+msgid "Network connection issue"
+msgstr "Problema de conexión de red"
+
+#: templates/payments/payment_failed.html:32
+msgid "Try Again"
+msgstr "Intentar de nuevo"
+
+#: templates/payments/payment_failed.html:35
+msgid "Contact Support"
+msgstr "Contactar soporte"
+
+#: templates/payments/payment_pending.html:4
+msgid "Payment Processing"
+msgstr "Procesando pago"
+
+#: templates/payments/payment_pending.html:16
+msgid "Payment processing..."
+msgstr "Procesando pago..."
+
+#: templates/payments/payment_pending.html:18
+msgid ""
+"We are waiting for confirmation from the payment gateway. This usually takes "
+"a few seconds."
+msgstr "Estamos esperando confirmación de la pasarela de pago. Esto suele tardar unos segundos."
+
+#: templates/payments/payment_pending.html:42
+msgid "Don't close this page. We'll redirect you automatically."
+msgstr "No cierre esta página. Lo redirigiremos automáticamente."
+
+#: templates/payments/payment_select.html:19
+msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
+msgstr "Elija su método de pago. Todos los pagos son en sum uzbeko (UZS)."
+
+#: templates/payments/payment_select.html:62
+msgid "Conversion to UZS"
+msgstr "Conversión a UZS"
+
+#: templates/payments/payment_select.html:71
+msgid "Choose payment method"
+msgstr "Elegir método de pago"
+
+#: templates/payments/payment_select.html:72
+msgid "Secure payment in Uzbek Som"
+msgstr "Pago seguro en sum uzbeko"
+
+#: templates/payments/payment_select.html:87
+msgid "Pay via Click app, card or balance"
+msgstr "Pagar mediante la aplicación Click, tarjeta o saldo"
+
+#: templates/payments/payment_select.html:108
+msgid "Pay via Payme app or card"
+msgstr "Pagar mediante la aplicación Payme o tarjeta"
+
+#: templates/payments/payment_select.html:127
+msgid "Pay at office"
+msgstr "Pagar en la oficina"
+
+#: templates/payments/payment_select.html:128
+msgid "Visit our Tashkent office"
+msgstr "Visite nuestra oficina en Taskent"
+
+#: templates/payments/payment_select.html:141
+msgid "You'll be redirected"
+msgstr "Será redirigido"
+
+#: templates/payments/payment_select.html:142
+msgid ""
+"After clicking Pay, you'll be redirected to the secure gateway page to "
+"complete the transaction."
+msgstr "Después de hacer clic en Pagar, será redirigido a la página de la pasarela segura para completar la transacción."
+
+#: templates/payments/payment_select.html:149
+msgid "256-bit SSL"
+msgstr "SSL de 256 bits"
+
+#: templates/payments/payment_select.html:153
+msgid "PCI DSS"
+msgstr "PCI DSS"
+
+#: templates/payments/payment_select.html:157
+msgid "Money-back guarantee"
+msgstr "Garantía de devolución de dinero"
+
+#: templates/payments/payment_select.html:168
+msgid "By proceeding, you accept the booking terms."
+msgstr "Al proceder, acepta los términos de la reserva."
+
+#: templates/payments/payment_select.html:199
+msgid "Tour price"
+msgstr "Precio del tour"
+
+#: templates/payments/payment_select.html:203
+msgid "Conversion"
+msgstr "Conversión"
+
+#: templates/payments/payment_select.html:219
+msgid "soum"
+msgstr "sum"
+
+#: templates/payments/payment_select.html:226
+msgid "Until 3 days before travel"
+msgstr "Hasta 3 días antes de viajar"
+
+#: templates/payments/payment_select.html:235
+#: templates/socialaccount/authentication_error.html:53
+msgid "Contact support"
+msgstr "Contactar soporte"
+
+#: templates/payments/payment_select.html:366
+msgid ""
+"You will be redirected to Click payment page. Complete the payment via your "
+"card or Click app."
+msgstr "Será redirigido a la página de pago de Click. Complete el pago mediante su tarjeta o la aplicación Click."
+
+#: templates/payments/payment_select.html:367
+msgid ""
+"You will be redirected to Payme. Complete the payment via your card or Payme "
+"app."
+msgstr "Será redirigido a Payme. Complete el pago mediante su tarjeta o la aplicación Payme."
+
+#: templates/payments/payment_select.html:368
+msgid ""
+"Visit our office in Tashkent to complete payment in cash. Your booking will "
+"remain pending until paid."
+msgstr "Visite nuestra oficina en Taskent para completar el pago en efectivo. Su reserva permanecerá pendiente hasta que se pague."
+
+#: templates/payments/payment_select.html:384
+msgid "Redirecting to gateway..."
+msgstr "Redirigiendo a la pasarela..."
+
+#: templates/payments/payment_success.html:4
+msgid "Payment Successful"
+msgstr "Pago exitoso"
+
+#: templates/payments/payment_success.html:19
+msgid "Payment Successful!"
+msgstr "¡Pago exitoso!"
+
+#: templates/payments/payment_success.html:21
+msgid "Your booking has been confirmed. We've sent the details to your email."
+msgstr "Su reserva ha sido confirmada. Hemos enviado los detalles a su correo electrónico."
+
+#: templates/payments/payment_success.html:27
+msgid "Details"
+msgstr "Detalles"
+
+#: templates/payments/payment_success.html:47 templates/reviews/form.html:14
+msgid "Tour"
+msgstr "Tour"
+
+#: templates/payments/payment_success.html:67
+msgid "View Booking Details"
+msgstr "Ver detalles de la reserva"
+
+#: templates/payments/payment_success.html:70
+msgid "Explore More Tours"
+msgstr "Explorar más tours"
+
+#: templates/payments/payment_success.html:75
+msgid "What happens next?"
+msgstr "¿Qué pasa después?"
+
+#: templates/payments/payment_success.html:77
+msgid "We'll send a confirmation email with full itinerary"
+msgstr "Enviaremos un correo de confirmación con el itinerario completo"
+
+#: templates/payments/payment_success.html:78
+msgid "Our team will contact you 48 hours before the trip"
+msgstr "Nuestro equipo lo contactará 48 horas antes del viaje"
+
+#: templates/payments/payment_success.html:79
+msgid "Check your booking anytime in your profile"
+msgstr "Revise su reserva en cualquier momento en su perfil"
+
+#: templates/regions/detail.html:41
+msgid "About"
+msgstr "Acerca de"
+
+#: templates/regions/detail.html:48
+msgid "Why visit"
+msgstr "Por qué visitar"
+
+#: templates/regions/detail.html:64
+msgid "Tours in"
+msgstr "Tours en"
+
+#: templates/regions/detail.html:65
+msgid "tours"
+msgstr "tours"
+
+#: templates/regions/detail.html:86 templates/tours/detail.html:354
+msgid "View"
+msgstr "Ver"
+
+#: templates/regions/detail.html:99
+msgid "Quick Facts"
+msgstr "Datos rápidos"
+
+#: templates/regions/detail.html:112
+msgid "Population"
+msgstr "Población"
+
+#: templates/regions/detail.html:121
+msgid "Best time to visit"
+msgstr "Mejor época para visitar"
+
+#: templates/regions/detail.html:155
+msgid "Need help planning?"
+msgstr "¿Necesita ayuda para planificar?"
+
+#: templates/regions/detail.html:157
+msgid "Our local experts can craft a custom tour for you."
+msgstr "Nuestros expertos locales pueden crear un tour a medida para usted."
+
+#: templates/regions/list.html:18
+msgid "Explore the Silk Road"
+msgstr "Explorar la Ruta de la Seda"
+
+#: templates/regions/list.html:20
+msgid "Discover Uzbekistan's Most Beautiful Destinations"
+msgstr "Descubra los destinos más hermosos de Uzbekistán"
+
+#: templates/regions/list.html:22
+msgid ""
+"From ancient Samarkand to the deserts of Karakalpakstan — find your next "
+"adventure."
+msgstr "Desde la antigua Samarcanda hasta los desiertos de Karakalpakstán — encuentre su próxima aventura."
+
+#: templates/regions/list.html:48
+msgid "Tours available"
+msgstr "Tours disponibles"
+
+#: templates/regions/list.html:59
+msgid "No destinations yet"
+msgstr "Aún no hay destinos"
+
+#: templates/regions/list.html:60
+msgid "Check back soon for new destinations."
+msgstr "Vuelva pronto para nuevos destinos."
+
+#: templates/reviews/form.html:4
+msgid "Write a Review"
+msgstr "Escribir una reseña"
+
+#: templates/reviews/form.html:11
+msgid "Update Your Review"
+msgstr "Actualizar su reseña"
+
+#: templates/reviews/form.html:11
+msgid "Share Your Experience"
+msgstr "Comparta su experiencia"
+
+#: templates/reviews/form.html:58
+msgid "Write your detailed review here..."
+msgstr "Escriba su reseña detallada aquí..."
+
+#: templates/reviews/form.html:80
+msgid "Submit Review"
+msgstr "Enviar reseña"
+
+#: templates/socialaccount/authentication_error.html:4
+msgid "Authentication Error"
+msgstr "Error de autenticación"
+
+#: templates/socialaccount/authentication_error.html:28
+msgid "Authentication failed"
+msgstr "Autenticación fallida"
+
+#: templates/socialaccount/authentication_error.html:30
+msgid ""
+"Something went wrong while signing you in. Your account is safe — no changes "
+"were made."
+msgstr "Algo salió mal al iniciar sesión. Su cuenta está segura — no se hicieron cambios."
+
+#: templates/socialaccount/authentication_error.html:37
+msgid "Possible reasons"
+msgstr "Razones posibles"
+
+#: templates/socialaccount/authentication_error.html:40
+msgid "You cancelled the sign-in process"
+msgstr "Canceló el proceso de inicio de sesión"
+
+#: templates/socialaccount/authentication_error.html:41
+msgid "The provider's session expired"
+msgstr "La sesión del proveedor expiró"
+
+#: templates/socialaccount/authentication_error.html:42
+msgid "Permission was denied"
+msgstr "Permiso denegado"
+
+#: templates/socialaccount/authentication_error.html:58
+msgid "Go to homepage"
+msgstr "Ir a la página de inicio"
+
+#: templates/socialaccount/authentication_error.html:65
+msgid "Your account is secure"
+msgstr "Su cuenta está segura"
+
+#: templates/socialaccount/login.html:4
+#, python-format
+msgid "Sign In via %(provider_name)s"
+msgstr "Iniciar sesión a través de %(provider_name)s"
+
+#: templates/socialaccount/login.html:53
+#, python-format
+msgid "Continue with %(provider_name)s"
+msgstr "Continuar con %(provider_name)s"
+
+#: templates/socialaccount/login.html:56
+#, python-format
+msgid ""
+"You're about to sign in to SoLuna using your %(provider_name)s account. "
+"Click continue to proceed securely."
+msgstr "Está a punto de iniciar sesión en SoLuna usando su cuenta de %(provider_name)s. Haga clic en continuar para proceder de forma segura."
+
+#: templates/socialaccount/login.html:63
+msgid "We'll receive"
+msgstr "Recibiremos"
+
+#: templates/socialaccount/login.html:66
+msgid "Your email address"
+msgstr "Su dirección de correo electrónico"
+
+#: templates/socialaccount/login.html:67
+msgid "Your name and profile photo"
+msgstr "Su nombre y foto de perfil"
+
+#: templates/socialaccount/login.html:71
+msgid "We will never post anything without your permission."
+msgstr "Nunca publicaremos nada sin su permiso."
+
+#: templates/socialaccount/login.html:78
+msgid "Continue"
+msgstr "Continuar"
+
+#: templates/socialaccount/login.html:91
+#: templates/socialaccount/signup.html:143
+msgid "Secure connection · Your data is encrypted"
+msgstr "Conexión segura · Sus datos están encriptados"
+
+#: templates/socialaccount/login.html:304
+msgid "Redirecting..."
+msgstr "Redirigiendo..."
+
+#: templates/socialaccount/signup.html:4
+msgid "Complete sign up"
+msgstr "Completar registro"
+
+#: templates/socialaccount/signup.html:47
+msgid "Complete your profile"
+msgstr "Complete su perfil"
+
+#: templates/socialaccount/signup.html:49
+msgid ""
+"Just one more step. Please confirm your details to finish creating your "
+"SoLuna account."
+msgstr "Solo un paso más. Confirme sus datos para terminar de crear su cuenta de SoLuna."
+
+#: templates/socialaccount/signup.html:79
+msgid "From your social account"
+msgstr "De su cuenta social"
+
+#: templates/socialaccount/signup.html:104
+msgid "You'll get"
+msgstr "Obtendrá"
+
+#: templates/socialaccount/signup.html:107
+#, python-format
+msgid "5%% off on your first booking"
+msgstr "5%% de descuento en su primera reserva"
+
+#: templates/socialaccount/signup.html:108
+msgid "Exclusive offers and updates"
+msgstr "Ofertas exclusivas y actualizaciones"
+
+#: templates/socialaccount/signup.html:109
+msgid "Personalized travel recommendations"
+msgstr "Recomendaciones de viaje personalizadas"
+
+#: templates/socialaccount/signup.html:121
+msgid "and consent to receive travel inspiration emails"
+msgstr "y consiento recibir correos de inspiración de viaje"
+
+#: templates/socialaccount/signup.html:287
+msgid "Creating account..."
+msgstr "Creando cuenta..."
+
+#: templates/tours/detail.html:43
+msgid "Share"
+msgstr "Compartir"
+
+#: templates/tours/detail.html:44
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/tours/detail.html:61
+msgid "See all"
+msgstr "Ver todo"
+
+#: templates/tours/detail.html:61
+msgid "photos"
+msgstr "fotos"
+
+#: templates/tours/detail.html:91
+msgid "Group Size"
+msgstr "Tamaño del grupo"
+
+#: templates/tours/detail.html:92
+msgid "people"
+msgstr "personas"
+
+#: templates/tours/detail.html:98
+msgid "Languages"
+msgstr "Idiomas"
+
+#: templates/tours/detail.html:105
+msgid "Tour Type"
+msgstr "Tipo de tour"
+
+#: templates/tours/detail.html:113 templates/tours/detail.html:122
+msgid "Overview"
+msgstr "Visión general"
+
+#: templates/tours/detail.html:114 templates/tours/detail.html:140
+msgid "Itinerary"
+msgstr "Itinerario"
+
+#: templates/tours/detail.html:115 templates/tours/detail.html:160
+msgid "What's included"
+msgstr "Qué está incluido"
+
+#: templates/tours/detail.html:128
+msgid "Highlights"
+msgstr "Atracciones principales"
+
+#: templates/tours/detail.html:145
+msgid "Day"
+msgstr "Día"
+
+#: templates/tours/detail.html:170
+msgid "Professional guide"
+msgstr "Guía profesional"
+
+#: templates/tours/detail.html:171
+msgid "Transport (A/C vehicle)"
+msgstr "Transporte (vehículo con A/C)"
+
+#: templates/tours/detail.html:172
+msgid "Entrance fees"
+msgstr "Tarifas de entrada"
+
+#: templates/tours/detail.html:173
+msgid "Hotel accommodation"
+msgstr "Alojamiento en hotel"
+
+#: templates/tours/detail.html:179
+msgid "Not Included"
+msgstr "No incluido"
+
+#: templates/tours/detail.html:185
+msgid "International flights"
+msgstr "Vuelos internacionales"
+
+#: templates/tours/detail.html:186
+msgid "Travel insurance"
+msgstr "Seguro de viaje"
+
+#: templates/tours/detail.html:187
+msgid "Personal expenses"
+msgstr "Gastos personales"
+
+#: templates/tours/detail.html:223
+msgid "Excellent"
+msgstr "Excelente"
+
+#: templates/tours/detail.html:224
+msgid "Good"
+msgstr "Bueno"
+
+#: templates/tours/detail.html:225
+msgid "Average"
+msgstr "Promedio"
+
+#: templates/tours/detail.html:226
+msgid "Poor"
+msgstr "Malo"
+
+#: templates/tours/detail.html:227
+msgid "Terrible"
+msgstr "Terrible"
+
+#: templates/tours/detail.html:256
+msgid "No reviews yet. Be the first to share your experience!"
+msgstr "Aún no hay reseñas. ¡Sea el primero en compartir su experiencia!"
+
+#: templates/tours/detail.html:263
+msgid "Write a review"
+msgstr "Escribir una reseña"
+
+#: templates/tours/detail.html:282
+msgid "Date"
+msgstr "Fecha"
+
+#: templates/tours/detail.html:322
+msgid "Need help booking?"
+msgstr "¿Necesita ayuda para reservar?"
+
+#: templates/tours/detail.html:338
+msgid "Related tours"
+msgstr "Tours relacionados"
+
+#: templates/tours/list.html:21
+msgid "tours found"
+msgstr "tours encontrados"
+
+#: templates/tours/list.html:27
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: templates/tours/list.html:33
+msgid "Most Popular"
+msgstr "Más populares"
+
+#: templates/tours/list.html:34
+msgid "Newest"
+msgstr "Más recientes"
+
+#: templates/tours/list.html:35
+msgid "Price: Low to High"
+msgstr "Precio: Menor a Mayor"
+
+#: templates/tours/list.html:36
+msgid "Price: High to Low"
+msgstr "Precio: Mayor a Menor"
+
+#: templates/tours/list.html:37
+msgid "Highest Rated"
+msgstr "Mejor calificados"
+
+#: templates/tours/list.html:59
+msgid "Search tours..."
+msgstr "Buscar tours..."
+
+#: templates/tours/list.html:82
+msgid "Price Range"
+msgstr "Rango de precios"
+
+#: templates/tours/list.html:84
+msgid "Min"
+msgstr "Mín"
+
+#: templates/tours/list.html:85
+msgid "Max"
+msgstr "Máx"
+
+#: templates/tours/list.html:87
+msgid "Apply"
+msgstr "Aplicar"
+
+#: templates/tours/list.html:101
+msgid "Rating"
+msgstr "Calificación"
+
+#: templates/tours/list.html:119
+msgid "Clear all"
+msgstr "Borrar todo"
+
+#: templates/tours/list.html:178
+msgid "Pagination"
+msgstr "Paginación"
+
+#: templates/tours/list.html:205
 msgid "No tours found"
-msgstr ""
+msgstr "No se encontraron tours"
 
-#: .\templates\tours\list.html:126
-msgid "Try adjusting your filters"
-msgstr ""
+#: templates/tours/list.html:206
+msgid "Try adjusting your filters or search criteria."
+msgstr "Intente ajustar sus filtros o criterios de búsqueda."
+
+#: templates/tours/list.html:207
+msgid "Reset filters"
+msgstr "Restablecer filtros"

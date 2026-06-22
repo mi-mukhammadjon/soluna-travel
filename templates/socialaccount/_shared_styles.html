@@ -1,0 +1,104 @@
+{# Shared styles for socialaccount pages (login, signup, authentication_error) #}
+<style>
+.sl-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+}
+.sl-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1591708594806-1eaa84a8e4f8?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px) saturate(0.85);
+  transform: scale(1.05);
+}
+.sl-bg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(15,20,25,0.95) 0%, rgba(30,42,46,0.92) 60%, rgba(45,74,82,0.88) 100%);
+}
+
+.sl-wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sl-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.4rem; font-weight: 800;
+  margin-bottom: 28px;
+}
+.sl-logo-mark {
+  width: 40px; height: 40px;
+  background: var(--c-yellow); color: #000;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+
+.sl-card {
+  background: #fff;
+  border-radius: var(--r-lg);
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+.sl-provider-icon {
+  width: 72px; height: 72px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.sl-icon-soluna { background: var(--c-yellow); color: #000; font-size: 2.2rem; }
+
+.sl-content { padding: 30px 32px 32px; }
+
+.sl-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.sl-sub {
+  color: var(--c-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.sl-submit {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 1rem; font-weight: 700;
+}
+.sl-submit:disabled { opacity: 0.6; cursor: wait; }
+
+.sl-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--c-text-muted);
+  text-decoration: none;
+  font-size: 0.88rem; font-weight: 600;
+}
+.sl-back:hover { color: var(--c-text); }
+
+.sl-footer {
+  margin-top: 22px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.sl-footer i { color: var(--c-yellow); }
+
+@media (max-width: 560px) {
+  .sl-content { padding: 24px 22px 26px; }
+  .sl-title { font-size: 1.3rem; }
+}
+</style>

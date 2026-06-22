@@ -45,9 +45,13 @@ def notify_admin_new_message(message_id):
         admins = User.objects.filter(is_staff=True, email__isnull=False).exclude(email='')
 
         subject = f"Yangi xabar: {msg.subject}"
+        
+        # Telefon raqamini oldindan tayyorlab olamiz (f-stringdan tashqarida)
+        phone_text = msg.phone or "Ko'rsatilmagan"
+        
         body = (
             f"Kimdan: {msg.name} ({msg.email})\n"
-            f'Telefon: {msg.phone or "Ko\'rsatilmagan"}\n'  # <--- Tashqarida bitta tirnoq, ichkarida qo'shtirnoq
+            f"Telefon: {phone_text}\n"  # <--- Endi bu yerda hech qanday muammo bo'lmaydi
             f"Mavzu: {msg.subject}\n\n"
             f"Xabar:\n{msg.body}"
         )

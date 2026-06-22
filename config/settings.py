@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import sentry_sdk
 
 # 1. Avval BASE_DIR ni aniqlab olamiz
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,10 +13,11 @@ load_dotenv(dotenv_path=BASE_DIR / '.env')
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-me-in-production')
 
 # Debugni bool tipiga o'tkazish (To'g'ri yozgansiz)
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+# Faqat 'True' degan so'z kelsagina True bo'ladi, aks holda False
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS dagi ortiqcha bo'shliqlarni olib tashlaydigan variant
-ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,192.168.25.205').split(',')]
+ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS').split(',')]
 INSTALLED_APPS = [
     'modeltranslation',
     'django.contrib.admin',
@@ -95,9 +97,12 @@ DATABASES = {
 REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': REDIS_URL,
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
 }
 
@@ -182,11 +187,13 @@ USE_TZ = True
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'), # Yoki o'zingizning papkangiz nomi
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -260,3 +267,27 @@ LOGGING = {
  
 
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+# HTTPS sozlamalari
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ALLOWED_ORIGINS = [
+    "https://solunatravel.uz",
+    "https://www.solunatravel.uz",
+    # Agar alohida frontend domeningiz bo'lsa, uni ham qo'shasiz
+]
+
+sentry_sdk.init(
+    dsn=os.getenv('SENTRY_DNS', ''),
+    traces_sample_rate=1.0,
+    send_default_pii=True,
+)

@@ -2,13 +2,20 @@ from django.db import models
 from django.db.models import Avg  # <--- IMPORT QO'SHILDI (Property ishlashi uchun)
 from django.utils.text import slugify
 from regions.models import Region, Attraction
+from django.core.validators import FileExtensionValidator
 
 
 class TourCategory(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     icon = models.CharField(max_length=50, blank=True)
-    image = models.ImageField(upload_to='categories/images/', null=True, blank=True)
+    image = models.ImageField(
+        upload_to='categories/images/', 
+        null=True, 
+        blank=True,
+        # Kategoriya uchun barcha rasm formatlariga ruxsat beramiz
+        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp', 'svg'])]
+    )
 
     class Meta:
         verbose_name = 'Категория тура'
@@ -44,7 +51,12 @@ class Tour(models.Model):
     attractions = models.ManyToManyField(Attraction, related_name='tours', blank=True)
     description = models.TextField()
     short_description = models.CharField(max_length=500)
-    cover_image = models.ImageField(upload_to='tours/covers/', blank=True, null=True)
+    cover_image = models.ImageField(
+        upload_to='tours/covers/', 
+        blank=True, 
+        null=True,
+        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp'])]
+    )
     price = models.DecimalField(max_digits=12, decimal_places=2)
     price_uzs = models.DecimalField(max_digits=18, decimal_places=2, null=True, blank=True)
     duration_days = models.PositiveIntegerField()
@@ -104,7 +116,10 @@ class Tour(models.Model):
 
 class TourImage(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='tours/gallery/')
+    image = models.ImageField(
+        upload_to='tours/gallery/',
+        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp'])]
+    )
     caption = models.CharField(max_length=200, blank=True)
     order = models.PositiveIntegerField(default=0)
 
@@ -147,7 +162,7 @@ class CompanyAdvantage(models.Model):
     
     icon = models.CharField(max_length=50, help_text="Tabler icon klassi (masalan: ti-camera, ti-thumb-up)")
     color = models.CharField(max_length=20, choices=COLOR_CHOICES, default='orange')
-    title = models.CharField(max_length=100)
+    title = models.TextField()
     description = models.TextField()
     order = models.PositiveIntegerField(default=0)
 
