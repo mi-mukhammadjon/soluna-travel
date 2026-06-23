@@ -8,393 +8,270 @@
 {% block extrastyle %}
 {{ block.super }}
 <style>
-/* ============================================================
-   SoLuna Dashboard — .sl-db namespace
-   base_site.html CSS bilan HECH QANDAY konflikt yo'q:
-   barcha selectorlar .sl-db ichida.
-   ============================================================ */
-.sl-db { padding: 0 0 32px; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideRight { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+@keyframes countUp { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ── Hero ── */
-.sl-db .sl-hero {
-  background: linear-gradient(135deg, #0A2E24 0%, #14664B 100%);
-  border-radius: 14px;
-  padding: 36px 40px;
-  margin-bottom: 28px;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 20px;
+.cc-db { max-width: 1200px; margin: 0 auto; padding-bottom: 48px; }
+
+/* Page Header */
+.cc-header { padding: 32px 0 8px; }
+.cc-header h1 { font-size: 2rem; font-weight: 800; color: var(--text); margin: 0 0 6px; letter-spacing: -0.03em; }
+.cc-header p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
+
+/* KPI */
+.cc-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+@media (max-width: 1000px) { .cc-kpi { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 500px) { .cc-kpi { grid-template-columns: 1fr; } }
+.cc-kpi-card {
+  background: var(--bg-card); border-radius: var(--r-xl); padding: 24px;
+  border: 1px solid var(--border-soft); box-shadow: var(--shadow);
+  transition: all 0.25s var(--ease); animation: fadeIn 0.4s var(--ease) backwards;
   position: relative; overflow: hidden;
 }
-.sl-db .sl-hero::before {
-  content: '';
-  position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
-  background: radial-gradient(circle at top right, rgba(201,168,76,0.12), transparent 70%);
-  pointer-events: none;
+.cc-kpi-card:nth-child(2) { animation-delay: 0.06s; }
+.cc-kpi-card:nth-child(3) { animation-delay: 0.12s; }
+.cc-kpi-card:nth-child(4) { animation-delay: 0.18s; }
+.cc-kpi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.cc-kpi-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.cc-kpi-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.25s var(--ease);
 }
-.sl-db .sl-hero-text { position: relative; z-index: 2; }
-.sl-db .sl-hero h1 {
-  font-family: Georgia, serif;
-  font-size: 2rem; font-weight: 400;
-  color: #FFFFFF; margin: 0 0 8px; line-height: 1.2;
-}
-.sl-db .sl-hero h1 em { color: #D4AF37; font-style: italic; }
-.sl-db .sl-hero p { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin: 0; }
+.cc-kpi-card:hover .cc-kpi-icon { transform: scale(1.08); }
+.cc-kpi-trend { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 100px; }
+.cc-kpi-value { font-size: 1.8rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 6px; }
+.cc-kpi-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
 
-.sl-db .sl-hero-action { position: relative; z-index: 2; display: flex; gap: 12px; flex-wrap: wrap; }
-.sl-db .sl-hero-btn {
-  padding: 10px 24px; border-radius: 8px;
-  font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  text-decoration: none; transition: all 0.2s ease;
-}
-.sl-db .sl-hero-btn-gold {
-  background: #C9A84C; color: #0A2E24;
-}
-.sl-db .sl-hero-btn-gold:hover {
-  background: #E8C97A; color: #0A2E24;
-  transform: translateY(-2px); box-shadow: 0 6px 16px rgba(201,168,76,0.3);
-}
-.sl-db .sl-hero-btn-out {
-  background: rgba(255,255,255,0.1); color: #FFFFFF;
-  backdrop-filter: blur(4px);
-}
-.sl-db .sl-hero-btn-out:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
+/* Section */
+.cc-section { display: flex; align-items: center; justify-content: space-between; margin: 32px 0 16px; }
+.cc-section h2 { font-size: 1.05rem; font-weight: 700; color: var(--text); }
 
-/* ── KPI ── */
-.sl-db .sl-kpi {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px; margin-bottom: 28px;
+/* Quick Actions */
+.cc-quick { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 28px; }
+@media (max-width: 900px) { .cc-quick { grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 500px) { .cc-quick { grid-template-columns: repeat(2,1fr); } }
+.cc-quick-item {
+  background: var(--bg-card); border-radius: var(--r-lg); padding: 22px 12px;
+  text-align: center; border: 1px solid var(--border-soft); text-decoration: none;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  transition: all 0.25s var(--ease); color: var(--text-2); box-shadow: var(--shadow-xs);
 }
-@media (max-width: 1100px) { .sl-db .sl-kpi { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px)  { .sl-db .sl-kpi { grid-template-columns: 1fr; } }
+.cc-quick-item:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.cc-quick-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-inset); transition: all 0.25s var(--ease);
+}
+.cc-quick-item:hover .cc-quick-icon { background: var(--blue-bg); transform: scale(1.08); }
+.cc-quick-label { font-size: 0.72rem; font-weight: 600; }
 
-.sl-db .sl-kpi-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 22px;
-  border: 1px solid #F1F5F9;
-  position: relative; overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.sl-db .sl-kpi-card::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-  background: var(--kpi-color, #C9A84C);
-}
-.sl-db .sl-kpi-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-.sl-db .sl-kpi-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.sl-db .sl-kpi-icon { font-size: 1.5rem; }
-.sl-db .sl-kpi-trend {
-  font-size: 0.68rem; padding: 3px 10px;
-  border-radius: 100px; font-weight: 600;
-  background: #F1F5F9; color: #64748B;
-}
-.sl-db .sl-kpi-num {
-  font-size: 2.4rem; font-weight: 700;
-  color: #0A2E24; line-height: 1; margin-bottom: 6px;
-  font-variant-numeric: tabular-nums;
-}
-.sl-db .sl-kpi-label {
-  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: #94A3B8; font-weight: 500; margin-bottom: 14px;
-}
-.sl-db .sl-kpi-link {
-  font-size: 0.78rem; color: #14664B; font-weight: 600;
-  text-decoration: none;
-}
-.sl-db .sl-kpi-link:hover { color: #C9A84C; }
+/* Grid */
+.cc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.cc-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+@media (max-width: 1000px) { .cc-grid-2, .cc-grid-3 { grid-template-columns: 1fr; } }
 
-/* ── Quick Actions ── */
-.sl-db .sl-quick-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px; margin-bottom: 28px;
+/* Card */
+.cc-card {
+  background: var(--bg-card); border-radius: var(--r-xl);
+  border: 1px solid var(--border-soft); overflow: hidden;
+  box-shadow: var(--shadow); transition: box-shadow 0.25s var(--ease);
 }
-@media (max-width: 900px) { .sl-db .sl-quick-grid { grid-template-columns: repeat(3, 1fr); } }
+.cc-card:hover { box-shadow: var(--shadow-md); }
+.cc-card-head {
+  padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border-soft);
+}
+.cc-card-head h3 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin: 0; }
+.cc-card-head a { font-size: 0.82rem; color: var(--blue); font-weight: 500; text-decoration: none; }
 
-.sl-db .sl-quick-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 18px 12px; text-align: center;
-  border: 1px solid #F1F5F9;
-  text-decoration: none; display: block;
-  transition: all 0.2s ease;
+/* Row */
+.cc-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 24px; border-bottom: 1px solid var(--border-soft);
+  text-decoration: none; transition: all 0.15s var(--ease);
 }
-.sl-db .sl-quick-card:hover {
-  background: #0A2E24; color: #FFFFFF;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(10,46,36,0.12);
+.cc-row:last-child { border-bottom: none; }
+.cc-row:hover { background: var(--bg-hover); }
+.cc-row-avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 600; transition: transform 0.2s var(--ease);
 }
-.sl-db .sl-qi { font-size: 1.6rem; display: block; margin-bottom: 8px; transition: transform 0.2s ease; }
-.sl-db .sl-quick-card:hover .sl-qi { transform: scale(1.1); }
-.sl-db .sl-ql {
-  font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase;
-  color: #475569; font-weight: 600; transition: color 0.2s ease;
-}
-.sl-db .sl-quick-card:hover .sl-ql { color: #E8C97A; }
+.cc-row:hover .cc-row-avatar { transform: scale(1.08); }
+.cc-row-main { flex: 1; min-width: 0; }
+.cc-row-title { font-weight: 500; color: var(--text); font-size: 0.88rem; }
+.cc-row-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+.cc-row-right { text-align: right; flex-shrink: 0; }
+.cc-row-amount { font-weight: 600; color: var(--text); font-size: 0.88rem; }
+.cc-row-date { font-size: 0.72rem; color: var(--text-muted); }
 
-/* ── Lists ── */
-.sl-db .sl-grid2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-@media (max-width: 900px) { .sl-db .sl-grid2 { grid-template-columns: 1fr; } }
+/* Badge */
+.cc-badge { font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
+.cc-badge-pending { background: var(--yellow-bg); color: #92400E; }
+.cc-badge-confirmed { background: var(--green-bg); color: #065F46; }
+.cc-badge-completed { background: var(--blue-bg); color: #1D4ED8; }
+.cc-badge-cancelled { background: var(--red-bg); color: #991B1B; }
+.cc-badge-new { background: var(--yellow-bg); color: #92400E; }
+.cc-badge-paid { background: var(--green-bg); color: #065F46; }
+.cc-badge-failed { background: var(--red-bg); color: #991B1B; }
+[data-theme="dark"] .cc-badge-pending { color: #FCD34D; }
+[data-theme="dark"] .cc-badge-confirmed { color: #34D399; }
+[data-theme="dark"] .cc-badge-cancelled { color: #FCA5A5; }
+[data-theme="dark"] .cc-badge-new { color: #FCD34D; }
+[data-theme="dark"] .cc-badge-paid { color: #34D399; }
+[data-theme="dark"] .cc-badge-failed { color: #FCA5A5; }
 
-.sl-db .sl-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  border: 1px solid #F1F5F9;
-  overflow: hidden;
-}
-.sl-db .sl-card-head {
-  padding: 16px 20px;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 1px solid #F1F5F9;
-}
-.sl-db .sl-card-head h3 {
-  font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: #0A2E24; margin: 0; font-weight: 700;
-}
-.sl-db .sl-card-head a {
-  font-size: 0.78rem; color: #14664B; font-weight: 500; text-decoration: none;
-}
-.sl-db .sl-card-head a:hover { color: #C9A84C; }
+/* Empty */
+.cc-empty { padding: 48px 24px; text-align: center; color: var(--text-muted); font-size: 0.88rem; }
 
-.sl-db .sl-row {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding: 14px 20px;
-  border-bottom: 1px solid #FAFBFC;
-  text-decoration: none;
-  transition: background 0.15s ease;
+/* Skeleton */
+.cc-skel {
+  background: var(--border-soft); border-radius: 8px;
+  background-image: linear-gradient(90deg, var(--border-soft) 0%, var(--border) 50%, var(--border-soft) 100%);
+  background-size: 400px 100%; animation: shimmer 1.5s infinite linear;
 }
-.sl-db .sl-row:last-child { border-bottom: none; }
-.sl-db .sl-row:hover { background: #F8FAFB; }
-.sl-db .sl-row-main { min-width: 0; }
-.sl-db .sl-row-title {
-  font-weight: 600; color: #1E293B; font-size: 0.85rem;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.sl-db .sl-row-sub { font-size: 0.75rem; color: #94A3B8; margin-top: 2px; }
+.cc-skel-row { display: flex; align-items: center; gap: 14px; padding: 14px 24px; }
+.cc-skel-avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; }
+.cc-skel-lines { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.cc-skel-line { height: 12px; width: 70%; border-radius: 6px; }
+.cc-skel-line.short { width: 40%; }
 
-.sl-db .sl-status {
-  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 3px 10px; border-radius: 100px; white-space: nowrap;
+/* Footer */
+.cc-footer {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  padding: 18px 24px; margin-top: 36px;
+  background: var(--bg-card); border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl); box-shadow: var(--shadow-xs);
 }
-.sl-db .sl-status-pending   { background: #FEF3C7; color: #92400E; }
-.sl-db .sl-status-confirmed { background: #D1FAE5; color: #065F46; }
-.sl-db .sl-status-completed { background: #E0E7FF; color: #3730A3; }
-.sl-db .sl-status-cancelled { background: #FEE2E2; color: #991B1B; }
-
-.sl-db .sl-empty {
-  padding: 40px 20px; text-align: center;
-  color: #94A3B8; font-size: 0.85rem;
-}
+.cc-footer-item { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; font-weight: 500; }
+.cc-footer-item strong { color: var(--text); font-weight: 600; }
+.cc-footer-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="sl-db">
+<div class="cc-db">
 
-  <div class="sl-hero">
-    <div class="sl-hero-text">
-      <h1>{% now "H" as hour %}{% if hour < "12" %}Xayrli tong{% elif hour < "18" %}Xayrli kun{% else %}Xayrli kech{% endif %}, <em>SoLuna</em></h1>
-      <p>{% now "l, d F Y" %} · Boshqaruv paneli</p>
+  <div class="cc-header">
+    <h1>Weekly sumup</h1>
+    <p>Get summary of your weekly online transactions here.</p>
+  </div>
+
+  <div class="cc-kpi">
+    <div class="cc-kpi-card">
+      <div class="cc-kpi-top">
+        <div class="cc-kpi-icon" style="background:var(--blue-bg);color:var(--blue);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <span class="cc-kpi-trend" id="booking-trend" style="background:var(--blue-bg);color:var(--blue);">—</span>
+      </div>
+      <div class="cc-kpi-value" id="kpi-bookings"><div class="cc-skel" style="height:28px;width:60px;"></div></div>
+      <div class="cc-kpi-label">Jami bronlar</div>
     </div>
-    <div class="sl-hero-action">
-      <a href="/" target="_blank" rel="noopener" class="sl-hero-btn sl-hero-btn-gold">Saytni ko'rish →</a>
-      <a href="{% url 'admin:tours_tour_add' %}" class="sl-hero-btn sl-hero-btn-out">+ Tur qo'shish</a>
+    <div class="cc-kpi-card">
+      <div class="cc-kpi-top">
+        <div class="cc-kpi-icon" style="background:var(--green-bg);color:var(--green);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div>
+        <span class="cc-kpi-trend" id="msg-trend" style="background:var(--yellow-bg);color:#92400E;">—</span>
+      </div>
+      <div class="cc-kpi-value" id="kpi-messages"><div class="cc-skel" style="height:28px;width:50px;"></div></div>
+      <div class="cc-kpi-label">Yangi xabarlar</div>
+    </div>
+    <div class="cc-kpi-card">
+      <div class="cc-kpi-top">
+        <div class="cc-kpi-icon" style="background:var(--orange-bg);color:var(--orange);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/></svg></div>
+        <span class="cc-kpi-trend" id="tour-trend" style="background:var(--green-bg);color:var(--green);">—</span>
+      </div>
+      <div class="cc-kpi-value" id="kpi-tours"><div class="cc-skel" style="height:28px;width:50px;"></div></div>
+      <div class="cc-kpi-label">Aktiv turlar</div>
+    </div>
+    <div class="cc-kpi-card">
+      <div class="cc-kpi-top">
+        <div class="cc-kpi-icon" style="background:var(--yellow-bg);color:var(--yellow);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <span class="cc-kpi-trend" id="review-trend" style="background:var(--green-bg);color:var(--green);">—</span>
+      </div>
+      <div class="cc-kpi-value" id="kpi-reviews"><div class="cc-skel" style="height:28px;width:50px;"></div></div>
+      <div class="cc-kpi-label">Izohlar</div>
     </div>
   </div>
 
-  <div class="sl-kpi">
-    <div class="sl-kpi-card" style="--kpi-color:#C9A84C;">
-      <div class="sl-kpi-top">
-        <span class="sl-kpi-icon">🧳</span>
-        <span class="sl-kpi-trend" id="booking-trend">—</span>
-      </div>
-      <div class="sl-kpi-num" id="kpi-bookings">—</div>
-      <div class="sl-kpi-label">Jami bronlar</div>
-      <a href="{% url 'admin:bookings_booking_changelist' %}" class="sl-kpi-link">Barchasi →</a>
-    </div>
+  <div class="cc-section"><h2>Tezkor harakatlar</h2></div>
+  <div class="cc-quick">
+    <a href="{% url 'admin:tours_tour_add' %}" class="cc-quick-item"><div class="cc-quick-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><span class="cc-quick-label">Tur qo'shish</span></a>
+    <a href="{% url 'admin:regions_region_add' %}" class="cc-quick-item"><div class="cc-quick-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/></svg></div><span class="cc-quick-label">Region</span></a>
+    <a href="{% url 'admin:bookings_booking_changelist' %}?status__exact=pending" class="cc-quick-item"><div class="cc-quick-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><span class="cc-quick-label">Kutilmoqda</span></a>
+    <a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new" class="cc-quick-item"><div class="cc-quick-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div><span class="cc-quick-label">Xabarlar</span></a>
+    <a href="{% url 'admin:reviews_review_changelist' %}?is_approved__exact=0" class="cc-quick-item"><div class="cc-quick-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><span class="cc-quick-label">Izohlar</span></a>
+    <a href="{% url 'admin:accounts_user_changelist' %}" class="cc-quick-item"><div class="cc-quick-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><span class="cc-quick-label">Mijozlar</span></a>
+  </div>
 
-    <div class="sl-kpi-card" style="--kpi-color:#14664B;">
-      <div class="sl-kpi-top">
-        <span class="sl-kpi-icon">✉️</span>
-        <span class="sl-kpi-trend" id="msg-trend">—</span>
+  <div class="cc-grid-2">
+    <div class="cc-card">
+      <div class="cc-card-head"><h3>Oxirgi bronlar</h3><a href="{% url 'admin:bookings_booking_changelist' %}">Barchasi →</a></div>
+      <div id="recent-bookings">
+        <div class="cc-skel-row"><div class="cc-skel cc-skel-avatar"></div><div class="cc-skel-lines"><div class="cc-skel cc-skel-line"></div><div class="cc-skel cc-skel-line short"></div></div></div>
+        <div class="cc-skel-row"><div class="cc-skel cc-skel-avatar"></div><div class="cc-skel-lines"><div class="cc-skel cc-skel-line"></div><div class="cc-skel cc-skel-line short"></div></div></div>
       </div>
-      <div class="sl-kpi-num" id="kpi-messages">—</div>
-      <div class="sl-kpi-label">Yangi xabarlar</div>
-      <a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new" class="sl-kpi-link">Ko'rish →</a>
     </div>
-
-    <div class="sl-kpi-card" style="--kpi-color:#0A2E24;">
-      <div class="sl-kpi-top">
-        <span class="sl-kpi-icon">🗺️</span>
-        <span class="sl-kpi-trend" id="tour-trend">—</span>
+    <div class="cc-card">
+      <div class="cc-card-head"><h3>Yangi xabarlar</h3><a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new">Barchasi →</a></div>
+      <div id="recent-messages">
+        <div class="cc-skel-row"><div class="cc-skel cc-skel-avatar"></div><div class="cc-skel-lines"><div class="cc-skel cc-skel-line"></div><div class="cc-skel cc-skel-line short"></div></div></div>
+        <div class="cc-skel-row"><div class="cc-skel cc-skel-avatar"></div><div class="cc-skel-lines"><div class="cc-skel cc-skel-line"></div><div class="cc-skel cc-skel-line short"></div></div></div>
       </div>
-      <div class="sl-kpi-num" id="kpi-tours">—</div>
-      <div class="sl-kpi-label">Aktiv turlar</div>
-      <a href="{% url 'admin:tours_tour_changelist' %}" class="sl-kpi-link">Ko'rish →</a>
-    </div>
-
-    <div class="sl-kpi-card" style="--kpi-color:#94A3B8;">
-      <div class="sl-kpi-top">
-        <span class="sl-kpi-icon">👥</span>
-        <span class="sl-kpi-trend" id="user-trend">—</span>
-      </div>
-      <div class="sl-kpi-num" id="kpi-users">—</div>
-      <div class="sl-kpi-label">Mijozlar</div>
-      <a href="{% url 'admin:accounts_user_changelist' %}" class="sl-kpi-link">Ko'rish →</a>
     </div>
   </div>
 
-  <div class="sl-quick-grid">
-    <a href="{% url 'admin:tours_tour_add' %}" class="sl-quick-card"><span class="sl-qi">🧳</span><span class="sl-ql">Tur qo'shish</span></a>
-    <a href="{% url 'admin:regions_region_add' %}" class="sl-quick-card"><span class="sl-qi">🗺️</span><span class="sl-ql">Region qo'shish</span></a>
-    <a href="{% url 'admin:bookings_booking_changelist' %}?status__exact=pending" class="sl-quick-card"><span class="sl-qi">⏳</span><span class="sl-ql">Kutilayotgan</span></a>
-    <a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new" class="sl-quick-card"><span class="sl-qi">📬</span><span class="sl-ql">Yangi xabarlar</span></a>
-    <a href="{% url 'admin:reviews_review_changelist' %}?is_approved__exact=0" class="sl-quick-card"><span class="sl-qi">⭐</span><span class="sl-ql">Izohlar</span></a>
-    <a href="{% url 'admin:accounts_user_changelist' %}" class="sl-quick-card"><span class="sl-qi">👤</span><span class="sl-ql">Mijozlar</span></a>
-  </div>
-
-  <div class="sl-grid2">
-    <div class="sl-card">
-      <div class="sl-card-head">
-        <h3>Oxirgi bronlar</h3>
-        <a href="{% url 'admin:bookings_booking_changelist' %}">Barchasi</a>
-      </div>
-      <div id="recent-bookings"><div class="sl-empty">Yuklanmoqda…</div></div>
+  <div class="cc-grid-3">
+    <div class="cc-card">
+      <div class="cc-card-head"><h3>To'lovlar</h3><a href="{% url 'admin:payments_payment_changelist' %}">Barchasi →</a></div>
+      <div id="recent-payments"><div class="cc-skel-row"><div class="cc-skel cc-skel-avatar"></div><div class="cc-skel-lines"><div class="cc-skel cc-skel-line"></div></div></div></div>
     </div>
-    <div class="sl-card">
-      <div class="sl-card-head">
-        <h3>Yangi xabarlar</h3>
-        <a href="{% url 'admin:messages_app_contactmessage_changelist' %}?status__exact=new">Barchasi</a>
-      </div>
-      <div id="recent-messages"><div class="sl-empty">Yuklanmoqda…</div></div>
+    <div class="cc-card">
+      <div class="cc-card-head"><h3>Izohlar</h3><a href="{% url 'admin:reviews_review_changelist' %}">Barchasi →</a></div>
+      <div id="recent-reviews"><div class="cc-skel-row"><div class="cc-skel cc-skel-avatar"></div><div class="cc-skel-lines"><div class="cc-skel cc-skel-line"></div></div></div></div>
+    </div>
+    <div class="cc-card">
+      <div class="cc-card-head"><h3>Viloyatlar</h3><a href="{% url 'admin:regions_region_changelist' %}">Barchasi →</a></div>
+      <div id="recent-regions"><div class="cc-skel-row"><div class="cc-skel cc-skel-avatar"></div><div class="cc-skel-lines"><div class="cc-skel cc-skel-line"></div></div></div></div>
     </div>
   </div>
 
+  <div class="cc-footer">
+    <span class="cc-footer-item"><span class="cc-footer-dot"></span> <strong>Django 4.2</strong></span>
+    <span class="cc-footer-item"><strong>Python 3.11</strong></span>
+    <span class="cc-footer-item"><strong>PostgreSQL</strong></span>
+    <span class="cc-footer-item"><strong>Redis</strong></span>
+    <span class="cc-footer-item"><strong>Celery</strong></span>
+  </div>
 </div>
 
 <script>
-(function () {
-  'use strict';
-
-  var STATS_URL;
-  try { STATS_URL = '{% url "admin-dashboard-stats" %}'; }
-  catch(e) { STATS_URL = null; }
-
-  function animNum(el, target) {
-    if (!el) return;
-    var n = parseInt(target, 10);
-    if (isNaN(n)) { el.textContent = target || '0'; return; }
-    if (n === 0) { el.textContent = '0'; return; }
-    var start = performance.now();
-    function update(now) {
-      var p = Math.min((now - start) / 700, 1);
-      el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * n);
-      if (p < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  function makeRow(data) {
-    var a = document.createElement('a');
-    a.className = 'sl-row';
-    a.href = data.url || '#';
-
-    var main = document.createElement('div');
-    main.className = 'sl-row-main';
-    var t = document.createElement('div');
-    t.className = 'sl-row-title';
-    t.textContent = data.title || '';
-    var s = document.createElement('div');
-    s.className = 'sl-row-sub';
-    s.textContent = data.sub || '';
-    main.append(t, s);
-    a.append(main);
-
-    if (data.status) {
-      var badge = document.createElement('span');
-      badge.className = 'sl-status sl-status-' + data.status;
-      badge.textContent = data.status;
-      a.append(badge);
-    }
-    return a;
-  }
-
-  function fillList(id, items, mapFn) {
-    var box = document.getElementById(id);
-    if (!box) return;
-    box.innerHTML = '';
-    if (!items || !items.length) {
-      box.innerHTML = '<div class="sl-empty">Hozircha yozuvlar yo\'q</div>';
-      return;
-    }
-    items.forEach(function (item) { box.append(makeRow(mapFn(item))); });
-  }
-
-  function loadDashboard() {
-    if (!STATS_URL) {
-      document.querySelectorAll('.sl-empty').forEach(function (el) {
-        el.textContent = 'dashboard-stats URL sozlanmagan';
-      });
-      return;
-    }
-
-    fetch(STATS_URL, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
-      .then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(function (data) {
-        var kpi = data.kpi || {};
-        animNum(document.getElementById('kpi-bookings'), kpi.bookings);
-        animNum(document.getElementById('kpi-messages'), kpi.new_messages);
-        animNum(document.getElementById('kpi-tours'), kpi.active_tours);
-        animNum(document.getElementById('kpi-users'), kpi.users);
-
-        var bt = document.getElementById('booking-trend');
-        if (bt) bt.textContent = (kpi.pending_bookings || 0) + ' kutmoqda';
-
-        var mt = document.getElementById('msg-trend');
-        if (mt) mt.textContent = (kpi.new_messages || 0) + ' ta yangi';
-
-        var tt = document.getElementById('tour-trend');
-        if (tt) tt.textContent = (kpi.active_tours || 0) + ' aktiv';
-
-        var ut = document.getElementById('user-trend');
-        if (ut) ut.textContent = (kpi.users || 0) + ' nafar';
-
-        fillList('recent-bookings', data.recent_bookings, function (b) {
-          return { url: b.url, title: b.tour, sub: b.user + ' · ' + b.number, status: b.status };
-        });
-
-        fillList('recent-messages', data.recent_messages, function (m) {
-          return { url: m.url, title: m.subject, sub: m.name };
-        });
-      })
-      .catch(function () {
-        document.querySelectorAll('.sl-empty').forEach(function (el) {
-          el.textContent = 'Statistika yuklanmadi';
-        });
-      });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadDashboard);
-  } else {
-    loadDashboard();
-  }
+(function(){
+  var S;try{S='{% url "admin-dashboard-stats" %}';}catch(e){S=null;}
+  function a(el,t){if(!el)return;var n=parseInt(t,10);if(isNaN(n)){el.innerHTML=t||'0';return;}if(n===0){el.innerHTML='0';return;}var s=performance.now();(function u(now){var p=Math.min((now-s)/800,1);el.innerHTML=Math.round((1-Math.pow(1-p,4))*n);if(p<1)requestAnimationFrame(u);})(s);}
+  function trend(el,v){if(!el)return;var n=v||0;if(n>0){el.textContent=n+' ta';el.style.background='var(--yellow-bg)';el.style.color='#92400E';}else{el.textContent='0 ta';el.style.background='var(--green-bg)';el.style.color='var(--green)';}}
+  function initials(t){if(!t)return'?';var p=t.trim().split(/\s+/);return((p[0]?p[0][0]:'')+(p[1]?p[1][0]:'' )).toUpperCase()||'?';}
+  function row(d,i){var a=document.createElement('a');a.className='cc-row';a.href=d.url||'#';a.style.animation='fadeIn .3s var(--ease) '+i*0.04+'s backwards';var av=document.createElement('div');av.className='cc-row-avatar';av.style.background=d.avatarBg||'var(--blue-bg)';av.style.color=d.avatarColor||'var(--blue)';av.textContent=initials(d.title);a.appendChild(av);var m=document.createElement('div');m.className='cc-row-main';var t=document.createElement('div');t.className='cc-row-title';t.textContent=d.title||'';var s=document.createElement('div');s.className='cc-row-sub';s.textContent=d.sub||'';m.append(t,s);a.appendChild(m);if(d.badge){var b=document.createElement('span');b.className='cc-badge cc-badge-'+d.badge;b.textContent=d.badge;a.appendChild(b);}return a;}
+  function fill(id,items,fn){var b=document.getElementById(id);if(!b)return;b.innerHTML='';if(!items||!items.length){b.innerHTML='<div class="cc-empty">Hozircha yo\'q</div>';return;}items.forEach(function(i,idx){b.appendChild(fn(i,idx));});}
+  if(!S)return;
+  fetch(S,{headers:{'X-Requested-With':'XMLHttpRequest'}}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+    var k=d.kpi||{};
+    a(document.getElementById('kpi-bookings'),k.bookings);
+    a(document.getElementById('kpi-messages'),k.new_messages);
+    a(document.getElementById('kpi-tours'),k.active_tours);
+    a(document.getElementById('kpi-reviews'),k.reviews||0);
+    trend(document.getElementById('booking-trend'),k.pending_bookings);
+    trend(document.getElementById('msg-trend'),k.new_messages);
+    var tt=document.getElementById('tour-trend');if(tt){tt.textContent=k.active_tours+' ta';tt.style.background='var(--green-bg)';tt.style.color='var(--green)';}
+    var rt=document.getElementById('review-trend');if(rt){rt.textContent=(k.pending_reviews||0)+' ta';}
+    var tl=[];(d.recent_bookings||[]).forEach(function(b){tl.push({url:b.url,title:b.tour,sub:b.user+' · '+b.number,badge:b.status});});fill('recent-bookings',tl);
+    var ml=[];(d.recent_messages||[]).forEach(function(m){ml.push({url:m.url,title:m.subject,sub:m.name,badge:m.status||'new'});});fill('recent-messages',ml);
+    var pl=[];(d.recent_payments||[]).forEach(function(p){pl.push({url:p.url,title:p.method+' — '+p.amount,sub:p.user,badge:p.status});});fill('recent-payments',pl);
+    var rl=[];(d.recent_reviews||[]).forEach(function(r){rl.push({url:r.url,title:r.stars+' '+r.tour,sub:r.user,badge:r.status});});fill('recent-reviews',rl);
+    var rg=[];(d.regions||[]).forEach(function(rg2){rg.push({url:rg2.url,title:rg2.name,sub:rg2.tours+' ta tur'});});fill('recent-regions',rg);
+  }).catch(function(){});
 })();
 </script>
 {% endblock %}

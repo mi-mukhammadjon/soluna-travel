@@ -4,404 +4,53 @@
 {% block title %}{{ title }} | SoLuna Admin{% endblock %}
 
 {% block branding %}
-<a href="{% url 'admin:index' %}" style="display:flex;align-items:baseline;gap:8px;text-decoration:none;">
-  <span style="font-family:Georgia,serif;font-size:1.5rem;font-weight:700;color:#0A2E24;">SoLuna</span>
-  <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#C9A84C;font-weight:700;">Admin</span>
+<a href="{% url 'admin:index' %}" class="sl-brand">
+  <span class="sl-brand-icon">☾</span>
+  <span class="sl-brand-text">SoLuna</span>
+  <span class="sl-brand-tag">Admin</span>
 </a>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
 {% endblock %}
 
 {% block extrahead %}
 {{ block.super }}
 <script>document.documentElement.dataset.theme="light";</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-{% endblock %}
-
-{% block extrastyle %}
-{{ block.super }}
-<style>
-/* ============================================================
-   SoLuna Admin — Yagona stylesheet
-   data-theme="light" majburlangan → !important KERAK EMAS.
-   Barcha selectorlar #id yoki .sl-admin scope bilan.
-   ============================================================ */
-
-/* ── 1. Django CSS variables (rasmiy theming) ── */
-html[data-theme="light"], :root {
-  --primary: #0A2E24;
-  --secondary: #14664B;
-  --accent: #C9A84C;
-  --primary-fg: #FFFFFF;
-
-  --body-bg: #F5F7F6;
-  --body-fg: #1E293B;
-  --body-quiet-color: #64748B;
-  --body-loud-color: #0F172A;
-
-  --header-bg: #FFFFFF;
-  --header-color: #64748B;
-  --header-branding-color: var(--primary);
-  --header-link-color: var(--secondary);
-
-  --breadcrumbs-fg: #64748B;
-  --breadcrumbs-link-fg: var(--secondary);
-
-  --link-fg: var(--secondary);
-  --link-hover-color: var(--accent);
-  --link-selected-fg: var(--primary);
-
-  --hairline-color: #E2E8F0;
-  --border-color: #E2E8F0;
-
-  --darkened-bg: #F8FAFC;
-  --selected-bg: #F0FDF4;
-  --selected-row: #FFFBEB;
-
-  --button-bg: var(--secondary);
-  --button-fg: #FFFFFF;
-  --button-hover-bg: var(--primary);
-  --default-button-bg: var(--primary);
-  --default-button-hover-bg: var(--secondary);
-
-  --object-tools-bg: var(--secondary);
-  --object-tools-hover-bg: var(--primary);
-  --object-tools-fg: #FFFFFF;
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-/* ── 2. Header ── */
-#header {
-  border-bottom: 1px solid var(--hairline-color);
-  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-  padding: 10px 28px;
-}
-#user-tools { font-size: 0.8rem; }
-#user-tools a { font-weight: 500; }
-#user-tools strong {
-  color: var(--primary);
-  background: #F0FDF4;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-/* ── 3. Breadcrumbs ── */
-div.breadcrumbs {
-  padding: 10px 28px;
-  font-size: 0.8rem;
-  border-bottom: 1px solid var(--hairline-color);
-}
-
-/* ── 4. Sidebar ── */
-#nav-sidebar {
-  background: #F8FAFC;
-  border-right: 1px solid var(--hairline-color);
-}
-
-/* Scrollbar */
-#nav-sidebar::-webkit-scrollbar { width: 4px; }
-#nav-sidebar::-webkit-scrollbar-track { background: transparent; }
-#nav-sidebar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
-
-/* Qidiruv */
-#nav-filter { padding: 12px 16px; border-bottom: 1px solid #F1F5F9; }
-#nav-filter input {
-  border-radius: 8px;
-  border: 1px solid #E2E8F0;
-  padding: 8px 12px;
-  font-size: 0.82rem;
-  width: 100%;
-  background: #FFFFFF;
-  color: #334155;
-}
-#nav-filter input:focus {
-  border-color: var(--secondary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(20,102,75,0.08);
-}
-
-/* Kategoriya nomlari */
-#nav-sidebar .module {
-  margin: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
-}
-#nav-sidebar .module caption {
-  background: transparent;
-  color: #94A3B8;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 16px 16px 6px;
-  border: none;
-}
-#nav-sidebar .module th,
-#nav-sidebar .module td {
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-
-/* Menyu elementlari */
-#nav-sidebar .module th a,
-#nav-sidebar .module td a {
-  display: flex;
-  align-items: center;
-  padding: 8px 12px;
-  margin: 2px 8px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #475569;
-  border-radius: 6px;
-  transition: all 0.15s ease;
-  text-decoration: none;
-}
-#nav-sidebar .module th a:hover,
-#nav-sidebar .module td a:hover {
-  background: #FFFFFF;
-  color: var(--primary);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-/* Faol menyu */
-#nav-sidebar .current-model > th > a,
-#nav-sidebar .current-model > td > a {
-  background: #FFFFFF;
-  color: var(--primary);
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border-left: 3px solid var(--accent);
-  padding-left: 9px;
-}
-
-/* Add tugmalari */
-#nav-sidebar th.sidebar-add-link,
-#nav-sidebar td.sidebar-add-link { text-align: right; }
-#nav-sidebar .addlink {
-  display: inline-block;
-  color: var(--secondary);
-  font-size: 0.72rem;
-  font-weight: 600;
-  background: #EFF6F0;
-  padding: 4px 10px;
-  border-radius: 5px;
-  margin: 2px 8px;
-  text-decoration: none;
-}
-#nav-sidebar .addlink:hover {
-  background: var(--primary);
-  color: #FFFFFF;
-}
-
-/* Toggle sidebar */
-#toggle-nav-sidebar {
-  background: #F8FAFC;
-  border-right: 1px solid var(--hairline-color);
-  color: #94A3B8;
-}
-#toggle-nav-sidebar:hover { color: var(--primary); }
-
-/* ── 5. Kontent ── */
-#content { padding: 24px 28px; }
-#content h1 { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 20px; }
-
-/* Modullar */
-#content-main .module {
-  background: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.02);
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-#content-main .module h2,
-#content-main .module caption {
-  background: #F8FAFC;
-  color: var(--primary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 12px 18px;
-  border-bottom: 1px solid var(--hairline-color);
-}
-
-/* ── 6. Jadvallar ── */
-#result_list thead th {
-  background: #F8FAFC;
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border-color);
-  color: #64748B;
-}
-#result_list td,
-#result_list th {
-  padding: 12px 14px;
-  font-size: 0.85rem;
-  vertical-align: middle;
-  border-bottom: 1px solid #F1F5F9;
-  color: #334155;
-}
-#result_list tbody tr:hover td { background: #F8FAFB; }
-#result_list tbody tr.selected td { background: var(--selected-row); }
-#result_list td a { color: var(--secondary); font-weight: 500; }
-
-/* ── 7. Qidiruv va filtrlar ── */
-#changelist-search { padding: 14px 18px; }
-#changelist #toolbar { padding: 10px 14px; }
-#searchbar {
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  min-width: 300px;
-}
-#searchbar:focus {
-  border-color: var(--secondary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(20,102,75,0.08);
-}
-
-/* Filtr paneli */
-#changelist-filter {
-  background: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-}
-#changelist-filter h2 {
-  background: #F8FAFC;
-  color: var(--primary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 12px 18px;
-  border-bottom: 1px solid var(--hairline-color);
-}
-#changelist-filter h3 {
-  color: #94A3B8;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 12px 18px 4px;
-}
-#changelist-filter li a { padding: 6px 18px; display: block; font-size: 0.85rem; }
-#changelist-filter li a:hover { background: #F8FAFB; }
-#changelist-filter li.selected a {
-  font-weight: 600;
-  color: var(--primary);
-  background: #F0FDF4;
-  border-left: 3px solid var(--accent);
-  padding-left: 15px;
-}
-
-/* ── 8. Tugmalar va formalar ── */
-#content .button,
-#content input[type=submit],
-#content .submit-row input,
-#content a.button {
-  border-radius: 8px;
-  padding: 9px 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-#content .button:hover,
-#content input[type=submit]:hover,
-#content a.button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-#content input[type=submit].default:hover {
-  box-shadow: 0 4px 12px rgba(10,46,36,0.15);
-}
-
-#content .addlink {
-  background: #EFF6F0;
-  color: var(--secondary);
-  padding: 7px 14px;
-  border-radius: 6px;
-  border: 1px solid rgba(20,102,75,0.1);
-  font-weight: 500;
-  text-decoration: none;
-}
-#content .addlink:hover { background: var(--secondary); color: #FFFFFF; }
-
-/* Forma inputlari */
-#content-main input[type=text],
-#content-main input[type=password],
-#content-main input[type=email],
-#content-main input[type=number],
-#content-main input[type=url],
-#content-main textarea,
-#content-main select {
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-family: inherit;
-  color: #334155;
-}
-#content-main input:focus,
-#content-main textarea:focus,
-#content-main select:focus {
-  border-color: var(--secondary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(20,102,75,0.08);
-}
-
-/* ── 9. Paginator ── */
-.paginator { padding: 12px 18px; border-top: 1px solid var(--hairline-color); }
-.paginator .this-page {
-  background: var(--secondary);
-  color: #FFFFFF;
-  padding: 5px 10px;
-  border-radius: 6px;
-}
-.paginator a {
-  padding: 5px 10px;
-  border: 1px solid var(--hairline-color);
-  border-radius: 6px;
-  margin: 0 2px;
-}
-
-/* Actions */
-#changelist .actions { padding: 10px 18px; border-top: 1px solid var(--hairline-color); }
-
-/* ── 10. Inline / Stacked ── */
-.inline-group .tabular td,
-.inline-group .tabular th { padding: 10px 12px; }
-.inline-related h3 {
-  background: #F8FAFC;
-  padding: 10px 16px;
-  font-size: 0.82rem;
-  color: var(--primary);
-}
-
-/* ── 11. Submit row ── */
-.submit-row {
-  background: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 14px 18px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.02);
-}
-
-/* ── 12. Object tools (ust qismdagi "Add" va "History" tugmalari) ── */
-.object-tools li a {
-  border-radius: 6px;
-  font-size: 0.75rem;
-  padding: 6px 14px;
-}
-
-/* ── 13. Responsive ── */
-@media (max-width: 767px) {
-  #header { padding: 10px 16px; }
-  #content { padding: 16px; }
-  div.breadcrumbs { padding: 8px 16px; }
-}
-</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Tabular inline'larni grid'ga aylantirish
+  document.querySelectorAll('.inline-group .tabular').forEach(function(table) {
+    var thead = table.querySelector('thead');
+    if (!thead) return;
+    
+    // Ustun nomlarini yig'ish
+    var headers = [];
+    thead.querySelectorAll('th').forEach(function(th) {
+      var text = th.textContent.trim().replace(/\s+/g, ' ');
+      if (text && !th.classList.contains('original')) {
+        headers.push(text);
+      }
+    });
+    
+    // Har bir tr ga data-col-label qo'shish
+    table.querySelectorAll('tbody tr').forEach(function(tr) {
+      var tds = tr.querySelectorAll('td');
+      var idx = 0;
+      tds.forEach(function(td) {
+        if (td.classList.contains('original') || td.classList.contains('delete')) {
+          td.setAttribute('data-col-label', '');
+          return;
+        }
+        if (idx < headers.length) {
+          td.setAttribute('data-col-label', headers[idx]);
+          idx++;
+        }
+      });
+    });
+  });
+});
+</script>
 {% endblock %}

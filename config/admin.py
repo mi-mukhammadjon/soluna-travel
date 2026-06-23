@@ -1,4 +1,4 @@
-# config/admin.py — loyiha ildiziga qo'ying
+# config/admin.py
 
 from django.contrib.admin import AdminSite
 from django.utils.translation import gettext_lazy as _
