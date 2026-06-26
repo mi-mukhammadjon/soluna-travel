@@ -2352,3 +2352,460 @@ msgstr "Try adjusting your filters or search criteria."
 #: templates/tours/list.html:207
 msgid "Reset filters"
 msgstr "Reset filters"
+# ── Added by build_i18n (UI strings) ──
+
+msgid "24/7 Support"
+msgstr "24/7 Support"
+
+msgid "4 world heritage sites across the country"
+msgstr "4 world heritage sites across the country"
+
+msgid "5% off on your first booking"
+msgstr "5% off on your first booking"
+
+msgid "5-star rated"
+msgstr "5-star rated"
+
+msgid "About the region"
+msgstr "About the region"
+
+msgid "Activity type"
+msgstr "Activity type"
+
+msgid "Add guests"
+msgstr "Add guests"
+
+msgid "Added to wishlist"
+msgstr "Added to wishlist"
+
+msgid "Age 12 or above"
+msgstr "Age 12 or above"
+
+msgid "Age 2–11"
+msgstr "Age 2–11"
+
+msgid "All activities"
+msgstr "All activities"
+
+msgid "All destinations"
+msgstr "All destinations"
+
+msgid "Ancient cities, breathtaking landscapes, and warm hospitality — find your perfect destination."
+msgstr "Ancient cities, breathtaking landscapes, and warm hospitality — find your perfect destination."
+
+msgid "Any duration"
+msgstr "Any duration"
+
+msgid "Anywhere"
+msgstr "Anywhere"
+
+msgid "Attractions"
+msgstr "Attractions"
+
+msgid "Available tours"
+msgstr "Available tours"
+
+msgid "Average — decent experience"
+msgstr "Average — decent experience"
+
+msgid "Awaiting approval"
+msgstr "Awaiting approval"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Back to home"
+msgstr "Back to home"
+
+msgid "Become Your Story"
+msgstr "Become Your Story"
+
+msgid "Below average"
+msgstr "Below average"
+
+msgid "Best Seller"
+msgstr "Best Seller"
+
+msgid "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for curious travelers, guided by local experts."
+msgstr "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for curious travelers, guided by local experts."
+
+msgid "Boutique tours crafted for curious souls — from the minarets of Samarkand to the sands of the Kyzylkum."
+msgstr "Boutique tours crafted for curious souls — from the minarets of Samarkand to the sands of the Kyzylkum."
+
+msgid "Browse All"
+msgstr "Browse All"
+
+msgid "Browse all tours"
+msgstr "Browse all tours"
+
+msgid "Browse by style"
+msgstr "Browse by style"
+
+msgid "Can't decide where to go?"
+msgstr "Can't decide where to go?"
+
+msgid "Car rental coming soon"
+msgstr "Car rental coming soon"
+
+msgid "Category"
+msgstr "Category"
+
+msgid "Certified local guides with deep Silk Road knowledge."
+msgstr "Certified local guides with deep Silk Road knowledge."
+
+msgid "Check back soon — new destinations are being added."
+msgstr "Check back soon — new destinations are being added."
+
+msgid "Choose currency"
+msgstr "Choose currency"
+
+msgid "Choose language"
+msgstr "Choose language"
+
+msgid "Choose your adventure"
+msgstr "Choose your adventure"
+
+msgid "Clear filters"
+msgstr "Clear filters"
+
+msgid "Click to rate"
+msgstr "Click to rate"
+
+msgid "Consistently rated one of the safest destinations in Asia"
+msgstr "Consistently rated one of the safest destinations in Asia"
+
+msgid "Copy failed"
+msgstr "Copy failed"
+
+msgid "Culinary"
+msgstr "Culinary"
+
+msgid "Curated"
+msgstr "Curated"
+
+msgid "Custom tours"
+msgstr "Custom tours"
+
+msgid "Desert"
+msgstr "Desert"
+
+msgid "Difficulty"
+msgstr "Difficulty"
+
+msgid "Discover"
+msgstr "Discover"
+
+msgid "Discover the jewels of the ancient Silk Road"
+msgstr "Discover the jewels of the ancient Silk Road"
+
+msgid "Done"
+msgstr "Done"
+
+msgid "Error loading tours"
+msgstr "Error loading tours"
+
+msgid "Error. Try again."
+msgstr "Error. Try again."
+
+msgid "Every detail crafted so you focus on the moments that matter."
+msgstr "Every detail crafted so you focus on the moments that matter."
+
+msgid "Excellent — outstanding experience!"
+msgstr "Excellent — outstanding experience!"
+
+msgid "Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to your inbox. No spam, ever."
+msgstr "Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to your inbox. No spam, ever."
+
+msgid "Expert Guides"
+msgstr "Expert Guides"
+
+msgid "Explore"
+msgstr "Explore"
+
+msgid "Explore on your own terms — coming soon!"
+msgstr "Explore on your own terms — coming soon!"
+
+msgid "Explore region"
+msgstr "Explore region"
+
+msgid "Extraordinary"
+msgstr "Extraordinary"
+
+msgid "Famously welcoming locals and vibrant culture"
+msgstr "Famously welcoming locals and vibrant culture"
+
+msgid "Featured"
+msgstr "Featured"
+
+msgid "Featured Tours"
+msgstr "Featured Tours"
+
+msgid "Filters"
+msgstr "Filters"
+
+msgid "Find your perfect travel experience"
+msgstr "Find your perfect travel experience"
+
+msgid "Get 5% off your first booking"
+msgstr "Get 5% off your first booking"
+
+msgid "Get exclusive offers and Silk Road travel inspiration."
+msgstr "Get exclusive offers and Silk Road travel inspiration."
+
+msgid "Get free advice"
+msgstr "Get free advice"
+
+msgid "Good — would recommend"
+msgstr "Good — would recommend"
+
+msgid "Handpicked experiences based on traveler reviews"
+msgstr "Handpicked experiences based on traveler reviews"
+
+msgid "Hero"
+msgstr "Hero"
+
+msgid "Hotel booking coming soon"
+msgstr "Hotel booking coming soon"
+
+msgid "Itineraries shaped around how you love to travel."
+msgstr "Itineraries shaped around how you love to travel."
+
+msgid "Join 2,400+ travelers. Unsubscribe anytime."
+msgstr "Join 2,400+ travelers. Unsubscribe anytime."
+
+msgid "Link copied!"
+msgstr "Link copied!"
+
+msgid "Login to write a review"
+msgstr "Login to write a review"
+
+msgid "Luxury Silk Road Travel"
+msgstr "Luxury Silk Road Travel"
+
+msgid "Luxury Travel Across the Silk Road"
+msgstr "Luxury Travel Across the Silk Road"
+
+msgid "Min Rating"
+msgstr "Min Rating"
+
+msgid "Minimum 10 characters"
+msgstr "Minimum 10 characters"
+
+msgid "Most Searched Destinations"
+msgstr "Most Searched Destinations"
+
+msgid "Most popular"
+msgstr "Most popular"
+
+msgid "Must-see places"
+msgstr "Must-see places"
+
+msgid "New"
+msgstr "New"
+
+msgid "No Hidden Fees"
+msgstr "No Hidden Fees"
+
+msgid "No categories"
+msgstr "No categories"
+
+msgid "Not sure which tour fits you? Our local specialists craft the perfect Silk Road itinerary — free of charge."
+msgstr "Not sure which tour fits you? Our local specialists craft the perfect Silk Road itinerary — free of charge."
+
+msgid "Our Promise"
+msgstr "Our Promise"
+
+msgid "Our local experts can craft a custom tour tailored just for you."
+msgstr "Our local experts can craft a custom tour tailored just for you."
+
+msgid "Our local experts will craft a personalised itinerary just for you — no cookie-cutter trips."
+msgstr "Our local experts will craft a personalised itinerary just for you — no cookie-cutter trips."
+
+msgid "Our local team is always ready to help."
+msgstr "Our local team is always ready to help."
+
+msgid "Please try again."
+msgstr "Please try again."
+
+msgid "Plov, samsa, shashlik — unforgettable flavors"
+msgstr "Plov, samsa, shashlik — unforgettable flavors"
+
+msgid "Poor — not recommended"
+msgstr "Poor — not recommended"
+
+msgid "Popular destinations"
+msgstr "Popular destinations"
+
+msgid "Preferred Language"
+msgstr "Preferred Language"
+
+msgid "Premium curated tours across Uzbekistan and the ancient Silk Road. Expert guides, boutique experiences, timeless memories."
+msgstr "Premium curated tours across Uzbekistan and the ancient Silk Road. Expert guides, boutique experiences, timeless memories."
+
+msgid "Premium tours across Uzbekistan and the Silk Road."
+msgstr "Premium tours across Uzbekistan and the Silk Road."
+
+msgid "Price: High → Low"
+msgstr "Price: High → Low"
+
+msgid "Price: Low → High"
+msgstr "Price: Low → High"
+
+msgid "Quick search"
+msgstr "Quick search"
+
+msgid "Ready to book?"
+msgstr "Ready to book?"
+
+msgid "Recent searches"
+msgstr "Recent searches"
+
+msgid "Regions"
+msgstr "Regions"
+
+msgid "Removed from wishlist"
+msgstr "Removed from wishlist"
+
+msgid "Reset"
+msgstr "Reset"
+
+msgid "Review"
+msgstr "Review"
+
+msgid "Rich Cuisine"
+msgstr "Rich Cuisine"
+
+msgid "Safe Travel"
+msgstr "Safe Travel"
+
+msgid "Save to wishlist"
+msgstr "Save to wishlist"
+
+msgid "Save tour"
+msgstr "Save tour"
+
+msgid "Scroll to explore"
+msgstr "Scroll to explore"
+
+msgid "Secure Booking"
+msgstr "Secure Booking"
+
+msgid "Similar tours"
+msgstr "Similar tours"
+
+msgid "Sort"
+msgstr "Sort"
+
+msgid "Stay Ahead of Every Adventure"
+msgstr "Stay Ahead of Every Adventure"
+
+msgid "Summarise your experience..."
+msgstr "Summarise your experience..."
+
+msgid "Tailored Routes"
+msgstr "Tailored Routes"
+
+msgid "Talk to a travel expert"
+msgstr "Talk to a travel expert"
+
+msgid "Talk to an expert"
+msgstr "Talk to an expert"
+
+msgid "Tell others about your experience — what did you enjoy most?"
+msgstr "Tell others about your experience — what did you enjoy most?"
+
+msgid "These tours are available in"
+msgstr "These tours are available in"
+
+msgid "Tickets coming soon"
+msgstr "Tickets coming soon"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Top Attractions"
+msgstr "Top Attractions"
+
+msgid "Top Destinations"
+msgstr "Top Destinations"
+
+msgid "Top choices among travelers this season"
+msgstr "Top choices among travelers this season"
+
+msgid "Tour Categories"
+msgstr "Tour Categories"
+
+msgid "Train and air tickets will be available soon."
+msgstr "Train and air tickets will be available soon."
+
+msgid "Transparent pricing, no surprises."
+msgstr "Transparent pricing, no surprises."
+
+msgid "Trending now"
+msgstr "Trending now"
+
+msgid "UNESCO Heritage"
+msgstr "UNESCO Heritage"
+
+msgid "UNESCO sites"
+msgstr "UNESCO sites"
+
+msgid "Update Review"
+msgstr "Update Review"
+
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+msgid "Uzbekistan · Silk Road · Beyond"
+msgstr "Uzbekistan · Silk Road · Beyond"
+
+msgid "View All"
+msgstr "View All"
+
+msgid "View Tour"
+msgstr "View Tour"
+
+msgid "View on map"
+msgstr "View on map"
+
+msgid "View tours"
+msgstr "View tours"
+
+msgid "Warm Hospitality"
+msgstr "Warm Hospitality"
+
+msgid "We're partnering with the best hotels. Stay tuned!"
+msgstr "We're partnering with the best hotels. Stay tuned!"
+
+msgid "Wellness"
+msgstr "Wellness"
+
+msgid "Where Ancient Routes"
+msgstr "Where Ancient Routes"
+
+msgid "Where to?"
+msgstr "Where to?"
+
+msgid "Why Book with SoLuna?"
+msgstr "Why Book with SoLuna?"
+
+msgid "Years of history"
+msgstr "Years of history"
+
+msgid "Your payments and personal data are protected end-to-end with bank-level security. Book with complete peace of mind."
+msgstr "Your payments and personal data are protected end-to-end with bank-level security. Book with complete peace of mind."
+
+msgid "from"
+msgstr "from"
+
+msgid "handcrafted journeys through Uzbekistan"
+msgstr "handcrafted journeys through Uzbekistan"
+
+msgid "more tours"
+msgstr "more tours"
+
+msgid "regions"
+msgstr "regions"
+
+msgid "stars"
+msgstr "stars"

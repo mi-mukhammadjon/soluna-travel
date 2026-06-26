@@ -155,6 +155,8 @@
           href.startsWith('#') ||
           href.startsWith('mailto:') ||
           href.startsWith('tel:') ||
+          // dropdown trigger — let it open the menu (hover/tap) instead of hijacking with the splash
+          (link.parentElement && link.parentElement.classList.contains('nav-has-dropdown')) ||
           href.startsWith('http') && !href.includes(window.location.hostname)
         ) return;
 
@@ -168,26 +170,54 @@
     }
 
     // ═══ REVEAL ON SCROLL ═══
-    const reveals = document.querySelectorAll('.reveal');
-    if (reveals.length && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-      reveals.forEach(el => observer.observe(el));
-    }
+    window.initReveal = function(root) {
+      const targets = (root || document).querySelectorAll('.reveal:not([data-rv])');
+      if (!targets.length) return;
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        targets.forEach(el => { el.dataset.rv = '1'; obs.observe(el); });
+      } else {
+        targets.forEach(el => { el.dataset.rv = '1'; el.classList.add('is-revealed'); });
+      }
+    };
+    window.initReveal();
 
     // ═══ NEWSLETTER FORM ═══
     document.querySelectorAll('.newsletter').forEach(form => {
-      form.addEventListener('submit', (e) => {
-        // Server tomonida hali handler yo'q bo'lsa — UI feedback
-        const input = form.querySelector('input');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = form.querySelector('input[type="email"]');
+        const feedback = form.nextElementSibling;
+        const btn = form.querySelector('.newsletter-btn');
         if (!input?.value) return;
-        // Optional: AJAX submit. Hozircha standart.
+
+        btn.disabled = true;
+        try {
+          const fd = new FormData(form);
+          const res = await fetch(form.action, { method: 'POST', body: fd });
+          const data = await res.json();
+          if (feedback) {
+            feedback.style.display = 'block';
+            feedback.textContent = data.message || (data.ok ? 'Obuna muvaffaqiyatli!' : 'Xatolik yuz berdi.');
+            feedback.style.color = data.ok ? '#4caf50' : '#f44336';
+          }
+          if (data.ok) input.value = '';
+        } catch {
+          if (feedback) {
+            feedback.style.display = 'block';
+            feedback.textContent = 'Xatolik yuz berdi. Qaytadan urinib ko\'ring.';
+            feedback.style.color = '#f44336';
+          }
+        } finally {
+          btn.disabled = false;
+        }
       });
     });
 
@@ -378,4 +408,83 @@
     return newPath + search + hash;
   }
 
+})();
+
+/* ════════════════════════════════════════════════════════════
+   WISHLIST — tour card heart buttons (global, delegated)
+   ════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : '';
+  }
+
+  function showToast(msg, type) {
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.setAttribute('role', 'status');
+    t.style.cssText =
+      'position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(10px);' +
+      'z-index:10000;padding:12px 20px;border-radius:12px;font-family:inherit;font-weight:600;' +
+      'font-size:.9rem;letter-spacing:-.01em;box-shadow:0 12px 40px rgba(0,0,0,.25);opacity:0;' +
+      'transition:opacity .25s ease, transform .25s cubic-bezier(0.22,1,0.36,1);pointer-events:none;' +
+      (type === 'error'
+        ? 'background:#E24B4A;color:#fff;'
+        : 'background:#c9a84c;color:#1C1C1E;');
+    document.body.appendChild(t);
+    requestAnimationFrame(function () {
+      t.style.opacity = '1';
+      t.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    setTimeout(function () {
+      t.style.opacity = '0';
+      t.style.transform = 'translateX(-50%) translateY(10px)';
+      setTimeout(function () { t.remove(); }, 280);
+    }, 2200);
+  }
+
+  // Event delegation — works for any current/future .tour-card-fav-btn
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.tour-card-fav-btn');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    var url = btn.dataset.wishlistUrl;
+    if (!url) return;
+    if (btn.dataset.busy === '1') return;
+    btn.dataset.busy = '1';
+
+    fetch(url, {
+      method: 'POST',
+      headers: { 'X-CSRFToken': getCookie('csrftoken'), 'X-Requested-With': 'XMLHttpRequest' },
+    }).then(function (r) {
+      if (r.status === 401) {
+        var login = window.SOLUNA_LOGIN_URL || '/accounts/login/';
+        location.href = login + '?next=' + encodeURIComponent(location.pathname);
+        return null;
+      }
+      return r.json();
+    }).then(function (data) {
+      btn.dataset.busy = '';
+      if (!data) return;
+      var icon = btn.querySelector('i');
+      if (data.status === 'added') {
+        btn.classList.add('is-liked');
+        if (icon) icon.className = 'ti ti-heart-filled';
+        showToast(btn.dataset.addedText || 'Added to wishlist');
+      } else if (data.status === 'removed') {
+        btn.classList.remove('is-liked');
+        if (icon) icon.className = 'ti ti-heart';
+        showToast(btn.dataset.removedText || 'Removed from wishlist');
+      }
+    }).catch(function () {
+      btn.dataset.busy = '';
+      showToast(btn.dataset.errorText || 'Error. Try again.', 'error');
+    });
+  });
+
+  window.SoLunaToast = showToast;
 })();

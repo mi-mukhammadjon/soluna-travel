@@ -1,0 +1,20 @@
+{% load i18n %}
+<a href="{% url 'bookings:booking-detail' booking.id %}" class="pf-booking">
+  {% if booking.tour.cover_image %}
+    <img src="{{ booking.tour.cover_image.url }}" alt="" class="pf-booking-img">
+  {% else %}
+    <div class="pf-booking-img"></div>
+  {% endif %}
+  <div class="pf-booking-info">
+    <h4>{{ booking.tour.title|truncatechars:46 }}</h4>
+    <div class="pf-booking-meta">
+      <span><i class="ti ti-calendar"></i> {{ booking.travel_date|date:"d-m-Y" }}</span>
+      <span><i class="ti ti-users"></i> {{ booking.num_adults }}{% if booking.num_children %}+{{ booking.num_children }}{% endif %} {% trans "guests" %}</span>
+      <span><i class="ti ti-hash"></i> {{ booking.booking_number }}</span>
+    </div>
+  </div>
+  <div class="pf-booking-right">
+    <div class="pf-booking-price">${{ booking.total_price|floatformat:0 }}</div>
+    <span class="pf-status pf-status-{{ booking.status }}">{{ booking.get_status_display }}</span>
+  </div>
+</a>

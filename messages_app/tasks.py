@@ -1,6 +1,7 @@
 from celery import shared_task
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils import timezone
 import requests
 
 
@@ -117,4 +118,28 @@ def send_booking_sms(booking_id):
         )
         send_sms_eskiz(phone, text)
     except Booking.DoesNotExist:
+        pass
+
+
+@shared_task
+def send_newsletter_email(newsletter_id):
+    """Newsletter ni barcha faol obunachilarga yuborish"""
+    from .models import Newsletter, NewsletterSubscriber
+    try:
+        newsletter = Newsletter.objects.get(pk=newsletter_id)
+        subscribers = NewsletterSubscriber.objects.filter(is_active=True)
+
+        for subscriber in subscribers:
+            send_mail(
+                subject=newsletter.title,
+                message=newsletter.content,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[subscriber.email],
+                fail_silently=True,
+            )
+
+        newsletter.status = 'sent'
+        newsletter.sent_at = timezone.now()
+        newsletter.save()
+    except Newsletter.DoesNotExist:
         pass

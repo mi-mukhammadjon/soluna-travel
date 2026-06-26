@@ -1,8 +1,14 @@
+from decimal import Decimal
 from django.db import models
-from django.db.models import Avg  # <--- IMPORT QO'SHILDI (Property ishlashi uchun)
+from django.db.models import Avg
+from django.utils import timezone
 from django.utils.text import slugify
+from django.conf import settings
 from regions.models import Region, Attraction
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, MaxValueValidator
+
+# Tur "yangi" deb hisoblanadigan davr (kun)
+NEW_TOUR_DAYS = 60
 
 
 class TourCategory(models.Model):
@@ -59,6 +65,12 @@ class Tour(models.Model):
     )
     price = models.DecimalField(max_digits=12, decimal_places=2)
     price_uzs = models.DecimalField(max_digits=18, decimal_places=2, null=True, blank=True)
+    child_price_percent = models.PositiveSmallIntegerField(
+        default=50,
+        validators=[MaxValueValidator(100)],
+        help_text="Bola narxi — katta odam narxining foizi (0–100). "
+                  "Masalan 50 = yarim narx, 0 = bepul, 100 = to'liq narx."
+    )
     duration_days = models.PositiveIntegerField()
     max_group_size = models.PositiveIntegerField(default=15)
     difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default='easy')
@@ -67,6 +79,26 @@ class Tour(models.Model):
     itinerary = models.JSONField(default=list, blank=True)
     is_active = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
+    is_recommended = models.BooleanField(
+        default=False,
+        help_text="Tavsiya etilgan turlar ro'yxatida ko'rsatiladi."
+    )
+
+    # ── Maxsus taklif / chegirma ──
+    discount_percent = models.PositiveIntegerField(
+        default=0,
+        validators=[MaxValueValidator(90)],
+        help_text="Chegirma foizi (0–90). 0 bo'lsa chegirma yo'q."
+    )
+    discount_label = models.CharField(
+        max_length=60, blank=True,
+        help_text="Masalan: 'Yozgi aksiya', 'Early Bird'. Bo'sh bo'lsa 'Sale' ko'rsatiladi."
+    )
+    discount_until = models.DateField(
+        null=True, blank=True,
+        help_text="Chegirma amal qilish muddati (ixtiyoriy). Bo'sh bo'lsa muddatsiz."
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -88,6 +120,42 @@ class Tour(models.Model):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+    # --- MAXSUS TAKLIF / CHEGIRMA ---
+    @property
+    def has_discount(self):
+        """Faol chegirma bormi? (foiz > 0 va muddati o'tmagan)"""
+        if not self.discount_percent or self.discount_percent <= 0:
+            return False
+        if self.discount_until and self.discount_until < timezone.now().date():
+            return False
+        return True
+
+    @property
+    def discounted_price(self):
+        """Chegirma qo'llangan yakuniy narx (faol bo'lsa), aks holda asl narx."""
+        if not self.has_discount:
+            return self.price
+        factor = (Decimal(100) - Decimal(self.discount_percent)) / Decimal(100)
+        return (self.price * factor).quantize(Decimal('0.01'))
+
+    @property
+    def discount_amount(self):
+        """Chegirma summasi (asl narx − chegirmali narx)."""
+        return self.price - self.discounted_price
+
+    @property
+    def child_price(self):
+        """Bitta bola uchun narx — chegirmali narxning child_price_percent foizi."""
+        factor = Decimal(self.child_price_percent) / Decimal(100)
+        return (self.discounted_price * factor).quantize(Decimal('0.01'))
+
+    @property
+    def is_new(self):
+        """Tur so'nggi NEW_TOUR_DAYS kun ichida yaratilganmi?"""
+        if not self.created_at:
+            return False
+        return (timezone.now() - self.created_at).days <= NEW_TOUR_DAYS
 
     # --- 1. AVG_RATING PROPERTY VA SETTER ---
     @property
@@ -179,3 +247,17 @@ class CompanyAdvantage(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='wishlist')
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='wishlisted_by')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['user', 'tour']
+        verbose_name = 'Wishlist'
+        verbose_name_plural = 'Wishlists'
+
+    def __str__(self):
+        return f"{self.user} — {self.tour}"

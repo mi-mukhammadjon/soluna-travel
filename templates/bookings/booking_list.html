@@ -29,12 +29,7 @@
         </div>
         <div class="bl-stat-sep"></div>
         <div class="bl-stat">
-          <div class="bl-stat-num">
-            {% with completed_count=0 %}
-              {% for b in bookings %}{% if b.status == 'completed' %}{% endif %}{% endfor %}
-            {% endwith %}
-            {{ bookings|length }}
-          </div>
+          <div class="bl-stat-num">{{ bookings_count }}</div>
           <div class="bl-stat-label">{% trans "Trips" %}</div>
         </div>
       </div>
@@ -93,8 +88,8 @@
 
         <div class="bl-card-body">
           <div class="bl-card-meta-top">
-            <span><i class="ti ti-map-pin"></i> {% if booking.tour.region %}{{ booking.tour.region.name }}{% else %}Uzbekistan{% endif %}</span>
-            <span class="bl-card-rating"><i class="ti ti-star"></i> {{ booking.tour.rating|default:"4.96" }}</span>
+            <span><i class="ti ti-map-pin"></i> {% if booking.tour.regions.first %}{{ booking.tour.regions.first.name }}{% else %}Uzbekistan{% endif %}</span>
+            <span class="bl-card-rating"><i class="ti ti-star"></i> {{ booking.tour.avg_rating|floatformat:1|default:"4.9" }}</span>
           </div>
 
           <h3 class="bl-card-title">
@@ -106,7 +101,7 @@
               <i class="ti ti-calendar-event"></i>
               <div>
                 <div class="bl-info-label">{% trans "Travel Date" %}</div>
-                <div class="bl-info-value">{{ booking.travel_date|date:"d M Y" }}</div>
+                <div class="bl-info-value">{{ booking.travel_date|date:"d-m-Y" }}</div>
               </div>
             </div>
             <div class="bl-info-item">
@@ -132,10 +127,9 @@
           <div class="bl-card-price">
             <div class="bl-card-price-label">{% trans "Total" %}</div>
             <div class="bl-card-price-amount">
-              {% if booking.currency == 'USD' %}${% endif %}{{ booking.total_price|floatformat:0 }}
-              {% if booking.currency != 'USD' %} {{ booking.currency }}{% endif %}
+              {% if booking.currency == 'USD' %}${{ booking.total_price|floatformat:0 }}{% else %}{{ booking.total_price|floatformat:0 }} {{ booking.currency }}{% endif %}
             </div>
-            <div class="bl-card-price-sub">{% trans "Booked" %} {{ booking.created_at|date:"d M Y" }}</div>
+            <div class="bl-card-price-sub">{% trans "Booked" %} {{ booking.created_at|date:"d-m-Y" }}</div>
           </div>
 
           <div class="bl-card-actions">
@@ -199,9 +193,9 @@
   color: rgba(255,255,255,0.5);
 }
 .bl-crumbs a { color: rgba(255,255,255,0.7); text-decoration: none; }
-.bl-crumbs a:hover { color: var(--c-yellow); }
+.bl-crumbs a:hover { color: var(--gold); }
 .bl-crumbs i { font-size: 0.7rem; opacity: 0.4; }
-.bl-crumbs span { color: var(--c-yellow); font-weight: 600; }
+.bl-crumbs span { color: var(--gold); font-weight: 600; }
 
 .bl-hero-grid {
   display: flex; justify-content: space-between;
@@ -209,7 +203,7 @@
   flex-wrap: wrap;
   margin-bottom: 32px;
 }
-.bl-hero-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.1; margin-bottom: 8px; }
+.bl-hero-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.1; margin-bottom: 8px; color: var(--gold); }
 .bl-hero-sub { color: rgba(255,255,255,0.7); font-size: 1.05rem; }
 
 .bl-hero-stats {
@@ -220,7 +214,7 @@
   border-radius: var(--r-lg);
   backdrop-filter: blur(10px);
 }
-.bl-stat-num { font-size: 1.8rem; font-weight: 800; line-height: 1; color: var(--c-yellow); }
+.bl-stat-num { font-size: 1.8rem; font-weight: 800; line-height: 1; color: var(--gold); }
 .bl-stat-label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-top: 4px; }
 .bl-stat-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.15); }
 

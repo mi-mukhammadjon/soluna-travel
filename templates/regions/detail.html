@@ -2,241 +2,794 @@
 {% load static i18n %}
 
 {% block title %}{{ region.name }} | SoLuna{% endblock %}
+{% block meta_desc %}{{ region.description|truncatewords:25 }}{% endblock %}
 
 {% block content %}
 
-{# ══════════════════ REGION HERO ══════════════════ #}
+{# ══════════════════ IMMERSIVE HERO ══════════════════ #}
 <section class="rd-hero">
   {% if region.image %}
-    <div class="rd-hero-bg" style="background-image:url('{{ region.image.url }}');"></div>
+  <div class="rd-hero-bg" style="background-image:url('{{ region.image.url }}');"></div>
+  {% else %}
+  <div class="rd-hero-bg rd-hero-bg--fallback"></div>
   {% endif %}
   <div class="rd-hero-overlay"></div>
 
   <div class="container rd-hero-content">
-    <nav style="font-size:0.85rem;color:rgba(255,255,255,0.8);margin-bottom:20px;">
-      <a href="{% url 'home' %}" style="color:rgba(255,255,255,0.8);">{% trans "Home" %}</a>
-      <span style="margin:0 8px;">/</span>
-      <a href="{% url 'regions:region-list' %}" style="color:rgba(255,255,255,0.8);">{% trans "Destinations" %}</a>
-      <span style="margin:0 8px;">/</span>
-      <span style="color:#fff;font-weight:600;">{{ region.name }}</span>
+    <nav class="rd-breadcrumb" aria-label="breadcrumb">
+      <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      <i class="ti ti-chevron-right"></i>
+      <a href="{% url 'regions:region-list' %}">{% trans "Destinations" %}</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>{{ region.name }}</span>
     </nav>
 
-    <span class="pill-yellow" style="margin-bottom:24px;">
-      <i class="ti ti-map-pin"></i> {{ region.country|default:"Uzbekistan" }}
+    <span class="rd-hero-country-badge">
+      <i class="ti ti-map-pin"></i> Uzbekistan
     </span>
-    <h1 style="color:#fff;margin-bottom:14px;">{{ region.name }}</h1>
-    <p style="color:rgba(255,255,255,0.9);font-size:1.25rem;max-width:680px;">
-      {{ region.short_description|default:region.description|truncatewords:25 }}
-    </p>
+    <h1 class="rd-hero-h1">{{ region.name }}</h1>
+    {% if region.description %}
+    <p class="rd-hero-lead">{{ region.description|truncatewords:24 }}</p>
+    {% endif %}
+
+    <div class="rd-hero-stats">
+      <div class="rd-hero-stat">
+        <strong>{{ attractions|length }}</strong>
+        <span>{% trans "Attractions" %}</span>
+      </div>
+      <div class="rd-hero-stat-sep"></div>
+      <div class="rd-hero-stat">
+        <strong>{{ tours|length }}</strong>
+        <span>{% trans "Tours" %}</span>
+      </div>
+    </div>
+  </div>
+
+  {# Scroll cue #}
+  <div class="rd-hero-scroll">
+    <div class="rd-scroll-mouse"><div class="rd-scroll-wheel"></div></div>
   </div>
 </section>
 
-{# ══════════════════ REGION INFO ══════════════════ #}
-<section class="section">
+{# ══════════════════ QUICK FACTS STRIP ══════════════════ #}
+<div class="rd-facts-strip">
+  <div class="container">
+    <div class="rd-facts-row">
+      <div class="rd-fact-item">
+        <i class="ti ti-map-2"></i>
+        <div><span>{% trans "Country" %}</span><strong>Uzbekistan</strong></div>
+      </div>
+      <div class="rd-fact-divider"></div>
+      <div class="rd-fact-item">
+        <i class="ti ti-map-pin"></i>
+        <div><span>{% trans "Attractions" %}</span><strong>{{ attractions|length }}</strong></div>
+      </div>
+      <div class="rd-fact-divider"></div>
+      <div class="rd-fact-item">
+        <i class="ti ti-route"></i>
+        <div><span>{% trans "Available tours" %}</span><strong>{{ tours|length }}</strong></div>
+      </div>
+      {% if attractions %}
+      <div class="rd-fact-divider"></div>
+      <div class="rd-fact-item rd-fact-item--cta">
+        <a href="#tours" class="rd-fact-cta-btn">{% trans "View tours" %} <i class="ti ti-arrow-down"></i></a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{# ══════════════════ MAIN CONTENT ══════════════════ #}
+<div class="rd-body">
   <div class="container">
     <div class="rd-layout">
 
-      {# ── MAIN CONTENT ── #}
-      <article>
-        <h2 style="margin-bottom:20px;">{% trans "About" %} {{ region.name }}</h2>
-        <div class="td-prose" style="margin-bottom:40px;">
-          {{ region.description|linebreaks }}
-        </div>
+      {# ── LEFT: Main content ── #}
+      <main class="rd-main">
 
-        {# Highlights / Why visit #}
-        {% if region.highlights.all %}
-        <h3 style="margin-bottom:20px;">{% trans "Why visit" %} {{ region.name }}?</h3>
-        <div class="rd-highlights">
-          {% for hl in region.highlights.all %}
-          <div class="rd-highlight">
-            <div class="rd-highlight-icon"><i class="ti ti-{{ hl.icon|default:'sparkles' }}"></i></div>
-            <h4>{{ hl.title }}</h4>
-            <p>{{ hl.description }}</p>
-          </div>
-          {% endfor %}
-        </div>
+        {# About #}
+        {% if region.description %}
+        <section class="rd-section rd-about">
+          <div class="rd-section-eyebrow">{% trans "About the region" %}</div>
+          <h2>{% trans "About" %} {{ region.name }}</h2>
+          <div class="rd-prose">{{ region.description|linebreaks }}</div>
+        </section>
         {% endif %}
 
-        {# Tours in this region #}
+        {# Attractions #}
+        {% if attractions %}
+        <section class="rd-section" id="attractions">
+          <div class="rd-section-eyebrow">{% trans "Must-see places" %}</div>
+          <h2>{% trans "Top Attractions" %}</h2>
+
+          <div class="rd-attr-grid">
+            {% for attr in attractions %}
+            <div class="rd-attr-card reveal">
+              <div class="rd-attr-media">
+                {% if attr.image %}
+                <img src="{{ attr.image.url }}" alt="{{ attr.name }}" loading="lazy">
+                {% else %}
+                <div class="rd-attr-nophoto"><i class="ti ti-camera"></i></div>
+                {% endif %}
+                {% if attr.latitude and attr.longitude %}
+                <a class="rd-attr-map-pin"
+                   href="https://www.google.com/maps?q={{ attr.latitude }},{{ attr.longitude }}"
+                   target="_blank" rel="noopener"
+                   title="{% trans 'View on map' %}"
+                   onclick="event.stopPropagation()">
+                  <i class="ti ti-map-pin"></i>
+                </a>
+                {% endif %}
+              </div>
+              <div class="rd-attr-body">
+                <h4>{{ attr.name }}</h4>
+                {% if attr.description %}
+                <p>{{ attr.description|truncatewords:18 }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+
+        {# Tours #}
         {% if tours %}
-        <div style="margin-top:60px;">
-          <div class="section-header section-header--row" style="margin-bottom:30px;">
-            <h2 style="margin:0;">{% trans "Tours in" %} {{ region.name }}</h2>
-            <span style="color:var(--c-text-muted);">{{ tours|length }} {% trans "tours" %}</span>
+        <section class="rd-section" id="tours">
+          <div class="rd-section-header">
+            <div>
+              <div class="rd-section-eyebrow">{% trans "Explore" %}</div>
+              <h2>{% trans "Tours in" %} {{ region.name }}</h2>
+            </div>
+            <span class="rd-tours-count-badge">{{ tours|length }} {% trans "tours" %}</span>
           </div>
 
-          <div class="tour-grid">
+          <div class="rd-tour-grid">
             {% for tour in tours %}
-            <article class="tour-card">
-              <div class="tour-card-img">
-                {% if tour.cover_image %}<img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">{% endif %}
-                {% if tour.is_top_rated %}<span class="tour-card-badge tour-card-badge--top">{% trans "Top Rated" %}</span>{% endif %}
+            <article class="rd-tour-card reveal">
+              <a href="{% url 'tours:tour-detail' tour.slug %}" class="rd-tour-card-link" aria-label="{{ tour.title }}"></a>
+
+              <div class="rd-tour-img">
+                {% if tour.cover_image %}
+                <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
+                {% else %}
+                <div class="rd-tour-nophoto"><i class="ti ti-compass"></i></div>
+                {% endif %}
+                {% if tour.is_featured %}
+                <span class="rd-tour-badge">{% trans "Featured" %}</span>
+                {% endif %}
               </div>
-              <div class="tour-card-body">
-                <div class="tour-card-rating">
-                  <span class="star"><i class="ti ti-star"></i></span>
-                  <span>{{ tour.rating|default:"4.96" }}</span>
+
+              <div class="rd-tour-body">
+                {% if tour.avg_rating %}
+                <div class="rd-tour-rating">
+                  <i class="ti ti-star-filled"></i>
+                  <span>{{ tour.avg_rating|floatformat:1 }}</span>
+                  {% if tour.review_count %}<span class="rd-tour-reviews">({{ tour.review_count }})</span>{% endif %}
                 </div>
-                <h3 class="tour-card-title"><a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title }}</a></h3>
-                <div class="tour-card-meta">
-                  <span class="tour-card-meta-item"><i class="ti ti-clock"></i> {{ tour.duration|default:"3 days" }}</span>
+                {% endif %}
+
+                <h3><a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title }}</a></h3>
+
+                {% if tour.short_description %}
+                <p class="rd-tour-desc">{{ tour.short_description|truncatewords:10 }}</p>
+                {% endif %}
+
+                <div class="rd-tour-meta">
+                  <span><i class="ti ti-clock"></i> {{ tour.duration_days }}d</span>
+                  <span><i class="ti ti-users"></i> max {{ tour.max_group_size }}</span>
+                  <span><i class="ti ti-mountain"></i> {{ tour.get_difficulty_display }}</span>
                 </div>
-                <div class="tour-card-foot">
-                  <div class="tour-card-price">${{ tour.price }}<small>/ {% trans "person" %}</small></div>
-                  <a href="{% url 'tours:tour-detail' tour.slug %}" class="btn btn-light btn-sm">{% trans "View" %}</a>
+
+                <div class="rd-tour-foot">
+                  <div class="rd-tour-price">${{ tour.price }}<small>/ {% trans "person" %}</small></div>
+                  <a href="{% url 'tours:tour-detail' tour.slug %}" class="rd-tour-btn">{% trans "View" %}</a>
                 </div>
               </div>
             </article>
             {% endfor %}
           </div>
-        </div>
-        {% endif %}
-      </article>
 
-      {# ── INFO SIDEBAR ── #}
+          <div style="text-align:center;margin-top:40px;">
+            <a href="{% url 'tours:tour-list' %}" class="rd-all-tours-link">
+              {% trans "Browse all tours" %} <i class="ti ti-arrow-right"></i>
+            </a>
+          </div>
+        </section>
+        {% endif %}
+
+      </main>
+
+      {# ── RIGHT: Sidebar ── #}
       <aside class="rd-sidebar">
-        <div class="rd-info-card">
-          <h3 style="margin-bottom:18px;">{% trans "Quick Facts" %}</h3>
-          <ul class="rd-info-list">
+
+        {# Quick info card #}
+        <div class="rd-sidebar-card">
+          <div class="rd-sidebar-card-head">{% trans "Quick Facts" %}</div>
+          <ul class="rd-facts-list">
             <li>
-              <i class="ti ti-map-pin"></i>
-              <div>
-                <span>{% trans "Country" %}</span>
-                <strong>{{ region.country|default:"Uzbekistan" }}</strong>
-              </div>
+              <div class="rd-fact-icon"><i class="ti ti-map-2"></i></div>
+              <div><span>{% trans "Country" %}</span><strong>Uzbekistan</strong></div>
             </li>
-            {% if region.population %}
             <li>
-              <i class="ti ti-users"></i>
-              <div>
-                <span>{% trans "Population" %}</span>
-                <strong>{{ region.population }}</strong>
-              </div>
+              <div class="rd-fact-icon"><i class="ti ti-map-pin"></i></div>
+              <div><span>{% trans "Attractions" %}</span><strong>{{ attractions|length }}</strong></div>
             </li>
-            {% endif %}
-            {% if region.best_time %}
             <li>
-              <i class="ti ti-calendar"></i>
-              <div>
-                <span>{% trans "Best time to visit" %}</span>
-                <strong>{{ region.best_time }}</strong>
-              </div>
+              <div class="rd-fact-icon"><i class="ti ti-route"></i></div>
+              <div><span>{% trans "Available tours" %}</span><strong>{{ tours|length }}</strong></div>
             </li>
-            {% endif %}
-            {% if region.language %}
-            <li>
-              <i class="ti ti-language"></i>
-              <div>
-                <span>{% trans "Language" %}</span>
-                <strong>{{ region.language }}</strong>
-              </div>
-            </li>
-            {% endif %}
-            {% if region.currency %}
-            <li>
-              <i class="ti ti-currency-dollar"></i>
-              <div>
-                <span>{% trans "Currency" %}</span>
-                <strong>{{ region.currency }}</strong>
-              </div>
-            </li>
-            {% endif %}
           </ul>
 
-          {% if region.latitude and region.longitude %}
-          <div class="rd-map">
-            <iframe loading="lazy" style="border:0;width:100%;height:200px;border-radius:var(--r-md);"
-              src="https://maps.google.com/maps?q={{ region.latitude }},{{ region.longitude }}&z=10&output=embed"></iframe>
+          {% if attractions %}
+          <div class="rd-map-links">
+            <p class="rd-map-links-label">
+              <i class="ti ti-map"></i> {% trans "View on map" %}
+            </p>
+            {% for attr in attractions %}
+              {% if attr.latitude and attr.longitude %}
+              <a href="https://www.google.com/maps?q={{ attr.latitude }},{{ attr.longitude }}"
+                 target="_blank" rel="noopener" class="rd-map-link">
+                <i class="ti ti-map-pin"></i>
+                <span>{{ attr.name }}</span>
+                <i class="ti ti-external-link rd-ext-icon"></i>
+              </a>
+              {% endif %}
+            {% endfor %}
           </div>
           {% endif %}
         </div>
 
+        {# CTA card #}
         <div class="rd-cta-card">
-          <h3 style="color:#fff;margin-bottom:10px;">{% trans "Need help planning?" %}</h3>
-          <p style="color:rgba(255,255,255,0.8);margin-bottom:18px;font-size:0.95rem;">
-            {% trans "Our local experts can craft a custom tour for you." %}
-          </p>
-          <a href="{% url 'messages_app:contact' %}" class="btn btn-yellow btn-block">
+          <div class="rd-cta-card-icon"><i class="ti ti-headset"></i></div>
+          <h3>{% trans "Need help planning?" %}</h3>
+          <p>{% trans "Our local experts can craft a custom tour tailored just for you." %}</p>
+          <a href="{% url 'messages_app:contact' %}" class="rd-cta-card-btn">
             {% trans "Contact us" %} <i class="ti ti-arrow-right"></i>
           </a>
         </div>
-      </aside>
 
+        {# Related regions (if any tours exist show CTA) #}
+        {% if tours %}
+        <div class="rd-sidebar-tours-cta">
+          <div class="rd-sidebar-tours-head">{% trans "Ready to book?" %}</div>
+          <p>{% trans "These tours are available in" %} {{ region.name }}:</p>
+          {% for tour in tours|slice:":3" %}
+          <a href="{% url 'tours:tour-detail' tour.slug %}" class="rd-mini-tour">
+            {% if tour.cover_image %}
+            <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}">
+            {% else %}
+            <div class="rd-mini-tour-img-placeholder"><i class="ti ti-compass"></i></div>
+            {% endif %}
+            <div>
+              <span class="rd-mini-tour-name">{{ tour.title|truncatechars:32 }}</span>
+              <span class="rd-mini-tour-price">${{ tour.price }}</span>
+            </div>
+          </a>
+          {% endfor %}
+          {% if tours|length > 3 %}
+          <a href="{% url 'tours:tour-list' %}" class="rd-more-tours-link">
+            +{{ tours|length|add:"-3" }} {% trans "more tours" %} <i class="ti ti-arrow-right"></i>
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+
+      </aside>
     </div>
   </div>
-</section>
+</div>
 
 <style>
+/* ══════════════════════════════════════════════════
+   REGION DETAIL — PREMIUM REDESIGN
+══════════════════════════════════════════════════ */
+
+/* ── Hero ── */
 .rd-hero {
   position: relative;
-  min-height: 480px;
-  background: #0A0A0A;
-  color: #fff;
-  display: flex; align-items: center;
-  padding: 80px 0;
+  min-height: 88vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
   overflow: hidden;
+  color: #fff;
 }
 .rd-hero-bg {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  opacity: 0.6;
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 8s ease;
 }
+.rd-hero-bg--fallback {
+  background: linear-gradient(135deg, #0a1628 0%, #1a3a2e 60%, #0d1b2a 100%);
+}
+.rd-hero:hover .rd-hero-bg { transform: scale(1.04); }
 .rd-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(0,0,0,.85) 0%,
+    rgba(0,0,0,.55) 40%,
+    rgba(0,0,0,.2) 70%,
+    rgba(0,0,0,.1) 100%
+  );
 }
-.rd-hero-content { position: relative; z-index: 2; }
-
-.rd-layout { display: grid; grid-template-columns: 1fr 360px; gap: 40px; }
-@media (max-width: 1024px) { .rd-layout { grid-template-columns: 1fr; } }
-
-.rd-highlights {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+.rd-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
 }
-@media (max-width: 600px) { .rd-highlights { grid-template-columns: 1fr; } }
-.rd-highlight {
-  padding: 24px;
-  background: var(--c-bg-alt);
-  border-radius: var(--r-md);
+.rd-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .8rem;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 28px;
 }
-.rd-highlight-icon {
-  width: 48px; height: 48px;
-  background: var(--c-yellow);
-  border-radius: var(--r-sm);
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; margin-bottom: 14px;
+.rd-breadcrumb a { color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+.rd-breadcrumb a:hover { color: rgba(255,255,255,.85); }
+.rd-breadcrumb i { font-size: .65rem; }
+.rd-breadcrumb span { color: rgba(255,255,255,.85); }
+
+.rd-hero-country-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,.18);
+  border: 1px solid rgba(201,168,76,.4);
+  color: #c9a84c;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
 }
-.rd-highlight h4 { font-size: 1.1rem; margin-bottom: 8px; }
-.rd-highlight p { color: var(--c-text-muted); font-size: 0.9rem; }
-
-.rd-sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 130px; align-self: start; }
-@media (max-width: 1024px) { .rd-sidebar { position: static; } }
-
-.rd-info-card {
-  background: #fff;
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-lg);
-  padding: 24px;
-}
-.rd-info-list { list-style: none; padding: 0; }
-.rd-info-list li {
-  display: flex; align-items: center; gap: 14px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--c-border-soft);
-}
-.rd-info-list li:last-child { border-bottom: none; }
-.rd-info-list i { font-size: 1.3rem; color: var(--c-orange); flex-shrink: 0; }
-.rd-info-list span { display: block; font-size: 0.8rem; color: var(--c-text-muted); margin-bottom: 2px; }
-.rd-info-list strong { display: block; font-size: 0.95rem; }
-
-.rd-map { margin-top: 16px; }
-
-.rd-cta-card {
-  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+.rd-hero-h1 {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -.03em;
+  margin-bottom: 20px;
   color: #fff;
-  border-radius: var(--r-lg);
-  padding: 28px;
 }
+.rd-hero-lead {
+  font-size: clamp(.95rem, 1.8vw, 1.15rem);
+  color: rgba(255,255,255,.75);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+.rd-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.rd-hero-stat strong { display: block; font-size: 1.75rem; font-weight: 800; line-height: 1; }
+.rd-hero-stat span  { font-size: .72rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .08em; }
+.rd-hero-stat-sep   { width: 1px; height: 36px; background: rgba(255,255,255,.2); }
+
+.rd-hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  z-index: 2;
+}
+.rd-scroll-mouse {
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,.35);
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+}
+.rd-scroll-wheel {
+  width: 4px;
+  height: 8px;
+  background: rgba(255,255,255,.6);
+  border-radius: 2px;
+  animation: rd-wheel 2s ease-in-out infinite;
+}
+@keyframes rd-wheel {
+  0%  { opacity: 1; transform: translateY(0); }
+  80% { opacity: 0; transform: translateY(10px); }
+  100%{ opacity: 0; transform: translateY(0); }
+}
+
+/* ── Facts strip ── */
+.rd-facts-strip {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border, #e8e0d4);
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.rd-facts-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.rd-fact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 28px;
+  flex: 1;
+  min-width: 160px;
+}
+.rd-fact-item i {
+  font-size: 1.3rem;
+  color: #c9a84c;
+  flex-shrink: 0;
+}
+.rd-fact-item > div span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .07em; color: var(--c-text-muted, #7a7060); margin-bottom: 2px; }
+.rd-fact-item > div strong { font-size: .95rem; font-weight: 700; color: var(--c-text, #1a1a2a); }
+.rd-fact-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--c-border, #e8e0d4);
+  flex-shrink: 0;
+}
+.rd-fact-item--cta { flex: 0; padding: 16px 24px 16px 28px; }
+.rd-fact-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #c9a84c;
+  color: #0a1628;
+  font-weight: 700;
+  font-size: .85rem;
+  padding: 10px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s;
+}
+.rd-fact-cta-btn:hover { background: #dfc06a; }
+
+/* ── Main layout ── */
+.rd-body { padding: 72px 0 100px; }
+.rd-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  align-items: start;
+}
+@media (max-width: 1100px) { .rd-layout { grid-template-columns: 1fr; gap: 48px; } }
+
+/* ── Sections ── */
+.rd-section { margin-bottom: 72px; }
+.rd-section:last-child { margin-bottom: 0; }
+.rd-section-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 8px;
+}
+.rd-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -.02em;
+}
+.rd-prose p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--c-text, #1a1a2a);
+  margin-bottom: 16px;
+}
+
+/* ── About ── */
+.rd-about { padding-bottom: 72px; border-bottom: 1px solid var(--c-border, #e8e0d4); }
+
+/* ── Attractions grid ── */
+.rd-attr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 700px) { .rd-attr-grid { grid-template-columns: 1fr; } }
+
+.rd-attr-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--c-border, #e8e0d4);
+  background: var(--c-surface, #fff);
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
+}
+.rd-attr-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.12); }
+
+.rd-attr-media {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #0d1b2a;
+}
+.rd-attr-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.rd-attr-card:hover .rd-attr-media img { transform: scale(1.06); }
+.rd-attr-nophoto {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; color: rgba(255,255,255,.15);
+  background: linear-gradient(135deg, #0d1b2a, #1a3a2e);
+}
+.rd-attr-map-pin {
+  position: absolute; right: 10px; top: 10px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  color: #c9a84c; font-size: 1rem; text-decoration: none;
+  transition: background .2s;
+}
+.rd-attr-map-pin:hover { background: var(--c-surface); }
+
+.rd-attr-body { padding: 16px 18px 18px; }
+.rd-attr-body h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+.rd-attr-body p  { font-size: .83rem; color: var(--c-text-muted, #7a7060); line-height: 1.55; margin: 0; }
+
+/* ── Tours section ── */
+.rd-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.rd-section-header h2 { margin-bottom: 0; }
+.rd-tours-count-badge {
+  display: inline-flex; align-items: center;
+  padding: 6px 18px;
+  border: 1.5px solid var(--c-border, #e8e0d4);
+  border-radius: 100px;
+  font-size: .82rem; color: var(--c-text-muted, #7a7060); font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+.rd-tour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.rd-tour-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--c-border, #e8e0d4);
+  background: var(--c-surface, #fff);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s, border-color .25s;
+}
+.rd-tour-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.12); border-color: #c9a84c; }
+.rd-tour-card-link { position: absolute; inset: 0; z-index: 0; }
+
+.rd-tour-img {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #0d1b2a;
+  flex-shrink: 0;
+}
+.rd-tour-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.rd-tour-card:hover .rd-tour-img img { transform: scale(1.06); }
+.rd-tour-nophoto {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; color: rgba(255,255,255,.15);
+  background: linear-gradient(135deg, #0d1b2a, #1a3a2e);
+}
+.rd-tour-badge {
+  position: absolute; top: 10px; left: 10px;
+  background: #c9a84c; color: #0a1628;
+  font-size: .7rem; font-weight: 800; letter-spacing: .06em;
+  padding: 3px 10px; border-radius: 100px;
+}
+
+.rd-tour-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
+.rd-tour-rating {
+  display: flex; align-items: center; gap: 5px;
+  font-size: .82rem; font-weight: 700; color: var(--c-text, #1a1a2a);
+}
+.rd-tour-rating i { color: #c9a84c; }
+.rd-tour-reviews { font-weight: 400; color: var(--c-text-muted, #7a7060); }
+.rd-tour-body h3 { font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.35; }
+.rd-tour-body h3 a { color: inherit; text-decoration: none; position: relative; z-index: 1; }
+.rd-tour-desc { font-size: .83rem; color: var(--c-text-muted, #7a7060); line-height: 1.55; margin: 0; }
+.rd-tour-meta {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  font-size: .75rem; color: var(--c-text-muted, #7a7060);
+}
+.rd-tour-meta i { margin-right: 3px; }
+.rd-tour-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 12px; margin-top: auto;
+  border-top: 1px solid var(--c-border-soft, #ede8de);
+}
+.rd-tour-price { font-size: 1.05rem; font-weight: 800; color: var(--c-text, #1a1a2a); }
+.rd-tour-price small { font-size: .72rem; font-weight: 400; color: var(--c-text-muted, #7a7060); }
+.rd-tour-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  position: relative; z-index: 1;
+  background: var(--c-bg-alt, #f4f1ec);
+  color: var(--c-text, #1a1a2a);
+  font-size: .8rem; font-weight: 700;
+  padding: 7px 16px; border-radius: 100px;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.rd-tour-card:hover .rd-tour-btn { background: #c9a84c; color: #0a1628; }
+
+.rd-all-tours-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--c-text-muted, #7a7060);
+  font-size: .9rem; font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 2px;
+  transition: color .2s;
+}
+.rd-all-tours-link:hover { color: #c9a84c; }
+
+/* ── Sidebar ── */
+.rd-sidebar {
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (max-width: 1100px) { .rd-sidebar { position: static; } }
+
+.rd-sidebar-card {
+  background: var(--c-surface, #fff);
+  border: 1px solid var(--c-border, #e8e0d4);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.rd-sidebar-card-head {
+  background: var(--c-text);
+  color: var(--c-bg);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+}
+.rd-facts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rd-facts-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--c-border-soft, #ede8de);
+}
+.rd-facts-list li:last-child { border-bottom: none; }
+.rd-fact-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: #c9a84c; flex-shrink: 0;
+}
+.rd-facts-list span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .07em; color: var(--c-text-muted, #7a7060); margin-bottom: 2px; }
+.rd-facts-list strong { font-size: .9rem; font-weight: 700; }
+
+.rd-map-links { padding: 14px 22px 18px; border-top: 1px solid var(--c-border-soft, #ede8de); }
+.rd-map-links-label {
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--c-text-muted, #7a7060);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.rd-map-link {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .83rem; color: var(--c-text-muted, #7a7060);
+  text-decoration: none; padding: 7px 0;
+  border-bottom: 1px solid var(--c-border-soft, #ede8de);
+  transition: color .2s;
+}
+.rd-map-link:last-child { border-bottom: none; }
+.rd-map-link:hover { color: #c9a84c; }
+.rd-map-link > i:first-child { color: #c9a84c; flex-shrink: 0; }
+.rd-map-link span { flex: 1; }
+.rd-ext-icon { font-size: .7rem; color: var(--c-border, #e8e0d4); }
+
+/* CTA card */
+.rd-cta-card {
+  background: linear-gradient(135deg, #0a1628 0%, #1a3a2e 100%);
+  border-radius: 20px;
+  padding: 26px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.rd-cta-card::after {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(201,168,76,.1);
+  pointer-events: none;
+}
+.rd-cta-card-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(201,168,76,.15);
+  border: 1px solid rgba(201,168,76,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: #c9a84c;
+  margin-bottom: 16px;
+}
+.rd-cta-card h3 { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.rd-cta-card p  { font-size: .84rem; color: rgba(255,255,255,.65); margin-bottom: 20px; line-height: 1.6; }
+.rd-cta-card-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #c9a84c; color: #0a1628;
+  font-weight: 800; font-size: .88rem;
+  padding: 11px 24px; border-radius: 100px;
+  text-decoration: none; transition: background .2s;
+}
+.rd-cta-card-btn:hover { background: #dfc06a; }
+
+/* Mini tour list in sidebar */
+.rd-sidebar-tours-cta {
+  background: var(--c-surface, #fff);
+  border: 1px solid var(--c-border, #e8e0d4);
+  border-radius: 20px;
+  padding: 20px;
+}
+.rd-sidebar-tours-head {
+  font-size: .78rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--c-text-muted, #7a7060); margin-bottom: 6px;
+}
+.rd-sidebar-tours-cta > p { font-size: .83rem; color: var(--c-text-muted, #7a7060); margin-bottom: 14px; }
+
+.rd-mini-tour {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; padding: 8px 0;
+  border-bottom: 1px solid var(--c-border-soft, #ede8de);
+}
+.rd-mini-tour:last-of-type { border-bottom: none; }
+.rd-mini-tour img, .rd-mini-tour-img-placeholder {
+  width: 46px; height: 46px; border-radius: 10px;
+  object-fit: cover; flex-shrink: 0;
+}
+.rd-mini-tour-img-placeholder {
+  background: #0d1b2a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: rgba(255,255,255,.3);
+}
+.rd-mini-tour > div { flex: 1; min-width: 0; }
+.rd-mini-tour-name { display: block; font-size: .82rem; font-weight: 600; color: var(--c-text, #1a1a2a); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rd-mini-tour-price { display: block; font-size: .78rem; font-weight: 700; color: #c9a84c; margin-top: 2px; }
+
+.rd-more-tours-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .82rem; font-weight: 600;
+  color: var(--c-text-muted, #7a7060);
+  text-decoration: none; margin-top: 12px;
+  transition: color .2s;
+}
+.rd-more-tours-link:hover { color: #c9a84c; }
 </style>
 
 {% endblock %}

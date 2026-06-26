@@ -1,9 +1,9 @@
 # SoLuna Touroperator — Project Handoff
 
 **Loyiha:** SoLuna — O'zbekiston bo'yicha premium tur agentlik web sayti  
-**Brend:** SoLuna (soluna.uz)  
+**Brend:** SoLuna (solunatravel.uz)  
 **Egasi:** Oygul Axatova — Touroperator  
-**Stack:** Django 4.2 + PostgreSQL + Redis + Celery + Docker  
+**Stack:** Django 4.2 + PostgreSQL 15 + Redis 7 + Celery 5.3 + Docker  
 **Sana:** Iyun 2025
 
 ---
@@ -11,33 +11,130 @@
 ## 1. Arxitektura
 
 ```
-tour_agency/
-├── config/               # Django settings, urls, celery
-│   ├── settings.py
+soluna/
+├── config/                  # Django sozlamalari, URL lar, Celery
+│   ├── settings.py          # Asosiy settings (300+ qator)
+│   ├── settings_build.py    # Build vaqtida minimal settings (SQLite)
+│   ├── urls.py              # Asosiy URL router (i18n_patterns bilan)
+│   ├── celery.py            # Celery app konfiguratsiyasi
+│   ├── admin.py             # Custom SoLunaAdminSite
+│   ├── admin_dashboard.py   # Admin dashboard API (KPI, recent items)
+│   ├── wsgi.py              # WSGI entry point
+│   └── asgi.py              # ASGI entry point (uvicorn uchun)
+│
+├── accounts/                # Foydalanuvchi tizimi
+│   ├── models.py            # Custom User model
+│   ├── views.py             # Profil, registratsiya, parol o'zgartirish
+│   ├── urls.py              # Profil URL lari
+│   ├── forms.py             # ProfileUpdateForm
+│   ├── admin.py             # Custom UserAdmin
+│   ├── signals.py           # Allauth signup signali -> welcome email
+│   ├── tasks.py             # Celery: send_welcome_email
+│   └── apps.py              # AppConfig + signals ready()
+│
+├── regions/                 # Viloyatlar va attraksiyalar
+│   ├── models.py            # Region, Attraction
+│   ├── views.py             # ListView, DetailView
+│   ├── urls.py              # Region URL lari
+│   ├── translation.py       # modeltranslation: name, description
+│   └── admin.py
+│
+├── tours/                   # Turlar, kategoriyalar, galereya
+│   ├── models.py            # Tour, TourCategory, TourImage, ItineraryDay,
+│   │                        #   CompanyStatistic, CompanyAdvantage
+│   ├── views.py             # HomeView, TourListView, TourDetailView, 404/500
+│   ├── urls.py              # Tour URL lari
+│   ├── urls_home.py         # Bosh sahifa URL
+│   ├── translation.py       # modeltranslation: title, description, ...
+│   ├── templatetags/
+│   │   └── lang_tags.py     # Til kodidan native nom filteri
+│   └── management/commands/ # Seed komandalari
+│       ├── seed_real_tours.py
+│       ├── seed_extra_tours.py
+│       ├── seed_tour_itineraries.py
+│       └── populate_tours.py
+│
+├── bookings/                # Bronlar tizimi
+│   ├── models.py            # Booking (pending->confirmed->completed/cancelled)
+│   ├── views.py             # CRUD bronlar uchun
+│   ├── urls.py              # Bron URL lari
+│   ├── forms.py             # BookingForm
+│   ├── tasks.py             # Celery: tasdiqlash/bekor qilish email
+│   └── admin.py
+│
+├── payments/                # To'lov tizimi (Click + Payme)
+│   ├── models.py            # Payment, Currency (valyuta konversiya)
+│   ├── views.py             # To'lov sahifalari, webhook lar, mock mode
+│   ├── urls.py              # To'lov URL lari
+│   ├── gateways/
+│   │   ├── click.py         # Click.uz SHOP API (Prepare + Complete)
+│   │   └── payme.py         # Payme Merchant API (JSON-RPC 2.0)
+│   └── management/commands/
+│       └── seed_currencies.py
+│
+├── messages_app/            # Contact form va email/SMS javob
+│   ├── models.py            # ContactMessage
+│   ├── views.py             # ContactView, MessageReplyView
 │   ├── urls.py
-│   └── celery.py
-├── accounts/             # Custom User, login, register, profil
-├── regions/              # Viloyatlar va attraksiyalar
-├── tours/                # Turlar, kategoriyalar, galereya
-├── bookings/             # Bronlar, bekor qilish
-├── payments/             # Click + Payme integratsiya
-├── messages_app/         # Contact form, email/SMS javob
-├── reviews/              # Reyting va izohlar
-├── places/               # 2GIS yaqin joylar API
-├── templates/            # HTML templatelar
-│   ├── admin/            # Custom admin panel
-│   ├── accounts/         # Login, register, profil
-│   ├── tours/            # List, detail
-│   ├── regions/          # List, detail
-│   ├── bookings/         # List, detail, create
-│   ├── payments/         # Select payment
-│   └── messages_app/     # Contact form
-├── static/css/main.css   # SoLuna premium CSS
-├── wheels/               # Offline Python packages
-├── Dockerfile
-├── docker-compose.yml
-├── entrypoint.sh
-└── wait_for_db.py
+│   ├── forms.py             # ContactForm, ReplyForm
+│   ├── tasks.py             # Celery: admin xabarnoma, javob email, SMS
+│   └── admin.py
+│
+├── reviews/                 # Reyting va izohlar
+│   ├── models.py            # Review (1-5 yulduz, user+tour unique)
+│   ├── views.py             # CRUD reviewlar
+│   ├── urls.py
+│   ├── forms.py             # ReviewForm
+│   └── admin.py
+│
+├── places/                  # 2GIS yaqin joylar API
+│   ├── models.py            # NearbyPlace (cafe, hotel, museum, ...)
+│   ├── views.py             # NearbyPlacesAPIView, AttractionNearbyView
+│   ├── urls.py
+│   └── dgis.py              # 2GIS API wrapper
+│
+├── templates/               # HTML templatelar (54+ fayl)
+│   ├── admin/               # Custom admin panel (Karvon teması)
+│   ├── account/             # Allauth autentifikatsiya
+│   ├── accounts/            # Custom profil sahifalari
+│   ├── tours/               # List, detail
+│   ├── regions/             # List, detail
+│   ├── bookings/            # List, detail, create
+│   ├── payments/            # To'lov sahifalari
+│   ├── messages_app/        # Contact form
+│   ├── reviews/             # Sharh yozish
+│   ├── socialaccount/       # Ijtimoiy kirish
+│   └── partials/            # Til almashtirgich
+│
+├── static/
+│   ├── css/
+│   │   ├── main.css         # Asosiy CSS (barcha sahifalar)
+│   │   ├── soluna-premium.css # Premium dizayn tizimi
+│   │   ├── home-magazine.css  # Bosh sahifa
+│   │   ├── add.css          # Qo'shimcha stillar
+│   │   └── admin.css        # Admin panel (Karvon teması)
+│   ├── js/
+│   │   └── main.js          # Scroll reveal, counter, theme toggle
+│   ├── img/
+│   │   ├── hero.jpg
+│   │   └── logos/
+│   └── assets/flags/        # Til bayroqlari
+│
+├── locale/                  # Tarjima fayllari (10 til)
+├── media/                   # Yuklangan fayllar
+├── staticfiles/             # collectstatic natijasi
+├── logs/                    # Log fayllar
+├── backups/                 # SQL zaxiralar
+│
+├── Dockerfile               # Ubuntu 22.04 + Python 3.11
+├── docker-compose.yml       # 5 servis: web, db, redis, celery, celery_beat
+├── entrypoint.sh            # DB/Redis kutish, migrate, collectstatic
+├── start.sh                 # CRLF tozalab entrypoint ni ishga tushirish
+├── deploy.sh                # Git pull, build, migrate, collectstatic
+├── backup.sh                # PostgreSQL dump (7 kun saqlash)
+├── requirements.txt         # Python kutubxonalari
+├── .env                     # Muhit o'zgaruvchilari
+└── handoff.md               # Loyiha hujjati (siz o'qiyotgan fayl)
 ```
 
 ---
@@ -46,28 +143,42 @@ tour_agency/
 
 | Servis | Image | Port | Vazifa |
 |--------|-------|------|--------|
-| web | python:3.11-slim | 8008 | Django server |
-| db | postgres:15-alpine | 5432 | Ma'lumotlar bazasi |
-| redis | redis:7-alpine | 6379 | Cache + Celery broker |
-| celery | python:3.11-slim | — | Async vazifalar (email, SMS) |
-| celery_beat | python:3.11-slim | — | Periodic tasks scheduler |
+| **web** | Ubuntu 22.04 + Python 3.11 | 8008 | Django server (dev: runserver, prod: uvicorn/gunicorn) |
+| **db** | postgres:15-alpine | 5432 | PostgreSQL ma'lumotlar bazasi |
+| **redis** | redis:7-alpine | 6379 | Cache + Celery broker |
+| **celery** | Ubuntu 22.04 + Python 3.11 | — | Async tasklar (email, SMS) |
+| **celery_beat** | Ubuntu 22.04 + Python 3.11 | — | Periodic tasks scheduler |
 
-### Ishga tushirish
+### Dockerfile xususiyatlari:
+- Asos: **Ubuntu 22.04** (python:3.11-slim emas!)
+- Deadsnakes PPA orqali Python 3.11 o'rnatiladi
+- System kutubxonalar: build-essential, libjpeg, libpq, libffi, libssl, gettext
+- CRLF tozalash: `dos2unix`
+- Port: **8008**
+
+### entrypoint.sh jarayoni:
+1. PostgreSQL kutish (30 ta urinish, har 2 soniyada)
+2. Redis kutish (15 ta urinish)
+3. `migrate --noinput`
+4. `compilemessages` (uz, ru, ko, en)
+5. `collectstatic --noinput`
+6. Superuser yaratish (agar `DJANGO_SUPERUSER_EMAIL` bor bo'lsa)
+7. Production: uvicorn yoki gunicorn (4 worker)
+8. Dev: `runserver 0.0.0.0:8008`
+
+### Volumelar:
+- `postgres_data` — PostgreSQL ma'lumotlari
+- `redis_data` — Redis ma'lumotlari
+- `staticfiles` — Static fayllar
+- `media` — Yuklangan fayllar
+
+### Ishga tushirish:
 ```bash
 # .env faylni to'ldiring
 cp .env.example .env
 
 # Build va ishga tushirish
 docker compose up -d --build
-
-# Migrations
-docker compose run --rm web python manage.py migrate
-
-# Superuser yaratish
-docker compose run --rm web python manage.py createsuperuser
-
-# Static fayllar
-docker compose run --rm web python manage.py collectstatic --noinput
 
 # Holat
 docker compose ps
@@ -80,119 +191,291 @@ docker compose logs -f web
 
 ```env
 # Django
-SECRET_KEY=your-secret-key
-DEBUG=False
-ALLOWED_HOSTS=solunatravel.uz,www.solunatravel.uz
+SECRET_KEY=django-insecure-...
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
 
 # Database
 DB_NAME=tour_agency
 DB_USER=postgres
-DB_PASSWORD=strong-password
+DB_PASSWORD=postgres
 DB_HOST=db
 DB_PORT=5432
 
 # Redis
 REDIS_URL=redis://redis:6379/0
+REDIS_HOST=redis
+REDIS_PORT=6379
 
 # Email (Gmail)
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
-EMAIL_HOST_USER=oygulakhatovas@gmail.com
-EMAIL_HOST_PASSWORD=app-password
-DEFAULT_FROM_EMAIL=SoLuna <oygulakhatovas@gmail.com>
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+DEFAULT_FROM_EMAIL=SoLuna <noreply@solunatravel.uz>
 
 # SMS (Eskiz.uz)
-ESKIZ_EMAIL=oygulakhatovas@gmail.com
-ESKIZ_PASSWORD=eskiz-password
+ESKIZ_EMAIL=
+ESKIZ_PASSWORD=
 
-# To'lov
+# To'lov (Click)
 CLICK_SERVICE_ID=
 CLICK_MERCHANT_ID=
+CLICK_MERCHANT_USER_ID=
 CLICK_SECRET_KEY=
-PAYME_ID=
-PAYME_KEY=
+
+# To'lov (Payme)
+PAYME_MERCHANT_ID=
+PAYME_SECRET_KEY=
+PAYME_TEST_KEY=
 
 # 2GIS xarita
-DGIS_API_KEY=your-2gis-key
+DGIS_API_KEY=
 
-# Google OAuth (allauth)
+# Google OAuth
 GOOGLE_CLIENT_ID=
 GOOGLE_SECRET=
 
+# Apple OAuth
+APPLE_CLIENT_ID=
+APPLE_SECRET=
+APPLE_KEY_ID=
+APPLE_CERTIFICATE_KEY=
+
+# Sentry (xatolik monitoring)
+SENTRY_DSN=
+
 # Sayt URL
-SITE_URL=https://solunatravel.uz
+SITE_URL=http://localhost:8008
 ```
 
 ---
 
 ## 4. Modellar
 
-### accounts.User
+### accounts.User (Custom User — AbstractUser dan meros oladi)
 | Maydon | Tur | Izoh |
 |--------|-----|------|
-| username | CharField | Unikal |
-| email | EmailField | Unikal |
-| first_name, last_name | CharField | |
-| phone | CharField | +998... |
+| username | CharField | Unikal login |
+| email | EmailField | Unikal, asosiy login |
+| first_name, last_name | CharField | Ism familiya |
+| phone | CharField | +998... telefon |
 | avatar | ImageField | /media/avatars/ |
 | role | CharField | user / admin |
-| preferred_language | CharField | uz, ru, en... |
-| is_verified | BooleanField | Email tasdiqlash |
-| email_verification_token | UUIDField | |
+| preferred_language | CharField | Til tanlovi (9 ta til) |
+| created_at | DateTimeField | Ro'yxatdan o'tgan sana |
 
 ### regions.Region
-`name`, `slug`, `description`, `image`, `is_active`, `order`  
-Ko'p tillik: `name_uz`, `name_ru`, `name_en`, `name_zh_hans`, `name_ar`, `name_de`, `name_fr`, `name_ja`, `name_ko`
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| name | CharField | nomi (ko'p tilli: uz, ru, en, zh-hans, ar, de, fr, ja, ko) |
+| slug | SlugField | URL uchun unikal |
+| description | TextField | tavsifi (ko'p tilli) |
+| image | ImageField | viloyat rasmi |
+| is_active | BooleanField | faollik holati |
+| order | PositiveIntegerField | tartib raqami |
 
 ### regions.Attraction
-`region (FK)`, `name`, `description`, `image`, `latitude`, `longitude`, `is_active`
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| region | FK -> Region | qaysi viloyatga tegishli |
+| name | CharField | attraksiya nomi (ko'p tilli) |
+| description | TextField | tavsif (ko'p tilli) |
+| image | ImageField | rasm |
+| latitude, longitude | DecimalField | GPS koordinatalar |
+| is_active | BooleanField | faollik |
+| order | PositiveIntegerField | tartib |
+
+### tours.TourCategory
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| name | CharField | kategoriya nomi (ko'p tilli) |
+| slug | SlugField | unikal |
+| icon | CharField | tabler icon |
+| image | ImageField | kategoriya rasmi |
 
 ### tours.Tour
-`title`, `slug`, `category (FK)`, `regions (M2M)`, `attractions (M2M)`, `description`, `short_description`, `cover_image`, `price (USD)`, `price_uzs`, `duration_days`, `max_group_size`, `difficulty`, `includes`, `excludes`, `itinerary (JSON)`, `is_active`, `is_featured`
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| title | CharField | tur nomi (ko'p tilli: uz, ru, en) |
+| slug | SlugField | unikal, avtomatik yaratiladi |
+| category | FK -> TourCategory | kategoriya |
+| regions | M2M -> Region | qaysi viloyat(lar)da |
+| attractions | M2M -> Attraction | attraksiyalar |
+| description | TextField | to'liq tavsif (ko'p tilli) |
+| short_description | CharField(500) | qisqa tavsif (ko'p tilli) |
+| cover_image | ImageField | asosiy rasm |
+| price | DecimalField | narx (USD) |
+| price_uzs | DecimalField | narx (UZS) |
+| duration_days | PositiveIntegerField | davomiylik (kun) |
+| max_group_size | PositiveIntegerField | maksimal guruh (default: 15) |
+| difficulty | CharField | easy/medium/hard |
+| includes | TextField | narxga kiradi (ko'p tilli) |
+| excludes | TextField | narxga kirmaydi (ko'p tilli) |
+| itinerary | JSONField | marshrut (ko'p tilli) |
+| is_active | BooleanField | faollik |
+| is_featured | BooleanField | tavsiya etilgan |
+
+### tours.TourImage
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| tour | FK -> Tour | qaysi turga tegishli |
+| image | ImageField | galereya rasmi |
+| caption | CharField | rasm tavsifi |
+| order | PositiveIntegerField | tartib |
+
+### tours.ItineraryDay
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| tour | FK -> Tour | qaysi turga |
+| day | PositiveIntegerField | kun raqami |
+| title | CharField | kun nomi |
+| description | TextField | kun tavsifi |
+
+### tours.CompanyStatistic
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| number | CharField | "45+", "29K", "168K" |
+| label | CharField | "Global Branches" (ko'p tilli) |
+| order | PositiveIntegerField | tartib |
+
+### tours.CompanyAdvantage
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| icon | CharField | tabler icon |
+| color | CharField | orange/blue/teal/purple |
+| title | TextField | nomi (ko'p tilli) |
+| description | TextField | tavsif (ko'p tilli) |
+| order | PositiveIntegerField | tartib |
 
 ### bookings.Booking
-`user (FK)`, `tour (FK)`, `booking_number`, `status`, `travel_date`, `num_adults`, `num_children`, `price_per_person`, `total_price`, `special_requests`  
-Status: `pending → confirmed → completed / cancelled`
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| user | FK -> User | kim bron qilgan |
+| tour | FK -> Tour | qaysi tur |
+| booking_number | CharField | "BK" + UUID (avto) |
+| status | CharField | pending/confirmed/cancelled/completed |
+| travel_date | DateField | sayohat sanasi |
+| num_adults | PositiveIntegerField | kattalar soni |
+| num_children | PositiveIntegerField | bolalar soni |
+| price_per_person | DecimalField | bir kishi uchun narx |
+| total_price | DecimalField | umumiy narx |
+| currency | CharField | USD (default) |
+| special_requests | TextField | maxsus so'rovlar |
+| cancellation_reason | TextField | bekor qilish sababi |
+| cancelled_at | DateTimeField | bekor qilingan vaqt |
+
+### payments.Currency
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| code | CharField | USD, UZS, EUR |
+| name | CharField | valyuta nomi |
+| symbol | CharField | $, so'm |
+| rate_to_usd | DecimalField | 1 USD = X valyuta |
+| is_active | BooleanField | faollik |
 
 ### payments.Payment
-`booking (FK)`, `provider (click/payme/cash)`, `status`, `amount (UZS)`, `transaction_id`, `provider_transaction_id`, `provider_response (JSON)`
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| id | UUIDField | unikal ID (primary key) |
+| booking | FK -> Booking | qaysi bron |
+| user | FK -> User | kim to'lagan |
+| method | CharField | click/payme/card/cash/paypal |
+| status | CharField | created/pending/processing/paid/failed/cancelled/refunded |
+| amount_uzs | DecimalField | miqdor (tiyinda) |
+| amount_usd | DecimalField | miqdor (USD) |
+| exchange_rate | DecimalField | kurs |
+| gateway_transaction_id | CharField | gateway ID |
+| gateway_response | JSONField | gateway javobi |
+| card_last4 | CharField | karta oxirgi 4 raqami |
+| card_brand | CharField | visa/mastercard/uzcard/humo |
 
 ### messages_app.ContactMessage
-`name`, `email`, `phone`, `subject`, `body`, `status (new/read/replied)`, `reply_text`, `replied_by (FK)`
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| user | FK -> User | autentifikatsiyadan o'tgan (ixtiyoriy) |
+| name | CharField | ism |
+| email | EmailField | email |
+| phone | CharField | telefon |
+| subject | CharField | mavzu |
+| body | TextField | xabar matni |
+| status | CharField | new/read/replied |
+| reply_text | TextField | javob matni |
+| replied_by | FK -> User | kim javob bergan |
+| replied_at | DateTimeField | javob vaqti |
 
 ### reviews.Review
-`user (FK)`, `tour (FK)`, `rating (1-5)`, `title`, `body`, `is_approved`  
-Unique: user + tour
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| user | FK -> User | kim yozgan |
+| tour | FK -> Tour | qaysi tur uchun |
+| rating | PositiveSmallIntegerField | 1-5 yulduz |
+| title | CharField | sarlavha |
+| body | TextField | izoh matni |
+| is_approved | BooleanField | tasdiqlanganmi |
+| Unique constraint: user + tour | | bir foydalanuvchi bir tur uchun faqat bir marta |
 
 ### places.NearbyPlace
-`attraction (FK)`, `name`, `category (cafe/hotel/museum...)`, `latitude`, `longitude`, `phone`, `rating`, `source (2gis)`, `external_id`
+| Maydon | Tur | Izoh |
+|--------|-----|------|
+| attraction | FK -> Attraction | qaysi attraksiya yonida |
+| name | CharField | joy nomi |
+| category | CharField | cafe/hotel/museum/pharmacy/atm/transport/other |
+| address | CharField | manzil |
+| latitude, longitude | DecimalField | koordinatalar |
+| phone | CharField | telefon |
+| rating | DecimalField | reyting |
+| source | CharField | 2gis / google |
+| external_id | CharField | tashqi ID |
 
 ---
 
 ## 5. URL Struktura
 
+Barcha URL lar `i18n_patterns` ichida — til prefiksi bilan (`/uz/`, `/ru/`, `/en/` va h.k.)
+
 ```
-/uz/                          → Bosh sahifa
-/uz/tours/                    → Turlar ro'yxati (filtr, qidiruv)
-/uz/tours/<slug>/             → Tur detail
-/uz/regions/                  → Viloyatlar
-/uz/regions/<slug>/           → Viloyat detail
-/uz/bookings/                 → Mening bronlarim
-/uz/bookings/<id>/            → Bron detail
-/uz/bookings/create/<slug>/   → Bron yaratish
-/uz/bookings/<id>/cancel/     → Bekor qilish
-/uz/payments/<booking_id>/    → To'lov usulini tanlash
-/uz/payments/click/return/    → Click qaytish
-/uz/payments/click/webhook/   → Click webhook (server-to-server)
-/uz/payments/payme/webhook/   → Payme webhook (JSON-RPC)
-/uz/messages/contact/         → Bog'lanish formasi
-/uz/reviews/create/<slug>/    → Izoh yozish
-/uz/accounts/register/        → Ro'yxatdan o'tish
-/uz/accounts/login/           → Kirish
-/uz/accounts/profile/         → Profil
-/uz/places/nearby/            → Yaqin joylar API
-/uz/admin/                    → Admin panel
+/uz/                                 → Bosh sahifa
+/uz/tours/                           → Turlar ro'yxati (qidiruv, filter, saralash)
+/uz/tours/<slug>/                    → Tur tafsilotlari
+/uz/regions/                         → Viloyatlar ro'yxati
+/uz/regions/<slug>/                  → Viloyat tafsilotlari
+/uz/bookings/                        → Mening bronlarim
+/uz/bookings/<id>/                   → Bron tafsilotlari
+/uz/bookings/create/<slug>/          → Bron yaratish
+/uz/bookings/<id>/cancel/            → Bron bekor qilish
+/uz/payments/<booking_id>/           → To'lov usulini tanlash
+/uz/payments/<booking_id>/initiate/  → To'lovni boshlash
+/uz/payments/<booking_id>/success/   → Muvaffaqiyat
+/uz/payments/<booking_id>/failed/    → Xato
+/uz/payments/return/<payment_id>/    → Gateway dan qaytish
+/uz/payments/status/<payment_id>/    → AJAX holat so'rash (JSON)
+/uz/payments/webhook/click/          → Click webhook (server-to-server)
+/uz/payments/webhook/payme/          → Payme webhook (JSON-RPC)
+/uz/payments/mock/<payment_id>/      → Mock to'lov (test uchun)
+/uz/messages/contact/                → Bog'lanish formasi
+/uz/messages/contact/success/        → Xabar yuborildi
+/uz/messages/reply/<id>/             → Admin javobi (faqat staff)
+/uz/reviews/create/<slug>/           → Sharh yozish
+/uz/reviews/<id>/edit/               → Sharh tahrirlash
+/uz/reviews/<id>/delete/             → Sharh o'chirish
+/uz/accounts/signup/                 → Ro'yxatdan o'tish
+/uz/accounts/login/                  → Kirish
+/uz/accounts/logout/                 → Chiqish
+/uz/accounts/profile/                → Profil
+/uz/accounts/profile/edit/           → Profil tahrirlash
+/uz/accounts/password/change/        → Parol o'zgartirish
+/uz/accounts/google/login/           → Google OAuth
+/uz/accounts/apple/login/            → Apple OAuth
+/uz/places/nearby/                   → Yaqin joylar API (JSON, 30 daq cache)
+/uz/places/attraction/<id>/nearby/   → Attraksiya atrofidagi joylar
+/uz/solonasuperuse/                  → Admin panel
+/uz/solonasuperuse/dashboard-stats/  → Dashboard API (JSON)
 ```
+
+**Custom error handlerlar:**
+- 404: `tours.views.custom_404_view` -> `404.html`
+- 500: `tours.views.custom_500_view` -> `500.html`
 
 ---
 
@@ -200,25 +483,27 @@ Unique: user + tour
 
 9 ta til qo'llab-quvvatlanadi:
 
-| Kod | Til |
-|-----|-----|
-| uz | O'zbek |
-| ru | Русский |
-| en | English |
-| zh-hans | 中文 |
-| ar | العربية |
-| de | Deutsch |
-| fr | Français |
-| ja | 日本語 |
-| ko | 한국어 |
+| Kod | Til | Status |
+|-----|-----|--------|
+| uz | O'zbek | Asosiy til (LANGUAGE_CODE) |
+| ru | Русский | To'liq |
+| en | English | To'liq |
+| zh-hans | 简体中文 | Mavjud |
+| ar | العربية | Mavjud |
+| de | Deutsch | Mavjud |
+| fr | Français | Mavjud |
+| ja | 日本语 | Mavjud |
+| ko | 한국어 | Mavjud |
 
 **`django-modeltranslation`** orqali quyidagi modellar tarjima qilinadi:
 - `Region`: name, description
 - `Attraction`: name, description
 - `Tour`: title, description, short_description, includes, excludes, itinerary
 - `TourCategory`: name
+- `CompanyStatistic`: label
+- `CompanyAdvantage`: title, description
 
-Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti ko'rinadi.
+**Fallback:** O'zbek -> Rus -> Ingliz
 
 ---
 
@@ -228,11 +513,17 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 |------|------|---------|
 | `send_booking_confirmation_email` | bookings/tasks.py | Bron yaratilganda |
 | `send_booking_cancellation_email` | bookings/tasks.py | Bron bekor qilinganda |
-| `send_verification_email` | accounts/tasks.py | Ro'yxatdan o'tganda |
-| `send_welcome_email` | accounts/tasks.py | Ro'yxatdan o'tganda |
-| `notify_admin_new_message` | messages_app/tasks.py | Contact form yuboriLganda |
+| `send_welcome_email` | accounts/tasks.py | Ro'yxatdan o'tganda (allauth signal) |
+| `notify_admin_new_message` | messages_app/tasks.py | Contact form yuborilganda |
 | `send_reply_email` | messages_app/tasks.py | Admin javob berganda |
-| `send_booking_sms` | messages_app/tasks.py | Bron tasdiqlanganda |
+| `send_booking_sms` | messages_app/tasks.py | Bron tasdiqlanganda (Eskiz.uz) |
+
+**Yordamchi funksiya:** `send_sms_eskiz(phone, message)` — Eskiz.uz API orqali SMS yuborish.
+
+**Celery sozlamalari:**
+- Broker: Redis (redis://redis:6379/0)
+- Serializer: JSON
+- Beat scheduler: `django_celery_beat.schedulers:DatabaseScheduler`
 
 ---
 
@@ -241,7 +532,7 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 ### Click
 - **Docs:** https://docs.click.uz
 - **Flow:** Sayt → Click checkout → `click/return/` → Tasdiqlash
-- **Webhook:** `POST /uz/payments/click/webhook/` (Prepare + Complete)
+- **Webhook:** `POST /uz/payments/webhook/click/` (Prepare + Complete)
 - **Signature:** MD5 hash
 
 ### Payme
@@ -249,7 +540,11 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 - **Flow:** Sayt → Payme checkout → JSON-RPC webhook
 - **Webhook:** `POST /uz/payments/payme/webhook/`
 - **Auth:** Basic Auth (Merchant ID + Key)
-- **Metod larni:** CheckPerformTransaction, CreateTransaction, PerformTransaction, CancelTransaction
+- **Metodlar:** CheckPerformTransaction, CreateTransaction, PerformTransaction, CancelTransaction
+
+### Mock mode
+- `DEBUG=True` bo'lganda mock to'lov ishlaydi
+- `/uz/payments/mock/<payment_id>/` orqali test qilish mumkin
 
 ---
 
@@ -262,13 +557,17 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 4. Admin panelda: **Sites** → domain `solunatravel.uz` qo'ying
 5. Admin panelda: **Social Applications** → Google app qo'ying
 
+### Apple OAuth
+1. [developer.apple.com](https://developer.apple.com) → Certificates, Identifiers & Profiles
+2. `.env` ga `APPLE_CLIENT_ID`, `APPLE_SECRET`, `APPLE_KEY_ID`, `APPLE_CERTIFICATE_KEY` qo'ying
+
 ---
 
 ## 10. 2GIS Xarita
 
 - **API:** https://docs.2gis.com/ru/api/search/get-started
 - **Endpoint:** `GET /uz/places/nearby/?lat=41.2&lon=69.2&category=cafe&radius=1000`
-- **Kategoriyalar:** cafe, hotel, museum, pharmacy, atm
+- **Kategoriyalar:** cafe, hotel, museum, pharmacy, atm, transport, other
 - **Cache:** 30 daqiqa (Django cache framework)
 - **Kalitni olish:** https://partner.2gis.com
 
@@ -276,6 +575,7 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 
 ## 11. Dizayn Tizimi
 
+### Front-end (Public sayt)
 ```css
 /* Ranglar */
 --green-deep:  #0D3B2E   /* Asosiy yashil */
@@ -290,7 +590,33 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 --font-body:    'Jost' (matn)
 ```
 
-**Animatsiyalar:**
+### Admin panel (Karvon teması)
+```css
+/* Karvon (Caravan) — Forest & antique gold */
+--bg: #F4EEE1;
+--bg-card: #FFFDF8;
+--text: #201D16;
+--blue: #21412F;      /* Forest green — primary */
+--gold: #B07F2E;      /* Antique gold — accent */
+--green: #2E6E49;
+--red: #9C4530;
+
+/* Shriftlar */
+--font: 'Public Sans' (body)
+--font-display: 'Fraunces' (sarlavhalar, serif)
+--font-mono: 'IBM Plex Mono' (raqamlar)
+```
+
+**Admin dizayn xususiyatlari:**
+- Fixed header (position: fixed) — scroll qilganda yuqorida qoladi
+- Gold dotted "route" chegarasi — Silk Road uslubida
+- Frosted glass effekti (backdrop-filter: blur)
+- Custom delete tugmalari (✕ ikonka)
+- Inline tabular — responsive grid layout
+- Skeleton loading animatsiyalari
+- Dark mode qo'llab-quvvatlaydi
+
+**Animatsiyalar (front-end):**
 - Hero entrance: `opacity + translateY`, 200–800ms delay
 - Scroll reveal: `.reveal`, `.reveal-left`, `.reveal-scale` + `.delay-1..5`
 - Counter: 0 dan hisoblash (IntersectionObserver)
@@ -299,9 +625,93 @@ Tarjima qo'shish uchun admin panelda har bir maydon uchun alohida til varianti k
 
 ---
 
-## 12. Production Deployment (Keyingi qadam)
+## 12. Admin Panel
 
-### Nginx config kerak:
+**URL:** `/uz/solonasuperuse/`  
+**Custom Admin Site:** `SoLunaAdminSite`
+**Dizayn:** macOS / MacBook uslubida
+
+### Dizayn tizimi (admin.css):
+
+**Ranglar:**
+| Token | Light | Dark | vazifa |
+|-------|-------|------|--------|
+| `--bg` | #F5F5F7 | #1C1C1E | Asosiy fon |
+| `--bg-card` | #FFFFFF | #2C2C2E | Kartochkalar |
+| `--blue` | #007AFF | #0A84FF | Asosiy tugmalar (Save) |
+| `--red` | #FF3B30 | #FF453A | O'chirish tugmalari |
+| `--green` | #34C759 | #30D158 | Muvaffaqiyat |
+| `--orange` | #FF9500 | #FF9F0A | Ogohlantirish |
+| `--border` | #D2D2D7 | #48484A | Chegara chiziqlari |
+
+**Shriftlar:** SF Pro (macOS system font)
+**Burchaklar:** 6px, 8px, 10px, 12px, 16px
+**Soyalar:** Yengil, subtle (0 1px 3px rgba(0,0,0,0.06))
+
+### Header:
+- `position: fixed` — scroll qilganda yuqorida qoladi
+- `backdrop-filter: blur(20px)` — frosted glass effekti
+- SoLuna branding + "Xush kelibsiz" + navigation tugmalari
+- Chiqish tugmasi — qizil rang, hover'da to'liq qizil
+
+### Sidebar:
+- Clean white background
+- Active item — ko'k fon (#007AFF)
+- Add link — ko'k rang, hover'da to'liq ko'k
+- Qidiruv maydoni — yumaloq burchakli
+
+### Tugmalar:
+- **Primary (Save):** Ko'k fon (#007AFF), oq matn
+- **Secondary:** Oq fon, kul matn, chegara bilan
+- **Delete:** Qizil fon (#FF3B30), oq matn
+- **Cancel:** Oq fon, kul matn
+
+### Inline tabular:
+- Responsive grid layout (`repeat(auto-fill, minmax(180px, 1fr))`)
+- Delete tugmasi — 30x30px qizil trash ikonka (SVG)
+- Original/delete ustunlari yashirilgan
+
+### Selector widget (filter_horizontal):
+- Ikkita panel (Available / Chosen) yonma-yon
+- 📋 / ✅ sarlavha ikonkalari
+- Qidiruv maydonlari (Filtrlash placeholder)
+- O'rtadagi tugmalar: Tanlash (ko'k), O'chirish (qizil)
+- "Barchasini tanlash" / "Barchasini o'chirish" havolalari
+
+### Dark mode:
+- `data-theme="dark"` attribute orqali
+- Barcha ranglar avtomatik moslashadi
+- Theme toggle tugmasi header'da
+
+### Mavjud bo'limlar:
+- Accounts (Users, Groups)
+- Regions (Regions, Attractions)
+- Tours (Tours, Categories, Tour Images, Itinerary Days, Statistics, Advantages)
+- Bookings (Bookings)
+- Payments (Payments, Currencies)
+- Messages App (Contact Messages)
+- Reviews (Reviews)
+- Places (Nearby Places)
+- Periodic Tasks (Celery Beat)
+
+### Dashboard:
+- KPI kartalar (bronlar, xabarlar, turlar, izohlar)
+- Tezkor harakatlar (tur qo'shish, region, xabarlar)
+- Oxirgi bronlar va xabarlar ro'yxati
+- To'lovlar, izohlar, viloyatlar
+- Skeleton loading animatsiyalari
+
+**Dashboard API:** `GET /uz/solonasuperuse/dashboard-stats/` (JSON)
+
+### CSS fayl:
+- `static/css/admin.css` — macOS teması (775+ qator)
+- `collectstatic` orqali `staticfiles/css/admin.css` ga nusxalanadi
+
+---
+
+## 13. Production Deployment
+
+### Nginx config:
 ```nginx
 server {
     listen 80;
@@ -318,18 +728,8 @@ server {
 
     location /static/ { alias /app/staticfiles/; }
     location /media/  { alias /app/media/; }
-    location / { proxy_pass http://web:8000; proxy_set_header Host $host; }
+    location / { proxy_pass http://web:8008; proxy_set_header Host $host; }
 }
-```
-
-### `settings.py` production uchun:
-```python
-DEBUG = False
-ALLOWED_HOSTS = ['soluna.uz', 'www.soluna.uz']
-
-# Gunicorn (runserver o'rniga)
-# entrypoint.sh da:
-# exec gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3
 ```
 
 ### SSL sertifikat:
@@ -337,23 +737,12 @@ ALLOWED_HOSTS = ['soluna.uz', 'www.soluna.uz']
 certbot --nginx -d solunatravel.uz -d www.solunatravel.uz
 ```
 
----
-
-## 13. Admin Panel
-
-**URL:** `/uz/admin/`  
-**Mavjud bo'limlar:**
-- Accounts (Users)
-- Regions (Regions, Attractions)
-- Tours (Tours, Categories, Images)
-- Bookings (Bookings)
-- Payments (Payments)
-- Messages App (Contact Messages)
-- Reviews (Reviews)
-- Places (Nearby Places)
-- Periodic Tasks (Celery Beat)
-
-**Dashboard:** KPI kartalar, tezkor harakatlar, oxirgi bronlar va xabarlar
+### settings.py production uchun:
+```python
+DEBUG = False
+ALLOWED_HOSTS = ['solunatravel.uz', 'www.solunatravel.uz']
+# HTTPS redirect, secure cookies, XSS filter yoqilgan
+```
 
 ---
 
@@ -363,14 +752,14 @@ certbot --nginx -d solunatravel.uz -d www.solunatravel.uz
 - [ ] Click/Payme merchant kalitlarini olish va ulash
 - [ ] 2GIS API kalitini olish
 - [ ] Eskiz.uz SMS kalitini olish
-- [ ] `soluna.uz` domen ulash
+- [ ] `solunatravel.uz` domen ulash
 - [ ] SSL sertifikat (Let's Encrypt)
 - [ ] Nginx + Gunicorn production deploy
-- [ ] Hero rasm (`/static/img/hero-bg.jpg`) yuklash
+- [ ] Hero rasm (`/static/img/hero.jpg`) yuklash
 - [ ] Admin paneldan regionlar va turlar qo'shish
 - [ ] Ko'p tillik tarjimalar to'ldirish (uz, ru, en)
 - [ ] Google Search Console ulash
-- [ ] Backup strategiyasi (PostgreSQL dump)
+- [ ] Backup strategiyasi (PostgreSQL dump — backup.sh mavjud)
 
 ---
 
@@ -388,15 +777,21 @@ docker compose run --rm web python manage.py shell
 docker compose run --rm web python manage.py makemigrations
 docker compose run --rm web python manage.py migrate
 
+# Static fayllar
+docker compose run --rm web python manage.py collectstatic --noinput
+
 # Tarjima fayllarini yangilash
 docker compose run --rm web python manage.py makemessages -l uz
 docker compose run --rm web python manage.py compilemessages
 
 # DB backup
-docker compose exec db pg_dump -U postgres tour_agency > backup.sql
+./backup.sh
 
 # DB restore
-cat backup.sql | docker compose exec -T db psql -U postgres tour_agency
+cat backups/backup.sql | docker compose exec -T db psql -U postgres tour_agency
+
+# Deploy
+./deploy.sh
 
 # Restart
 docker compose restart web

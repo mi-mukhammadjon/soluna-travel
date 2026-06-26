@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
+from django.utils.dateparse import parse_date
 from .models import Booking
 from .forms import BookingForm
 from tours.models import Tour
@@ -19,6 +20,11 @@ class BookingListView(LoginRequiredMixin, ListView):
         return Booking.objects.filter(
             user=self.request.user
         ).select_related('tour').order_by('-created_at')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['bookings_count'] = self.get_queryset().count()
+        return context
 
 
 class BookingDetailView(LoginRequiredMixin, DetailView):
@@ -39,6 +45,37 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         self.tour = get_object_or_404(Tour, slug=kwargs['tour_slug'], is_active=True)
         return super().dispatch(request, *args, **kwargs)
 
+    def get_initial(self):
+        """Tur sahifasidagi "Book Now" formasidan kelgan sana va mehmonlar
+        sonini booking formasiga avtomatik to'ldiradi."""
+        initial = super().get_initial()
+        params = self.request.GET
+
+        # Sana — tur sahifasida name="date" sifatida yuboriladi (YYYY-MM-DD)
+        date = (params.get('date') or params.get('travel_date') or '').strip()
+        if date:
+            parsed = parse_date(date)
+            if parsed and parsed >= timezone.now().date():
+                # ISO string — <input type="date"> faqat YYYY-MM-DD qabul qiladi,
+                # date obyekti template'da lokalizatsiya bo'lib ketadi.
+                initial['travel_date'] = parsed.isoformat()
+
+        try:
+            adults = int(params.get('adults', ''))
+            if adults >= 1:
+                initial['num_adults'] = min(adults, 20)
+        except (ValueError, TypeError):
+            pass
+
+        try:
+            children = int(params.get('children', ''))
+            if children >= 0:
+                initial['num_children'] = min(children, 10)
+        except (ValueError, TypeError):
+            pass
+
+        return initial
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tour'] = self.tour
@@ -46,15 +83,18 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
             num_adults = max(1, int(self.request.GET.get('adults', 1)))
         except (ValueError, TypeError):
             num_adults = 1
-        context['estimated_price'] = self.tour.price * num_adults
+        context['estimated_price'] = self.tour.discounted_price * num_adults
         return context
 
     def form_valid(self, form):
         booking = form.save(commit=False)
         booking.user = self.request.user
         booking.tour = self.tour
-        booking.price_per_person = self.tour.price
-        booking.total_price = self.tour.price * booking.num_adults
+        booking.price_per_person = self.tour.discounted_price
+        booking.total_price = (
+            self.tour.discounted_price * booking.num_adults
+            + self.tour.child_price * booking.num_children
+        )
         booking.status = 'pending'
         booking.save()
 

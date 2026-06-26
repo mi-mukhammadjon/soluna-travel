@@ -5,299 +5,902 @@
 
 {% block content %}
 
-{# ══════════════════ PAGE HEADER ══════════════════ #}
-<section style="background:var(--c-bg-alt);padding:50px 0 30px;">
+
+{# ═══════════════ HERO ═══════════════ #}
+<section class="tl-hero">
+  <div class="tl-hero-glow"></div>
   <div class="container">
-    <nav aria-label="breadcrumb" style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:14px;">
-      <a href="{% url 'home' %}" style="color:var(--c-text-muted);">{% trans "Home" %}</a>
-      <span style="margin:0 8px;">/</span>
-      <span style="color:var(--c-text);font-weight:600;">{% trans "Tours" %}</span>
+    <nav class="tl-breadcrumb" aria-label="breadcrumb">
+      <a href="{% url 'home' %}">{% trans "Home" %}</a>
+      <span aria-hidden="true">/</span>
+      <span>{% trans "Tours" %}</span>
     </nav>
-
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
-      <div>
-        <h1 style="margin-bottom:8px;">{% trans "All Tours" %}</h1>
-        <p style="color:var(--c-text-muted);font-size:1.05rem;">
-          {{ tours.paginator.count|default:tours|length }} {% trans "tours found" %}
-        </p>
-      </div>
-
-      {# Sort + View toggle #}
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-        <span style="font-size:0.85rem;color:var(--c-text-muted);">{% trans "Sort by" %}:</span>
-        <form method="get" style="display:inline;">
-          {% for key, value in request.GET.items %}
-            {% if key != 'sort' %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endif %}
-          {% endfor %}
-          <select name="sort" onchange="this.form.submit()" class="form-control" style="width:auto;padding:8px 16px;border-radius:var(--r-pill);">
-            <option value="popular" {% if request.GET.sort == 'popular' %}selected{% endif %}>{% trans "Most Popular" %}</option>
-            <option value="newest" {% if request.GET.sort == 'newest' %}selected{% endif %}>{% trans "Newest" %}</option>
-            <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>{% trans "Price: Low to High" %}</option>
-            <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>{% trans "Price: High to Low" %}</option>
-            <option value="rating" {% if request.GET.sort == 'rating' %}selected{% endif %}>{% trans "Highest Rated" %}</option>
-          </select>
-        </form>
-      </div>
-    </div>
+    <h1 class="tl-hero-title">
+      {% trans "Discover" %}<br>
+      <span class="tl-hero-gold">{% trans "Extraordinary" %}</span>&ensp;{% trans "Tours" %}
+    </h1>
+    <p class="tl-hero-sub">
+      <span id="tourCount">{{ total_count }}</span>&nbsp;{% trans "handcrafted journeys through Uzbekistan" %}
+    </p>
   </div>
 </section>
 
-{# ══════════════════ MAIN GRID: SIDEBAR + TOURS ══════════════════ #}
-<section class="section" style="padding-top:40px;">
+{# ═══════════════ SORT BAR ═══════════════ #}
+<div class="tl-sort-bar">
+  <div class="container">
+    <div class="tl-sort-inner">
+      <label class="tl-sort-label" for="sortSelect">{% trans "Sort" %}:</label>
+      <select id="sortSelect" onchange="applyFilters()" class="tl-sort-select">
+        <option value="popular" {% if request.GET.sort == 'popular' or not request.GET.sort %}selected{% endif %}>{% trans "Most Popular" %}</option>
+        <option value="newest" {% if request.GET.sort == 'newest' %}selected{% endif %}>{% trans "Newest" %}</option>
+        <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>{% trans "Price: Low → High" %}</option>
+        <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>{% trans "Price: High → Low" %}</option>
+        <option value="rating" {% if request.GET.sort == 'rating' %}selected{% endif %}>{% trans "Highest Rated" %}</option>
+      </select>
+      <div class="tl-view-toggle" role="group" aria-label="View mode">
+        <button class="tl-view-btn is-active" id="btnGrid" onclick="setView('grid')" aria-label="Grid view" title="Grid">
+          <i class="ti ti-layout-grid"></i>
+        </button>
+        <button class="tl-view-btn" id="btnList" onclick="setView('list')" aria-label="List view" title="List">
+          <i class="ti ti-list"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# ═══════════════ LAYOUT ═══════════════ #}
+<section class="tl-section">
   <div class="container">
     <div class="tl-layout">
 
-      {# ── SIDEBAR FILTERS ── #}
+      {# ─── SIDEBAR ─── #}
       <aside class="tl-sidebar" id="tlSidebar">
-        <form method="get" id="filterForm">
-          {% if request.GET.sort %}<input type="hidden" name="sort" value="{{ request.GET.sort }}">{% endif %}
 
-          <div class="tl-filter">
-            <h3 class="tl-filter-title">{% trans "Search" %}</h3>
-            <div style="position:relative;">
-              <i class="ti ti-search" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--c-text-muted);"></i>
-              <input type="text" name="q" value="{{ request.GET.q|default:'' }}" placeholder="{% trans 'Search tours...' %}" class="form-control" style="padding-left:42px;border-radius:var(--r-pill);">
-            </div>
+        <div class="tl-sidebar-head">
+          <span class="tl-sidebar-title"><i class="ti ti-adjustments-horizontal"></i> {% trans "Filters" %}</span>
+          <button onclick="clearAllFilters()" class="tl-clear-btn">{% trans "Clear all" %}</button>
+        </div>
+
+        {# Search #}
+        <div class="tl-filter">
+          <h4 class="tl-filter-title">{% trans "Search" %}</h4>
+          <div class="tl-search-wrap">
+            <i class="ti ti-search tl-search-ico"></i>
+            <input type="text" id="searchInput"
+              value="{{ request.GET.q|default:'' }}"
+              placeholder="{% trans 'Search tours...' %}"
+              class="tl-input" oninput="debounceSearch()">
           </div>
+        </div>
 
-          <div class="tl-filter">
-            <h3 class="tl-filter-title">{% trans "Categories" %}</h3>
-            <ul class="tl-check-list">
-              {% for cat in categories %}
-              <li>
-                <label class="tl-check">
-                  <input type="checkbox" name="category" value="{{ cat.slug }}" {% if cat.slug in request.GET.getlist.category %}checked{% endif %} onchange="document.getElementById('filterForm').submit()">
-                  <span class="tl-check-mark"></span>
-                  <span class="tl-check-label">{{ cat.name }}</span>
-                  <span class="tl-check-count">({{ cat.tour_count|default:"0" }})</span>
-                </label>
-              </li>
-              {% empty %}
-              {# Kategoriyalar bo'sh — admin panelda qo'shing #}
-              {% endfor %}
-            </ul>
+        {# Categories #}
+        <div class="tl-filter">
+          <h4 class="tl-filter-title">{% trans "Categories" %}</h4>
+          <ul class="tl-check-list">
+            {% for cat in categories %}
+            <li>
+              <label class="tl-check">
+                <input type="checkbox" name="category" value="{{ cat.slug }}"
+                  {% if cat.slug == request.GET.category %}checked{% endif %}
+                  onchange="applyFilters()">
+                <span class="tl-cb"></span>
+                <span class="tl-check-label">{{ cat.name }}</span>
+                <span class="tl-check-count">{{ cat.tour_count|default:0 }}</span>
+              </label>
+            </li>
+            {% empty %}
+            <li class="tl-empty-opt">{% trans "No categories" %}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        {# Price range #}
+        <div class="tl-filter">
+          <h4 class="tl-filter-title">{% trans "Price Range" %}</h4>
+          <div class="tl-price-row">
+            <input type="number" id="minPrice"
+              value="{{ request.GET.min_price|default:'' }}"
+              placeholder="$ {% trans 'Min' %}" class="tl-input tl-input--sm">
+            <span class="tl-price-dash">—</span>
+            <input type="number" id="maxPrice"
+              value="{{ request.GET.max_price|default:'' }}"
+              placeholder="$ {% trans 'Max' %}" class="tl-input tl-input--sm">
           </div>
+          <button type="button" onclick="applyFilters()" class="tl-apply-btn">{% trans "Apply" %}</button>
+        </div>
 
-          <div class="tl-filter">
-            <h3 class="tl-filter-title">{% trans "Price Range" %}</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
-              <input type="number" name="min_price" value="{{ request.GET.min_price|default:'' }}" placeholder="$ {% trans 'Min' %}" class="form-control" style="padding:10px 14px;">
-              <input type="number" name="max_price" value="{{ request.GET.max_price|default:'' }}" placeholder="$ {% trans 'Max' %}" class="form-control" style="padding:10px 14px;">
-            </div>
-            <button type="submit" class="btn btn-dark btn-block btn-sm">{% trans "Apply" %}</button>
-          </div>
+        {# Duration #}
+        <div class="tl-filter">
+          <h4 class="tl-filter-title">{% trans "Duration" %}</h4>
+          <ul class="tl-check-list">
+            <li><label class="tl-check"><input type="radio" name="duration" value="1-3" {% if request.GET.duration == '1-3' %}checked{% endif %} onchange="applyFilters()"><span class="tl-rb"></span><span class="tl-check-label">1–3 {% trans "days" %}</span></label></li>
+            <li><label class="tl-check"><input type="radio" name="duration" value="4-7" {% if request.GET.duration == '4-7' %}checked{% endif %} onchange="applyFilters()"><span class="tl-rb"></span><span class="tl-check-label">4–7 {% trans "days" %}</span></label></li>
+            <li><label class="tl-check"><input type="radio" name="duration" value="8-14" {% if request.GET.duration == '8-14' %}checked{% endif %} onchange="applyFilters()"><span class="tl-rb"></span><span class="tl-check-label">8–14 {% trans "days" %}</span></label></li>
+            <li><label class="tl-check"><input type="radio" name="duration" value="15+" {% if request.GET.duration == '15+' %}checked{% endif %} onchange="applyFilters()"><span class="tl-rb"></span><span class="tl-check-label">15+ {% trans "days" %}</span></label></li>
+          </ul>
+        </div>
 
-          <div class="tl-filter">
-            <h3 class="tl-filter-title">{% trans "Duration" %}</h3>
-            <ul class="tl-check-list">
-              <li><label class="tl-check"><input type="radio" name="duration" value="1-3" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">1-3 {% trans "days" %}</span></label></li>
-              <li><label class="tl-check"><input type="radio" name="duration" value="4-7" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">4-7 {% trans "days" %}</span></label></li>
-              <li><label class="tl-check"><input type="radio" name="duration" value="8-14" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">8-14 {% trans "days" %}</span></label></li>
-              <li><label class="tl-check"><input type="radio" name="duration" value="15+" onchange="document.getElementById('filterForm').submit()"><span class="tl-check-mark"></span><span class="tl-check-label">15+ {% trans "days" %}</span></label></li>
-            </ul>
-          </div>
+        {# Rating #}
+        <div class="tl-filter" style="border-bottom:none;">
+          <h4 class="tl-filter-title">{% trans "Min Rating" %}</h4>
+          <ul class="tl-check-list">
+            <li>
+              <label class="tl-check">
+                <input type="radio" name="rating" value="4" {% if request.GET.rating == '4' %}checked{% endif %} onchange="applyFilters()">
+                <span class="tl-rb"></span>
+                <span class="tl-check-label tl-stars-lbl">★★★★<span>★</span> 4+</span>
+              </label>
+            </li>
+            <li>
+              <label class="tl-check">
+                <input type="radio" name="rating" value="3" {% if request.GET.rating == '3' %}checked{% endif %} onchange="applyFilters()">
+                <span class="tl-rb"></span>
+                <span class="tl-check-label tl-stars-lbl">★★★<span>★★</span> 3+</span>
+              </label>
+            </li>
+            <li>
+              <label class="tl-check">
+                <input type="radio" name="rating" value="2" {% if request.GET.rating == '2' %}checked{% endif %} onchange="applyFilters()">
+                <span class="tl-rb"></span>
+                <span class="tl-check-label tl-stars-lbl">★★<span>★★★</span> 2+</span>
+              </label>
+            </li>
+          </ul>
+        </div>
 
-          <div class="tl-filter">
-            <h3 class="tl-filter-title">{% trans "Rating" %}</h3>
-            <ul class="tl-check-list">
-              {% for n in "54321"|make_list %}
-              <li>
-                <label class="tl-check">
-                  <input type="checkbox" name="rating" value="{{ n }}" onchange="document.getElementById('filterForm').submit()">
-                  <span class="tl-check-mark"></span>
-                  <span class="tl-check-label">
-                    {% for i in "12345"|make_list %}{% if forloop.counter <= n|add:0 %}<i class="ti ti-star" style="color:var(--c-star);"></i>{% else %}<i class="ti ti-star" style="color:var(--c-border);"></i>{% endif %}{% endfor %}
-                  </span>
-                </label>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-
-          {% if request.GET %}
-          <a href="{% url 'tours:tour-list' %}" class="btn btn-light btn-block btn-sm">
-            <i class="ti ti-x"></i> {% trans "Clear all" %}
-          </a>
-          {% endif %}
-        </form>
       </aside>
 
-      {# ── TOURS GRID ── #}
+      {# ─── TOURS GRID ─── #}
       <div class="tl-results">
-        {% if tours %}
-        <div class="tour-grid">
-          {% for tour in tours %}
-          <article class="tour-card reveal">
-            <div class="tour-card-img">
-              {% if tour.cover_image %}
-                <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy">
-              {% endif %}
-
-              {% if tour.is_top_rated %}
-                <span class="tour-card-badge tour-card-badge--top">{% trans "Top Rated" %}</span>
-              {% elif tour.discount_percent %}
-                <span class="tour-card-badge tour-card-badge--off">{{ tour.discount_percent }}% Off</span>
-              {% elif tour.is_best_sale %}
-                <span class="tour-card-badge tour-card-badge--sale">{% trans "Best Sale" %}</span>
-              {% endif %}
-
-              <button class="tour-card-fav" aria-label="{% trans 'Add to favorites' %}" data-tour-id="{{ tour.id }}">
-                <i class="ti ti-heart"></i>
-              </button>
-            </div>
-
-            <div class="tour-card-body">
-              <div class="tour-card-rating">
-                <span class="star"><i class="ti ti-star"></i></span>
-                <span>{{ tour.rating|default:"4.96" }}</span>
-                <span class="muted">({{ tour.review_count|default:"0" }} {% trans "reviews" %})</span>
-              </div>
-
-              <h3 class="tour-card-title">
-                <a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title }}</a>
-              </h3>
-
-              <div class="tour-card-meta">
-                <span class="tour-card-meta-item"><i class="ti ti-clock"></i> {{ tour.duration|default:"3 days" }}</span>
-                <span class="tour-card-meta-item"><i class="ti ti-users"></i> {{ tour.group_size|default:"4-6" }}</span>
-              </div>
-
-              <div class="tour-card-foot">
-                <div class="tour-card-price">
-                  ${{ tour.price }}<small>/ {% trans "person" %}</small>
-                </div>
-                <a href="{% url 'bookings:booking-create' tour.slug %}" class="btn btn-light btn-sm">{% trans "Book Now" %}</a>
-              </div>
-            </div>
-          </article>
-          {% endfor %}
+        <div id="tourTypeChip" class="tl-type-chip" {% if not search.tour_type %}hidden{% endif %}>
+          <span class="tl-type-chip-label">{% trans "Type" %}:</span>
+          <span class="tl-type-chip-val" id="tourTypeChipVal">{{ search.tour_type|capfirst }}</span>
+          <button type="button" class="tl-type-chip-x" onclick="clearTourType()" aria-label="{% trans 'Remove type filter' %}"><i class="ti ti-x"></i></button>
         </div>
-
-        {# ── PAGINATION ── #}
-        {% if is_paginated %}
-        <nav class="tl-pagination" aria-label="{% trans 'Pagination' %}">
-          {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}" class="tl-page-btn">
-              <i class="ti ti-chevron-left"></i>
-            </a>
-          {% endif %}
-
-          {% for num in paginator.page_range %}
-            {% if num == page_obj.number %}
-              <span class="tl-page-btn is-active">{{ num }}</span>
-            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-              <a href="?page={{ num }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}" class="tl-page-btn">{{ num }}</a>
-            {% endif %}
-          {% endfor %}
-
-          {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}{% for k,v in request.GET.items %}{% if k != 'page' %}&{{ k }}={{ v }}{% endif %}{% endfor %}" class="tl-page-btn">
-              <i class="ti ti-chevron-right"></i>
-            </a>
-          {% endif %}
-        </nav>
-        {% endif %}
-
-        {% else %}
-        {# ── EMPTY STATE ── #}
-        <div class="tl-empty">
-          <div class="tl-empty-icon"><i class="ti ti-search-off"></i></div>
-          <h3>{% trans "No tours found" %}</h3>
-          <p>{% trans "Try adjusting your filters or search criteria." %}</p>
-          <a href="{% url 'tours:tour-list' %}" class="btn btn-dark">{% trans "Reset filters" %}</a>
+        <div id="tourGrid" class="tour-grid">
+          {% include 'tours/_tour_cards.html' %}
         </div>
-        {% endif %}
+        <div id="tourPagination">
+          {% include 'tours/_pagination.html' %}
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
+{# ═══════════════ CSS ═══════════════ #}
 <style>
-.tl-layout { display: grid; grid-template-columns: 300px 1fr; gap: 36px; }
-@media (max-width: 1024px) { .tl-layout { grid-template-columns: 260px 1fr; gap: 24px; } }
-@media (max-width: 768px)  { .tl-layout { grid-template-columns: 1fr; } }
+/* ─── Display font — modern sans (Plus Jakarta Sans) ─── */
+.tl-hero-title, .tc-title { font-family: var(--sf-display); }
 
+/* ─── Hero ─────────────────────────────────────── */
+.tl-hero {
+  position: relative; overflow: hidden;
+  background: #060d1a;
+  padding: 72px 0 56px;
+}
+.tl-hero-glow {
+  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 500px; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 30%,
+    rgba(201,168,76,.18) 0%, rgba(14,165,233,.10) 40%, transparent 70%);
+}
+.tl-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .82rem; color: rgba(255,255,255,.45);
+  margin-bottom: 24px;
+}
+.tl-breadcrumb a { color: rgba(255,255,255,.55); }
+.tl-breadcrumb a:hover { color: #c9a84c; }
+.tl-breadcrumb span { color: rgba(255,255,255,.45); }
+.tl-hero-title {
+  font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900;
+  color: #fff; line-height: 1.1; margin-bottom: 16px;
+  letter-spacing: -.02em;
+}
+.tl-hero-gold { color: #c9a84c; }
+.tl-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,.55);
+  font-weight: 400; letter-spacing: .01em;
+}
+.tl-hero-sub span { color: #c9a84c; font-weight: 700; }
+
+/* ─── Sort bar ─────────────────────────────────── */
+.tl-sort-bar {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border);
+  padding: 12px 0;
+  position: sticky; top: 0; z-index: 80;
+}
+.tl-sort-inner {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.tl-sort-label { font-size: .85rem; color: var(--c-text-muted); white-space: nowrap; }
+.tl-sort-select {
+  appearance: none;
+  padding: 7px 32px 7px 14px;
+  border: 1.5px solid var(--c-border);
+  border-radius: 99px;
+  background: var(--c-bg-alt) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  font-size: .88rem; color: var(--c-text); cursor: pointer;
+  transition: border-color .15s ease;
+}
+.tl-sort-select:focus { outline: none; border-color: #c9a84c; box-shadow: 0 0 0 3px rgba(201,168,76,.12); }
+.tl-view-toggle { display: flex; gap: 4px; margin-left: auto; }
+.tl-view-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  border: 1.5px solid var(--c-border);
+  background: transparent;
+  color: var(--c-text-muted);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .15s ease;
+}
+.tl-view-btn:hover, .tl-view-btn.is-active {
+  background: #c9a84c; color: #0a1628; border-color: #c9a84c;
+}
+
+/* ─── Main section ─────────────────────────────── */
+.tl-section { padding: 40px 0 80px; }
+.tl-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px; align-items: start;
+}
+@media (max-width: 1024px) { .tl-layout { grid-template-columns: 240px 1fr; gap: 24px; } }
+@media (max-width: 768px) { .tl-layout { grid-template-columns: 1fr; } }
+
+/* ─── Sidebar ──────────────────────────────────── */
 .tl-sidebar {
   background: var(--c-surface);
   border: 1px solid var(--c-border);
-  border-radius: var(--r-lg);
-  padding: 24px;
-  position: sticky; top: 130px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: sticky; top: 65px;
   align-self: start;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 85px);
   overflow-y: auto;
 }
 @media (max-width: 768px) { .tl-sidebar { position: static; max-height: none; } }
 
-.tl-filter { padding: 18px 0; border-bottom: 1px solid var(--c-border-soft); }
-.tl-filter:first-child { padding-top: 0; }
-.tl-filter:last-child { border-bottom: none; padding-bottom: 4px; }
+.tl-sidebar-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  background: #c9a84c; color: #0a1628;
+  border-radius: 15px 15px 0 0;
+}
+.tl-sidebar-title { font-size: .9rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.tl-clear-btn {
+  font-size: .78rem; color: rgba(10,22,40,.55);
+  background: none; border: none; cursor: pointer; padding: 0;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.tl-clear-btn:hover { color: #0a1628; }
 
+.tl-filter { padding: 16px 20px; border-bottom: 1px solid var(--c-border-soft); }
 .tl-filter-title {
-  font-size: 0.95rem; font-weight: 700;
-  margin-bottom: 14px;
-  color: var(--c-text);
+  font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--c-text-muted);
+  margin-bottom: 12px;
 }
 
-.tl-check-list { display: flex; flex-direction: column; gap: 4px; }
+.tl-search-wrap { position: relative; }
+.tl-search-ico { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--c-text-muted); font-size: .9rem; pointer-events: none; }
+.tl-input {
+  width: 100%; padding: 9px 14px 9px 36px;
+  border: 1.5px solid var(--c-border);
+  border-radius: 99px;
+  background: var(--c-bg-alt);
+  font-size: .88rem; color: var(--c-text);
+  transition: border-color .15s ease;
+}
+.tl-input:focus { outline: none; border-color: #c9a84c; box-shadow: 0 0 0 3px rgba(201,168,76,.12); }
+.tl-input--sm { padding: 7px 10px; border-radius: 8px; font-size: .82rem; }
+
+.tl-price-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.tl-price-dash { color: var(--c-text-muted); flex-shrink: 0; }
+.tl-apply-btn {
+  width: 100%; padding: 8px;
+  background: #c9a84c; color: #0a1628;
+  border: none; border-radius: 8px;
+  font-size: .83rem; font-weight: 600; cursor: pointer;
+  transition: background .15s ease;
+}
+.tl-apply-btn:hover { background: #b8963f; }
+
+/* ─── Check / Radio ────────────────────────────── */
+.tl-check-list { display: flex; flex-direction: column; gap: 2px; }
 .tl-check {
   display: flex; align-items: center; gap: 10px;
-  padding: 6px 0;
-  cursor: pointer;
-  font-size: 0.9rem;
+  padding: 5px 0; cursor: pointer; font-size: .88rem;
 }
-.tl-check input { position: absolute; opacity: 0; }
-.tl-check-mark {
-  width: 18px; height: 18px; border-radius: 4px;
+.tl-check input { position: absolute; opacity: 0; width: 0; height: 0; }
+.tl-cb, .tl-rb {
+  width: 17px; height: 17px; flex-shrink: 0;
   border: 1.5px solid var(--c-border);
-  background: #fff;
-  flex-shrink: 0;
-  transition: background 0.15s ease, border-color 0.15s ease;
-  position: relative;
+  background: var(--c-bg-alt);
+  border-radius: 4px; position: relative;
+  transition: background .12s ease, border-color .12s ease;
 }
-.tl-check input[type=radio] + .tl-check-mark { border-radius: 50%; }
-.tl-check input:checked + .tl-check-mark { background: var(--c-text); border-color: var(--c-text); }
-.tl-check input:checked + .tl-check-mark::after {
-  content: ''; position: absolute; left: 5px; top: 1px;
-  width: 5px; height: 10px;
+.tl-rb { border-radius: 50%; }
+.tl-check input:checked + .tl-cb,
+.tl-check input:checked + .tl-rb { background: #c9a84c; border-color: #c9a84c; }
+.tl-check input:checked + .tl-cb::after {
+  content: ''; position: absolute; left: 4px; top: 1px;
+  width: 5px; height: 9px;
   border: solid #fff; border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
-.tl-check input[type=radio]:checked + .tl-check-mark::after {
-  content: ''; left: 4px; top: 4px;
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #fff; border: none; transform: none;
+.tl-check input:checked + .tl-rb::after {
+  content: ''; position: absolute; left: 4px; top: 4px;
+  width: 7px; height: 7px; border-radius: 50%; background: #fff;
 }
 .tl-check-label { flex: 1; color: var(--c-text); }
-.tl-check-count { color: var(--c-text-muted); font-size: 0.8rem; }
-
-.tl-pagination {
-  display: flex; justify-content: center; gap: 8px;
-  margin-top: 50px; flex-wrap: wrap;
+.tl-check-count {
+  color: var(--c-text-muted); font-size: .78rem;
+  background: var(--c-bg-alt); padding: 1px 6px; border-radius: 99px;
 }
-.tl-page-btn {
-  min-width: 42px; height: 42px;
-  padding: 0 14px;
-  border-radius: 50%;
-  background: var(--c-bg-alt);
+.tl-stars-lbl { color: #f59e0b; }
+.tl-stars-lbl span { color: var(--c-border); }
+.tl-empty-opt { font-size: .85rem; color: var(--c-text-muted); padding: 6px 0; }
+
+/* ─── Active tour-type chip ────────────────────── */
+.tl-type-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 8px 6px 14px; margin-bottom: 18px;
+  background: rgba(201,168,76,.12);
+  border: 1.5px solid rgba(201,168,76,.4);
+  border-radius: 99px;
+  font-size: .85rem; color: var(--c-text);
+}
+.tl-type-chip[hidden] { display: none; }
+.tl-type-chip-label { color: var(--c-text-muted); }
+.tl-type-chip-val { font-weight: 700; color: #c9a84c; }
+.tl-type-chip-x {
   display: inline-flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 0.9rem;
-  color: var(--c-text);
-  transition: background 0.2s ease, color 0.2s ease;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: none; cursor: pointer;
+  background: rgba(201,168,76,.18); color: #c9a84c;
+  transition: background .15s ease;
 }
-.tl-page-btn:hover { background: var(--c-border); }
-.tl-page-btn.is-active { background: var(--c-text); color: #fff; }
+.tl-type-chip-x:hover { background: rgba(201,168,76,.35); }
+.tl-type-chip-x .ti { font-size: .85rem; }
 
+/* ─── Tour Grid ────────────────────────────────── */
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+}
+.tour-grid.is-list-view {
+  grid-template-columns: 1fr;
+}
+
+/* ─── Tour Card ────────────────────────────────── */
+.tc {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow .22s ease, transform .22s ease, border-color .22s ease;
+  cursor: pointer;
+}
+.tc:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,.12);
+  transform: translateY(-4px);
+  border-color: #c9a84c;
+}
+
+/* Featured card: 2-col horizontal — ONLY in grid view (not list) */
+@media (min-width: 900px) {
+  .tour-grid:not(.is-list-view) .tc--featured {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+  .tour-grid:not(.is-list-view) .tc--featured .tc-img {
+    flex: 0 0 55%;
+    aspect-ratio: unset;
+    border-radius: 16px 0 0 16px;
+  }
+  .tour-grid:not(.is-list-view) .tc--featured .tc-img .tc-photo,
+  .tour-grid:not(.is-list-view) .tc--featured .tc-img .tc-photo--empty {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+  }
+  .tour-grid:not(.is-list-view) .tc--featured .tc-body {
+    flex: 1; padding: 28px 24px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .tour-grid:not(.is-list-view) .tc--featured .tc-title { font-size: 1.35rem; }
+  .tour-grid:not(.is-list-view) .tc--featured .tc-desc { -webkit-line-clamp: 3; }
+}
+
+/* ─── Card Image ───────────────────────────────── */
+.tc-img {
+  position: relative; overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--c-bg-alt);
+}
+.tc-photo {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s ease;
+  display: block;
+}
+.tc:hover .tc-photo { transform: scale(1.04); }
+.tc-photo--empty { width: 100%; height: 100%; background: linear-gradient(135deg, #1a2744 0%, #2d3f6b 100%); }
+
+/* Badge */
+.tc-badge {
+  position: absolute; top: 12px; left: 12px;
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; border-radius: 99px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  backdrop-filter: blur(8px); z-index: 2;
+}
+.tc-badges {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+}
+.tc-badges .tc-badge { position: static; top: auto; left: auto; }
+.tc-badge--sale { background: rgba(217,72,15,.95); color: #fff; }
+.tc-badge--gold { background: rgba(201,168,76,.92); color: #fff; }
+.tc-badge--flame { background: rgba(232,98,26,.92); color: #fff; }
+.tc-badge--amber { background: rgba(245,158,11,.92); color: #fff; }
+.tc-badge--mint  { background: rgba(16,185,129,.92); color: #fff; }
+
+/* Wishlist */
+.tc-fav {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.85); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.5);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-text-muted); font-size: 1rem;
+  cursor: pointer; transition: all .18s ease;
+}
+.tc-fav:hover { background: #fff; color: #e24b4a; transform: scale(1.1); }
+.tc-fav.is-liked { background: rgba(226,75,74,.12); color: #e24b4a; border-color: rgba(226,75,74,.4); }
+
+/* Bottom overlay: category + difficulty */
+.tc-img-foot {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 28px 12px 10px;
+  background: linear-gradient(to top, rgba(6,13,26,.75) 0%, transparent 100%);
+  gap: 8px;
+}
+.tc-cat {
+  font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
+  padding: 3px 8px; border-radius: 99px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px;
+}
+.tc-diff {
+  display: flex; align-items: center; gap: 3px;
+  font-size: .7rem; color: rgba(255,255,255,.75); font-weight: 500;
+}
+.tc-diff-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.25);
+  flex-shrink: 0;
+}
+.tc-diff--easy .tc-diff-dot:nth-child(1) { background: #4ade80; }
+.tc-diff--medium .tc-diff-dot:nth-child(1),
+.tc-diff--medium .tc-diff-dot:nth-child(2) { background: #fbbf24; }
+.tc-diff--hard .tc-diff-dot:nth-child(1),
+.tc-diff--hard .tc-diff-dot:nth-child(2),
+.tc-diff--hard .tc-diff-dot:nth-child(3) { background: #f87171; }
+
+/* ─── Card Body ────────────────────────────────── */
+.tc-body {
+  padding: 18px 18px 16px;
+  display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+
+/* Star rating */
+.tc-rating-row { display: flex; align-items: center; gap: 6px; }
+.tc-stars { position: relative; display: inline-block; line-height: 1; font-size: .88rem; }
+.tc-stars-bg { color: var(--c-border); white-space: nowrap; }
+.tc-stars-fg {
+  position: absolute; left: 0; top: 0; color: #f59e0b;
+  white-space: nowrap; overflow: hidden;
+  width: calc(var(--r, 0) / 5 * 100%);
+}
+.tc-rating-val { font-size: .85rem; font-weight: 700; color: var(--c-text); }
+.tc-rating-ct { font-size: .78rem; color: var(--c-text-muted); }
+
+/* Title */
+.tc-title {
+  font-size: 1.08rem; font-weight: 700; line-height: 1.3;
+  color: var(--c-text);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.tc-title a { color: inherit; }
+.tc-title a:hover { color: #c9a84c; }
+
+/* Description */
+.tc-desc {
+  font-size: .83rem; color: var(--c-text-muted); line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  margin: 0;
+}
+
+/* Meta */
+.tc-meta {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--c-border-soft);
+  border-bottom: 1px solid var(--c-border-soft);
+}
+.tc-meta-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: .78rem; color: var(--c-text-muted); font-weight: 500;
+  white-space: nowrap;
+}
+.tc-meta-item .ti { font-size: .85rem; color: #c9a84c; }
+
+/* Footer: price + CTA */
+.tc-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto; gap: 12px;
+}
+.tc-price { display: flex; align-items: baseline; gap: 3px; }
+.tc-from { font-size: .72rem; color: var(--c-text-muted); }
+.tc-price-val { font-size: 1.25rem; font-weight: 800; color: var(--c-text); }
+.tc-price-old { font-size: .9rem; color: var(--c-text-muted); text-decoration: line-through; }
+.tc-price-val--sale { color: #d9480f; }
+.tc-pp { font-size: .72rem; color: var(--c-text-muted); }
+.tc-cta {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 7px 16px; border-radius: 99px;
+  background: #c9a84c; color: #0a1628;
+  font-size: .8rem; font-weight: 700; white-space: nowrap;
+  transition: background .15s ease, transform .15s ease;
+}
+.tc-cta:hover { background: #b8963f; transform: translateX(2px); }
+.tc-cta .ti { font-size: .78rem; }
+
+/* ─── Empty state ──────────────────────────────── */
 .tl-empty {
   text-align: center; padding: 80px 20px;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
-  border-radius: var(--r-lg);
+  border-radius: 16px;
+  grid-column: 1 / -1;
 }
-.tl-empty-icon { font-size: 4rem; color: var(--c-border); margin-bottom: 16px; }
+.tl-empty-icon { font-size: 3.5rem; color: var(--c-border); margin-bottom: 12px; }
 .tl-empty h3 { margin-bottom: 8px; }
-.tl-empty p { margin-bottom: 24px; }
+.tl-empty p { color: var(--c-text-muted); margin-bottom: 24px; }
+
+/* ─── Skeleton cards ───────────────────────────── */
+.tc-skeleton {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 16px; overflow: hidden;
+}
+.tc-skeleton-img {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(90deg,
+    var(--c-border-soft) 25%, var(--c-bg-alt) 50%, var(--c-border-soft) 75%);
+  background-size: 200% 100%;
+  animation: sk-shimmer 1.4s ease-in-out infinite;
+}
+.tc-skeleton-body { padding: 18px; }
+.tc-skeleton-line {
+  height: 11px; border-radius: 6px; margin-bottom: 10px;
+  background: linear-gradient(90deg,
+    var(--c-border-soft) 25%, var(--c-bg-alt) 50%, var(--c-border-soft) 75%);
+  background-size: 200% 100%;
+  animation: sk-shimmer 1.4s ease-in-out infinite;
+}
+@keyframes sk-shimmer { to { background-position: -200% 0; } }
+
+/* ─── Reveal ───────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .45s ease, transform .45s ease; }
+.reveal.is-revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .tc-photo { transition: none; }
+  .tc-skeleton-img, .tc-skeleton-line { animation: none; }
+}
+
+/* ─── List view ─────────────────────────────────
+   Placed AFTER all base card CSS so specificity
+   (2 classes > 1 class) + order both reinforce.
+   ────────────────────────────────────────────── */
+.tour-grid.is-list-view {
+  grid-template-columns: 1fr;
+}
+.tour-grid.is-list-view .tc {
+  flex-direction: row;
+  min-height: 210px;
+}
+/* Image column: fixed width, stretch to card height */
+.tour-grid.is-list-view .tc-img {
+  flex: 0 0 270px;
+  width: 270px;
+  aspect-ratio: unset !important; /* override base 16/10 */
+  border-radius: 16px 0 0 16px;
+  /* tc-img already has position:relative from base CSS */
+}
+/* Fill the image absolutely so height:100% is always definite */
+.tour-grid.is-list-view .tc-img .tc-photo,
+.tour-grid.is-list-view .tc-img .tc-photo--empty {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Body takes remaining space */
+.tour-grid.is-list-view .tc-body {
+  flex: 1;
+  min-width: 0; /* prevent flex overflow */
+  padding: 20px 22px;
+  justify-content: space-between;
+}
+/* Slightly more description in list mode */
+.tour-grid.is-list-view .tc-desc {
+  -webkit-line-clamp: 3 !important;
+}
+/* Mobile: stack back to column */
+@media (max-width: 640px) {
+  .tour-grid.is-list-view .tc {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .tour-grid.is-list-view .tc-img {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 16px 16px 0 0;
+  }
+  .tour-grid.is-list-view .tc-img .tc-photo,
+  .tour-grid.is-list-view .tc-img .tc-photo--empty {
+    position: static;
+    height: 100%;
+  }
+}
+
+/* ─── Toast ────────────────────────────────────── */
+.sl-toast {
+  position: fixed; bottom: 32px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #0f172a; color: #fff;
+  padding: 11px 22px; border-radius: 100px;
+  font-size: .88rem; font-weight: 500;
+  opacity: 0; transition: opacity .22s ease, transform .22s ease;
+  z-index: 9999; pointer-events: none; white-space: nowrap;
+}
+.sl-toast--in { opacity: 1; transform: translateX(-50%) translateY(0); }
+.sl-toast--error { background: #b91c1c; }
 </style>
+
+{# ═══════════════ JS ═══════════════ #}
+<script>
+(function () {
+  var searchTimer = null;
+
+  /* ── Active tour type (nav: cultural/adventure/premium) ── */
+  window.__activeTourType = new URLSearchParams(window.location.search).get('type') || '';
+
+  function syncTypeChip() {
+    var chip = document.getElementById('tourTypeChip');
+    if (!chip) return;
+    if (window.__activeTourType) {
+      var t = window.__activeTourType;
+      document.getElementById('tourTypeChipVal').textContent = t.charAt(0).toUpperCase() + t.slice(1);
+      chip.hidden = false;
+    } else {
+      chip.hidden = true;
+    }
+  }
+
+  window.clearTourType = function () {
+    window.__activeTourType = '';
+    syncTypeChip();
+    applyFilters();
+  };
+
+  /* ── Skeleton cards ─────────────────────────── */
+  function skeletons(n) {
+    var html = '';
+    for (var i = 0; i < n; i++) {
+      html += '<div class="tc-skeleton"><div class="tc-skeleton-img"></div>'
+            + '<div class="tc-skeleton-body">'
+            + '<div class="tc-skeleton-line" style="width:45%;height:9px;margin-bottom:14px"></div>'
+            + '<div class="tc-skeleton-line" style="width:90%;height:18px"></div>'
+            + '<div class="tc-skeleton-line" style="width:75%;height:11px"></div>'
+            + '<div class="tc-skeleton-line" style="width:55%;height:9px;margin-top:14px"></div>'
+            + '</div></div>';
+    }
+    return html;
+  }
+
+  /* ── Debounced search ───────────────────────── */
+  window.debounceSearch = function () {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(applyFilters, 420);
+  };
+
+  /* ── Apply filters (AJAX) ───────────────────── */
+  window.applyFilters = function (page) {
+    page = page || 1;
+    var url = new URL('{% url "tours:tour-filter-api" %}', window.location.origin);
+
+    var q = document.getElementById('searchInput').value;
+    if (q) url.searchParams.set('q', q);
+
+    document.querySelectorAll('input[name="category"]:checked').forEach(function (cb) {
+      url.searchParams.append('category', cb.value);
+    });
+
+    var minP = document.getElementById('minPrice').value;
+    var maxP = document.getElementById('maxPrice').value;
+    if (minP) url.searchParams.set('min_price', minP);
+    if (maxP) url.searchParams.set('max_price', maxP);
+
+    var dur = document.querySelector('input[name="duration"]:checked');
+    if (dur) url.searchParams.set('duration', dur.value);
+
+    var rat = document.querySelector('input[name="rating"]:checked');
+    if (rat) url.searchParams.set('rating', rat.value);
+
+    var sort = document.getElementById('sortSelect').value;
+    if (sort && sort !== 'popular') url.searchParams.set('sort', sort);
+
+    if (window.__activeTourType) url.searchParams.set('type', window.__activeTourType);
+
+    if (page > 1) url.searchParams.set('page', page);
+
+    var grid = document.getElementById('tourGrid');
+    grid.innerHTML = skeletons(6);
+    document.getElementById('tourPagination').innerHTML = '';
+
+    fetch(url)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        grid.innerHTML = data.tours_html;
+        document.getElementById('tourPagination').innerHTML = data.pagination_html;
+        var countEl = document.getElementById('tourCount');
+        if (countEl) countEl.textContent = data.total;
+
+        if (window.initReveal) window.initReveal(grid);
+        grid.querySelectorAll('.reveal').forEach(function (el) {
+          requestAnimationFrame(function () { el.classList.add('is-revealed'); });
+        });
+
+        var params = new URLSearchParams(url.search);
+        params.delete('page');
+        var newUrl = '{% url "tours:tour-list" %}';
+        if (params.toString()) newUrl += '?' + params.toString();
+        history.pushState({}, '', newUrl);
+      })
+      .catch(function () {
+        grid.innerHTML = '<div class="tl-empty" style="grid-column:1/-1"><div class="tl-empty-icon"><i class="ti ti-alert-circle"></i></div><h3>{% trans "Error loading tours" %}</h3><p>{% trans "Please try again." %}</p></div>';
+      });
+  };
+
+  window.goToPage = function (page) {
+    applyFilters(page);
+    window.scrollTo({ top: document.querySelector('.tl-section').offsetTop - 80, behavior: 'smooth' });
+  };
+
+  window.clearAllFilters = function () {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('minPrice').value = '';
+    document.getElementById('maxPrice').value = '';
+    document.querySelectorAll('input[name="category"]').forEach(function (cb) { cb.checked = false; });
+    document.querySelectorAll('input[name="duration"]').forEach(function (r) { r.checked = false; });
+    document.querySelectorAll('input[name="rating"]').forEach(function (r) { r.checked = false; });
+    document.getElementById('sortSelect').value = 'popular';
+    window.__activeTourType = '';
+    syncTypeChip();
+    applyFilters();
+  };
+
+  /* ── View toggle ────────────────────────────── */
+  window.setView = function (mode) {
+    var grid = document.getElementById('tourGrid');
+    var btnG = document.getElementById('btnGrid');
+    var btnL = document.getElementById('btnList');
+    if (mode === 'list') {
+      grid.classList.add('is-list-view');
+      btnL.classList.add('is-active'); btnG.classList.remove('is-active');
+    } else {
+      grid.classList.remove('is-list-view');
+      btnG.classList.add('is-active'); btnL.classList.remove('is-active');
+    }
+    localStorage.setItem('tours-view', mode);
+  };
+
+  /* Restore saved view */
+  (function () {
+    var saved = localStorage.getItem('tours-view');
+    if (saved === 'list') window.setView('list');
+  })();
+
+  /* ── Browser back/forward ───────────────────── */
+  window.addEventListener('popstate', function () {
+    var p = new URLSearchParams(window.location.search);
+    document.getElementById('searchInput').value = p.get('q') || '';
+    document.getElementById('minPrice').value = p.get('min_price') || '';
+    document.getElementById('maxPrice').value = p.get('max_price') || '';
+    document.getElementById('sortSelect').value = p.get('sort') || 'popular';
+    document.querySelectorAll('input[name="category"]').forEach(function (cb) {
+      cb.checked = p.getAll('category').indexOf(cb.value) > -1;
+    });
+    document.querySelectorAll('input[name="duration"]').forEach(function (r) {
+      r.checked = r.value === p.get('duration');
+    });
+    document.querySelectorAll('input[name="rating"]').forEach(function (r) {
+      r.checked = r.value === p.get('rating');
+    });
+    window.__activeTourType = p.get('type') || '';
+    syncTypeChip();
+    applyFilters(p.get('page') || 1);
+  });
+})();
+</script>
+
+<script>
+/* ── Wishlist / Favorites ─────────────────────── */
+(function () {
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : '';
+  }
+
+  function showToast(msg, type) {
+    var t = document.createElement('div');
+    t.className = 'sl-toast' + (type === 'error' ? ' sl-toast--error' : '');
+    t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('sl-toast--in'); });
+    setTimeout(function () {
+      t.classList.remove('sl-toast--in');
+      setTimeout(function () { t.remove(); }, 300);
+    }, 2500);
+  }
+
+  function bindFavButtons() {
+    document.querySelectorAll('.tour-card-fav:not([data-bound])').forEach(function (btn) {
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var url = btn.dataset.wishlistUrl;
+        if (!url) return;
+        fetch(url, {
+          method: 'POST',
+          headers: { 'X-CSRFToken': getCookie('csrftoken'), 'X-Requested-With': 'XMLHttpRequest' },
+        }).then(function (r) {
+          if (r.status === 401) {
+            location.href = '{% url "account_login" %}?next=' + encodeURIComponent(location.pathname);
+            return null;
+          }
+          return r.json();
+        }).then(function (data) {
+          if (!data) return;
+          var icon = btn.querySelector('i');
+          if (data.status === 'added') {
+            btn.classList.add('is-liked');
+            icon.className = 'ti ti-heart-filled';
+            showToast("{% trans 'Added to wishlist' %}");
+          } else {
+            btn.classList.remove('is-liked');
+            icon.className = 'ti ti-heart';
+            showToast("{% trans 'Removed from wishlist' %}");
+          }
+        });
+      });
+    });
+  }
+
+  bindFavButtons();
+  var grid = document.getElementById('tourGrid');
+  if (grid) {
+    new MutationObserver(function () { bindFavButtons(); }).observe(grid, { childList: true, subtree: true });
+  }
+})();
+</script>
 
 {% endblock %}

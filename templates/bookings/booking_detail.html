@@ -43,14 +43,16 @@
           {% elif booking.status == 'pending' %}{% trans "Almost there!" %}
           {% elif booking.status == 'completed' %}{% trans "Welcome back!" %}
           {% elif booking.status == 'cancelled' %}{% trans "Booking cancelled" %}
-          {% else %}{% trans "Booking details" %}{% endif %}
+          {% else %}{% trans "Booking details" %}
+          {% endif %}
         </h1>
 
         <p class="bd-hero-sub">
           {% if booking.status == 'pending' %}{% trans "Complete your payment to confirm this booking." %}
           {% elif booking.status == 'confirmed' %}{% trans "Get ready for an unforgettable journey. We've sent details to your email." %}
           {% elif booking.status == 'cancelled' %}{% trans "This booking has been cancelled." %}
-          {% else %}{% trans "All your trip information in one place." %}{% endif %}
+          {% else %}{% trans "All your trip information in one place." %}
+          {% endif %}
         </p>
 
         <div class="bd-hero-meta">
@@ -60,11 +62,11 @@
           </div>
           <div>
             <span class="bd-hero-meta-label">{% trans "Booked" %}</span>
-            <span class="bd-hero-meta-value">{{ booking.created_at|date:"d M Y" }}</span>
+            <span class="bd-hero-meta-value">{{ booking.created_at|date:"d-m-Y" }}</span>
           </div>
           <div>
             <span class="bd-hero-meta-label">{% trans "Travel date" %}</span>
-            <span class="bd-hero-meta-value">{{ booking.travel_date|date:"d M Y" }}</span>
+            <span class="bd-hero-meta-value">{{ booking.travel_date|date:"d-m-Y" }}</span>
           </div>
         </div>
       </div>
@@ -83,7 +85,7 @@
           <div class="bd-ticket-body">
             <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:6px;">{% trans "Destination" %}</div>
             <div style="font-size:1.3rem;font-weight:800;line-height:1.2;margin-bottom:14px;">
-              {% if booking.tour.region %}{{ booking.tour.region.name|upper }}{% else %}UZBEKISTAN{% endif %}
+              {% if booking.tour.regions.first %}{{ booking.tour.regions.first.name|upper }}{% else %}UZBEKISTAN{% endif %}
             </div>
             <div style="display:flex;justify-content:space-between;font-size:0.75rem;">
               <div>
@@ -143,16 +145,16 @@
             {% endif %}
             <div class="bd-tour-img-overlay"></div>
             <div class="bd-tour-img-tag">
-              <i class="ti ti-star"></i> {{ booking.tour.rating|default:"4.96" }}
+              <i class="ti ti-star"></i> {{ booking.tour.avg_rating|floatformat:1|default:"4.9" }}
             </div>
-            {% if booking.tour.tour_type %}
-            <div class="bd-tour-img-type">{{ booking.tour.tour_type }}</div>
-            {% endif %}
+            
+            <div class="bd-tour-img-type"></div>
+            
           </div>
-          <div class="bd-tour-body">
+           <div class="bd-tour-body">
             <div class="bd-tour-meta-top">
               <i class="ti ti-map-pin"></i>
-              {% if booking.tour.region %}{{ booking.tour.region.name }}{% else %}Uzbekistan{% endif %}
+              {% if booking.tour.regions.first %}{{ booking.tour.regions.first.name }}{% else %}Uzbekistan{% endif %}
             </div>
             <h2 class="bd-tour-title">
               <a href="{% url 'tours:tour-detail' booking.tour.slug %}">{{ booking.tour.title }}</a>
@@ -160,6 +162,7 @@
             {% if booking.tour.short_description %}
             <p class="bd-tour-desc">{{ booking.tour.short_description|truncatewords:30 }}</p>
             {% endif %}
+
             <div class="bd-tour-tags">
               {% if booking.tour.duration_days %}
               <span><i class="ti ti-clock"></i> {{ booking.tour.duration_days }} {% trans "days" %}</span>
@@ -186,7 +189,7 @@
               <div class="bd-detail-icon"><i class="ti ti-calendar-event"></i></div>
               <div>
                 <div class="bd-detail-label">{% trans "Travel Date" %}</div>
-                <div class="bd-detail-value">{{ booking.travel_date|date:"l, d F Y" }}</div>
+                <div class="bd-detail-value">{{ booking.travel_date|date:"l, d-m-Y" }}</div>
               </div>
             </div>
             <div class="bd-detail">
@@ -205,17 +208,18 @@
               <div>
                 <div class="bd-detail-label">{% trans "Duration" %}</div>
                 <div class="bd-detail-value">
-                  {{ booking.tour.duration_days }} {% trans "days" %}{% if booking.tour.duration_nights %} / {{ booking.tour.duration_nights }} {% trans "nights" %}{% endif %}
+                  {{ booking.tour.duration_days }} {% trans "days" %}{% if booking.tour.duration_days > 1 %} / {{ booking.tour.duration_days|add:"-1" }} {% trans "nights" %}{% endif %}
                 </div>
               </div>
             </div>
             {% endif %}
+
             <div class="bd-detail">
               <div class="bd-detail-icon"><i class="ti ti-map-2"></i></div>
               <div>
                 <div class="bd-detail-label">{% trans "Destination" %}</div>
                 <div class="bd-detail-value">
-                  {% if booking.tour.region %}{{ booking.tour.region.name }}{% else %}Uzbekistan{% endif %}
+                  {% if booking.tour.regions.first %}{{ booking.tour.regions.first.name }}{% else %}Uzbekistan{% endif %}
                 </div>
               </div>
             </div>
@@ -263,7 +267,7 @@
             <div class="bd-card-icon" style="background:#FEE2E2;color:#E24B4A;"><i class="ti ti-info-circle"></i></div>
             <div>
               <h2 style="color:#7F1D1D;">{% trans "Cancellation Details" %}</h2>
-              <p>{% trans "Cancelled on" %} {{ booking.cancelled_at|date:"d M Y, H:i" }}</p>
+              <p>{% trans "Cancelled on" %} {{ booking.cancelled_at|date:"d-m-Y H:i" }}</p>
             </div>
           </div>
           <div style="padding:14px 18px;background:#FEF2F2;border-radius:var(--r-md);">
@@ -271,6 +275,51 @@
           </div>
         </article>
         {% endif %}
+
+        {# Help + Trust — sidebar'dan ko'chirildi (payment card yolg'iz sticky qolishi uchun) #}
+        <div class="bd-bottom-grid">
+          <div class="bd-card bd-help">
+            <div class="bd-help-icon"><i class="ti ti-headset"></i></div>
+            <h4>{% trans "Need help?" %}</h4>
+            <p>{% trans "Our support team is available 24/7 to assist with your booking." %}</p>
+            <div class="bd-help-list">
+              <a href="{% if site_settings.email_1 %}mailto:{{ site_settings.email_1 }}{% else %}{% url 'messages_app:contact' %}{% endif %}" class="bd-help-item">
+                <i class="ti ti-mail"></i>
+                <span>{% if site_settings.email_1 %}{{ site_settings.email_1 }}{% else %}{% trans "Email support" %}{% endif %}</span>
+                <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
+              </a>
+              {% if site_settings.phone_1 %}
+              <a href="tel:{{ site_settings.phone_1|cut:' ' }}" class="bd-help-item">
+                <i class="ti ti-phone"></i>
+                <span>{{ site_settings.phone_1 }}</span>
+                <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
+              </a>
+              {% endif %}
+              <a href="#chat" class="bd-help-item">
+                <i class="ti ti-message-circle"></i>
+                <span>{% trans "Live chat" %}</span>
+                <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bd-trust-card">
+            <div class="bd-trust-item">
+              <i class="ti ti-shield-check"></i>
+              <div>
+                <strong>{% trans "Secure booking" %}</strong>
+                <span>{% trans "256-bit SSL encryption" %}</span>
+              </div>
+            </div>
+            <div class="bd-trust-item">
+              <i class="ti ti-rotate-clockwise"></i>
+              <div>
+                <strong>{% trans "Free cancellation" %}</strong>
+                <span>{% trans "Up to 3 days before travel" %}</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
 
@@ -288,13 +337,13 @@
           </div>
 
           <div class="bd-summary-row">
-            <span>{% if booking.currency == 'USD' %}${% endif %}{{ booking.price_per_person|floatformat:0 }} × {{ booking.num_adults }} {% trans "adults" %}</span>
-            <span>{% if booking.currency == 'USD' %}${% endif %}{{ booking.total_price|floatformat:0 }}</span>
+            <span>${{ booking.price_per_person|floatformat:0 }} × {{ booking.num_adults }} {% trans "adults" %}</span>
+            <span>${{ booking.adults_subtotal|floatformat:0 }}</span>
           </div>
           {% if booking.num_children %}
           <div class="bd-summary-row">
-            <span>{% trans "Children" %} × {{ booking.num_children }}</span>
-            <span>{% trans "Included" %}</span>
+            <span>${{ booking.child_price_per_person|floatformat:0 }} × {{ booking.num_children }} {% trans "children" %}</span>
+            <span>${{ booking.children_subtotal|floatformat:0 }}</span>
           </div>
           {% endif %}
           <div class="bd-summary-row">
@@ -310,9 +359,7 @@
 
           <div class="bd-summary-total">
             <span>{% trans "Total" %}</span>
-            <span class="bd-summary-amount">
-              {% if booking.currency == 'USD' %}${% endif %}{{ booking.total_price|floatformat:0 }}{% if booking.currency != 'USD' %} {{ booking.currency }}{% endif %}
-            </span>
+            <span class="bd-summary-amount">${{ booking.total_price|floatformat:0 }}</span>
           </div>
 
           {# Payment status pill #}
@@ -333,48 +380,6 @@
           {% endif %}
         </div>
 
-        {# Reassurance / Help #}
-        <div class="bd-card bd-help">
-          <div class="bd-help-icon"><i class="ti ti-headset"></i></div>
-          <h4>{% trans "Need help?" %}</h4>
-          <p>{% trans "Our support team is available 24/7 to assist with your booking." %}</p>
-
-          <div class="bd-help-list">
-            <a href="{% url 'messages_app:contact' %}" class="bd-help-item">
-              <i class="ti ti-mail"></i>
-              <span>{% trans "Email support" %}</span>
-              <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
-            </a>
-            <a href="tel:+998901234567" class="bd-help-item">
-              <i class="ti ti-phone"></i>
-              <span>+998 90 123 45 67</span>
-              <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
-            </a>
-            <a href="#chat" class="bd-help-item">
-              <i class="ti ti-message-circle"></i>
-              <span>{% trans "Live chat" %}</span>
-              <i class="ti ti-chevron-right" style="margin-left:auto;font-size:0.9rem;"></i>
-            </a>
-          </div>
-        </div>
-
-        {# Trust badges #}
-        <div class="bd-trust-card">
-          <div class="bd-trust-item">
-            <i class="ti ti-shield-check"></i>
-            <div>
-              <strong>{% trans "Secure booking" %}</strong>
-              <span>{% trans "256-bit SSL encryption" %}</span>
-            </div>
-          </div>
-          <div class="bd-trust-item">
-            <i class="ti ti-rotate-clockwise"></i>
-            <div>
-              <strong>{% trans "Free cancellation" %}</strong>
-              <span>{% trans "Up to 3 days before travel" %}</span>
-            </div>
-          </div>
-        </div>
       </aside>
     </div>
   </div>
@@ -409,6 +414,7 @@
 </div>
 {% endif %}
 
+
 <style>
 /* ═══ HERO ═══ */
 .bd-hero { padding: 40px 0 70px; color: #fff; position: relative; overflow: hidden; }
@@ -419,7 +425,7 @@
 .bd-hero::before {
   content: ''; position: absolute; right: -100px; top: -100px;
   width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(254,250,23,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -430,9 +436,9 @@
   color: rgba(255,255,255,0.5);
 }
 .bd-crumbs a { color: rgba(255,255,255,0.7); text-decoration: none; }
-.bd-crumbs a:hover { color: var(--c-yellow); }
+.bd-crumbs a:hover { color: var(--gold); }
 .bd-crumbs i { font-size: 0.7rem; opacity: 0.4; }
-.bd-crumbs span { color: var(--c-yellow); font-weight: 600; font-family: 'Space Mono', monospace; }
+.bd-crumbs span { color: var(--gold); font-weight: 600; font-family: 'Space Mono', monospace; }
 
 .bd-hero-grid {
   display: grid; grid-template-columns: 1fr 320px; gap: 40px;
@@ -452,14 +458,14 @@
 }
 .bd-status-icon {
   width: 30px; height: 30px;
-  background: var(--c-yellow); color: #000;
+  background: var(--gold); color: #000;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem;
 }
 .bd-hero-cancelled .bd-status-icon { background: #E24B4A; color: #fff; }
 
-.bd-hero-title { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; margin-bottom: 12px; }
+.bd-hero-title { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; margin-bottom: 12px; color: var(--gold); }
 .bd-hero-sub { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 28px; max-width: 480px; }
 
 .bd-hero-meta {
@@ -494,7 +500,7 @@
 .bd-ticket-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .bd-ticket-mark {
   width: 44px; height: 44px;
-  background: var(--c-yellow);
+  background: var(--gold);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-weight: 800; font-size: 1rem;
@@ -520,7 +526,13 @@
 @media (max-width:1024px) { .bd-grid { grid-template-columns: 1fr; } }
 .bd-main { display: flex; flex-direction: column; gap: 18px; }
 .bd-side { display: flex; flex-direction: column; gap: 18px; }
-@media (min-width:1025px) { .bd-side > .bd-summary { position: sticky; top: 130px; } }
+@media (min-width:1025px) { .bd-side { position: sticky; top: 130px; align-self: start; } }
+
+/* Help + Trust — main ustun ostida, 2 ustun (chap tomonda scroll qismi) */
+.bd-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; margin-top: 0; }
+@media (max-width:640px) { .bd-bottom-grid { grid-template-columns: 1fr; } }
+/* Trust card help bilan teng balandlikda chiroyli ko'rinishi uchun */
+.bd-bottom-grid .bd-help { padding: 24px 22px; }
 
 /* ═══ CARDS ═══ */
 .bd-card {
@@ -536,7 +548,7 @@
 }
 .bd-card-icon {
   width: 44px; height: 44px;
-  background: var(--c-yellow);
+  background: var(--gold);
   border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.3rem;
@@ -569,7 +581,7 @@
 .bd-tour-img-tag i { color: var(--c-star); }
 .bd-tour-img-type {
   position: absolute; top: 16px; left: 16px;
-  background: var(--c-yellow); color: #000;
+  background: var(--gold); color: #000;
   padding: 6px 12px; border-radius: 50px;
   font-weight: 800; font-size: 0.75rem;
   letter-spacing: 0.05em; text-transform: uppercase;
@@ -662,7 +674,7 @@
 .bd-notes {
   margin-top: 16px; padding: 16px;
   background: #FFFBEB; border-radius: var(--r-md);
-  border-left: 3px solid var(--c-yellow);
+  border-left: 3px solid var(--gold);
 }
 .bd-notes-label {
   font-weight: 700; font-size: 0.85rem;
@@ -685,11 +697,11 @@
 .bd-summary-total {
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 18px;
-  background: linear-gradient(135deg, #FFFEF2 0%, #FEFA17 100%);
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
   border-radius: var(--r-md);
 }
-.bd-summary-total > span:first-child { font-weight: 700; font-size: 0.95rem; }
-.bd-summary-amount { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+.bd-summary-total > span:first-child { font-weight: 700; font-size: 0.95rem; color: #1C1C1E; }
+.bd-summary-amount { font-size: 1.7rem; font-weight: 800; line-height: 1; color: #1C1C1E; }
 
 .bd-pay-pill {
   margin-top: 16px; padding: 12px 16px;
@@ -707,7 +719,7 @@
 .bd-help { text-align: center; padding: 28px 24px; }
 .bd-help-icon {
   width: 56px; height: 56px;
-  background: var(--c-yellow);
+  background: var(--gold);
   border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 1.6rem;
@@ -726,7 +738,7 @@
   font-weight: 600; font-size: 0.9rem;
   transition: background 0.2s;
 }
-.bd-help-item:hover { background: var(--c-yellow); }
+.bd-help-item:hover { background: var(--gold); }
 .bd-help-item > i:first-child { color: var(--c-text); font-size: 1.1rem; }
 
 /* ═══ TRUST CARD ═══ */

@@ -259,12 +259,18 @@
               {% trans "Price Details" %}
             </h4>
             <div class="bc-summary-row">
-              <span>${{ tour.price }} × <span id="bkGuests">2</span> {% trans "adults" %}</span>
-              <span id="bkSubtotal">${{ tour.price|floatformat:0 }}</span>
+              <span>${{ tour.discounted_price|floatformat:0 }} × <span id="bkGuests">2</span> {% trans "adults" %}</span>
+              <span id="bkSubtotal">${{ tour.discounted_price|floatformat:0 }}</span>
             </div>
+            {% if tour.has_discount %}
+            <div class="bc-summary-row" style="color:#d9480f;">
+              <span>{% trans "Discount" %} −{{ tour.discount_percent }}%{% if tour.discount_label %} · {{ tour.discount_label }}{% endif %}</span>
+              <span>−${{ tour.discount_amount|floatformat:0 }}/{% trans "person" %}</span>
+            </div>
+            {% endif %}
             <div class="bc-summary-row">
-              <span><span id="bkKids">0</span> {% trans "children" %}</span>
-              <span>{% trans "Free" %}</span>
+              <span>${{ tour.child_price|floatformat:0 }} × <span id="bkKids">0</span> {% trans "children" %}</span>
+              <span id="bkKidsSubtotal">$0</span>
             </div>
             <div class="bc-summary-row">
               <span>{% trans "Service fee" %}</span>
@@ -280,7 +286,7 @@
 
           <div class="bc-summary-total">
             <span>{% trans "Total" %}</span>
-            <span class="bc-summary-amount" id="bkTotal" data-price="{{ tour.price|unlocalize }}">${{ tour.price|floatformat:0 }}</span>
+            <span class="bc-summary-amount" id="bkTotal" data-price="{{ tour.discounted_price|unlocalize }}" data-child-price="{{ tour.child_price|unlocalize }}">${{ tour.discounted_price|floatformat:0 }}</span>
           </div>
 
           {# Reassurance #}
@@ -334,11 +340,11 @@
   color: rgba(255,255,255,0.5);
 }
 .bc-crumbs a { color: rgba(255,255,255,0.7); text-decoration: none; }
-.bc-crumbs a:hover { color: var(--c-yellow); }
+.bc-crumbs a:hover { color: var(--gold); }
 .bc-crumbs i { font-size: 0.7rem; opacity: 0.4; }
-.bc-crumbs span { color: var(--c-yellow); font-weight: 600; }
+.bc-crumbs span { color: var(--gold); font-weight: 600; }
 
-.bc-hero-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem); line-height: 1.1; margin-bottom: 8px; }
+.bc-hero-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem); line-height: 1.1; margin-bottom: 8px; color: var(--gold); }
 .bc-hero-sub { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 32px; }
 
 /* ═══ STEPPER ═══ */
@@ -654,18 +660,22 @@
 (function () {
   const totalEl = document.getElementById('bkTotal');
   const subEl = document.getElementById('bkSubtotal');
+  const kidsSubEl = document.getElementById('bkKidsSubtotal');
   const guestsEl = document.getElementById('bkGuests');
   const kidsEl = document.getElementById('bkKids');
   const price = parseFloat(totalEl?.dataset.price) || 0;
+  const childPrice = parseFloat(totalEl?.dataset.childPrice) || 0;
   const a = document.getElementById('id_num_adults');
   const c = document.getElementById('id_num_children');
 
   function recalc() {
     const adults = parseInt(a.value, 10) || 0;
     const kids = parseInt(c.value, 10) || 0;
-    const total = price * adults;
-    if (subEl) subEl.textContent = '$' + Math.round(total);
-    if (totalEl) totalEl.textContent = '$' + Math.round(total);
+    const adultsTotal = price * adults;
+    const kidsTotal = childPrice * kids;
+    if (subEl) subEl.textContent = '$' + Math.round(adultsTotal);
+    if (kidsSubEl) kidsSubEl.textContent = '$' + Math.round(kidsTotal);
+    if (totalEl) totalEl.textContent = '$' + Math.round(adultsTotal + kidsTotal);
     if (guestsEl) guestsEl.textContent = adults;
     if (kidsEl) kidsEl.textContent = kids;
   }

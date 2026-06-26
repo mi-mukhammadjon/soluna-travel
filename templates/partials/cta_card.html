@@ -1,0 +1,23 @@
+{% load i18n %}
+
+<div class="cta-card cta-card--{{ variant|default:'default' }}">
+  <div class="cta-card-inner">
+
+    {% if show_badge|default:False and badge %}
+      <span class="cta-card-badge">{{ badge }}</span>
+    {% endif %}
+
+    <div class="cta-card-head">
+      <div class="cta-card-icon"><i class="ti {{ icon|default:'ti-sparkles' }}"></i></div>
+      <span class="cta-card-brand">{{ brand|default:'SoLuna' }}</span>
+    </div>
+
+    <h2 class="cta-card-title">{{ title|default:'Plan your next journey' }}</h2>
+    <p class="cta-card-desc">{{ description|default:'' }}</p>
+
+    <a href="{{ button_url|default:'#' }}" class="cta-card-btn">
+      {{ button_text|default:'Learn more' }}
+      <i class="ti ti-arrow-right"></i>
+    </a>
+  </div>
+</div>

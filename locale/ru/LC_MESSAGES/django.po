@@ -2352,3 +2352,460 @@ msgstr "Попробуйте изменить фильтры или параме
 #: templates/tours/list.html:207
 msgid "Reset filters"
 msgstr "Сбросить фильтры"
+# ── Added by build_i18n (UI strings) ──
+
+msgid "24/7 Support"
+msgstr "Поддержка 24/7"
+
+msgid "4 world heritage sites across the country"
+msgstr "4 объекта всемирного наследия по всей стране"
+
+msgid "5% off on your first booking"
+msgstr "Скидка 5% на первое бронирование"
+
+msgid "5-star rated"
+msgstr "Рейтинг 5 звёзд"
+
+msgid "About the region"
+msgstr "О регионе"
+
+msgid "Activity type"
+msgstr "Тип активности"
+
+msgid "Add guests"
+msgstr "Добавить гостей"
+
+msgid "Added to wishlist"
+msgstr "Добавлено в избранное"
+
+msgid "Age 12 or above"
+msgstr "12 лет и старше"
+
+msgid "Age 2–11"
+msgstr "2–11 лет"
+
+msgid "All activities"
+msgstr "Все активности"
+
+msgid "All destinations"
+msgstr "Все направления"
+
+msgid "Ancient cities, breathtaking landscapes, and warm hospitality — find your perfect destination."
+msgstr "Древние города, захватывающие пейзажи и тёплое гостеприимство — найдите идеальное направление."
+
+msgid "Any duration"
+msgstr "Любая длительность"
+
+msgid "Anywhere"
+msgstr "Где угодно"
+
+msgid "Attractions"
+msgstr "Достопримечательности"
+
+msgid "Available tours"
+msgstr "Доступные туры"
+
+msgid "Average — decent experience"
+msgstr "Средне — неплохой опыт"
+
+msgid "Awaiting approval"
+msgstr "Ожидает подтверждения"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Back to home"
+msgstr "На главную"
+
+msgid "Become Your Story"
+msgstr "Станут вашей историей"
+
+msgid "Below average"
+msgstr "Ниже среднего"
+
+msgid "Best Seller"
+msgstr "Хит продаж"
+
+msgid "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for curious travelers, guided by local experts."
+msgstr "Бутик-туры по Узбекистану и древнему Шёлковому пути. Для любознательных путешественников, под руководством местных экспертов."
+
+msgid "Boutique tours crafted for curious souls — from the minarets of Samarkand to the sands of the Kyzylkum."
+msgstr "Бутик-туры для любознательных душ — от минаретов Самарканда до песков Кызылкума."
+
+msgid "Browse All"
+msgstr "Смотреть все"
+
+msgid "Browse all tours"
+msgstr "Смотреть все туры"
+
+msgid "Browse by style"
+msgstr "Поиск по стилю"
+
+msgid "Can't decide where to go?"
+msgstr "Не можете решить, куда поехать?"
+
+msgid "Car rental coming soon"
+msgstr "Аренда авто скоро"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Certified local guides with deep Silk Road knowledge."
+msgstr "Сертифицированные местные гиды с глубокими знаниями Шёлкового пути."
+
+msgid "Check back soon — new destinations are being added."
+msgstr "Загляните позже — добавляются новые направления."
+
+msgid "Choose currency"
+msgstr "Выберите валюту"
+
+msgid "Choose language"
+msgstr "Выберите язык"
+
+msgid "Choose your adventure"
+msgstr "Выберите своё приключение"
+
+msgid "Clear filters"
+msgstr "Сбросить фильтры"
+
+msgid "Click to rate"
+msgstr "Нажмите, чтобы оценить"
+
+msgid "Consistently rated one of the safest destinations in Asia"
+msgstr "Неизменно входит в число самых безопасных направлений Азии"
+
+msgid "Copy failed"
+msgstr "Не удалось скопировать"
+
+msgid "Culinary"
+msgstr "Кулинария"
+
+msgid "Curated"
+msgstr "Подборка"
+
+msgid "Custom tours"
+msgstr "Индивидуальные туры"
+
+msgid "Desert"
+msgstr "Пустыня"
+
+msgid "Difficulty"
+msgstr "Сложность"
+
+msgid "Discover"
+msgstr "Откройте"
+
+msgid "Discover the jewels of the ancient Silk Road"
+msgstr "Откройте жемчужины древнего Шёлкового пути"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Error loading tours"
+msgstr "Ошибка загрузки туров"
+
+msgid "Error. Try again."
+msgstr "Ошибка. Попробуйте снова."
+
+msgid "Every detail crafted so you focus on the moments that matter."
+msgstr "Каждая деталь продумана, чтобы вы могли сосредоточиться на главном."
+
+msgid "Excellent — outstanding experience!"
+msgstr "Отлично — превосходный опыт!"
+
+msgid "Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to your inbox. No spam, ever."
+msgstr "Эксклюзивные предложения, скрытые жемчужины и вдохновение Шёлкового пути — прямо на вашу почту. Никакого спама."
+
+msgid "Expert Guides"
+msgstr "Опытные гиды"
+
+msgid "Explore"
+msgstr "Исследуйте"
+
+msgid "Explore on your own terms — coming soon!"
+msgstr "Путешествуйте на своих условиях — скоро!"
+
+msgid "Explore region"
+msgstr "Исследовать регион"
+
+msgid "Extraordinary"
+msgstr "Незабываемо"
+
+msgid "Famously welcoming locals and vibrant culture"
+msgstr "Знаменитые гостеприимные жители и яркая культура"
+
+msgid "Featured"
+msgstr "Рекомендуем"
+
+msgid "Featured Tours"
+msgstr "Рекомендуемые туры"
+
+msgid "Filters"
+msgstr "Фильтры"
+
+msgid "Find your perfect travel experience"
+msgstr "Найдите идеальное путешествие"
+
+msgid "Get 5% off your first booking"
+msgstr "Получите скидку 5% на первое бронирование"
+
+msgid "Get exclusive offers and Silk Road travel inspiration."
+msgstr "Получайте эксклюзивные предложения и вдохновение Шёлкового пути."
+
+msgid "Get free advice"
+msgstr "Получить бесплатную консультацию"
+
+msgid "Good — would recommend"
+msgstr "Хорошо — рекомендую"
+
+msgid "Handpicked experiences based on traveler reviews"
+msgstr "Тщательно отобранные впечатления на основе отзывов путешественников"
+
+msgid "Hero"
+msgstr "Главный баннер"
+
+msgid "Hotel booking coming soon"
+msgstr "Бронирование отелей скоро"
+
+msgid "Itineraries shaped around how you love to travel."
+msgstr "Маршруты, созданные под ваш стиль путешествий."
+
+msgid "Join 2,400+ travelers. Unsubscribe anytime."
+msgstr "Присоединяйтесь к 2 400+ путешественникам. Отписаться можно в любой момент."
+
+msgid "Link copied!"
+msgstr "Ссылка скопирована!"
+
+msgid "Login to write a review"
+msgstr "Войдите, чтобы оставить отзыв"
+
+msgid "Luxury Silk Road Travel"
+msgstr "Роскошные путешествия по Шёлковому пути"
+
+msgid "Luxury Travel Across the Silk Road"
+msgstr "Роскошные путешествия вдоль Шёлкового пути"
+
+msgid "Min Rating"
+msgstr "Мин. рейтинг"
+
+msgid "Minimum 10 characters"
+msgstr "Минимум 10 символов"
+
+msgid "Most Searched Destinations"
+msgstr "Самые искомые направления"
+
+msgid "Most popular"
+msgstr "Самые популярные"
+
+msgid "Must-see places"
+msgstr "Места, которые стоит увидеть"
+
+msgid "New"
+msgstr "Новое"
+
+msgid "No Hidden Fees"
+msgstr "Без скрытых платежей"
+
+msgid "No categories"
+msgstr "Нет категорий"
+
+msgid "Not sure which tour fits you? Our local specialists craft the perfect Silk Road itinerary — free of charge."
+msgstr "Не уверены, какой тур вам подходит? Наши местные специалисты составят идеальный маршрут по Шёлковому пути — бесплатно."
+
+msgid "Our Promise"
+msgstr "Наше обещание"
+
+msgid "Our local experts can craft a custom tour tailored just for you."
+msgstr "Наши местные эксперты составят индивидуальный тур специально для вас."
+
+msgid "Our local experts will craft a personalised itinerary just for you — no cookie-cutter trips."
+msgstr "Наши местные эксперты составят персональный маршрут только для вас — никаких шаблонных поездок."
+
+msgid "Our local team is always ready to help."
+msgstr "Наша местная команда всегда готова помочь."
+
+msgid "Please try again."
+msgstr "Пожалуйста, попробуйте снова."
+
+msgid "Plov, samsa, shashlik — unforgettable flavors"
+msgstr "Плов, самса, шашлык — незабываемые вкусы"
+
+msgid "Poor — not recommended"
+msgstr "Плохо — не рекомендую"
+
+msgid "Popular destinations"
+msgstr "Популярные направления"
+
+msgid "Preferred Language"
+msgstr "Предпочитаемый язык"
+
+msgid "Premium curated tours across Uzbekistan and the ancient Silk Road. Expert guides, boutique experiences, timeless memories."
+msgstr "Премиальные авторские туры по Узбекистану и древнему Шёлковому пути. Опытные гиды, бутик-впечатления, вечные воспоминания."
+
+msgid "Premium tours across Uzbekistan and the Silk Road."
+msgstr "Премиальные туры по Узбекистану и Шёлковому пути."
+
+msgid "Price: High → Low"
+msgstr "Цена: по убыванию"
+
+msgid "Price: Low → High"
+msgstr "Цена: по возрастанию"
+
+msgid "Quick search"
+msgstr "Быстрый поиск"
+
+msgid "Ready to book?"
+msgstr "Готовы забронировать?"
+
+msgid "Recent searches"
+msgstr "Недавние запросы"
+
+msgid "Regions"
+msgstr "Регионы"
+
+msgid "Removed from wishlist"
+msgstr "Удалено из избранного"
+
+msgid "Reset"
+msgstr "Сбросить"
+
+msgid "Review"
+msgstr "Отзыв"
+
+msgid "Rich Cuisine"
+msgstr "Богатая кухня"
+
+msgid "Safe Travel"
+msgstr "Безопасное путешествие"
+
+msgid "Save to wishlist"
+msgstr "Сохранить в избранное"
+
+msgid "Save tour"
+msgstr "Сохранить тур"
+
+msgid "Scroll to explore"
+msgstr "Прокрутите, чтобы исследовать"
+
+msgid "Secure Booking"
+msgstr "Безопасное бронирование"
+
+msgid "Similar tours"
+msgstr "Похожие туры"
+
+msgid "Sort"
+msgstr "Сортировка"
+
+msgid "Stay Ahead of Every Adventure"
+msgstr "Будьте впереди каждого приключения"
+
+msgid "Summarise your experience..."
+msgstr "Кратко опишите свой опыт..."
+
+msgid "Tailored Routes"
+msgstr "Индивидуальные маршруты"
+
+msgid "Talk to a travel expert"
+msgstr "Поговорите с экспертом по путешествиям"
+
+msgid "Talk to an expert"
+msgstr "Поговорить с экспертом"
+
+msgid "Tell others about your experience — what did you enjoy most?"
+msgstr "Расскажите другим о своих впечатлениях — что понравилось больше всего?"
+
+msgid "These tours are available in"
+msgstr "Эти туры доступны в"
+
+msgid "Tickets coming soon"
+msgstr "Билеты скоро"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Top Attractions"
+msgstr "Главные достопримечательности"
+
+msgid "Top Destinations"
+msgstr "Лучшие направления"
+
+msgid "Top choices among travelers this season"
+msgstr "Лучший выбор путешественников в этом сезоне"
+
+msgid "Tour Categories"
+msgstr "Категории туров"
+
+msgid "Train and air tickets will be available soon."
+msgstr "Железнодорожные и авиабилеты скоро будут доступны."
+
+msgid "Transparent pricing, no surprises."
+msgstr "Прозрачные цены, без сюрпризов."
+
+msgid "Trending now"
+msgstr "Сейчас в тренде"
+
+msgid "UNESCO Heritage"
+msgstr "Наследие ЮНЕСКО"
+
+msgid "UNESCO sites"
+msgstr "Объекты ЮНЕСКО"
+
+msgid "Update Review"
+msgstr "Обновить отзыв"
+
+msgid "Uzbekistan"
+msgstr "Узбекистан"
+
+msgid "Uzbekistan · Silk Road · Beyond"
+msgstr "Узбекистан · Шёлковый путь · и далее"
+
+msgid "View All"
+msgstr "Смотреть все"
+
+msgid "View Tour"
+msgstr "Смотреть тур"
+
+msgid "View on map"
+msgstr "Показать на карте"
+
+msgid "View tours"
+msgstr "Смотреть туры"
+
+msgid "Warm Hospitality"
+msgstr "Тёплое гостеприимство"
+
+msgid "We're partnering with the best hotels. Stay tuned!"
+msgstr "Мы сотрудничаем с лучшими отелями. Оставайтесь с нами!"
+
+msgid "Wellness"
+msgstr "Велнес"
+
+msgid "Where Ancient Routes"
+msgstr "Где древние маршруты"
+
+msgid "Where to?"
+msgstr "Куда?"
+
+msgid "Why Book with SoLuna?"
+msgstr "Почему стоит бронировать с SoLuna?"
+
+msgid "Years of history"
+msgstr "Лет истории"
+
+msgid "Your payments and personal data are protected end-to-end with bank-level security. Book with complete peace of mind."
+msgstr "Ваши платежи и личные данные защищены сквозным шифрованием банковского уровня. Бронируйте с полным спокойствием."
+
+msgid "from"
+msgstr "от"
+
+msgid "handcrafted journeys through Uzbekistan"
+msgstr "авторские путешествия по Узбекистану"
+
+msgid "more tours"
+msgstr "ещё туры"
+
+msgid "regions"
+msgstr "регионы"
+
+msgid "stars"
+msgstr "звёзд"

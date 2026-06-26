@@ -17,8 +17,9 @@ urlpatterns = [
     # AJAX status check
     path('status/<uuid:payment_id>/',  views.PaymentStatusAPIView.as_view(), name='status'),
 
-    # Webhooks — gateway tomonidan chaqiriladi
-    path('webhook/click/', views.ClickWebhookView.as_view(), name='webhook-click'),
-    path('webhook/payme/', views.PaymeWebhookView.as_view(), name='webhook-payme'),
+    # Webhooks — config.urls'da i18n_patterns'dan TASHQARIDA ulandi
+    # (payments/webhook_urls.py), chunki gateway POST'lari til prefiksli
+    # redirect'ga ergashmaydi.
+
     path('mock/<uuid:payment_id>/', views.MockPaymentView.as_view(), name='mock-pay')
 ]

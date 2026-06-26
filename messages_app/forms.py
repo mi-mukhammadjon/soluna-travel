@@ -7,11 +7,11 @@ class ContactForm(forms.ModelForm):
         model = ContactMessage
         fields = ['name', 'email', 'phone', 'subject', 'body']
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Ismingiz'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'email@example.com'}),
-            'phone': forms.TextInput(attrs={'placeholder': '+998 90 123 45 67'}),
-            'subject': forms.TextInput(attrs={'placeholder': 'Mavzu'}),
-            'body': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Xabaringiz...'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ismingiz'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email@example.com'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '+998 90 123 45 67'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Mavzu'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Xabaringiz...'}),
         }
 
     def clean_phone(self):

@@ -1,0 +1,24 @@
+{% load i18n %}
+{% if total_pages > 1 %}
+<nav class="tl-pagination" aria-label="{% trans 'Pagination' %}">
+  {% if page > 1 %}
+    <a href="#" class="tl-page-btn" onclick="goToPage({{ page|add:"-1" }}); return false;">
+      <i class="ti ti-chevron-left"></i>
+    </a>
+  {% endif %}
+
+  {% for num in page_range %}
+    {% if num == page %}
+      <span class="tl-page-btn is-active">{{ num }}</span>
+    {% elif num > page|add:'-3' and num < page|add:'3' %}
+      <a href="#" class="tl-page-btn" onclick="goToPage({{ num }}); return false;">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if page < total_pages %}
+    <a href="#" class="tl-page-btn" onclick="goToPage({{ page|add:"1" }}); return false;">
+      <i class="ti ti-chevron-right"></i>
+    </a>
+  {% endif %}
+</nav>
+{% endif %}

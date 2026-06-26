@@ -38,3 +38,40 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.name} — {self.subject}"
+
+
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)
+    is_active = models.BooleanField(default=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+    unsubscribed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-subscribed_at']
+        verbose_name = 'Newsletter Subscriber'
+        verbose_name_plural = 'Newsletter Subscribers'
+
+    def __str__(self):
+        return self.email
+
+
+class Newsletter(models.Model):
+    STATUS_CHOICES = [
+        ('draft', 'Draft'),
+        ('sent', 'Sent'),
+    ]
+
+    title = models.CharField(max_length=300)
+    content = models.TextField()
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    sent_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Newsletter'
+        verbose_name_plural = 'Newsletters'
+
+    def __str__(self):
+        return self.title

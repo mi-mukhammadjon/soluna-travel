@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 01:16+0500\n"
+"POT-Creation-Date: 2026-06-25 14:46+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Uzbek <uz@li.org>\n"
@@ -18,2337 +18,2286 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: accounts/admin.py:18
 msgid "Дополнительная информация"
 msgstr "Qo'shimcha ma'lumot"
 
-#: accounts/admin.py:33 accounts/models.py:12
 msgid "Аватар"
 msgstr "Avatar"
 
-#: accounts/apps.py:7
 msgid "Пользователи и доступы"
 msgstr "Foydalanuvchilar va ruxsatlar"
 
-#: accounts/models.py:8 accounts/models.py:27
 msgid "Пользователь"
 msgstr "Foydalanuvchi"
 
-#: accounts/models.py:9
 msgid "Администратор"
 msgstr "Administrator"
 
-#: accounts/models.py:11
 msgid "Номер телефона"
 msgstr "Telefon raqami"
 
-#: accounts/models.py:13
 msgid "Роль"
 msgstr "Rol"
 
-#: accounts/models.py:15
 msgid "Предпочитаемый язык"
 msgstr "Afzal ko'rilgan til"
 
-#: accounts/models.py:24
 msgid "Дата регистрации"
 msgstr "Ro'yxatdan o'tgan sana"
 
-#: accounts/models.py:28
 msgid "Все пользователи"
 msgstr "Barcha foydalanuvchilar"
 
-#: bookings/forms.py:34
 msgid "Dietary needs, accessibility, etc."
 msgstr "Ovqatlanish bo'yicha talablar, qulayliklar va h.k."
 
-#: bookings/forms.py:38 templates/bookings/booking_create.html:88
-#: templates/bookings/booking_detail.html:188
-#: templates/bookings/booking_list.html:108
 msgid "Travel Date"
 msgstr "Sayohat sanasi"
 
-#: bookings/forms.py:39 templates/bookings/booking_create.html:103
-#: templates/tours/detail.html:288
 msgid "Adults"
 msgstr "Kattalar"
 
-#: bookings/forms.py:40 templates/bookings/booking_create.html:118
-#: templates/bookings/booking_detail.html:296 templates/tours/detail.html:296
 msgid "Children"
 msgstr "Bolalar"
 
-#: bookings/forms.py:41 templates/bookings/booking_create.html:160
-#: templates/bookings/booking_detail.html:253
 msgid "Special Requests"
 msgstr "Maxsus talablar"
 
-#: bookings/forms.py:47
 msgid "Travel date cannot be in the past."
 msgstr "Sayohat sanasi o'tgan vaqtda bo'lishi mumkin emas."
 
-#: bookings/forms.py:53
 msgid "At least 1 adult is required."
 msgstr "Kamida 1 nafar katta yoshli kishi talab qilinadi."
 
-#: payments/models.py:64
 msgid "Created"
 msgstr "Yaratilgan"
 
-#: payments/models.py:65 templates/bookings/booking_list.html:50
-#: templates/bookings/booking_list.html:83
 msgid "Pending"
 msgstr "Kutilmoqda"
 
-#: payments/models.py:66
 msgid "Processing"
 msgstr "Jarayonda"
 
-#: payments/models.py:67 templates/bookings/booking_detail.html:323
-#: templates/payments/payment_success.html:60
 msgid "Paid"
 msgstr "To'langan"
 
-#: payments/models.py:68
 msgid "Failed"
 msgstr "Muvaffaqiyatsiz"
 
-#: payments/models.py:69 templates/bookings/booking_detail.html:34
-#: templates/bookings/booking_list.html:59
-#: templates/bookings/booking_list.html:86
 msgid "Cancelled"
 msgstr "Bekor qilingan"
 
-#: payments/models.py:70 templates/bookings/booking_detail.html:325
 msgid "Refunded"
 msgstr "Qaytarilgan"
 
-#: payments/views.py:56
 msgid "Bu bron uchun to'lov allaqachon qabul qilingan."
 msgstr "Bu bron uchun to'lov allaqachon qabul qilingan."
 
-#: payments/views.py:83
 msgid "Ofisda to'lov qilishni tanladingiz."
 msgstr "Ofisda to'lov qilishni tanladingiz."
 
-#: payments/views.py:102
 msgid "Ushbu to'lov turi hali qo'llanilmaydi."
 msgstr "Ushbu to'lov turi hali qo'llanilmaydi."
 
-#: templates/404.html:4
 msgid "Page Not Found"
 msgstr "Sahifa topilmadi"
 
-#: templates/404.html:16
 msgid "Oops! Page not found"
 msgstr "Voy! Sahifa topilmadi"
 
-#: templates/404.html:18
 msgid ""
 "The page you are looking for might have been moved or doesn't exist. Let's "
 "get you back on track."
-msgstr "Siz qidirayotgan sahifa ko'chirilgan yoki mavjud bo'lmasligi mumkin. Keling, sizni asosiy yo'lga qaytaramiz."
+msgstr ""
+"Siz qidirayotgan sahifa ko'chirilgan yoki mavjud bo'lmasligi mumkin. Keling, "
+"sizni asosiy yo'lga qaytaramiz."
 
-#: templates/404.html:23 templates/500.html:21
 msgid "Go Home"
 msgstr "Bosh sahifaga qaytish"
 
-#: templates/404.html:26
 msgid "Browse Tours"
 msgstr "Turlarni ko'rish"
 
-#: templates/404.html:31 templates/base.html:154 templates/base.html:302
-#: templates/base.html:375 templates/regions/detail.html:19
-#: templates/regions/list.html:4 templates/regions/list.html:14
 msgid "Destinations"
 msgstr "Manzillar"
 
-#: templates/404.html:32 templates/regions/detail.html:160
 msgid "Contact us"
 msgstr "Biz bilan bog'laning"
 
-#: templates/404.html:33
 msgid "Help center"
 msgstr "Yordam markazi"
 
-#: templates/500.html:4
 msgid "Server Error"
 msgstr "Server xatosi"
 
-#: templates/500.html:14
 msgid "Something went wrong"
 msgstr "Nimadir xato ketdi"
 
-#: templates/500.html:16
 msgid ""
 "We're having trouble loading this page. Our team has been notified and we're "
 "working on it."
-msgstr "Ushbu sahifani yuklashda muammoga duch kelyapmiz. Jamoamiz xabardor qilingan va biz bu ustida ishlayapmiz."
+msgstr ""
+"Ushbu sahifani yuklashda muammoga duch kelyapmiz. Jamoamiz xabardor qilingan "
+"va biz bu ustida ishlayapmiz."
 
-#: templates/500.html:24 templates/account/password_reset_done.html:25
-#: templates/socialaccount/authentication_error.html:49
 msgid "Try again"
 msgstr "Qaytadan urinib ko'ring"
 
-#: templates/account/login.html:4 templates/account/login.html:163
-#: templates/accounts/register.html:90 templates/base.html:242
-#: templates/base.html:316
 msgid "Sign In"
 msgstr "Tizimga kirish"
 
-#: templates/account/login.html:23
 msgid "Welcome back to your"
 msgstr "Sizning navbatdagi sayohatingizga"
 
-#: templates/account/login.html:24
 msgid "next adventure"
 msgstr "xush kelibsiz"
 
-#: templates/account/login.html:27
 msgid ""
 "Discover the magic of the Silk Road — ancient cities, breathtaking "
 "landscapes, and unforgettable journeys."
-msgstr "Ipak yo'lining sehrini kashf eting — qadimiy shaharlar, hayratlanarli manzaralar va unutilmas sayohatlar."
+msgstr ""
+"Ipak yo'lining sehrini kashf eting — qadimiy shaharlar, hayratlanarli "
+"manzaralar va unutilmas sayohatlar."
 
-#: templates/account/login.html:35
 msgid "Trusted by 50,000+"
 msgstr "50,000+ kishi ishonchini oqlagan"
 
-#: templates/account/login.html:36
 msgid "travelers across 9 countries"
 msgstr "9 ta davlatdan kelgan sayohatchilar"
 
-#: templates/account/login.html:42
 msgid "rating"
 msgstr "reyting"
 
-#: templates/account/login.html:43
 msgid "from 8,400+ verified reviews"
 msgstr "8,400+ haqiqiy sharhlar asosida"
 
-#: templates/account/login.html:49 templates/bookings/booking_create.html:305
 msgid "24/7 support"
 msgstr "24/7 yordam xizmati"
 
-#: templates/account/login.html:50
 msgid "in 9 languages"
 msgstr "9 xil tilda"
 
-#: templates/account/login.html:56
 msgid "From"
 msgstr "Manzillar:"
 
-#: templates/account/login.html:57
 msgid "Tashkent · Samarkand · Bukhara · Khiva"
 msgstr "Toshkent · Samarqand · Buxoro · Xiva"
 
-#: templates/account/login.html:68 templates/account/signup.html:76
-#: templates/accounts/profile.html:11 templates/base.html:111
-#: templates/base.html:300 templates/bookings/booking_create.html:12
-#: templates/bookings/booking_detail.html:12
-#: templates/bookings/booking_list.html:12
-#: templates/messages_app/contact.html:12
-#: templates/payments/payment_select.html:11 templates/regions/detail.html:17
-#: templates/regions/list.html:12 templates/tours/detail.html:12
-#: templates/tours/list.html:12
 msgid "Home"
 msgstr "Bosh sahifa"
 
-#: templates/account/login.html:73
 msgid "Welcome back"
 msgstr "Xush kelibsiz"
 
-#: templates/account/login.html:75
 msgid "Sign in to access your bookings and exclusive offers."
 msgstr "Bronlaringiz va maxsus takliflarni ko'rish uchun tizimga kiring."
 
-#: templates/account/login.html:91 templates/account/login.html:106
 msgid "Continue with Google"
 msgstr "Google orqali davom etish"
 
-#: templates/account/login.html:111
 msgid "or sign in with email"
 msgstr "yoki email orqali kirish"
 
-#: templates/account/login.html:126 templates/account/signup.html:153
-#: templates/accounts/profile.html:105 templates/accounts/profile_edit.html:58
-#: templates/accounts/register.html:57 templates/base.html:395
-#: templates/messages_app/contact.html:40
-#: templates/messages_app/contact.html:77
-#: templates/socialaccount/signup.html:67
 msgid "Email"
 msgstr "Email"
 
-#: templates/account/login.html:138 templates/account/signup.html:164
-#: templates/accounts/password_change.html:13
-#: templates/accounts/profile.html:48 templates/accounts/register.html:72
 msgid "Password"
 msgstr "Parol"
 
-#: templates/account/login.html:140
 msgid "Forgot?"
 msgstr "Esdan chiqardingizmi?"
 
-#: templates/account/login.html:155
 msgid "Keep me signed in for 30 days"
 msgstr "Meni 30 kunga tizimda eslab qolish"
 
-#: templates/account/login.html:168
 msgid "Don't have an account?"
 msgstr "Akkauntingiz yo'qmi?"
 
-#: templates/account/login.html:169
 msgid "Create one"
 msgstr "Yaratish"
 
-#: templates/account/login.html:174 templates/account/signup.html:205
-#: templates/account/signup.html:227 templates/base.html:413
-#: templates/socialaccount/signup.html:119
 msgid "Terms"
 msgstr "Qoidalar"
 
-#: templates/account/login.html:176 templates/account/signup.html:229
-#: templates/base.html:415
 msgid "Privacy"
 msgstr "Maxfiylik siyosati"
 
-#: templates/account/login.html:178 templates/account/signup.html:231
 msgid "Help"
 msgstr "Yordam"
 
-#: templates/account/logout.html:4 templates/account/logout.html:23
-#: templates/base.html:236 templates/base.html:312
 msgid "Sign Out"
 msgstr "Tizimdan chiqish"
 
-#: templates/account/logout.html:10
 msgid "Sign out?"
 msgstr "Tizimdan chiqasizmi?"
 
-#: templates/account/logout.html:12
 msgid "Are you sure you want to sign out?"
 msgstr "Haqiqatan ham tizimdan chiqishni xohlaysizmi?"
 
-#: templates/account/logout.html:21 templates/accounts/password_change.html:47
-#: templates/accounts/profile_edit.html:85
-#: templates/bookings/booking_detail.html:125 templates/reviews/form.html:83
 msgid "Cancel"
 msgstr "Bekor qilish"
 
-#: templates/account/password_reset.html:4
 msgid "Reset Password"
 msgstr "Parolni tiklash"
 
-#: templates/account/password_reset.html:15
 msgid "Forgot your password?"
 msgstr "Parolingizni unutdingizmi?"
 
-#: templates/account/password_reset.html:17
 msgid "Enter your email and we'll send a link to reset your password."
 msgstr "Emailingizni kiriting va biz parolni tiklash havolasini yuboramiz."
 
-#: templates/account/password_reset.html:24
 msgid "Email address"
 msgstr "Email manzil"
 
-#: templates/account/password_reset.html:29
 msgid "Send Reset Link"
 msgstr "Tiklash havolasini yuborish"
 
-#: templates/account/password_reset.html:35
-#: templates/account/password_reset_done.html:20
-#: templates/account/verification_sent.html:19
-#: templates/socialaccount/login.html:84
-#: templates/socialaccount/signup.html:136
 msgid "Back to sign in"
 msgstr "Kirish sahifasiga qaytish"
 
-#: templates/account/password_reset_done.html:4
 msgid "Email Sent"
 msgstr "Email yuborildi"
 
-#: templates/account/password_reset_done.html:14
 msgid "Check your email"
 msgstr "Emailingizni tekshiring"
 
-#: templates/account/password_reset_done.html:16
 msgid ""
 "We've sent a password reset link to your email address. The link will expire "
 "in 24 hours."
-msgstr "Biz sizning emailingizga parolni tiklash havolasini yubordik. Havola 24 soat davomida amal qiladi."
+msgstr ""
+"Biz sizning emailingizga parolni tiklash havolasini yubordik. Havola 24 soat "
+"davomida amal qiladi."
 
-#: templates/account/password_reset_done.html:24
 msgid "Didn't receive an email?"
 msgstr "Email kelmadimi?"
 
-#: templates/account/signup.html:4 templates/base.html:243
-#: templates/base.html:317
 msgid "Sign Up"
 msgstr "Ro'yxatdan o'tish"
 
-#: templates/account/signup.html:23
 msgid "Your journey to the"
 msgstr "Sizning sayohatingiz"
 
-#: templates/account/signup.html:24 templates/base.html:266
 msgid "Silk Road"
 msgstr "Ipak Yo'li tomon"
 
-#: templates/account/signup.html:24
 msgid "starts here"
 msgstr "shu yerdan boshlanadi"
 
-#: templates/account/signup.html:27
 msgid ""
 "Join thousands of travelers exploring Uzbekistan's ancient cities, vibrant "
 "culture, and timeless landscapes."
-msgstr "O'zbekistonning qadimiy shaharlari, yorqin madaniyati va abadiy manzaralarini kashf etayotgan minglab sayohatchilarga qo'shiling."
+msgstr ""
+"O'zbekistonning qadimiy shaharlari, yorqin madaniyati va abadiy "
+"manzaralarini kashf etayotgan minglab sayohatchilarga qo'shiling."
 
-#: templates/account/signup.html:36
 msgid "Welcome bonus"
 msgstr "Xush kelibsiz bonusi"
 
-#: templates/account/signup.html:37
 #, python-format
 msgid "Get 5%% off your first booking"
 msgstr "Ilk broningiz uchun 5%% chegirma oling"
 
-#: templates/account/signup.html:43
 msgid "Save favorites"
 msgstr "Sevimli turlarni saqlash"
 
-#: templates/account/signup.html:44
 msgid "Build your dream itinerary"
 msgstr "Orzuingizdagi marshrutni tuzing"
 
-#: templates/account/signup.html:50
 msgid "Exclusive offers"
 msgstr "Maxsus takliflar"
 
-#: templates/account/signup.html:51
 msgid "Early access to seasonal deals"
 msgstr "Mavsumiy chegirmalarga birinchilardan bo'lib ega bo'ling"
 
-#: templates/account/signup.html:57
 msgid "Faster checkout"
 msgstr "Tezkor to'lov"
 
-#: templates/account/signup.html:58
 msgid "Save payment methods securely"
 msgstr "To'lov usullarini xavfsiz saqlash"
 
-#: templates/account/signup.html:64
 msgid "Free to join"
 msgstr "Qo'shilish bepul"
 
-#: templates/account/signup.html:65
 msgid "No credit card required"
 msgstr "Kredit karta talab qilinmaydi"
 
-#: templates/account/signup.html:81
 msgid "Create your account"
 msgstr "Akkauntingizni yarating"
 
-#: templates/account/signup.html:83
 msgid "Sign up in 30 seconds. No credit card required."
 msgstr "30 soniyada ro'yxatdan o'ting. Kredit karta talab qilinmaydi."
 
-#: templates/account/signup.html:99 templates/account/signup.html:113
-#: templates/accounts/register.html:23
 msgid "Sign up with Google"
 msgstr "Google orqali ro'yxatdan o'tish"
 
-#: templates/account/signup.html:118
 msgid "or sign up with email"
 msgstr "yoki email orqali ro'yxatdan o'ting"
 
-#: templates/account/signup.html:134
 msgid "First name"
 msgstr "Ism"
 
-#: templates/account/signup.html:142
 msgid "Last name"
 msgstr "Familiya"
 
-#: templates/account/signup.html:168
-msgid "At least 8 characters"
-msgstr "Kamida 8 ta belgi"
-
-#: templates/account/signup.html:180
-msgid "Password strength"
-msgstr "Parol xavfsizligi darajasi"
-
-#: templates/account/signup.html:187
-msgid "Confirm password"
-msgstr "Parolni tasdiqlang"
-
-#: templates/account/signup.html:191
-msgid "Repeat password"
-msgstr "Parolni takrorlang"
-
-#: templates/account/signup.html:204 templates/bookings/booking_create.html:199
-#: templates/socialaccount/signup.html:118
-msgid "I agree to SoLuna's"
-msgstr "Men SoLuna shartlariga roziman:"
-
-#: templates/account/signup.html:206 templates/bookings/booking_create.html:201
-#: templates/socialaccount/signup.html:120
-msgid "Privacy Policy"
-msgstr "Maxfiylik siyosati"
-
-#: templates/account/signup.html:207
-msgid "and consent to receiving travel inspiration emails"
-msgstr "va sayohat xabarlarini olishga roziman"
-
-#: templates/account/signup.html:216 templates/accounts/register.html:18
-#: templates/accounts/register.html:85 templates/socialaccount/signup.html:130
-msgid "Create Account"
-msgstr "Akkaunt yaratish"
-
-#: templates/account/signup.html:221 templates/accounts/register.html:89
-msgid "Already have an account?"
-msgstr "Sizda allaqachon akkaunt bormi?"
-
-#: templates/account/signup.html:222
-msgid "Sign in"
-msgstr "Tizimga kirish"
-
-#: templates/account/verification_sent.html:4
-msgid "Verify Email"
-msgstr "Emailni tasdiqlash"
-
-#: templates/account/verification_sent.html:14
-msgid "Verify your email"
-msgstr "Emailingizni tasdiqlang"
-
-#: templates/account/verification_sent.html:16
-msgid ""
-"We've sent a verification email. Please click the link in the email to "
-"activate your account."
-msgstr "Biz tasdiqlash xatini yubordik. Akkauntingizni faollashtirish uchun xatdagi havolani bosing."
-
-#: templates/accounts/password_change.html:4
-#: templates/accounts/password_change.html:17
-msgid "Change Password"
-msgstr "Parolni o'zgartirish"
-
-#: templates/accounts/password_change.html:11
-#: templates/accounts/profile.html:13 templates/accounts/profile.html:36
-#: templates/accounts/profile_edit.html:11
-#: templates/bookings/booking_list.html:14
-msgid "Profile"
-msgstr "Profil"
-
-#: templates/accounts/password_change.html:19
-msgid "For security, choose a strong password you haven't used before."
-msgstr "Xavfsizlik uchun, avval ishlatilmagan kuchli parol tanlang."
-
-#: templates/accounts/password_change.html:26
-msgid "Current Password"
-msgstr "Joriy parol"
-
-#: templates/accounts/password_change.html:32
-msgid "New Password"
-msgstr "Yangi parol"
-
-#: templates/accounts/password_change.html:36
-msgid "At least 8 characters, with letters and numbers."
-msgstr "Harflar va raqamlardan iborat kamida 8 ta belgi."
-
-#: templates/accounts/password_change.html:41
-msgid "Confirm New Password"
-msgstr "Yangi parolni tasdiqlang"
-
-#: templates/accounts/password_change.html:49
-msgid "Update Password"
-msgstr "Parolni yangilash"
-
-#: templates/accounts/profile.html:4 templates/base.html:221
-#: templates/base.html:308
-msgid "My Profile"
-msgstr "Mening profilim"
-
-#: templates/accounts/profile.html:30 templates/accounts/profile_edit.html:4
-#: templates/accounts/profile_edit.html:17
-msgid "Edit Profile"
-msgstr "Profilni tahrirlash"
-
-#: templates/accounts/profile.html:39 templates/base.html:224
-#: templates/base.html:309 templates/bookings/booking_detail.html:14
-#: templates/bookings/booking_list.html:4
-#: templates/bookings/booking_list.html:16
-msgid "My Bookings"
-msgstr "Mening bronlarim"
-
-#: templates/accounts/profile.html:42 templates/accounts/profile.html:82
-msgid "Wishlist"
-msgstr "Istaklar ro'yxati"
-
-#: templates/accounts/profile.html:45
-msgid "My Reviews"
-msgstr "Mening sharhlarim"
-
-#: templates/accounts/profile.html:53
-msgid "Logout"
-msgstr "Chiqish"
-
-#: templates/accounts/profile.html:68
-msgid "Total Bookings"
-msgstr "Jami bronlar"
-
-#: templates/accounts/profile.html:75
-msgid "Completed Trips"
-msgstr "Tugallangan sayohatlar"
-
-#: templates/accounts/profile.html:89 templates/tours/detail.html:117
-#: templates/tours/detail.html:211
-msgid "Reviews"
-msgstr "Sharhlar"
-
-#: templates/accounts/profile.html:97
-msgid "Personal Information"
-msgstr "Shaxsiy ma'lumotlar"
-
-#: templates/accounts/profile.html:99 templates/accounts/profile_edit.html:13
-msgid "Edit"
-msgstr "Tahrirlash"
-
-#: templates/accounts/profile.html:103 templates/messages_app/contact.html:73
-msgid "Full Name"
-msgstr "To'liq ism"
-
-#: templates/accounts/profile.html:104 templates/accounts/register.html:50
 msgid "Username"
 msgstr "Foydalanuvchi nomi"
 
-#: templates/accounts/profile.html:106 templates/accounts/profile_edit.html:64
-#: templates/accounts/register.html:64 templates/messages_app/contact.html:33
-#: templates/messages_app/contact.html:84
+msgid "At least 8 characters"
+msgstr "Kamida 8 ta belgi"
+
+msgid "Password strength"
+msgstr "Parol xavfsizligi darajasi"
+
+msgid "Confirm password"
+msgstr "Parolni tasdiqlang"
+
+msgid "Repeat password"
+msgstr "Parolni takrorlang"
+
+msgid "I agree to SoLuna's"
+msgstr "Men SoLuna shartlariga roziman:"
+
+msgid "Privacy Policy"
+msgstr "Maxfiylik siyosati"
+
+msgid "and consent to receiving travel inspiration emails"
+msgstr "va sayohat xabarlarini olishga roziman"
+
+msgid "Create Account"
+msgstr "Akkaunt yaratish"
+
+msgid "Already have an account?"
+msgstr "Sizda allaqachon akkaunt bormi?"
+
+msgid "Sign in"
+msgstr "Tizimga kirish"
+
+msgid "Verify Email"
+msgstr "Emailni tasdiqlash"
+
+msgid "Verify your email"
+msgstr "Emailingizni tasdiqlang"
+
+msgid ""
+"We've sent a verification email. Please click the link in the email to "
+"activate your account."
+msgstr ""
+"Biz tasdiqlash xatini yubordik. Akkauntingizni faollashtirish uchun xatdagi "
+"havolani bosing."
+
+msgid "Change Password"
+msgstr "Parolni o'zgartirish"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "For security, choose a strong password you haven't used before."
+msgstr "Xavfsizlik uchun, avval ishlatilmagan kuchli parol tanlang."
+
+msgid "Current Password"
+msgstr "Joriy parol"
+
+msgid "New Password"
+msgstr "Yangi parol"
+
+msgid "At least 8 characters, with letters and numbers."
+msgstr "Harflar va raqamlardan iborat kamida 8 ta belgi."
+
+msgid "Confirm New Password"
+msgstr "Yangi parolni tasdiqlang"
+
+msgid "Update Password"
+msgstr "Parolni yangilash"
+
+msgid "My Profile"
+msgstr "Mening profilim"
+
+msgid "Edit Profile"
+msgstr "Profilni tahrirlash"
+
+msgid "My Bookings"
+msgstr "Mening bronlarim"
+
+msgid "Wishlist"
+msgstr "Istaklar ro'yxati"
+
+msgid "My Reviews"
+msgstr "Mening sharhlarim"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Total Bookings"
+msgstr "Jami bronlar"
+
+msgid "Completed Trips"
+msgstr "Tugallangan sayohatlar"
+
+msgid "Reviews"
+msgstr "Sharhlar"
+
+msgid "Personal Information"
+msgstr "Shaxsiy ma'lumotlar"
+
+msgid "Edit"
+msgstr "Tahrirlash"
+
+msgid "Full Name"
+msgstr "To'liq ism"
+
 msgid "Phone"
 msgstr "Telefon"
 
-#: templates/accounts/profile.html:107
 msgid "Joined"
 msgstr "A'zo bo'lgan vaqt"
 
-#: templates/accounts/profile.html:108 templates/accounts/profile_edit.html:70
-#: templates/regions/detail.html:104
 msgid "Country"
 msgstr "Davlat"
 
-#: templates/accounts/profile.html:115
 msgid "Recent Bookings"
 msgstr "So'nggi bronlar"
 
-#: templates/accounts/profile.html:117
 msgid "View all"
 msgstr "Barchasini ko'rish"
 
-#: templates/accounts/profile.html:132 templates/payments/mock_pay.html:161
-#: templates/tours/detail.html:307
 msgid "guests"
 msgstr "mehmonlar"
 
-#: templates/accounts/profile.html:145
 msgid "You haven't booked any tours yet."
 msgstr "Siz hali birorta ham turni bron qilmadingiz."
 
-#: templates/accounts/profile.html:146
 msgid "Browse tours"
 msgstr "Turlarni ko'rish"
 
-#: templates/accounts/profile_edit.html:19
 msgid "Update your personal information and preferences."
 msgstr "Shaxsiy ma'lumotlar va sozlamalaringizni yangilang."
 
-#: templates/accounts/profile_edit.html:35
 msgid "Profile photo"
 msgstr "Profil rasmi"
 
-#: templates/accounts/profile_edit.html:37
 msgid "JPG, PNG. Max 2MB."
 msgstr "JPG, PNG. Maksimal 2MB."
 
-#: templates/accounts/profile_edit.html:40
 msgid "Upload"
 msgstr "Yuklash"
 
-#: templates/accounts/profile_edit.html:48 templates/accounts/register.html:36
 msgid "First Name"
 msgstr "Ism"
 
-#: templates/accounts/profile_edit.html:52 templates/accounts/register.html:42
 msgid "Last Name"
 msgstr "Familiya"
 
-#: templates/accounts/profile_edit.html:60
 msgid "Email cannot be changed."
 msgstr "Emailni o'zgartirib bo'lmaydi."
 
-#: templates/accounts/profile_edit.html:74
 msgid "City"
 msgstr "Shahar"
 
-#: templates/accounts/profile_edit.html:80
 msgid "About yourself"
 msgstr "O'zingiz haqingizda"
 
-#: templates/accounts/profile_edit.html:81
 msgid "Tell us a bit about yourself..."
 msgstr "O'zingiz haqingizda qisqacha ma'lumot bering..."
 
-#: templates/accounts/profile_edit.html:87
 msgid "Save Changes"
 msgstr "O'zgarishlarni saqlash"
 
-#: templates/accounts/register.html:3
 msgid "Register"
 msgstr "Ro'yxatdan o'tish"
 
-#: templates/accounts/register.html:19
 msgid "Join SoLuna and start planning your journey"
 msgstr "SoLuna'ga qo'shiling va sayohatingizni rejalashtirishni boshlang"
 
-#: templates/accounts/register.html:26
 msgid "or"
 msgstr "yoki"
 
-#: templates/accounts/register.html:78
 msgid "Confirm"
 msgstr "Tasdiqlash"
 
-#: templates/base.html:7 templates/home.html:4 templates/home.html:14
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password"
+msgstr "Parolni o'zgartirish"
+
+#, fuzzy
+#| msgid "Sign out?"
+msgid "Log out"
+msgstr "Tizimdan chiqasizmi?"
+
 msgid "Your Gateway to Extraordinary Adventures"
 msgstr "Favqulodda sarguzashtlar sari ostonangiz"
 
-#: templates/base.html:8
 msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
 msgstr "SoLuna — O'zbekiston va Ipak yo'li bo'ylab premium turlar."
 
-#: templates/base.html:35
+#, fuzzy
+#| msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
+msgid "Premium tours across Uzbekistan and the Silk Road."
+msgstr "SoLuna — O'zbekiston va Ipak yo'li bo'ylab premium turlar."
+
 msgid "Skip to content"
 msgstr "Asosiy qismga o'tish"
 
-#: templates/base.html:56
-msgid "Unlock the Magic of Travel with SoLuna"
-msgstr "SoLuna bilan sayohat sehrini kashf eting"
-
-#: templates/base.html:58
-msgid "Explore Now"
-msgstr "Hoziroq kashf eting"
-
-#: templates/base.html:67 templates/regions/detail.html:130
-msgid "Language"
-msgstr "Til"
-
-#: templates/base.html:80 templates/regions/detail.html:139
-msgid "Currency"
-msgstr "Valyuta"
-
-#: templates/base.html:92
 msgid "Toggle theme"
 msgstr "Mavzuni o'zgartirish"
 
-#: templates/base.html:101
 msgid "Main navigation"
 msgstr "Asosiy menyu"
 
-#: templates/base.html:117 templates/base.html:301 templates/home.html:19
-#: templates/home.html:88 templates/home.html:285 templates/home.html:396
-#: templates/tours/detail.html:14 templates/tours/list.html:14
 msgid "Tours"
 msgstr "Turlar"
 
-#: templates/base.html:123 templates/tours/list.html:4
-#: templates/tours/list.html:19
 msgid "All Tours"
 msgstr "Barcha turlar"
 
-#: templates/base.html:124
 msgid "Browse our complete catalog"
 msgstr "To'liq katalogimizni ko'rish"
 
-#: templates/base.html:130
 msgid "Cultural"
 msgstr "Madaniy"
 
-#: templates/base.html:131
 msgid "Historic cities and heritage"
 msgstr "Tarixiy shaharlar va meros"
 
-#: templates/base.html:137 templates/base.html:385
 msgid "Adventure"
 msgstr "Sarguzasht"
 
-#: templates/base.html:138
 msgid "Mountains, deserts and trekking"
 msgstr "Tog'lar, cho'llar va treking"
 
-#: templates/base.html:144
 msgid "Premium"
 msgstr "Premium"
 
-#: templates/base.html:145
 msgid "Luxury experiences"
 msgstr "Hashamatli taassurotlar"
 
-#: templates/base.html:160
 msgid "All Destinations"
 msgstr "Barcha manzillar"
 
-#: templates/base.html:161
 msgid "Explore Uzbekistan"
 msgstr "O'zbekistonni kashf eting"
 
-#: templates/base.html:168
 msgid "City of legends"
 msgstr "Afsonalar shahri"
 
-#: templates/base.html:175
 msgid "Holy and ancient"
 msgstr "Muqaddas va qadimiy"
 
-#: templates/base.html:182
 msgid "Open-air museum"
 msgstr "Ochiq osmon ostidagi muzey"
 
-#: templates/base.html:188 templates/base.html:303 templates/home.html:23
 msgid "Activities"
 msgstr "Mashg'ulotlar"
 
-#: templates/base.html:189 templates/base.html:304 templates/base.html:376
-#: templates/messages_app/contact.html:14
 msgid "Contact"
 msgstr "Aloqa"
 
-#: templates/base.html:196 templates/home.html:61 templates/tours/list.html:56
 msgid "Search"
 msgstr "Qidiruv"
 
-#: templates/base.html:227
 msgid "Saved Tours"
 msgstr "Saqlangan turlar"
 
-#: templates/base.html:230
 msgid "Settings"
 msgstr "Sozlamalar"
 
-#: templates/base.html:247
 msgid "Open menu"
 msgstr "Menyuni ochish"
 
-#: templates/base.html:258
 msgid "Search tours, destinations, activities..."
 msgstr "Turlar, manzillar va mashg'ulotlarni qidirish..."
 
-#: templates/base.html:259
 msgid "Close search"
 msgstr "Qidiruvni yopish"
 
-#: templates/base.html:264 templates/payments/payment_select.html:94
 msgid "Popular"
 msgstr "Ommabop"
 
-#: templates/base.html:282
 msgid "Close menu"
 msgstr "Menyuni yopish"
 
-#: templates/base.html:299
 msgid "Mobile navigation"
 msgstr "Mobil menyu"
 
-#: templates/base.html:341
 msgid "Close"
 msgstr "Yopish"
 
-#: templates/base.html:361
 msgid ""
-"Dive into local recommendations for a truly authentic Silk Road experience "
-"across Uzbekistan."
-msgstr "O'zbekiston bo'ylab chinakam Ipak yo'li sayohati uchun mahalliy tavsiyalar bilan tanishing."
+"Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for "
+"curious travelers, guided by local experts."
+msgstr ""
 
-#: templates/base.html:363
-msgid "Tashkent, Uzbekistan"
-msgstr "Toshkent, O'zbekiston"
-
-#: templates/base.html:364
 msgid "Hours"
 msgstr "Ish vaqti"
 
-#: templates/base.html:371
 msgid "Company"
 msgstr "Kompaniya"
 
-#: templates/base.html:373
 msgid "About Us"
 msgstr "Biz haqimizda"
 
-#: templates/base.html:374
 msgid "Our Tours"
 msgstr "Bizning turlar"
 
-#: templates/base.html:381
 msgid "Services"
 msgstr "Xizmatlar"
 
-#: templates/base.html:383
 msgid "Tour Booking"
 msgstr "Tur bron qilish"
 
-#: templates/base.html:384
 msgid "Premium Tours"
 msgstr "Premium turlar"
 
-#: templates/base.html:386
 msgid "Help & Support"
 msgstr "Yordam va qo'llab-quvvatlash"
 
-#: templates/base.html:391
 msgid "Newsletter"
 msgstr "Yangiliklarga obuna"
 
-#: templates/base.html:392
-msgid "Get exclusive offers and travel inspiration."
-msgstr "Maxsus takliflar va sayohat bo'yicha ilhomlantiruvchi ma'lumotlarni oling."
+#, fuzzy
+#| msgid "Get exclusive offers and travel inspiration."
+msgid "Get exclusive offers and Silk Road travel inspiration."
+msgstr "Maxsus takliflar va Ipak yo'li sayohati ilhomini oling."
+"Maxsus takliflar va sayohat bo'yicha ilhomlantiruvchi ma'lumotlarni oling."
 
-#: templates/base.html:395
-msgid "Enter your email"
-msgstr "Emailingizni kiriting"
+msgid "Your email address"
+msgstr "Sizning elektron pochta manzilingiz"
 
-#: templates/base.html:396
 msgid "Subscribe"
 msgstr "Obuna bo'lish"
 
-#: templates/base.html:401
 msgid "We accept"
 msgstr "Biz qabul qilamiz"
 
-#: templates/base.html:411
 msgid "All rights reserved."
 msgstr "Barcha huquqlar himoyalangan."
 
-#: templates/base.html:417
 msgid "Cookies"
 msgstr "Kukilar"
 
-#: templates/base.html:420
 msgid "Follow us"
 msgstr "Bizni kuzatib boring"
 
-#: templates/base.html:432
 msgid "Back to top"
 msgstr "Yuqoriga qaytish"
 
-#: templates/bookings/booking_create.html:4
 msgid "Book"
 msgstr "Bron qilish"
 
-#: templates/bookings/booking_create.html:16
-#: templates/bookings/booking_detail.html:4
-#: templates/payments/mock_pay.html:155
 msgid "Booking"
 msgstr "Bron"
 
-#: templates/bookings/booking_create.html:19
 msgid "Complete Your Booking"
 msgstr "Bronni yakunlash"
 
-#: templates/bookings/booking_create.html:20
 msgid "Just a few details and you're ready to start your adventure"
 msgstr "Bir nechta tafsilotlar va sarguzashtingizni boshlashga tayyorsiz"
 
-#: templates/bookings/booking_create.html:27
-#: templates/bookings/booking_create.html:80
-#: templates/payments/payment_select.html:25
 msgid "Trip Details"
 msgstr "Sayohat tafsilotlari"
 
-#: templates/bookings/booking_create.html:28
 msgid "Travel info"
 msgstr "Sayohat ma'lumoti"
 
-#: templates/bookings/booking_create.html:35
-#: templates/bookings/booking_create.html:174
-#: templates/payments/payment_select.html:4
-#: templates/payments/payment_select.html:15
-#: templates/payments/payment_select.html:33
-#: templates/payments/payment_success.html:32
 msgid "Payment"
 msgstr "To'lov"
 
-#: templates/bookings/booking_create.html:36
-#: templates/payments/payment_select.html:18
-#: templates/payments/payment_select.html:34
 msgid "Secure checkout"
 msgstr "Xavfsiz to'lov"
 
-#: templates/bookings/booking_create.html:43
-#: templates/payments/payment_select.html:41
 msgid "Confirmation"
 msgstr "Tasdiqlash"
 
-#: templates/bookings/booking_create.html:44
-#: templates/payments/payment_select.html:42
 msgid "All set!"
 msgstr "Hammasi tayyor!"
 
-#: templates/bookings/booking_create.html:58
 msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
 msgstr "Iltimos, quyidagi xatolarni to'g'rilang:"
 
-#: templates/bookings/booking_create.html:81
 msgid "When and how many guests"
 msgstr "Qachon va nechta mehmon"
 
-#: templates/bookings/booking_create.html:95
 msgid "Choose your preferred starting date"
 msgstr "Sizga ma'qul boshlanish sanasini tanlang"
 
-#: templates/bookings/booking_create.html:113
 msgid "Age 12+"
 msgstr "Yosh 12+"
 
-#: templates/bookings/booking_create.html:127
 msgid "Age 2-11"
 msgstr "Yosh 2-11"
 
-#: templates/bookings/booking_create.html:137
 msgid "Contact Information"
 msgstr "Aloqa ma'lumotlari"
 
-#: templates/bookings/booking_create.html:138
 msgid "We'll send confirmation to your account"
 msgstr "Tasdiqnomani hisobingizga yuboramiz"
 
-#: templates/bookings/booking_create.html:152
 msgid "Edit profile"
 msgstr "Profilni tahrirlash"
 
-#: templates/bookings/booking_create.html:161
 msgid "optional"
 msgstr "ixtiyoriy"
 
-#: templates/bookings/booking_create.html:164
 msgid "Dietary needs, accessibility requirements, special occasions..."
 msgstr "Ovqatlanish talablari, qulaylik ehtiyojlari, maxsus tadbirlar..."
 
-#: templates/bookings/booking_create.html:175
 msgid "Choose payment method on the next step"
 msgstr "Keyingi bosqichda to'lov usulini tanlang"
 
-#: templates/bookings/booking_create.html:181
 msgid "Card"
 msgstr "Karta"
 
-#: templates/bookings/booking_create.html:185
 msgid "Cash"
 msgstr "Naqd pul"
 
-#: templates/bookings/booking_create.html:189
 msgid "All payments are encrypted and secure"
 msgstr "Barcha to'lovlar shifrlangan va xavfsiz"
 
-#: templates/bookings/booking_create.html:200
 msgid "Terms of Service"
 msgstr "Xizmat ko'rsatish shartlari"
 
-#: templates/bookings/booking_create.html:202
 msgid "and"
 msgstr "va"
 
-#: templates/bookings/booking_create.html:203
 msgid "Cancellation Policy"
 msgstr "Bekor qilish siyosati"
 
-#: templates/bookings/booking_create.html:208
 msgid "Confirm Booking"
 msgstr "Bronni tasdiqlash"
 
-#: templates/bookings/booking_create.html:214
 msgid "Free cancellation up to 3 days before travel date"
 msgstr "Sayohatdan 3 kun oldingacha bepul bekor qilish"
 
-#: templates/bookings/booking_create.html:246
-#: templates/bookings/booking_detail.html:165
-#: templates/bookings/booking_detail.html:208
-#: templates/bookings/booking_list.html:124 templates/home.html:121
-#: templates/home.html:122 templates/home.html:123 templates/tours/list.html:93
-#: templates/tours/list.html:94 templates/tours/list.html:95
-#: templates/tours/list.html:96
 msgid "days"
 msgstr "kun"
 
-#: templates/bookings/booking_create.html:259
-#: templates/payments/payment_select.html:197
 msgid "Price Details"
 msgstr "Narx tafsilotlari"
 
-#: templates/bookings/booking_create.html:262
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:197
-#: templates/bookings/booking_detail.html:291 templates/home.html:56
 msgid "adults"
 msgstr "kattalar"
 
-#: templates/bookings/booking_create.html:266
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:198 templates/home.html:56
 msgid "children"
 msgstr "bolalar"
 
-#: templates/bookings/booking_create.html:267
-#: templates/payments/payment_select.html:208
 msgid "Free"
 msgstr "Bepul"
 
-#: templates/bookings/booking_create.html:270
-#: templates/bookings/booking_detail.html:301
-#: templates/payments/payment_select.html:207
 msgid "Service fee"
 msgstr "Xizmat haqi"
 
-#: templates/bookings/booking_create.html:274
 msgid "Taxes"
 msgstr "Soliqlar"
 
-#: templates/bookings/booking_create.html:275
-#: templates/bookings/booking_detail.html:297
-#: templates/bookings/booking_detail.html:306 templates/tours/detail.html:164
 msgid "Included"
 msgstr "Kiritilgan"
 
-#: templates/bookings/booking_create.html:282
-#: templates/bookings/booking_detail.html:312
-#: templates/bookings/booking_list.html:28
-#: templates/bookings/booking_list.html:133
-#: templates/payments/payment_select.html:216 templates/tours/detail.html:311
 msgid "Total"
 msgstr "Jami"
 
-#: templates/bookings/booking_create.html:291
-#: templates/bookings/booking_detail.html:366
 msgid "Secure booking"
 msgstr "Xavfsiz bron qilish"
 
-#: templates/bookings/booking_create.html:292
-#: templates/bookings/booking_detail.html:367
 msgid "256-bit SSL encryption"
 msgstr "256-bit SSL shifrlash"
 
-#: templates/bookings/booking_create.html:298
-#: templates/bookings/booking_detail.html:373
-#: templates/payments/payment_select.html:225
 msgid "Free cancellation"
 msgstr "Bepul bekor qilish"
 
-#: templates/bookings/booking_create.html:299
 msgid "Up to 3 days before"
 msgstr "3 kun oldingacha"
 
-#: templates/bookings/booking_create.html:306
 msgid "We're here to help"
 msgstr "Biz yordam berishga tayyormiz"
 
-#: templates/bookings/booking_detail.html:25
-#: templates/bookings/booking_list.html:53
-#: templates/bookings/booking_list.html:84
-#: templates/payments/payment_success.html:37
 msgid "Confirmed"
 msgstr "Tasdiqlangan"
 
-#: templates/bookings/booking_detail.html:28
 msgid "Pending payment"
 msgstr "To'lov kutilmoqda"
 
-#: templates/bookings/booking_detail.html:31
-#: templates/bookings/booking_list.html:56
-#: templates/bookings/booking_list.html:85
-#: templates/payments/payment_select.html:26
 msgid "Completed"
 msgstr "Tugallangan"
 
-#: templates/bookings/booking_detail.html:42
 msgid "Your trip is booked!"
 msgstr "Sayohatingiz bron qilindi!"
 
-#: templates/bookings/booking_detail.html:43
-#: templates/socialaccount/signup.html:44
 msgid "Almost there!"
 msgstr "Deyarli tayyor!"
 
-#: templates/bookings/booking_detail.html:44
 msgid "Welcome back!"
 msgstr "Xush kelibsiz!"
 
-#: templates/bookings/booking_detail.html:45
 msgid "Booking cancelled"
 msgstr "Bron bekor qilindi"
 
-#: templates/bookings/booking_detail.html:46
 msgid "Booking details"
 msgstr "Bron tafsilotlari"
 
-#: templates/bookings/booking_detail.html:50
 msgid "Complete your payment to confirm this booking."
 msgstr "Ushbu bronni tasdiqlash uchun to'lovni yakunlang."
 
-#: templates/bookings/booking_detail.html:51
 msgid ""
 "Get ready for an unforgettable journey. We've sent details to your email."
 msgstr "Unutilmas sayohatga tayyorlaning. Tafsilotlarni emailingizga yubordik."
 
-#: templates/bookings/booking_detail.html:52
 msgid "This booking has been cancelled."
 msgstr "Ushbu bron bekor qilingan."
 
-#: templates/bookings/booking_detail.html:53
 msgid "All your trip information in one place."
 msgstr "Barcha sayohat ma'lumotlaringiz bir joyda."
 
-#: templates/bookings/booking_detail.html:58
-#: templates/payments/payment_success.html:43
 msgid "Booking #"
 msgstr "Bron #"
 
-#: templates/bookings/booking_detail.html:62
-#: templates/bookings/booking_list.html:138
 msgid "Booked"
 msgstr "Bron qilingan"
 
-#: templates/bookings/booking_detail.html:66
-#: templates/payments/payment_success.html:51
 msgid "Travel date"
 msgstr "Sayohat sanasi"
 
-#: templates/bookings/booking_detail.html:79
 msgid "E-Ticket"
 msgstr "E-Chipta"
 
-#: templates/bookings/booking_detail.html:84
-#: templates/bookings/booking_detail.html:216
 msgid "Destination"
 msgstr "Manzil"
 
-#: templates/bookings/booking_detail.html:90
 msgid "GUESTS"
 msgstr "MEHMONLAR"
 
-#: templates/bookings/booking_detail.html:94
 msgid "DURATION"
 msgstr "DAVOMIYLIGI"
 
-#: templates/bookings/booking_detail.html:112
 msgid "Back to bookings"
 msgstr "Bronlarga qaytish"
 
-#: templates/bookings/booking_detail.html:117
-#: templates/bookings/booking_list.html:147
 msgid "Pay now"
 msgstr "Hozir to'lash"
 
-#: templates/bookings/booking_detail.html:121
 msgid "Print"
 msgstr "Chop etish"
 
-#: templates/bookings/booking_detail.html:169
 msgid "View tour"
 msgstr "Turni ko'rish"
 
-#: templates/bookings/booking_detail.html:180
 msgid "Trip Information"
 msgstr "Sayohat ma'lumoti"
 
-#: templates/bookings/booking_detail.html:181
 msgid "Your travel details"
 msgstr "Sayohat tafsilotlaringiz"
 
-#: templates/bookings/booking_detail.html:195
-#: templates/bookings/booking_list.html:115
-#: templates/payments/payment_success.html:55 templates/tours/detail.html:285
 msgid "Guests"
 msgstr "Mehmonlar"
 
-#: templates/bookings/booking_detail.html:206
-#: templates/bookings/booking_list.html:123 templates/home.html:120
-#: templates/tours/detail.html:84 templates/tours/list.html:91
 msgid "Duration"
 msgstr "Davomiyligi"
 
-#: templates/bookings/booking_detail.html:208
 msgid "nights"
 msgstr "tun"
 
-#: templates/bookings/booking_detail.html:230
 msgid "Booking Info"
 msgstr "Bron ma'lumoti"
 
-#: templates/bookings/booking_detail.html:231
 msgid "Contact and reference"
 msgstr "Aloqa va ma'lumotnoma"
 
-#: templates/bookings/booking_detail.html:246
 msgid "Reference"
 msgstr "Ma'lumotnoma"
 
-#: templates/bookings/booking_detail.html:265
 msgid "Cancellation Details"
 msgstr "Bekor qilish tafsilotlari"
 
-#: templates/bookings/booking_detail.html:266
 msgid "Cancelled on"
 msgstr "Bekor qilingan sana"
 
-#: templates/bookings/booking_detail.html:285
 msgid "Payment Summary"
 msgstr "To'lov xulosasi"
 
-#: templates/bookings/booking_detail.html:286
 msgid "Price breakdown"
 msgstr "Narxlar taqsimoti"
 
-#: templates/bookings/booking_detail.html:305
 msgid "Tax"
 msgstr "Soliq"
 
-#: templates/bookings/booking_detail.html:321
 msgid "Payment pending"
 msgstr "To'lov kutilmoqda"
 
-#: templates/bookings/booking_detail.html:331
 msgid "Complete Payment"
 msgstr "To'lovni yakunlash"
 
-#: templates/bookings/booking_detail.html:339
-#: templates/payments/payment_select.html:234
 msgid "Need help?"
 msgstr "Yordam kerakmi?"
 
-#: templates/bookings/booking_detail.html:340
 msgid "Our support team is available 24/7 to assist with your booking."
-msgstr "Qo'llab-quvvatlash jamoamiz broningiz bo'yicha yordam berish uchun 24/7 ishlaydi."
+msgstr "Qo'llab-quvvatlash jamoasi bronlashda yordam berish uchun 24/7 mavjud."
+"Qo'llab-quvvatlash jamoamiz broningiz bo'yicha yordam berish uchun 24/7 "
+"ishlaydi."
 
-#: templates/bookings/booking_detail.html:345
 msgid "Email support"
 msgstr "Email orqali yordam"
 
-#: templates/bookings/booking_detail.html:355
 msgid "Live chat"
 msgstr "Jonli chat"
 
-#: templates/bookings/booking_detail.html:374
 msgid "Up to 3 days before travel"
 msgstr "Sayohatdan 3 kun oldingacha"
 
-#: templates/bookings/booking_detail.html:390
 msgid "Cancel this booking?"
 msgstr "Ushbu bronni bekor qilasizmi?"
 
-#: templates/bookings/booking_detail.html:391
 msgid ""
 "This action cannot be undone. Refunds depend on the cancellation policy."
-msgstr "Bu amalni ortga qaytarib bo'lmaydi. Pulni qaytarish bekor qilish siyosatiga bog'liq."
+msgstr ""
+"Bu amalni ortga qaytarib bo'lmaydi. Pulni qaytarish bekor qilish siyosatiga "
+"bog'liq."
 
-#: templates/bookings/booking_detail.html:396
 msgid "Reason (optional)"
 msgstr "Sabab (ixtiyoriy)"
 
-#: templates/bookings/booking_detail.html:397
 msgid "Why are you cancelling?"
 msgstr "Nega bekor qilyapsiz?"
 
-#: templates/bookings/booking_detail.html:401
 msgid "Keep booking"
 msgstr "Bronni saqlab qolish"
 
-#: templates/bookings/booking_detail.html:404
 msgid "Confirm cancel"
 msgstr "Bekor qilishni tasdiqlash"
 
-#: templates/bookings/booking_list.html:21
 msgid "Your journeys"
 msgstr "Sizning sayohatlaringiz"
 
-#: templates/bookings/booking_list.html:22
 msgid "Track and manage all your bookings in one place"
 msgstr "Barcha bronlaringizni bir joyda kuzatib boring va boshqaring"
 
-#: templates/bookings/booking_list.html:38
 msgid "Trips"
 msgstr "Sayohatlar"
 
-#: templates/bookings/booking_list.html:46
 msgid "All"
 msgstr "Barchasi"
 
-#: templates/bookings/booking_list.html:143
 msgid "View details"
 msgstr "Tafsilotlarni ko'rish"
 
-#: templates/bookings/booking_list.html:165
 msgid "No bookings yet"
 msgstr "Hali bronlar yo'q"
 
-#: templates/bookings/booking_list.html:166
 msgid ""
 "Your adventure is waiting. Browse our handcrafted tours and book your first "
 "trip."
-msgstr "Sarguzashtingiz sizni kutmoqda. Bizning maxsus turlarimizni ko'ring va ilk sayohatingizni bron qiling."
+msgstr ""
+"Sarguzashtingiz sizni kutmoqda. Bizning maxsus turlarimizni ko'ring va ilk "
+"sayohatingizni bron qiling."
 
-#: templates/bookings/booking_list.html:169
-#: templates/messages_app/contact_success.html:13
 msgid "Explore Tours"
 msgstr "Turlarni kashf etish"
 
-#: templates/bookings/booking_list.html:172
 msgid "Browse Destinations"
 msgstr "Manzillarni ko'rish"
 
-#: templates/home.html:13
-msgid "Explore the World"
-msgstr "Dunyoni kashf eting"
+msgid "Luxury Silk Road Travel"
+msgstr "Hashamatli Ipak yo'li sayohati"
 
-#: templates/home.html:15
+#, fuzzy
+#| msgid "Explore the Silk Road"
+msgid "Luxury Travel Across the Silk Road"
+msgstr "Ipak yo'lini kashf eting"
+
 msgid ""
-"Pack your bags and let SoLuna redefine your travel experience. Where every "
-"journey is a story waiting to be told."
-msgstr "Sumkangizni yig'ing va SoLuna sayohat tajribangizni o'zgartirishiga ruxsat bering. Har bir sayohat aytib berilishini kutayotgan bir hikoyadir."
+"Premium curated tours across Uzbekistan and the ancient Silk Road. Expert "
+"guides, boutique experiences, timeless memories."
+msgstr ""
 
-#: templates/home.html:20
+msgid "Hero"
+msgstr "Hero"
+
+msgid "Uzbekistan · Silk Road · Beyond"
+msgstr "O'zbekiston · Ipak yo'li · undan tashqari"
+
+msgid "Where Ancient Routes"
+msgstr "Qadimiy yo'llar"
+
+msgid "Become Your Story"
+msgstr "Sizing hikoyangizga aylanadi"
+
+msgid ""
+"Boutique tours crafted for curious souls — from the minarets of Samarkand to "
+"the sands of the Kyzylkum."
+msgstr ""
+
 msgid "Hotels"
 msgstr "Mehmonxonalar"
 
-#: templates/home.html:21
 msgid "Tickets"
 msgstr "Chiptalar"
 
-#: templates/home.html:22
 msgid "Rental"
 msgstr "Ijara"
 
-#: templates/home.html:24
-msgid "Need some help?"
-msgstr "Yordam kerakmi?"
+msgid "Where to?"
+msgstr "Qayerga?"
 
-#: templates/home.html:29 templates/tours/detail.html:116
-#: templates/tours/detail.html:196
-msgid "Location"
-msgstr "Manzil"
+msgid "Recent searches"
+msgstr "So'nggi qidiruvlar"
 
-#: templates/home.html:32
-msgid "Samarkand, Uzbekistan"
-msgstr "Samarqand, O'zbekiston"
+#, fuzzy
+#| msgid "All Destinations"
+msgid "Popular destinations"
+msgstr "Barcha manzillar"
 
-#: templates/home.html:37
-msgid "Check In"
-msgstr "Kirish"
+#, fuzzy
+#| msgid "Most Popular"
+msgid "Most popular"
+msgstr "Eng ommabop"
 
-#: templates/home.html:45
-msgid "Check Out"
-msgstr "Chiqish"
-
-#: templates/home.html:53
-msgid "Guest"
-msgstr "Mehmon"
-
-#: templates/home.html:72
-msgid "Top Searched Destinations"
-msgstr "Eng ko'p qidirilgan manzillar"
-
-#: templates/home.html:73
-msgid "Favorite destinations of professional travelers"
-msgstr "Professional sayohatchilarning sevimli manzillari"
-
-#: templates/home.html:105
-msgid "Our Featured Tours"
-msgstr "Bizning tavsiya etilgan turlarimiz"
-
-#: templates/home.html:106 templates/home.html:269
-msgid "Favorite destinations based on customer reviews"
-msgstr "Mijozlar sharhlari asosidagi sevimli manzillar"
-
-#: templates/home.html:112 templates/tours/list.html:64
-msgid "Categories"
-msgstr "Toifalar"
-
-#: templates/home.html:128
-msgid "Price range"
-msgstr "Narx oralig'i"
-
-#: templates/home.html:137
-msgid "Clear"
-msgstr "Tozalash"
-
-#: templates/home.html:156 templates/tours/list.html:141
-msgid "Best Sale"
-msgstr "Eng ko'p sotilgan"
-
-#: templates/home.html:158 templates/regions/detail.html:73
-#: templates/tours/detail.html:28 templates/tours/list.html:137
-msgid "Top Rated"
-msgstr "Yuqori baholangan"
-
-#: templates/home.html:162 templates/tours/list.html:144
-msgid "Add to favorites"
-msgstr "Sevimli qilib saqlash"
-
-#: templates/home.html:171 templates/tours/detail.html:32
-#: templates/tours/detail.html:219 templates/tours/list.html:153
-msgid "reviews"
-msgstr "sharh"
-
-#: templates/home.html:185 templates/regions/detail.html:85
-#: templates/tours/detail.html:278 templates/tours/detail.html:353
-#: templates/tours/list.html:167
-msgid "person"
-msgstr "kishi"
-
-#: templates/home.html:187 templates/tours/detail.html:317
-#: templates/tours/list.html:169
-msgid "Book Now"
-msgstr "Hozir bron qilish"
-
-#: templates/home.html:216
-msgid "Easy payment"
-msgstr "Oson to'lov"
-
-#: templates/home.html:218
-msgid "We offer tours in a range of locations"
-msgstr "Biz turli joylarga turlarni taklif qilamiz"
-
-#: templates/home.html:220 templates/home.html:306
-msgid ""
-"Choose one style or create a package, fill your passports with adventures "
-"together."
-msgstr "Bitta uslubni tanlang yoki paket yarating, pasportlaringizni birgalikda sarguzashtlar bilan to'ldiring."
-
-#: templates/home.html:224
-msgid "Security Assurance"
-msgstr "Xavfsizlik kafolati"
-
-#: templates/home.html:225
-msgid "Customer Support"
-msgstr "Mijozlarni qo'llab-quvvatlash"
-
-#: templates/home.html:226
-msgid "Transparent Policies"
-msgstr "Shaffof siyosatlar"
-
-#: templates/home.html:227
-msgid "Reputable Affiliations"
-msgstr "Nufuzli hamkorliklar"
-
-#: templates/home.html:231
-msgid "Payment is secure and safe"
-msgstr "To'lov xavfsiz va ishonchli"
-
-#: templates/home.html:268
-msgid "Top Categories of Tours"
-msgstr "Turlarning yuqori toifalari"
-
-#: templates/home.html:272 templates/home.html:447
-msgid "View More"
-msgstr "Ko'proq ko'rish"
-
-#: templates/home.html:302
-msgid "Why book at SoLuna?"
-msgstr "Nega SoLuna dan bron qilish kerak?"
-
-#: templates/home.html:304
-msgid "Embracing Adventure Since 2025"
-msgstr "2025 yildan beri sarguzashtlarga yetaklaymiz"
-
-#: templates/home.html:348
-msgid "Install APP & Get discount code"
-msgstr "Ilovani o'rnating va chegirma kodini oling"
-
-#: templates/home.html:351
-#, python-format
-msgid "Up to 55%% Discount and lots of special gifts"
-msgstr "55%% gacha chegirma va ko'plab maxsus sovg'alar"
-
-#: templates/home.html:382
-msgid "Trending Destinations"
-msgstr "Ommabop manzillar"
-
-#: templates/home.html:383
-msgid "Most popular choices for travelers"
-msgstr "Sayohatchilar uchun eng mashhur tanlovlar"
-
-#: templates/home.html:411
-msgid "Get inspiration for your next trip"
-msgstr "Keyingi sayohatingiz uchun ilhom oling"
-
-#: templates/home.html:412
-msgid "Favorite stories based on customer reviews"
-msgstr "Mijozlar sharhlariga asoslangan sevimli hikoyalar"
-
-#: templates/home.html:438
-msgid "Keep Reading"
-msgstr "O'qishni davom etish"
-
-#: templates/messages_app/contact.html:4
-msgid "Contact Us"
-msgstr "Biz bilan bog'laning"
-
-#: templates/messages_app/contact.html:17
-msgid "Get in touch"
-msgstr "Bog'lanish"
-
-#: templates/messages_app/contact.html:19
-msgid "We'd love to hear from you"
-msgstr "Biz sizdan xabar kutib qolamiz"
-
-#: templates/messages_app/contact.html:21
-msgid ""
-"Have a question or need help planning your trip? Our team is here for you."
-msgstr "Savolingiz bormi yoki sayohatingizni rejalashtirishda yordam kerakmi? Bizning jamoamiz siz uchun shu yerda."
-
-#: templates/messages_app/contact.html:34
-msgid "Mon - Sat, 8AM - 6PM"
-msgstr "Dush - Shan, 8:00 - 18:00"
-
-#: templates/messages_app/contact.html:41
-msgid "We reply within 24 hours"
-msgstr "Biz 24 soat ichida javob beramiz"
-
-#: templates/messages_app/contact.html:47
-msgid "Office"
-msgstr "Ofis"
-
-#: templates/messages_app/contact.html:48
-msgid "Visit us in person"
-msgstr "Bizga shaxsan tashrif buyuring"
-
-#: templates/messages_app/contact.html:54
-msgid "Social"
-msgstr "Ijtimoiy tarmoqlar"
-
-#: templates/messages_app/contact.html:55
-msgid "Follow us for updates"
-msgstr "Yangiliklar uchun bizni kuzatib boring"
-
-#: templates/messages_app/contact.html:63
-msgid "Send us a message"
-msgstr "Bizga xabar yuboring"
-
-#: templates/messages_app/contact.html:65
-msgid "Fill out the form and we'll get back to you shortly."
-msgstr "Shaklni to'ldiring va biz tez orada siz bilan bog'lanamiz."
-
-#: templates/messages_app/contact.html:88
-msgid "Subject"
-msgstr "Mavzu"
-
-#: templates/messages_app/contact.html:94
-msgid "Message"
-msgstr "Xabar"
-
-#: templates/messages_app/contact.html:99
-msgid "Send Message"
-msgstr "Xabarni yuborish"
-
-#: templates/messages_app/contact_success.html:3
-msgid "Message Sent"
-msgstr "Xabar yuborildi"
-
-#: templates/messages_app/contact_success.html:8
-msgid "Message Sent!"
-msgstr "Xabar yuborildi!"
-
-#: templates/messages_app/contact_success.html:10
-msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
-msgstr "Bog'langaningiz uchun tashakkur. Oygul 24 soat ichida sizga javob beradi."
-
-#: templates/messages_app/contact_success.html:14
-msgid "Back to Home"
-msgstr "Asosiy sahifaga qaytish"
-
-#: templates/payments/mock_pay.html:4
-msgid "Payment Gateway"
-msgstr "To'lov tizimi"
-
-#: templates/payments/mock_pay.html:13
-msgid "TEST MODE"
-msgstr "TEST REJIMI"
-
-#: templates/payments/mock_pay.html:14
-msgid "Real payment gateways are not configured. This is a simulation."
-msgstr "Haqiqiy to'lov tizimlari sozlanmagan. Bu faqat simulyatsiya."
-
-#: templates/payments/mock_pay.html:30 templates/payments/mock_pay.html:129
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_pending.html:32
-#: templates/payments/payment_select.html:63
-#: templates/payments/payment_select.html:162
-#: templates/payments/payment_select.html:204
-msgid "soums"
-msgstr "so'm"
-
-#: templates/payments/mock_pay.html:48
-msgid "Payment failed"
-msgstr "To'lov amalga oshmadi"
-
-#: templates/payments/mock_pay.html:58
-msgid "Test cards"
-msgstr "Test kartalari"
-
-#: templates/payments/mock_pay.html:68
-msgid "Always success"
-msgstr "Har doim muvaffaqiyatli"
-
-#: templates/payments/mock_pay.html:75
-msgid "Declined by bank"
-msgstr "Bank tomonidan rad etildi"
-
-#: templates/payments/mock_pay.html:82
-msgid "Insufficient funds"
-msgstr "Mablag' yetarli emas"
-
-#: templates/payments/mock_pay.html:92
-msgid "Enter card details"
-msgstr "Karta ma'lumotlarini kiriting"
-
-#: templates/payments/mock_pay.html:96
-msgid "Card number"
-msgstr "Karta raqami"
-
-#: templates/payments/mock_pay.html:107
-msgid "Expiry"
-msgstr "Amal qilish muddati"
-
-#: templates/payments/mock_pay.html:119
-msgid "Cardholder name"
-msgstr "Karta egasining ismi"
-
-#: templates/payments/mock_pay.html:127
-msgid "Amount to pay"
-msgstr "To'lanadigan summa"
-
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_select.html:162
-msgid "Pay"
-msgstr "To'lash"
-
-#: templates/payments/mock_pay.html:141
-msgid "Cancel and choose another method"
-msgstr "Bekor qilish va boshqa usulni tanlash"
-
-#: templates/payments/mock_pay.html:149
-msgid "Secure payment"
-msgstr "Xavfsiz to'lov"
-
-#: templates/payments/mock_pay.html:150
-msgid ""
-"Your card information is encrypted with 256-bit SSL and never stored on our "
-"servers."
-msgstr "Sizning karta ma'lumotlaringiz 256-bit SSL bilan shifrlangan va hech qachon serverlarimizda saqlanmaydi."
-
-#: templates/payments/payment_failed.html:4
-#: templates/payments/payment_failed.html:15
-msgid "Payment Failed"
-msgstr "To'lov amalga oshmadi"
-
-#: templates/payments/payment_failed.html:17
-msgid "Something went wrong with your payment. Your card was not charged."
-msgstr "To'lov bilan nimanidir xato ketdi. Kartangizdan pul yechilmadi."
-
-#: templates/payments/payment_failed.html:21
-msgid "Possible reasons:"
-msgstr "Mumkin bo'lgan sabablar:"
-
-#: templates/payments/payment_failed.html:23
-msgid "Insufficient funds on the card"
-msgstr "Kartada mablag' yetarli emas"
-
-#: templates/payments/payment_failed.html:24
-msgid "Card declined by the bank"
-msgstr "Karta bank tomonidan rad etildi"
-
-#: templates/payments/payment_failed.html:25
-msgid "Incorrect card details"
-msgstr "Karta ma'lumotlari noto'g'ri"
-
-#: templates/payments/payment_failed.html:26
-#: templates/socialaccount/authentication_error.html:43
-msgid "Network connection issue"
-msgstr "Tarmoqqa ulanish muammosi"
-
-#: templates/payments/payment_failed.html:32
-msgid "Try Again"
-msgstr "Qaytadan urinib ko'ring"
-
-#: templates/payments/payment_failed.html:35
-msgid "Contact Support"
-msgstr "Qo'llab-quvvatlash xizmati bilan bog'lanish"
-
-#: templates/payments/payment_pending.html:4
-msgid "Payment Processing"
-msgstr "To'lov qayta ishlanmoqda"
-
-#: templates/payments/payment_pending.html:16
-msgid "Payment processing..."
-msgstr "To'lov qayta ishlanmoqda..."
-
-#: templates/payments/payment_pending.html:18
-msgid ""
-"We are waiting for confirmation from the payment gateway. This usually takes "
-"a few seconds."
-msgstr "Biz to'lov tizimidan tasdiq kutmoqdamiz. Bu odatda bir necha soniya davom etadi."
-
-#: templates/payments/payment_pending.html:42
-msgid "Don't close this page. We'll redirect you automatically."
-msgstr "Bu sahifani yopmang. Biz sizni avtomatik ravishda yo'naltiramiz."
-
-#: templates/payments/payment_select.html:19
-msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
-msgstr "To'lov usulingizni tanlang. Barcha to'lovlar o'zbek so'mida (UZS) amalga oshiriladi."
-
-#: templates/payments/payment_select.html:62
-msgid "Conversion to UZS"
-msgstr "UZS ga o'tkazish"
-
-#: templates/payments/payment_select.html:71
-msgid "Choose payment method"
-msgstr "To'lov usulini tanlang"
-
-#: templates/payments/payment_select.html:72
-msgid "Secure payment in Uzbek Som"
-msgstr "O'zbek so'mida xavfsiz to'lov"
-
-#: templates/payments/payment_select.html:87
-msgid "Pay via Click app, card or balance"
-msgstr "Click ilovasi, karta yoki balans orqali to'lash"
-
-#: templates/payments/payment_select.html:108
-msgid "Pay via Payme app or card"
-msgstr "Payme ilovasi yoki karta orqali to'lash"
-
-#: templates/payments/payment_select.html:127
-msgid "Pay at office"
-msgstr "Ofisda to'lash"
-
-#: templates/payments/payment_select.html:128
-msgid "Visit our Tashkent office"
-msgstr "Toshkentdagi ofisimizga tashrif buyuring"
-
-#: templates/payments/payment_select.html:141
-msgid "You'll be redirected"
-msgstr "Siz yo'naltirilasiz"
-
-#: templates/payments/payment_select.html:142
-msgid ""
-"After clicking Pay, you'll be redirected to the secure gateway page to "
-"complete the transaction."
-msgstr "To'lash tugmasini bosganingizdan so'ng, tranzaksiyani yakunlash uchun xavfsiz to'lov sahifasiga yo'naltirilasiz."
-
-#: templates/payments/payment_select.html:149
-msgid "256-bit SSL"
-msgstr "256-bit SSL"
-
-#: templates/payments/payment_select.html:153
-msgid "PCI DSS"
-msgstr "PCI DSS"
-
-#: templates/payments/payment_select.html:157
-msgid "Money-back guarantee"
-msgstr "Pulni qaytarish kafolati"
-
-#: templates/payments/payment_select.html:168
-msgid "By proceeding, you accept the booking terms."
-msgstr "Davom etish orqali siz bron qilish shartlarini qabul qilasiz."
-
-#: templates/payments/payment_select.html:199
-msgid "Tour price"
-msgstr "Tur narxi"
-
-#: templates/payments/payment_select.html:203
-msgid "Conversion"
-msgstr "Konversiya"
-
-#: templates/payments/payment_select.html:219
-msgid "soum"
-msgstr "so'm"
-
-#: templates/payments/payment_select.html:226
-msgid "Until 3 days before travel"
-msgstr "Sayohatdan 3 kun oldingacha"
-
-#: templates/payments/payment_select.html:235
-#: templates/socialaccount/authentication_error.html:53
-msgid "Contact support"
-msgstr "Qo'llab-quvvatlash xizmati bilan bog'lanish"
-
-#: templates/payments/payment_select.html:366
-msgid ""
-"You will be redirected to Click payment page. Complete the payment via your "
-"card or Click app."
-msgstr "Siz Click to'lov sahifasiga yo'naltirilasiz. To'lovni kartangiz yoki Click ilovasi orqali yakunlang."
-
-#: templates/payments/payment_select.html:367
-msgid ""
-"You will be redirected to Payme. Complete the payment via your card or Payme "
-"app."
-msgstr "Siz Payme-ga yo'naltirilasiz. To'lovni kartangiz yoki Payme ilovasi orqali yakunlang."
-
-#: templates/payments/payment_select.html:368
-msgid ""
-"Visit our office in Tashkent to complete payment in cash. Your booking will "
-"remain pending until paid."
-msgstr "Naqd pul bilan to'lash uchun Toshkentdagi ofisimizga tashrif buyuring. To'lov amalga oshirilgunga qadar broningiz kutilmoqda holatida qoladi."
-
-#: templates/payments/payment_select.html:384
-msgid "Redirecting to gateway..."
-msgstr "To'lov tizimiga yo'naltirilmoqda..."
-
-#: templates/payments/payment_success.html:4
-msgid "Payment Successful"
-msgstr "To'lov muvaffaqiyatli amalga oshirildi"
-
-#: templates/payments/payment_success.html:19
-msgid "Payment Successful!"
-msgstr "To'lov muvaffaqiyatli amalga oshirildi!"
-
-#: templates/payments/payment_success.html:21
-msgid "Your booking has been confirmed. We've sent the details to your email."
-msgstr "Broningiz tasdiqlandi. Tafsilotlarni emailingizga yubordik."
-
-#: templates/payments/payment_success.html:27
-msgid "Details"
-msgstr "Tafsilotlar"
-
-#: templates/payments/payment_success.html:47 templates/reviews/form.html:14
-msgid "Tour"
-msgstr "Tur"
-
-#: templates/payments/payment_success.html:67
-msgid "View Booking Details"
-msgstr "Bron tafsilotlarini ko'rish"
-
-#: templates/payments/payment_success.html:70
-msgid "Explore More Tours"
-msgstr "Ko'proq turlarni ko'rish"
-
-#: templates/payments/payment_success.html:75
-msgid "What happens next?"
-msgstr "Keyin nima bo'ladi?"
-
-#: templates/payments/payment_success.html:77
-msgid "We'll send a confirmation email with full itinerary"
-msgstr "Biz to'liq marshrut bilan tasdiqlash elektron xatini yuboramiz"
-
-#: templates/payments/payment_success.html:78
-msgid "Our team will contact you 48 hours before the trip"
-msgstr "Bizning jamoamiz sayohatdan 48 soat oldin siz bilan bog'lanadi"
-
-#: templates/payments/payment_success.html:79
-msgid "Check your booking anytime in your profile"
-msgstr "Broningizni istalgan vaqtda profilingizda tekshiring"
-
-#: templates/regions/detail.html:41
-msgid "About"
-msgstr "Haqida"
-
-#: templates/regions/detail.html:48
-msgid "Why visit"
-msgstr "Nega tashrif buyurish kerak"
-
-#: templates/regions/detail.html:64
-msgid "Tours in"
-msgstr "Turlar hududi:"
-
-#: templates/regions/detail.html:65
 msgid "tours"
 msgstr "turlar"
 
-#: templates/regions/detail.html:86 templates/tours/detail.html:354
+#, fuzzy
+#| msgid "Newest"
+msgid "New"
+msgstr "Eng yangi"
+
+#, fuzzy
+#| msgid "Quick Facts"
+msgid "Quick search"
+msgstr "Qisqa faktlar"
+
+msgid "Desert"
+msgstr "Cho'l"
+
+#, fuzzy
+#| msgid "Duration"
+msgid "Any duration"
+msgstr "Davomiyligi"
+
+#, fuzzy
+#| msgid "guests"
+msgid "Add guests"
+msgstr "mehmonlar"
+
+msgid "Age 12 or above"
+msgstr "12 yosh va undan katta"
+
+#, fuzzy
+#| msgid "Age 2-11"
+msgid "Age 2–11"
+msgstr "Yosh 2-11"
+
+msgid "Reset"
+msgstr "Tiklash"
+
+msgid "Done"
+msgstr "Tayyor"
+
+msgid "Hotel booking coming soon"
+msgstr "Mehmonxona bronlash tez orada"
+
+msgid "We're partnering with the best hotels. Stay tuned!"
+msgstr "Biz eng yaxshi mehmonxonalar bilan hamkorlik qilamiz. Kuzatib boring!"
+
+msgid "Tickets coming soon"
+msgstr "Chiptalar tez orada"
+
+msgid "Train and air tickets will be available soon."
+msgstr "Poyezd va aviachiptalar tez orada mavjud bo'ladi."
+
+msgid "Car rental coming soon"
+msgstr "Mashina ijarasi tez orada"
+
+msgid "Explore on your own terms — coming soon!"
+msgstr "O'z sharoitingizda kashf eting — tez orada!"
+
+#, fuzzy
+#| msgid "Activities"
+msgid "Activity type"
+msgstr "Mashg'ulotlar"
+
+#, fuzzy
+#| msgid "Activities"
+msgid "All activities"
+msgstr "Mashg'ulotlar"
+
+msgid "Culinary"
+msgstr "Ovqatlanish"
+
+msgid "Wellness"
+msgstr "Salomatlik"
+
+msgid "Location"
+msgstr "Manzil"
+
+msgid "Anywhere"
+msgstr "Har qayerda"
+
+#, fuzzy
+#| msgid "starts here"
+msgid "5-star rated"
+msgstr "shu yerdan boshlanadi"
+
+#, fuzzy
+#| msgid "Explore Now"
+msgid "Explore"
+msgstr "Hoziroq kashf eting"
+
+#, fuzzy
+#| msgid "Destinations"
+msgid "Top Destinations"
+msgstr "Manzillar"
+
+msgid "Discover the jewels of the ancient Silk Road"
+msgstr "Qadimiy Ipak yo'li durdonalarini kashf eting"
+
+#, fuzzy
+#| msgid "Created"
+msgid "Curated"
+msgstr "Yaratilgan"
+
+#, fuzzy
+#| msgid "Our Featured Tours"
+msgid "Featured Tours"
+msgstr "Bizning tavsiya etilgan turlarimiz"
+
+#, fuzzy
+#| msgid "Favorite stories based on customer reviews"
+msgid "Handpicked experiences based on traveler reviews"
+msgstr "Mijozlar sharhlariga asoslangan sevimli hikoyalar"
+
+#, fuzzy
+#| msgid "View all"
+msgid "View All"
+msgstr "Barchasini ko'rish"
+
+#, fuzzy
+#| msgid "Best Sale"
+msgid "Best Seller"
+msgstr "Eng ko'p sotilgan"
+
+msgid "Top Rated"
+msgstr "Yuqori baholangan"
+
+#, fuzzy
+#| msgid "Our Featured Tours"
+msgid "Featured"
+msgstr "Bizning tavsiya etilgan turlarimiz"
+
+#, fuzzy
+#| msgid "Saved Tours"
+msgid "Save tour"
+msgstr "Saqlangan turlar"
+
+msgid "reviews"
+msgstr "sharh"
+
+msgid "Max"
+msgstr "Maks"
+
+msgid "person"
+msgstr "kishi"
+
+#, fuzzy
+#| msgid "View tour"
+msgid "View Tour"
+msgstr "Turni ko'rish"
+
+#, fuzzy
+#| msgid "Our Tours"
+msgid "Our Promise"
+msgstr "Bizning turlar"
+
+#, fuzzy
+#| msgid "Why book at SoLuna?"
+msgid "Why Book with SoLuna?"
+msgstr "Nega SoLuna dan bron qilish kerak?"
+
+msgid "Every detail crafted so you focus on the moments that matter."
+msgstr "Har bir tafsilot siz muhim daqiqalarga e'tibor qaratishingiz uchun yaratilgan."
+
+#, fuzzy
+#| msgid "Secure booking"
+msgid "Secure Booking"
+msgstr "Xavfsiz bron qilish"
+
+msgid ""
+"Your payments and personal data are protected end-to-end with bank-level "
+"security. Book with complete peace of mind."
+msgstr ""
+
+#, fuzzy
+#| msgid "24/7 support"
+msgid "24/7 Support"
+msgstr "24/7 yordam xizmati"
+
+msgid "Our local team is always ready to help."
+msgstr "Mahalliy jamoamiz har doim yordam berishga tayyor."
+
+msgid "No Hidden Fees"
+msgstr "Yashirin to'lovlar yo'q"
+
+#, fuzzy
+#| msgid "Transparent Policies"
+msgid "Transparent pricing, no surprises."
+msgstr "Shaffof siyosatlar"
+
+msgid "Expert Guides"
+msgstr "Malakali gidlar"
+
+msgid "Certified local guides with deep Silk Road knowledge."
+msgstr "Ipak yo'li bo'yicha chuqur bilimga ega sertifikatlangan mahalliy gidlar."
+
+msgid "Tailored Routes"
+msgstr "Moslashtirilgan marshrutlar"
+
+msgid "Itineraries shaped around how you love to travel."
+msgstr "Sayohat qilishni yoqtirishingizga qarab shakllantirilgan dasturlar."
+
+msgid "Browse by style"
+msgstr "Uslub bo'yicha ko'rish"
+
+#, fuzzy
+#| msgid "Categories"
+msgid "Tour Categories"
+msgstr "Toifalar"
+
+msgid "Find your perfect travel experience"
+msgstr "Mukammal sayohat tajribangizni toping"
+
+#, fuzzy
+#| msgid "Browse Tours"
+msgid "Browse All"
+msgstr "Turlarni ko'rish"
+
+#, fuzzy
+#| msgid "Trending Destinations"
+msgid "Trending now"
+msgstr "Ommabop manzillar"
+
+#, fuzzy
+#| msgid "Top Searched Destinations"
+msgid "Most Searched Destinations"
+msgstr "Eng ko'p qidirilgan manzillar"
+
+#, fuzzy
+#| msgid "Most popular choices for travelers"
+msgid "Top choices among travelers this season"
+msgstr "Sayohatchilar uchun eng mashhur tanlovlar"
+
+msgid "Most Popular"
+msgstr "Eng ommabop"
+
+msgid "Stay Ahead of Every Adventure"
+msgstr "Har bir sayohatdan oldinda boring"
+
+msgid ""
+"Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to "
+"your inbox. No spam, ever."
+msgstr ""
+
+msgid "Join 2,400+ travelers. Unsubscribe anytime."
+msgstr "2400+ sayohatchiga qo'shiling. Istalgan vaqtda obunani bekor qiling."
+
+msgid "Contact Us"
+msgstr "Biz bilan bog'laning"
+
+msgid "Get in touch"
+msgstr "Bog'lanish"
+
+msgid "We'd love to hear from you"
+msgstr "Biz sizdan xabar kutib qolamiz"
+
+msgid ""
+"Have a question or need help planning your trip? Our team is here for you."
+msgstr ""
+"Savolingiz bormi yoki sayohatingizni rejalashtirishda yordam kerakmi? "
+"Bizning jamoamiz siz uchun shu yerda."
+
+msgid "Mon - Sat, 8AM - 6PM"
+msgstr "Dush - Shan, 8:00 - 18:00"
+
+msgid "We reply within 24 hours"
+msgstr "Biz 24 soat ichida javob beramiz"
+
+msgid "Office"
+msgstr "Ofis"
+
+msgid "Visit us in person"
+msgstr "Bizga shaxsan tashrif buyuring"
+
+msgid "Social"
+msgstr "Ijtimoiy tarmoqlar"
+
+msgid "Follow us for updates"
+msgstr "Yangiliklar uchun bizni kuzatib boring"
+
+msgid "Send us a message"
+msgstr "Bizga xabar yuboring"
+
+msgid "Fill out the form and we'll get back to you shortly."
+msgstr "Shaklni to'ldiring va biz tez orada siz bilan bog'lanamiz."
+
+msgid "Subject"
+msgstr "Mavzu"
+
+msgid "Message"
+msgstr "Xabar"
+
+msgid "Send Message"
+msgstr "Xabarni yuborish"
+
+msgid "Message Sent"
+msgstr "Xabar yuborildi"
+
+msgid "Message Sent!"
+msgstr "Xabar yuborildi!"
+
+msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
+msgstr "Murojaat qilganingiz uchun rahmat. Oygul 24 soat ichida siz bilan bog'lanadi."
+"Bog'langaningiz uchun tashakkur. Oygul 24 soat ichida sizga javob beradi."
+
+msgid "Back to Home"
+msgstr "Asosiy sahifaga qaytish"
+
+#, fuzzy
+#| msgid "in 9 languages"
+msgid "Choose language"
+msgstr "9 xil tilda"
+
+#, fuzzy
+#| msgid "Currency"
+msgid "Choose currency"
+msgstr "Valyuta"
+
+msgid "Payment Gateway"
+msgstr "To'lov tizimi"
+
+msgid "TEST MODE"
+msgstr "TEST REJIMI"
+
+msgid "Real payment gateways are not configured. This is a simulation."
+msgstr "Haqiqiy to'lov tizimlari sozlanmagan. Bu faqat simulyatsiya."
+
+msgid "soums"
+msgstr "so'm"
+
+msgid "Payment failed"
+msgstr "To'lov amalga oshmadi"
+
+msgid "Test cards"
+msgstr "Test kartalari"
+
+msgid "Always success"
+msgstr "Har doim muvaffaqiyatli"
+
+msgid "Declined by bank"
+msgstr "Bank tomonidan rad etildi"
+
+msgid "Insufficient funds"
+msgstr "Mablag' yetarli emas"
+
+msgid "Enter card details"
+msgstr "Karta ma'lumotlarini kiriting"
+
+msgid "Card number"
+msgstr "Karta raqami"
+
+msgid "Expiry"
+msgstr "Amal qilish muddati"
+
+msgid "Cardholder name"
+msgstr "Karta egasining ismi"
+
+msgid "Amount to pay"
+msgstr "To'lanadigan summa"
+
+msgid "Pay"
+msgstr "To'lash"
+
+msgid "Cancel and choose another method"
+msgstr "Bekor qilish va boshqa usulni tanlash"
+
+msgid "Secure payment"
+msgstr "Xavfsiz to'lov"
+
+msgid ""
+"Your card information is encrypted with 256-bit SSL and never stored on our "
+"servers."
+msgstr ""
+"Sizning karta ma'lumotlaringiz 256-bit SSL bilan shifrlangan va hech qachon "
+"serverlarimizda saqlanmaydi."
+
+msgid "Payment Failed"
+msgstr "To'lov amalga oshmadi"
+
+msgid "Something went wrong with your payment. Your card was not charged."
+msgstr "To'lov bilan nimanidir xato ketdi. Kartangizdan pul yechilmadi."
+
+msgid "Possible reasons:"
+msgstr "Mumkin bo'lgan sabablar:"
+
+msgid "Insufficient funds on the card"
+msgstr "Kartada mablag' yetarli emas"
+
+msgid "Card declined by the bank"
+msgstr "Karta bank tomonidan rad etildi"
+
+msgid "Incorrect card details"
+msgstr "Karta ma'lumotlari noto'g'ri"
+
+msgid "Network connection issue"
+msgstr "Tarmoqqa ulanish muammosi"
+
+msgid "Try Again"
+msgstr "Qaytadan urinib ko'ring"
+
+msgid "Contact Support"
+msgstr "Qo'llab-quvvatlash xizmati bilan bog'lanish"
+
+msgid "Payment Processing"
+msgstr "To'lov qayta ishlanmoqda"
+
+msgid "Payment processing..."
+msgstr "To'lov qayta ishlanmoqda..."
+
+msgid ""
+"We are waiting for confirmation from the payment gateway. This usually takes "
+"a few seconds."
+msgstr ""
+"Biz to'lov tizimidan tasdiq kutmoqdamiz. Bu odatda bir necha soniya davom "
+"etadi."
+
+msgid "Don't close this page. We'll redirect you automatically."
+msgstr "Bu sahifani yopmang. Biz sizni avtomatik ravishda yo'naltiramiz."
+
+msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
+msgstr "To'lov usulingizni tanlang. Barcha to'lovlar O'zbek so'mida (UZS)."
+"To'lov usulingizni tanlang. Barcha to'lovlar o'zbek so'mida (UZS) amalga "
+"oshiriladi."
+
+msgid "Conversion to UZS"
+msgstr "UZS ga o'tkazish"
+
+msgid "Choose payment method"
+msgstr "To'lov usulini tanlang"
+
+msgid "Secure payment in Uzbek Som"
+msgstr "O'zbek so'mida xavfsiz to'lov"
+
+msgid "Pay via Click app, card or balance"
+msgstr "Click ilovasi, karta yoki balans orqali to'lash"
+
+msgid "Pay via Payme app or card"
+msgstr "Payme ilovasi yoki karta orqali to'lash"
+
+msgid "Pay at office"
+msgstr "Ofisda to'lash"
+
+msgid "Visit our Tashkent office"
+msgstr "Toshkentdagi ofisimizga tashrif buyuring"
+
+msgid "You'll be redirected"
+msgstr "Siz yo'naltirilasiz"
+
+msgid ""
+"After clicking Pay, you'll be redirected to the secure gateway page to "
+"complete the transaction."
+msgstr ""
+"To'lash tugmasini bosganingizdan so'ng, tranzaksiyani yakunlash uchun "
+"xavfsiz to'lov sahifasiga yo'naltirilasiz."
+
+msgid "256-bit SSL"
+msgstr "256-bit SSL"
+
+msgid "PCI DSS"
+msgstr "PCI DSS"
+
+msgid "Money-back guarantee"
+msgstr "Pulni qaytarish kafolati"
+
+msgid "By proceeding, you accept the booking terms."
+msgstr "Davom etish orqali siz bron qilish shartlarini qabul qilasiz."
+
+msgid "Tour price"
+msgstr "Tur narxi"
+
+msgid "Conversion"
+msgstr "Konversiya"
+
+msgid "soum"
+msgstr "so'm"
+
+msgid "Until 3 days before travel"
+msgstr "Sayohatdan 3 kun oldingacha"
+
+msgid "Contact support"
+msgstr "Qo'llab-quvvatlash xizmati bilan bog'lanish"
+
+msgid ""
+"You will be redirected to Click payment page. Complete the payment via your "
+"card or Click app."
+msgstr ""
+"Siz Click to'lov sahifasiga yo'naltirilasiz. To'lovni kartangiz yoki Click "
+"ilovasi orqali yakunlang."
+
+msgid ""
+"You will be redirected to Payme. Complete the payment via your card or Payme "
+"app."
+msgstr ""
+"Siz Payme-ga yo'naltirilasiz. To'lovni kartangiz yoki Payme ilovasi orqali "
+"yakunlang."
+
+msgid ""
+"Visit our office in Tashkent to complete payment in cash. Your booking will "
+"remain pending until paid."
+msgstr ""
+"Naqd pul bilan to'lash uchun Toshkentdagi ofisimizga tashrif buyuring. "
+"To'lov amalga oshirilgunga qadar broningiz kutilmoqda holatida qoladi."
+
+msgid "Redirecting to gateway..."
+msgstr "To'lov tizimiga yo'naltirilmoqda..."
+
+msgid "Payment Successful"
+msgstr "To'lov muvaffaqiyatli amalga oshirildi"
+
+msgid "Payment Successful!"
+msgstr "To'lov muvaffaqiyatli amalga oshirildi!"
+
+msgid "Your booking has been confirmed. We've sent the details to your email."
+msgstr "Broningiz tasdiqlandi. Tafsilotlarni emailingizga yubordik."
+
+msgid "Details"
+msgstr "Tafsilotlar"
+
+msgid "Tour"
+msgstr "Tur"
+
+msgid "View Booking Details"
+msgstr "Bron tafsilotlarini ko'rish"
+
+msgid "Explore More Tours"
+msgstr "Ko'proq turlarni ko'rish"
+
+msgid "What happens next?"
+msgstr "Keyin nima bo'ladi?"
+
+msgid "We'll send a confirmation email with full itinerary"
+msgstr "Biz to'liq marshrut bilan tasdiqlash elektron xatini yuboramiz"
+
+msgid "Our team will contact you 48 hours before the trip"
+msgstr "Bizning jamoamiz sayohatdan 48 soat oldin siz bilan bog'lanadi"
+
+msgid "Check your booking anytime in your profile"
+msgstr "Broningizni istalgan vaqtda profilingizda tekshiring"
+
+#, fuzzy
+#| msgid "Duration"
+msgid "Attractions"
+msgstr "Davomiyligi"
+
+#, fuzzy
+#| msgid "All Tours"
+msgid "Available tours"
+msgstr "Barcha turlar"
+
+#, fuzzy
+#| msgid "View tour"
+msgid "View tours"
+msgstr "Turni ko'rish"
+
+#, fuzzy
+#| msgid "Almost there!"
+msgid "About the region"
+msgstr "Deyarli tayyor!"
+
+msgid "About"
+msgstr "Haqida"
+
+msgid "Must-see places"
+msgstr "Ko'rinishi shart bo'lgan joylar"
+
+msgid "Top Attractions"
+msgstr "Eng yaxshi diqqatga sazor joylar"
+
+#, fuzzy
+#| msgid "View all"
+msgid "View on map"
+msgstr "Barchasini ko'rish"
+
+msgid "Tours in"
+msgstr "Turlar hududi:"
+
 msgid "View"
 msgstr "Ko'rish"
 
-#: templates/regions/detail.html:99
+#, fuzzy
+#| msgid "Browse tours"
+msgid "Browse all tours"
+msgstr "Turlarni ko'rish"
+
 msgid "Quick Facts"
 msgstr "Qisqa faktlar"
 
-#: templates/regions/detail.html:112
-msgid "Population"
-msgstr "Aholisi"
-
-#: templates/regions/detail.html:121
-msgid "Best time to visit"
-msgstr "Tashrif uchun eng yaxshi vaqt"
-
-#: templates/regions/detail.html:155
 msgid "Need help planning?"
 msgstr "Rejalashtirishda yordam kerakmi?"
 
-#: templates/regions/detail.html:157
-msgid "Our local experts can craft a custom tour for you."
+#, fuzzy
+#| msgid "Our local experts can craft a custom tour for you."
+msgid "Our local experts can craft a custom tour tailored just for you."
 msgstr "Mahalliy mutaxassislarimiz siz uchun maxsus tur yaratishlari mumkin."
 
-#: templates/regions/list.html:18
-msgid "Explore the Silk Road"
-msgstr "Ipak yo'lini kashf eting"
+#, fuzzy
+#| msgid "Back to bookings"
+msgid "Ready to book?"
+msgstr "Bronlarga qaytish"
 
-#: templates/regions/list.html:20
-msgid "Discover Uzbekistan's Most Beautiful Destinations"
-msgstr "O'zbekistonning eng go'zal manzillarini kashf eting"
-
-#: templates/regions/list.html:22
-msgid ""
-"From ancient Samarkand to the deserts of Karakalpakstan — find your next "
-"adventure."
-msgstr "Qadimiy Samarqanddan tortib Qoraqalpog'iston cho'llarigacha — keyingi sarguzashtingizni toping."
-
-#: templates/regions/list.html:48
-msgid "Tours available"
+#, fuzzy
+#| msgid "Tours available"
+msgid "These tours are available in"
 msgstr "Mavjud turlar"
 
-#: templates/regions/list.html:59
+#, fuzzy
+#| msgid "Browse tours"
+msgid "more tours"
+msgstr "Turlarni ko'rish"
+
+msgid "Discover"
+msgstr "Kashf eting"
+
+#, fuzzy
+#| msgid "Explore Uzbekistan"
+msgid "Uzbekistan"
+msgstr "O'zbekistonni kashf eting"
+
+msgid ""
+"Ancient cities, breathtaking landscapes, and warm hospitality — find your "
+"perfect destination."
+msgstr ""
+
+#, fuzzy
+#| msgid "Register"
+msgid "Regions"
+msgstr "Ro'yxatdan o'tish"
+
+msgid "Years of history"
+msgstr "Yillik tarix"
+
+msgid "UNESCO sites"
+msgstr "UNESCO ob'ektlari"
+
+msgid "Scroll to explore"
+msgstr "Kashf etish uchun aylantiring"
+
+#, fuzzy
+#| msgid "All Destinations"
+msgid "All destinations"
+msgstr "Barcha manzillar"
+
+#, fuzzy
+#| msgid "next adventure"
+msgid "Choose your adventure"
+msgstr "xush kelibsiz"
+
+msgid "regions"
+msgstr "viloyatlar"
+
+#, fuzzy
+#| msgid "Explore Now"
+msgid "Explore region"
+msgstr "Hoziroq kashf eting"
+
 msgid "No destinations yet"
 msgstr "Hozircha manzillar yo'q"
 
-#: templates/regions/list.html:60
-msgid "Check back soon for new destinations."
+#, fuzzy
+#| msgid "Check back soon for new destinations."
+msgid "Check back soon — new destinations are being added."
 msgstr "Yangi manzillar uchun tez orada yana tekshiring."
 
-#: templates/reviews/form.html:4
+#, fuzzy
+#| msgid "Back to Home"
+msgid "Back to home"
+msgstr "Asosiy sahifaga qaytish"
+
+msgid "UNESCO Heritage"
+msgstr "UNESCO merosi"
+
+msgid "4 world heritage sites across the country"
+msgstr "Mamlakat bo'ylab 4 ta jahon merosi ob'ekti"
+
+msgid "Safe Travel"
+msgstr "Xavfsiz sayohat"
+
+msgid "Consistently rated one of the safest destinations in Asia"
+msgstr "Doimiy ravishda Osiyodagi eng xavfsiz manzillardan biri deb baholanadi"
+
+msgid "Rich Cuisine"
+msgstr "Boy oshxona"
+
+msgid "Plov, samsa, shashlik — unforgettable flavors"
+msgstr "Palov, somsa, shashlik — unutilmas ta'mlar"
+
+msgid "Warm Hospitality"
+msgstr "Issiq mezmondo'stlik"
+
+msgid "Famously welcoming locals and vibrant culture"
+msgstr "Mashhur mezmondo'st mahalliy aholi va boy madaniyat"
+
+#, fuzzy
+#| msgid "Customer Support"
+msgid "Custom tours"
+msgstr "Mijozlarni qo'llab-quvvatlash"
+
+msgid "Can't decide where to go?"
+msgstr "Qayerga borishni bilmayapsizmi?"
+
+msgid ""
+"Our local experts will craft a personalised itinerary just for you — no "
+"cookie-cutter trips."
+msgstr ""
+
+msgid "Talk to an expert"
+msgstr "Mutaxassis bilan gaplashing"
+
+#, fuzzy
+#| msgid "Update Your Review"
+msgid "Update Review"
+msgstr "Sharhingizni yangilash"
+
 msgid "Write a Review"
 msgstr "Sharh yozish"
 
-#: templates/reviews/form.html:11
+msgid "Back"
+msgstr "Orqaga"
+
 msgid "Update Your Review"
 msgstr "Sharhingizni yangilash"
 
-#: templates/reviews/form.html:11
 msgid "Share Your Experience"
 msgstr "Tajribangiz bilan o'rtoqlashing"
 
-#: templates/reviews/form.html:58
-msgid "Write your detailed review here..."
-msgstr "Batafsil sharhingizni shu yerga yozing..."
+msgid "Rating"
+msgstr "Reyting"
 
-#: templates/reviews/form.html:80
+#, fuzzy
+#| msgid "starts here"
+msgid "stars"
+msgstr "shu yerdan boshlanadi"
+
+msgid "Click to rate"
+msgstr "Baholash uchun bosing"
+
+msgid "Title"
+msgstr "Sarlavha"
+
+#, fuzzy
+#| msgid "Share Your Experience"
+msgid "Summarise your experience..."
+msgstr "Tajribangiz bilan o'rtoqlashing"
+
+#, fuzzy
+#| msgid "Reviews"
+msgid "Review"
+msgstr "Sharhlar"
+
+msgid "Tell others about your experience — what did you enjoy most?"
+msgstr "Boshqalarga o'z tajribangiz haqida ayting — eng ko'p nima yoqdi?"
+
+msgid "Minimum 10 characters"
+msgstr "Kamida 10 ta belgi"
+
 msgid "Submit Review"
 msgstr "Sharhni yuborish"
 
-#: templates/socialaccount/authentication_error.html:4
+msgid "Poor — not recommended"
+msgstr "Yomon — tavsiya etilmaydi"
+
+#, fuzzy
+#| msgid "Average"
+msgid "Below average"
+msgstr "O'rtacha"
+
+msgid "Average — decent experience"
+msgstr "O'rtacha — yaxshi tajriba"
+
+msgid "Good — would recommend"
+msgstr "Yaxshi — tavsiya qilaman"
+
+msgid "Excellent — outstanding experience!"
+msgstr "Ajoyib — ajoyib tajriba!"
+
 msgid "Authentication Error"
 msgstr "Autentifikatsiya xatosi"
 
-#: templates/socialaccount/authentication_error.html:28
 msgid "Authentication failed"
 msgstr "Autentifikatsiya amalga oshmadi"
 
-#: templates/socialaccount/authentication_error.html:30
 msgid ""
 "Something went wrong while signing you in. Your account is safe — no changes "
 "were made."
-msgstr "Tizimga kirishda nimadir xato ketdi. Hisobingiz xavfsiz — hech qanday o'zgarishlar qilinmadi."
+msgstr ""
+"Tizimga kirishda nimadir xato ketdi. Hisobingiz xavfsiz — hech qanday "
+"o'zgarishlar qilinmadi."
 
-#: templates/socialaccount/authentication_error.html:37
 msgid "Possible reasons"
 msgstr "Mumkin bo'lgan sabablar"
 
-#: templates/socialaccount/authentication_error.html:40
 msgid "You cancelled the sign-in process"
 msgstr "Siz tizimga kirish jarayonini bekor qildingiz"
 
-#: templates/socialaccount/authentication_error.html:41
 msgid "The provider's session expired"
 msgstr "Provayder seansining vaqti tugadi"
 
-#: templates/socialaccount/authentication_error.html:42
 msgid "Permission was denied"
 msgstr "Ruxsat rad etildi"
 
-#: templates/socialaccount/authentication_error.html:58
 msgid "Go to homepage"
 msgstr "Bosh sahifaga o'tish"
 
-#: templates/socialaccount/authentication_error.html:65
 msgid "Your account is secure"
 msgstr "Hisobingiz xavfsiz"
 
-#: templates/socialaccount/login.html:4
 #, python-format
 msgid "Sign In via %(provider_name)s"
 msgstr "%(provider_name)s orqali kirish"
 
-#: templates/socialaccount/login.html:53
 #, python-format
 msgid "Continue with %(provider_name)s"
 msgstr "%(provider_name)s bilan davom etish"
 
-#: templates/socialaccount/login.html:56
 #, python-format
 msgid ""
 "You're about to sign in to SoLuna using your %(provider_name)s account. "
 "Click continue to proceed securely."
-msgstr "Siz %(provider_name)s hisobingiz orqali SoLuna'ga kirish arafasidasiz. Xavfsiz davom etish uchun 'Davom etish' tugmasini bosing."
+msgstr ""
+"Siz %(provider_name)s hisobingiz orqali SoLuna'ga kirish arafasidasiz. "
+"Xavfsiz davom etish uchun 'Davom etish' tugmasini bosing."
 
-#: templates/socialaccount/login.html:63
 msgid "We'll receive"
 msgstr "Biz olamiz"
 
-#: templates/socialaccount/login.html:66
-msgid "Your email address"
-msgstr "Sizning elektron pochta manzilingiz"
-
-#: templates/socialaccount/login.html:67
 msgid "Your name and profile photo"
 msgstr "Ismingiz va profil rasmingiz"
 
-#: templates/socialaccount/login.html:71
 msgid "We will never post anything without your permission."
 msgstr "Sizning ruxsatingizsiz hech qachon hech narsa joylashtirmaymiz."
 
-#: templates/socialaccount/login.html:78
 msgid "Continue"
 msgstr "Davom etish"
 
-#: templates/socialaccount/login.html:91
-#: templates/socialaccount/signup.html:143
 msgid "Secure connection · Your data is encrypted"
 msgstr "Xavfsiz ulanish · Ma'lumotlaringiz shifrlangan"
 
-#: templates/socialaccount/login.html:304
 msgid "Redirecting..."
 msgstr "Yo'naltirilmoqda..."
 
-#: templates/socialaccount/signup.html:4
 msgid "Complete sign up"
 msgstr "Ro'yxatdan o'tishni yakunlash"
 
-#: templates/socialaccount/signup.html:47
 msgid "Complete your profile"
 msgstr "Profilingizni to'ldiring"
 
-#: templates/socialaccount/signup.html:49
 msgid ""
 "Just one more step. Please confirm your details to finish creating your "
 "SoLuna account."
-msgstr "Faqat bitta qadam qoldi. SoLuna hisobingizni yaratishni tugatish uchun ma'lumotlaringizni tasdiqlang."
+msgstr ""
+"Faqat bitta qadam qoldi. SoLuna hisobingizni yaratishni tugatish uchun "
+"ma'lumotlaringizni tasdiqlang."
 
-#: templates/socialaccount/signup.html:79
 msgid "From your social account"
 msgstr "Ijtimoiy tarmoq hisobingizdan"
 
-#: templates/socialaccount/signup.html:104
 msgid "You'll get"
 msgstr "Siz ega bo'lasiz"
 
-#: templates/socialaccount/signup.html:107
 #, python-format
 msgid "5%% off on your first booking"
 msgstr "Ilk broningiz uchun 5%% chegirma"
 
-#: templates/socialaccount/signup.html:108
 msgid "Exclusive offers and updates"
 msgstr "Maxsus takliflar va yangiliklar"
 
-#: templates/socialaccount/signup.html:109
 msgid "Personalized travel recommendations"
 msgstr "Moslashtirilgan sayohat tavsiyalari"
 
-#: templates/socialaccount/signup.html:121
 msgid "and consent to receive travel inspiration emails"
-msgstr "va sayohat bo'yicha g'oyalar haqidagi email xabarlarini olishga roziman"
+msgstr "va sayohat ilhomini olish uchun email rozilik"
+"va sayohat bo'yicha g'oyalar haqidagi email xabarlarini olishga roziman"
 
-#: templates/socialaccount/signup.html:287
 msgid "Creating account..."
 msgstr "Hisob yaratilmoqda..."
 
-#: templates/tours/detail.html:43
-msgid "Share"
-msgstr "Ulashish"
-
-#: templates/tours/detail.html:44
-msgid "Save"
-msgstr "Saqlash"
-
-#: templates/tours/detail.html:61
-msgid "See all"
-msgstr "Barchasini ko'rish"
-
-#: templates/tours/detail.html:61
-msgid "photos"
-msgstr "rasm"
-
-#: templates/tours/detail.html:91
-msgid "Group Size"
-msgstr "Guruh hajmi"
-
-#: templates/tours/detail.html:92
-msgid "people"
-msgstr "kishi"
-
-#: templates/tours/detail.html:98
-msgid "Languages"
-msgstr "Tillar"
-
-#: templates/tours/detail.html:105
-msgid "Tour Type"
-msgstr "Tur turi"
-
-#: templates/tours/detail.html:113 templates/tours/detail.html:122
-msgid "Overview"
-msgstr "Umumiy ko'rinish"
-
-#: templates/tours/detail.html:114 templates/tours/detail.html:140
-msgid "Itinerary"
-msgstr "Marshrut"
-
-#: templates/tours/detail.html:115 templates/tours/detail.html:160
-msgid "What's included"
-msgstr "Nimalar kiritilgan"
-
-#: templates/tours/detail.html:128
-msgid "Highlights"
-msgstr "Asosiy jihatlari"
-
-#: templates/tours/detail.html:145
-msgid "Day"
-msgstr "Kun"
-
-#: templates/tours/detail.html:170
-msgid "Professional guide"
-msgstr "Professional gid"
-
-#: templates/tours/detail.html:171
-msgid "Transport (A/C vehicle)"
-msgstr "Transport (Konditsionerli transport)"
-
-#: templates/tours/detail.html:172
-msgid "Entrance fees"
-msgstr "Kirish to'lovlari"
-
-#: templates/tours/detail.html:173
-msgid "Hotel accommodation"
-msgstr "Mehmonxonada yashash"
-
-#: templates/tours/detail.html:179
-msgid "Not Included"
-msgstr "Kiritilmagan"
-
-#: templates/tours/detail.html:185
-msgid "International flights"
-msgstr "Xalqaro parvozlar"
-
-#: templates/tours/detail.html:186
-msgid "Travel insurance"
-msgstr "Sayohat sug'urtasi"
-
-#: templates/tours/detail.html:187
-msgid "Personal expenses"
-msgstr "Shaxsiy xarajatlar"
-
-#: templates/tours/detail.html:223
-msgid "Excellent"
-msgstr "A'lo"
-
-#: templates/tours/detail.html:224
-msgid "Good"
-msgstr "Yaxshi"
-
-#: templates/tours/detail.html:225
-msgid "Average"
-msgstr "O'rtacha"
-
-#: templates/tours/detail.html:226
-msgid "Poor"
-msgstr "Yomon"
-
-#: templates/tours/detail.html:227
-msgid "Terrible"
-msgstr "Juda yomon"
-
-#: templates/tours/detail.html:256
-msgid "No reviews yet. Be the first to share your experience!"
-msgstr "Hozircha sharhlar yo'q. O'z tajribangiz bilan birinchi bo'lib o'rtoqlashing!"
-
-#: templates/tours/detail.html:263
-msgid "Write a review"
-msgstr "Sharh yozish"
-
-#: templates/tours/detail.html:282
-msgid "Date"
-msgstr "Sana"
-
-#: templates/tours/detail.html:322
-msgid "Need help booking?"
-msgstr "Bron qilishda yordam kerakmi?"
-
-#: templates/tours/detail.html:338
-msgid "Related tours"
-msgstr "Tegishli turlar"
-
-#: templates/tours/list.html:21
-msgid "tours found"
-msgstr "tur topildi"
-
-#: templates/tours/list.html:27
-msgid "Sort by"
-msgstr "Saralash"
-
-#: templates/tours/list.html:33
-msgid "Most Popular"
-msgstr "Eng ommabop"
-
-#: templates/tours/list.html:34
-msgid "Newest"
-msgstr "Eng yangi"
-
-#: templates/tours/list.html:35
-msgid "Price: Low to High"
-msgstr "Narx: Arzondan qimmatga"
-
-#: templates/tours/list.html:36
-msgid "Price: High to Low"
-msgstr "Narx: Qimmatdan arzonga"
-
-#: templates/tours/list.html:37
-msgid "Highest Rated"
-msgstr "Eng yuqori baholangan"
-
-#: templates/tours/list.html:59
-msgid "Search tours..."
-msgstr "Turlarni qidirish..."
-
-#: templates/tours/list.html:82
-msgid "Price Range"
-msgstr "Narx oralig'i"
-
-#: templates/tours/list.html:84
-msgid "Min"
-msgstr "Min"
-
-#: templates/tours/list.html:85
-msgid "Max"
-msgstr "Maks"
-
-#: templates/tours/list.html:87
-msgid "Apply"
-msgstr "Qo'llash"
-
-#: templates/tours/list.html:101
-msgid "Rating"
-msgstr "Reyting"
-
-#: templates/tours/list.html:119
-msgid "Clear all"
-msgstr "Barchasini tozalash"
-
-#: templates/tours/list.html:178
 msgid "Pagination"
 msgstr "Sahifalash"
 
-#: templates/tours/list.html:205
+msgid "Save to wishlist"
+msgstr "Sevimlilar ro'yxatiga saqlash"
+
+msgid "from"
+msgstr "dan"
+
 msgid "No tours found"
 msgstr "Turlar topilmadi"
 
-#: templates/tours/list.html:206
 msgid "Try adjusting your filters or search criteria."
 msgstr "Filtrlaringizni yoki qidiruv mezonlarini o'zgartirib ko'ring."
 
-#: templates/tours/list.html:207
-msgid "Reset filters"
+#, fuzzy
+#| msgid "Reset filters"
+msgid "Clear filters"
 msgstr "Filtrlarni tiklash"
+
+msgid "Share"
+msgstr "Ulashish"
+
+msgid "Save"
+msgstr "Saqlash"
+
+msgid "See all"
+msgstr "Barchasini ko'rish"
+
+msgid "photos"
+msgstr "rasm"
+
+msgid "Group Size"
+msgstr "Guruh hajmi"
+
+msgid "people"
+msgstr "kishi"
+
+msgid "Difficulty"
+msgstr "Qiyinchilik"
+
+#, fuzzy
+#| msgid "Categories"
+msgid "Category"
+msgstr "Toifalar"
+
+msgid "Overview"
+msgstr "Umumiy ko'rinish"
+
+msgid "Itinerary"
+msgstr "Marshrut"
+
+msgid "What's included"
+msgstr "Nimalar kiritilgan"
+
+msgid "Day"
+msgstr "Kun"
+
+msgid "Professional guide"
+msgstr "Professional gid"
+
+msgid "Transport (A/C vehicle)"
+msgstr "Transport (Konditsionerli transport)"
+
+msgid "Entrance fees"
+msgstr "Kirish to'lovlari"
+
+msgid "Hotel accommodation"
+msgstr "Mehmonxonada yashash"
+
+msgid "Not Included"
+msgstr "Kiritilmagan"
+
+msgid "International flights"
+msgstr "Xalqaro parvozlar"
+
+msgid "Travel insurance"
+msgstr "Sayohat sug'urtasi"
+
+msgid "Personal expenses"
+msgstr "Shaxsiy xarajatlar"
+
+msgid "Excellent"
+msgstr "A'lo"
+
+msgid "Good"
+msgstr "Yaxshi"
+
+msgid "Average"
+msgstr "O'rtacha"
+
+msgid "Poor"
+msgstr "Yomon"
+
+msgid "Terrible"
+msgstr "Juda yomon"
+
+msgid "Awaiting approval"
+msgstr "Tasdiqlash kutilmoqda"
+
+msgid "No reviews yet. Be the first to share your experience!"
+msgstr "Hali sharhlar yo'q. Birinchi bo'lib tajribangizni ulashing!"
+"Hozircha sharhlar yo'q. O'z tajribangiz bilan birinchi bo'lib o'rtoqlashing!"
+
+msgid "Write a review"
+msgstr "Sharh yozish"
+
+#, fuzzy
+#| msgid "Write a review"
+msgid "Login to write a review"
+msgstr "Sharh yozish"
+
+msgid "Date"
+msgstr "Sana"
+
+msgid "Book Now"
+msgstr "Hozir bron qilish"
+
+msgid "Need help booking?"
+msgstr "Bron qilishda yordam kerakmi?"
+
+msgid "Talk to a travel expert"
+msgstr "Sayohat mutaxassisi bilan gaplashing"
+
+msgid ""
+"Not sure which tour fits you? Our local specialists craft the perfect Silk "
+"Road itinerary — free of charge."
+msgstr ""
+
+msgid "Get free advice"
+msgstr "Bepul maslahat oling"
+
+#, fuzzy
+#| msgid "Search tours..."
+msgid "Similar tours"
+msgstr "Turlarni qidirish..."
+
+msgid "Link copied!"
+msgstr "Havola nusxalandi!"
+
+#, fuzzy
+#| msgid "Payment failed"
+msgid "Copy failed"
+msgstr "To'lov amalga oshmadi"
+
+msgid "Added to wishlist"
+msgstr "Sevimlilar ro'yxatiga qo'shildi"
+
+msgid "Removed from wishlist"
+msgstr "Sevimlilar ro'yxatidan o'chirildi"
+
+#, fuzzy
+#| msgid "Try again"
+msgid "Error. Try again."
+msgstr "Qaytadan urinib ko'ring"
+
+msgid "Extraordinary"
+msgstr "Ajoyib"
+
+msgid "handcrafted journeys through Uzbekistan"
+msgstr "O'zbekiston bo'ylab qo'lda yaratilgan sayohatlar"
+
+#, fuzzy
+#| msgid "Sort by"
+msgid "Sort"
+msgstr "Saralash"
+
+msgid "Newest"
+msgstr "Eng yangi"
+
+#, fuzzy
+#| msgid "Price: Low to High"
+msgid "Price: Low → High"
+msgstr "Narx: Arzondan qimmatga"
+
+#, fuzzy
+#| msgid "Price: High to Low"
+msgid "Price: High → Low"
+msgstr "Narx: Qimmatdan arzonga"
+
+msgid "Highest Rated"
+msgstr "Eng yuqori baholangan"
+
+#, fuzzy
+#| msgid "Reset filters"
+msgid "Filters"
+msgstr "Filtrlarni tiklash"
+
+msgid "Clear all"
+msgstr "Barchasini tozalash"
+
+msgid "Search tours..."
+msgstr "Turlarni qidirish..."
+
+msgid "Categories"
+msgstr "Toifalar"
+
+#, fuzzy
+#| msgid "Categories"
+msgid "No categories"
+msgstr "Toifalar"
+
+msgid "Price Range"
+msgstr "Narx oralig'i"
+
+msgid "Min"
+msgstr "Min"
+
+msgid "Apply"
+msgstr "Qo'llash"
+
+#, fuzzy
+#| msgid "Rating"
+msgid "Min Rating"
+msgstr "Reyting"
+
+msgid "Error loading tours"
+msgstr "Turlarni yuklashda xatolik"
+
+#, fuzzy
+#| msgid "Try again"
+msgid "Please try again."
+msgstr "Qaytadan urinib ko'ring"
+
+#~ msgid "Unlock the Magic of Travel with SoLuna"
+#~ msgstr "SoLuna bilan sayohat sehrini kashf eting"
+
+#~ msgid "Language"
+#~ msgstr "Til"
+
+#~ msgid ""
+#~ "Dive into local recommendations for a truly authentic Silk Road "
+#~ "experience across Uzbekistan."
+#~ msgstr ""
+#~ "O'zbekiston bo'ylab chinakam Ipak yo'li sayohati uchun mahalliy "
+#~ "tavsiyalar bilan tanishing."
+
+#~ msgid "Tashkent, Uzbekistan"
+#~ msgstr "Toshkent, O'zbekiston"
+
+#~ msgid "Enter your email"
+#~ msgstr "Emailingizni kiriting"
+
+#~ msgid "Explore the World"
+#~ msgstr "Dunyoni kashf eting"
+
+#~ msgid ""
+#~ "Pack your bags and let SoLuna redefine your travel experience. Where "
+#~ "every journey is a story waiting to be told."
+#~ msgstr ""
+#~ "Sumkangizni yig'ing va SoLuna sayohat tajribangizni o'zgartirishiga "
+#~ "ruxsat bering. Har bir sayohat aytib berilishini kutayotgan bir hikoyadir."
+
+#~ msgid "Need some help?"
+#~ msgstr "Yordam kerakmi?"
+
+#~ msgid "Samarkand, Uzbekistan"
+#~ msgstr "Samarqand, O'zbekiston"
+
+#~ msgid "Check In"
+#~ msgstr "Kirish"
+
+#~ msgid "Check Out"
+#~ msgstr "Chiqish"
+
+#~ msgid "Guest"
+#~ msgstr "Mehmon"
+
+#~ msgid "Favorite destinations of professional travelers"
+#~ msgstr "Professional sayohatchilarning sevimli manzillari"
+
+#~ msgid "Favorite destinations based on customer reviews"
+#~ msgstr "Mijozlar sharhlari asosidagi sevimli manzillar"
+
+#~ msgid "Price range"
+#~ msgstr "Narx oralig'i"
+
+#~ msgid "Clear"
+#~ msgstr "Tozalash"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Sevimli qilib saqlash"
+
+#~ msgid "Easy payment"
+#~ msgstr "Oson to'lov"
+
+#~ msgid "We offer tours in a range of locations"
+#~ msgstr "Biz turli joylarga turlarni taklif qilamiz"
+
+#~ msgid ""
+#~ "Choose one style or create a package, fill your passports with adventures "
+#~ "together."
+#~ msgstr ""
+#~ "Bitta uslubni tanlang yoki paket yarating, pasportlaringizni birgalikda "
+#~ "sarguzashtlar bilan to'ldiring."
+
+#~ msgid "Security Assurance"
+#~ msgstr "Xavfsizlik kafolati"
+
+#~ msgid "Reputable Affiliations"
+#~ msgstr "Nufuzli hamkorliklar"
+
+#~ msgid "Payment is secure and safe"
+#~ msgstr "To'lov xavfsiz va ishonchli"
+
+#~ msgid "Top Categories of Tours"
+#~ msgstr "Turlarning yuqori toifalari"
+
+#~ msgid "View More"
+#~ msgstr "Ko'proq ko'rish"
+
+#~ msgid "Embracing Adventure Since 2025"
+#~ msgstr "2025 yildan beri sarguzashtlarga yetaklaymiz"
+
+#~ msgid "Install APP & Get discount code"
+#~ msgstr "Ilovani o'rnating va chegirma kodini oling"
+
+#, python-format
+#~ msgid "Up to 55%% Discount and lots of special gifts"
+#~ msgstr "55%% gacha chegirma va ko'plab maxsus sovg'alar"
+
+#~ msgid "Get inspiration for your next trip"
+#~ msgstr "Keyingi sayohatingiz uchun ilhom oling"
+
+#~ msgid "Keep Reading"
+#~ msgstr "O'qishni davom etish"
+
+#~ msgid "Why visit"
+#~ msgstr "Nega tashrif buyurish kerak"
+
+#~ msgid "Population"
+#~ msgstr "Aholisi"
+
+#~ msgid "Best time to visit"
+#~ msgstr "Tashrif uchun eng yaxshi vaqt"
+
+#~ msgid "Discover Uzbekistan's Most Beautiful Destinations"
+#~ msgstr "O'zbekistonning eng go'zal manzillarini kashf eting"
+
+#~ msgid ""
+#~ "From ancient Samarkand to the deserts of Karakalpakstan — find your next "
+#~ "adventure."
+#~ msgstr ""
+#~ "Qadimiy Samarqanddan tortib Qoraqalpog'iston cho'llarigacha — keyingi "
+#~ "sarguzashtingizni toping."
+
+#~ msgid "Write your detailed review here..."
+#~ msgstr "Batafsil sharhingizni shu yerga yozing..."
+
+#~ msgid "Languages"
+#~ msgstr "Tillar"
+
+#~ msgid "Tour Type"
+#~ msgstr "Tur turi"
+
+#~ msgid "Highlights"
+#~ msgstr "Asosiy jihatlari"
+
+#~ msgid "Related tours"
+#~ msgstr "Tegishli turlar"
+
+#~ msgid "tours found"
+#~ msgstr "tur topildi"
+
+# ── Added by build_i18n (UI strings) ──
+
+msgid "5% off on your first booking"
+msgstr "Birinchi buyurtmangizga 5% chegirma"
+
+msgid "Get 5% off your first booking"
+msgstr "Birinchi buyurtmangizga 5% chegirma oling"
+
+msgid "Language"
+msgstr "Til"
+
+msgid "Preferred Language"
+msgstr "Afzal ko'rilgan til"

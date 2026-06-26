@@ -19,7 +19,7 @@
 /* Page Header */
 .cc-header { padding: 32px 0 8px; }
 .cc-header h1 { font-size: 2rem; font-weight: 800; color: var(--text); margin: 0 0 6px; letter-spacing: -0.03em; }
-.cc-header p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
+.cc-header p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
 
 /* KPI */
 .cc-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
@@ -34,7 +34,7 @@
 .cc-kpi-card:nth-child(2) { animation-delay: 0.06s; }
 .cc-kpi-card:nth-child(3) { animation-delay: 0.12s; }
 .cc-kpi-card:nth-child(4) { animation-delay: 0.18s; }
-.cc-kpi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.cc-kpi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: rgba(13,59,46,.20); }
 .cc-kpi-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .cc-kpi-icon {
   width: 44px; height: 44px; border-radius: 12px;
@@ -60,7 +60,7 @@
   display: flex; flex-direction: column; align-items: center; gap: 10px;
   transition: all 0.25s var(--ease); color: var(--text-2); box-shadow: var(--shadow-xs);
 }
-.cc-quick-item:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.cc-quick-item:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .cc-quick-icon {
   width: 44px; height: 44px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
@@ -111,19 +111,20 @@
 
 /* Badge */
 .cc-badge { font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
-.cc-badge-pending { background: var(--yellow-bg); color: #92400E; }
-.cc-badge-confirmed { background: var(--green-bg); color: #065F46; }
-.cc-badge-completed { background: var(--blue-bg); color: #1D4ED8; }
-.cc-badge-cancelled { background: var(--red-bg); color: #991B1B; }
-.cc-badge-new { background: var(--yellow-bg); color: #92400E; }
-.cc-badge-paid { background: var(--green-bg); color: #065F46; }
-.cc-badge-failed { background: var(--red-bg); color: #991B1B; }
-[data-theme="dark"] .cc-badge-pending { color: #FCD34D; }
-[data-theme="dark"] .cc-badge-confirmed { color: #34D399; }
-[data-theme="dark"] .cc-badge-cancelled { color: #FCA5A5; }
-[data-theme="dark"] .cc-badge-new { color: #FCD34D; }
-[data-theme="dark"] .cc-badge-paid { color: #34D399; }
-[data-theme="dark"] .cc-badge-failed { color: #FCA5A5; }
+.cc-badge-pending   { background: var(--yellow-bg); color: #7C5B00; }
+.cc-badge-confirmed { background: var(--green-bg);  color: #1A6B40; }
+.cc-badge-completed { background: var(--blue-bg);   color: var(--blue); }
+.cc-badge-cancelled { background: var(--red-bg);    color: var(--red); }
+.cc-badge-new       { background: var(--yellow-bg); color: #7C5B00; }
+.cc-badge-paid      { background: var(--green-bg);  color: #1A6B40; }
+.cc-badge-failed    { background: var(--red-bg);    color: var(--red); }
+[data-theme="dark"] .cc-badge-pending   { color: var(--yellow); }
+[data-theme="dark"] .cc-badge-confirmed { color: var(--green); }
+[data-theme="dark"] .cc-badge-completed { color: #5aad8a; }
+[data-theme="dark"] .cc-badge-cancelled { color: var(--red); }
+[data-theme="dark"] .cc-badge-new       { color: var(--yellow); }
+[data-theme="dark"] .cc-badge-paid      { color: var(--green); }
+[data-theme="dark"] .cc-badge-failed    { color: var(--red); }
 
 /* Empty */
 .cc-empty { padding: 48px 24px; text-align: center; color: var(--text-muted); font-size: 0.88rem; }
@@ -157,23 +158,23 @@
 <div class="cc-db">
 
   <div class="cc-header">
-    <h1>Weekly sumup</h1>
-    <p>Get summary of your weekly online transactions here.</p>
+    <h1>Boshqaruv paneli</h1>
+    <p>SoLuna tur agentligi — bronlar, xabarlar va statistika</p>
   </div>
 
   <div class="cc-kpi">
     <div class="cc-kpi-card">
       <div class="cc-kpi-top">
-        <div class="cc-kpi-icon" style="background:var(--blue-bg);color:var(--blue);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
-        <span class="cc-kpi-trend" id="booking-trend" style="background:var(--blue-bg);color:var(--blue);">—</span>
+        <div class="cc-kpi-icon" style="background:var(--gold-bg);color:var(--gold);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <span class="cc-kpi-trend" id="booking-trend" style="background:var(--gold-bg);color:var(--gold);">—</span>
       </div>
       <div class="cc-kpi-value" id="kpi-bookings"><div class="cc-skel" style="height:28px;width:60px;"></div></div>
       <div class="cc-kpi-label">Jami bronlar</div>
     </div>
     <div class="cc-kpi-card">
       <div class="cc-kpi-top">
-        <div class="cc-kpi-icon" style="background:var(--green-bg);color:var(--green);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div>
-        <span class="cc-kpi-trend" id="msg-trend" style="background:var(--yellow-bg);color:#92400E;">—</span>
+        <div class="cc-kpi-icon" style="background:var(--blue-bg);color:var(--blue);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div>
+        <span class="cc-kpi-trend" id="msg-trend" style="background:var(--yellow-bg);color:var(--gold);">—</span>
       </div>
       <div class="cc-kpi-value" id="kpi-messages"><div class="cc-skel" style="height:28px;width:50px;"></div></div>
       <div class="cc-kpi-label">Yangi xabarlar</div>

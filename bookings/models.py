@@ -54,12 +54,32 @@ class Booking(models.Model):
         if self.price_per_person is None:
             self.price_per_person = self.tour.price
         if self.total_price is None:
-            self.total_price = self.tour.price * self.num_adults
+            self.total_price = (
+                self.tour.discounted_price * self.num_adults
+                + self.tour.child_price * self.num_children
+            )
         super().save(*args, **kwargs)
 
     @property
     def total_persons(self):
         return self.num_adults + self.num_children
+
+    @property
+    def adults_subtotal(self):
+        """Kattalar uchun jami: kishi narxi × kattalar soni."""
+        return self.price_per_person * self.num_adults
+
+    @property
+    def children_subtotal(self):
+        """Bolalar uchun jami (saqlangan total bilan mos: total − kattalar jami)."""
+        return self.total_price - self.adults_subtotal
+
+    @property
+    def child_price_per_person(self):
+        """Bitta bola uchun narx."""
+        if self.num_children:
+            return self.children_subtotal / self.num_children
+        return self.tour.child_price
 
     @property
     def can_cancel(self):

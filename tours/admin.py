@@ -23,10 +23,10 @@ class TourCategoryAdmin(TranslationAdmin):
 
 @admin.register(Tour)
 class TourAdmin(TranslationAdmin):
-    list_display = ['title', 'price', 'duration_days', 'difficulty',
-                    'is_active', 'is_featured', 'review_count_display', 'created_at']
-    list_editable = ['is_active', 'is_featured']
-    list_filter = ['is_active', 'is_featured', 'difficulty', 'category', 'regions']
+    list_display = ['title', 'price', 'discount_display', 'duration_days', 'difficulty',
+                    'is_active', 'is_featured', 'is_recommended', 'review_count_display', 'created_at']
+    list_editable = ['is_active', 'is_featured', 'is_recommended']
+    list_filter = ['is_active', 'is_featured', 'is_recommended', 'difficulty', 'category', 'regions']
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ['regions', 'attractions']
@@ -41,7 +41,7 @@ class TourAdmin(TranslationAdmin):
             'fields': ('cover_image', 'cover_preview')
         }),
         ('Narx va davomiylik', {
-            'fields': ('price', 'price_uzs', 'duration_days', 'max_group_size', 'difficulty')
+            'fields': ('price', 'price_uzs', 'child_price_percent', 'duration_days', 'max_group_size', 'difficulty')
         }),
         ('Joylar', {
             'fields': ('regions', 'attractions')
@@ -50,8 +50,12 @@ class TourAdmin(TranslationAdmin):
             'fields': ('includes', 'excludes', 'itinerary'),
             'classes': ('collapse',)
         }),
+        ('Maxsus taklif / Chegirma', {
+            'fields': ('discount_percent', 'discount_label', 'discount_until'),
+            'description': "Chegirma foizini kiriting (0–90). Yakuniy narx avtomatik hisoblanadi va bron narxiga ham qo'llanadi."
+        }),
         ('Holat', {
-            'fields': ('is_active', 'is_featured', 'created_at', 'updated_at')
+            'fields': ('is_active', 'is_featured', 'is_recommended', 'created_at', 'updated_at')
         }),
     )
 
@@ -67,6 +71,15 @@ class TourAdmin(TranslationAdmin):
     def review_count_display(self, obj):
         return obj.review_count
     review_count_display.short_description = 'Reviews'
+
+    def discount_display(self, obj):
+        if obj.has_discount:
+            return format_html(
+                '<b style="color:#d9480f;">−{}%</b> → ${}',
+                obj.discount_percent, obj.discounted_price
+            )
+        return '—'
+    discount_display.short_description = 'Chegirma'
 
 
 @admin.register(CompanyStatistic)

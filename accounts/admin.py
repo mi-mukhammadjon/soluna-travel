@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-from .models import User
+from .models import User, SiteSettings
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
@@ -31,3 +31,28 @@ class CustomUserAdmin(UserAdmin):
             )
         return '—'
     avatar_preview.short_description = _('Аватар')
+
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    list_display = ['site_name', 'phone_1', 'email_1']
+    fieldsets = (
+        ('Asosiy', {
+            'fields': ('site_name', 'site_tagline')
+        }),
+        ('Aloqa ma\'lumotlari', {
+            'fields': ('phone_1', 'phone_2', 'email_1', 'email_2', 'address', 'work_hours')
+        }),
+        ('Ijtimoiy tarmoqlar', {
+            'fields': ('instagram', 'telegram', 'whatsapp', 'facebook')
+        }),
+        ('Promo banner', {
+            'fields': ('promo_text', 'promo_cta_text', 'promo_cta_url')
+        }),
+    )
+
+    def has_add_permission(self, request):
+        return not SiteSettings.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False

@@ -10,6 +10,10 @@ from accounts.views import CustomSignupView
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+
+    # Gateway webhooks — til prefiksisiz (i18n_patterns'dan TASHQARIDA bo'lishi shart,
+    # aks holda Click/Payme POST'lari /uz/... ga redirect bo'lib uziladi).
+    path('', include('payments.webhook_urls')),
 ]
 
 urlpatterns += i18n_patterns(
@@ -20,11 +24,12 @@ urlpatterns += i18n_patterns(
     # Custom signup — allauth'dan oldin, shunda custom view ishlatiladi
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
 
+    # Custom accounts app — profil + parol o'zgartirish.
+    # MUHIM: allauth'dan OLDIN, aks holda allauth '/accounts/password/change/' ni o'g'irlaydi.
+    path('accounts/', include('accounts.urls')),
+
     # Allauth — login, logout, password reset, social login
     path('accounts/', include('allauth.urls')),
-
-    # Custom accounts app — FAQAT profil sahifalari
-    path('accounts/', include('accounts.urls')),
 
     # ── Boshqa applar ────────────────────────────────────
     path('regions/', include('regions.urls')),

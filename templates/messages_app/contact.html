@@ -5,140 +5,393 @@
 
 {% block content %}
 
-{# Hero #}
-<section style="background:var(--c-bg-alt);padding:60px 0 50px;text-align:center;">
-  <div class="container">
-    <nav style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:20px;">
-      <a href="{% url 'home' %}" style="color:var(--c-text-muted);">{% trans "Home" %}</a>
-      <span style="margin:0 8px;">/</span>
-      <span style="color:var(--c-text);font-weight:600;">{% trans "Contact" %}</span>
-    </nav>
-    <span class="pill-yellow" style="margin-bottom:20px;">
-      <i class="ti ti-message-circle"></i> {% trans "Get in touch" %}
-    </span>
-    <h1 style="margin-bottom:14px;">{% trans "We'd love to hear from you" %}</h1>
-    <p style="font-size:1.125rem;color:var(--c-text-muted);max-width:600px;margin:0 auto;">
-      {% trans "Have a question or need help planning your trip? Our team is here for you." %}
-    </p>
-  </div>
-</section>
-
-<section class="section">
+<section class="ctx">
   <div class="container">
 
-    {# Contact info cards #}
-    <div class="ct-info-grid">
-      <div class="ct-info">
-        <div class="ct-info-icon" style="background:#FFF0EC;color:#F09814;"><i class="ti ti-phone"></i></div>
-        <h4>{% trans "Phone" %}</h4>
-        <p>{% trans "Mon - Sat, 8AM - 6PM" %}</p>
-        <a href="tel:+998950666233" style="color:var(--c-text);font-weight:700;">+998 95 066 62 33</a>
-      </div>
-
-      <div class="ct-info">
-        <div class="ct-info-icon" style="background:#E3F0FF;color:#0182FC;"><i class="ti ti-mail"></i></div>
-        <h4>{% trans "Email" %}</h4>
-        <p>{% trans "We reply within 24 hours" %}</p>
-        <a href="mailto:oygulakhatovas@gmail.com" style="color:var(--c-text);font-weight:700;">oygulakhatovas@gmail.com</a>
-      </div>
-
-      <div class="ct-info">
-        <div class="ct-info-icon" style="background:#E4F9F9;color:#1D9E75;"><i class="ti ti-map-pin"></i></div>
-        <h4>{% trans "Office" %}</h4>
-        <p>{% trans "Visit us in person" %}</p>
-        <strong style="color:var(--c-text);">Tashkent, Uzbekistan</strong>
-      </div>
-
-      <div class="ct-info">
-        <div class="ct-info-icon" style="background:#F6F3FC;color:#7F77DD;"><i class="ti ti-brand-telegram"></i></div>
-        <h4>{% trans "Social" %}</h4>
-        <p>{% trans "Follow us for updates" %}</p>
-        <a href="https://t.me/soluna_uz" style="color:var(--c-text);font-weight:700;">@soluna_uz</a>
-      </div>
+    {# ═══════════════ HEADING ═══════════════ #}
+    <div class="ctx-head">
+      <nav class="ctx-crumbs">
+        <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>{% trans "Contact" %}</span>
+      </nav>
+      <span class="ctx-pill"><i class="ti ti-message-circle"></i> {% trans "Get in touch" %}</span>
+      <h1 class="ctx-title">{% trans "Let's plan your journey together" %}</h1>
+      <p class="ctx-lead">
+        {% trans "Have a question or need help planning your trip? Our team is here for you — reach out and we'll reply within 24 hours." %}
+      </p>
     </div>
 
-    {# Form + Map #}
-    <div class="ct-layout">
-      <div class="ct-form-wrap">
-        <h2 style="margin-bottom:8px;">{% trans "Send us a message" %}</h2>
-        <p style="color:var(--c-text-muted);margin-bottom:28px;">
-          {% trans "Fill out the form and we'll get back to you shortly." %}
-        </p>
+    {# ═══════════════ SPLIT CARD ═══════════════ #}
+    <div class="ctx-split">
 
-        <form method="post" action="{% url 'messages_app:contact' %}">
+      {# ── Left: branded info panel ── #}
+      <aside class="ctx-panel">
+        <div class="ctx-panel-pattern" aria-hidden="true"></div>
+        <div class="ctx-panel-top">
+          <span class="ctx-panel-mark">☾</span>
+          <h2 class="ctx-panel-title">{% trans "Contact information" %}</h2>
+          <p class="ctx-panel-sub">{% trans "Reach us anytime through the channels below." %}</p>
+        </div>
+
+        <ul class="ctx-details">
+          {% if site_settings.phone_1 %}
+          <li>
+            <span class="ctx-d-icon"><i class="ti ti-phone"></i></span>
+            <div>
+              <small>{% trans "Phone" %}</small>
+              <a href="tel:{{ site_settings.phone_1|cut:' ' }}">{{ site_settings.phone_1 }}</a>
+              {% if site_settings.phone_2 %}<a href="tel:{{ site_settings.phone_2|cut:' ' }}">{{ site_settings.phone_2 }}</a>{% endif %}
+            </div>
+          </li>
+          {% endif %}
+          {% if site_settings.email_1 %}
+          <li>
+            <span class="ctx-d-icon"><i class="ti ti-mail"></i></span>
+            <div>
+              <small>{% trans "Email" %}</small>
+              <a href="mailto:{{ site_settings.email_1 }}">{{ site_settings.email_1 }}</a>
+            </div>
+          </li>
+          {% endif %}
+          {% if site_settings.address %}
+          <li>
+            <span class="ctx-d-icon"><i class="ti ti-map-pin"></i></span>
+            <div>
+              <small>{% trans "Office" %}</small>
+              <span class="ctx-d-static">{{ site_settings.address }}</span>
+            </div>
+          </li>
+          {% endif %}
+          {% if site_settings.work_hours %}
+          <li>
+            <span class="ctx-d-icon"><i class="ti ti-clock"></i></span>
+            <div>
+              <small>{% trans "Working hours" %}</small>
+              <span class="ctx-d-static">{{ site_settings.work_hours }}</span>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+
+        <div class="ctx-panel-foot">
+          <span class="ctx-panel-foot-label">{% trans "Follow us" %}</span>
+          <div class="ctx-panel-social">
+            {% if site_settings.telegram %}<a href="{{ site_settings.telegram }}" target="_blank" rel="noopener" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>{% endif %}
+            {% if site_settings.instagram %}<a href="{{ site_settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>{% endif %}
+            {% if site_settings.whatsapp %}<a href="{{ site_settings.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>{% endif %}
+            {% if site_settings.facebook %}<a href="{{ site_settings.facebook }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>{% endif %}
+          </div>
+        </div>
+      </aside>
+
+      {# ── Right: form ── #}
+      <div class="ctx-form-side">
+        <h2 class="ctx-form-title">{% trans "Send us a message" %}</h2>
+        <p class="ctx-form-lead">{% trans "Fill out the form and we'll get back to you shortly." %}</p>
+
+        <form method="post" action="{% url 'messages_app:contact' %}" novalidate class="ctx-form">
           {% csrf_token %}
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          {% if form.non_field_errors %}
+            <div class="ctx-form-error">{{ form.non_field_errors }}</div>
+          {% endif %}
+
+          <div class="ctx-form-row">
             <div class="form-group">
-              <label class="form-label" for="id_name">{% trans "Full Name" %}*</label>
-              <input type="text" name="name" id="id_name" class="form-control" required>
+              <label class="form-label" for="{{ form.name.id_for_label }}">{% trans "Full Name" %}*</label>
+              {{ form.name }}
+              {% if form.name.errors %}<small class="ctx-field-error">{{ form.name.errors|striptags }}</small>{% endif %}
             </div>
             <div class="form-group">
-              <label class="form-label" for="id_email">{% trans "Email" %}*</label>
-              <input type="email" name="email" id="id_email" class="form-control" required>
+              <label class="form-label" for="{{ form.email.id_for_label }}">{% trans "Email" %}*</label>
+              {{ form.email }}
+              {% if form.email.errors %}<small class="ctx-field-error">{{ form.email.errors|striptags }}</small>{% endif %}
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="ctx-form-row">
             <div class="form-group">
-              <label class="form-label" for="id_phone">{% trans "Phone" %}</label>
-              <input type="tel" name="phone" id="id_phone" class="form-control" placeholder="+998 ...">
+              <label class="form-label" for="{{ form.phone.id_for_label }}">{% trans "Phone" %}</label>
+              {{ form.phone }}
+              {% if form.phone.errors %}<small class="ctx-field-error">{{ form.phone.errors|striptags }}</small>{% endif %}
             </div>
             <div class="form-group">
-              <label class="form-label" for="id_subject">{% trans "Subject" %}*</label>
-              <input type="text" name="subject" id="id_subject" class="form-control" required>
+              <label class="form-label" for="{{ form.subject.id_for_label }}">{% trans "Subject" %}*</label>
+              {{ form.subject }}
+              {% if form.subject.errors %}<small class="ctx-field-error">{{ form.subject.errors|striptags }}</small>{% endif %}
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="id_message">{% trans "Message" %}*</label>
-            <textarea name="message" id="id_message" class="form-control" rows="6" required></textarea>
+            <label class="form-label" for="{{ form.body.id_for_label }}">{% trans "Message" %}*</label>
+            {{ form.body }}
+            {% if form.body.errors %}<small class="ctx-field-error">{{ form.body.errors|striptags }}</small>{% endif %}
           </div>
 
-          <button type="submit" class="btn btn-dark btn-lg">
+          <button type="submit" class="ctx-submit">
             {% trans "Send Message" %} <i class="ti ti-send"></i>
           </button>
+          <p class="ctx-form-note"><i class="ti ti-shield-check"></i> {% trans "Your details are safe with us and never shared." %}</p>
         </form>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="ct-map-wrap">
-        <iframe loading="lazy" style="border:0;width:100%;height:100%;min-height:480px;border-radius:var(--r-lg);"
-          src="https://maps.google.com/maps?q=Tashkent&z=12&output=embed"></iframe>
+{# ═══════════════ MAP — full width ═══════════════ #}
+<section class="ctx-map">
+  <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="{% trans 'Office location' %}"
+    src="https://maps.google.com/maps?q={{ site_settings.address|default:'Tashkent'|urlencode }}&z=13&output=embed"></iframe>
+  <div class="container ctx-map-overlay">
+    <div class="ctx-map-card">
+      <div class="ctx-map-card-img">
+        <img src="{% static 'img/hero-samarkand.jpg' %}" alt="{% trans 'Our office location' %}" loading="lazy">
       </div>
+      <div class="ctx-map-card-body">
+        <div>
+          <strong>{% trans "Visit our office" %}</strong>
+          <span>{{ site_settings.address|default:"Tashkent, Uzbekistan" }}</span>
+        </div>
+        <a class="ctx-map-btn" target="_blank" rel="noopener"
+           href="https://maps.google.com/maps?q={{ site_settings.address|default:'Tashkent'|urlencode }}">
+          <span class="ctx-map-btn-text">{% trans "Directions" %}</span>
+          <i class="ti ti-arrow-up-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ═══════════════ FAQ ═══════════════ #}
+<section class="section">
+  <div class="container">
+    <div class="ctx-faq-head">
+      <span class="ctx-pill ctx-pill--soft"><i class="ti ti-help-circle"></i> {% trans "FAQ" %}</span>
+      <h2>{% trans "Frequently asked questions" %}</h2>
+    </div>
+    <div class="ctx-faq">
+      <details class="ctx-faq-item" open>
+        <summary>{% trans "How quickly will I get a response?" %} <i class="ti ti-plus"></i></summary>
+        <p>{% trans "We reply to every message within 24 hours, often much sooner during working hours." %}</p>
+      </details>
+      <details class="ctx-faq-item">
+        <summary>{% trans "Can you customize a tour for me?" %} <i class="ti ti-plus"></i></summary>
+        <p>{% trans "Absolutely. Tell us your dates, interests and budget in the form and our team will craft a tailored itinerary." %}</p>
+      </details>
+      <details class="ctx-faq-item">
+        <summary>{% trans "Which languages does your team speak?" %} <i class="ti ti-plus"></i></summary>
+        <p>{% trans "Our guides and support team speak English, Russian, Uzbek and Korean." %}</p>
+      </details>
+      <details class="ctx-faq-item">
+        <summary>{% trans "How can I pay for a booking?" %} <i class="ti ti-plus"></i></summary>
+        <p>{% trans "We accept VISA, Mastercard, UZCARD and HUMO. Payment details are shared once your trip is confirmed." %}</p>
+      </details>
     </div>
   </div>
 </section>
 
 <style>
-.ct-info-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-  margin-bottom: 60px;
+/* ═══════════════ SECTION + HEADING ═══════════════ */
+.ctx { padding: 56px 0 0; }
+.ctx-head { max-width: 620px; margin: 0 auto 40px; text-align: center; }
+.ctx-crumbs {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; color: var(--c-text-muted); margin-bottom: 18px;
 }
-@media (max-width: 900px) { .ct-info-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 500px) { .ct-info-grid { grid-template-columns: 1fr; } }
+.ctx-crumbs a { color: var(--c-text-muted); transition: color .15s; }
+.ctx-crumbs a:hover { color: var(--gold-ink); }
+.ctx-crumbs i { font-size: 0.85rem; opacity: .5; }
+.ctx-crumbs span { color: var(--c-text); font-weight: 600; }
+.ctx-title { margin: 16px 0 14px; }
+.ctx-lead { font-size: 1.05rem; color: var(--c-text-muted); line-height: 1.7; }
 
-.ct-info {
-  background: #fff; border: 1px solid var(--c-border);
-  border-radius: var(--r-lg); padding: 28px; text-align: center;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+.ctx-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: #1C1C1E;
+  padding: 9px 18px; border-radius: 100px;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px rgba(201,168,76,.28);
 }
-.ct-info:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+.ctx-pill i { font-size: 1rem; }
+.ctx-pill--soft { background: var(--gold-soft); color: var(--gold-ink); box-shadow: none; }
 
-.ct-info-icon {
-  width: 56px; height: 56px; margin: 0 auto 16px;
-  border-radius: var(--r-md);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
+/* ═══════════════ SPLIT CARD ═══════════════ */
+.ctx-split {
+  display: grid; grid-template-columns: 0.82fr 1.18fr;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--mac-r);
+  box-shadow: var(--mac-shadow);
+  overflow: hidden;
 }
-.ct-info h4 { font-size: 1.1rem; margin-bottom: 6px; }
-.ct-info p { font-size: 0.85rem; color: var(--c-text-muted); margin-bottom: 12px; }
+@media (max-width: 880px) { .ctx-split { grid-template-columns: 1fr; } }
 
-.ct-layout {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+/* ── Left panel ── */
+.ctx-panel {
+  position: relative; overflow: hidden;
+  background: #1C1C1E;
+  color: rgba(255,255,255,.92);
+  padding: 40px 36px;
+  display: flex; flex-direction: column;
 }
-@media (max-width: 900px) { .ct-layout { grid-template-columns: 1fr; } }
+[data-theme="dark"] .ctx-panel { background: #141416; }
+.ctx-panel-pattern {
+  position: absolute; inset: 0; pointer-events: none; opacity: .9;
+  background:
+    radial-gradient(420px circle at 110% -10%, rgba(201,168,76,.28), transparent 60%),
+    radial-gradient(360px circle at -10% 115%, rgba(201,168,76,.16), transparent 60%);
+}
+.ctx-panel > * { position: relative; z-index: 1; }
+.ctx-panel-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--gold); color: #1C1C1E;
+  font-size: 1.6rem; margin-bottom: 22px;
+}
+.ctx-panel-title { color: #fff; font-size: 1.4rem; margin-bottom: 8px; }
+.ctx-panel-sub { color: rgba(255,255,255,.55); font-size: 0.9rem; line-height: 1.6; }
 
-.ct-form-wrap { background: #fff; border: 1px solid var(--c-border); border-radius: var(--r-lg); padding: 36px; }
-.ct-map-wrap { min-height: 480px; }
+.ctx-details { margin: 30px 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.ctx-details li { display: flex; align-items: flex-start; gap: 14px; }
+.ctx-d-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(201,168,76,.14); color: var(--gold-light);
+  font-size: 1.2rem;
+}
+.ctx-details small {
+  display: block; font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: .06em; color: rgba(255,255,255,.4); margin-bottom: 3px;
+}
+.ctx-details a, .ctx-d-static {
+  display: block; color: #fff; font-weight: 600; font-size: 0.95rem;
+  line-height: 1.5; transition: color .15s;
+}
+.ctx-details a:hover { color: var(--gold-light); }
+
+.ctx-panel-foot {
+  margin-top: 34px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.ctx-panel-foot-label { font-size: 0.78rem; color: rgba(255,255,255,.4); }
+.ctx-panel-social { display: flex; gap: 8px; }
+.ctx-panel-social a {
+  width: 38px; height: 38px; border-radius: 11px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7); font-size: 1.1rem;
+  transition: all .2s var(--mac-ease);
+}
+.ctx-panel-social a:hover {
+  background: var(--gold); border-color: var(--gold); color: #1C1C1E;
+  transform: translateY(-2px);
+}
+
+/* ── Right form ── */
+.ctx-form-side { padding: 40px 38px; }
+.ctx-form-title { margin-bottom: 6px; }
+.ctx-form-lead { color: var(--c-text-muted); margin-bottom: 26px; font-size: 0.95rem; }
+.ctx-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 480px) { .ctx-form-row { grid-template-columns: 1fr; } }
+
+.ctx-form .form-control { border-radius: 11px; padding: 13px 16px; }
+.ctx-form .form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-soft);
+}
+
+.ctx-submit {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 8px;
+  background: var(--gold); color: #1C1C1E;
+  font-weight: 600; font-size: 0.92rem; letter-spacing: -0.01em;
+  padding: 14px 30px; border-radius: 100px;
+  transition: all .2s var(--mac-ease);
+}
+.ctx-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(201,168,76,.34); }
+.ctx-submit:active { transform: translateY(0) scale(.98); }
+.ctx-submit i { transition: transform .2s var(--mac-ease); }
+.ctx-submit:hover i { transform: translateX(3px); }
+.ctx-form-note {
+  display: flex; align-items: center; gap: 6px;
+  margin-top: 16px; font-size: 0.8rem; color: var(--c-text-muted);
+}
+.ctx-form-note i { color: var(--c-green); font-size: 0.95rem; }
+
+/* ═══════════════ MAP ═══════════════ */
+.ctx-map { position: relative; height: 460px; margin-top: 64px; }
+.ctx-map iframe { border: 0; width: 100%; height: 100%; filter: grayscale(.2); display: block; }
+.ctx-map-overlay {
+  position: absolute; left: 0; right: 0; bottom: 28px; z-index: 2;
+  display: flex; justify-content: flex-start; pointer-events: none;
+}
+.ctx-map-card {
+  pointer-events: auto;
+  width: 320px; overflow: hidden;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--mac-r);
+  box-shadow: var(--mac-shadow);
+}
+.ctx-map-card-img { aspect-ratio: 4 / 3; overflow: hidden; }
+.ctx-map-card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s var(--mac-ease);
+}
+.ctx-map-card:hover .ctx-map-card-img img { transform: scale(1.05); }
+.ctx-map-card-body {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 16px;
+}
+.ctx-map-card strong { display: block; font-size: 0.92rem; font-weight: 700; }
+.ctx-map-card span { font-size: 0.8rem; color: var(--c-text-muted); }
+.ctx-map-btn {
+  flex-shrink: 0; overflow: hidden;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gold); color: #1C1C1E;
+  font-weight: 600; font-size: 0.82rem;
+  padding: 9px 16px; border-radius: 100px;
+  transition: all .2s var(--mac-ease);
+}
+.ctx-map-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+.ctx-map-btn i { transition: transform .2s var(--mac-ease); }
+.ctx-map-btn:hover i { transform: translate(2px, -2px); }
+@media (max-width: 540px) {
+  .ctx-map-overlay { justify-content: center; bottom: 16px; padding: 0 12px; }
+  .ctx-map-card { width: 100%; max-width: 340px; }
+}
+
+/* ═══════════════ FAQ ═══════════════ */
+.ctx-faq-head { text-align: center; margin-bottom: 34px; }
+.ctx-faq-head h2 { margin-top: 14px; }
+.ctx-faq { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.ctx-faq-item {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 4px 22px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.ctx-faq-item[open] { border-color: var(--gold); box-shadow: var(--mac-shadow); }
+.ctx-faq-item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 16px 0; cursor: pointer; list-style: none;
+  font-weight: 600; font-size: 0.98rem; color: var(--c-text);
+}
+.ctx-faq-item summary::-webkit-details-marker { display: none; }
+.ctx-faq-item summary i {
+  flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--gold-soft); color: var(--gold-ink); font-size: 1rem;
+  transition: transform .25s var(--mac-ease), background .2s, color .2s;
+}
+.ctx-faq-item[open] summary i { transform: rotate(45deg); background: var(--gold); color: #1C1C1E; }
+.ctx-faq-item p {
+  margin: 0 0 18px; color: var(--c-text-muted); font-size: 0.92rem; line-height: 1.7;
+}
 </style>
 {% endblock %}

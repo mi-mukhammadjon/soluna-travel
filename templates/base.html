@@ -3,28 +3,302 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FEFA17">
+  <meta name="theme-color" content="#c9a84c">
   <title>{% block title %}SoLuna — {% trans "Your Gateway to Extraordinary Adventures" %}{% endblock %}</title>
   <meta name="description" content="{% block meta_desc %}{% trans 'SoLuna — premium tours across Uzbekistan and the Silk Road.' %}{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}SoLuna{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}{% trans 'Premium tours across Uzbekistan and the Silk Road.' %}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
-  {# Favicon #}
-  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90" fill="%23FEFA17">☾</text></svg>'>
+  {# Favicon — gold crescent #}
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90" fill="%23c9a84c">☾</text></svg>'>
 
-  {# Fonts #}
+  {# Premium fonts — SF Pro on Apple, Plus Jakarta Sans as cross-platform #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
 
-  {# Tabler icons #}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+  {# Tabler icons — local #}
+  <link rel="preload" href="{% static 'fonts/tabler-icons.woff2' %}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{% static 'css/tabler-icons.min.css' %}">
 
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/datepicker.css' %}">
 
-  {# Quick theme/language init to prevent FOUC #}
+  {# ══ SoLuna — Premium Theme ══ #}
+  <style>
+    /* ── 0. TOKENS — Pro Clean ── */
+    :root {
+      --sf: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', 'Segoe UI', system-ui, sans-serif;
+      --sf-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', system-ui, sans-serif;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --gold-soft: rgba(201,168,76,.10);
+      --gold-ink: #8f7327;
+      --mac-r: 14px;
+      --mac-r-sm: 8px;
+      --mac-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --mac-shadow: 0 8px 32px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.03);
+    }
+    [data-theme="dark"] {
+      --mac-shadow: 0 8px 32px rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.2);
+      --gold-ink: #e0c478;
+    }
+
+    /* ── 1. BASE ── */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sf);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      letter-spacing: -0.01em;
+      line-height: 1.5;
+    }
+    .nav-link, .btn, input, select, textarea, button { font-family: var(--sf); }
+    h1 { font-family: var(--sf-display); font-weight: 700; letter-spacing: -0.025em; font-size: 2.5rem; line-height: 1.1; }
+    h2 { font-family: var(--sf-display); font-weight: 700; letter-spacing: -0.02em; font-size: 2rem; line-height: 1.15; }
+    h3 { font-family: var(--sf-display); font-weight: 600; letter-spacing: -0.015em; font-size: 1.5rem; line-height: 1.2; }
+    h4 { font-family: var(--sf); font-weight: 600; letter-spacing: -0.01em; font-size: 1.125rem; line-height: 1.3; }
+    h5 { font-family: var(--sf); font-weight: 600; font-size: 1rem; line-height: 1.4; }
+    h6 { font-family: var(--sf); font-weight: 600; font-size: 0.875rem; line-height: 1.4; letter-spacing: .01em; }
+
+    /* ── 2. TOPBAR — light mode = ochiq ── */
+    .topbar { background: var(--c-bg-alt); border-bottom: 1px solid var(--c-border); }
+    [data-theme="dark"] .topbar { background: #18181A; border-bottom-color: rgba(255,255,255,.05); }
+    .topbar-link { color: var(--c-text-muted); font-size: .76rem; transition: color .2s; }
+    .topbar-link:hover { color: var(--c-text); }
+    .topbar-link i { color: var(--c-text-light); }
+    .topbar-promo { color: var(--c-text); font-size: .68rem; gap: 6px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .topbar-icon-btn { background: rgba(0,0,0,.05); color: var(--c-text-muted); border: 1px solid var(--c-border); border-radius: 7px; }
+    .topbar-icon-btn:hover { background: var(--gold); color: #1C1C1E; border-color: var(--gold); }
+    .topbar-select-wrap { background: rgba(0,0,0,.04); border: 1px solid var(--c-border); border-radius: 7px; }
+    .topbar-select-wrap:hover { background: rgba(0,0,0,.08); }
+    .topbar-select { color: var(--c-text) !important; }
+    [data-theme="dark"] .topbar-link { color: rgba(255,255,255,.5); }
+    [data-theme="dark"] .topbar-link:hover { color: #fff; }
+    [data-theme="dark"] .topbar-link i { color: rgba(255,255,255,.35); }
+    [data-theme="dark"] .topbar-promo { color: #1C1C1E; }
+    [data-theme="dark"] .topbar-icon-btn { background: rgba(255,255,255,.06); color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.06); }
+    [data-theme="dark"] .topbar-icon-btn:hover { background: var(--gold); color: #1C1C1E; }
+    [data-theme="dark"] .topbar-select-wrap { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.06); }
+    [data-theme="dark"] .topbar-select-wrap:hover { background: rgba(255,255,255,.1); }
+    [data-theme="dark"] .topbar-select { color: rgba(255,255,255,.85) !important; }
+
+    /* ── 3. NAVBAR — solid ── */
+    .navbar {
+      background: var(--c-surface);
+      border-bottom: 1px solid var(--c-border);
+      transition: box-shadow .25s var(--mac-ease);
+    }
+    .header.is-scrolled .navbar { box-shadow: 0 1px 0 var(--c-border); }
+
+    /* ── 4. NAV LINKS ── */
+    .nav-link {
+      font-weight: 500;
+      font-size: .85rem;
+      letter-spacing: -0.01em;
+      padding: 7px 14px;
+      border-radius: 100px !important;
+      background: transparent !important;
+      color: var(--c-text);
+      transition: all .15s var(--mac-ease);
+    }
+    .nav-link:hover { background: var(--c-bg-alt) !important; }
+    .nav-link.is-active { background: var(--c-bg-alt) !important; font-weight: 600; }
+    .nav-chev { font-size: .65rem; opacity: .35; transition: transform .2s; }
+    .nav-has-dropdown:hover .nav-chev, .nav-has-dropdown.is-open .nav-chev { transform: rotate(180deg); }
+
+    /* ── 5. DROPDOWN ── */
+    .nav-dropdown {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 14px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.1), 0 2px 6px rgba(0,0,0,.03);
+      overflow: hidden;
+      padding: 5px;
+    }
+    .nav-dropdown a { gap: 12px; padding: 10px 12px; border-radius: 10px; transition: background .12s; }
+    .nav-dropdown a:hover { background: var(--c-bg-alt) !important; }
+    .nav-dropdown a i { color: var(--gold-ink); font-size: 1.1rem; flex-shrink: 0; }
+    .nav-dropdown a strong { font-weight: 600; font-size: .85rem; color: var(--c-text); }
+    .nav-dropdown a span { font-size: .73rem; color: var(--c-text-muted); }
+
+    /* ── 6. NAV ACTIONS ── */
+    .nav-icon-btn { transition: all .15s var(--mac-ease); border-radius: var(--mac-r-sm); }
+    .nav-icon-btn:hover { background: var(--c-bg-alt) !important; color: var(--gold-ink) !important; }
+    .nav-cta-link { font-weight: 500; font-size: .85rem; color: var(--c-text); transition: all .15s; padding: 7px 14px; border-radius: 100px; }
+    .nav-cta-link:hover { background: var(--c-bg-alt); }
+    .nav-cta-primary {
+      background: var(--gold) !important;
+      color: #1C1C1E !important;
+      font-weight: 600;
+      font-size: .82rem;
+      letter-spacing: -0.01em;
+      border-radius: 100px;
+      padding: 9px 20px;
+      transition: all .2s var(--mac-ease);
+    }
+    .nav-cta-primary:hover { background: var(--gold-light) !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(201,168,76,.3); }
+    .nav-cta-primary:active { transform: translateY(0) scale(.98); }
+    .nav-avatar { background: var(--gold); color: #1C1C1E; font-weight: 700; border-radius: 50%; }
+    [data-theme="dark"] .nav-avatar { background: var(--gold); color: #fff; }
+    .nav-user-btn { border-radius: 100px; }
+    .nav-user-btn:hover { background: var(--c-bg-alt) !important; }
+    .nav-dropdown-logout:hover { background: rgba(255,59,48,.07) !important; }
+
+    /* ── 7. HERO NAVBAR ── */
+    /* Light mode: hero ochiq fon */
+    .header--hero:not(.is-scrolled) { background: transparent !important; border-bottom: none !important; box-shadow: none !important; }
+    .header--hero:not(.is-scrolled) .navbar {
+      background: rgba(255,255,255,.85) !important;
+      border-bottom: 1px solid var(--c-border) !important;
+      box-shadow: none !important;
+    }
+    .header--hero:not(.is-scrolled) .logo-text { color: var(--c-text) !important; }
+    .header--hero:not(.is-scrolled) .logo-mark { color: var(--gold) !important; }
+    .header--hero:not(.is-scrolled) .nav-link { color: var(--c-text) !important; }
+    .header--hero:not(.is-scrolled) .nav-link:hover,
+    .header--hero:not(.is-scrolled) .nav-link.is-active { background: var(--c-bg-alt) !important; }
+    .header--hero:not(.is-scrolled) .nav-chev { color: var(--c-text-muted) !important; }
+    .header--hero:not(.is-scrolled) .nav-cta-link { color: var(--c-text) !important; }
+    .header--hero:not(.is-scrolled) .nav-cta-link:hover { background: var(--c-bg-alt) !important; }
+    .header--hero:not(.is-scrolled) .nav-icon-btn { color: var(--c-text) !important; background: var(--c-bg-alt) !important; border: 1px solid var(--c-border) !important; }
+    .header--hero:not(.is-scrolled) .nav-icon-btn:hover { background: var(--c-bg) !important; }
+    .header--hero:not(.is-scrolled) .nav-user-name { color: var(--c-text) !important; }
+    .header--hero:not(.is-scrolled) .nav-user-btn { background: var(--c-bg-alt) !important; color: var(--c-text) !important; border: 1px solid var(--c-border) !important; }
+    .header--hero:not(.is-scrolled) .nav-user-btn:hover { background: var(--c-bg) !important; }
+    .header--hero:not(.is-scrolled) .nav-user-btn i { color: var(--c-text-muted) !important; }
+    .header--hero:not(.is-scrolled) .nav-avatar { background: var(--gold); color: #1C1C1E !important; }
+    .header--hero:not(.is-scrolled) .nav-cta-primary { background: var(--gold) !important; color: #1C1C1E !important; }
+
+    /* Scroll qilganda — ochiq fon saqlanadi */
+    .header--hero.is-scrolled .navbar {
+      background: var(--c-surface) !important;
+      border-bottom: 1px solid var(--c-border) !important;
+      box-shadow: 0 1px 0 var(--c-border) !important;
+    }
+    .header--hero.is-scrolled .logo-text { color: var(--c-text) !important; }
+    .header--hero.is-scrolled .nav-link { color: var(--c-text) !important; }
+    .header--hero.is-scrolled .nav-user-name { color: var(--c-text) !important; }
+
+    /* Dark mode: hero qorong'i */
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .navbar {
+      background: rgba(28,28,30,.9) !important;
+      border-bottom-color: var(--c-border) !important;
+    }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .logo-text { color: rgba(255,255,255,.9) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-link { color: rgba(255,255,255,.8) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-link:hover { background: rgba(255,255,255,.08) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-cta-link { color: rgba(255,255,255,.8) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-icon-btn { background: rgba(255,255,255,.06) !important; color: rgba(255,255,255,.6) !important; border-color: rgba(255,255,255,.08) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-user-name { color: rgba(255,255,255,.8) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-user-btn { background: rgba(255,255,255,.06) !important; color: rgba(255,255,255,.8) !important; border-color: rgba(255,255,255,.08) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-user-btn i { color: rgba(255,255,255,.4) !important; }
+    [data-theme="dark"] .header--hero:not(.is-scrolled) .nav-cta-primary { background: var(--gold) !important; color: #1C1C1E !important; }
+
+    /* ── 8. SEARCH ── */
+    .search-overlay { background: var(--c-surface); border-bottom: 1px solid var(--c-border); }
+    .search-suggestions a:hover { color: var(--gold-ink); }
+    .search-suggestion-label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-muted); }
+
+    /* ── 9. DRAWER ── */
+    .drawer { background: var(--c-surface) !important; border-right: 1px solid var(--c-border); }
+    .drawer-head { border-bottom: 1px solid var(--c-border); }
+    .drawer-nav a, .drawer-nav button { border-radius: var(--mac-r-sm); font-weight: 500; font-size: .88rem; transition: all .15s var(--mac-ease); }
+    .drawer-nav a:hover, .drawer-nav button:hover { background: var(--c-bg-alt) !important; color: var(--gold-ink) !important; }
+    .drawer-nav a i, .drawer-nav button i { color: var(--c-text-muted); transition: color .15s; }
+    .drawer-nav a:hover i, .drawer-nav button:hover i { color: var(--gold-ink); }
+    .drawer-cta-primary { background: var(--gold) !important; color: #1C1C1E !important; font-weight: 600; border-radius: var(--mac-r-sm); }
+    .drawer-cta-secondary { border: 1px solid var(--c-border); border-radius: var(--mac-r-sm); }
+    .drawer-foot { border-top: 1px solid var(--c-border); }
+    .drawer-contacts a { color: var(--c-text-muted); font-size: .82rem; transition: color .15s; }
+    .drawer-contacts a:hover { color: var(--gold-ink); }
+
+    /* ── 10. SOCIAL ── */
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--c-bg-alt); border: 1px solid var(--c-border);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--c-text-muted); font-size: .95rem; transition: all .2s var(--mac-ease); text-decoration: none;
+    }
+    .social-btn:hover { background: var(--gold); border-color: var(--gold); color: #1C1C1E; transform: translateY(-2px); }
+    .footer .social-btn { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08); color: rgba(255,255,255,.5); }
+    .footer .social-btn:hover { background: var(--gold); border-color: var(--gold); color: #1C1C1E; }
+    .social-row { display: flex; align-items: center; gap: 8px; }
+    .social-row > span { color: rgba(255,255,255,.35); font-size: .76rem; margin-right: 4px; }
+
+    /* ── 11. FOOTER ── */
+    .footer { background: #1C1C1E; border-top: 1px solid rgba(255,255,255,.06); padding-top: 64px; padding-bottom: 0; }
+    [data-theme="dark"] .footer { background: #18181A; }
+    .footer .logo-text { color: #fff; }
+    .footer-brand .logo-mark { color: var(--gold); }
+    .footer-brand p { color: rgba(255,255,255,.45); line-height: 1.7; font-size: .85rem; }
+    .footer-contact li { color: rgba(255,255,255,.45); gap: 8px; font-size: .82rem; }
+    .footer-contact li i { color: var(--gold); font-size: .9rem; }
+    .footer-col h4 { font-size: .75rem; font-weight: 600; color: rgba(255,255,255,.4); margin-bottom: 16px; letter-spacing: .06em; text-transform: uppercase; }
+    .footer-col ul { gap: 10px; }
+    .footer-col a { color: rgba(255,255,255,.6); font-size: .85rem; transition: color .15s, padding-left .15s; }
+    .footer-col a:hover { color: var(--gold); padding-left: 4px; }
+    .footer-newsletter-text { color: rgba(255,255,255,.4); font-size: .82rem; margin-bottom: 12px; }
+    .newsletter { display: flex; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: var(--mac-r-sm); overflow: hidden; transition: border-color .2s; }
+    .newsletter:focus-within { border-color: var(--gold); }
+    .newsletter input { flex: 1; background: transparent; border: none; padding: 11px 14px; color: #fff; font-family: var(--sf); font-size: .85rem; outline: none; }
+    .newsletter input::placeholder { color: rgba(255,255,255,.28); }
+    .newsletter-btn { width: 42px; background: var(--gold); border: none; color: #1C1C1E; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .95rem; transition: background .2s; flex-shrink: 0; }
+    .newsletter-btn:hover { background: var(--gold-light); }
+    .footer-payments { margin-top: 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .footer-payments > span { color: rgba(255,255,255,.3); font-size: .7rem; margin-right: 2px; }
+    .payment-chip { padding: 4px 10px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 6px; font-size: .68rem; font-weight: 700; color: rgba(255,255,255,.45); letter-spacing: .05em; }
+    .footer-bottom { margin-top: 40px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .footer-bottom > p { color: rgba(255,255,255,.35); font-size: .78rem; margin: 0; }
+    .footer-bottom-links a { color: rgba(255,255,255,.35); font-size: .78rem; transition: color .15s; }
+    .footer-bottom-links a:hover { color: var(--gold); }
+    .footer-bottom-links span { opacity: .25; }
+
+    /* ── 12. BACK TO TOP ── */
+    .back-to-top {
+      background: var(--c-surface);
+      color: var(--gold-ink);
+      border: 1px solid var(--c-border);
+      box-shadow: var(--mac-shadow);
+      transition: all .25s var(--mac-ease);
+    }
+    .back-to-top:hover {
+      background: var(--gold);
+      color: #1C1C1E;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201,168,76,.3);
+    }
+
+    /* ── 13. FLASH ── */
+    .messages-container { z-index: 9999; }
+
+    /* ── 14. ACCESSIBILITY ── */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, .nav-link:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 2px; border-radius: var(--mac-r-sm);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    }
+  </style>
+
+  {# Theme FOUC prevention #}
   <script>
     (function () {
       const t = localStorage.getItem('soluna-theme') || 'light';
       document.documentElement.setAttribute('data-theme', t);
+      document.addEventListener('DOMContentLoaded', function () {
+        const iconLight = document.getElementById('themeIconLight');
+        const iconDark  = document.getElementById('themeIconDark');
+        if (iconLight && iconDark) {
+          iconLight.style.display = t === 'dark' ? 'none' : '';
+          iconDark.style.display  = t === 'dark' ? '' : 'none';
+        }
+      });
     })();
   </script>
 
@@ -33,37 +307,42 @@
 <body>
 
 <a href="#main-content" class="skip-link">{% trans "Skip to content" %}</a>
-<div class="page-transition" id="pageTransition" aria-hidden="true"></div>
+<div class="page-transition" id="pageTransition" aria-hidden="true">
+  <div class="pt-logo">
+    <img class="pt-coin" src="{% static 'img/coin-splash.png' %}" alt="" aria-hidden="true" width="104" height="104">
+  </div>
+</div>
 
 {# ════════════════════ HEADER ════════════════════ #}
-<header class="header" id="header">
+<header class="header {% block header_class %}{% endblock %}" id="header">
 
-  {# ── Top bar ── #}
+  {# ── Topbar ── #}
   <div class="topbar">
     <div class="topbar-inner">
 
       <div class="topbar-left">
-        <a href="tel:+998998953536" class="topbar-link">
-          <i class="ti ti-phone"></i> +998 99 895 35 36
+        {% if site_settings.phone_1 %}
+        <a href="tel:{{ site_settings.phone_1|cut:' ' }}" class="topbar-link">
+          <i class="ti ti-phone"></i> {{ site_settings.phone_1 }}
         </a>
-        <a href="mailto:solunadmc@gmail.com" class="topbar-link topbar-link-hide-sm">
-          <i class="ti ti-mail"></i> solunadmc@gmail.com
+        {% endif %}
+        {% if site_settings.email_1 %}
+        <a href="mailto:{{ site_settings.email_1 }}" class="topbar-link topbar-link-hide-sm">
+          <i class="ti ti-mail"></i> {{ site_settings.email_1 }}
         </a>
+        {% endif %}
       </div>
 
       <div class="topbar-promo">
-        <i class="ti ti-bolt"></i>
-        <span>{% trans "Unlock the Magic of Travel with SoLuna" %}</span>
-        <a href="{% url 'tours:tour-list' %}" class="topbar-promo-cta">
-          {% trans "Explore Now" %} <i class="ti ti-arrow-right"></i>
+        <i class="ti ti-sparkles"></i>
+        <span>{% trans site_settings.promo_text %}</span>
+        <a href="{{ site_settings.promo_cta_url|default:'/tours/' }}" class="topbar-promo-cta">
+          {% trans site_settings.promo_cta_text %} <i class="ti ti-arrow-right"></i>
         </a>
       </div>
 
       <div class="topbar-right">
-        {# Language switcher — form-based, works without JS #}
         {% include 'partials/lang_switcher.html' %}
-
-        {# Theme toggle (sun ↔ moon) #}
         <button type="button" class="topbar-icon-btn" id="themeToggle" aria-label="{% trans 'Toggle theme' %}">
           <i class="ti ti-sun" id="themeIconLight"></i>
           <i class="ti ti-moon" id="themeIconDark" style="display:none;"></i>
@@ -72,7 +351,7 @@
     </div>
   </div>
 
-  {# ── Main navbar ── #}
+  {# ── Navbar ── #}
   <nav class="navbar" aria-label="{% trans 'Main navigation' %}">
 
     <a href="{% url 'home' %}" class="logo" data-no-transition>
@@ -80,13 +359,11 @@
       <span class="logo-text">SoLuna</span>
     </a>
 
-    {# Desktop nav #}
     <div class="nav" id="desktopNav">
       <a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}is-active{% endif %}">
         {% trans "Home" %}
       </a>
 
-      {# Tours dropdown #}
       <div class="nav-item nav-has-dropdown">
         <a href="{% url 'tours:tour-list' %}" class="nav-link">
           {% trans "Tours" %} <i class="ti ti-chevron-down nav-chev"></i>
@@ -123,7 +400,6 @@
         </div>
       </div>
 
-      {# Destinations dropdown #}
       <div class="nav-item nav-has-dropdown">
         <a href="{% url 'regions:region-list' %}" class="nav-link">
           {% trans "Destinations" %} <i class="ti ti-chevron-down nav-chev"></i>
@@ -164,16 +440,12 @@
       <a href="{% url 'messages_app:contact' %}" class="nav-link">{% trans "Contact" %}</a>
     </div>
 
-    {# Right actions #}
     <div class="nav-actions">
-
-      {# Search button #}
       <button type="button" class="nav-icon-btn" id="searchToggle" aria-label="{% trans 'Search' %}">
         <i class="ti ti-search"></i>
       </button>
 
       {% if user.is_authenticated %}
-        {# User dropdown #}
         <div class="nav-user nav-has-dropdown">
           <button type="button" class="nav-user-btn">
             <div class="nav-avatar">
@@ -198,12 +470,6 @@
             <a href="{% url 'bookings:booking-list' %}" role="menuitem">
               <i class="ti ti-ticket"></i> {% trans "My Bookings" %}
             </a>
-            <a href="#favorites" role="menuitem">
-              <i class="ti ti-heart"></i> {% trans "Saved Tours" %}
-            </a>
-            <a href="#settings" role="menuitem">
-              <i class="ti ti-settings"></i> {% trans "Settings" %}
-            </a>
             <hr class="nav-dropdown-divider">
             <form action="{% url 'account_logout' %}" method="post" class="nav-logout-form">
               {% csrf_token %}
@@ -218,7 +484,6 @@
         <a href="{% url 'account_signup' %}" class="nav-cta nav-cta-primary">{% trans "Sign Up" %}</a>
       {% endif %}
 
-      {# Mobile menu toggle #}
       <button type="button" class="nav-menu-btn" id="navToggle" aria-label="{% trans 'Open menu' %}" aria-expanded="false">
         <i class="ti ti-menu-2"></i>
       </button>
@@ -252,7 +517,7 @@
   <div class="drawer-head">
     <a href="{% url 'home' %}" class="logo">
       <span class="logo-mark">☾</span>
-      <span>SoLuna</span>
+      <span class="logo-text">SoLuna</span>
     </a>
     <button type="button" class="drawer-close" id="drawerClose" aria-label="{% trans 'Close menu' %}">
       <i class="ti ti-x"></i>
@@ -295,13 +560,23 @@
 
   <div class="drawer-foot">
     <div class="drawer-contacts">
-      <a href="tel:+998950666233"><i class="ti ti-phone"></i> +998 95 066 62 33</a>
-      <a href="mailto:oygulakhatovas@gmail.com"><i class="ti ti-mail"></i> oygulakhatovas@gmail.com</a>
+      {% if site_settings.phone_1 %}
+      <a href="tel:{{ site_settings.phone_1|cut:' ' }}"><i class="ti ti-phone"></i> {{ site_settings.phone_1 }}</a>
+      {% endif %}
+      {% if site_settings.email_1 %}
+      <a href="mailto:{{ site_settings.email_1 }}"><i class="ti ti-mail"></i> {{ site_settings.email_1 }}</a>
+      {% endif %}
     </div>
     <div class="drawer-socials">
-      <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-      <a href="https://t.me/soluna_uz" target="_blank" rel="noopener" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
-      <a href="https://wa.me/998950666233" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+      {% if site_settings.instagram %}
+      <a href="{{ site_settings.instagram }}" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+      {% endif %}
+      {% if site_settings.telegram %}
+      <a href="{{ site_settings.telegram }}" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
+      {% endif %}
+      {% if site_settings.whatsapp %}
+      <a href="{{ site_settings.whatsapp }}" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+      {% endif %}
     </div>
   </div>
 </aside>
@@ -331,14 +606,22 @@
       <div class="footer-brand">
         <a href="{% url 'home' %}" class="logo">
           <span class="logo-mark">☾</span>
-          <span class="logo-text">SoLuna</span>
+          <span class="logo-text">{{ site_settings.site_name }}</span>
         </a>
-        <p>{% trans "Dive into local recommendations for a truly authentic Silk Road experience across Uzbekistan." %}</p>
+        <p>{% trans "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for curious travelers, guided by local experts." %}</p>
         <ul class="footer-contact">
-          <li><i class="ti ti-map-pin"></i> {% trans "Tashkent, Uzbekistan" %}</li>
-          <li><i class="ti ti-clock"></i> {% trans "Hours" %}: 8:00 – 18:00, Mon – Sat</li>
-          <li><i class="ti ti-mail"></i> oygulakhatovas@gmail.com</li>
-          <li><i class="ti ti-phone"></i> +998 95 066 62 33</li>
+          {% if site_settings.address %}
+          <li><i class="ti ti-map-pin"></i> {{ site_settings.address }}</li>
+          {% endif %}
+          {% if site_settings.work_hours %}
+          <li><i class="ti ti-clock"></i> {% trans "Hours" %}: {{ site_settings.work_hours }}</li>
+          {% endif %}
+          {% if site_settings.email_1 %}
+          <li><i class="ti ti-mail"></i> {{ site_settings.email_1 }}</li>
+          {% endif %}
+          {% if site_settings.phone_1 %}
+          <li><i class="ti ti-phone"></i> {{ site_settings.phone_1 }}</li>
+          {% endif %}
         </ul>
       </div>
 
@@ -364,14 +647,15 @@
 
       <div class="footer-col">
         <h4>{% trans "Newsletter" %}</h4>
-        <p class="footer-newsletter-text">{% trans "Get exclusive offers and travel inspiration." %}</p>
-        <form method="post" action="#newsletter" class="newsletter">
+        <p class="footer-newsletter-text">{% trans "Get exclusive offers and Silk Road travel inspiration." %}</p>
+        <form method="post" action="{% url 'messages_app:newsletter-subscribe' %}" class="newsletter" id="newsletter-form">
           {% csrf_token %}
-          <input type="email" name="email" placeholder="{% trans 'Enter your email' %}" required aria-label="{% trans 'Email' %}">
+          <input type="email" name="email" placeholder="{% trans 'Your email address' %}" required aria-label="{% trans 'Email' %}">
           <button type="submit" class="newsletter-btn" aria-label="{% trans 'Subscribe' %}">
             <i class="ti ti-arrow-right"></i>
           </button>
         </form>
+        <div class="newsletter-feedback" style="display:none; padding:8px 0; font-size:.82rem; text-align:center;"></div>
         <div class="footer-payments">
           <span>{% trans "We accept" %}:</span>
           <span class="payment-chip">VISA</span>
@@ -383,7 +667,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© {% now "Y" %} "SoLuna Prime" MCHJ. {% trans "All rights reserved." %}</p>
+      <p>© {% now "Y" %} {{ site_settings.site_name }}. {% trans "All rights reserved." %}</p>
       <div class="footer-bottom-links">
         <a href="#terms">{% trans "Terms" %}</a>
         <span>·</span>
@@ -393,22 +677,31 @@
       </div>
       <div class="social-row">
         <span>{% trans "Follow us" %}</span>
-        <a href="https://instagram.com/Oygul.axatova" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-        <a href="https://t.me/soluna_uz" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
-        <a href="https://wa.me/998950666233" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
-        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+        {% if site_settings.instagram %}
+        <a href="{{ site_settings.instagram }}" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+        {% endif %}
+        {% if site_settings.telegram %}
+        <a href="{{ site_settings.telegram }}" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>
+        {% endif %}
+        {% if site_settings.whatsapp %}
+        <a href="{{ site_settings.whatsapp }}" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+        {% endif %}
+        {% if site_settings.facebook %}
+        <a href="{{ site_settings.facebook }}" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+        {% endif %}
       </div>
     </div>
 
   </div>
 </footer>
 
-{# Back to top button #}
 <button type="button" class="back-to-top" id="backToTop" aria-label="{% trans 'Back to top' %}">
   <i class="ti ti-arrow-up"></i>
 </button>
 
+<script>window.SOLUNA_LOGIN_URL = "{% url 'account_login' %}";</script>
 <script defer src="{% static 'js/main.js' %}"></script>
+<script defer src="{% static 'js/datepicker.js' %}"></script>
 {% block extra_js %}{% endblock %}
 </body>
 </html>

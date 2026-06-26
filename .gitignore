@@ -26,3 +26,10 @@ wheels/
 # 6. Operatsion tizim kesh fayllari
 .DS_Store
 Thumbs.db
+
+# 7. Claude Code
+.claude/settings.local.json
+.claude/projects/
+
+# 8. MiMo Code
+.mimocode/

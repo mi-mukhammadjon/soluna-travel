@@ -4,92 +4,202 @@
 {% block title %}{% trans "Edit Profile" %} | SoLuna{% endblock %}
 
 {% block content %}
-<section style="background:var(--c-bg-alt);padding:40px 0 80px;">
-  <div class="container" style="max-width:780px;">
+<section class="pe-wrap">
+  <div class="container pe-container">
 
-    <nav style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:14px;">
-      <a href="{% url 'accounts:profile' %}" style="color:var(--c-text-muted);">{% trans "Profile" %}</a>
-      <span style="margin:0 8px;">/</span>
-      <span style="color:var(--c-text);font-weight:600;">{% trans "Edit" %}</span>
+    <nav class="pe-crumb">
+      <a href="{% url 'accounts:profile' %}">{% trans "Profile" %}</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>{% trans "Edit" %}</span>
     </nav>
 
-    <div class="bk-card">
-      <h2 style="margin-bottom:6px;">{% trans "Edit Profile" %}</h2>
-      <p style="color:var(--c-text-muted);margin-bottom:28px;">
-        {% trans "Update your personal information and preferences." %}
-      </p>
+    <div class="pe-card">
+      <div class="pe-head">
+        <h1>{% trans "Edit Profile" %}</h1>
+        <p>{% trans "Update your personal information and preferences." %}</p>
+      </div>
 
-      <form method="post" enctype="multipart/form-data">
+      {% if form.non_field_errors %}
+      <div class="pe-alert">
+        <i class="ti ti-alert-circle"></i>
+        <div>{{ form.non_field_errors|join:". " }}</div>
+      </div>
+      {% endif %}
+
+      <form method="post" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
 
-        {# Avatar #}
-        <div style="display:flex;align-items:center;gap:24px;margin-bottom:30px;padding-bottom:24px;border-bottom:1px solid var(--c-border);">
-          {% if user.avatar %}
-            <img src="{{ user.avatar.url }}" alt="" style="width:88px;height:88px;border-radius:50%;object-fit:cover;">
-          {% else %}
-            <div style="width:88px;height:88px;border-radius:50%;background:var(--c-yellow);display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:800;">
-              {{ user.username|first|upper }}
+        {# ── Avatar ── #}
+        <div class="pe-avatar-row">
+          <div class="pe-avatar-prev" id="avatarPreview">
+            {% if user.avatar %}
+              <img src="{{ user.avatar.url }}" alt="">
+            {% else %}
+              <span class="pe-avatar-letter">{{ user.get_full_name|first|upper|default:user.username|first|upper }}</span>
+            {% endif %}
+          </div>
+          <div class="pe-avatar-info">
+            <h4>{% trans "Profile photo" %}</h4>
+            <p>{% trans "JPG or PNG, up to 2MB." %}</p>
+            <div class="pe-avatar-actions">
+              <label class="pe-btn-soft">
+                <i class="ti ti-upload"></i> {% trans "Upload new" %}
+                <input type="file" name="avatar" accept="image/png,image/jpeg,image/webp" hidden id="avatarInput">
+              </label>
+              <span class="pe-file-name" id="avatarName"></span>
             </div>
-          {% endif %}
-          <div style="flex:1;">
-            <h4 style="margin-bottom:8px;">{% trans "Profile photo" %}</h4>
-            <p style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:12px;">
-              {% trans "JPG, PNG. Max 2MB." %}
-            </p>
-            <label class="btn btn-light btn-sm" style="cursor:pointer;">
-              <i class="ti ti-upload"></i> {% trans "Upload" %}
-              <input type="file" name="avatar" accept="image/*" hidden>
-            </label>
+            {% if form.avatar.errors %}<div class="pe-err">{{ form.avatar.errors.0 }}</div>{% endif %}
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-          <div class="form-group">
-            <label class="form-label" for="id_first_name">{% trans "First Name" %}</label>
-            <input type="text" name="first_name" id="id_first_name" class="form-control" value="{{ user.first_name }}">
+        {# ── Names ── #}
+        <div class="pe-grid">
+          <div class="pe-field">
+            <label for="id_first_name">{% trans "First Name" %}</label>
+            <input type="text" name="first_name" id="id_first_name" class="pe-input{% if form.first_name.errors %} is-error{% endif %}"
+                   value="{{ form.first_name.value|default_if_none:'' }}" placeholder="{% trans 'Your first name' %}">
+            {% if form.first_name.errors %}<div class="pe-err">{{ form.first_name.errors.0 }}</div>{% endif %}
           </div>
-          <div class="form-group">
-            <label class="form-label" for="id_last_name">{% trans "Last Name" %}</label>
-            <input type="text" name="last_name" id="id_last_name" class="form-control" value="{{ user.last_name }}">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="id_email">{% trans "Email" %}</label>
-          <input type="email" name="email" id="id_email" class="form-control" value="{{ user.email }}" readonly>
-          <small style="color:var(--c-text-muted);font-size:0.8rem;">{% trans "Email cannot be changed." %}</small>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="id_phone">{% trans "Phone" %}</label>
-          <input type="tel" name="phone" id="id_phone" class="form-control" value="{{ user.phone|default:'' }}" placeholder="+998 ...">
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-          <div class="form-group">
-            <label class="form-label" for="id_country">{% trans "Country" %}</label>
-            <input type="text" name="country" id="id_country" class="form-control" value="{{ user.country|default:'' }}">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="id_city">{% trans "City" %}</label>
-            <input type="text" name="city" id="id_city" class="form-control" value="{{ user.city|default:'' }}">
+          <div class="pe-field">
+            <label for="id_last_name">{% trans "Last Name" %}</label>
+            <input type="text" name="last_name" id="id_last_name" class="pe-input{% if form.last_name.errors %} is-error{% endif %}"
+                   value="{{ form.last_name.value|default_if_none:'' }}" placeholder="{% trans 'Your last name' %}">
+            {% if form.last_name.errors %}<div class="pe-err">{{ form.last_name.errors.0 }}</div>{% endif %}
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="id_bio">{% trans "About yourself" %}</label>
-          <textarea name="bio" id="id_bio" class="form-control" rows="4" placeholder="{% trans 'Tell us a bit about yourself...' %}">{{ user.bio|default:'' }}</textarea>
+        {# ── Email (managed by account security) ── #}
+        <div class="pe-field">
+          <label for="id_email">{% trans "Email" %}</label>
+          <div class="pe-input-icon">
+            <i class="ti ti-mail"></i>
+            <input type="email" name="email" id="id_email" class="pe-input"
+                   value="{{ form.email.value|default_if_none:user.email }}" readonly>
+            <i class="ti ti-lock pe-lock" title="{% trans 'Email cannot be changed here' %}"></i>
+          </div>
+          <small class="pe-hint">{% trans "Email cannot be changed here." %}</small>
         </div>
 
-        <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:28px;padding-top:24px;border-top:1px solid var(--c-border);">
-          <a href="{% url 'accounts:profile' %}" class="btn btn-light">{% trans "Cancel" %}</a>
-          <button type="submit" class="btn btn-dark">
-            <i class="ti ti-check"></i> {% trans "Save Changes" %}
-          </button>
+        {# ── Phone ── #}
+        <div class="pe-field">
+          <label for="id_phone">{% trans "Phone" %}</label>
+          <div class="pe-input-icon">
+            <i class="ti ti-phone"></i>
+            <input type="tel" name="phone" id="id_phone" class="pe-input{% if form.phone.errors %} is-error{% endif %}"
+                   value="{{ form.phone.value|default_if_none:'' }}" placeholder="+998 90 123 45 67">
+          </div>
+          {% if form.phone.errors %}<div class="pe-err">{{ form.phone.errors.0 }}</div>{% endif %}
+        </div>
+
+        {# ── Preferred language ── #}
+        <div class="pe-field">
+          <label for="id_preferred_language">{% trans "Preferred Language" %}</label>
+          <div class="pe-input-icon">
+            <i class="ti ti-language"></i>
+            <select name="preferred_language" id="id_preferred_language" class="pe-input pe-select">
+              {% get_available_languages as LANGS %}
+              {% for code, name in LANGS %}
+                <option value="{{ code }}" {% if code == form.preferred_language.value %}selected{% endif %}>
+                  {% if code == 'uz' %}O'zbekcha{% elif code == 'ru' %}Русский{% elif code == 'en' %}English{% elif code == 'ko' %}한국어{% elif code == 'ja' %}日本語{% elif code == 'zh-hans' or code == 'zh_Hans' %}中文{% elif code == 'ar' %}العربية{% elif code == 'de' %}Deutsch{% elif code == 'fr' %}Français{% elif code == 'es' %}Español{% else %}{{ name }}{% endif %}
+                </option>
+              {% endfor %}
+            </select>
+            <i class="ti ti-chevron-down pe-chev"></i>
+          </div>
+          {% if form.preferred_language.errors %}<div class="pe-err">{{ form.preferred_language.errors.0 }}</div>{% endif %}
+        </div>
+
+        <div class="pe-actions">
+          <a href="{% url 'accounts:profile' %}" class="pe-btn-cancel">{% trans "Cancel" %}</a>
+          <button type="submit" class="pe-btn-save"><i class="ti ti-check"></i> {% trans "Save Changes" %}</button>
         </div>
       </form>
     </div>
-
   </div>
 </section>
+
+
+<style>
+.pe-wrap { background: var(--c-bg-alt); padding: 28px 0 80px; min-height: 80vh; }
+.pe-container { max-width: 760px; }
+.pe-crumb { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--c-text-muted); margin-bottom: 18px; }
+.pe-crumb a { color: var(--c-text-muted); transition: color .2s; }
+.pe-crumb a:hover { color: var(--gold-ink); }
+.pe-crumb i { font-size: .8rem; opacity: .5; }
+.pe-crumb span { color: var(--c-text); font-weight: 600; }
+
+.pe-card { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--mac-r); padding: 32px; box-shadow: var(--mac-shadow); }
+.pe-head { margin-bottom: 24px; }
+.pe-head h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: var(--c-text); margin: 0 0 6px; }
+.pe-head p { color: var(--c-text-muted); font-size: .92rem; margin: 0; }
+
+.pe-alert { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px; padding: 13px 16px; background: rgba(226,75,74,.1); border-left: 3px solid #e24b4a; border-radius: var(--mac-r-sm); color: #e24b4a; font-size: .88rem; }
+.pe-alert i { font-size: 1.2rem; flex-shrink: 0; }
+
+/* Avatar */
+.pe-avatar-row { display: flex; align-items: center; gap: 22px; margin-bottom: 28px; padding-bottom: 26px; border-bottom: 1px solid var(--c-border); }
+.pe-avatar-prev { width: 92px; height: 92px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, #e8c96a, #c9a84c); display: flex; align-items: center; justify-content: center; }
+.pe-avatar-prev img { width: 100%; height: 100%; object-fit: cover; }
+.pe-avatar-letter { font-size: 2.3rem; font-weight: 800; font-family: var(--sf-display); color: #1c1c1e; }
+.pe-avatar-info { flex: 1; min-width: 0; }
+.pe-avatar-info h4 { font-size: 1rem; font-weight: 600; color: var(--c-text); margin: 0 0 4px; }
+.pe-avatar-info p { font-size: .82rem; color: var(--c-text-muted); margin: 0 0 12px; }
+.pe-avatar-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pe-file-name { font-size: .82rem; color: var(--gold-ink); font-weight: 500; }
+.pe-btn-soft { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: var(--mac-r-sm); background: var(--c-bg-alt); border: 1px solid var(--c-border); color: var(--c-text); font-weight: 600; font-size: .85rem; cursor: pointer; transition: border-color .2s, background .2s; }
+.pe-btn-soft:hover { border-color: var(--gold); background: var(--gold-soft); color: var(--gold-ink); }
+
+/* Fields */
+.pe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 560px) { .pe-grid { grid-template-columns: 1fr; } }
+.pe-field { margin-bottom: 16px; }
+.pe-field > label { display: block; font-weight: 600; font-size: .84rem; color: var(--c-text); margin-bottom: 7px; }
+.pe-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--c-border); border-radius: var(--mac-r-sm); font-size: .95rem; font-family: var(--sf); background: var(--c-bg-alt); color: var(--c-text); transition: border-color .2s, box-shadow .2s, background .2s; }
+.pe-input::placeholder { color: var(--c-text-muted); }
+.pe-input:focus { outline: none; border-color: var(--gold); background: var(--c-surface); box-shadow: 0 0 0 3px var(--gold-soft); }
+.pe-input[readonly] { background: var(--c-bg-alt); color: var(--c-text-muted); cursor: not-allowed; }
+.pe-input.is-error { border-color: #e24b4a; }
+
+.pe-input-icon { position: relative; display: flex; align-items: center; }
+.pe-input-icon > i:first-child { position: absolute; left: 13px; color: var(--c-text-muted); font-size: 1.05rem; pointer-events: none; z-index: 1; }
+.pe-input-icon .pe-input { padding-left: 40px; }
+.pe-lock { position: absolute; right: 13px; color: var(--c-text-light); font-size: 1rem; }
+.pe-select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 38px; }
+.pe-chev { position: absolute; right: 13px; color: var(--c-text-muted); font-size: .9rem; pointer-events: none; }
+.pe-hint { display: block; font-size: .78rem; color: var(--c-text-muted); margin-top: 5px; }
+.pe-err { color: #e24b4a; font-size: .8rem; margin-top: 5px; }
+
+/* Actions */
+.pe-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--c-border); }
+.pe-btn-cancel { display: inline-flex; align-items: center; padding: 12px 22px; border-radius: var(--mac-r-sm); background: var(--c-bg-alt); border: 1px solid var(--c-border); color: var(--c-text); font-weight: 600; font-size: .9rem; transition: background .2s, border-color .2s; }
+.pe-btn-cancel:hover { background: var(--c-border-soft); border-color: var(--c-text-muted); }
+.pe-btn-save { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--mac-r-sm); background: var(--gold); color: #1c1c1e; font-weight: 600; font-size: .9rem; border: none; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,.12); transition: background .2s, transform .15s var(--mac-ease), box-shadow .2s; font-family: var(--sf); }
+.pe-btn-save:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(201,168,76,.4); }
+.pe-btn-save:active { transform: translateY(0) scale(.99); }
+</style>
+
+<script>
+(function () {
+  var input = document.getElementById('avatarInput');
+  var prev = document.getElementById('avatarPreview');
+  var nameEl = document.getElementById('avatarName');
+  if (!input) return;
+  input.addEventListener('change', function () {
+    var file = input.files && input.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      nameEl.textContent = '';
+      input.value = '';
+      alert('{% trans "File is too large. Max 2MB." %}');
+      return;
+    }
+    nameEl.textContent = file.name;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      prev.innerHTML = '<img src="' + e.target.result + '" alt="">';
+    };
+    reader.readAsDataURL(file);
+  });
+})();
+</script>
 {% endblock %}

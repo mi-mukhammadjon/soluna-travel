@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',          # Barcha responselarni gzip bilan siqish
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -60,24 +61,31 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',  # allauth uchun shart
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+_TEMPLATE_LOADERS = ['django.template.loaders.filesystem.Loader', 'django.template.loaders.app_directories.Loader']
+_TEMPLATE_CONTEXT_PROCESSORS = [
+    'django.template.context_processors.debug',
+    'django.template.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    'django.template.context_processors.i18n',
+    'accounts.context_processors.site_settings',
+]
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',
-            ],
+            'context_processors': _TEMPLATE_CONTEXT_PROCESSORS,
+            # Production da templatelarni keshda saqlaydi — har so'rovda qayta o'qilmaydi
+            'loaders': [
+                ('django.template.loaders.cached.Loader', _TEMPLATE_LOADERS)
+            ] if not DEBUG else _TEMPLATE_LOADERS,
         },
     },
 ]
@@ -92,6 +100,7 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', '5432'),
+        'CONN_MAX_AGE': 60,  # DB connection pooling — har request da yangi connection ochilmaydi
     }
 }
 
@@ -100,10 +109,13 @@ REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379/1",
+        "LOCATION": os.getenv('REDIS_URL', 'redis://localhost:6379/1'),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+            "IGNORE_EXCEPTIONS": True,  # Redis ishlamasa ham sayt ishlayveradi
+        },
+        "KEY_PREFIX": "soluna",
+        "TIMEOUT": 300,  # 5 daqiqa default
     }
 }
 
@@ -199,14 +211,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ADMIN_SITE = 'config.admin.SoLunaAdminSite'
 
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend' if DEBUG else 'django.core.mail.backends.smtp.EmailBackend')
 
 EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True').lower() == 'true'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@touragency.uz')

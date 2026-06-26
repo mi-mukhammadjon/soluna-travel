@@ -1,0 +1,123 @@
+{% load i18n %}
+{% for tour in tours %}
+<article class="tc reveal{% if tour.is_featured %} tc--featured{% endif %}">
+
+  {# ── Image ────────────────────────────────────── #}
+  <div class="tc-img">
+    {% if tour.cover_image %}
+      <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="lazy" class="tc-photo">
+    {% else %}
+      <div class="tc-photo tc-photo--empty"></div>
+    {% endif %}
+
+    {# Badges: discount (sale) stacks above the dynamic status badge #}
+    <div class="tc-badges">
+      {% if tour.has_discount %}
+        <span class="tc-badge tc-badge--sale"><i class="ti ti-discount-2"></i>−{{ tour.discount_percent }}%{% if tour.discount_label %} · {{ tour.discount_label }}{% endif %}</span>
+      {% endif %}
+      {# Dynamic Badge: Featured > Best Seller > Top Rated > New #}
+      {% if tour.is_featured %}
+        <span class="tc-badge tc-badge--gold"><i class="ti ti-star-filled"></i>{% trans "Featured" %}</span>
+      {% elif tour.booking_count >= 3 %}
+        <span class="tc-badge tc-badge--flame"><i class="ti ti-flame"></i>{% trans "Best Seller" %}</span>
+      {% elif tour.avg_rating and tour.avg_rating >= 4.5 and tour.review_count >= 3 %}
+        <span class="tc-badge tc-badge--amber"><i class="ti ti-award"></i>{% trans "Top Rated" %}</span>
+      {% elif tour.is_new_tour %}
+        <span class="tc-badge tc-badge--mint"><i class="ti ti-sparkles"></i>{% trans "New" %}</span>
+      {% endif %}
+    </div>
+
+    {# Wishlist toggle #}
+    <button class="tc-fav tour-card-fav{% if tour.id in wishlisted_ids %} is-liked{% endif %}"
+      aria-label="{% trans 'Save to wishlist' %}"
+      data-tour-id="{{ tour.id }}"
+      data-wishlist-url="{% url 'tours:wishlist-toggle' tour.id %}">
+      <i class="ti ti-heart{% if tour.id in wishlisted_ids %}-filled{% endif %}"></i>
+    </button>
+
+    {# Bottom image overlay: category + difficulty #}
+    <div class="tc-img-foot">
+      {% if tour.category %}
+        <span class="tc-cat">{{ tour.category.name }}</span>
+      {% endif %}
+      <span class="tc-diff tc-diff--{{ tour.difficulty }}">
+        <span class="tc-diff-dot"></span>
+        <span class="tc-diff-dot"></span>
+        <span class="tc-diff-dot"></span>
+        {{ tour.get_difficulty_display }}
+      </span>
+    </div>
+  </div>
+
+  {# ── Card body ─────────────────────────────────── #}
+  <div class="tc-body">
+
+    {# Star rating row #}
+    <div class="tc-rating-row">
+      <span class="tc-stars" style="--r:{{ tour.avg_rating|default:0|floatformat:2 }}">
+        <span class="tc-stars-bg">★★★★★</span>
+        <span class="tc-stars-fg">★★★★★</span>
+      </span>
+      {% if tour.avg_rating %}
+        <strong class="tc-rating-val">{{ tour.avg_rating|floatformat:1 }}</strong>
+      {% endif %}
+      <span class="tc-rating-ct">({{ tour.review_count|default:0 }})</span>
+    </div>
+
+    {# Title — display font via .tc-title #}
+    <h3 class="tc-title">
+      <a href="{% url 'tours:tour-detail' tour.slug %}">{{ tour.title }}</a>
+    </h3>
+
+    {# Short description: creative context teaser #}
+    {% if tour.short_description %}
+      <p class="tc-desc">{{ tour.short_description|truncatewords:18 }}</p>
+    {% endif %}
+
+    {# Meta highlights: duration · group size · region #}
+    <ul class="tc-meta">
+      <li class="tc-meta-item">
+        <i class="ti ti-clock"></i>
+        <span>{{ tour.duration_days }}&thinsp;{% trans "days" %}</span>
+      </li>
+      <li class="tc-meta-item">
+        <i class="ti ti-users"></i>
+        <span>{% trans "Max" %}&thinsp;{{ tour.max_group_size }}</span>
+      </li>
+      {% with r=tour.regions.first %}
+        {% if r %}
+          <li class="tc-meta-item">
+            <i class="ti ti-map-pin"></i>
+            <span>{{ r.name }}</span>
+          </li>
+        {% endif %}
+      {% endwith %}
+    </ul>
+
+    {# Price + CTA #}
+    <div class="tc-foot">
+      <div class="tc-price">
+        <span class="tc-from">{% trans "from" %}</span>
+        {% if tour.has_discount %}
+          <span class="tc-price-old">${{ tour.price|floatformat:0 }}</span>
+          <strong class="tc-price-val tc-price-val--sale">${{ tour.discounted_price|floatformat:0 }}</strong>
+        {% else %}
+          <strong class="tc-price-val">${{ tour.price|floatformat:0 }}</strong>
+        {% endif %}
+        <span class="tc-pp">/ {% trans "person" %}</span>
+      </div>
+      <a href="{% url 'tours:tour-detail' tour.slug %}" class="tc-cta">
+        {% trans "View" %}&ensp;<i class="ti ti-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+</article>
+{% empty %}
+<div class="tl-empty">
+  <div class="tl-empty-icon"><i class="ti ti-search-off"></i></div>
+  <h3>{% trans "No tours found" %}</h3>
+  <p>{% trans "Try adjusting your filters or search criteria." %}</p>
+  <button onclick="clearAllFilters()" class="btn btn-dark">{% trans "Clear filters" %}</button>
+</div>
+{% endfor %}

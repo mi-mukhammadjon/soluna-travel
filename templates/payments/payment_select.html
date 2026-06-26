@@ -116,6 +116,27 @@
                 </div>
               </label>
 
+              {# Bank card — Visa / Mastercard / UZCARD / HUMO #}
+              <label class="pm-option" data-method="card">
+                <input type="radio" name="method" value="card">
+                <div class="pm-option-inner">
+                  <div class="pm-option-icon pm-icon-card">
+                    <i class="ti ti-credit-card"></i>
+                  </div>
+                  <div class="pm-option-info">
+                    <h4>{% trans "Bank card" %}</h4>
+                    <p>{% trans "Pay directly with Visa, Mastercard, UZCARD or HUMO" %}</p>
+                    <div class="pm-option-cards">
+                      <span class="pm-card-chip">VISA</span>
+                      <span class="pm-card-chip">MASTERCARD</span>
+                      <span class="pm-card-chip">UZCARD</span>
+                      <span class="pm-card-chip">HUMO</span>
+                    </div>
+                  </div>
+                  <div class="pm-option-check"><i class="ti ti-check"></i></div>
+                </div>
+              </label>
+
               {# Cash #}
               <label class="pm-option" data-method="cash">
                 <input type="radio" name="method" value="cash">
@@ -185,7 +206,7 @@
             </div>
             <h3 class="pm-tour-mini-title">{{ booking.tour.title|truncatechars:50 }}</h3>
             <div class="pm-tour-mini-meta">
-              <span><i class="ti ti-calendar-event"></i> {{ booking.travel_date|date:"d M Y" }}</span>
+              <span><i class="ti ti-calendar-event"></i> {{ booking.travel_date|date:"d-m-Y" }}</span>
               <span>•</span>
               <span><i class="ti ti-users"></i> {{ booking.num_adults }}{% if booking.num_children %}+{{ booking.num_children }}{% endif %}</span>
             </div>
@@ -246,10 +267,10 @@
 .pm-hero::before{content:'';position:absolute;right:-200px;top:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(254,250,23,0.06),transparent 70%);pointer-events:none;}
 .pm-crumbs{display:flex;align-items:center;gap:6px;font-size:0.85rem;margin-bottom:20px;color:rgba(255,255,255,0.5);}
 .pm-crumbs a{color:rgba(255,255,255,0.7);text-decoration:none;}
-.pm-crumbs a:hover{color:var(--c-yellow);}
+.pm-crumbs a:hover{color:var(--gold);}
 .pm-crumbs i{font-size:0.7rem;opacity:0.4;}
-.pm-crumbs span{color:var(--c-yellow);font-weight:600;}
-.pm-hero-title{font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.1;margin-bottom:8px;}
+.pm-crumbs span{color:var(--gold);font-weight:600;}
+.pm-hero-title{font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.1;margin-bottom:8px;color:var(--gold);}
 .pm-hero-sub{color:rgba(255,255,255,0.7);font-size:1rem;margin-bottom:32px;}
 
 .pm-stepper{display:flex;align-items:center;gap:16px;padding:20px 24px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);backdrop-filter:blur(10px);flex-wrap:wrap;}
@@ -290,6 +311,7 @@
 .pm-icon-click{background:linear-gradient(135deg,#0088FF,#0066CC);color:#fff;}
 .pm-icon-payme{background:linear-gradient(135deg,#37C2FF,#00A8E8);color:#fff;}
 .pm-icon-cash{background:linear-gradient(135deg,#10B981,#059669);color:#fff;}
+.pm-icon-card{background:linear-gradient(135deg,#2D2D3A,#4A4A5E);color:#fff;}
 
 .pm-option-info{flex:1;min-width:0;}
 .pm-option-info h4{font-size:1rem;margin-bottom:2px;}
@@ -365,6 +387,7 @@
   const messages = {
     click: "{% trans 'You will be redirected to Click payment page. Complete the payment via your card or Click app.' %}",
     payme: "{% trans 'You will be redirected to Payme. Complete the payment via your card or Payme app.' %}",
+    card:  "{% trans 'Enter your Visa or Mastercard details securely on the next page to complete payment.' %}",
     cash:  "{% trans 'Visit our office in Tashkent to complete payment in cash. Your booking will remain pending until paid.' %}",
   };
 

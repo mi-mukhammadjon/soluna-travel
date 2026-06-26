@@ -25,23 +25,32 @@
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:24px;">
       <div style="flex:1;min-width:280px;">
         <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
-          {% if tour.is_top_rated %}<span class="tour-card-badge tour-card-badge--top" style="position:static;">{% trans "Top Rated" %}</span>{% endif %}
+          {% if tour.is_featured %}<span class="tour-card-badge tour-card-badge--top" style="position:static;">{% trans "Featured" %}</span>{% endif %}
           <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.9rem;">
             <i class="ti ti-star" style="color:var(--c-star);"></i>
-            <strong>{{ tour.rating|default:"4.96" }}</strong>
-            <span style="color:var(--c-text-muted);">({{ tour.review_count|default:"672" }} {% trans "reviews" %})</span>
+            <strong>{{ avg_rating|floatformat:1|default:"0" }}</strong>
+            <span style="color:var(--c-text-muted);">({{ review_count|default:"0" }} {% trans "reviews" %})</span>
           </div>
+          {% if tour.regions.all %}
           <span style="color:var(--c-text-muted);font-size:0.9rem;display:inline-flex;align-items:center;gap:6px;">
-            <i class="ti ti-map-pin"></i> {{ tour.location|default:"Uzbekistan" }}
+            <i class="ti ti-map-pin"></i>
+            {% for r in tour.regions.all %}{{ r.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
           </span>
+          {% endif %}
         </div>
 
         <h1 style="margin-bottom:8px;">{{ tour.title }}</h1>
       </div>
 
       <div style="display:flex;gap:10px;">
-        <button class="btn-icon-circle" aria-label="{% trans 'Share' %}"><i class="ti ti-share"></i></button>
-        <button class="btn-icon-circle" aria-label="{% trans 'Save' %}"><i class="ti ti-heart"></i></button>
+        <button class="btn-icon-circle" id="shareBtn" aria-label="{% trans 'Share' %}"><i class="ti ti-share"></i></button>
+        <button class="btn-icon-circle {% if is_wishlisted %}is-liked{% endif %}" id="wishlistBtn"
+          data-tour-id="{{ tour.id }}"
+          data-wishlist-url="{% url 'tours:wishlist-toggle' tour.id %}"
+          data-login-url="{% url 'account_login' %}"
+          aria-label="{% trans 'Save' %}">
+          <i class="ti ti-heart{% if is_wishlisted %}-filled{% endif %}"></i>
+        </button>
       </div>
     </div>
 
@@ -82,28 +91,28 @@
             <i class="ti ti-clock"></i>
             <div>
               <div class="td-fact-label">{% trans "Duration" %}</div>
-              <div class="td-fact-value">{{ tour.duration|default:"3 days" }}</div>
+              <div class="td-fact-value">{{ tour.duration_days }} {% trans "days" %}</div>
             </div>
           </div>
           <div class="td-fact">
             <i class="ti ti-users"></i>
             <div>
               <div class="td-fact-label">{% trans "Group Size" %}</div>
-              <div class="td-fact-value">{{ tour.group_size|default:"4-6" }} {% trans "people" %}</div>
+              <div class="td-fact-value">{{ tour.max_group_size }} {% trans "people" %}</div>
             </div>
           </div>
           <div class="td-fact">
-            <i class="ti ti-language"></i>
+            <i class="ti ti-mountain"></i>
             <div>
-              <div class="td-fact-label">{% trans "Languages" %}</div>
-              <div class="td-fact-value">{{ tour.languages|default:"EN, RU, UZ" }}</div>
+              <div class="td-fact-label">{% trans "Difficulty" %}</div>
+              <div class="td-fact-value">{{ tour.get_difficulty_display }}</div>
             </div>
           </div>
           <div class="td-fact">
             <i class="ti ti-map-2"></i>
             <div>
-              <div class="td-fact-label">{% trans "Tour Type" %}</div>
-              <div class="td-fact-value">{{ tour.tour_type|default:"Cultural" }}</div>
+              <div class="td-fact-label">{% trans "Category" %}</div>
+              <div class="td-fact-value">{{ tour.category.name|default:"—" }}</div>
             </div>
           </div>
         </div>
@@ -111,7 +120,7 @@
         {# Tabs nav #}
         <nav class="td-tabs">
           <a href="#overview" class="td-tab is-active">{% trans "Overview" %}</a>
-          <a href="#itinerary" class="td-tab">{% trans "Itinerary" %}</a>
+          {% if tour.days.exists %}<a href="#itinerary" class="td-tab">{% trans "Itinerary" %}</a>{% endif %}
           <a href="#included" class="td-tab">{% trans "What's included" %}</a>
           <a href="#location" class="td-tab">{% trans "Location" %}</a>
           <a href="#reviews" class="td-tab">{% trans "Reviews" %}</a>
@@ -123,26 +132,17 @@
           <div class="td-prose">
             {{ tour.description|linebreaks|default:"" }}
           </div>
-
-          {% if tour.highlights.all %}
-          <h3 style="margin-top:32px;margin-bottom:16px;">{% trans "Highlights" %}</h3>
-          <ul class="td-highlights">
-            {% for hl in tour.highlights.all %}
-            <li><i class="ti ti-check"></i> {{ hl.text }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
         </div>
 
         {# Itinerary #}
-        {% if tour.itinerary.all %}
+        {% if tour.days.exists %}
         <div id="itinerary" class="td-section">
           <h2>{% trans "Itinerary" %}</h2>
           <div class="td-timeline">
-            {% for day in tour.itinerary.all %}
+            {% for day in tour.days.all %}
             <details class="td-day" {% if forloop.first %}open{% endif %}>
               <summary>
-                <span class="td-day-num">{% trans "Day" %} {{ forloop.counter }}</span>
+                <span class="td-day-num">{% trans "Day" %} {{ day.day }}</span>
                 <span class="td-day-title">{{ day.title }}</span>
                 <i class="ti ti-chevron-down td-day-chev"></i>
               </summary>
@@ -163,30 +163,30 @@
               <h4 style="margin-bottom:14px;color:var(--c-success);">
                 <i class="ti ti-circle-check"></i> {% trans "Included" %}
               </h4>
+              {% if tour.includes %}
+              <div class="td-prose" style="font-size:0.95rem;">{{ tour.includes|linebreaks }}</div>
+              {% else %}
               <ul class="td-list">
-                {% for item in tour.included.all %}
-                <li><i class="ti ti-check"></i> {{ item.text }}</li>
-                {% empty %}
                 <li><i class="ti ti-check"></i> {% trans "Professional guide" %}</li>
                 <li><i class="ti ti-check"></i> {% trans "Transport (A/C vehicle)" %}</li>
                 <li><i class="ti ti-check"></i> {% trans "Entrance fees" %}</li>
                 <li><i class="ti ti-check"></i> {% trans "Hotel accommodation" %}</li>
-                {% endfor %}
               </ul>
+              {% endif %}
             </div>
             <div>
               <h4 style="margin-bottom:14px;color:#E24B4A;">
                 <i class="ti ti-circle-x"></i> {% trans "Not Included" %}
               </h4>
+              {% if tour.excludes %}
+              <div class="td-prose" style="font-size:0.95rem;">{{ tour.excludes|linebreaks }}</div>
+              {% else %}
               <ul class="td-list">
-                {% for item in tour.excluded.all %}
-                <li><i class="ti ti-x"></i> {{ item.text }}</li>
-                {% empty %}
                 <li><i class="ti ti-x"></i> {% trans "International flights" %}</li>
                 <li><i class="ti ti-x"></i> {% trans "Travel insurance" %}</li>
                 <li><i class="ti ti-x"></i> {% trans "Personal expenses" %}</li>
-                {% endfor %}
               </ul>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -195,14 +195,14 @@
         <div id="location" class="td-section">
           <h2>{% trans "Location" %}</h2>
           <div class="td-map">
-            {% if tour.latitude and tour.longitude %}
-              <iframe loading="lazy" style="border:0;width:100%;height:100%;"
-                src="https://maps.google.com/maps?q={{ tour.latitude }},{{ tour.longitude }}&z=12&output=embed"></iframe>
-            {% else %}
-              <div class="td-map-placeholder">
-                <i class="ti ti-map-pin"></i> {{ tour.location|default:"Uzbekistan" }}
-              </div>
-            {% endif %}
+            <div class="td-map-placeholder">
+              <i class="ti ti-map-pin"></i>
+              {% if tour.regions.all %}
+                {% for r in tour.regions.all %}{{ r.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+              {% else %}
+                Uzbekistan
+              {% endif %}
+            </div>
           </div>
         </div>
 
@@ -211,56 +211,82 @@
           <h2>{% trans "Reviews" %}</h2>
           <div class="td-rating-summary">
             <div class="td-rating-big">
-              <div class="td-rating-num">{{ tour.rating|default:"4.96" }}</div>
+              <div class="td-rating-num">{{ avg_rating|floatformat:1|default:"0" }}</div>
               <div class="td-rating-stars">
                 {% for i in "12345"|make_list %}<i class="ti ti-star" style="color:var(--c-star);"></i>{% endfor %}
               </div>
               <div style="color:var(--c-text-muted);font-size:0.9rem;margin-top:6px;">
-                {{ tour.review_count|default:"672" }} {% trans "reviews" %}
+                {{ review_count|default:"0" }} {% trans "reviews" %}
               </div>
             </div>
             <div style="flex:1;">
-              <div class="td-rating-bar"><span style="width:140px;">{% trans "Excellent" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:85%;"></div></div><span>85%</span></div>
-              <div class="td-rating-bar"><span style="width:140px;">{% trans "Good" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:10%;"></div></div><span>10%</span></div>
-              <div class="td-rating-bar"><span style="width:140px;">{% trans "Average" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:3%;"></div></div><span>3%</span></div>
-              <div class="td-rating-bar"><span style="width:140px;">{% trans "Poor" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:1%;"></div></div><span>1%</span></div>
-              <div class="td-rating-bar"><span style="width:140px;">{% trans "Terrible" %}</span><div class="td-bar"><div class="td-bar-fill" style="width:1%;"></div></div><span>1%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Excellent" %} (5★)</span><div class="td-bar"><div class="td-bar-fill" style="width:{{ rating_dist.5.percent|default:0 }}%;"></div></div><span>{{ rating_dist.5.percent|default:0 }}%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Good" %} (4★)</span><div class="td-bar"><div class="td-bar-fill" style="width:{{ rating_dist.4.percent|default:0 }}%;"></div></div><span>{{ rating_dist.4.percent|default:0 }}%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Average" %} (3★)</span><div class="td-bar"><div class="td-bar-fill" style="width:{{ rating_dist.3.percent|default:0 }}%;"></div></div><span>{{ rating_dist.3.percent|default:0 }}%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Poor" %} (2★)</span><div class="td-bar"><div class="td-bar-fill" style="width:{{ rating_dist.2.percent|default:0 }}%;"></div></div><span>{{ rating_dist.2.percent|default:0 }}%</span></div>
+              <div class="td-rating-bar"><span style="width:140px;">{% trans "Terrible" %} (1★)</span><div class="td-bar"><div class="td-bar-fill" style="width:{{ rating_dist.1.percent|default:0 }}%;"></div></div><span>{{ rating_dist.1.percent|default:0 }}%</span></div>
             </div>
           </div>
 
+          {# Pending (tasdiqlash kutilayotgan) sharh — faqat muallif uchun #}
+          {% if pending_review %}
+          <div class="td-review td-review--pending">
+            <div class="td-pending-badge">
+              <i class="ti ti-clock"></i> {% trans "Awaiting approval" %}
+            </div>
+            <div class="td-review-head">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:48px;height:48px;border-radius:50%;background:var(--c-bg-alt);display:flex;align-items:center;justify-content:center;font-weight:700;opacity:.6;">
+                  {{ pending_review.user.username|first|upper }}
+                </div>
+                <div>
+                  <div style="font-weight:700;">{{ pending_review.user.get_full_name|default:pending_review.user.username }}</div>
+                  <div style="font-size:0.8rem;color:var(--c-text-muted);">{{ pending_review.created_at|date:"d-m-Y" }}</div>
+                </div>
+              </div>
+              <div>
+                {% for i in "12345"|make_list %}{% if forloop.counter <= pending_review.rating %}<i class="ti ti-star" style="color:var(--c-star);opacity:.6;"></i>{% else %}<i class="ti ti-star" style="color:var(--c-border);"></i>{% endif %}{% endfor %}
+              </div>
+            </div>
+            <p style="margin-top:12px;color:var(--c-text-muted);">{{ pending_review.body }}</p>
+          </div>
+          {% endif %}
+
           <div class="td-reviews">
-            {% for review in tour.reviews.all|slice:":5" %}
+            {% for review in reviews|slice:":5" %}
             <div class="td-review">
               <div class="td-review-head">
                 <div style="display:flex;align-items:center;gap:12px;">
-                  {% if review.user.avatar %}
-                    <img src="{{ review.user.avatar.url }}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
-                  {% else %}
-                    <div style="width:48px;height:48px;border-radius:50%;background:var(--c-bg-alt);display:flex;align-items:center;justify-content:center;font-weight:700;">
-                      {{ review.user.username|first|upper }}
-                    </div>
-                  {% endif %}
+                  <div style="width:48px;height:48px;border-radius:50%;background:var(--c-bg-alt);display:flex;align-items:center;justify-content:center;font-weight:700;">
+                    {{ review.user.username|first|upper }}
+                  </div>
                   <div>
                     <div style="font-weight:700;">{{ review.user.get_full_name|default:review.user.username }}</div>
-                    <div style="font-size:0.8rem;color:var(--c-text-muted);">{{ review.created_at|date:"d M Y" }}</div>
+                    <div style="font-size:0.8rem;color:var(--c-text-muted);">{{ review.created_at|date:"d-m-Y" }}</div>
                   </div>
                 </div>
                 <div>
                   {% for i in "12345"|make_list %}{% if forloop.counter <= review.rating %}<i class="ti ti-star" style="color:var(--c-star);"></i>{% else %}<i class="ti ti-star" style="color:var(--c-border);"></i>{% endif %}{% endfor %}
                 </div>
               </div>
-              <p style="margin-top:12px;color:var(--c-text);">{{ review.comment }}</p>
+              <p style="margin-top:12px;color:var(--c-text);">{{ review.body }}</p>
             </div>
             {% empty %}
+            {% if not pending_review %}
             <p style="color:var(--c-text-muted);text-align:center;padding:30px 0;">
               {% trans "No reviews yet. Be the first to share your experience!" %}
             </p>
+            {% endif %}
             {% endfor %}
           </div>
 
-          {% if user.is_authenticated %}
-          <a href="#" class="btn btn-light" style="margin-top:20px;">
+          {% if user.is_authenticated and not pending_review %}
+          <a href="{% url 'reviews:create' tour.slug %}" class="btn btn-light" style="margin-top:20px;">
             <i class="ti ti-edit"></i> {% trans "Write a review" %}
+          </a>
+          {% elif not user.is_authenticated %}
+          <a href="{% url 'account_login' %}?next={{ request.path }}" class="btn btn-light" style="margin-top:20px;">
+            <i class="ti ti-login"></i> {% trans "Login to write a review" %}
           </a>
           {% endif %}
         </div>
@@ -271,10 +297,13 @@
       <aside class="td-sidebar">
         <div class="td-book-card">
           <div class="td-book-price">
-            {% if tour.original_price %}
-              <span class="td-price-old">${{ tour.original_price }}</span>
+            {% if tour.has_discount %}
+              <span class="td-price-old">${{ tour.price|floatformat:0 }}</span>
+              <span class="td-price-now td-price-now--sale">${{ tour.discounted_price|floatformat:0 }}</span>
+              <span class="td-price-save">−{{ tour.discount_percent }}%{% if tour.discount_label %} · {{ tour.discount_label }}{% endif %}</span>
+            {% else %}
+              <span class="td-price-now">${{ tour.price|floatformat:0 }}</span>
             {% endif %}
-            <span class="td-price-now">${{ tour.price }}</span>
             <span class="td-price-unit">/ {% trans "person" %}</span>
           </div>
 
@@ -304,12 +333,12 @@
 
             <div class="td-book-summary">
               <div style="display:flex;justify-content:space-between;font-size:0.9rem;color:var(--c-text-muted);">
-                <span>${{ tour.price }} × <span id="totalGuests">2</span> {% trans "guests" %}</span>
-                <span id="subtotal">${{ tour.price|floatformat:0 }}</span>
+                <span>${{ tour.discounted_price|floatformat:0 }} × <span id="totalGuests">2</span> {% trans "guests" %}</span>
+                <span id="subtotal">${{ tour.discounted_price|floatformat:0 }}</span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:1.125rem;font-weight:700;padding-top:14px;margin-top:14px;border-top:1px solid var(--c-border);">
                 <span>{% trans "Total" %}</span>
-                <span id="total" data-price="{{ tour.price|unlocalize }}">${{ tour.price|floatformat:0 }}</span>
+                <span id="total" data-price="{{ tour.discounted_price|unlocalize }}" data-child-price="{{ tour.child_price|unlocalize }}">${{ tour.discounted_price|floatformat:0 }}</span>
               </div>
             </div>
 
@@ -318,12 +347,20 @@
             </button>
           </form>
 
+          {% if site_settings.phone_1 %}
           <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--c-border);text-align:center;">
             <p style="font-size:0.85rem;color:var(--c-text-muted);margin-bottom:8px;">{% trans "Need help booking?" %}</p>
-            <a href="tel:+998950666233" style="color:var(--c-orange);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
-              <i class="ti ti-phone"></i> +998 95 066 62 33
+            <a href="tel:{{ site_settings.phone_1|cut:' ' }}" style="color:var(--gold-ink, #8f7327);font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+              <i class="ti ti-phone"></i> {{ site_settings.phone_1 }}
             </a>
           </div>
+          {% endif %}
+        </div>
+
+        {# CTA card — talk to a travel expert (gradient variant) #}
+        {% url 'messages_app:contact' as contact_url %}
+        <div style="margin-top:20px;">
+          {% include 'partials/cta_card.html' with variant='gradient' icon='ti-headset' brand='SoLuna' show_badge=True badge=_('Free') title=_('Talk to a travel expert') description=_('Not sure which tour fits you? Our local specialists craft the perfect Silk Road itinerary — free of charge.') button_text=_('Get free advice') button_url=contact_url %}
         </div>
       </aside>
 
@@ -331,26 +368,27 @@
   </div>
 </section>
 
-{# ══════════════════ RELATED TOURS ══════════════════ #}
-{% if related_tours %}
+{# ══════════════════ SIMILAR TOURS ══════════════════ #}
+{% if similar_tours %}
 <section class="section section-bg">
   <div class="container">
-    <div class="section-header"><h2>{% trans "Related tours" %}</h2></div>
+    <div class="section-header"><h2>{% trans "Similar tours" %}</h2></div>
     <div class="tour-grid">
-      {% for t in related_tours|slice:":3" %}
+      {% for t in similar_tours|slice:":3" %}
       <article class="tour-card">
         <div class="tour-card-img">
           {% if t.cover_image %}<img src="{{ t.cover_image.url }}" alt="{{ t.title }}" loading="lazy">{% endif %}
+          {% if t.has_discount %}<span class="tour-card-badge tour-card-badge--sale">−{{ t.discount_percent }}%</span>{% endif %}
         </div>
         <div class="tour-card-body">
           <div class="tour-card-rating">
             <span class="star"><i class="ti ti-star"></i></span>
-            <span>{{ t.rating|default:"4.9" }}</span>
+            <span>{{ t.avg_rating|floatformat:1|default:"0" }}</span>
             <span class="muted">({{ t.review_count|default:"0" }})</span>
           </div>
           <h3 class="tour-card-title"><a href="{% url 'tours:tour-detail' t.slug %}">{{ t.title }}</a></h3>
           <div class="tour-card-foot">
-            <div class="tour-card-price">${{ t.price }}<small>/ {% trans "person" %}</small></div>
+            <div class="tour-card-price">{% if t.has_discount %}<span class="tour-card-price-old">${{ t.price|floatformat:0 }}</span> {% endif %}${{ t.discounted_price|floatformat:0 }}<small>/ {% trans "person" %}</small></div>
             <a href="{% url 'tours:tour-detail' t.slug %}" class="btn btn-light btn-sm">{% trans "View" %}</a>
           </div>
         </div>
@@ -430,14 +468,6 @@
 .td-section h2 { margin-bottom: 16px; font-size: 1.75rem; }
 .td-prose p { font-size: 1rem; line-height: 1.7; color: var(--c-text); margin-bottom: 14px; }
 
-.td-highlights {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px;
-  list-style: none; padding: 0;
-}
-@media (max-width: 600px) { .td-highlights { grid-template-columns: 1fr; } }
-.td-highlights li { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; }
-.td-highlights i { color: var(--c-success); flex-shrink: 0; margin-top: 4px; }
-
 /* ── Itinerary ── */
 .td-timeline { display: flex; flex-direction: column; gap: 12px; }
 .td-day {
@@ -454,14 +484,14 @@
 }
 .td-day summary::-webkit-details-marker { display: none; }
 .td-day-num {
-  background: var(--c-text); color: #fff;
+  background: #c9a84c; color: #0a1628;
   padding: 4px 12px; border-radius: var(--r-sm);
   font-size: 0.8rem; font-weight: 700;
 }
 .td-day-title { flex: 1; font-weight: 700; }
 .td-day-chev { transition: transform 0.3s ease; }
 .td-day[open] .td-day-chev { transform: rotate(180deg); }
-.td-day-body { padding: 18px 22px; background: #fff; }
+.td-day-body { padding: 18px 22px; background: var(--c-surface); }
 
 /* ── Included ── */
 .td-incl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -472,18 +502,20 @@
 .td-list li i.ti-check { color: var(--c-success); }
 .td-list li i.ti-x { color: #E24B4A; }
 
-/* ── Map ── */
+/* ── Map placeholder ── */
 .td-map {
-  height: 360px;
+  height: 200px;
   border-radius: var(--r-md);
   overflow: hidden;
   background: var(--c-bg-alt);
+  border: 1px solid var(--c-border);
 }
 .td-map-placeholder {
   height: 100%;
   display: flex; align-items: center; justify-content: center;
-  gap: 10px; color: var(--c-text-muted);
+  gap: 10px; color: var(--c-text-muted); font-size: 1rem; font-weight: 500;
 }
+.td-map-placeholder i { font-size: 1.4rem; color: var(--c-orange); }
 
 /* ── Reviews ── */
 .td-rating-summary {
@@ -505,6 +537,26 @@
 .td-review { padding: 20px; border: 1px solid var(--c-border); border-radius: var(--r-md); }
 .td-review-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
 
+/* Pending review — shaffof, tasdiqlash kutilayotgan */
+.td-review--pending {
+  opacity: .55;
+  border-style: dashed;
+  border-color: #c9a84c;
+  background: rgba(201,168,76,.04);
+  margin-bottom: 16px;
+  position: relative;
+}
+.td-pending-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .75rem; font-weight: 600;
+  color: #c9a84c;
+  background: rgba(201,168,76,.12);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 99px;
+  padding: 3px 10px;
+  margin-bottom: 12px;
+}
+
 /* ── Booking sidebar ── */
 .td-sidebar {
   position: sticky; top: 130px;
@@ -513,7 +565,7 @@
 @media (max-width: 1024px) { .td-sidebar { position: static; } }
 
 .td-book-card {
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--r-lg);
   padding: 28px;
@@ -525,8 +577,14 @@
   border-bottom: 1px solid var(--c-border);
   display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
 }
-.td-price-old { text-decoration: line-through; color: var(--c-text-muted); font-size: 1.2rem; }
 .td-price-now { font-size: 2.25rem; font-weight: 800; }
+.td-price-now--sale { color: #d9480f; }
+.td-price-old { font-size: 1.25rem; font-weight: 600; color: var(--c-text-muted); text-decoration: line-through; margin-right: 8px; }
+.td-price-save {
+  display: inline-block; margin-left: 8px; vertical-align: middle;
+  background: rgba(217,72,15,.12); color: #d9480f;
+  font-size: .8rem; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+}
 .td-price-unit { color: var(--c-text-muted); font-size: 1rem; }
 
 .td-book-form { display: flex; flex-direction: column; gap: 6px; }
@@ -550,7 +608,8 @@
   flex: 1; text-align: center;
   border: none; outline: none;
   font-weight: 700; font-size: 1rem;
-  background: #fff;
+  color: var(--c-text);
+  background: var(--c-surface);
 }
 
 .td-book-summary {
@@ -562,17 +621,18 @@
 </style>
 
 <script>
-// Counter + total calculation
 (function () {
+  /* ── Booking counter ── */
   const totalEl = document.getElementById('total');
   const subEl = document.getElementById('subtotal');
   const guestsEl = document.getElementById('totalGuests');
   const price = parseFloat(totalEl?.dataset.price || '0');
+  const childPrice = parseFloat(totalEl?.dataset.childPrice || '0');
 
   function recalc() {
     const a = parseInt(document.getElementById('adults').value, 10) || 0;
     const c = parseInt(document.getElementById('children').value, 10) || 0;
-    const total = price * (a + c * 0.5);
+    const total = price * a + childPrice * c;
     if (subEl)    subEl.textContent    = '$' + Math.round(total);
     if (totalEl)  totalEl.textContent  = '$' + Math.round(total);
     if (guestsEl) guestsEl.textContent = a + c;
@@ -585,20 +645,104 @@
       const min = parseInt(target.min, 10);
       const max = parseInt(target.max, 10);
       const cur = parseInt(target.value, 10) || 0;
-      const next = Math.max(min, Math.min(max, cur + step));
-      target.value = next;
+      target.value = Math.max(min, Math.min(max, cur + step));
       recalc();
     });
   });
 
-  // Tabs scroll
+  /* ── Tabs ── */
   document.querySelectorAll('.td-tab').forEach(tab => {
-    tab.addEventListener('click', e => {
+    tab.addEventListener('click', () => {
       document.querySelectorAll('.td-tab').forEach(t => t.classList.remove('is-active'));
       tab.classList.add('is-active');
     });
   });
+
+  /* ── Toast ── */
+  function showToast(msg, type) {
+    var t = document.createElement('div');
+    t.className = 'sl-toast' + (type === 'error' ? ' sl-toast--error' : '');
+    t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(function() { t.classList.add('sl-toast--in'); });
+    setTimeout(function() {
+      t.classList.remove('sl-toast--in');
+      setTimeout(function() { t.remove(); }, 300);
+    }, 2500);
+  }
+
+  /* ── Share ── */
+  var shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function() {
+      var shareData = { title: document.title, url: location.href };
+      if (navigator.share) {
+        navigator.share(shareData).catch(function() {});
+      } else {
+        navigator.clipboard.writeText(location.href).then(function() {
+          showToast('{% trans "Link copied!" %}');
+        }).catch(function() {
+          showToast('{% trans "Copy failed" %}', 'error');
+        });
+      }
+    });
+  }
+
+  /* ── Wishlist (detail page) ── */
+  var wishBtn = document.getElementById('wishlistBtn');
+  if (wishBtn) {
+    wishBtn.addEventListener('click', function() {
+      var url = wishBtn.dataset.wishlistUrl;
+      var loginUrl = wishBtn.dataset.loginUrl;
+
+      fetch(url, {
+        method: 'POST',
+        headers: { 'X-CSRFToken': getCookie('csrftoken'), 'X-Requested-With': 'XMLHttpRequest' },
+      }).then(function(r) {
+        if (r.status === 401) { location.href = loginUrl + '?next=' + encodeURIComponent(location.pathname); return null; }
+        return r.json();
+      }).then(function(data) {
+        if (!data) return;
+        var icon = wishBtn.querySelector('i');
+        if (data.status === 'added') {
+          wishBtn.classList.add('is-liked');
+          icon.className = 'ti ti-heart-filled';
+          showToast('{% trans "Added to wishlist" %}');
+        } else {
+          wishBtn.classList.remove('is-liked');
+          icon.className = 'ti ti-heart';
+          showToast('{% trans "Removed from wishlist" %}');
+        }
+      }).catch(function() {
+        showToast('{% trans "Error. Try again." %}', 'error');
+      });
+    });
+  }
+
+  /* ── CSRF helper ── */
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : '';
+  }
 })();
 </script>
+
+<style>
+/* ── Wishlist button active state ── */
+.btn-icon-circle.is-liked { color: #e24b4a; border-color: #e24b4a; background: rgba(226,75,74,.08); }
+.btn-icon-circle.is-liked:hover { background: rgba(226,75,74,.18); }
+
+/* ── Toast ── */
+.sl-toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: #1a1a2e; color: #fff;
+  padding: 12px 24px; border-radius: 100px;
+  font-size: 0.9rem; font-weight: 500;
+  opacity: 0; transition: opacity .25s ease, transform .25s ease;
+  z-index: 9999; pointer-events: none; white-space: nowrap;
+}
+.sl-toast--in { opacity: 1; transform: translateX(-50%) translateY(0); }
+.sl-toast--error { background: #c0392b; }
+</style>
 
 {% endblock %}

@@ -30,8 +30,17 @@ class ProfileView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['bookings'] = self.request.user.bookings.select_related('tour').order_by('-created_at')[:5]
-        context['reviews'] = self.request.user.reviews.select_related('tour').order_by('-created_at')[:5]
+        u = self.request.user
+        bookings = u.bookings.select_related('tour').order_by('-created_at')
+        reviews = u.reviews.select_related('tour').order_by('-created_at')
+        wishlist = u.wishlist.select_related('tour').order_by('-created_at')
+        context['bookings'] = bookings
+        context['reviews'] = reviews
+        context['wishlist_items'] = wishlist
+        context['stat_bookings'] = bookings.count()
+        context['stat_completed'] = bookings.filter(status='completed').count()
+        context['stat_wishlist'] = wishlist.count()
+        context['stat_reviews'] = reviews.count()
         return context
 
 

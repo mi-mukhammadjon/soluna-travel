@@ -4,7 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
-from .models import ContactMessage
+from django.http import JsonResponse
+from .models import ContactMessage, NewsletterSubscriber
 from .forms import ContactForm, ReplyForm
 
 
@@ -28,7 +29,6 @@ class ContactView(CreateView):
             msg.user = self.request.user
         msg.save()
 
-        # Admin ga xabarnoma
         from .tasks import notify_admin_new_message
         notify_admin_new_message.delay(msg.pk)
 
@@ -68,3 +68,24 @@ class MessageReplyView(UserPassesTestMixin, View):
             return redirect(reverse('admin:messages_app_contactmessage_change', args=[pk]))
 
         return render(request, 'messages_app/reply.html', {'msg': msg, 'form': form})
+
+
+class NewsletterSubscribeView(View):
+    def post(self, request):
+        email = request.POST.get('email', '').strip()
+        if not email:
+            return JsonResponse({'ok': False, 'error': 'Email kiritilmadi.'}, status=400)
+
+        subscriber, created = NewsletterSubscriber.objects.get_or_create(
+            email=email,
+            defaults={'is_active': True}
+        )
+        if not created and not subscriber.is_active:
+            subscriber.is_active = True
+            subscriber.unsubscribed_at = None
+            subscriber.save()
+            created = True
+
+        if created:
+            return JsonResponse({'ok': True, 'message': 'Obuna muvaffaqiyatli amalga oshirildi!'})
+        return JsonResponse({'ok': True, 'message': 'Siz allaqachon obuna bo\'lgansiz.'})

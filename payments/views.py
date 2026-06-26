@@ -83,6 +83,11 @@ class PaymentInitiateView(LoginRequiredMixin, View):
             messages.info(request, _("Ofisda to'lov qilishni tanladingiz."))
             return redirect('bookings:booking-detail', pk=booking.id)
 
+        # ── BANK KARTA (Visa / Mastercard / UZCARD / HUMO) ──
+        # To'g'ridan-to'g'ri xavfsiz karta kiritish formasiga olib boradi.
+        if method == 'card':
+            return redirect('payments:mock-pay', payment_id=payment.id)
+
         # ── MOCK REJIM ──
         if is_mock_mode():
             return redirect('payments:mock-pay', payment_id=payment.id)
