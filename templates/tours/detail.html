@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static i18n l10n %}
+{% load static i18n l10n lang_tags %}
 
 {% block title %}{{ tour.title }} | SoLuna{% endblock %}
 
@@ -164,7 +164,11 @@
                 <i class="ti ti-circle-check"></i> {% trans "Included" %}
               </h4>
               {% if tour.includes %}
-              <div class="td-prose" style="font-size:0.95rem;">{{ tour.includes|linebreaks }}</div>
+              <ul class="td-list">
+                {% for item in tour.includes|split_items %}
+                <li><i class="ti ti-check"></i> {{ item|capfirst }}</li>
+                {% endfor %}
+              </ul>
               {% else %}
               <ul class="td-list">
                 <li><i class="ti ti-check"></i> {% trans "Professional guide" %}</li>
@@ -179,7 +183,11 @@
                 <i class="ti ti-circle-x"></i> {% trans "Not Included" %}
               </h4>
               {% if tour.excludes %}
-              <div class="td-prose" style="font-size:0.95rem;">{{ tour.excludes|linebreaks }}</div>
+              <ul class="td-list">
+                {% for item in tour.excludes|split_items %}
+                <li><i class="ti ti-x"></i> {{ item|capfirst }}</li>
+                {% endfor %}
+              </ul>
               {% else %}
               <ul class="td-list">
                 <li><i class="ti ti-x"></i> {% trans "International flights" %}</li>
@@ -496,11 +504,25 @@
 /* ── Included ── */
 .td-incl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 @media (max-width: 600px) { .td-incl-grid { grid-template-columns: 1fr; } }
-.td-list { list-style: none; padding: 0; }
-.td-list li { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; font-size: 0.95rem; }
-.td-list i { flex-shrink: 0; margin-top: 4px; }
-.td-list li i.ti-check { color: var(--c-success); }
-.td-list li i.ti-x { color: #E24B4A; }
+.td-list { list-style: none; padding: 0; margin: 0; }
+.td-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 11px 4px; font-size: 0.95rem; line-height: 1.45;
+  color: var(--c-text);
+  border-bottom: 1px solid var(--c-border, rgba(0,0,0,.06));
+  transition: background .15s ease;
+}
+.td-list li:last-child { border-bottom: none; }
+.td-list li:hover { background: var(--c-surface, rgba(0,0,0,.02)); }
+/* ✓ / ✗ belgisini yumaloq fon ichida — o'qishga oson, ketma-ket */
+.td-list li i {
+  flex-shrink: 0; margin-top: 1px;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+}
+.td-list li i.ti-check { color: var(--c-success); background: rgba(34,170,97,.12); }
+.td-list li i.ti-x { color: #E24B4A; background: rgba(226,75,74,.12); }
 
 /* ── Map placeholder ── */
 .td-map {
