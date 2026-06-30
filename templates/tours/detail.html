@@ -718,29 +718,38 @@
   // Subtotal va Total — oddiy vergul bilan inline (superscript faqat asosiy narxda, u statik)
   function fmtFlat(v) { return '$' + Math.trunc(v) + ',' + centsOf(v); }
 
+  const adultsEl = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
+
   function recalc() {
-    const a = parseInt(document.getElementById('adults').value, 10) || 0;
-    const c = parseInt(document.getElementById('children').value, 10) || 0;
+    if (!adultsEl || !childrenEl) return;
+    const a = parseInt(adultsEl.value, 10) || 0;
+    const c = parseInt(childrenEl.value, 10) || 0;
     const total = price * a + childPrice * c;
     if (subEl)    subEl.textContent   = fmtFlat(total);
     if (totalEl)  totalEl.textContent = fmtFlat(total);
     if (guestsEl) guestsEl.textContent = a + c;
   }
 
-  // Sahifa yuklanganda darhol hisoblaymiz (default 2 adult to'g'ri ko'rinishi uchun)
-  recalc();
-
-  document.querySelectorAll('[data-step]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = document.getElementById(btn.dataset.target);
-      const step = parseInt(btn.dataset.step, 10);
+  // 1) AVVAL +/- listenerlarini ulaymiz (recalc xato bersa ham sanagich ishlasin)
+  document.querySelectorAll('.td-counter-ctrl [data-step]').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const target = document.getElementById(this.dataset.target);
+      if (!target) return;
+      const step = parseInt(this.dataset.step, 10) || 0;
       const min = parseInt(target.min, 10);
       const max = parseInt(target.max, 10);
       const cur = parseInt(target.value, 10) || 0;
-      target.value = Math.max(min, Math.min(max, cur + step));
+      let next = cur + step;
+      if (!isNaN(min)) next = Math.max(min, next);
+      if (!isNaN(max)) next = Math.min(max, next);
+      target.value = next;
       recalc();
     });
   });
+
+  // 2) So'ngra dastlabki hisob (default 2 adult)
+  recalc();
 
   /* ── Lightbox (galereya — barcha rasmlar) ── */
   (function () {
