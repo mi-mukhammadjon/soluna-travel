@@ -362,10 +362,17 @@
             </div>
 
             <div class="td-book-summary">
+              {# Kattalar: N × narx #}
               <div style="display:flex;justify-content:space-between;font-size:0.9rem;color:var(--c-text-muted);">
-                <span>${{ tour.discounted_price|money_int }},{{ tour.discounted_price|money_cents }} × <span id="totalGuests">2</span> {% trans "guests" %}</span>
-                <span id="subtotal">${% widthratio tour.discounted_price 1 2 %},00</span>
+                <span><span id="adultsCount">2</span> × ${{ tour.discounted_price|money_int }},{{ tour.discounted_price|money_cents }} · {% trans "Adults" %}</span>
+                <span id="adultsSub">${% widthratio tour.discounted_price 1 2 %},00</span>
               </div>
+              {# Bolalar: faqat tanlansa ko'rinadi #}
+              <div id="childrenRow" style="display:none;justify-content:space-between;font-size:0.9rem;color:var(--c-text-muted);margin-top:8px;">
+                <span><span id="childrenCount">0</span> × ${{ tour.child_price|money_int }},{{ tour.child_price|money_cents }} · {% trans "Children" %}</span>
+                <span id="childrenSub">$0,00</span>
+              </div>
+              {# Итого #}
               <div style="display:flex;justify-content:space-between;font-size:1.125rem;font-weight:700;padding-top:14px;margin-top:14px;border-top:1px solid var(--c-border);">
                 <span>{% trans "Total" %}</span>
                 <span id="total" data-price="{{ tour.discounted_price|unlocalize }}" data-child-price="{{ tour.child_price|unlocalize }}">${% widthratio tour.discounted_price 1 2 %},00</span>
@@ -709,26 +716,34 @@
 (function () {
   /* ── Booking counter ── */
   const totalEl = document.getElementById('total');
-  const subEl = document.getElementById('subtotal');
-  const guestsEl = document.getElementById('totalGuests');
   const price = parseFloat(totalEl?.dataset.price || '0');
   const childPrice = parseFloat(totalEl?.dataset.childPrice || '0');
 
   function centsOf(v) { return String(Math.round((v - Math.trunc(v)) * 100)).padStart(2, '0'); }
-  // Subtotal va Total — oddiy vergul bilan inline (superscript faqat asosiy narxda, u statik)
+  // Vergul bilan inline (superscript faqat asosiy narxda, u statik)
   function fmtFlat(v) { return '$' + Math.trunc(v) + ',' + centsOf(v); }
 
   const adultsEl = document.getElementById('adults');
   const childrenEl = document.getElementById('children');
+  const adultsCountEl = document.getElementById('adultsCount');
+  const adultsSubEl = document.getElementById('adultsSub');
+  const childrenCountEl = document.getElementById('childrenCount');
+  const childrenSubEl = document.getElementById('childrenSub');
+  const childrenRowEl = document.getElementById('childrenRow');
 
   function recalc() {
     if (!adultsEl || !childrenEl) return;
     const a = parseInt(adultsEl.value, 10) || 0;
     const c = parseInt(childrenEl.value, 10) || 0;
-    const total = price * a + childPrice * c;
-    if (subEl)    subEl.textContent   = fmtFlat(total);
-    if (totalEl)  totalEl.textContent = fmtFlat(total);
-    if (guestsEl) guestsEl.textContent = a + c;
+    const adultTotal = price * a;        // kattalar: a × narx
+    const childTotal = childPrice * c;   // bolalar: c × bola narxi
+    const total = adultTotal + childTotal;
+    if (adultsCountEl)   adultsCountEl.textContent = a;
+    if (adultsSubEl)     adultsSubEl.textContent = fmtFlat(adultTotal);
+    if (childrenCountEl) childrenCountEl.textContent = c;
+    if (childrenSubEl)   childrenSubEl.textContent = fmtFlat(childTotal);
+    if (childrenRowEl)   childrenRowEl.style.display = c > 0 ? 'flex' : 'none';
+    if (totalEl)         totalEl.textContent = fmtFlat(total);
   }
 
   // 1) AVVAL +/- listenerlarini ulaymiz (recalc xato bersa ham sanagich ishlasin)
