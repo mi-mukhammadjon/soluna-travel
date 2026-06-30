@@ -19,7 +19,7 @@ fi
 
 # 2. Yangiliklarni olish
 echo ""
-echo "[1/5] Git pull..."
+echo "[1/6] Git pull..."
 git pull origin main || {
     echo "❌ Git pull xatolik berdi. Manual tekshiring."
     exit 1
@@ -36,7 +36,7 @@ fi
 
 # 4. Build
 echo ""
-echo "[2/5] Docker build..."
+echo "[2/6] Docker build..."
 if [ "$NEED_BUILD" = true ]; then
     docker compose build --no-cache
 else
@@ -45,7 +45,7 @@ fi
 
 # 5. Restart
 echo ""
-echo "[3/5] Servislarni qayta ishga tushirish..."
+echo "[3/6] Servislarni qayta ishga tushirish..."
 docker compose up -d --remove-orphans
 
 # 6. Web konteyner tayyor bo'lguncha kutish
@@ -55,12 +55,17 @@ sleep 5
 
 # 7. Migrations
 echo ""
-echo "[4/5] Migrations..."
+echo "[4/6] Migrations..."
 docker compose exec -T web python3.11 manage.py migrate --noinput
 
-# 8. Collectstatic
+# 8. Sample turlarni DB'ga yozish + 9 tilda tarjima (idempotent)
 echo ""
-echo "[5/5] Collectstatic..."
+echo "[5/6] Turlarni yuklash (9 tilda, rasm + nearby)..."
+docker compose exec -T web python3.11 manage.py upload_sample_tours
+
+# 9. Collectstatic
+echo ""
+echo "[6/6] Collectstatic..."
 docker compose exec -T web python3.11 manage.py collectstatic --noinput --verbosity 0
 
 echo ""

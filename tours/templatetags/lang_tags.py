@@ -69,9 +69,39 @@ def get_native_name(code):
 
 
 import re
+from decimal import Decimal, InvalidOperation
 
 # includes / excludes matnini alohida bandlarga ajratadigan ajratuvchilar
 _ITEM_SPLIT_RE = re.compile(r'[;\n\r•]+')
+
+
+def _to_decimal(value):
+    try:
+        return Decimal(str(value))
+    except (InvalidOperation, TypeError, ValueError):
+        return None
+
+
+@register.filter(name='money_int')
+def money_int(value):
+    """Narxning butun qismini qaytaradi (verguldan oldingi son). Masalan 1190.00 -> 1190."""
+    d = _to_decimal(value)
+    if d is None:
+        return value
+    return str(int(d))
+
+
+@register.filter(name='money_cents')
+def money_cents(value):
+    """Narxning kasr (tiyin/cent) qismini 2 xonali qilib qaytaradi — superscript uchun.
+
+    1190.00 -> "00", 1071.50 -> "50".
+    """
+    d = _to_decimal(value)
+    if d is None:
+        return '00'
+    cents = int((d.quantize(Decimal('0.01')) * 100) % 100)
+    return f'{cents:02d}'
 
 
 @register.filter(name='split_items')

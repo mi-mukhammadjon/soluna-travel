@@ -697,7 +697,7 @@ a.historylink:hover { text-decoration: underline !important; }
   padding: 12px 18px !important; margin: 0 !important;
   border-bottom: 1px solid var(--border-soft) !important;
   display: flex !important; align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: flex-start !important; gap: 8px !important;
 }
 
 /* Django collapse.js toggle — h2 ichiga joylashadi */

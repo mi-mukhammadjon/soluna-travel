@@ -1,18 +1,42 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Tour, TourCategory, TourImage, CompanyStatistic, CompanyAdvantage
-from modeltranslation.admin import TranslationAdmin
+from .models import Tour, TourCategory, TourImage, ItineraryDay, CompanyStatistic, CompanyAdvantage
+from modeltranslation.admin import TranslationAdmin, TranslationStackedInline
 
-class TourImageInline(admin.TabularInline):
+class TourImageInline(admin.StackedInline):
+    """Vertikal (stacked) — har maydon o'z qatorida, yorlig'i bilan aniq.
+    Ustun kengligi/joylashuv conflicti bo'lmaydi."""
     model = TourImage
     extra = 1
-    readonly_fields = ['preview']
+    fields = ('preview', 'image', 'caption', 'order')
+    readonly_fields = ('preview',)
+    ordering = ('order',)
+    classes = ('collapse',)   # har bir rasm bloki ochilib-yopiladi
 
     def preview(self, obj):
         if obj.image:
-            return format_html('<img src="{}" style="height:60px; border-radius:4px;">', obj.image.url)
-        return '-'
-    preview.short_description = 'Preview'
+            return format_html(
+                '<img src="{}" style="max-width:220px; height:auto; '
+                'border-radius:8px; border:1px solid #e2e2e2; display:block;">',
+                obj.image.url
+            )
+        return format_html('<span style="color:#9aa;">— rasm tanlanmagan —</span>')
+    preview.short_description = "Ko'rinishi"
+
+
+class ItineraryDayInline(TranslationStackedInline):
+    """Kun-ba-kun dastur — JSON emas, oddiy forma orqali kiritiladi.
+
+    Har kun uchun: kun raqami + sarlavha + tavsif. Tillar (uz/ru/en/...)
+    yuqoridagi tab'lar orqali almashtiriladi — qo'lda { } yozish shart emas.
+    """
+    model = ItineraryDay
+    extra = 1
+    fields = ('day', 'title', 'description')
+    ordering = ('day',)
+    classes = ('collapse',)   # har bir kun bloki ochilib-yopiladi
+    verbose_name = 'Dastur kuni'
+    verbose_name_plural = "Kun-ba-kun dastur (Itinerary)"
 
 
 @admin.register(TourCategory)
@@ -30,7 +54,7 @@ class TourAdmin(TranslationAdmin):
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ['regions', 'attractions']
-    inlines = [TourImageInline]
+    inlines = [ItineraryDayInline, TourImageInline]
     readonly_fields = ['created_at', 'updated_at', 'cover_preview']
 
     fieldsets = (
@@ -46,9 +70,11 @@ class TourAdmin(TranslationAdmin):
         ('Joylar', {
             'fields': ('regions', 'attractions')
         }),
-        ('Tarkib', {
-            'fields': ('includes', 'excludes', 'itinerary'),
-            'classes': ('collapse',)
+        ('Tarkib (narxga kiritilgan / kiritilmagan)', {
+            'fields': ('includes', 'excludes'),
+            'description': "Har bandni nuqtali vergul (;) bilan ajrating — "
+                           "saytda avtomatik ✓/✗ ro'yxat bo'lib chiqadi. "
+                           "Kun-ba-kun dastur quyida alohida bo'limda kiritiladi.",
         }),
         ('Maxsus taklif / Chegirma', {
             'fields': ('discount_percent', 'discount_label', 'discount_until'),

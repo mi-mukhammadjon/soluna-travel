@@ -58,21 +58,43 @@
     <div class="td-gallery">
       <div class="td-gallery-main">
         {% if tour.cover_image %}
-          <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="eager">
+          <img src="{{ tour.cover_image.url }}" alt="{{ tour.title }}" loading="eager"
+               class="td-lb-trigger" data-lb-index="0">
         {% endif %}
       </div>
       <div class="td-gallery-side">
         {% for img in tour.images.all|slice:":4" %}
           <div class="td-gallery-item">
-            <img src="{{ img.image.url }}" alt="" loading="lazy">
+            <img src="{{ img.image.url }}" alt="" loading="lazy"
+                 class="td-lb-trigger" data-lb-index="{{ forloop.counter }}">
             {% if forloop.last and tour.images.count > 4 %}
-              <button class="td-gallery-more">
-                <i class="ti ti-photo"></i> {% trans "See all" %} {{ tour.images.count }} {% trans "photos" %}
+              <button type="button" class="td-gallery-more td-lb-trigger" data-lb-index="0">
+                <i class="ti ti-photo"></i> {% trans "See all" %} {% if tour.cover_image %}{{ tour.images.count|add:1 }}{% else %}{{ tour.images.count }}{% endif %} {% trans "photos" %}
               </button>
             {% endif %}
           </div>
         {% endfor %}
       </div>
+    </div>
+
+    {# Lightbox uchun barcha rasmlar ro'yxati (cover + galereya) #}
+    <script id="td-gallery-data" type="application/json">[{% if tour.cover_image %}"{{ tour.cover_image.url }}"{% if tour.images.exists %},{% endif %}{% endif %}{% for img in tour.images.all %}"{{ img.image.url }}"{% if not forloop.last %},{% endif %}{% endfor %}]</script>
+
+    {# ── LIGHTBOX ── #}
+    <div id="td-lightbox" class="td-lightbox" hidden aria-hidden="true">
+      <button type="button" class="td-lb-btn td-lb-close" data-lb-close aria-label="{% trans 'Close' %}">
+        <i class="ti ti-x"></i>
+      </button>
+      <button type="button" class="td-lb-btn td-lb-prev" data-lb-prev aria-label="{% trans 'Previous' %}">
+        <i class="ti ti-chevron-left"></i>
+      </button>
+      <figure class="td-lb-stage">
+        <img class="td-lb-img" src="" alt="">
+        <figcaption class="td-lb-counter"><span class="td-lb-cur">1</span> / <span class="td-lb-total">1</span></figcaption>
+      </figure>
+      <button type="button" class="td-lb-btn td-lb-next" data-lb-next aria-label="{% trans 'Next' %}">
+        <i class="ti ti-chevron-right"></i>
+      </button>
     </div>
   </div>
 </section>
@@ -306,11 +328,11 @@
         <div class="td-book-card">
           <div class="td-book-price">
             {% if tour.has_discount %}
-              <span class="td-price-old">${{ tour.price|floatformat:0 }}</span>
-              <span class="td-price-now td-price-now--sale">${{ tour.discounted_price|floatformat:0 }}</span>
+              <span class="td-price-old">${{ tour.price|money_int }},{{ tour.price|money_cents }}</span>
+              <span class="td-price-now td-price-now--sale">${{ tour.discounted_price|money_int }}<sup class="price-cents">{{ tour.discounted_price|money_cents }}</sup></span>
               <span class="td-price-save">−{{ tour.discount_percent }}%{% if tour.discount_label %} · {{ tour.discount_label }}{% endif %}</span>
             {% else %}
-              <span class="td-price-now">${{ tour.price|floatformat:0 }}</span>
+              <span class="td-price-now">${{ tour.price|money_int }}<sup class="price-cents">{{ tour.price|money_cents }}</sup></span>
             {% endif %}
             <span class="td-price-unit">/ {% trans "person" %}</span>
           </div>
@@ -341,12 +363,12 @@
 
             <div class="td-book-summary">
               <div style="display:flex;justify-content:space-between;font-size:0.9rem;color:var(--c-text-muted);">
-                <span>${{ tour.discounted_price|floatformat:0 }} × <span id="totalGuests">2</span> {% trans "guests" %}</span>
-                <span id="subtotal">${{ tour.discounted_price|floatformat:0 }}</span>
+                <span>${{ tour.discounted_price|money_int }},{{ tour.discounted_price|money_cents }} × <span id="totalGuests">2</span> {% trans "guests" %}</span>
+                <span id="subtotal">${% widthratio tour.discounted_price 1 2 %},00</span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:1.125rem;font-weight:700;padding-top:14px;margin-top:14px;border-top:1px solid var(--c-border);">
                 <span>{% trans "Total" %}</span>
-                <span id="total" data-price="{{ tour.discounted_price|unlocalize }}" data-child-price="{{ tour.child_price|unlocalize }}">${{ tour.discounted_price|floatformat:0 }}</span>
+                <span id="total" data-price="{{ tour.discounted_price|unlocalize }}" data-child-price="{{ tour.child_price|unlocalize }}">${% widthratio tour.discounted_price 1 2 %},00</span>
               </div>
             </div>
 
@@ -434,7 +456,42 @@
   font-weight: 700; font-size: 0.85rem;
   display: flex; align-items: center; justify-content: center; gap: 8px;
 }
+.td-gallery-more { border: none; cursor: pointer; }
 .td-gallery-more:hover { background: rgba(0,0,0,0.65); }
+.td-lb-trigger { cursor: pointer; transition: opacity .15s ease; }
+.td-gallery-main .td-lb-trigger:hover,
+.td-gallery-item .td-lb-trigger:hover { opacity: .92; }
+
+/* ── Lightbox ── */
+.td-lightbox {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,10,12,.92);
+  padding: 24px;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.td-lightbox[hidden] { display: none; }
+.td-lb-stage { margin: 0; max-width: 92vw; max-height: 88vh; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.td-lb-img {
+  max-width: 92vw; max-height: 80vh; object-fit: contain;
+  border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+.td-lb-counter { color: rgba(255,255,255,.8); font-size: .95rem; font-weight: 600; letter-spacing: .03em; }
+.td-lb-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(255,255,255,.12); color: #fff; font-size: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s ease;
+}
+.td-lb-btn:hover { background: rgba(255,255,255,.25); }
+.td-lb-prev { left: 18px; }
+.td-lb-next { right: 18px; }
+.td-lb-close { top: 18px; right: 18px; transform: none; width: 46px; height: 46px; font-size: 1.25rem; }
+@media (max-width: 600px) {
+  .td-lb-prev { left: 6px; } .td-lb-next { right: 6px; }
+  .td-lb-btn { width: 44px; height: 44px; }
+}
 
 /* ── Layout ── */
 .td-layout { display: grid; grid-template-columns: 1fr 380px; gap: 40px; }
@@ -608,6 +665,12 @@
   font-size: .8rem; font-weight: 700; padding: 3px 10px; border-radius: 99px;
 }
 .td-price-unit { color: var(--c-text-muted); font-size: 1rem; }
+/* Narxning tiyin/cent qismi — kichik superscript (daraja), o'qishga oson */
+.price-cents {
+  font-size: .5em; font-weight: 700;
+  vertical-align: super; line-height: 0;
+  margin-left: 1px; opacity: .7;
+}
 
 .td-book-form { display: flex; flex-direction: column; gap: 6px; }
 .td-counter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px; }
@@ -651,14 +714,21 @@
   const price = parseFloat(totalEl?.dataset.price || '0');
   const childPrice = parseFloat(totalEl?.dataset.childPrice || '0');
 
+  function centsOf(v) { return String(Math.round((v - Math.trunc(v)) * 100)).padStart(2, '0'); }
+  // Subtotal va Total — oddiy vergul bilan inline (superscript faqat asosiy narxda, u statik)
+  function fmtFlat(v) { return '$' + Math.trunc(v) + ',' + centsOf(v); }
+
   function recalc() {
     const a = parseInt(document.getElementById('adults').value, 10) || 0;
     const c = parseInt(document.getElementById('children').value, 10) || 0;
     const total = price * a + childPrice * c;
-    if (subEl)    subEl.textContent    = '$' + Math.round(total);
-    if (totalEl)  totalEl.textContent  = '$' + Math.round(total);
+    if (subEl)    subEl.textContent   = fmtFlat(total);
+    if (totalEl)  totalEl.textContent = fmtFlat(total);
     if (guestsEl) guestsEl.textContent = a + c;
   }
+
+  // Sahifa yuklanganda darhol hisoblaymiz (default 2 adult to'g'ri ko'rinishi uchun)
+  recalc();
 
   document.querySelectorAll('[data-step]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -671,6 +741,62 @@
       recalc();
     });
   });
+
+  /* ── Lightbox (galereya — barcha rasmlar) ── */
+  (function () {
+    const lb = document.getElementById('td-lightbox');
+    const dataEl = document.getElementById('td-gallery-data');
+    if (!lb || !dataEl) return;
+    let images = [];
+    try { images = JSON.parse(dataEl.textContent) || []; } catch (e) { images = []; }
+    if (!images.length) return;
+
+    const imgEl   = lb.querySelector('.td-lb-img');
+    const curEl   = lb.querySelector('.td-lb-cur');
+    const totalEl2 = lb.querySelector('.td-lb-total');
+    let idx = 0;
+    totalEl2.textContent = images.length;
+
+    function render() {
+      imgEl.src = images[idx];
+      curEl.textContent = idx + 1;
+    }
+    function open(i) {
+      idx = Math.max(0, Math.min(images.length - 1, i || 0));
+      render();
+      lb.hidden = false;
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.hidden = true;
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    function next() { idx = (idx + 1) % images.length; render(); }
+    function prev() { idx = (idx - 1 + images.length) % images.length; render(); }
+
+    // Ochuvchi elementlar: asosiy rasm, yon rasmlar, "See all" tugmasi
+    document.querySelectorAll('.td-lb-trigger').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        open(parseInt(el.dataset.lbIndex, 10) || 0);
+      });
+    });
+
+    lb.querySelector('[data-lb-next]').addEventListener('click', next);
+    lb.querySelector('[data-lb-prev]').addEventListener('click', prev);
+    lb.querySelector('[data-lb-close]').addEventListener('click', close);
+    // Tashqarisiga bosilsa yopiladi (rasm/tugmaning o'zi emas)
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    // Klaviatura: Esc, ←, →
+    document.addEventListener('keydown', (e) => {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+  })();
 
   /* ── Tabs ── */
   document.querySelectorAll('.td-tab').forEach(tab => {
