@@ -38,7 +38,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
     list_display = ['site_name', 'phone_1', 'email_1']
     fieldsets = (
         ('Asosiy', {
-            'fields': ('site_name', 'site_tagline')
+            'fields': ('site_name', 'site_tagline', 'logo')
         }),
         ('Aloqa ma\'lumotlari', {
             'fields': ('director', 'phone_1', 'phone_2', 'email_1', 'email_2',

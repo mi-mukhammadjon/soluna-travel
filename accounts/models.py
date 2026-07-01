@@ -38,6 +38,11 @@ class User(AbstractUser):
 class SiteSettings(models.Model):
     site_name = models.CharField('Sayt nomi', max_length=100, default='SoLuna')
     site_tagline = models.CharField('Slogan', max_length=200, default='Your Gateway to Extraordinary Adventures')
+    logo = models.ImageField(
+        'Logotip', upload_to='site/', blank=True, null=True,
+        help_text="Sayt logotipi — butun saytda (header, footer, auth sahifalari, favicon) "
+                  "ishlatiladi. Bo'sh bo'lsa standart site-icon.svg ko'rsatiladi.",
+    )
 
     phone_1 = models.CharField('Telefon 1', max_length=20, default='+998 99 895 35 36')
     phone_2 = models.CharField('Telefon 2', max_length=20, blank=True)
@@ -68,6 +73,18 @@ class SiteSettings(models.Model):
 
     def __str__(self):
         return self.site_name
+
+    @property
+    def logo_url(self):
+        """Logo URL'i — admin'dagi logo bo'lsa uni, aks holda standart site-icon.svg.
+        Butun saytda shu ishlatiladi, shuning uchun bir joydan boshqariladi."""
+        from django.templatetags.static import static
+        if self.logo:
+            try:
+                return self.logo.url
+            except ValueError:
+                pass
+        return static('img/site-icon.svg')
 
     def save(self, *args, **kwargs):
         self.pk = 1

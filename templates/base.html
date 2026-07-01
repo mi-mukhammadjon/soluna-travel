@@ -47,7 +47,7 @@
     "@type": "TravelAgency",
     "name": "SoLuna Travel",
     "url": "{{ request.scheme }}://{{ request.get_host }}/",
-    "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/site-icon.svg' %}",
+    "logo": "{{ request.scheme }}://{{ request.get_host }}{{ site_settings.logo_url }}",
     "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/hero-samarkand.jpg' %}",
     "description": "{% trans 'Premium guided tours across Uzbekistan and the Great Silk Road.' %}",
     "areaServed": "Uzbekistan"{% if site_settings.phone_1 %},
@@ -56,9 +56,9 @@
   }
   </script>
 
-  {# Favicon — sayt logotipi (site-icon.svg). ?v= — brauzer cache'ni yangilash uchun #}
-  <link rel="icon" type="image/svg+xml" href="{% static 'img/site-icon.svg' %}?v=2">
-  <link rel="apple-touch-icon" href="{% static 'img/site-icon.svg' %}?v=2">
+  {# Favicon — admin'dagi logo (yoki standart site-icon). ?v= — cache yangilash #}
+  <link rel="icon" href="{{ site_settings.logo_url }}?v=3">
+  <link rel="apple-touch-icon" href="{{ site_settings.logo_url }}?v=3">
 
   {# Premium fonts — SF Pro on Apple, Plus Jakarta Sans as cross-platform #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -405,7 +405,7 @@
   <nav class="navbar" aria-label="{% trans 'Main navigation' %}">
 
     <a href="{% url 'home' %}" class="logo" data-no-transition>
-      <span class="logo-mark"><img src="{% static 'img/site-icon.svg' %}" alt="SoLuna"></span>
+      <span class="logo-mark"><img src="{{ site_settings.logo_url }}" alt="{{ site_settings.site_name|default:'SoLuna' }}"></span>
       <span class="logo-text">SoLuna</span>
     </a>
 
@@ -566,7 +566,7 @@
 <aside class="drawer" id="drawer" aria-hidden="true">
   <div class="drawer-head">
     <a href="{% url 'home' %}" class="logo">
-      <span class="logo-mark"><img src="{% static 'img/site-icon.svg' %}" alt="SoLuna"></span>
+      <span class="logo-mark"><img src="{{ site_settings.logo_url }}" alt="{{ site_settings.site_name|default:'SoLuna' }}"></span>
       <span class="logo-text">SoLuna</span>
     </a>
     <button type="button" class="drawer-close" id="drawerClose" aria-label="{% trans 'Close menu' %}">
@@ -655,7 +655,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="{% url 'home' %}" class="logo">
-          <span class="logo-mark"><img src="{% static 'img/site-icon.svg' %}" alt="SoLuna"></span>
+          <span class="logo-mark"><img src="{{ site_settings.logo_url }}" alt="{{ site_settings.site_name|default:'SoLuna' }}"></span>
           <span class="logo-text">{{ site_settings.site_name }}</span>
         </a>
         <p>{% trans "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for curious travelers, guided by local experts." %}</p>
