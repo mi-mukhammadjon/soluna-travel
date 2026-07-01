@@ -457,21 +457,22 @@
 
 /* Theme-swapped hero photos — only the active theme's image is fetched (display:none skips load) */
 .mac-hero-pic { position: absolute; inset: 0; background-size: cover; background-position: center; }
-/* Light hero rasmi chuqurroq/to'qroq ranglar — kontrast va to'yinganlik oshirildi */
-.mac-hero-pic--light { filter: contrast(1.12) saturate(1.18) brightness(0.9); }
+/* Light hero rasmi — to'yingan chuqur ranglar (to'qlashtirishni overlay bajaradi) */
+.mac-hero-pic--light { filter: contrast(1.06) saturate(1.14) brightness(1); }
 .mac-hero-pic--dark { display: none; }
 [data-theme="dark"] .mac-hero-pic--light { display: none; }
 [data-theme="dark"] .mac-hero-pic--dark { display: block; }
 
-/* Light mode: soft light scrim keeps the bright image airy while dark hero text stays readable */
+/* Light mode: to'q issiq overlay — och matn o'qilishi va chuqur ranglar uchun */
 .mac-hero-scrim {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(245,241,232,.52) 0%,
-    rgba(245,241,232,.30) 28%,
-    rgba(245,241,232,.24) 52%,
-    rgba(245,241,232,.62) 82%,
-    rgba(245,241,232,.88) 100%);
+  background:
+    linear-gradient(to bottom,
+      rgba(18,15,11,.60) 0%,
+      rgba(18,15,11,.34) 38%,
+      rgba(18,15,11,.40) 68%,
+      rgba(18,15,11,.80) 100%),
+    radial-gradient(120% 80% at 50% 0%, transparent 42%, rgba(18,15,11,.35) 100%);
 }
 [data-theme="dark"] .mac-hero-scrim {
   background:
@@ -482,11 +483,12 @@
 
 .mac-eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(0,0,0,.06);
-  border: 1px solid var(--c-border);
-  color: var(--c-text); padding: 8px 18px; border-radius: 50px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
+  color: #fff; padding: 8px 18px; border-radius: 50px;
   font-size: .78rem; font-weight: 500; letter-spacing: .02em;
   margin-bottom: 26px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
 [data-theme="dark"] .mac-eyebrow {
   background: rgba(255,255,255,.12);
@@ -501,31 +503,27 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: var(--gold-ink);
+  color: #f7f1e5;                 /* to'q hero ustida och matn */
   margin-bottom: 22px;
-  text-shadow: 0 1px 2px rgba(0,0,0,.14);
+  text-shadow: 0 2px 16px rgba(0,0,0,.4);
 }
-/* Accent (2-qator) mavzuga moslashuvchi — light temada to'q oltin (o'qilishi uchun) */
+/* Accent (2-qator) — och oltin gradient, to'q hero ustida yaqqol o'qiladi */
 .mac-hero-accent {
-  background: linear-gradient(120deg, var(--gold) 0%, var(--gold-ink) 100%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: var(--gold-ink);
-}
-[data-theme="dark"] .mac-hero-accent {
   background: linear-gradient(120deg, var(--gold-light) 0%, var(--gold) 100%);
   -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; color: var(--gold-light);
 }
 .mac-hero-desc {
   font-size: clamp(1.02rem, 2vw, 1.22rem);
-  color: var(--c-text-muted);
+  color: rgba(245,240,230,.92);
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
   line-height: 1.6; max-width: 600px; margin: 0 auto 38px; font-weight: 400;
 }
 
 .mac-trust { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 26px; }
-.mac-trust-item { display: flex; align-items: center; gap: 7px; font-size: .82rem; color: var(--c-text-muted); font-weight: 500; }
+.mac-trust-item { display: flex; align-items: center; gap: 7px; font-size: .82rem; color: rgba(245,240,230,.9); font-weight: 500; text-shadow: 0 1px 6px rgba(0,0,0,.3); }
 .mac-trust-item i { color: var(--gold); font-size: .98rem; }
-.mac-trust-sep { width: 1px; height: 14px; background: var(--c-border); }
+.mac-trust-sep { width: 1px; height: 14px; background: rgba(255,255,255,.25); }
 @media (max-width: 480px) { .mac-trust-sep { display: none; } }
 
 /* Search box — macOS panel */
