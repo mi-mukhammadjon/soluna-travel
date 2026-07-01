@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 01:16+0500\n"
+"POT-Creation-Date: 2026-07-01 12:40+0500\n"
 "PO-Revision-Date: 2026-06-21 12:00+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -18,2566 +18,1028 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: accounts/admin.py:18
 msgid "Дополнительная информация"
 msgstr "Дополнительная информация"
 
-#: accounts/admin.py:33 accounts/models.py:12
 msgid "Аватар"
 msgstr "Аватар"
 
-#: accounts/apps.py:7
 msgid "Пользователи и доступы"
 msgstr "Пользователи и доступы"
 
-#: accounts/models.py:8 accounts/models.py:27
 msgid "Пользователь"
 msgstr "Пользователь"
 
-#: accounts/models.py:9
 msgid "Администратор"
 msgstr "Администратор"
 
-#: accounts/models.py:11
 msgid "Номер телефона"
 msgstr "Номер телефона"
 
-#: accounts/models.py:13
 msgid "Роль"
 msgstr "Роль"
 
-#: accounts/models.py:15
 msgid "Предпочитаемый язык"
 msgstr "Предпочитаемый язык"
 
-#: accounts/models.py:24
 msgid "Дата регистрации"
 msgstr "Дата регистрации"
 
-#: accounts/models.py:28
 msgid "Все пользователи"
 msgstr "Все пользователи"
 
-#: bookings/forms.py:34
 msgid "Dietary needs, accessibility, etc."
 msgstr "Диетические предпочтения, доступность и т.д."
 
-#: bookings/forms.py:38 templates/bookings/booking_create.html:88
-#: templates/bookings/booking_detail.html:188
-#: templates/bookings/booking_list.html:108
 msgid "Travel Date"
 msgstr "Дата поездки"
 
-#: bookings/forms.py:39 templates/bookings/booking_create.html:103
-#: templates/tours/detail.html:288
 msgid "Adults"
 msgstr "Взрослые"
 
-#: bookings/forms.py:40 templates/bookings/booking_create.html:118
-#: templates/bookings/booking_detail.html:296 templates/tours/detail.html:296
 msgid "Children"
 msgstr "Дети"
 
-#: bookings/forms.py:41 templates/bookings/booking_create.html:160
-#: templates/bookings/booking_detail.html:253
 msgid "Special Requests"
 msgstr "Особые пожелания"
 
-#: bookings/forms.py:47
 msgid "Travel date cannot be in the past."
 msgstr "Дата поездки не может быть в прошлом."
 
-#: bookings/forms.py:53
 msgid "At least 1 adult is required."
 msgstr "Требуется как минимум 1 взрослый."
 
-#: payments/models.py:64
 msgid "Created"
 msgstr "Создано"
 
-#: payments/models.py:65 templates/bookings/booking_list.html:50
-#: templates/bookings/booking_list.html:83
 msgid "Pending"
 msgstr "В ожидании"
 
-#: payments/models.py:66
 msgid "Processing"
 msgstr "В обработке"
 
-#: payments/models.py:67 templates/bookings/booking_detail.html:323
-#: templates/payments/payment_success.html:60
 msgid "Paid"
 msgstr "Оплачено"
 
-#: payments/models.py:68
 msgid "Failed"
 msgstr "Ошибка"
 
-#: payments/models.py:69 templates/bookings/booking_detail.html:34
-#: templates/bookings/booking_list.html:59
-#: templates/bookings/booking_list.html:86
 msgid "Cancelled"
 msgstr "Отменено"
 
-#: payments/models.py:70 templates/bookings/booking_detail.html:325
 msgid "Refunded"
 msgstr "Возвращено"
 
-#: payments/views.py:56
 msgid "Bu bron uchun to'lov allaqachon qabul qilingan."
 msgstr "Оплата за это бронирование уже принята."
 
-#: payments/views.py:83
 msgid "Ofisda to'lov qilishni tanladingiz."
 msgstr "Вы выбрали оплату в офисе."
 
-#: payments/views.py:102
 msgid "Ushbu to'lov turi hali qo'llanilmaydi."
 msgstr "Этот тип оплаты пока не поддерживается."
 
-#: templates/404.html:4
 msgid "Page Not Found"
 msgstr "Страница не найдена"
 
-#: templates/404.html:16
 msgid "Oops! Page not found"
 msgstr "Упс! Страница не найдена"
 
-#: templates/404.html:18
 msgid ""
 "The page you are looking for might have been moved or doesn't exist. Let's "
 "get you back on track."
-msgstr "Страница, которую вы ищете, возможно, была перемещена или не существует. Давайте вернемся обратно."
+msgstr ""
+"Страница, которую вы ищете, возможно, была перемещена или не существует. "
+"Давайте вернемся обратно."
 
-#: templates/404.html:23 templates/500.html:21
 msgid "Go Home"
 msgstr "На главную"
 
-#: templates/404.html:26
 msgid "Browse Tours"
 msgstr "Смотреть туры"
 
-#: templates/404.html:31 templates/base.html:154 templates/base.html:302
-#: templates/base.html:375 templates/regions/detail.html:19
-#: templates/regions/list.html:4 templates/regions/list.html:14
 msgid "Destinations"
 msgstr "Направления"
 
-#: templates/404.html:32 templates/regions/detail.html:160
 msgid "Contact us"
 msgstr "Связаться с нами"
 
-#: templates/404.html:33
 msgid "Help center"
 msgstr "Справочный центр"
 
-#: templates/500.html:4
 msgid "Server Error"
 msgstr "Ошибка сервера"
 
-#: templates/500.html:14
 msgid "Something went wrong"
 msgstr "Что-то пошло не так"
 
-#: templates/500.html:16
 msgid ""
-"We're having trouble loading this page. Our team has been notified and we're "
-"working on it."
-msgstr "Возникла проблема с загрузкой этой страницы. Наша команда уже уведомлена и работает над этим."
+"We're having trouble loading this page. Our team has been notified and we're"
+" working on it."
+msgstr ""
+"Возникла проблема с загрузкой этой страницы. Наша команда уже уведомлена и "
+"работает над этим."
 
-#: templates/500.html:24 templates/account/password_reset_done.html:25
-#: templates/socialaccount/authentication_error.html:49
 msgid "Try again"
 msgstr "Попробовать снова"
 
-#: templates/account/login.html:4 templates/account/login.html:163
-#: templates/accounts/register.html:90 templates/base.html:242
-#: templates/base.html:316
 msgid "Sign In"
 msgstr "Войти"
 
-#: templates/account/login.html:23
 msgid "Welcome back to your"
 msgstr "Добро пожаловать в ваше"
 
-#: templates/account/login.html:24
 msgid "next adventure"
 msgstr "следующее приключение"
 
-#: templates/account/login.html:27
 msgid ""
 "Discover the magic of the Silk Road — ancient cities, breathtaking "
 "landscapes, and unforgettable journeys."
-msgstr "Откройте для себя магию Шелкового пути — древние города, захватывающие пейзажи и незабываемые путешествия."
+msgstr ""
+"Откройте для себя магию Шелкового пути — древние города, захватывающие "
+"пейзажи и незабываемые путешествия."
 
-#: templates/account/login.html:35
 msgid "Trusted by 50,000+"
 msgstr "Нам доверяют более 50,000"
 
-#: templates/account/login.html:36
 msgid "travelers across 9 countries"
 msgstr "путешественников из 9 стран"
 
-#: templates/account/login.html:42
 msgid "rating"
 msgstr "рейтинг"
 
-#: templates/account/login.html:43
 msgid "from 8,400+ verified reviews"
 msgstr "на основе 8,400+ проверенных отзывов"
 
-#: templates/account/login.html:49 templates/bookings/booking_create.html:305
 msgid "24/7 support"
 msgstr "Круглосуточная поддержка"
 
-#: templates/account/login.html:50
 msgid "in 9 languages"
 msgstr "на 9 языках"
 
-#: templates/account/login.html:56
 msgid "From"
 msgstr "Из"
 
-#: templates/account/login.html:57
 msgid "Tashkent · Samarkand · Bukhara · Khiva"
 msgstr "Ташкент · Самарканд · Бухара · Хива"
 
-#: templates/account/login.html:68 templates/account/signup.html:76
-#: templates/accounts/profile.html:11 templates/base.html:111
-#: templates/base.html:300 templates/bookings/booking_create.html:12
-#: templates/bookings/booking_detail.html:12
-#: templates/bookings/booking_list.html:12
-#: templates/messages_app/contact.html:12
-#: templates/payments/payment_select.html:11 templates/regions/detail.html:17
-#: templates/regions/list.html:12 templates/tours/detail.html:12
-#: templates/tours/list.html:12
 msgid "Home"
 msgstr "Главная"
 
-#: templates/account/login.html:73
 msgid "Welcome back"
 msgstr "С возвращением"
 
-#: templates/account/login.html:75
 msgid "Sign in to access your bookings and exclusive offers."
-msgstr "Войдите, чтобы получить доступ к своим бронированиям и эксклюзивным предложениям."
+msgstr ""
+"Войдите, чтобы получить доступ к своим бронированиям и эксклюзивным "
+"предложениям."
 
-#: templates/account/login.html:91 templates/account/login.html:106
 msgid "Continue with Google"
 msgstr "Продолжить с Google"
 
-#: templates/account/login.html:111
 msgid "or sign in with email"
 msgstr "или войдите по email"
 
-#: templates/account/login.html:126 templates/account/signup.html:153
-#: templates/accounts/profile.html:105 templates/accounts/profile_edit.html:58
-#: templates/accounts/register.html:57 templates/base.html:395
-#: templates/messages_app/contact.html:40
-#: templates/messages_app/contact.html:77
-#: templates/socialaccount/signup.html:67
 msgid "Email"
 msgstr "Электронная почта"
 
-#: templates/account/login.html:138 templates/account/signup.html:164
-#: templates/accounts/password_change.html:13
-#: templates/accounts/profile.html:48 templates/accounts/register.html:72
 msgid "Password"
 msgstr "Пароль"
 
-#: templates/account/login.html:140
 msgid "Forgot?"
 msgstr "Забыли?"
 
-#: templates/account/login.html:155
 msgid "Keep me signed in for 30 days"
 msgstr "Оставаться в системе 30 дней"
 
-#: templates/account/login.html:168
 msgid "Don't have an account?"
 msgstr "Нет аккаунта?"
 
-#: templates/account/login.html:169
 msgid "Create one"
 msgstr "Создать"
 
-#: templates/account/login.html:174 templates/account/signup.html:205
-#: templates/account/signup.html:227 templates/base.html:413
-#: templates/socialaccount/signup.html:119
 msgid "Terms"
 msgstr "Условия"
 
-#: templates/account/login.html:176 templates/account/signup.html:229
-#: templates/base.html:415
 msgid "Privacy"
 msgstr "Конфиденциальность"
 
-#: templates/account/login.html:178 templates/account/signup.html:231
 msgid "Help"
 msgstr "Помощь"
 
-#: templates/account/logout.html:4 templates/account/logout.html:23
-#: templates/base.html:236 templates/base.html:312
 msgid "Sign Out"
 msgstr "Выйти"
 
-#: templates/account/logout.html:10
 msgid "Sign out?"
 msgstr "Выйти из системы?"
 
-#: templates/account/logout.html:12
 msgid "Are you sure you want to sign out?"
 msgstr "Вы уверены, что хотите выйти?"
 
-#: templates/account/logout.html:21 templates/accounts/password_change.html:47
-#: templates/accounts/profile_edit.html:85
-#: templates/bookings/booking_detail.html:125 templates/reviews/form.html:83
 msgid "Cancel"
 msgstr "Отмена"
 
-#: templates/account/password_reset.html:4
 msgid "Reset Password"
 msgstr "Сброс пароля"
 
-#: templates/account/password_reset.html:15
 msgid "Forgot your password?"
 msgstr "Забыли пароль?"
 
-#: templates/account/password_reset.html:17
 msgid "Enter your email and we'll send a link to reset your password."
 msgstr "Введите свой email, и мы отправим ссылку для сброса пароля."
 
-#: templates/account/password_reset.html:24
 msgid "Email address"
 msgstr "Адрес электронной почты"
 
-#: templates/account/password_reset.html:29
 msgid "Send Reset Link"
 msgstr "Отправить ссылку для сброса"
 
-#: templates/account/password_reset.html:35
-#: templates/account/password_reset_done.html:20
-#: templates/account/verification_sent.html:19
-#: templates/socialaccount/login.html:84
-#: templates/socialaccount/signup.html:136
 msgid "Back to sign in"
 msgstr "Вернуться ко входу"
 
-#: templates/account/password_reset_done.html:4
 msgid "Email Sent"
 msgstr "Письмо отправлено"
 
-#: templates/account/password_reset_done.html:14
 msgid "Check your email"
 msgstr "Проверьте почту"
 
-#: templates/account/password_reset_done.html:16
 msgid ""
-"We've sent a password reset link to your email address. The link will expire "
-"in 24 hours."
-msgstr "Мы отправили ссылку для сброса пароля на вашу почту. Ссылка действительна 24 часа."
+"We've sent a password reset link to your email address. The link will expire"
+" in 24 hours."
+msgstr ""
+"Мы отправили ссылку для сброса пароля на вашу почту. Ссылка действительна 24"
+" часа."
 
-#: templates/account/password_reset_done.html:24
 msgid "Didn't receive an email?"
 msgstr "Не получили письмо?"
 
-#: templates/account/signup.html:4 templates/base.html:243
-#: templates/base.html:317
 msgid "Sign Up"
 msgstr "Регистрация"
 
-#: templates/account/signup.html:23
 msgid "Your journey to the"
 msgstr "Ваше путешествие по"
 
-#: templates/account/signup.html:24 templates/base.html:266
 msgid "Silk Road"
 msgstr "Шелковому пути"
 
-#: templates/account/signup.html:24
 msgid "starts here"
 msgstr "начинается здесь"
 
-#: templates/account/signup.html:27
 msgid ""
 "Join thousands of travelers exploring Uzbekistan's ancient cities, vibrant "
 "culture, and timeless landscapes."
-msgstr "Присоединяйтесь к тысячам путешественников, исследующих древние города, яркую культуру и вечные пейзажи Узбекистана."
+msgstr ""
+"Присоединяйтесь к тысячам путешественников, исследующих древние города, "
+"яркую культуру и вечные пейзажи Узбекистана."
 
-#: templates/account/signup.html:36
 msgid "Welcome bonus"
 msgstr "Приветственный бонус"
 
-#: templates/account/signup.html:37
 #, python-format
 msgid "Get 5%% off your first booking"
 msgstr "Получите скидку 5%% на первое бронирование"
 
-#: templates/account/signup.html:43
 msgid "Save favorites"
 msgstr "Сохранение избранного"
 
-#: templates/account/signup.html:44
 msgid "Build your dream itinerary"
 msgstr "Создайте маршрут своей мечты"
 
-#: templates/account/signup.html:50
 msgid "Exclusive offers"
 msgstr "Эксклюзивные предложения"
 
-#: templates/account/signup.html:51
 msgid "Early access to seasonal deals"
 msgstr "Ранний доступ к сезонным акциям"
 
-#: templates/account/signup.html:57
 msgid "Faster checkout"
 msgstr "Быстрое оформление заказа"
 
-#: templates/account/signup.html:58
 msgid "Save payment methods securely"
 msgstr "Безопасное сохранение способов оплаты"
 
-#: templates/account/signup.html:64
 msgid "Free to join"
 msgstr "Бесплатная регистрация"
 
-#: templates/account/signup.html:65
 msgid "No credit card required"
 msgstr "Кредитная карта не требуется"
 
-#: templates/account/signup.html:81
 msgid "Create your account"
 msgstr "Создайте аккаунт"
 
-#: templates/account/signup.html:83
 msgid "Sign up in 30 seconds. No credit card required."
 msgstr "Регистрация за 30 секунд. Кредитная карта не требуется."
 
-#: templates/account/signup.html:99 templates/account/signup.html:113
-#: templates/accounts/register.html:23
 msgid "Sign up with Google"
 msgstr "Регистрация через Google"
 
-#: templates/account/signup.html:118
 msgid "or sign up with email"
 msgstr "или зарегистрируйтесь по email"
 
-#: templates/account/signup.html:134
 msgid "First name"
 msgstr "Имя"
 
-#: templates/account/signup.html:142
 msgid "Last name"
 msgstr "Фамилия"
 
-#: templates/account/signup.html:168
-msgid "At least 8 characters"
-msgstr "Не менее 8 символов"
-
-#: templates/account/signup.html:180
-msgid "Password strength"
-msgstr "Сложность пароля"
-
-#: templates/account/signup.html:187
-msgid "Confirm password"
-msgstr "Подтвердите пароль"
-
-#: templates/account/signup.html:191
-msgid "Repeat password"
-msgstr "Повторите пароль"
-
-#: templates/account/signup.html:204 templates/bookings/booking_create.html:199
-#: templates/socialaccount/signup.html:118
-msgid "I agree to SoLuna's"
-msgstr "Я согласен с"
-
-#: templates/account/signup.html:206 templates/bookings/booking_create.html:201
-#: templates/socialaccount/signup.html:120
-msgid "Privacy Policy"
-msgstr "Политикой конфиденциальности"
-
-#: templates/account/signup.html:207
-msgid "and consent to receiving travel inspiration emails"
-msgstr "и согласен получать письма с идеями для путешествий"
-
-#: templates/account/signup.html:216 templates/accounts/register.html:18
-#: templates/accounts/register.html:85 templates/socialaccount/signup.html:130
-msgid "Create Account"
-msgstr "Создать аккаунт"
-
-#: templates/account/signup.html:221 templates/accounts/register.html:89
-msgid "Already have an account?"
-msgstr "Уже есть аккаунт?"
-
-#: templates/account/signup.html:222
-msgid "Sign in"
-msgstr "Войти"
-
-#: templates/account/verification_sent.html:4
-msgid "Verify Email"
-msgstr "Подтверждение email"
-
-#: templates/account/verification_sent.html:14
-msgid "Verify your email"
-msgstr "Подтвердите ваш email"
-
-#: templates/account/verification_sent.html:16
-msgid ""
-"We've sent a verification email. Please click the link in the email to "
-"activate your account."
-msgstr "Мы отправили письмо для подтверждения. Пожалуйста, перейдите по ссылке в письме, чтобы активировать аккаунт."
-
-#: templates/accounts/password_change.html:4
-#: templates/accounts/password_change.html:17
-msgid "Change Password"
-msgstr "Изменить пароль"
-
-#: templates/accounts/password_change.html:11
-#: templates/accounts/profile.html:13 templates/accounts/profile.html:36
-#: templates/accounts/profile_edit.html:11
-#: templates/bookings/booking_list.html:14
-msgid "Profile"
-msgstr "Профиль"
-
-#: templates/accounts/password_change.html:19
-msgid "For security, choose a strong password you haven't used before."
-msgstr "Для безопасности выберите надежный пароль, который вы ранее не использовали."
-
-#: templates/accounts/password_change.html:26
-msgid "Current Password"
-msgstr "Текущий пароль"
-
-#: templates/accounts/password_change.html:32
-msgid "New Password"
-msgstr "Новый пароль"
-
-#: templates/accounts/password_change.html:36
-msgid "At least 8 characters, with letters and numbers."
-msgstr "Минимум 8 символов, включая буквы и цифры."
-
-#: templates/accounts/password_change.html:41
-msgid "Confirm New Password"
-msgstr "Подтвердите новый пароль"
-
-#: templates/accounts/password_change.html:49
-msgid "Update Password"
-msgstr "Обновить пароль"
-
-#: templates/accounts/profile.html:4 templates/base.html:221
-#: templates/base.html:308
-msgid "My Profile"
-msgstr "Мой профиль"
-
-#: templates/accounts/profile.html:30 templates/accounts/profile_edit.html:4
-#: templates/accounts/profile_edit.html:17
-msgid "Edit Profile"
-msgstr "Редактировать профиль"
-
-#: templates/accounts/profile.html:39 templates/base.html:224
-#: templates/base.html:309 templates/bookings/booking_detail.html:14
-#: templates/bookings/booking_list.html:4
-#: templates/bookings/booking_list.html:16
-msgid "My Bookings"
-msgstr "Мои бронирования"
-
-#: templates/accounts/profile.html:42 templates/accounts/profile.html:82
-msgid "Wishlist"
-msgstr "Избранное"
-
-#: templates/accounts/profile.html:45
-msgid "My Reviews"
-msgstr "Мои отзывы"
-
-#: templates/accounts/profile.html:53
-msgid "Logout"
-msgstr "Выйти"
-
-#: templates/accounts/profile.html:68
-msgid "Total Bookings"
-msgstr "Всего бронирований"
-
-#: templates/accounts/profile.html:75
-msgid "Completed Trips"
-msgstr "Завершенные поездки"
-
-#: templates/accounts/profile.html:89 templates/tours/detail.html:117
-#: templates/tours/detail.html:211
-msgid "Reviews"
-msgstr "Отзывы"
-
-#: templates/accounts/profile.html:97
-msgid "Personal Information"
-msgstr "Личная информация"
-
-#: templates/accounts/profile.html:99 templates/accounts/profile_edit.html:13
-msgid "Edit"
-msgstr "Редактировать"
-
-#: templates/accounts/profile.html:103 templates/messages_app/contact.html:73
-msgid "Full Name"
-msgstr "Полное имя"
-
-#: templates/accounts/profile.html:104 templates/accounts/register.html:50
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: templates/accounts/profile.html:106 templates/accounts/profile_edit.html:64
-#: templates/accounts/register.html:64 templates/messages_app/contact.html:33
-#: templates/messages_app/contact.html:84
-msgid "Phone"
-msgstr "Телефон"
+msgid "At least 8 characters"
+msgstr "Не менее 8 символов"
 
-#: templates/accounts/profile.html:107
-msgid "Joined"
-msgstr "Дата регистрации"
+msgid "Password strength"
+msgstr "Сложность пароля"
 
-#: templates/accounts/profile.html:108 templates/accounts/profile_edit.html:70
-#: templates/regions/detail.html:104
-msgid "Country"
-msgstr "Страна"
+msgid "Confirm password"
+msgstr "Подтвердите пароль"
 
-#: templates/accounts/profile.html:115
-msgid "Recent Bookings"
-msgstr "Недавние бронирования"
+msgid "Repeat password"
+msgstr "Повторите пароль"
 
-#: templates/accounts/profile.html:117
-msgid "View all"
-msgstr "Смотреть все"
+msgid "I agree to SoLuna's"
+msgstr "Я согласен с"
 
-#: templates/accounts/profile.html:132 templates/payments/mock_pay.html:161
-#: templates/tours/detail.html:307
+msgid "Privacy Policy"
+msgstr "Политикой конфиденциальности"
+
+msgid "and consent to receiving travel inspiration emails"
+msgstr "и согласен получать письма с идеями для путешествий"
+
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
+
+msgid "Sign in"
+msgstr "Войти"
+
+msgid "Verify Email"
+msgstr "Подтверждение email"
+
+msgid "Verify your email"
+msgstr "Подтвердите ваш email"
+
+msgid ""
+"We've sent a verification email. Please click the link in the email to "
+"activate your account."
+msgstr ""
+"Мы отправили письмо для подтверждения. Пожалуйста, перейдите по ссылке в "
+"письме, чтобы активировать аккаунт."
+
 msgid "guests"
 msgstr "гостей"
 
-#: templates/accounts/profile.html:145
-msgid "You haven't booked any tours yet."
-msgstr "Вы еще не забронировали ни одного тура."
+msgid "Change Password"
+msgstr "Изменить пароль"
 
-#: templates/accounts/profile.html:146
-msgid "Browse tours"
-msgstr "Посмотреть туры"
+msgid "Profile"
+msgstr "Профиль"
 
-#: templates/accounts/profile_edit.html:19
-msgid "Update your personal information and preferences."
-msgstr "Обновите вашу личную информацию и настройки."
+msgid "For security, choose a strong password you haven't used before."
+msgstr ""
+"Для безопасности выберите надежный пароль, который вы ранее не использовали."
 
-#: templates/accounts/profile_edit.html:35
-msgid "Profile photo"
-msgstr "Фото профиля"
+msgid "Current Password"
+msgstr "Текущий пароль"
 
-#: templates/accounts/profile_edit.html:37
-msgid "JPG, PNG. Max 2MB."
-msgstr "JPG, PNG. Макс. 2МБ."
+msgid "Show password"
+msgstr "Новый пароль"
 
-#: templates/accounts/profile_edit.html:40
-msgid "Upload"
-msgstr "Загрузить"
+msgid "New Password"
+msgstr "Новый пароль"
 
-#: templates/accounts/profile_edit.html:48 templates/accounts/register.html:36
-msgid "First Name"
-msgstr "Имя"
+msgid "At least 8 characters, mixing letters and numbers."
+msgstr "Минимум 8 символов, включая буквы и цифры."
 
-#: templates/accounts/profile_edit.html:52 templates/accounts/register.html:42
-msgid "Last Name"
-msgstr "Фамилия"
+msgid "Confirm New Password"
+msgstr "Подтвердите новый пароль"
 
-#: templates/accounts/profile_edit.html:60
-msgid "Email cannot be changed."
-msgstr "Email изменить нельзя."
+msgid "Update Password"
+msgstr "Обновить пароль"
 
-#: templates/accounts/profile_edit.html:74
-msgid "City"
-msgstr "Город"
+msgid "Weak"
+msgstr "Слабый"
 
-#: templates/accounts/profile_edit.html:80
-msgid "About yourself"
-msgstr "О себе"
+msgid "Fair"
+msgstr "Средний"
 
-#: templates/accounts/profile_edit.html:81
-msgid "Tell us a bit about yourself..."
-msgstr "Расскажите немного о себе..."
-
-#: templates/accounts/profile_edit.html:87
-msgid "Save Changes"
-msgstr "Сохранить изменения"
-
-#: templates/accounts/register.html:3
-msgid "Register"
-msgstr "Регистрация"
-
-#: templates/accounts/register.html:19
-msgid "Join SoLuna and start planning your journey"
-msgstr "Присоединяйтесь к SoLuna и начните планировать свое путешествие"
-
-#: templates/accounts/register.html:26
-msgid "or"
-msgstr "или"
-
-#: templates/accounts/register.html:78
-msgid "Confirm"
-msgstr "Подтвердить"
-
-#: templates/base.html:7 templates/home.html:4 templates/home.html:14
-msgid "Your Gateway to Extraordinary Adventures"
-msgstr "Ваш путь к необыкновенным приключениям"
-
-#: templates/base.html:8
-msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
-msgstr "SoLuna — премиум-туры по Узбекистану и Шелковому пути."
-
-#: templates/base.html:35
-msgid "Skip to content"
-msgstr "Перейти к контенту"
-
-#: templates/base.html:56
-msgid "Unlock the Magic of Travel with SoLuna"
-msgstr "Откройте для себя магию путешествий с SoLuna"
-
-#: templates/base.html:58
-msgid "Explore Now"
-msgstr "Начать исследование"
-
-#: templates/base.html:67 templates/regions/detail.html:130
-msgid "Language"
-msgstr "Язык"
-
-#: templates/base.html:80 templates/regions/detail.html:139
-msgid "Currency"
-msgstr "Валюта"
-
-#: templates/base.html:92
-msgid "Toggle theme"
-msgstr "Переключить тему"
-
-#: templates/base.html:101
-msgid "Main navigation"
-msgstr "Главное меню"
-
-#: templates/base.html:117 templates/base.html:301 templates/home.html:19
-#: templates/home.html:88 templates/home.html:285 templates/home.html:396
-#: templates/tours/detail.html:14 templates/tours/list.html:14
-msgid "Tours"
-msgstr "Туры"
-
-#: templates/base.html:123 templates/tours/list.html:4
-#: templates/tours/list.html:19
-msgid "All Tours"
-msgstr "Все туры"
-
-#: templates/base.html:124
-msgid "Browse our complete catalog"
-msgstr "Смотреть полный каталог"
-
-#: templates/base.html:130
-msgid "Cultural"
-msgstr "Культурные"
-
-#: templates/base.html:131
-msgid "Historic cities and heritage"
-msgstr "Исторические города и наследие"
-
-#: templates/base.html:137 templates/base.html:385
-msgid "Adventure"
-msgstr "Приключения"
-
-#: templates/base.html:138
-msgid "Mountains, deserts and trekking"
-msgstr "Горы, пустыни и треккинг"
-
-#: templates/base.html:144
-msgid "Premium"
-msgstr "Премиум"
-
-#: templates/base.html:145
-msgid "Luxury experiences"
-msgstr "Роскошный отдых"
-
-#: templates/base.html:160
-msgid "All Destinations"
-msgstr "Все направления"
-
-#: templates/base.html:161
-msgid "Explore Uzbekistan"
-msgstr "Исследовать Узбекистан"
-
-#: templates/base.html:168
-msgid "City of legends"
-msgstr "Город легенд"
-
-#: templates/base.html:175
-msgid "Holy and ancient"
-msgstr "Священный и древний"
-
-#: templates/base.html:182
-msgid "Open-air museum"
-msgstr "Музей под открытым небом"
-
-#: templates/base.html:188 templates/base.html:303 templates/home.html:23
-msgid "Activities"
-msgstr "Развлечения"
-
-#: templates/base.html:189 templates/base.html:304 templates/base.html:376
-#: templates/messages_app/contact.html:14
-msgid "Contact"
-msgstr "Контакты"
-
-#: templates/base.html:196 templates/home.html:61 templates/tours/list.html:56
-msgid "Search"
-msgstr "Поиск"
-
-#: templates/base.html:227
-msgid "Saved Tours"
-msgstr "Сохраненные туры"
-
-#: templates/base.html:230
-msgid "Settings"
-msgstr "Настройки"
-
-#: templates/base.html:247
-msgid "Open menu"
-msgstr "Открыть меню"
-
-#: templates/base.html:258
-msgid "Search tours, destinations, activities..."
-msgstr "Поиск туров, направлений, активностей..."
-
-#: templates/base.html:259
-msgid "Close search"
-msgstr "Закрыть поиск"
-
-#: templates/base.html:264 templates/payments/payment_select.html:94
-msgid "Popular"
-msgstr "Популярное"
-
-#: templates/base.html:282
-msgid "Close menu"
-msgstr "Закрыть меню"
-
-#: templates/base.html:299
-msgid "Mobile navigation"
-msgstr "Мобильное меню"
-
-#: templates/base.html:341
-msgid "Close"
-msgstr "Закрыть"
-
-#: templates/base.html:361
-msgid ""
-"Dive into local recommendations for a truly authentic Silk Road experience "
-"across Uzbekistan."
-msgstr "Погрузитесь в местные рекомендации для по-настоящему аутентичного опыта на Шелковом пути по всему Узбекистану."
-
-#: templates/base.html:363
-msgid "Tashkent, Uzbekistan"
-msgstr "Ташкент, Узбекистан"
-
-#: templates/base.html:364
-msgid "Hours"
-msgstr "Часы работы"
-
-#: templates/base.html:371
-msgid "Company"
-msgstr "Компания"
-
-#: templates/base.html:373
-msgid "About Us"
-msgstr "О нас"
-
-#: templates/base.html:374
-msgid "Our Tours"
-msgstr "Наши туры"
-
-#: templates/base.html:381
-msgid "Services"
-msgstr "Услуги"
-
-#: templates/base.html:383
-msgid "Tour Booking"
-msgstr "Бронирование туров"
-
-#: templates/base.html:384
-msgid "Premium Tours"
-msgstr "Премиум туры"
-
-#: templates/base.html:386
-msgid "Help & Support"
-msgstr "Помощь и поддержка"
-
-#: templates/base.html:391
-msgid "Newsletter"
-msgstr "Рассылка"
-
-#: templates/base.html:392
-msgid "Get exclusive offers and travel inspiration."
-msgstr "Получайте эксклюзивные предложения и идеи для путешествий."
-
-#: templates/base.html:395
-msgid "Enter your email"
-msgstr "Введите ваш email"
-
-#: templates/base.html:396
-msgid "Subscribe"
-msgstr "Подписаться"
-
-#: templates/base.html:401
-msgid "We accept"
-msgstr "Мы принимаем"
-
-#: templates/base.html:411
-msgid "All rights reserved."
-msgstr "Все права защищены."
-
-#: templates/base.html:417
-msgid "Cookies"
-msgstr "Куки"
-
-#: templates/base.html:420
-msgid "Follow us"
-msgstr "Подпишитесь на нас"
-
-#: templates/base.html:432
-msgid "Back to top"
-msgstr "Наверх"
-
-#: templates/bookings/booking_create.html:4
-msgid "Book"
-msgstr "Забронировать"
-
-#: templates/bookings/booking_create.html:16
-#: templates/bookings/booking_detail.html:4
-#: templates/payments/mock_pay.html:155
-msgid "Booking"
-msgstr "Бронирование"
-
-#: templates/bookings/booking_create.html:19
-msgid "Complete Your Booking"
-msgstr "Завершите ваше бронирование"
-
-#: templates/bookings/booking_create.html:20
-msgid "Just a few details and you're ready to start your adventure"
-msgstr "Еще несколько деталей, и вы готовы начать свое приключение"
-
-#: templates/bookings/booking_create.html:27
-#: templates/bookings/booking_create.html:80
-#: templates/payments/payment_select.html:25
-msgid "Trip Details"
-msgstr "Детали поездки"
-
-#: templates/bookings/booking_create.html:28
-msgid "Travel info"
-msgstr "Информация о поездке"
-
-#: templates/bookings/booking_create.html:35
-#: templates/bookings/booking_create.html:174
-#: templates/payments/payment_select.html:4
-#: templates/payments/payment_select.html:15
-#: templates/payments/payment_select.html:33
-#: templates/payments/payment_success.html:32
-msgid "Payment"
-msgstr "Оплата"
-
-#: templates/bookings/booking_create.html:36
-#: templates/payments/payment_select.html:18
-#: templates/payments/payment_select.html:34
-msgid "Secure checkout"
-msgstr "Безопасная оплата"
-
-#: templates/bookings/booking_create.html:43
-#: templates/payments/payment_select.html:41
-msgid "Confirmation"
-msgstr "Подтверждение"
-
-#: templates/bookings/booking_create.html:44
-#: templates/payments/payment_select.html:42
-msgid "All set!"
-msgstr "Всё готово!"
-
-#: templates/bookings/booking_create.html:58
-msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
-msgstr "Пожалуйста, исправьте следующие ошибки:"
-
-#: templates/bookings/booking_create.html:81
-msgid "When and how many guests"
-msgstr "Когда и сколько гостей"
-
-#: templates/bookings/booking_create.html:95
-msgid "Choose your preferred starting date"
-msgstr "Выберите желаемую дату начала"
-
-#: templates/bookings/booking_create.html:113
-msgid "Age 12+"
-msgstr "Возраст 12+"
-
-#: templates/bookings/booking_create.html:127
-msgid "Age 2-11"
-msgstr "Возраст 2-11"
-
-#: templates/bookings/booking_create.html:137
-msgid "Contact Information"
-msgstr "Контактная информация"
-
-#: templates/bookings/booking_create.html:138
-msgid "We'll send confirmation to your account"
-msgstr "Мы отправим подтверждение в ваш аккаунт"
-
-#: templates/bookings/booking_create.html:152
-msgid "Edit profile"
-msgstr "Редактировать профиль"
-
-#: templates/bookings/booking_create.html:161
-msgid "optional"
-msgstr "необязательно"
-
-#: templates/bookings/booking_create.html:164
-msgid "Dietary needs, accessibility requirements, special occasions..."
-msgstr "Диетические требования, доступность, особые поводы..."
-
-#: templates/bookings/booking_create.html:175
-msgid "Choose payment method on the next step"
-msgstr "Выберите способ оплаты на следующем шаге"
-
-#: templates/bookings/booking_create.html:181
-msgid "Card"
-msgstr "Карта"
-
-#: templates/bookings/booking_create.html:185
-msgid "Cash"
-msgstr "Наличные"
-
-#: templates/bookings/booking_create.html:189
-msgid "All payments are encrypted and secure"
-msgstr "Все платежи зашифрованы и безопасны"
-
-#: templates/bookings/booking_create.html:200
-msgid "Terms of Service"
-msgstr "Пользовательское соглашение"
-
-#: templates/bookings/booking_create.html:202
-msgid "and"
-msgstr "и"
-
-#: templates/bookings/booking_create.html:203
-msgid "Cancellation Policy"
-msgstr "Политика отмены"
-
-#: templates/bookings/booking_create.html:208
-msgid "Confirm Booking"
-msgstr "Подтвердить бронирование"
-
-#: templates/bookings/booking_create.html:214
-msgid "Free cancellation up to 3 days before travel date"
-msgstr "Бесплатная отмена за 3 дня до начала поездки"
-
-#: templates/bookings/booking_create.html:246
-#: templates/bookings/booking_detail.html:165
-#: templates/bookings/booking_detail.html:208
-#: templates/bookings/booking_list.html:124 templates/home.html:121
-#: templates/home.html:122 templates/home.html:123 templates/tours/list.html:93
-#: templates/tours/list.html:94 templates/tours/list.html:95
-#: templates/tours/list.html:96
-msgid "days"
-msgstr "дней"
-
-#: templates/bookings/booking_create.html:259
-#: templates/payments/payment_select.html:197
-msgid "Price Details"
-msgstr "Детали цены"
-
-#: templates/bookings/booking_create.html:262
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:197
-#: templates/bookings/booking_detail.html:291 templates/home.html:56
-msgid "adults"
-msgstr "взрослых"
-
-#: templates/bookings/booking_create.html:266
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:198 templates/home.html:56
-msgid "children"
-msgstr "детей"
-
-#: templates/bookings/booking_create.html:267
-#: templates/payments/payment_select.html:208
-msgid "Free"
-msgstr "Бесплатно"
-
-#: templates/bookings/booking_create.html:270
-#: templates/bookings/booking_detail.html:301
-#: templates/payments/payment_select.html:207
-msgid "Service fee"
-msgstr "Сервисный сбор"
-
-#: templates/bookings/booking_create.html:274
-msgid "Taxes"
-msgstr "Налоги"
-
-#: templates/bookings/booking_create.html:275
-#: templates/bookings/booking_detail.html:297
-#: templates/bookings/booking_detail.html:306 templates/tours/detail.html:164
-msgid "Included"
-msgstr "Включено"
-
-#: templates/bookings/booking_create.html:282
-#: templates/bookings/booking_detail.html:312
-#: templates/bookings/booking_list.html:28
-#: templates/bookings/booking_list.html:133
-#: templates/payments/payment_select.html:216 templates/tours/detail.html:311
-msgid "Total"
-msgstr "Итого"
-
-#: templates/bookings/booking_create.html:291
-#: templates/bookings/booking_detail.html:366
-msgid "Secure booking"
-msgstr "Безопасное бронирование"
-
-#: templates/bookings/booking_create.html:292
-#: templates/bookings/booking_detail.html:367
-msgid "256-bit SSL encryption"
-msgstr "256-битное шифрование SSL"
-
-#: templates/bookings/booking_create.html:298
-#: templates/bookings/booking_detail.html:373
-#: templates/payments/payment_select.html:225
-msgid "Free cancellation"
-msgstr "Бесплатная отмена"
-
-#: templates/bookings/booking_create.html:299
-msgid "Up to 3 days before"
-msgstr "До 3-х дней до начала"
-
-#: templates/bookings/booking_create.html:306
-msgid "We're here to help"
-msgstr "Мы всегда готовы помочь"
-
-#: templates/bookings/booking_detail.html:25
-#: templates/bookings/booking_list.html:53
-#: templates/bookings/booking_list.html:84
-#: templates/payments/payment_success.html:37
-msgid "Confirmed"
-msgstr "Подтверждено"
-
-#: templates/bookings/booking_detail.html:28
-msgid "Pending payment"
-msgstr "Ожидается оплата"
-
-#: templates/bookings/booking_detail.html:31
-#: templates/bookings/booking_list.html:56
-#: templates/bookings/booking_list.html:85
-#: templates/payments/payment_select.html:26
-msgid "Completed"
-msgstr "Завершено"
-
-#: templates/bookings/booking_detail.html:42
-msgid "Your trip is booked!"
-msgstr "Ваша поездка забронирована!"
-
-#: templates/bookings/booking_detail.html:43
-#: templates/socialaccount/signup.html:44
-msgid "Almost there!"
-msgstr "Почти готово!"
-
-#: templates/bookings/booking_detail.html:44
-msgid "Welcome back!"
-msgstr "С возвращением!"
-
-#: templates/bookings/booking_detail.html:45
-msgid "Booking cancelled"
-msgstr "Бронирование отменено"
-
-#: templates/bookings/booking_detail.html:46
-msgid "Booking details"
-msgstr "Детали бронирования"
-
-#: templates/bookings/booking_detail.html:50
-msgid "Complete your payment to confirm this booking."
-msgstr "Завершите оплату для подтверждения этого бронирования."
-
-#: templates/bookings/booking_detail.html:51
-msgid ""
-"Get ready for an unforgettable journey. We've sent details to your email."
-msgstr "Готовьтесь к незабываемому путешествию. Мы отправили подробности вам на почту."
-
-#: templates/bookings/booking_detail.html:52
-msgid "This booking has been cancelled."
-msgstr "Это бронирование было отменено."
-
-#: templates/bookings/booking_detail.html:53
-msgid "All your trip information in one place."
-msgstr "Вся информация о вашей поездке в одном месте."
-
-#: templates/bookings/booking_detail.html:58
-#: templates/payments/payment_success.html:43
-msgid "Booking #"
-msgstr "Бронь №"
-
-#: templates/bookings/booking_detail.html:62
-#: templates/bookings/booking_list.html:138
-msgid "Booked"
-msgstr "Забронировано"
-
-#: templates/bookings/booking_detail.html:66
-#: templates/payments/payment_success.html:51
-msgid "Travel date"
-msgstr "Дата поездки"
-
-#: templates/bookings/booking_detail.html:79
-msgid "E-Ticket"
-msgstr "Электронный билет"
-
-#: templates/bookings/booking_detail.html:84
-#: templates/bookings/booking_detail.html:216
-msgid "Destination"
-msgstr "Место назначения"
-
-#: templates/bookings/booking_detail.html:90
-msgid "GUESTS"
-msgstr "ГОСТИ"
-
-#: templates/bookings/booking_detail.html:94
-msgid "DURATION"
-msgstr "ДЛИТЕЛЬНОСТЬ"
-
-#: templates/bookings/booking_detail.html:112
-msgid "Back to bookings"
-msgstr "К списку бронирований"
-
-#: templates/bookings/booking_detail.html:117
-#: templates/bookings/booking_list.html:147
-msgid "Pay now"
-msgstr "Оплатить сейчас"
-
-#: templates/bookings/booking_detail.html:121
-msgid "Print"
-msgstr "Распечатать"
-
-#: templates/bookings/booking_detail.html:169
-msgid "View tour"
-msgstr "Посмотреть тур"
-
-#: templates/bookings/booking_detail.html:180
-msgid "Trip Information"
-msgstr "Информация о поездке"
-
-#: templates/bookings/booking_detail.html:181
-msgid "Your travel details"
-msgstr "Детали вашего путешествия"
-
-#: templates/bookings/booking_detail.html:195
-#: templates/bookings/booking_list.html:115
-#: templates/payments/payment_success.html:55 templates/tours/detail.html:285
-msgid "Guests"
-msgstr "Гости"
-
-#: templates/bookings/booking_detail.html:206
-#: templates/bookings/booking_list.html:123 templates/home.html:120
-#: templates/tours/detail.html:84 templates/tours/list.html:91
-msgid "Duration"
-msgstr "Длительность"
-
-#: templates/bookings/booking_detail.html:208
-msgid "nights"
-msgstr "ночей"
-
-#: templates/bookings/booking_detail.html:230
-msgid "Booking Info"
-msgstr "Информация о бронировании"
-
-#: templates/bookings/booking_detail.html:231
-msgid "Contact and reference"
-msgstr "Контакты и номер брони"
-
-#: templates/bookings/booking_detail.html:246
-msgid "Reference"
-msgstr "Код бронирования"
-
-#: templates/bookings/booking_detail.html:265
-msgid "Cancellation Details"
-msgstr "Детали отмены"
-
-#: templates/bookings/booking_detail.html:266
-msgid "Cancelled on"
-msgstr "Отменено"
-
-#: templates/bookings/booking_detail.html:285
-msgid "Payment Summary"
-msgstr "Сводка оплаты"
-
-#: templates/bookings/booking_detail.html:286
-msgid "Price breakdown"
-msgstr "Детализация стоимости"
-
-#: templates/bookings/booking_detail.html:305
-msgid "Tax"
-msgstr "Налог"
-
-#: templates/bookings/booking_detail.html:321
-msgid "Payment pending"
-msgstr "Ожидается оплата"
-
-#: templates/bookings/booking_detail.html:331
-msgid "Complete Payment"
-msgstr "Завершить оплату"
-
-#: templates/bookings/booking_detail.html:339
-#: templates/payments/payment_select.html:234
-msgid "Need help?"
-msgstr "Нужна помощь?"
-
-#: templates/bookings/booking_detail.html:340
-msgid "Our support team is available 24/7 to assist with your booking."
-msgstr "Наша служба поддержки доступна 24/7."
-
-#: templates/bookings/booking_detail.html:345
-msgid "Email support"
-msgstr "Поддержка по Email"
-
-#: templates/bookings/booking_detail.html:355
-msgid "Live chat"
-msgstr "Онлайн-чат"
-
-#: templates/bookings/booking_detail.html:374
-msgid "Up to 3 days before travel"
-msgstr "За 3 дня до начала поездки"
-
-#: templates/bookings/booking_detail.html:390
-msgid "Cancel this booking?"
-msgstr "Отменить это бронирование?"
-
-#: templates/bookings/booking_detail.html:391
-msgid ""
-"This action cannot be undone. Refunds depend on the cancellation policy."
-msgstr "Это действие нельзя отменить. Возврат средств зависит от политики отмены."
-
-#: templates/bookings/booking_detail.html:396
-msgid "Reason (optional)"
-msgstr "Причина (необязательно)"
-
-#: templates/bookings/booking_detail.html:397
-msgid "Why are you cancelling?"
-msgstr "Почему вы отменяете?"
-
-#: templates/bookings/booking_detail.html:401
-msgid "Keep booking"
-msgstr "Оставить бронирование"
-
-#: templates/bookings/booking_detail.html:404
-msgid "Confirm cancel"
-msgstr "Подтвердить отмену"
-
-#: templates/bookings/booking_list.html:21
-msgid "Your journeys"
-msgstr "Ваши поездки"
-
-#: templates/bookings/booking_list.html:22
-msgid "Track and manage all your bookings in one place"
-msgstr "Отслеживайте и управляйте всеми бронированиями в одном месте"
-
-#: templates/bookings/booking_list.html:38
-msgid "Trips"
-msgstr "Поездки"
-
-#: templates/bookings/booking_list.html:46
-msgid "All"
-msgstr "Все"
-
-#: templates/bookings/booking_list.html:143
-msgid "View details"
-msgstr "Смотреть детали"
-
-#: templates/bookings/booking_list.html:165
-msgid "No bookings yet"
-msgstr "Пока нет бронирований"
-
-#: templates/bookings/booking_list.html:166
-msgid ""
-"Your adventure is waiting. Browse our handcrafted tours and book your first "
-"trip."
-msgstr "Ваше приключение ждет. Ознакомьтесь с нашими авторскими турами и забронируйте первую поездку."
-
-#: templates/bookings/booking_list.html:169
-#: templates/messages_app/contact_success.html:13
-msgid "Explore Tours"
-msgstr "Искать туры"
-
-#: templates/bookings/booking_list.html:172
-msgid "Browse Destinations"
-msgstr "Смотреть направления"
-
-#: templates/home.html:13
-msgid "Explore the World"
-msgstr "Исследуйте мир"
-
-#: templates/home.html:15
-msgid ""
-"Pack your bags and let SoLuna redefine your travel experience. Where every "
-"journey is a story waiting to be told."
-msgstr "Собирайте чемоданы и позвольте SoLuna изменить ваше представление о путешествиях."
-
-#: templates/home.html:20
-msgid "Hotels"
-msgstr "Отели"
-
-#: templates/home.html:21
-msgid "Tickets"
-msgstr "Билеты"
-
-#: templates/home.html:22
-msgid "Rental"
-msgstr "Аренда"
-
-#: templates/home.html:24
-msgid "Need some help?"
-msgstr "Нужна помощь?"
-
-#: templates/home.html:29 templates/tours/detail.html:116
-#: templates/tours/detail.html:196
-msgid "Location"
-msgstr "Местоположение"
-
-#: templates/home.html:32
-msgid "Samarkand, Uzbekistan"
-msgstr "Самарканд, Узбекистан"
-
-#: templates/home.html:37
-msgid "Check In"
-msgstr "Заезд"
-
-#: templates/home.html:45
-msgid "Check Out"
-msgstr "Выезд"
-
-#: templates/home.html:53
-msgid "Guest"
-msgstr "Гость"
-
-#: templates/home.html:72
-msgid "Top Searched Destinations"
-msgstr "Самые популярные направления"
-
-#: templates/home.html:73
-msgid "Favorite destinations of professional travelers"
-msgstr "Любимые направления профессиональных путешественников"
-
-#: templates/home.html:105
-msgid "Our Featured Tours"
-msgstr "Наши лучшие туры"
-
-#: templates/home.html:106 templates/home.html:269
-msgid "Favorite destinations based on customer reviews"
-msgstr "Лучшие направления на основе отзывов клиентов"
-
-#: templates/home.html:112 templates/tours/list.html:64
-msgid "Categories"
-msgstr "Категории"
-
-#: templates/home.html:128
-msgid "Price range"
-msgstr "Диапазон цен"
-
-#: templates/home.html:137
-msgid "Clear"
-msgstr "Очистить"
-
-#: templates/home.html:156 templates/tours/list.html:141
-msgid "Best Sale"
-msgstr "Хит продаж"
-
-#: templates/home.html:158 templates/regions/detail.html:73
-#: templates/tours/detail.html:28 templates/tours/list.html:137
-msgid "Top Rated"
-msgstr "Высокий рейтинг"
-
-#: templates/home.html:162 templates/tours/list.html:144
-msgid "Add to favorites"
-msgstr "Добавить в избранное"
-
-#: templates/home.html:171 templates/tours/detail.html:32
-#: templates/tours/detail.html:219 templates/tours/list.html:153
-msgid "reviews"
-msgstr "отзывов"
-
-#: templates/home.html:185 templates/regions/detail.html:85
-#: templates/tours/detail.html:278 templates/tours/detail.html:353
-#: templates/tours/list.html:167
-msgid "person"
-msgstr "чел."
-
-#: templates/home.html:187 templates/tours/detail.html:317
-#: templates/tours/list.html:169
-msgid "Book Now"
-msgstr "Забронировать"
-
-#: templates/home.html:216
-msgid "Easy payment"
-msgstr "Удобная оплата"
-
-#: templates/home.html:218
-msgid "We offer tours in a range of locations"
-msgstr "Мы предлагаем туры по множеству направлений"
-
-#: templates/home.html:220 templates/home.html:306
-msgid ""
-"Choose one style or create a package, fill your passports with adventures "
-"together."
-msgstr "Выберите стиль или создайте свой тур и наполните паспорт новыми приключениями."
-
-#: templates/home.html:224
-msgid "Security Assurance"
-msgstr "Гарантия безопасности"
-
-#: templates/home.html:225
-msgid "Customer Support"
-msgstr "Служба поддержки"
-
-#: templates/home.html:226
-msgid "Transparent Policies"
-msgstr "Прозрачные условия"
-
-#: templates/home.html:227
-msgid "Reputable Affiliations"
-msgstr "Надежные партнеры"
-
-#: templates/home.html:231
-msgid "Payment is secure and safe"
-msgstr "Ваша оплата надежно защищена"
-
-#: templates/home.html:268
-msgid "Top Categories of Tours"
-msgstr "Популярные категории туров"
-
-#: templates/home.html:272 templates/home.html:447
-msgid "View More"
-msgstr "Смотреть больше"
-
-#: templates/home.html:302
-msgid "Why book at SoLuna?"
-msgstr "Почему стоит бронировать в SoLuna?"
-
-#: templates/home.html:304
-msgid "Embracing Adventure Since 2025"
-msgstr "Дарим приключения с 2025 года"
-
-#: templates/home.html:348
-msgid "Install APP & Get discount code"
-msgstr "Установите приложение и получите промокод"
-
-#: templates/home.html:351
-#, python-format
-msgid "Up to 55%% Discount and lots of special gifts"
-msgstr "Скидки до 55%% и множество специальных подарков"
-
-#: templates/home.html:382
-msgid "Trending Destinations"
-msgstr "Популярные направления"
-
-#: templates/home.html:383
-msgid "Most popular choices for travelers"
-msgstr "Самый популярный выбор среди путешественников"
-
-#: templates/home.html:411
-msgid "Get inspiration for your next trip"
-msgstr "Найдите вдохновение для следующей поездки"
-
-#: templates/home.html:412
-msgid "Favorite stories based on customer reviews"
-msgstr "Любимые истории на основе отзывов клиентов"
-
-#: templates/home.html:438
-msgid "Keep Reading"
-msgstr "Читать далее"
-
-#: templates/messages_app/contact.html:4
-msgid "Contact Us"
-msgstr "Свяжитесь с нами"
-
-#: templates/messages_app/contact.html:17
-msgid "Get in touch"
-msgstr "Связаться"
-
-#: templates/messages_app/contact.html:19
-msgid "We'd love to hear from you"
-msgstr "Мы будем рады услышать вас"
-
-#: templates/messages_app/contact.html:21
-msgid ""
-"Have a question or need help planning your trip? Our team is here for you."
-msgstr "Есть вопрос или нужна помощь с планированием поездки? Наша команда здесь для вас."
-
-#: templates/messages_app/contact.html:34
-msgid "Mon - Sat, 8AM - 6PM"
-msgstr "Пн - Сб, 8:00 - 18:00"
-
-#: templates/messages_app/contact.html:41
-msgid "We reply within 24 hours"
-msgstr "Мы отвечаем в течение 24 часов"
-
-#: templates/messages_app/contact.html:47
-msgid "Office"
-msgstr "Офис"
-
-#: templates/messages_app/contact.html:48
-msgid "Visit us in person"
-msgstr "Приходите к нам в офис"
-
-#: templates/messages_app/contact.html:54
-msgid "Social"
-msgstr "Соцсети"
-
-#: templates/messages_app/contact.html:55
-msgid "Follow us for updates"
-msgstr "Следите за нашими новостями"
-
-#: templates/messages_app/contact.html:63
-msgid "Send us a message"
-msgstr "Отправьте нам сообщение"
-
-#: templates/messages_app/contact.html:65
-msgid "Fill out the form and we'll get back to you shortly."
-msgstr "Заполните форму, и мы скоро с вами свяжемся."
-
-#: templates/messages_app/contact.html:88
-msgid "Subject"
-msgstr "Тема"
-
-#: templates/messages_app/contact.html:94
-msgid "Message"
-msgstr "Сообщение"
-
-#: templates/messages_app/contact.html:99
-msgid "Send Message"
-msgstr "Отправить сообщение"
-
-#: templates/messages_app/contact_success.html:3
-msgid "Message Sent"
-msgstr "Сообщение отправлено"
-
-#: templates/messages_app/contact_success.html:8
-msgid "Message Sent!"
-msgstr "Сообщение отправлено!"
-
-#: templates/messages_app/contact_success.html:10
-msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
-msgstr "Спасибо за обращение. Ойгуль свяжется с вами в течение 24 часов."
-
-#: templates/messages_app/contact_success.html:14
-msgid "Back to Home"
-msgstr "На главную"
-
-#: templates/payments/mock_pay.html:4
-msgid "Payment Gateway"
-msgstr "Платежный шлюз"
-
-#: templates/payments/mock_pay.html:13
-msgid "TEST MODE"
-msgstr "ТЕСТОВЫЙ РЕЖИМ"
-
-#: templates/payments/mock_pay.html:14
-msgid "Real payment gateways are not configured. This is a simulation."
-msgstr "Реальные платежные шлюзы не настроены. Это симуляция."
-
-#: templates/payments/mock_pay.html:30 templates/payments/mock_pay.html:129
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_pending.html:32
-#: templates/payments/payment_select.html:63
-#: templates/payments/payment_select.html:162
-#: templates/payments/payment_select.html:204
-msgid "soums"
-msgstr "сум"
-
-#: templates/payments/mock_pay.html:48
-msgid "Payment failed"
-msgstr "Ошибка оплаты"
-
-#: templates/payments/mock_pay.html:58
-msgid "Test cards"
-msgstr "Тестовые карты"
-
-#: templates/payments/mock_pay.html:68
-msgid "Always success"
-msgstr "Всегда успешно"
-
-#: templates/payments/mock_pay.html:75
-msgid "Declined by bank"
-msgstr "Отклонено банком"
-
-#: templates/payments/mock_pay.html:82
-msgid "Insufficient funds"
-msgstr "Недостаточно средств"
-
-#: templates/payments/mock_pay.html:92
-msgid "Enter card details"
-msgstr "Введите данные карты"
-
-#: templates/payments/mock_pay.html:96
-msgid "Card number"
-msgstr "Номер карты"
-
-#: templates/payments/mock_pay.html:107
-msgid "Expiry"
-msgstr "Срок действия"
-
-#: templates/payments/mock_pay.html:119
-msgid "Cardholder name"
-msgstr "Имя владельца"
-
-#: templates/payments/mock_pay.html:127
-msgid "Amount to pay"
-msgstr "Сумма к оплате"
-
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_select.html:162
-msgid "Pay"
-msgstr "Оплатить"
-
-#: templates/payments/mock_pay.html:141
-msgid "Cancel and choose another method"
-msgstr "Отменить и выбрать другой способ"
-
-#: templates/payments/mock_pay.html:149
-msgid "Secure payment"
-msgstr "Безопасная оплата"
-
-#: templates/payments/mock_pay.html:150
-msgid ""
-"Your card information is encrypted with 256-bit SSL and never stored on our "
-"servers."
-msgstr "Данные вашей карты зашифрованы с помощью 256-битного SSL и не хранятся на наших серверах."
-
-#: templates/payments/payment_failed.html:4
-#: templates/payments/payment_failed.html:15
-msgid "Payment Failed"
-msgstr "Оплата не удалась"
-
-#: templates/payments/payment_failed.html:17
-msgid "Something went wrong with your payment. Your card was not charged."
-msgstr "Что-то пошло не так с вашим платежом. Средства с карты не списаны."
-
-#: templates/payments/payment_failed.html:21
-msgid "Possible reasons:"
-msgstr "Возможные причины:"
-
-#: templates/payments/payment_failed.html:23
-msgid "Insufficient funds on the card"
-msgstr "Недостаточно средств на карте"
-
-#: templates/payments/payment_failed.html:24
-msgid "Card declined by the bank"
-msgstr "Карта отклонена банком"
-
-#: templates/payments/payment_failed.html:25
-msgid "Incorrect card details"
-msgstr "Неверные данные карты"
-
-#: templates/payments/payment_failed.html:26
-#: templates/socialaccount/authentication_error.html:43
-msgid "Network connection issue"
-msgstr "Проблема с подключением к сети"
-
-#: templates/payments/payment_failed.html:32
-msgid "Try Again"
-msgstr "Попробовать снова"
-
-#: templates/payments/payment_failed.html:35
-msgid "Contact Support"
-msgstr "Обратиться в поддержку"
-
-#: templates/payments/payment_pending.html:4
-msgid "Payment Processing"
-msgstr "Обработка платежа"
-
-#: templates/payments/payment_pending.html:16
-msgid "Payment processing..."
-msgstr "Платеж обрабатывается..."
-
-#: templates/payments/payment_pending.html:18
-msgid ""
-"We are waiting for confirmation from the payment gateway. This usually takes "
-"a few seconds."
-msgstr "Мы ожидаем подтверждения от платежного шлюза. Обычно это занимает несколько секунд."
-
-#: templates/payments/payment_pending.html:42
-msgid "Don't close this page. We'll redirect you automatically."
-msgstr "Не закрывайте эту страницу. Мы автоматически перенаправим вас."
-
-#: templates/payments/payment_select.html:19
-msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
-msgstr "Выберите способ оплаты. Все платежи осуществляются в узбекских сумах (UZS)."
-
-#: templates/payments/payment_select.html:62
-msgid "Conversion to UZS"
-msgstr "Конвертация в UZS"
-
-#: templates/payments/payment_select.html:71
-msgid "Choose payment method"
-msgstr "Выберите способ оплаты"
-
-#: templates/payments/payment_select.html:72
-msgid "Secure payment in Uzbek Som"
-msgstr "Безопасный платеж в узбекских сумах"
-
-#: templates/payments/payment_select.html:87
-msgid "Pay via Click app, card or balance"
-msgstr "Оплатить через приложение Click, картой или с баланса"
-
-#: templates/payments/payment_select.html:108
-msgid "Pay via Payme app or card"
-msgstr "Оплатить через приложение Payme или картой"
-
-#: templates/payments/payment_select.html:127
-msgid "Pay at office"
-msgstr "Оплатить в офисе"
-
-#: templates/payments/payment_select.html:128
-msgid "Visit our Tashkent office"
-msgstr "Посетите наш офис в Ташкенте"
-
-#: templates/payments/payment_select.html:141
-msgid "You'll be redirected"
-msgstr "Вы будете перенаправлены"
-
-#: templates/payments/payment_select.html:142
-msgid ""
-"After clicking Pay, you'll be redirected to the secure gateway page to "
-"complete the transaction."
-msgstr "После нажатия «Оплатить», вы будете перенаправлены на страницу безопасного шлюза для завершения транзакции."
-
-#: templates/payments/payment_select.html:149
-msgid "256-bit SSL"
-msgstr "256-битный SSL"
-
-#: templates/payments/payment_select.html:153
-msgid "PCI DSS"
-msgstr "PCI DSS"
-
-#: templates/payments/payment_select.html:157
-msgid "Money-back guarantee"
-msgstr "Гарантия возврата денег"
-
-#: templates/payments/payment_select.html:168
-msgid "By proceeding, you accept the booking terms."
-msgstr "Продолжая, вы соглашаетесь с условиями бронирования."
-
-#: templates/payments/payment_select.html:199
-msgid "Tour price"
-msgstr "Стоимость тура"
-
-#: templates/payments/payment_select.html:203
-msgid "Conversion"
-msgstr "Конвертация"
-
-#: templates/payments/payment_select.html:219
-msgid "soum"
-msgstr "сум"
-
-#: templates/payments/payment_select.html:226
-msgid "Until 3 days before travel"
-msgstr "До 3-х дней до поездки"
-
-#: templates/payments/payment_select.html:235
-#: templates/socialaccount/authentication_error.html:53
-msgid "Contact support"
-msgstr "Связаться с поддержкой"
-
-#: templates/payments/payment_select.html:366
-msgid ""
-"You will be redirected to Click payment page. Complete the payment via your "
-"card or Click app."
-msgstr "Вы будете перенаправлены на страницу оплаты Click. Завершите оплату вашей картой или через приложение Click."
-
-#: templates/payments/payment_select.html:367
-msgid ""
-"You will be redirected to Payme. Complete the payment via your card or Payme "
-"app."
-msgstr "Вы будете перенаправлены в Payme. Завершите оплату вашей картой или через приложение Payme."
-
-#: templates/payments/payment_select.html:368
-msgid ""
-"Visit our office in Tashkent to complete payment in cash. Your booking will "
-"remain pending until paid."
-msgstr "Посетите наш офис в Ташкенте для оплаты наличными. Ваше бронирование останется в ожидании до момента оплаты."
-
-#: templates/payments/payment_select.html:384
-msgid "Redirecting to gateway..."
-msgstr "Перенаправление на платежный шлюз..."
-
-#: templates/payments/payment_success.html:4
-msgid "Payment Successful"
-msgstr "Оплата прошла успешно"
-
-#: templates/payments/payment_success.html:19
-msgid "Payment Successful!"
-msgstr "Оплата прошла успешно!"
-
-#: templates/payments/payment_success.html:21
-msgid "Your booking has been confirmed. We've sent the details to your email."
-msgstr "Ваше бронирование подтверждено. Мы отправили подробности на вашу почту."
-
-#: templates/payments/payment_success.html:27
-msgid "Details"
-msgstr "Детали"
-
-#: templates/payments/payment_success.html:47 templates/reviews/form.html:14
-msgid "Tour"
-msgstr "Тур"
-
-#: templates/payments/payment_success.html:67
-msgid "View Booking Details"
-msgstr "Посмотреть детали брони"
-
-#: templates/payments/payment_success.html:70
-msgid "Explore More Tours"
-msgstr "Искать другие туры"
-
-#: templates/payments/payment_success.html:75
-msgid "What happens next?"
-msgstr "Что дальше?"
-
-#: templates/payments/payment_success.html:77
-msgid "We'll send a confirmation email with full itinerary"
-msgstr "Мы отправим письмо с подтверждением и полным маршрутом"
-
-#: templates/payments/payment_success.html:78
-msgid "Our team will contact you 48 hours before the trip"
-msgstr "Наша команда свяжется с вами за 48 часов до поездки"
-
-#: templates/payments/payment_success.html:79
-msgid "Check your booking anytime in your profile"
-msgstr "Вы можете проверить бронирование в любое время в профиле"
-
-#: templates/regions/detail.html:41
-msgid "About"
-msgstr "Обзор"
-
-#: templates/regions/detail.html:48
-msgid "Why visit"
-msgstr "Почему стоит посетить"
-
-#: templates/regions/detail.html:64
-msgid "Tours in"
-msgstr "Туры в"
-
-#: templates/regions/detail.html:65
-msgid "tours"
-msgstr "туров"
-
-#: templates/regions/detail.html:86 templates/tours/detail.html:354
-msgid "View"
-msgstr "Посмотреть"
-
-#: templates/regions/detail.html:99
-msgid "Quick Facts"
-msgstr "Факты"
-
-#: templates/regions/detail.html:112
-msgid "Population"
-msgstr "Население"
-
-#: templates/regions/detail.html:121
-msgid "Best time to visit"
-msgstr "Лучшее время для визита"
-
-#: templates/regions/detail.html:155
-msgid "Need help planning?"
-msgstr "Нужна помощь с планированием?"
-
-#: templates/regions/detail.html:157
-msgid "Our local experts can craft a custom tour for you."
-msgstr "Наши эксперты могут создать для вас индивидуальный тур."
-
-#: templates/regions/list.html:18
-msgid "Explore the Silk Road"
-msgstr "Исследуйте Шелковый путь"
-
-#: templates/regions/list.html:20
-msgid "Discover Uzbekistan's Most Beautiful Destinations"
-msgstr "Откройте для себя самые красивые направления Узбекистана"
-
-#: templates/regions/list.html:22
-msgid ""
-"From ancient Samarkand to the deserts of Karakalpakstan — find your next "
-"adventure."
-msgstr "От древнего Самарканда до пустынь Каракалпакстана — найдите свое следующее приключение."
-
-#: templates/regions/list.html:48
-msgid "Tours available"
-msgstr "Доступно туров"
-
-#: templates/regions/list.html:59
-msgid "No destinations yet"
-msgstr "Пока нет направлений"
-
-#: templates/regions/list.html:60
-msgid "Check back soon for new destinations."
-msgstr "Загляните позже за новыми направлениями."
-
-#: templates/reviews/form.html:4
-msgid "Write a Review"
-msgstr "Написать отзыв"
-
-#: templates/reviews/form.html:11
-msgid "Update Your Review"
-msgstr "Обновить отзыв"
-
-#: templates/reviews/form.html:11
-msgid "Share Your Experience"
-msgstr "Поделитесь впечатлениями"
-
-#: templates/reviews/form.html:58
-msgid "Write your detailed review here..."
-msgstr "Напишите ваш подробный отзыв здесь..."
-
-#: templates/reviews/form.html:80
-msgid "Submit Review"
-msgstr "Опубликовать отзыв"
-
-#: templates/socialaccount/authentication_error.html:4
-msgid "Authentication Error"
-msgstr "Ошибка аутентификации"
-
-#: templates/socialaccount/authentication_error.html:28
-msgid "Authentication failed"
-msgstr "Аутентификация не удалась"
-
-#: templates/socialaccount/authentication_error.html:30
-msgid ""
-"Something went wrong while signing you in. Your account is safe — no changes "
-"were made."
-msgstr "Что-то пошло не так при входе в систему. Ваш аккаунт в безопасности — никаких изменений не было внесено."
-
-#: templates/socialaccount/authentication_error.html:37
-msgid "Possible reasons"
-msgstr "Возможные причины"
-
-#: templates/socialaccount/authentication_error.html:40
-msgid "You cancelled the sign-in process"
-msgstr "Вы отменили процесс входа"
-
-#: templates/socialaccount/authentication_error.html:41
-msgid "The provider's session expired"
-msgstr "Срок действия сессии провайдера истек"
-
-#: templates/socialaccount/authentication_error.html:42
-msgid "Permission was denied"
-msgstr "Доступ запрещен"
-
-#: templates/socialaccount/authentication_error.html:58
-msgid "Go to homepage"
-msgstr "Вернуться на главную"
-
-#: templates/socialaccount/authentication_error.html:65
-msgid "Your account is secure"
-msgstr "Ваш аккаунт в безопасности"
-
-#: templates/socialaccount/login.html:4
-#, python-format
-msgid "Sign In via %(provider_name)s"
-msgstr "Войти через %(provider_name)s"
-
-#: templates/socialaccount/login.html:53
-#, python-format
-msgid "Continue with %(provider_name)s"
-msgstr "Продолжить с %(provider_name)s"
-
-#: templates/socialaccount/login.html:56
-#, python-format
-msgid ""
-"You're about to sign in to SoLuna using your %(provider_name)s account. "
-"Click continue to proceed securely."
-msgstr "Вы собираетесь войти в SoLuna, используя свой аккаунт %(provider_name)s. Нажмите продолжить для безопасного входа."
-
-#: templates/socialaccount/login.html:63
-msgid "We'll receive"
-msgstr "Мы получим"
-
-#: templates/socialaccount/login.html:66
-msgid "Your email address"
-msgstr "Ваш email"
-
-#: templates/socialaccount/login.html:67
-msgid "Your name and profile photo"
-msgstr "Ваше имя и фото профиля"
-
-#: templates/socialaccount/login.html:71
-msgid "We will never post anything without your permission."
-msgstr "Мы никогда ничего не публикуем без вашего разрешения."
-
-#: templates/socialaccount/login.html:78
-msgid "Continue"
-msgstr "Продолжить"
-
-#: templates/socialaccount/login.html:91
-#: templates/socialaccount/signup.html:143
-msgid "Secure connection · Your data is encrypted"
-msgstr "Безопасное соединение · Данные зашифрованы"
-
-#: templates/socialaccount/login.html:304
-msgid "Redirecting..."
-msgstr "Перенаправление..."
-
-#: templates/socialaccount/signup.html:4
-msgid "Complete sign up"
-msgstr "Завершить регистрацию"
-
-#: templates/socialaccount/signup.html:47
-msgid "Complete your profile"
-msgstr "Заполните профиль"
-
-#: templates/socialaccount/signup.html:49
-msgid ""
-"Just one more step. Please confirm your details to finish creating your "
-"SoLuna account."
-msgstr "Остался один шаг. Пожалуйста, подтвердите свои данные для завершения регистрации."
-
-#: templates/socialaccount/signup.html:79
-msgid "From your social account"
-msgstr "Из вашего соц. аккаунта"
-
-#: templates/socialaccount/signup.html:104
-msgid "You'll get"
-msgstr "Вы получите"
-
-#: templates/socialaccount/signup.html:107
-#, python-format
-msgid "5%% off on your first booking"
-msgstr "Скидка 5%% на первое бронирование"
-
-#: templates/socialaccount/signup.html:108
-msgid "Exclusive offers and updates"
-msgstr "Эксклюзивные предложения и новости"
-
-#: templates/socialaccount/signup.html:109
-msgid "Personalized travel recommendations"
-msgstr "Персонализированные рекомендации"
-
-#: templates/socialaccount/signup.html:121
-msgid "and consent to receive travel inspiration emails"
-msgstr "и соглашаюсь получать идеи для путешествий по почте"
-
-#: templates/socialaccount/signup.html:287
-msgid "Creating account..."
-msgstr "Создание аккаунта..."
-
-#: templates/tours/detail.html:43
-msgid "Share"
-msgstr "Поделиться"
-
-#: templates/tours/detail.html:44
-msgid "Save"
-msgstr "Сохранить"
-
-#: templates/tours/detail.html:61
-msgid "See all"
-msgstr "Смотреть все"
-
-#: templates/tours/detail.html:61
-msgid "photos"
-msgstr "фото"
-
-#: templates/tours/detail.html:91
-msgid "Group Size"
-msgstr "Размер группы"
-
-#: templates/tours/detail.html:92
-msgid "people"
-msgstr "чел."
-
-#: templates/tours/detail.html:98
-msgid "Languages"
-msgstr "Языки"
-
-#: templates/tours/detail.html:105
-msgid "Tour Type"
-msgstr "Тип тура"
-
-#: templates/tours/detail.html:113 templates/tours/detail.html:122
-msgid "Overview"
-msgstr "Описание"
-
-#: templates/tours/detail.html:114 templates/tours/detail.html:140
-msgid "Itinerary"
-msgstr "Маршрут"
-
-#: templates/tours/detail.html:115 templates/tours/detail.html:160
-msgid "What's included"
-msgstr "Что включено"
-
-#: templates/tours/detail.html:128
-msgid "Highlights"
-msgstr "Ключевые моменты"
-
-#: templates/tours/detail.html:145
-msgid "Day"
-msgstr "День"
-
-#: templates/tours/detail.html:170
-msgid "Professional guide"
-msgstr "Профессиональный гид"
-
-#: templates/tours/detail.html:171
-msgid "Transport (A/C vehicle)"
-msgstr "Транспорт (авто с кондиционером)"
-
-#: templates/tours/detail.html:172
-msgid "Entrance fees"
-msgstr "Входные билеты"
-
-#: templates/tours/detail.html:173
-msgid "Hotel accommodation"
-msgstr "Проживание в отеле"
-
-#: templates/tours/detail.html:179
-msgid "Not Included"
-msgstr "Не включено"
-
-#: templates/tours/detail.html:185
-msgid "International flights"
-msgstr "Международные рейсы"
-
-#: templates/tours/detail.html:186
-msgid "Travel insurance"
-msgstr "Туристическая страховка"
-
-#: templates/tours/detail.html:187
-msgid "Personal expenses"
-msgstr "Личные расходы"
-
-#: templates/tours/detail.html:223
-msgid "Excellent"
-msgstr "Отлично"
-
-#: templates/tours/detail.html:224
 msgid "Good"
 msgstr "Хорошо"
 
-#: templates/tours/detail.html:225
-msgid "Average"
-msgstr "Средне"
+msgid "Strong"
+msgstr "Надёжный"
 
-#: templates/tours/detail.html:226
-msgid "Poor"
-msgstr "Плохо"
+msgid "Passwords match"
+msgstr "Пароль"
 
-#: templates/tours/detail.html:227
-msgid "Terrible"
-msgstr "Ужасно"
+msgid "Passwords do not match"
+msgstr "Сложность пароля"
 
-#: templates/tours/detail.html:256
-msgid "No reviews yet. Be the first to share your experience!"
-msgstr "Пока нет отзывов. Поделитесь своим опытом первыми!"
+msgid "My Profile"
+msgstr "Мой профиль"
 
-#: templates/tours/detail.html:263
-msgid "Write a review"
-msgstr "Написать отзыв"
+msgid "Administrator"
+msgstr "Администратор"
 
-#: templates/tours/detail.html:282
-msgid "Date"
-msgstr "Дата"
+msgid "Member"
+msgstr "Участник"
 
-#: templates/tours/detail.html:322
-msgid "Need help booking?"
-msgstr "Нужна помощь с бронированием?"
+msgid "Joined"
+msgstr "Дата регистрации"
 
-#: templates/tours/detail.html:338
-msgid "Related tours"
-msgstr "Похожие туры"
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
 
-#: templates/tours/list.html:21
-msgid "tours found"
-msgstr "туров найдено"
+msgid "Total Bookings"
+msgstr "Всего бронирований"
 
-#: templates/tours/list.html:27
-msgid "Sort by"
-msgstr "Сортировать по"
+msgid "Completed Trips"
+msgstr "Завершенные поездки"
 
-#: templates/tours/list.html:33
-msgid "Most Popular"
-msgstr "Самые популярные"
+msgid "Wishlist"
+msgstr "Избранное"
 
-#: templates/tours/list.html:34
-msgid "Newest"
-msgstr "Новинки"
+msgid "Reviews"
+msgstr "Отзывы"
 
-#: templates/tours/list.html:35
-msgid "Price: Low to High"
-msgstr "Цена: от низкой к высокой"
+msgid "Overview"
+msgstr "Описание"
 
-#: templates/tours/list.html:36
-msgid "Price: High to Low"
-msgstr "Цена: от высокой к низкой"
+msgid "My Bookings"
+msgstr "Мои бронирования"
 
-#: templates/tours/list.html:37
-msgid "Highest Rated"
-msgstr "С высоким рейтингом"
+msgid "My Reviews"
+msgstr "Мои отзывы"
 
-#: templates/tours/list.html:59
-msgid "Search tours..."
-msgstr "Поиск туров..."
+msgid "Logout"
+msgstr "Выйти"
 
-#: templates/tours/list.html:82
-msgid "Price Range"
-msgstr "Ценовой диапазон"
+msgid "Personal Information"
+msgstr "Личная информация"
 
-#: templates/tours/list.html:84
-msgid "Min"
-msgstr "От"
+msgid "Edit"
+msgstr "Редактировать"
 
-#: templates/tours/list.html:85
-msgid "Max"
-msgstr "До"
+msgid "Full Name"
+msgstr "Полное имя"
 
-#: templates/tours/list.html:87
-msgid "Apply"
-msgstr "Применить"
+msgid "Phone"
+msgstr "Телефон"
 
-#: templates/tours/list.html:101
-msgid "Rating"
-msgstr "Рейтинг"
+msgid "Preferred Language"
+msgstr "Предпочитаемый язык"
 
-#: templates/tours/list.html:119
-msgid "Clear all"
-msgstr "Сбросить все"
+msgid "Recent Bookings"
+msgstr "Недавние бронирования"
 
-#: templates/tours/list.html:178
-msgid "Pagination"
-msgstr "Пагинация"
+msgid "View all"
+msgstr "Смотреть все"
 
-#: templates/tours/list.html:205
-msgid "No tours found"
-msgstr "Туры не найдены"
+msgid "You haven't booked any tours yet."
+msgstr "Вы еще не забронировали ни одного тура."
 
-#: templates/tours/list.html:206
-msgid "Try adjusting your filters or search criteria."
-msgstr "Попробуйте изменить фильтры или параметры поиска."
+msgid "Browse tours"
+msgstr "Посмотреть туры"
 
-#: templates/tours/list.html:207
-msgid "Reset filters"
-msgstr "Сбросить фильтры"
-# ── Added by build_i18n (UI strings) ──
+msgid "days"
+msgstr "дней"
 
-msgid "24/7 Support"
-msgstr "Поддержка 24/7"
-
-msgid "4 world heritage sites across the country"
-msgstr "4 объекта всемирного наследия по всей стране"
-
-msgid "5% off on your first booking"
-msgstr "Скидка 5% на первое бронирование"
-
-msgid "5-star rated"
-msgstr "Рейтинг 5 звёзд"
-
-msgid "About the region"
-msgstr "О регионе"
-
-msgid "Activity type"
-msgstr "Тип активности"
-
-msgid "Add guests"
-msgstr "Добавить гостей"
-
-msgid "Added to wishlist"
-msgstr "Добавлено в избранное"
-
-msgid "Age 12 or above"
-msgstr "12 лет и старше"
-
-msgid "Age 2–11"
-msgstr "2–11 лет"
-
-msgid "All activities"
-msgstr "Все активности"
-
-msgid "All destinations"
-msgstr "Все направления"
-
-msgid "Ancient cities, breathtaking landscapes, and warm hospitality — find your perfect destination."
-msgstr "Древние города, захватывающие пейзажи и тёплое гостеприимство — найдите идеальное направление."
-
-msgid "Any duration"
-msgstr "Любая длительность"
-
-msgid "Anywhere"
-msgstr "Где угодно"
-
-msgid "Attractions"
-msgstr "Достопримечательности"
-
-msgid "Available tours"
-msgstr "Доступные туры"
-
-msgid "Average — decent experience"
-msgstr "Средне — неплохой опыт"
+msgid "Your wishlist is empty."
+msgstr "Ваш список желаний пуст."
 
 msgid "Awaiting approval"
 msgstr "Ожидает подтверждения"
 
-msgid "Back"
-msgstr "Назад"
+msgid "You haven't written any reviews yet."
+msgstr "Вы еще не забронировали ни одного тура."
 
-msgid "Back to home"
-msgstr "На главную"
+msgid "Update your personal information and preferences."
+msgstr "Обновите вашу личную информацию и настройки."
 
-msgid "Become Your Story"
-msgstr "Станут вашей историей"
+msgid "Profile photo"
+msgstr "Фото профиля"
 
-msgid "Below average"
-msgstr "Ниже среднего"
+msgid "JPG or PNG, up to 2MB."
+msgstr "JPG, PNG. Макс. 2МБ."
 
-msgid "Best Seller"
-msgstr "Хит продаж"
+msgid "Upload new"
+msgstr "Загрузить"
 
-msgid "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for curious travelers, guided by local experts."
-msgstr "Бутик-туры по Узбекистану и древнему Шёлковому пути. Для любознательных путешественников, под руководством местных экспертов."
+msgid "First Name"
+msgstr "Имя"
 
-msgid "Boutique tours crafted for curious souls — from the minarets of Samarkand to the sands of the Kyzylkum."
-msgstr "Бутик-туры для любознательных душ — от минаретов Самарканда до песков Кызылкума."
+msgid "Your first name"
+msgstr "Имя"
 
-msgid "Browse All"
-msgstr "Смотреть все"
+msgid "Last Name"
+msgstr "Фамилия"
 
-msgid "Browse all tours"
-msgstr "Смотреть все туры"
+msgid "Your last name"
+msgstr "Фамилия"
 
-msgid "Browse by style"
-msgstr "Поиск по стилю"
+msgid "Email cannot be changed here"
+msgstr "Email изменить нельзя."
 
-msgid "Can't decide where to go?"
-msgstr "Не можете решить, куда поехать?"
+msgid "Email cannot be changed here."
+msgstr "Email изменить нельзя."
 
-msgid "Car rental coming soon"
-msgstr "Аренда авто скоро"
+msgid "Save Changes"
+msgstr "Сохранить изменения"
 
-msgid "Category"
-msgstr "Категория"
+msgid "File is too large. Max 2MB."
+msgstr "Файл слишком большой. Максимум 2 МБ."
 
-msgid "Certified local guides with deep Silk Road knowledge."
-msgstr "Сертифицированные местные гиды с глубокими знаниями Шёлкового пути."
+msgid "Register"
+msgstr "Регистрация"
 
-msgid "Check back soon — new destinations are being added."
-msgstr "Загляните позже — добавляются новые направления."
+msgid "Join SoLuna and start planning your journey"
+msgstr "Присоединяйтесь к SoLuna и начните планировать свое путешествие"
 
-msgid "Choose currency"
-msgstr "Выберите валюту"
+msgid "or"
+msgstr "или"
 
-msgid "Choose language"
-msgstr "Выберите язык"
+msgid "Confirm"
+msgstr "Подтвердить"
 
-msgid "Choose your adventure"
-msgstr "Выберите своё приключение"
+msgid "Change password"
+msgstr "Изменить пароль"
 
-msgid "Clear filters"
-msgstr "Сбросить фильтры"
+msgid "Log out"
+msgstr "Выйти из системы?"
 
-msgid "Click to rate"
-msgstr "Нажмите, чтобы оценить"
+msgid "Premium Uzbekistan & Silk Road Tours"
+msgstr "Премиум-туры по Узбекистану и Шёлковому пути"
 
-msgid "Consistently rated one of the safest destinations in Asia"
-msgstr "Неизменно входит в число самых безопасных направлений Азии"
+msgid ""
+"SoLuna Travel — premium guided tours across Uzbekistan and the Great Silk "
+"Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys "
+"with local experts."
+msgstr ""
 
-msgid "Copy failed"
-msgstr "Не удалось скопировать"
+msgid ""
+"SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan,"
+" Samarkand tour, Bukhara tour, Khiva tour, Tashkent tour, Central Asia "
+"travel, guided tours, sayohat, tur, Ozbekiston sayohat, туры Узбекистан, "
+"Шелковый путь"
+msgstr ""
 
-msgid "Culinary"
-msgstr "Кулинария"
+msgid "Premium guided tours across Uzbekistan and the Great Silk Road."
+msgstr "Премиальные туры по Узбекистану и Шёлковому пути."
 
-msgid "Curated"
-msgstr "Подборка"
+msgid "Premium tours across Uzbekistan and the Silk Road."
+msgstr "Премиальные туры по Узбекистану и Шёлковому пути."
 
-msgid "Custom tours"
-msgstr "Индивидуальные туры"
+msgid "Skip to content"
+msgstr "Перейти к контенту"
 
-msgid "Desert"
-msgstr "Пустыня"
+msgid "Toggle theme"
+msgstr "Переключить тему"
 
-msgid "Difficulty"
-msgstr "Сложность"
+msgid "Main navigation"
+msgstr "Главное меню"
 
-msgid "Discover"
-msgstr "Откройте"
+msgid "Tours"
+msgstr "Туры"
 
-msgid "Discover the jewels of the ancient Silk Road"
-msgstr "Откройте жемчужины древнего Шёлкового пути"
+msgid "All Tours"
+msgstr "Все туры"
 
-msgid "Done"
-msgstr "Готово"
+msgid "Browse our complete catalog"
+msgstr "Смотреть полный каталог"
 
-msgid "Error loading tours"
-msgstr "Ошибка загрузки туров"
+msgid "Cultural"
+msgstr "Культурные"
 
-msgid "Error. Try again."
-msgstr "Ошибка. Попробуйте снова."
+msgid "Historic cities and heritage"
+msgstr "Исторические города и наследие"
 
-msgid "Every detail crafted so you focus on the moments that matter."
-msgstr "Каждая деталь продумана, чтобы вы могли сосредоточиться на главном."
+msgid "Adventure"
+msgstr "Приключения"
 
-msgid "Excellent — outstanding experience!"
-msgstr "Отлично — превосходный опыт!"
+msgid "Mountains, deserts and trekking"
+msgstr "Горы, пустыни и треккинг"
 
-msgid "Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to your inbox. No spam, ever."
-msgstr "Эксклюзивные предложения, скрытые жемчужины и вдохновение Шёлкового пути — прямо на вашу почту. Никакого спама."
+msgid "Premium"
+msgstr "Премиум"
 
-msgid "Expert Guides"
-msgstr "Опытные гиды"
+msgid "Luxury experiences"
+msgstr "Роскошный отдых"
 
-msgid "Explore"
-msgstr "Исследуйте"
+msgid "All Destinations"
+msgstr "Все направления"
 
-msgid "Explore on your own terms — coming soon!"
-msgstr "Путешествуйте на своих условиях — скоро!"
+msgid "Explore Uzbekistan"
+msgstr "Исследовать Узбекистан"
 
-msgid "Explore region"
-msgstr "Исследовать регион"
+msgid "City of legends"
+msgstr "Город легенд"
 
-msgid "Extraordinary"
-msgstr "Незабываемо"
+msgid "Holy and ancient"
+msgstr "Священный и древний"
 
-msgid "Famously welcoming locals and vibrant culture"
-msgstr "Знаменитые гостеприимные жители и яркая культура"
+msgid "Open-air museum"
+msgstr "Музей под открытым небом"
 
-msgid "Featured"
-msgstr "Рекомендуем"
+msgid "Activities"
+msgstr "Развлечения"
 
-msgid "Featured Tours"
-msgstr "Рекомендуемые туры"
+msgid "Contact"
+msgstr "Контакты"
 
-msgid "Filters"
-msgstr "Фильтры"
+msgid "Search"
+msgstr "Поиск"
 
-msgid "Find your perfect travel experience"
-msgstr "Найдите идеальное путешествие"
+msgid "Open menu"
+msgstr "Открыть меню"
 
-msgid "Get 5% off your first booking"
-msgstr "Получите скидку 5% на первое бронирование"
+msgid "Search tours, destinations, activities..."
+msgstr "Поиск туров, направлений, активностей..."
+
+msgid "Close search"
+msgstr "Закрыть поиск"
+
+msgid "Popular"
+msgstr "Популярное"
+
+msgid "Close menu"
+msgstr "Закрыть меню"
+
+msgid "Mobile navigation"
+msgstr "Мобильное меню"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid ""
+"Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for "
+"curious travelers, guided by local experts."
+msgstr ""
+"Бутик-туры по Узбекистану и древнему Шёлковому пути. Для любознательных "
+"путешественников, под руководством местных экспертов."
+
+msgid "Hours"
+msgstr "Часы работы"
+
+msgid "Company"
+msgstr "Компания"
+
+msgid "About Us"
+msgstr "О нас"
+
+msgid "Our Tours"
+msgstr "Наши туры"
+
+msgid "Services"
+msgstr "Услуги"
+
+msgid "Tour Booking"
+msgstr "Бронирование туров"
+
+msgid "Premium Tours"
+msgstr "Премиум туры"
+
+msgid "Help & Support"
+msgstr "Помощь и поддержка"
+
+msgid "Newsletter"
+msgstr "Рассылка"
 
 msgid "Get exclusive offers and Silk Road travel inspiration."
 msgstr "Получайте эксклюзивные предложения и вдохновение Шёлкового пути."
 
-msgid "Get free advice"
-msgstr "Получить бесплатную консультацию"
+msgid "Your email address"
+msgstr "Ваш email"
 
-msgid "Good — would recommend"
-msgstr "Хорошо — рекомендую"
+msgid "Subscribe"
+msgstr "Подписаться"
 
-msgid "Handpicked experiences based on traveler reviews"
-msgstr "Тщательно отобранные впечатления на основе отзывов путешественников"
+msgid "We accept"
+msgstr "Мы принимаем"
 
-msgid "Hero"
-msgstr "Главный баннер"
+msgid "All rights reserved."
+msgstr "Все права защищены."
 
-msgid "Hotel booking coming soon"
-msgstr "Бронирование отелей скоро"
+msgid "Cookies"
+msgstr "Куки"
 
-msgid "Itineraries shaped around how you love to travel."
-msgstr "Маршруты, созданные под ваш стиль путешествий."
+msgid "Follow us"
+msgstr "Подпишитесь на нас"
 
-msgid "Join 2,400+ travelers. Unsubscribe anytime."
-msgstr "Присоединяйтесь к 2 400+ путешественникам. Отписаться можно в любой момент."
+msgid "Back to top"
+msgstr "Наверх"
 
-msgid "Link copied!"
-msgstr "Ссылка скопирована!"
+msgid "Book"
+msgstr "Забронировать"
 
-msgid "Login to write a review"
-msgstr "Войдите, чтобы оставить отзыв"
+msgid "Booking"
+msgstr "Бронирование"
+
+msgid "Complete Your Booking"
+msgstr "Завершите ваше бронирование"
+
+msgid "Just a few details and you're ready to start your adventure"
+msgstr "Еще несколько деталей, и вы готовы начать свое приключение"
+
+msgid "Trip Details"
+msgstr "Детали поездки"
+
+msgid "Travel info"
+msgstr "Информация о поездке"
+
+msgid "Payment"
+msgstr "Оплата"
+
+msgid "Secure checkout"
+msgstr "Безопасная оплата"
+
+msgid "Confirmation"
+msgstr "Подтверждение"
+
+msgid "All set!"
+msgstr "Всё готово!"
+
+msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
+msgstr "Пожалуйста, исправьте следующие ошибки:"
+
+msgid "When and how many guests"
+msgstr "Когда и сколько гостей"
+
+msgid "Choose your preferred starting date"
+msgstr "Выберите желаемую дату начала"
+
+msgid "Age 12+"
+msgstr "Возраст 12+"
+
+msgid "Age 2-11"
+msgstr "Возраст 2-11"
+
+msgid "Contact Information"
+msgstr "Контактная информация"
+
+msgid "We'll send confirmation to your account"
+msgstr "Мы отправим подтверждение в ваш аккаунт"
+
+msgid "Edit profile"
+msgstr "Редактировать профиль"
+
+msgid "optional"
+msgstr "необязательно"
+
+msgid "Dietary needs, accessibility requirements, special occasions..."
+msgstr "Диетические требования, доступность, особые поводы..."
+
+msgid "Choose payment method on the next step"
+msgstr "Выберите способ оплаты на следующем шаге"
+
+msgid "Card"
+msgstr "Карта"
+
+msgid "Cash"
+msgstr "Наличные"
+
+msgid "All payments are encrypted and secure"
+msgstr "Все платежи зашифрованы и безопасны"
+
+msgid "Terms of Service"
+msgstr "Пользовательское соглашение"
+
+msgid "and"
+msgstr "и"
+
+msgid "Cancellation Policy"
+msgstr "Политика отмены"
+
+msgid "Confirm Booking"
+msgstr "Подтвердить бронирование"
+
+msgid "Free cancellation up to 3 days before travel date"
+msgstr "Бесплатная отмена за 3 дня до начала поездки"
+
+msgid "Price Details"
+msgstr "Детали цены"
+
+msgid "adults"
+msgstr "взрослых"
+
+msgid "Discount"
+msgstr "Скидка"
+
+msgid "person"
+msgstr "чел."
+
+msgid "children"
+msgstr "детей"
+
+msgid "Service fee"
+msgstr "Сервисный сбор"
+
+msgid "Taxes"
+msgstr "Налоги"
+
+msgid "Included"
+msgstr "Включено"
+
+msgid "Total"
+msgstr "Итого"
+
+msgid "Secure booking"
+msgstr "Безопасное бронирование"
+
+msgid "256-bit SSL encryption"
+msgstr "256-битное шифрование SSL"
+
+msgid "Free cancellation"
+msgstr "Бесплатная отмена"
+
+msgid "Up to 3 days before"
+msgstr "До 3-х дней до начала"
+
+msgid "We're here to help"
+msgstr "Мы всегда готовы помочь"
+
+msgid "Confirmed"
+msgstr "Подтверждено"
+
+msgid "Pending payment"
+msgstr "Ожидается оплата"
+
+msgid "Completed"
+msgstr "Завершено"
+
+msgid "Your trip is booked!"
+msgstr "Ваша поездка забронирована!"
+
+msgid "Almost there!"
+msgstr "Почти готово!"
+
+msgid "Welcome back!"
+msgstr "С возвращением!"
+
+msgid "Booking cancelled"
+msgstr "Бронирование отменено"
+
+msgid "Booking details"
+msgstr "Детали бронирования"
+
+msgid "Complete your payment to confirm this booking."
+msgstr "Завершите оплату для подтверждения этого бронирования."
+
+msgid ""
+"Get ready for an unforgettable journey. We've sent details to your email."
+msgstr ""
+"Готовьтесь к незабываемому путешествию. Мы отправили подробности вам на "
+"почту."
+
+msgid "This booking has been cancelled."
+msgstr "Это бронирование было отменено."
+
+msgid "All your trip information in one place."
+msgstr "Вся информация о вашей поездке в одном месте."
+
+msgid "Booking #"
+msgstr "Бронь №"
+
+msgid "Booked"
+msgstr "Забронировано"
+
+msgid "Travel date"
+msgstr "Дата поездки"
+
+msgid "E-Ticket"
+msgstr "Электронный билет"
+
+msgid "Destination"
+msgstr "Место назначения"
+
+msgid "GUESTS"
+msgstr "ГОСТИ"
+
+msgid "DURATION"
+msgstr "ДЛИТЕЛЬНОСТЬ"
+
+msgid "Back to bookings"
+msgstr "К списку бронирований"
+
+msgid "Pay now"
+msgstr "Оплатить сейчас"
+
+msgid "Print"
+msgstr "Распечатать"
+
+msgid "View tour"
+msgstr "Посмотреть тур"
+
+msgid "Trip Information"
+msgstr "Информация о поездке"
+
+msgid "Your travel details"
+msgstr "Детали вашего путешествия"
+
+msgid "Guests"
+msgstr "Гости"
+
+msgid "Duration"
+msgstr "Длительность"
+
+msgid "nights"
+msgstr "ночей"
+
+msgid "Booking Info"
+msgstr "Информация о бронировании"
+
+msgid "Contact and reference"
+msgstr "Контакты и номер брони"
+
+msgid "Reference"
+msgstr "Код бронирования"
+
+msgid "Cancellation Details"
+msgstr "Детали отмены"
+
+msgid "Cancelled on"
+msgstr "Отменено"
+
+msgid "Need help?"
+msgstr "Нужна помощь?"
+
+msgid "Our support team is available 24/7 to assist with your booking."
+msgstr "Наша служба поддержки доступна 24/7."
+
+msgid "Email support"
+msgstr "Поддержка по Email"
+
+msgid "Live chat"
+msgstr "Онлайн-чат"
+
+msgid "Up to 3 days before travel"
+msgstr "За 3 дня до начала поездки"
+
+msgid "Payment Summary"
+msgstr "Сводка оплаты"
+
+msgid "Price breakdown"
+msgstr "Детализация стоимости"
+
+msgid "Tax"
+msgstr "Налог"
+
+msgid "Payment pending"
+msgstr "Ожидается оплата"
+
+msgid "Complete Payment"
+msgstr "Завершить оплату"
+
+msgid "Cancel this booking?"
+msgstr "Отменить это бронирование?"
+
+msgid ""
+"This action cannot be undone. Refunds depend on the cancellation policy."
+msgstr ""
+"Это действие нельзя отменить. Возврат средств зависит от политики отмены."
+
+msgid "Reason (optional)"
+msgstr "Причина (необязательно)"
+
+msgid "Why are you cancelling?"
+msgstr "Почему вы отменяете?"
+
+msgid "Keep booking"
+msgstr "Оставить бронирование"
+
+msgid "Confirm cancel"
+msgstr "Подтвердить отмену"
+
+msgid "Your journeys"
+msgstr "Ваши поездки"
+
+msgid "Track and manage all your bookings in one place"
+msgstr "Отслеживайте и управляйте всеми бронированиями в одном месте"
+
+msgid "Trips"
+msgstr "Поездки"
+
+msgid "All"
+msgstr "Все"
+
+msgid "View details"
+msgstr "Смотреть детали"
+
+msgid "No bookings yet"
+msgstr "Пока нет бронирований"
+
+msgid ""
+"Your adventure is waiting. Browse our handcrafted tours and book your first "
+"trip."
+msgstr ""
+"Ваше приключение ждет. Ознакомьтесь с нашими авторскими турами и "
+"забронируйте первую поездку."
+
+msgid "Explore Tours"
+msgstr "Искать туры"
+
+msgid "Browse Destinations"
+msgstr "Смотреть направления"
 
 msgid "Luxury Silk Road Travel"
 msgstr "Роскошные путешествия по Шёлковому пути"
@@ -2585,236 +1047,1392 @@ msgstr "Роскошные путешествия по Шёлковому пут
 msgid "Luxury Travel Across the Silk Road"
 msgstr "Роскошные путешествия вдоль Шёлкового пути"
 
-msgid "Min Rating"
-msgstr "Мин. рейтинг"
+msgid ""
+"Premium curated tours across Uzbekistan and the ancient Silk Road. Expert "
+"guides, boutique experiences, timeless memories."
+msgstr ""
+"Премиальные авторские туры по Узбекистану и древнему Шёлковому пути. Опытные"
+" гиды, бутик-впечатления, вечные воспоминания."
 
-msgid "Minimum 10 characters"
-msgstr "Минимум 10 символов"
-
-msgid "Most Searched Destinations"
-msgstr "Самые искомые направления"
-
-msgid "Most popular"
-msgstr "Самые популярные"
-
-msgid "Must-see places"
-msgstr "Места, которые стоит увидеть"
-
-msgid "New"
-msgstr "Новое"
-
-msgid "No Hidden Fees"
-msgstr "Без скрытых платежей"
-
-msgid "No categories"
-msgstr "Нет категорий"
-
-msgid "Not sure which tour fits you? Our local specialists craft the perfect Silk Road itinerary — free of charge."
-msgstr "Не уверены, какой тур вам подходит? Наши местные специалисты составят идеальный маршрут по Шёлковому пути — бесплатно."
-
-msgid "Our Promise"
-msgstr "Наше обещание"
-
-msgid "Our local experts can craft a custom tour tailored just for you."
-msgstr "Наши местные эксперты составят индивидуальный тур специально для вас."
-
-msgid "Our local experts will craft a personalised itinerary just for you — no cookie-cutter trips."
-msgstr "Наши местные эксперты составят персональный маршрут только для вас — никаких шаблонных поездок."
-
-msgid "Our local team is always ready to help."
-msgstr "Наша местная команда всегда готова помочь."
-
-msgid "Please try again."
-msgstr "Пожалуйста, попробуйте снова."
-
-msgid "Plov, samsa, shashlik — unforgettable flavors"
-msgstr "Плов, самса, шашлык — незабываемые вкусы"
-
-msgid "Poor — not recommended"
-msgstr "Плохо — не рекомендую"
-
-msgid "Popular destinations"
-msgstr "Популярные направления"
-
-msgid "Preferred Language"
-msgstr "Предпочитаемый язык"
-
-msgid "Premium curated tours across Uzbekistan and the ancient Silk Road. Expert guides, boutique experiences, timeless memories."
-msgstr "Премиальные авторские туры по Узбекистану и древнему Шёлковому пути. Опытные гиды, бутик-впечатления, вечные воспоминания."
-
-msgid "Premium tours across Uzbekistan and the Silk Road."
-msgstr "Премиальные туры по Узбекистану и Шёлковому пути."
-
-msgid "Price: High → Low"
-msgstr "Цена: по убыванию"
-
-msgid "Price: Low → High"
-msgstr "Цена: по возрастанию"
-
-msgid "Quick search"
-msgstr "Быстрый поиск"
-
-msgid "Ready to book?"
-msgstr "Готовы забронировать?"
-
-msgid "Recent searches"
-msgstr "Недавние запросы"
-
-msgid "Regions"
-msgstr "Регионы"
-
-msgid "Removed from wishlist"
-msgstr "Удалено из избранного"
-
-msgid "Reset"
-msgstr "Сбросить"
-
-msgid "Review"
-msgstr "Отзыв"
-
-msgid "Rich Cuisine"
-msgstr "Богатая кухня"
-
-msgid "Safe Travel"
-msgstr "Безопасное путешествие"
-
-msgid "Save to wishlist"
-msgstr "Сохранить в избранное"
-
-msgid "Save tour"
-msgstr "Сохранить тур"
-
-msgid "Scroll to explore"
-msgstr "Прокрутите, чтобы исследовать"
-
-msgid "Secure Booking"
-msgstr "Безопасное бронирование"
-
-msgid "Similar tours"
-msgstr "Похожие туры"
-
-msgid "Sort"
-msgstr "Сортировка"
-
-msgid "Stay Ahead of Every Adventure"
-msgstr "Будьте впереди каждого приключения"
-
-msgid "Summarise your experience..."
-msgstr "Кратко опишите свой опыт..."
-
-msgid "Tailored Routes"
-msgstr "Индивидуальные маршруты"
-
-msgid "Talk to a travel expert"
-msgstr "Поговорите с экспертом по путешествиям"
-
-msgid "Talk to an expert"
-msgstr "Поговорить с экспертом"
-
-msgid "Tell others about your experience — what did you enjoy most?"
-msgstr "Расскажите другим о своих впечатлениях — что понравилось больше всего?"
-
-msgid "These tours are available in"
-msgstr "Эти туры доступны в"
-
-msgid "Tickets coming soon"
-msgstr "Билеты скоро"
-
-msgid "Title"
-msgstr "Заголовок"
-
-msgid "Top Attractions"
-msgstr "Главные достопримечательности"
-
-msgid "Top Destinations"
-msgstr "Лучшие направления"
-
-msgid "Top choices among travelers this season"
-msgstr "Лучший выбор путешественников в этом сезоне"
-
-msgid "Tour Categories"
-msgstr "Категории туров"
-
-msgid "Train and air tickets will be available soon."
-msgstr "Железнодорожные и авиабилеты скоро будут доступны."
-
-msgid "Transparent pricing, no surprises."
-msgstr "Прозрачные цены, без сюрпризов."
-
-msgid "Trending now"
-msgstr "Сейчас в тренде"
-
-msgid "UNESCO Heritage"
-msgstr "Наследие ЮНЕСКО"
-
-msgid "UNESCO sites"
-msgstr "Объекты ЮНЕСКО"
-
-msgid "Update Review"
-msgstr "Обновить отзыв"
-
-msgid "Uzbekistan"
-msgstr "Узбекистан"
+msgid "Hero"
+msgstr "Главный баннер"
 
 msgid "Uzbekistan · Silk Road · Beyond"
 msgstr "Узбекистан · Шёлковый путь · и далее"
 
-msgid "View All"
-msgstr "Смотреть все"
-
-msgid "View Tour"
-msgstr "Смотреть тур"
-
-msgid "View on map"
-msgstr "Показать на карте"
-
-msgid "View tours"
-msgstr "Смотреть туры"
-
-msgid "Warm Hospitality"
-msgstr "Тёплое гостеприимство"
-
-msgid "We're partnering with the best hotels. Stay tuned!"
-msgstr "Мы сотрудничаем с лучшими отелями. Оставайтесь с нами!"
-
-msgid "Wellness"
-msgstr "Велнес"
-
 msgid "Where Ancient Routes"
 msgstr "Где древние маршруты"
+
+msgid "Become Your Story"
+msgstr "Станут вашей историей"
+
+msgid ""
+"Boutique tours crafted for curious souls — from the minarets of Samarkand to"
+" the sands of the Kyzylkum."
+msgstr ""
+"Бутик-туры для любознательных душ — от минаретов Самарканда до песков "
+"Кызылкума."
+
+msgid "Hotels"
+msgstr "Отели"
+
+msgid "Tickets"
+msgstr "Билеты"
+
+msgid "Rental"
+msgstr "Аренда"
 
 msgid "Where to?"
 msgstr "Куда?"
 
+msgid "Recent searches"
+msgstr "Недавние запросы"
+
+msgid "Popular destinations"
+msgstr "Популярные направления"
+
+msgid "Most popular"
+msgstr "Самые популярные"
+
+msgid "tours"
+msgstr "туров"
+
+msgid "New"
+msgstr "Новое"
+
+msgid "Quick search"
+msgstr "Быстрый поиск"
+
+msgid "Desert"
+msgstr "Пустыня"
+
+msgid "Any duration"
+msgstr "Любая длительность"
+
+msgid "Add guests"
+msgstr "Добавить гостей"
+
+msgid "Age 12 or above"
+msgstr "12 лет и старше"
+
+msgid "Age 2–11"
+msgstr "2–11 лет"
+
+msgid "Reset"
+msgstr "Сбросить"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Hotel booking coming soon"
+msgstr "Бронирование отелей скоро"
+
+msgid "We're partnering with the best hotels. Stay tuned!"
+msgstr "Мы сотрудничаем с лучшими отелями. Оставайтесь с нами!"
+
+msgid "Tickets coming soon"
+msgstr "Билеты скоро"
+
+msgid "Train and air tickets will be available soon."
+msgstr "Железнодорожные и авиабилеты скоро будут доступны."
+
+msgid "Car rental coming soon"
+msgstr "Аренда авто скоро"
+
+msgid "Explore on your own terms — coming soon!"
+msgstr "Путешествуйте на своих условиях — скоро!"
+
+msgid "Activity type"
+msgstr "Тип активности"
+
+msgid "All activities"
+msgstr "Все активности"
+
+msgid "Culinary"
+msgstr "Кулинария"
+
+msgid "Wellness"
+msgstr "Велнес"
+
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "Anywhere"
+msgstr "Где угодно"
+
+msgid "5-star rated"
+msgstr "Рейтинг 5 звёзд"
+
+msgid "Explore"
+msgstr "Исследуйте"
+
+msgid "Top Destinations"
+msgstr "Лучшие направления"
+
+msgid "Discover the jewels of the ancient Silk Road"
+msgstr "Откройте жемчужины древнего Шёлкового пути"
+
+msgid "Curated"
+msgstr "Подборка"
+
+msgid "Featured Tours"
+msgstr "Рекомендуемые туры"
+
+msgid "Handpicked experiences based on traveler reviews"
+msgstr "Тщательно отобранные впечатления на основе отзывов путешественников"
+
+msgid "View All"
+msgstr "Смотреть все"
+
+msgid "Best Seller"
+msgstr "Хит продаж"
+
+msgid "Top Rated"
+msgstr "Высокий рейтинг"
+
+msgid "Featured"
+msgstr "Рекомендуем"
+
+msgid "Save tour"
+msgstr "Сохранить тур"
+
+msgid "Added to wishlist"
+msgstr "Добавлено в избранное"
+
+msgid "Removed from wishlist"
+msgstr "Удалено из избранного"
+
+msgid "Error. Try again."
+msgstr "Ошибка. Попробуйте снова."
+
+msgid "reviews"
+msgstr "отзывов"
+
+msgid "Max"
+msgstr "До"
+
+msgid "View Tour"
+msgstr "Смотреть тур"
+
+msgid "Our Promise"
+msgstr "Наше обещание"
+
 msgid "Why Book with SoLuna?"
 msgstr "Почему стоит бронировать с SoLuna?"
 
-msgid "Years of history"
-msgstr "Лет истории"
+msgid "Every detail crafted so you focus on the moments that matter."
+msgstr "Каждая деталь продумана, чтобы вы могли сосредоточиться на главном."
 
-msgid "Your payments and personal data are protected end-to-end with bank-level security. Book with complete peace of mind."
-msgstr "Ваши платежи и личные данные защищены сквозным шифрованием банковского уровня. Бронируйте с полным спокойствием."
+msgid "Secure Booking"
+msgstr "Безопасное бронирование"
 
-msgid "from"
-msgstr "от"
+msgid ""
+"Your payments and personal data are protected end-to-end with bank-level "
+"security. Book with complete peace of mind."
+msgstr ""
+"Ваши платежи и личные данные защищены сквозным шифрованием банковского "
+"уровня. Бронируйте с полным спокойствием."
 
-msgid "handcrafted journeys through Uzbekistan"
-msgstr "авторские путешествия по Узбекистану"
+# ── Added by build_i18n (UI strings) ──
+msgid "24/7 Support"
+msgstr "Поддержка 24/7"
 
-msgid "more tours"
-msgstr "ещё туры"
+msgid "Our local team is always ready to help."
+msgstr "Наша местная команда всегда готова помочь."
 
-msgid "regions"
-msgstr "регионы"
+msgid "No Hidden Fees"
+msgstr "Без скрытых платежей"
 
-msgid "stars"
-msgstr "звёзд"
+msgid "Transparent pricing, no surprises."
+msgstr "Прозрачные цены, без сюрпризов."
+
+msgid "Expert Guides"
+msgstr "Опытные гиды"
+
+msgid "Certified local guides with deep Silk Road knowledge."
+msgstr "Сертифицированные местные гиды с глубокими знаниями Шёлкового пути."
+
+msgid "Tailored Routes"
+msgstr "Индивидуальные маршруты"
+
+msgid "Itineraries shaped around how you love to travel."
+msgstr "Маршруты, созданные под ваш стиль путешествий."
+
+msgid "Browse by style"
+msgstr "Поиск по стилю"
+
+msgid "Tour Categories"
+msgstr "Категории туров"
+
+msgid "Find your perfect travel experience"
+msgstr "Найдите идеальное путешествие"
+
+msgid "Browse All"
+msgstr "Смотреть все"
+
+msgid "Trending now"
+msgstr "Сейчас в тренде"
+
+msgid "Most Searched Destinations"
+msgstr "Самые искомые направления"
+
+msgid "Top choices among travelers this season"
+msgstr "Лучший выбор путешественников в этом сезоне"
+
+msgid "Most Popular"
+msgstr "Самые популярные"
+
+msgid "Stay Ahead of Every Adventure"
+msgstr "Будьте впереди каждого приключения"
+
+msgid ""
+"Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to"
+" your inbox. No spam, ever."
+msgstr ""
+"Эксклюзивные предложения, скрытые жемчужины и вдохновение Шёлкового пути — "
+"прямо на вашу почту. Никакого спама."
+
+msgid "Join 2,400+ travelers. Unsubscribe anytime."
+msgstr ""
+"Присоединяйтесь к 2 400+ путешественникам. Отписаться можно в любой момент."
+
+msgid "Contact Us"
+msgstr "Свяжитесь с нами"
+
+msgid "Get in touch"
+msgstr "Связаться"
+
+msgid "Let's plan your journey together"
+msgstr "Ваше путешествие по"
+
+msgid ""
+"Have a question or need help planning your trip? Our team is here for you — "
+"reach out and we'll reply within 24 hours."
+msgstr ""
+"Есть вопрос или нужна помощь с планированием поездки? Наша команда здесь для"
+" вас."
+
+msgid "Contact information"
+msgstr "Контактная информация"
+
+msgid "Reach us anytime through the channels below."
+msgstr "Свяжитесь с нами в любое время через каналы ниже."
 
 msgid "Director"
 msgstr "Директор"
 
+msgid "Office"
+msgstr "Офис"
+
+msgid "Working hours"
+msgstr "Часы работы"
+
+msgid "Send us a message"
+msgstr "Отправьте нам сообщение"
+
+msgid "Fill out the form and we'll get back to you shortly."
+msgstr "Заполните форму, и мы скоро с вами свяжемся."
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "Message"
+msgstr "Сообщение"
+
+msgid "Send Message"
+msgstr "Отправить сообщение"
+
+msgid "Your details are safe with us and never shared."
+msgstr "Ваши данные в безопасности и никогда не передаются третьим лицам."
+
+msgid "Office location"
+msgstr "Местоположение"
+
+msgid "Our office location"
+msgstr "Расположение нашего офиса"
+
+msgid "Visit our office"
+msgstr "Посетите наш офис в Ташкенте"
+
 msgid "Directions"
 msgstr "Маршрут"
 
+msgid "FAQ"
+msgstr "Вопросы и ответы"
+
+msgid "Frequently asked questions"
+msgstr "Часто задаваемые вопросы"
+
+msgid "How quickly will I get a response?"
+msgstr "Как быстро я получу ответ?"
+
+msgid ""
+"We reply to every message within 24 hours, often much sooner during working "
+"hours."
+msgstr ""
+"Мы отвечаем на каждое сообщение в течение 24 часов, а в рабочее время — "
+"часто гораздо быстрее."
+
+msgid "Can you customize a tour for me?"
+msgstr "Можете ли вы составить тур под меня?"
+
+msgid ""
+"Absolutely. Tell us your dates, interests and budget in the form and our "
+"team will craft a tailored itinerary."
+msgstr ""
+"Конечно. Укажите в форме даты, интересы и бюджет, и наша команда составит "
+"индивидуальный маршрут."
+
+msgid "Which languages does your team speak?"
+msgstr "На каких языках говорит ваша команда?"
+
+msgid "Our guides and support team speak English, Russian, Uzbek and Korean."
+msgstr ""
+"Наши гиды и служба поддержки говорят на английском, русском, узбекском и "
+"корейском."
+
+msgid "How can I pay for a booking?"
+msgstr "Как оплатить бронирование?"
+
+msgid ""
+"We accept VISA, Mastercard, UZCARD and HUMO. Payment details are shared once"
+" your trip is confirmed."
+msgstr ""
+"Мы принимаем VISA, Mastercard, UZCARD и HUMO. Реквизиты для оплаты "
+"сообщаются после подтверждения поездки."
+
+msgid "Message Sent"
+msgstr "Сообщение отправлено"
+
+msgid "Message Sent!"
+msgstr "Сообщение отправлено!"
+
+msgid ""
+"Thank you for reaching out. Oygul will get back to you within 24 hours."
+msgstr "Спасибо за обращение. Ойгуль свяжется с вами в течение 24 часов."
+
+msgid "Back to Home"
+msgstr "На главную"
+
+msgid "Choose language"
+msgstr "Выберите язык"
+
+msgid "Choose currency"
+msgstr "Выберите валюту"
+
+msgid "Payment Gateway"
+msgstr "Платежный шлюз"
+
+msgid "TEST MODE"
+msgstr "ТЕСТОВЫЙ РЕЖИМ"
+
+msgid "Real payment gateways are not configured. This is a simulation."
+msgstr "Реальные платежные шлюзы не настроены. Это симуляция."
+
+msgid "soums"
+msgstr "сум"
+
+msgid "Payment failed"
+msgstr "Ошибка оплаты"
+
+msgid "Test cards"
+msgstr "Тестовые карты"
+
+msgid "Always success"
+msgstr "Всегда успешно"
+
+msgid "Declined by bank"
+msgstr "Отклонено банком"
+
+msgid "Insufficient funds"
+msgstr "Недостаточно средств"
+
+msgid "Enter card details"
+msgstr "Введите данные карты"
+
+msgid "Card number"
+msgstr "Номер карты"
+
+msgid "Expiry"
+msgstr "Срок действия"
+
+msgid "Cardholder name"
+msgstr "Имя владельца"
+
+msgid "Amount to pay"
+msgstr "Сумма к оплате"
+
+msgid "Pay"
+msgstr "Оплатить"
+
+msgid "Cancel and choose another method"
+msgstr "Отменить и выбрать другой способ"
+
+msgid "Secure payment"
+msgstr "Безопасная оплата"
+
+msgid ""
+"Your card information is encrypted with 256-bit SSL and never stored on our "
+"servers."
+msgstr ""
+"Данные вашей карты зашифрованы с помощью 256-битного SSL и не хранятся на "
+"наших серверах."
+
+msgid "Payment Failed"
+msgstr "Оплата не удалась"
+
+msgid "Something went wrong with your payment. Your card was not charged."
+msgstr "Что-то пошло не так с вашим платежом. Средства с карты не списаны."
+
+msgid "Possible reasons:"
+msgstr "Возможные причины:"
+
+msgid "Insufficient funds on the card"
+msgstr "Недостаточно средств на карте"
+
+msgid "Card declined by the bank"
+msgstr "Карта отклонена банком"
+
+msgid "Incorrect card details"
+msgstr "Неверные данные карты"
+
+msgid "Network connection issue"
+msgstr "Проблема с подключением к сети"
+
+msgid "Try Again"
+msgstr "Попробовать снова"
+
+msgid "Contact Support"
+msgstr "Обратиться в поддержку"
+
+msgid "Payment Processing"
+msgstr "Обработка платежа"
+
+msgid "Payment processing..."
+msgstr "Платеж обрабатывается..."
+
+msgid ""
+"We are waiting for confirmation from the payment gateway. This usually takes"
+" a few seconds."
+msgstr ""
+"Мы ожидаем подтверждения от платежного шлюза. Обычно это занимает несколько "
+"секунд."
+
+msgid "Don't close this page. We'll redirect you automatically."
+msgstr "Не закрывайте эту страницу. Мы автоматически перенаправим вас."
+
+msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
+msgstr ""
+"Выберите способ оплаты. Все платежи осуществляются в узбекских сумах (UZS)."
+
+msgid "Conversion to UZS"
+msgstr "Конвертация в UZS"
+
+msgid "Choose payment method"
+msgstr "Выберите способ оплаты"
+
+msgid "Secure payment in Uzbek Som"
+msgstr "Безопасный платеж в узбекских сумах"
+
+msgid "Pay via Click app, card or balance"
+msgstr "Оплатить через приложение Click, картой или с баланса"
+
+msgid "Pay via Payme app or card"
+msgstr "Оплатить через приложение Payme или картой"
+
+msgid "Bank card"
+msgstr "Банковская карта"
+
+msgid "Pay directly with Visa, Mastercard, UZCARD or HUMO"
+msgstr "Оплатите напрямую картой Visa, Mastercard, UZCARD или HUMO"
+
+msgid "Pay at office"
+msgstr "Оплатить в офисе"
+
+msgid "Visit our Tashkent office"
+msgstr "Посетите наш офис в Ташкенте"
+
+msgid "You'll be redirected"
+msgstr "Вы будете перенаправлены"
+
+msgid ""
+"After clicking Pay, you'll be redirected to the secure gateway page to "
+"complete the transaction."
+msgstr ""
+"После нажатия «Оплатить», вы будете перенаправлены на страницу безопасного "
+"шлюза для завершения транзакции."
+
+msgid "256-bit SSL"
+msgstr "256-битный SSL"
+
+msgid "PCI DSS"
+msgstr "PCI DSS"
+
+msgid "Money-back guarantee"
+msgstr "Гарантия возврата денег"
+
+msgid "By proceeding, you accept the booking terms."
+msgstr "Продолжая, вы соглашаетесь с условиями бронирования."
+
+msgid "Tour price"
+msgstr "Стоимость тура"
+
+msgid "Conversion"
+msgstr "Конвертация"
+
+msgid "Free"
+msgstr "Бесплатно"
+
+msgid "soum"
+msgstr "сум"
+
+msgid "Until 3 days before travel"
+msgstr "До 3-х дней до поездки"
+
+msgid "Contact support"
+msgstr "Связаться с поддержкой"
+
+msgid ""
+"You will be redirected to Click payment page. Complete the payment via your "
+"card or Click app."
+msgstr ""
+"Вы будете перенаправлены на страницу оплаты Click. Завершите оплату вашей "
+"картой или через приложение Click."
+
+msgid ""
+"You will be redirected to Payme. Complete the payment via your card or Payme"
+" app."
+msgstr ""
+"Вы будете перенаправлены в Payme. Завершите оплату вашей картой или через "
+"приложение Payme."
+
+msgid ""
+"Enter your Visa or Mastercard details securely on the next page to complete "
+"payment."
+msgstr ""
+"Введите данные Visa или Mastercard на следующей странице для завершения "
+"оплаты."
+
+msgid ""
+"Visit our office in Tashkent to complete payment in cash. Your booking will "
+"remain pending until paid."
+msgstr ""
+"Посетите наш офис в Ташкенте для оплаты наличными. Ваше бронирование "
+"останется в ожидании до момента оплаты."
+
+msgid "Redirecting to gateway..."
+msgstr "Перенаправление на платежный шлюз..."
+
+msgid "Payment Successful"
+msgstr "Оплата прошла успешно"
+
+msgid "Payment Successful!"
+msgstr "Оплата прошла успешно!"
+
+msgid "Your booking has been confirmed. We've sent the details to your email."
+msgstr ""
+"Ваше бронирование подтверждено. Мы отправили подробности на вашу почту."
+
+msgid "Details"
+msgstr "Детали"
+
+msgid "Tour"
+msgstr "Тур"
+
+msgid "View Booking Details"
+msgstr "Посмотреть детали брони"
+
+msgid "Explore More Tours"
+msgstr "Искать другие туры"
+
+msgid "What happens next?"
+msgstr "Что дальше?"
+
+msgid "We'll send a confirmation email with full itinerary"
+msgstr "Мы отправим письмо с подтверждением и полным маршрутом"
+
+msgid "Our team will contact you 48 hours before the trip"
+msgstr "Наша команда свяжется с вами за 48 часов до поездки"
+
+msgid "Check your booking anytime in your profile"
+msgstr "Вы можете проверить бронирование в любое время в профиле"
+
 msgid "Tours & Attractions"
 msgstr "Туры и достопримечательности"
+
+msgid "Attractions"
+msgstr "Достопримечательности"
+
+msgid "Country"
+msgstr "Страна"
+
+msgid "Available tours"
+msgstr "Доступные туры"
+
+msgid "View tours"
+msgstr "Смотреть туры"
+
+msgid "About the region"
+msgstr "О регионе"
+
+msgid "About"
+msgstr "Обзор"
+
+msgid "Must-see places"
+msgstr "Места, которые стоит увидеть"
+
+msgid "Top Attractions"
+msgstr "Главные достопримечательности"
+
+msgid "View on map"
+msgstr "Показать на карте"
+
+msgid "Tours in"
+msgstr "Туры в"
+
+msgid "View"
+msgstr "Посмотреть"
+
+msgid "Browse all tours"
+msgstr "Смотреть все туры"
+
+msgid "Quick Facts"
+msgstr "Факты"
+
+msgid "Need help planning?"
+msgstr "Нужна помощь с планированием?"
+
+msgid "Our local experts can craft a custom tour tailored just for you."
+msgstr "Наши местные эксперты составят индивидуальный тур специально для вас."
+
+msgid "Ready to book?"
+msgstr "Готовы забронировать?"
+
+msgid "These tours are available in"
+msgstr "Эти туры доступны в"
+
+msgid "more tours"
+msgstr "ещё туры"
+
+msgid "Destinations in Uzbekistan"
+msgstr "Направления"
+
+msgid ""
+"Explore Uzbekistan destinations with SoLuna Travel — Samarkand, Bukhara, "
+"Khiva, Tashkent and more. Discover attractions, regions and Silk Road "
+"highlights."
+msgstr ""
+"Откройте направления Узбекистана с SoLuna Travel — Самарканд, Бухара, Хива, "
+"Ташкент и другие. Достопримечательности, регионы и жемчужины Шёлкового пути."
+
+msgid "Discover"
+msgstr "Откройте"
+
+msgid "Uzbekistan"
+msgstr "Узбекистан"
+
+msgid ""
+"Ancient cities, breathtaking landscapes, and warm hospitality — find your "
+"perfect destination."
+msgstr ""
+"Древние города, захватывающие пейзажи и тёплое гостеприимство — найдите "
+"идеальное направление."
+
+msgid "Regions"
+msgstr "Регионы"
+
+msgid "Years of history"
+msgstr "Лет истории"
+
+msgid "UNESCO sites"
+msgstr "Объекты ЮНЕСКО"
+
+msgid "Scroll to explore"
+msgstr "Прокрутите, чтобы исследовать"
+
+msgid "All destinations"
+msgstr "Все направления"
+
+msgid "Choose your adventure"
+msgstr "Выберите своё приключение"
+
+msgid "regions"
+msgstr "регионы"
+
+msgid "Explore region"
+msgstr "Исследовать регион"
+
+msgid "No destinations yet"
+msgstr "Пока нет направлений"
+
+msgid "Check back soon — new destinations are being added."
+msgstr "Загляните позже — добавляются новые направления."
+
+msgid "Back to home"
+msgstr "На главную"
+
+msgid "UNESCO Heritage"
+msgstr "Наследие ЮНЕСКО"
+
+msgid "4 world heritage sites across the country"
+msgstr "4 объекта всемирного наследия по всей стране"
+
+msgid "Safe Travel"
+msgstr "Безопасное путешествие"
+
+msgid "Consistently rated one of the safest destinations in Asia"
+msgstr "Неизменно входит в число самых безопасных направлений Азии"
+
+msgid "Rich Cuisine"
+msgstr "Богатая кухня"
+
+msgid "Plov, samsa, shashlik — unforgettable flavors"
+msgstr "Плов, самса, шашлык — незабываемые вкусы"
+
+msgid "Warm Hospitality"
+msgstr "Тёплое гостеприимство"
+
+msgid "Famously welcoming locals and vibrant culture"
+msgstr "Знаменитые гостеприимные жители и яркая культура"
+
+msgid "Custom tours"
+msgstr "Индивидуальные туры"
+
+msgid "Can't decide where to go?"
+msgstr "Не можете решить, куда поехать?"
+
+msgid ""
+"Our local experts will craft a personalised itinerary just for you — no "
+"cookie-cutter trips."
+msgstr ""
+"Наши местные эксперты составят персональный маршрут только для вас — никаких"
+" шаблонных поездок."
+
+msgid "Talk to an expert"
+msgstr "Поговорить с экспертом"
+
+msgid "Update Review"
+msgstr "Обновить отзыв"
+
+msgid "Write a Review"
+msgstr "Написать отзыв"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Update Your Review"
+msgstr "Обновить отзыв"
+
+msgid "Share Your Experience"
+msgstr "Поделитесь впечатлениями"
+
+msgid "Rating"
+msgstr "Рейтинг"
+
+msgid "stars"
+msgstr "звёзд"
+
+msgid "Click to rate"
+msgstr "Нажмите, чтобы оценить"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Summarise your experience..."
+msgstr "Кратко опишите свой опыт..."
+
+msgid "Review"
+msgstr "Отзыв"
+
+msgid "Tell others about your experience — what did you enjoy most?"
+msgstr ""
+"Расскажите другим о своих впечатлениях — что понравилось больше всего?"
+
+msgid "Minimum 10 characters"
+msgstr "Минимум 10 символов"
+
+msgid "Submit Review"
+msgstr "Опубликовать отзыв"
+
+msgid "Poor — not recommended"
+msgstr "Плохо — не рекомендую"
+
+msgid "Below average"
+msgstr "Ниже среднего"
+
+msgid "Average — decent experience"
+msgstr "Средне — неплохой опыт"
+
+msgid "Good — would recommend"
+msgstr "Хорошо — рекомендую"
+
+msgid "Excellent — outstanding experience!"
+msgstr "Отлично — превосходный опыт!"
+
+msgid "Authentication Error"
+msgstr "Ошибка аутентификации"
+
+msgid "Authentication failed"
+msgstr "Аутентификация не удалась"
+
+msgid ""
+"Something went wrong while signing you in. Your account is safe — no changes"
+" were made."
+msgstr ""
+"Что-то пошло не так при входе в систему. Ваш аккаунт в безопасности — "
+"никаких изменений не было внесено."
+
+msgid "Possible reasons"
+msgstr "Возможные причины"
+
+msgid "You cancelled the sign-in process"
+msgstr "Вы отменили процесс входа"
+
+msgid "The provider's session expired"
+msgstr "Срок действия сессии провайдера истек"
+
+msgid "Permission was denied"
+msgstr "Доступ запрещен"
+
+msgid "Go to homepage"
+msgstr "Вернуться на главную"
+
+msgid "Your account is secure"
+msgstr "Ваш аккаунт в безопасности"
+
+#, python-format
+msgid "Sign In via %(provider_name)s"
+msgstr "Войти через %(provider_name)s"
+
+#, python-format
+msgid "Continue with %(provider_name)s"
+msgstr "Продолжить с %(provider_name)s"
+
+#, python-format
+msgid ""
+"You're about to sign in to SoLuna using your %(provider_name)s account. "
+"Click continue to proceed securely."
+msgstr ""
+"Вы собираетесь войти в SoLuna, используя свой аккаунт %(provider_name)s. "
+"Нажмите продолжить для безопасного входа."
+
+msgid "We'll receive"
+msgstr "Мы получим"
+
+msgid "Your name and profile photo"
+msgstr "Ваше имя и фото профиля"
+
+msgid "We will never post anything without your permission."
+msgstr "Мы никогда ничего не публикуем без вашего разрешения."
+
+msgid "Continue"
+msgstr "Продолжить"
+
+msgid "Secure connection · Your data is encrypted"
+msgstr "Безопасное соединение · Данные зашифрованы"
+
+msgid "Redirecting..."
+msgstr "Перенаправление..."
+
+msgid "Complete sign up"
+msgstr "Завершить регистрацию"
+
+msgid "Complete your profile"
+msgstr "Заполните профиль"
+
+msgid ""
+"Just one more step. Please confirm your details to finish creating your "
+"SoLuna account."
+msgstr ""
+"Остался один шаг. Пожалуйста, подтвердите свои данные для завершения "
+"регистрации."
+
+msgid "From your social account"
+msgstr "Из вашего соц. аккаунта"
+
+msgid "You'll get"
+msgstr "Вы получите"
+
+#, python-format
+msgid "5%% off on your first booking"
+msgstr "Скидка 5%% на первое бронирование"
+
+msgid "Exclusive offers and updates"
+msgstr "Эксклюзивные предложения и новости"
+
+msgid "Personalized travel recommendations"
+msgstr "Персонализированные рекомендации"
+
+msgid "and consent to receive travel inspiration emails"
+msgstr "и соглашаюсь получать идеи для путешествий по почте"
+
+msgid "Creating account..."
+msgstr "Создание аккаунта..."
+
+msgid "Pagination"
+msgstr "Пагинация"
+
+msgid "Save to wishlist"
+msgstr "Сохранить в избранное"
+
+msgid "from"
+msgstr "от"
+
+msgid "No tours found"
+msgstr "Туры не найдены"
+
+msgid "Try adjusting your filters or search criteria."
+msgstr "Попробуйте изменить фильтры или параметры поиска."
+
+msgid "Clear filters"
+msgstr "Сбросить фильтры"
+
+msgid "Travel Tour"
+msgstr "Информация о поездке"
+
+msgid "Share"
+msgstr "Поделиться"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "See all"
+msgstr "Смотреть все"
+
+msgid "photos"
+msgstr "фото"
+
+msgid "Previous"
+msgstr "отзывов"
+
+msgid "Next"
+msgstr "Далее"
+
+msgid "Group Size"
+msgstr "Размер группы"
+
+msgid "people"
+msgstr "чел."
+
+msgid "Difficulty"
+msgstr "Сложность"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Itinerary"
+msgstr "Маршрут"
+
+msgid "What's included"
+msgstr "Что включено"
+
+msgid "Day"
+msgstr "День"
+
+msgid "Professional guide"
+msgstr "Профессиональный гид"
+
+msgid "Transport (A/C vehicle)"
+msgstr "Транспорт (авто с кондиционером)"
+
+msgid "Entrance fees"
+msgstr "Входные билеты"
+
+msgid "Hotel accommodation"
+msgstr "Проживание в отеле"
+
+msgid "Not Included"
+msgstr "Не включено"
+
+msgid "International flights"
+msgstr "Международные рейсы"
+
+msgid "Travel insurance"
+msgstr "Туристическая страховка"
+
+msgid "Personal expenses"
+msgstr "Личные расходы"
+
+msgid "Excellent"
+msgstr "Отлично"
+
+msgid "Average"
+msgstr "Средне"
+
+msgid "Poor"
+msgstr "Плохо"
+
+msgid "Terrible"
+msgstr "Ужасно"
+
+msgid "No reviews yet. Be the first to share your experience!"
+msgstr "Пока нет отзывов. Поделитесь своим опытом первыми!"
+
+msgid "Write a review"
+msgstr "Написать отзыв"
+
+msgid "Login to write a review"
+msgstr "Войдите, чтобы оставить отзыв"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Book Now"
+msgstr "Забронировать"
+
+msgid "Need help booking?"
+msgstr "Нужна помощь с бронированием?"
+
+msgid "Talk to a travel expert"
+msgstr "Поговорите с экспертом по путешествиям"
+
+msgid ""
+"Not sure which tour fits you? Our local specialists craft the perfect Silk "
+"Road itinerary — free of charge."
+msgstr ""
+"Не уверены, какой тур вам подходит? Наши местные специалисты составят "
+"идеальный маршрут по Шёлковому пути — бесплатно."
+
+msgid "Get free advice"
+msgstr "Получить бесплатную консультацию"
+
+msgid "Similar tours"
+msgstr "Похожие туры"
+
+msgid "Link copied!"
+msgstr "Ссылка скопирована!"
+
+msgid "Copy failed"
+msgstr "Не удалось скопировать"
+
+msgid "Uzbekistan & Silk Road Tours"
+msgstr "Туры по Узбекистану и Шёлковому пути"
+
+msgid ""
+"Browse all SoLuna Travel tours across Uzbekistan and the Great Silk Road — "
+"Samarkand, Bukhara, Khiva and Tashkent. Compare prices, itineraries and book"
+" online."
+msgstr ""
+"Просмотрите все туры SoLuna Travel по Узбекистану и Великому шёлковому пути "
+"— Самарканд, Бухара, Хива, Ташкент. Сравните цены и маршруты, бронируйте "
+"онлайн."
+
+msgid "Extraordinary"
+msgstr "Незабываемо"
+
+msgid "handcrafted journeys through Uzbekistan"
+msgstr "авторские путешествия по Узбекистану"
+
+msgid "Sort"
+msgstr "Сортировка"
+
+msgid "Newest"
+msgstr "Новинки"
+
+msgid "Price: Low → High"
+msgstr "Цена: по возрастанию"
+
+msgid "Price: High → Low"
+msgstr "Цена: по убыванию"
+
+msgid "Highest Rated"
+msgstr "С высоким рейтингом"
+
+msgid "Filters"
+msgstr "Фильтры"
+
+msgid "Clear all"
+msgstr "Сбросить все"
+
+msgid "Search tours..."
+msgstr "Поиск туров..."
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "No categories"
+msgstr "Нет категорий"
+
+msgid "Price Range"
+msgstr "Ценовой диапазон"
+
+msgid "Min"
+msgstr "От"
+
+msgid "Apply"
+msgstr "Применить"
+
+msgid "Min Rating"
+msgstr "Мин. рейтинг"
+
+msgid "Type"
+msgstr "Тип тура"
+
+msgid "Remove type filter"
+msgstr "Сбросить фильтры"
+
+msgid "Error loading tours"
+msgstr "Ошибка загрузки туров"
+
+msgid "Please try again."
+msgstr "Пожалуйста, попробуйте снова."
+
+msgid "Mon"
+msgstr "Пн"
+
+msgid "Tue"
+msgstr "Вт"
+
+msgid "Wed"
+msgstr "Ср"
+
+msgid "Thu"
+msgstr "Чт"
+
+msgid "Fri"
+msgstr "Пт"
+
+msgid "Sat"
+msgstr "Сб"
+
+msgid "Sun"
+msgstr "Вс"
+
+#~ msgid "City"
+#~ msgstr "Город"
+
+#~ msgid "About yourself"
+#~ msgstr "О себе"
+
+#~ msgid "Tell us a bit about yourself..."
+#~ msgstr "Расскажите немного о себе..."
+
+#~ msgid "Your Gateway to Extraordinary Adventures"
+#~ msgstr "Ваш путь к необыкновенным приключениям"
+
+#~ msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
+#~ msgstr "SoLuna — премиум-туры по Узбекистану и Шелковому пути."
+
+#~ msgid "Unlock the Magic of Travel with SoLuna"
+#~ msgstr "Откройте для себя магию путешествий с SoLuna"
+
+#~ msgid "Explore Now"
+#~ msgstr "Начать исследование"
+
+#~ msgid "Language"
+#~ msgstr "Язык"
+
+#~ msgid "Currency"
+#~ msgstr "Валюта"
+
+#~ msgid "Saved Tours"
+#~ msgstr "Сохраненные туры"
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid ""
+#~ "Dive into local recommendations for a truly authentic Silk Road experience "
+#~ "across Uzbekistan."
+#~ msgstr ""
+#~ "Погрузитесь в местные рекомендации для по-настоящему аутентичного опыта на "
+#~ "Шелковом пути по всему Узбекистану."
+
+#~ msgid "Tashkent, Uzbekistan"
+#~ msgstr "Ташкент, Узбекистан"
+
+#~ msgid "Get exclusive offers and travel inspiration."
+#~ msgstr "Получайте эксклюзивные предложения и идеи для путешествий."
+
+#~ msgid "Enter your email"
+#~ msgstr "Введите ваш email"
+
+#~ msgid "Explore the World"
+#~ msgstr "Исследуйте мир"
+
+#~ msgid ""
+#~ "Pack your bags and let SoLuna redefine your travel experience. Where every "
+#~ "journey is a story waiting to be told."
+#~ msgstr ""
+#~ "Собирайте чемоданы и позвольте SoLuna изменить ваше представление о "
+#~ "путешествиях."
+
+#~ msgid "Need some help?"
+#~ msgstr "Нужна помощь?"
+
+#~ msgid "Samarkand, Uzbekistan"
+#~ msgstr "Самарканд, Узбекистан"
+
+#~ msgid "Check In"
+#~ msgstr "Заезд"
+
+#~ msgid "Check Out"
+#~ msgstr "Выезд"
+
+#~ msgid "Guest"
+#~ msgstr "Гость"
+
+#~ msgid "Top Searched Destinations"
+#~ msgstr "Самые популярные направления"
+
+#~ msgid "Favorite destinations of professional travelers"
+#~ msgstr "Любимые направления профессиональных путешественников"
+
+#~ msgid "Our Featured Tours"
+#~ msgstr "Наши лучшие туры"
+
+#~ msgid "Favorite destinations based on customer reviews"
+#~ msgstr "Лучшие направления на основе отзывов клиентов"
+
+#~ msgid "Price range"
+#~ msgstr "Диапазон цен"
+
+#~ msgid "Clear"
+#~ msgstr "Очистить"
+
+#~ msgid "Best Sale"
+#~ msgstr "Хит продаж"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Добавить в избранное"
+
+#~ msgid "Easy payment"
+#~ msgstr "Удобная оплата"
+
+#~ msgid "We offer tours in a range of locations"
+#~ msgstr "Мы предлагаем туры по множеству направлений"
+
+#~ msgid ""
+#~ "Choose one style or create a package, fill your passports with adventures "
+#~ "together."
+#~ msgstr ""
+#~ "Выберите стиль или создайте свой тур и наполните паспорт новыми "
+#~ "приключениями."
+
+#~ msgid "Security Assurance"
+#~ msgstr "Гарантия безопасности"
+
+#~ msgid "Customer Support"
+#~ msgstr "Служба поддержки"
+
+#~ msgid "Transparent Policies"
+#~ msgstr "Прозрачные условия"
+
+#~ msgid "Reputable Affiliations"
+#~ msgstr "Надежные партнеры"
+
+#~ msgid "Payment is secure and safe"
+#~ msgstr "Ваша оплата надежно защищена"
+
+#~ msgid "Top Categories of Tours"
+#~ msgstr "Популярные категории туров"
+
+#~ msgid "View More"
+#~ msgstr "Смотреть больше"
+
+#~ msgid "Why book at SoLuna?"
+#~ msgstr "Почему стоит бронировать в SoLuna?"
+
+#~ msgid "Embracing Adventure Since 2025"
+#~ msgstr "Дарим приключения с 2025 года"
+
+#~ msgid "Install APP & Get discount code"
+#~ msgstr "Установите приложение и получите промокод"
+
+#, python-format
+#~ msgid "Up to 55%% Discount and lots of special gifts"
+#~ msgstr "Скидки до 55%% и множество специальных подарков"
+
+#~ msgid "Trending Destinations"
+#~ msgstr "Популярные направления"
+
+#~ msgid "Most popular choices for travelers"
+#~ msgstr "Самый популярный выбор среди путешественников"
+
+#~ msgid "Get inspiration for your next trip"
+#~ msgstr "Найдите вдохновение для следующей поездки"
+
+#~ msgid "Favorite stories based on customer reviews"
+#~ msgstr "Любимые истории на основе отзывов клиентов"
+
+#~ msgid "Keep Reading"
+#~ msgstr "Читать далее"
+
+#~ msgid "We'd love to hear from you"
+#~ msgstr "Мы будем рады услышать вас"
+
+#~ msgid "Mon - Sat, 8AM - 6PM"
+#~ msgstr "Пн - Сб, 8:00 - 18:00"
+
+#~ msgid "We reply within 24 hours"
+#~ msgstr "Мы отвечаем в течение 24 часов"
+
+#~ msgid "Visit us in person"
+#~ msgstr "Приходите к нам в офис"
+
+#~ msgid "Social"
+#~ msgstr "Соцсети"
+
+#~ msgid "Follow us for updates"
+#~ msgstr "Следите за нашими новостями"
+
+#~ msgid "Why visit"
+#~ msgstr "Почему стоит посетить"
+
+#~ msgid "Population"
+#~ msgstr "Население"
+
+#~ msgid "Best time to visit"
+#~ msgstr "Лучшее время для визита"
+
+#~ msgid "Our local experts can craft a custom tour for you."
+#~ msgstr "Наши эксперты могут создать для вас индивидуальный тур."
+
+#~ msgid "Explore the Silk Road"
+#~ msgstr "Исследуйте Шелковый путь"
+
+#~ msgid "Discover Uzbekistan's Most Beautiful Destinations"
+#~ msgstr "Откройте для себя самые красивые направления Узбекистана"
+
+#~ msgid ""
+#~ "From ancient Samarkand to the deserts of Karakalpakstan — find your next "
+#~ "adventure."
+#~ msgstr ""
+#~ "От древнего Самарканда до пустынь Каракалпакстана — найдите свое следующее "
+#~ "приключение."
+
+#~ msgid "Tours available"
+#~ msgstr "Доступно туров"
+
+#~ msgid "Check back soon for new destinations."
+#~ msgstr "Загляните позже за новыми направлениями."
+
+#~ msgid "Write your detailed review here..."
+#~ msgstr "Напишите ваш подробный отзыв здесь..."
+
+#~ msgid "Languages"
+#~ msgstr "Языки"
+
+#~ msgid "Highlights"
+#~ msgstr "Ключевые моменты"
+
+#~ msgid "Related tours"
+#~ msgstr "Похожие туры"
+
+#~ msgid "tours found"
+#~ msgstr "туров найдено"
+
+#~ msgid "Sort by"
+#~ msgstr "Сортировать по"
+
+#~ msgid "Price: Low to High"
+#~ msgstr "Цена: от низкой к высокой"
+
+#~ msgid "Price: High to Low"
+#~ msgstr "Цена: от высокой к низкой"
+
+#~ msgid "5% off on your first booking"
+#~ msgstr "Скидка 5% на первое бронирование"
+
+#~ msgid "Get 5% off your first booking"
+#~ msgstr "Получите скидку 5% на первое бронирование"

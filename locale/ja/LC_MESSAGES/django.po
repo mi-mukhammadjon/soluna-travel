@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 01:16+0500\n"
+"POT-Creation-Date: 2026-07-01 12:40+0500\n"
 "PO-Revision-Date: 2026-06-21 02:00+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -18,2345 +18,2269 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: accounts/admin.py:18
 msgid "Дополнительная информация"
 msgstr "追加情報"
 
-#: accounts/admin.py:33 accounts/models.py:12
 msgid "Аватар"
 msgstr "アバター"
 
-#: accounts/apps.py:7
 msgid "Пользователи и доступы"
 msgstr "ユーザーとアクセス権"
 
-#: accounts/models.py:8 accounts/models.py:27
 msgid "Пользователь"
 msgstr "ユーザー"
 
-#: accounts/models.py:9
 msgid "Администратор"
 msgstr "管理者"
 
-#: accounts/models.py:11
 msgid "Номер телефона"
 msgstr "電話番号"
 
-#: accounts/models.py:13
 msgid "Роль"
 msgstr "ロール"
 
-#: accounts/models.py:15
 msgid "Предпочитаемый язык"
 msgstr "希望する言語"
 
-#: accounts/models.py:24
 msgid "Дата регистрации"
 msgstr "登録日"
 
-#: accounts/models.py:28
 msgid "Все пользователи"
 msgstr "すべてのユーザー"
 
-#: bookings/forms.py:34
 msgid "Dietary needs, accessibility, etc."
 msgstr "食事の要望、バリアフリー対応など"
 
-#: bookings/forms.py:38 templates/bookings/booking_create.html:88
-#: templates/bookings/booking_detail.html:188
-#: templates/bookings/booking_list.html:108
 msgid "Travel Date"
 msgstr "旅行日"
 
-#: bookings/forms.py:39 templates/bookings/booking_create.html:103
-#: templates/tours/detail.html:288
 msgid "Adults"
 msgstr "大人"
 
-#: bookings/forms.py:40 templates/bookings/booking_create.html:118
-#: templates/bookings/booking_detail.html:296 templates/tours/detail.html:296
 msgid "Children"
 msgstr "子供"
 
-#: bookings/forms.py:41 templates/bookings/booking_create.html:160
-#: templates/bookings/booking_detail.html:253
 msgid "Special Requests"
 msgstr "特別なリクエスト"
 
-#: bookings/forms.py:47
 msgid "Travel date cannot be in the past."
 msgstr "旅行日を過去の日付にすることはできません。"
 
-#: bookings/forms.py:53
 msgid "At least 1 adult is required."
 msgstr "最低1名の大人が必要です。"
 
-#: payments/models.py:64
 msgid "Created"
 msgstr "作成済み"
 
-#: payments/models.py:65 templates/bookings/booking_list.html:50
-#: templates/bookings/booking_list.html:83
 msgid "Pending"
 msgstr "保留中"
 
-#: payments/models.py:66
 msgid "Processing"
 msgstr "処理中"
 
-#: payments/models.py:67 templates/bookings/booking_detail.html:323
-#: templates/payments/payment_success.html:60
 msgid "Paid"
 msgstr "支払い済み"
 
-#: payments/models.py:68
 msgid "Failed"
 msgstr "失敗"
 
-#: payments/models.py:69 templates/bookings/booking_detail.html:34
-#: templates/bookings/booking_list.html:59
-#: templates/bookings/booking_list.html:86
 msgid "Cancelled"
 msgstr "キャンセル済み"
 
-#: payments/models.py:70 templates/bookings/booking_detail.html:325
 msgid "Refunded"
 msgstr "返金済み"
 
-#: payments/views.py:56
 msgid "Bu bron uchun to'lov allaqachon qabul qilingan."
 msgstr "この予約の支払いは既に受け付けられています。"
 
-#: payments/views.py:83
 msgid "Ofisda to'lov qilishni tanladingiz."
 msgstr "オフィスでの支払いを選択しました。"
 
-#: payments/views.py:102
 msgid "Ushbu to'lov turi hali qo'llanilmaydi."
 msgstr "この支払い方法はまだサポートされていません。"
 
-#: templates/404.html:4
 msgid "Page Not Found"
 msgstr "ページが見つかりません"
 
-#: templates/404.html:16
 msgid "Oops! Page not found"
 msgstr "おっと！ページが見つかりません"
 
-#: templates/404.html:18
 msgid ""
 "The page you are looking for might have been moved or doesn't exist. Let's "
 "get you back on track."
 msgstr "お探しのページは移動したか、存在しない可能性があります。元の場所に戻りましょう。"
 
-#: templates/404.html:23 templates/500.html:21
 msgid "Go Home"
 msgstr "ホームに戻る"
 
-#: templates/404.html:26
 msgid "Browse Tours"
 msgstr "ツアーを見る"
 
-#: templates/404.html:31 templates/base.html:154 templates/base.html:302
-#: templates/base.html:375 templates/regions/detail.html:19
-#: templates/regions/list.html:4 templates/regions/list.html:14
 msgid "Destinations"
 msgstr "目的地"
 
-#: templates/404.html:32 templates/regions/detail.html:160
 msgid "Contact us"
 msgstr "お問い合わせ"
 
-#: templates/404.html:33
 msgid "Help center"
 msgstr "ヘルプセンター"
 
-#: templates/500.html:4
 msgid "Server Error"
 msgstr "サーバーエラー"
 
-#: templates/500.html:14
 msgid "Something went wrong"
 msgstr "問題が発生しました"
 
-#: templates/500.html:16
 msgid ""
-"We're having trouble loading this page. Our team has been notified and we're "
-"working on it."
+"We're having trouble loading this page. Our team has been notified and we're"
+" working on it."
 msgstr "このページの読み込みに問題が発生しています。担当チームに通知され、現在対応中です。"
 
-#: templates/500.html:24 templates/account/password_reset_done.html:25
-#: templates/socialaccount/authentication_error.html:49
 msgid "Try again"
 msgstr "もう一度お試しください"
 
-#: templates/account/login.html:4 templates/account/login.html:163
-#: templates/accounts/register.html:90 templates/base.html:242
-#: templates/base.html:316
 msgid "Sign In"
 msgstr "ログイン"
 
-#: templates/account/login.html:23
 msgid "Welcome back to your"
 msgstr "お帰りなさい、あなたの"
 
-#: templates/account/login.html:24
 msgid "next adventure"
 msgstr "次の冒険へ"
 
-#: templates/account/login.html:27
 msgid ""
 "Discover the magic of the Silk Road — ancient cities, breathtaking "
 "landscapes, and unforgettable journeys."
 msgstr "シルクロードの魔法を発見しましょう。古代の都市、息を呑むような風景、そして忘れられない旅が待っています。"
 
-#: templates/account/login.html:35
 msgid "Trusted by 50,000+"
 msgstr "50,000人以上からの信頼"
 
-#: templates/account/login.html:36
 msgid "travelers across 9 countries"
 msgstr "9カ国の旅行者"
 
-#: templates/account/login.html:42
 msgid "rating"
 msgstr "の評価"
 
-#: templates/account/login.html:43
 msgid "from 8,400+ verified reviews"
 msgstr "8,400件以上の確認済みレビューから"
 
-#: templates/account/login.html:49 templates/bookings/booking_create.html:305
 msgid "24/7 support"
 msgstr "24時間365日のサポート"
 
-#: templates/account/login.html:50
 msgid "in 9 languages"
 msgstr "9言語対応"
 
-#: templates/account/login.html:56
 msgid "From"
 msgstr "出発地:"
 
-#: templates/account/login.html:57
 msgid "Tashkent · Samarkand · Bukhara · Khiva"
 msgstr "タシュケント・サマルカンド・ブハラ・ヒヴァ"
 
-#: templates/account/login.html:68 templates/account/signup.html:76
-#: templates/accounts/profile.html:11 templates/base.html:111
-#: templates/base.html:300 templates/bookings/booking_create.html:12
-#: templates/bookings/booking_detail.html:12
-#: templates/bookings/booking_list.html:12
-#: templates/messages_app/contact.html:12
-#: templates/payments/payment_select.html:11 templates/regions/detail.html:17
-#: templates/regions/list.html:12 templates/tours/detail.html:12
-#: templates/tours/list.html:12
 msgid "Home"
 msgstr "ホーム"
 
-#: templates/account/login.html:73
 msgid "Welcome back"
 msgstr "お帰りなさい"
 
-#: templates/account/login.html:75
 msgid "Sign in to access your bookings and exclusive offers."
 msgstr "ログインして予約情報や限定オファーにアクセスしましょう。"
 
-#: templates/account/login.html:91 templates/account/login.html:106
 msgid "Continue with Google"
 msgstr "Googleで続行"
 
-#: templates/account/login.html:111
 msgid "or sign in with email"
 msgstr "またはメールアドレスでログイン"
 
-#: templates/account/login.html:126 templates/account/signup.html:153
-#: templates/accounts/profile.html:105 templates/accounts/profile_edit.html:58
-#: templates/accounts/register.html:57 templates/base.html:395
-#: templates/messages_app/contact.html:40
-#: templates/messages_app/contact.html:77
-#: templates/socialaccount/signup.html:67
 msgid "Email"
 msgstr "メールアドレス"
 
-#: templates/account/login.html:138 templates/account/signup.html:164
-#: templates/accounts/password_change.html:13
-#: templates/accounts/profile.html:48 templates/accounts/register.html:72
 msgid "Password"
 msgstr "パスワード"
 
-#: templates/account/login.html:140
 msgid "Forgot?"
 msgstr "お忘れですか？"
 
-#: templates/account/login.html:155
 msgid "Keep me signed in for 30 days"
 msgstr "30日間ログインしたままにする"
 
-#: templates/account/login.html:168
 msgid "Don't have an account?"
 msgstr "アカウントをお持ちでないですか？"
 
-#: templates/account/login.html:169
 msgid "Create one"
 msgstr "アカウントを作成する"
 
-#: templates/account/login.html:174 templates/account/signup.html:205
-#: templates/account/signup.html:227 templates/base.html:413
-#: templates/socialaccount/signup.html:119
 msgid "Terms"
 msgstr "利用規約"
 
-#: templates/account/login.html:176 templates/account/signup.html:229
-#: templates/base.html:415
 msgid "Privacy"
 msgstr "プライバシー"
 
-#: templates/account/login.html:178 templates/account/signup.html:231
 msgid "Help"
 msgstr "ヘルプ"
 
-#: templates/account/logout.html:4 templates/account/logout.html:23
-#: templates/base.html:236 templates/base.html:312
 msgid "Sign Out"
 msgstr "ログアウト"
 
-#: templates/account/logout.html:10
 msgid "Sign out?"
 msgstr "ログアウトしますか？"
 
-#: templates/account/logout.html:12
 msgid "Are you sure you want to sign out?"
 msgstr "本当にログアウトしてもよろしいですか？"
 
-#: templates/account/logout.html:21 templates/accounts/password_change.html:47
-#: templates/accounts/profile_edit.html:85
-#: templates/bookings/booking_detail.html:125 templates/reviews/form.html:83
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: templates/account/password_reset.html:4
 msgid "Reset Password"
 msgstr "パスワードの再設定"
 
-#: templates/account/password_reset.html:15
 msgid "Forgot your password?"
 msgstr "パスワードをお忘れですか？"
 
-#: templates/account/password_reset.html:17
 msgid "Enter your email and we'll send a link to reset your password."
 msgstr "メールアドレスを入力してください。パスワード再設定用のリンクをお送りします。"
 
-#: templates/account/password_reset.html:24
 msgid "Email address"
 msgstr "メールアドレス"
 
-#: templates/account/password_reset.html:29
 msgid "Send Reset Link"
 msgstr "再設定リンクを送信"
 
-#: templates/account/password_reset.html:35
-#: templates/account/password_reset_done.html:20
-#: templates/account/verification_sent.html:19
-#: templates/socialaccount/login.html:84
-#: templates/socialaccount/signup.html:136
 msgid "Back to sign in"
 msgstr "ログイン画面に戻る"
 
-#: templates/account/password_reset_done.html:4
 msgid "Email Sent"
 msgstr "メールを送信しました"
 
-#: templates/account/password_reset_done.html:14
 msgid "Check your email"
 msgstr "メールをご確認ください"
 
-#: templates/account/password_reset_done.html:16
 msgid ""
-"We've sent a password reset link to your email address. The link will expire "
-"in 24 hours."
+"We've sent a password reset link to your email address. The link will expire"
+" in 24 hours."
 msgstr "パスワード再設定リンクをメールで送信しました。このリンクは24時間で有効期限が切れます。"
 
-#: templates/account/password_reset_done.html:24
 msgid "Didn't receive an email?"
 msgstr "メールが届かない場合"
 
-#: templates/account/signup.html:4 templates/base.html:243
-#: templates/base.html:317
 msgid "Sign Up"
 msgstr "登録"
 
-#: templates/account/signup.html:23
 msgid "Your journey to the"
 msgstr "あなたの旅、"
 
-#: templates/account/signup.html:24 templates/base.html:266
 msgid "Silk Road"
 msgstr "シルクロードへ"
 
-#: templates/account/signup.html:24
 msgid "starts here"
 msgstr "はここから始まります"
 
-#: templates/account/signup.html:27
 msgid ""
 "Join thousands of travelers exploring Uzbekistan's ancient cities, vibrant "
 "culture, and timeless landscapes."
 msgstr "ウズベキスタンの古代都市、活気ある文化、そして永遠の風景を探索する何千人もの旅行者の仲間入りをしましょう。"
 
-#: templates/account/signup.html:36
 msgid "Welcome bonus"
 msgstr "ウェルカムボーナス"
 
-#: templates/account/signup.html:37
 #, python-format
 msgid "Get 5%% off your first booking"
 msgstr "初回予約で5%%オフ"
 
-#: templates/account/signup.html:43
 msgid "Save favorites"
 msgstr "お気に入りを保存"
 
-#: templates/account/signup.html:44
 msgid "Build your dream itinerary"
 msgstr "夢の旅行プランを作成"
 
-#: templates/account/signup.html:50
 msgid "Exclusive offers"
 msgstr "限定オファー"
 
-#: templates/account/signup.html:51
 msgid "Early access to seasonal deals"
 msgstr "季節のセールへの早期アクセス"
 
-#: templates/account/signup.html:57
 msgid "Faster checkout"
 msgstr "スムーズな決済"
 
-#: templates/account/signup.html:58
 msgid "Save payment methods securely"
 msgstr "支払い方法を安全に保存"
 
-#: templates/account/signup.html:64
 msgid "Free to join"
 msgstr "登録無料"
 
-#: templates/account/signup.html:65
 msgid "No credit card required"
 msgstr "クレジットカード不要"
 
-#: templates/account/signup.html:81
 msgid "Create your account"
 msgstr "アカウントを作成"
 
-#: templates/account/signup.html:83
 msgid "Sign up in 30 seconds. No credit card required."
 msgstr "30秒で登録完了。クレジットカードは不要です。"
 
-#: templates/account/signup.html:99 templates/account/signup.html:113
-#: templates/accounts/register.html:23
 msgid "Sign up with Google"
 msgstr "Googleで登録"
 
-#: templates/account/signup.html:118
 msgid "or sign up with email"
 msgstr "またはメールアドレスで登録"
 
-#: templates/account/signup.html:134
 msgid "First name"
 msgstr "名"
 
-#: templates/account/signup.html:142
 msgid "Last name"
 msgstr "姓"
 
-#: templates/account/signup.html:168
+msgid "Username"
+msgstr "ユーザー名"
+
 msgid "At least 8 characters"
 msgstr "8文字以上"
 
-#: templates/account/signup.html:180
 msgid "Password strength"
 msgstr "パスワードの強度"
 
-#: templates/account/signup.html:187
 msgid "Confirm password"
 msgstr "パスワード（確認用）"
 
-#: templates/account/signup.html:191
 msgid "Repeat password"
 msgstr "パスワードを再入力"
 
-#: templates/account/signup.html:204 templates/bookings/booking_create.html:199
-#: templates/socialaccount/signup.html:118
 msgid "I agree to SoLuna's"
 msgstr "SoLunaの以下に同意します："
 
-#: templates/account/signup.html:206 templates/bookings/booking_create.html:201
-#: templates/socialaccount/signup.html:120
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: templates/account/signup.html:207
 msgid "and consent to receiving travel inspiration emails"
 msgstr "旅行のインスピレーションメールを受け取ることに同意します。"
 
-#: templates/account/signup.html:216 templates/accounts/register.html:18
-#: templates/accounts/register.html:85 templates/socialaccount/signup.html:130
 msgid "Create Account"
 msgstr "アカウント作成"
 
-#: templates/account/signup.html:221 templates/accounts/register.html:89
 msgid "Already have an account?"
 msgstr "すでにアカウントをお持ちですか？"
 
-#: templates/account/signup.html:222
 msgid "Sign in"
 msgstr "ログイン"
 
-#: templates/account/verification_sent.html:4
 msgid "Verify Email"
 msgstr "メールの確認"
 
-#: templates/account/verification_sent.html:14
 msgid "Verify your email"
 msgstr "メールアドレスを確認してください"
 
-#: templates/account/verification_sent.html:16
 msgid ""
 "We've sent a verification email. Please click the link in the email to "
 "activate your account."
 msgstr "確認メールを送信しました。メール内のリンクをクリックしてアカウントを有効化してください。"
 
-#: templates/accounts/password_change.html:4
-#: templates/accounts/password_change.html:17
-msgid "Change Password"
-msgstr "パスワードを変更"
-
-#: templates/accounts/password_change.html:11
-#: templates/accounts/profile.html:13 templates/accounts/profile.html:36
-#: templates/accounts/profile_edit.html:11
-#: templates/bookings/booking_list.html:14
-msgid "Profile"
-msgstr "プロフィール"
-
-#: templates/accounts/password_change.html:19
-msgid "For security, choose a strong password you haven't used before."
-msgstr "セキュリティのため、以前に使用したことのない強力なパスワードを選択してください。"
-
-#: templates/accounts/password_change.html:26
-msgid "Current Password"
-msgstr "現在のパスワード"
-
-#: templates/accounts/password_change.html:32
-msgid "New Password"
-msgstr "新しいパスワード"
-
-#: templates/accounts/password_change.html:36
-msgid "At least 8 characters, with letters and numbers."
-msgstr "英字と数字を含む8文字以上。"
-
-#: templates/accounts/password_change.html:41
-msgid "Confirm New Password"
-msgstr "新しいパスワード（確認用）"
-
-#: templates/accounts/password_change.html:49
-msgid "Update Password"
-msgstr "パスワードを更新"
-
-#: templates/accounts/profile.html:4 templates/base.html:221
-#: templates/base.html:308
-msgid "My Profile"
-msgstr "マイプロフィール"
-
-#: templates/accounts/profile.html:30 templates/accounts/profile_edit.html:4
-#: templates/accounts/profile_edit.html:17
-msgid "Edit Profile"
-msgstr "プロフィールを編集"
-
-#: templates/accounts/profile.html:39 templates/base.html:224
-#: templates/base.html:309 templates/bookings/booking_detail.html:14
-#: templates/bookings/booking_list.html:4
-#: templates/bookings/booking_list.html:16
-msgid "My Bookings"
-msgstr "マイ予約"
-
-#: templates/accounts/profile.html:42 templates/accounts/profile.html:82
-msgid "Wishlist"
-msgstr "ウィッシュリスト"
-
-#: templates/accounts/profile.html:45
-msgid "My Reviews"
-msgstr "マイレビュー"
-
-#: templates/accounts/profile.html:53
-msgid "Logout"
-msgstr "ログアウト"
-
-#: templates/accounts/profile.html:68
-msgid "Total Bookings"
-msgstr "合計予約数"
-
-#: templates/accounts/profile.html:75
-msgid "Completed Trips"
-msgstr "完了した旅行"
-
-#: templates/accounts/profile.html:89 templates/tours/detail.html:117
-#: templates/tours/detail.html:211
-msgid "Reviews"
-msgstr "レビュー"
-
-#: templates/accounts/profile.html:97
-msgid "Personal Information"
-msgstr "個人情報"
-
-#: templates/accounts/profile.html:99 templates/accounts/profile_edit.html:13
-msgid "Edit"
-msgstr "編集"
-
-#: templates/accounts/profile.html:103 templates/messages_app/contact.html:73
-msgid "Full Name"
-msgstr "氏名"
-
-#: templates/accounts/profile.html:104 templates/accounts/register.html:50
-msgid "Username"
-msgstr "ユーザー名"
-
-#: templates/accounts/profile.html:106 templates/accounts/profile_edit.html:64
-#: templates/accounts/register.html:64 templates/messages_app/contact.html:33
-#: templates/messages_app/contact.html:84
-msgid "Phone"
-msgstr "電話番号"
-
-#: templates/accounts/profile.html:107
-msgid "Joined"
-msgstr "登録日"
-
-#: templates/accounts/profile.html:108 templates/accounts/profile_edit.html:70
-#: templates/regions/detail.html:104
-msgid "Country"
-msgstr "国"
-
-#: templates/accounts/profile.html:115
-msgid "Recent Bookings"
-msgstr "最近の予約"
-
-#: templates/accounts/profile.html:117
-msgid "View all"
-msgstr "すべて表示"
-
-#: templates/accounts/profile.html:132 templates/payments/mock_pay.html:161
-#: templates/tours/detail.html:307
 msgid "guests"
 msgstr "人のゲスト"
 
-#: templates/accounts/profile.html:145
+msgid "Change Password"
+msgstr "パスワードを変更"
+
+msgid "Profile"
+msgstr "プロフィール"
+
+msgid "For security, choose a strong password you haven't used before."
+msgstr "セキュリティのため、以前に使用したことのない強力なパスワードを選択してください。"
+
+msgid "Current Password"
+msgstr "現在のパスワード"
+
+msgid "Show password"
+msgstr "新しいパスワード"
+
+msgid "New Password"
+msgstr "新しいパスワード"
+
+msgid "At least 8 characters, mixing letters and numbers."
+msgstr "英字と数字を含む8文字以上。"
+
+msgid "Confirm New Password"
+msgstr "新しいパスワード（確認用）"
+
+msgid "Update Password"
+msgstr "パスワードを更新"
+
+msgid "Weak"
+msgstr "弱い"
+
+msgid "Fair"
+msgstr "普通"
+
+msgid "Good"
+msgstr "良い"
+
+msgid "Strong"
+msgstr "強い"
+
+msgid "Passwords match"
+msgstr "パスワード"
+
+msgid "Passwords do not match"
+msgstr "パスワードの強度"
+
+msgid "My Profile"
+msgstr "マイプロフィール"
+
+msgid "Administrator"
+msgstr "管理者"
+
+msgid "Member"
+msgstr "メンバー"
+
+msgid "Joined"
+msgstr "登録日"
+
+msgid "Edit Profile"
+msgstr "プロフィールを編集"
+
+msgid "Total Bookings"
+msgstr "合計予約数"
+
+msgid "Completed Trips"
+msgstr "完了した旅行"
+
+msgid "Wishlist"
+msgstr "ウィッシュリスト"
+
+msgid "Reviews"
+msgstr "レビュー"
+
+msgid "Overview"
+msgstr "概要"
+
+msgid "My Bookings"
+msgstr "マイ予約"
+
+msgid "My Reviews"
+msgstr "マイレビュー"
+
+msgid "Logout"
+msgstr "ログアウト"
+
+msgid "Personal Information"
+msgstr "個人情報"
+
+msgid "Edit"
+msgstr "編集"
+
+msgid "Full Name"
+msgstr "氏名"
+
+msgid "Phone"
+msgstr "電話番号"
+
+msgid "Preferred Language"
+msgstr "言語"
+
+msgid "Recent Bookings"
+msgstr "最近の予約"
+
+msgid "View all"
+msgstr "すべて表示"
+
 msgid "You haven't booked any tours yet."
 msgstr "まだツアーを予約していません。"
 
-#: templates/accounts/profile.html:146
 msgid "Browse tours"
 msgstr "ツアーを見る"
 
-#: templates/accounts/profile_edit.html:19
-msgid "Update your personal information and preferences."
-msgstr "個人情報と設定を更新します。"
-
-#: templates/accounts/profile_edit.html:35
-msgid "Profile photo"
-msgstr "プロフィール写真"
-
-#: templates/accounts/profile_edit.html:37
-msgid "JPG, PNG. Max 2MB."
-msgstr "JPGまたはPNG。最大2MB。"
-
-#: templates/accounts/profile_edit.html:40
-msgid "Upload"
-msgstr "アップロード"
-
-#: templates/accounts/profile_edit.html:48 templates/accounts/register.html:36
-msgid "First Name"
-msgstr "名"
-
-#: templates/accounts/profile_edit.html:52 templates/accounts/register.html:42
-msgid "Last Name"
-msgstr "姓"
-
-#: templates/accounts/profile_edit.html:60
-msgid "Email cannot be changed."
-msgstr "メールアドレスは変更できません。"
-
-#: templates/accounts/profile_edit.html:74
-msgid "City"
-msgstr "市区町村"
-
-#: templates/accounts/profile_edit.html:80
-msgid "About yourself"
-msgstr "自己紹介"
-
-#: templates/accounts/profile_edit.html:81
-msgid "Tell us a bit about yourself..."
-msgstr "あなたについて少し教えてください..."
-
-#: templates/accounts/profile_edit.html:87
-msgid "Save Changes"
-msgstr "変更を保存"
-
-#: templates/accounts/register.html:3
-msgid "Register"
-msgstr "登録"
-
-#: templates/accounts/register.html:19
-msgid "Join SoLuna and start planning your journey"
-msgstr "SoLunaに参加して、旅行の計画を始めましょう"
-
-#: templates/accounts/register.html:26
-msgid "or"
-msgstr "または"
-
-#: templates/accounts/register.html:78
-msgid "Confirm"
-msgstr "確認"
-
-#: templates/base.html:7 templates/home.html:4 templates/home.html:14
-msgid "Your Gateway to Extraordinary Adventures"
-msgstr "非日常の冒険への入り口"
-
-#: templates/base.html:8
-msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
-msgstr "SoLuna — ウズベキスタンとシルクロードのプレミアムツアー。"
-
-#: templates/base.html:35
-msgid "Skip to content"
-msgstr "コンテンツへスキップ"
-
-#: templates/base.html:56
-msgid "Unlock the Magic of Travel with SoLuna"
-msgstr "SoLunaで旅行の魔法を解き放とう"
-
-#: templates/base.html:58
-msgid "Explore Now"
-msgstr "今すぐ探索"
-
-#: templates/base.html:67 templates/regions/detail.html:130
-msgid "Language"
-msgstr "言語"
-
-#: templates/base.html:80 templates/regions/detail.html:139
-msgid "Currency"
-msgstr "通貨"
-
-#: templates/base.html:92
-msgid "Toggle theme"
-msgstr "テーマの切り替え"
-
-#: templates/base.html:101
-msgid "Main navigation"
-msgstr "メインナビゲーション"
-
-#: templates/base.html:117 templates/base.html:301 templates/home.html:19
-#: templates/home.html:88 templates/home.html:285 templates/home.html:396
-#: templates/tours/detail.html:14 templates/tours/list.html:14
-msgid "Tours"
-msgstr "ツアー"
-
-#: templates/base.html:123 templates/tours/list.html:4
-#: templates/tours/list.html:19
-msgid "All Tours"
-msgstr "すべてのツアー"
-
-#: templates/base.html:124
-msgid "Browse our complete catalog"
-msgstr "完全なカタログを見る"
-
-#: templates/base.html:130
-msgid "Cultural"
-msgstr "文化"
-
-#: templates/base.html:131
-msgid "Historic cities and heritage"
-msgstr "歴史的な都市と遺産"
-
-#: templates/base.html:137 templates/base.html:385
-msgid "Adventure"
-msgstr "アドベンチャー"
-
-#: templates/base.html:138
-msgid "Mountains, deserts and trekking"
-msgstr "山、砂漠、トレッキング"
-
-#: templates/base.html:144
-msgid "Premium"
-msgstr "プレミアム"
-
-#: templates/base.html:145
-msgid "Luxury experiences"
-msgstr "贅沢な体験"
-
-#: templates/base.html:160
-msgid "All Destinations"
-msgstr "すべての目的地"
-
-#: templates/base.html:161
-msgid "Explore Uzbekistan"
-msgstr "ウズベキスタンを探索"
-
-#: templates/base.html:168
-msgid "City of legends"
-msgstr "伝説の都市"
-
-#: templates/base.html:175
-msgid "Holy and ancient"
-msgstr "神聖で古代の"
-
-#: templates/base.html:182
-msgid "Open-air museum"
-msgstr "野外博物館"
-
-#: templates/base.html:188 templates/base.html:303 templates/home.html:23
-msgid "Activities"
-msgstr "アクティビティ"
-
-#: templates/base.html:189 templates/base.html:304 templates/base.html:376
-#: templates/messages_app/contact.html:14
-msgid "Contact"
-msgstr "お問い合わせ"
-
-#: templates/base.html:196 templates/home.html:61 templates/tours/list.html:56
-msgid "Search"
-msgstr "検索"
-
-#: templates/base.html:227
-msgid "Saved Tours"
-msgstr "保存したツアー"
-
-#: templates/base.html:230
-msgid "Settings"
-msgstr "設定"
-
-#: templates/base.html:247
-msgid "Open menu"
-msgstr "メニューを開く"
-
-#: templates/base.html:258
-msgid "Search tours, destinations, activities..."
-msgstr "ツアー、目的地、アクティビティを検索..."
-
-#: templates/base.html:259
-msgid "Close search"
-msgstr "検索を閉じる"
-
-#: templates/base.html:264 templates/payments/payment_select.html:94
-msgid "Popular"
-msgstr "人気"
-
-#: templates/base.html:282
-msgid "Close menu"
-msgstr "メニューを閉じる"
-
-#: templates/base.html:299
-msgid "Mobile navigation"
-msgstr "モバイルナビゲーション"
-
-#: templates/base.html:341
-msgid "Close"
-msgstr "閉じる"
-
-#: templates/base.html:361
-msgid ""
-"Dive into local recommendations for a truly authentic Silk Road experience "
-"across Uzbekistan."
-msgstr "ウズベキスタンのシルクロードの真の体験のための、地元のおすすめ情報に飛び込みましょう。"
-
-#: templates/base.html:363
-msgid "Tashkent, Uzbekistan"
-msgstr "ウズベキスタン、タシュケント"
-
-#: templates/base.html:364
-msgid "Hours"
-msgstr "営業時間"
-
-#: templates/base.html:371
-msgid "Company"
-msgstr "会社"
-
-#: templates/base.html:373
-msgid "About Us"
-msgstr "私たちについて"
-
-#: templates/base.html:374
-msgid "Our Tours"
-msgstr "私たちのツアー"
-
-#: templates/base.html:381
-msgid "Services"
-msgstr "サービス"
-
-#: templates/base.html:383
-msgid "Tour Booking"
-msgstr "ツアー予約"
-
-#: templates/base.html:384
-msgid "Premium Tours"
-msgstr "プレミアムツアー"
-
-#: templates/base.html:386
-msgid "Help & Support"
-msgstr "ヘルプとサポート"
-
-#: templates/base.html:391
-msgid "Newsletter"
-msgstr "ニュースレター"
-
-#: templates/base.html:392
-msgid "Get exclusive offers and travel inspiration."
-msgstr "限定オファーと旅行のインスピレーションを受け取る。"
-
-#: templates/base.html:395
-msgid "Enter your email"
-msgstr "メールアドレスを入力"
-
-#: templates/base.html:396
-msgid "Subscribe"
-msgstr "購読する"
-
-#: templates/base.html:401
-msgid "We accept"
-msgstr "利用可能"
-
-#: templates/base.html:411
-msgid "All rights reserved."
-msgstr "無断複写・転載を禁じます。"
-
-#: templates/base.html:417
-msgid "Cookies"
-msgstr "クッキー"
-
-#: templates/base.html:420
-msgid "Follow us"
-msgstr "フォローする"
-
-#: templates/base.html:432
-msgid "Back to top"
-msgstr "トップへ戻る"
-
-#: templates/bookings/booking_create.html:4
-msgid "Book"
-msgstr "予約する"
-
-#: templates/bookings/booking_create.html:16
-#: templates/bookings/booking_detail.html:4
-#: templates/payments/mock_pay.html:155
-msgid "Booking"
-msgstr "予約"
-
-#: templates/bookings/booking_create.html:19
-msgid "Complete Your Booking"
-msgstr "予約を完了する"
-
-#: templates/bookings/booking_create.html:20
-msgid "Just a few details and you're ready to start your adventure"
-msgstr "あと少しの詳細を入力するだけで、冒険の準備が整います"
-
-#: templates/bookings/booking_create.html:27
-#: templates/bookings/booking_create.html:80
-#: templates/payments/payment_select.html:25
-msgid "Trip Details"
-msgstr "旅行の詳細"
-
-#: templates/bookings/booking_create.html:28
-msgid "Travel info"
-msgstr "旅行情報"
-
-#: templates/bookings/booking_create.html:35
-#: templates/bookings/booking_create.html:174
-#: templates/payments/payment_select.html:4
-#: templates/payments/payment_select.html:15
-#: templates/payments/payment_select.html:33
-#: templates/payments/payment_success.html:32
-msgid "Payment"
-msgstr "支払い"
-
-#: templates/bookings/booking_create.html:36
-#: templates/payments/payment_select.html:18
-#: templates/payments/payment_select.html:34
-msgid "Secure checkout"
-msgstr "安全な決済"
-
-#: templates/bookings/booking_create.html:43
-#: templates/payments/payment_select.html:41
-msgid "Confirmation"
-msgstr "確認"
-
-#: templates/bookings/booking_create.html:44
-#: templates/payments/payment_select.html:42
-msgid "All set!"
-msgstr "準備完了！"
-
-#: templates/bookings/booking_create.html:58
-msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
-msgstr "以下のエラーを修正してください："
-
-#: templates/bookings/booking_create.html:81
-msgid "When and how many guests"
-msgstr "日程と参加人数"
-
-#: templates/bookings/booking_create.html:95
-msgid "Choose your preferred starting date"
-msgstr "希望の開始日を選択してください"
-
-#: templates/bookings/booking_create.html:113
-msgid "Age 12+"
-msgstr "12歳以上"
-
-#: templates/bookings/booking_create.html:127
-msgid "Age 2-11"
-msgstr "2〜11歳"
-
-#: templates/bookings/booking_create.html:137
-msgid "Contact Information"
-msgstr "連絡先情報"
-
-#: templates/bookings/booking_create.html:138
-msgid "We'll send confirmation to your account"
-msgstr "アカウントに確認をお送りします"
-
-#: templates/bookings/booking_create.html:152
-msgid "Edit profile"
-msgstr "プロフィールを編集"
-
-#: templates/bookings/booking_create.html:161
-msgid "optional"
-msgstr "任意"
-
-#: templates/bookings/booking_create.html:164
-msgid "Dietary needs, accessibility requirements, special occasions..."
-msgstr "食事の要望、バリアフリー要件、特別な機会..."
-
-#: templates/bookings/booking_create.html:175
-msgid "Choose payment method on the next step"
-msgstr "次のステップで支払い方法を選択してください"
-
-#: templates/bookings/booking_create.html:181
-msgid "Card"
-msgstr "カード"
-
-#: templates/bookings/booking_create.html:185
-msgid "Cash"
-msgstr "現金"
-
-#: templates/bookings/booking_create.html:189
-msgid "All payments are encrypted and secure"
-msgstr "すべての支払いは暗号化され安全です"
-
-#: templates/bookings/booking_create.html:200
-msgid "Terms of Service"
-msgstr "利用規約"
-
-#: templates/bookings/booking_create.html:202
-msgid "and"
-msgstr "および"
-
-#: templates/bookings/booking_create.html:203
-msgid "Cancellation Policy"
-msgstr "キャンセルポリシー"
-
-#: templates/bookings/booking_create.html:208
-msgid "Confirm Booking"
-msgstr "予約を確定"
-
-#: templates/bookings/booking_create.html:214
-msgid "Free cancellation up to 3 days before travel date"
-msgstr "旅行日の3日前までキャンセル無料"
-
-#: templates/bookings/booking_create.html:246
-#: templates/bookings/booking_detail.html:165
-#: templates/bookings/booking_detail.html:208
-#: templates/bookings/booking_list.html:124 templates/home.html:121
-#: templates/home.html:122 templates/home.html:123 templates/tours/list.html:93
-#: templates/tours/list.html:94 templates/tours/list.html:95
-#: templates/tours/list.html:96
 msgid "days"
 msgstr "日"
 
-#: templates/bookings/booking_create.html:259
-#: templates/payments/payment_select.html:197
+msgid "Your wishlist is empty."
+msgstr "ウィッシュリストは空です。"
+
+msgid "Awaiting approval"
+msgstr "承認待ち"
+
+msgid "You haven't written any reviews yet."
+msgstr "まだツアーを予約していません。"
+
+msgid "Update your personal information and preferences."
+msgstr "個人情報と設定を更新します。"
+
+msgid "Profile photo"
+msgstr "プロフィール写真"
+
+msgid "JPG or PNG, up to 2MB."
+msgstr "JPGまたはPNG。最大2MB。"
+
+msgid "Upload new"
+msgstr "アップロード"
+
+msgid "First Name"
+msgstr "名"
+
+msgid "Your first name"
+msgstr "名"
+
+msgid "Last Name"
+msgstr "姓"
+
+msgid "Your last name"
+msgstr "姓"
+
+msgid "Email cannot be changed here"
+msgstr "メールアドレスは変更できません。"
+
+msgid "Email cannot be changed here."
+msgstr "メールアドレスは変更できません。"
+
+msgid "Save Changes"
+msgstr "変更を保存"
+
+msgid "File is too large. Max 2MB."
+msgstr "ファイルが大きすぎます。最大2MB。"
+
+msgid "Register"
+msgstr "登録"
+
+msgid "Join SoLuna and start planning your journey"
+msgstr "SoLunaに参加して、旅行の計画を始めましょう"
+
+msgid "or"
+msgstr "または"
+
+msgid "Confirm"
+msgstr "確認"
+
+msgid "Change password"
+msgstr "パスワードを変更"
+
+msgid "Log out"
+msgstr "ログアウトしますか？"
+
+msgid "Premium Uzbekistan & Silk Road Tours"
+msgstr "ウズベキスタンとシルクロードのプレミアムツアー"
+
+msgid ""
+"SoLuna Travel — premium guided tours across Uzbekistan and the Great Silk "
+"Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys "
+"with local experts."
+msgstr ""
+
+msgid ""
+"SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan,"
+" Samarkand tour, Bukhara tour, Khiva tour, Tashkent tour, Central Asia "
+"travel, guided tours, sayohat, tur, Ozbekiston sayohat, туры Узбекистан, "
+"Шелковый путь"
+msgstr ""
+
+msgid "Premium guided tours across Uzbekistan and the Great Silk Road."
+msgstr "SoLuna — ウズベキスタンとシルクロードのプレミアムツアー。"
+
+msgid "Premium tours across Uzbekistan and the Silk Road."
+msgstr "SoLuna — ウズベキスタンとシルクロードのプレミアムツアー。"
+
+msgid "Skip to content"
+msgstr "コンテンツへスキップ"
+
+msgid "Toggle theme"
+msgstr "テーマの切り替え"
+
+msgid "Main navigation"
+msgstr "メインナビゲーション"
+
+msgid "Tours"
+msgstr "ツアー"
+
+msgid "All Tours"
+msgstr "すべてのツアー"
+
+msgid "Browse our complete catalog"
+msgstr "完全なカタログを見る"
+
+msgid "Cultural"
+msgstr "文化"
+
+msgid "Historic cities and heritage"
+msgstr "歴史的な都市と遺産"
+
+msgid "Adventure"
+msgstr "アドベンチャー"
+
+msgid "Mountains, deserts and trekking"
+msgstr "山、砂漠、トレッキング"
+
+msgid "Premium"
+msgstr "プレミアム"
+
+msgid "Luxury experiences"
+msgstr "贅沢な体験"
+
+msgid "All Destinations"
+msgstr "すべての目的地"
+
+msgid "Explore Uzbekistan"
+msgstr "ウズベキスタンを探索"
+
+msgid "City of legends"
+msgstr "伝説の都市"
+
+msgid "Holy and ancient"
+msgstr "神聖で古代の"
+
+msgid "Open-air museum"
+msgstr "野外博物館"
+
+msgid "Activities"
+msgstr "アクティビティ"
+
+msgid "Contact"
+msgstr "お問い合わせ"
+
+msgid "Search"
+msgstr "検索"
+
+msgid "Open menu"
+msgstr "メニューを開く"
+
+msgid "Search tours, destinations, activities..."
+msgstr "ツアー、目的地、アクティビティを検索..."
+
+msgid "Close search"
+msgstr "検索を閉じる"
+
+msgid "Popular"
+msgstr "人気"
+
+msgid "Close menu"
+msgstr "メニューを閉じる"
+
+msgid "Mobile navigation"
+msgstr "モバイルナビゲーション"
+
+msgid "Close"
+msgstr "閉じる"
+
+msgid ""
+"Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for "
+"curious travelers, guided by local experts."
+msgstr "ウズベキスタンと古のシルクロードを巡るブティックツアー。好奇心あふれる旅人のために、地元の専門家が案内します。"
+
+msgid "Hours"
+msgstr "営業時間"
+
+msgid "Company"
+msgstr "会社"
+
+msgid "About Us"
+msgstr "私たちについて"
+
+msgid "Our Tours"
+msgstr "私たちのツアー"
+
+msgid "Services"
+msgstr "サービス"
+
+msgid "Tour Booking"
+msgstr "ツアー予約"
+
+msgid "Premium Tours"
+msgstr "プレミアムツアー"
+
+msgid "Help & Support"
+msgstr "ヘルプとサポート"
+
+msgid "Newsletter"
+msgstr "ニュースレター"
+
+msgid "Get exclusive offers and Silk Road travel inspiration."
+msgstr "限定オファーと旅行のインスピレーションを受け取る。"
+
+msgid "Your email address"
+msgstr "メールアドレス"
+
+msgid "Subscribe"
+msgstr "購読する"
+
+msgid "We accept"
+msgstr "利用可能"
+
+msgid "All rights reserved."
+msgstr "無断複写・転載を禁じます。"
+
+msgid "Cookies"
+msgstr "クッキー"
+
+msgid "Follow us"
+msgstr "フォローする"
+
+msgid "Back to top"
+msgstr "トップへ戻る"
+
+msgid "Book"
+msgstr "予約する"
+
+msgid "Booking"
+msgstr "予約"
+
+msgid "Complete Your Booking"
+msgstr "予約を完了する"
+
+msgid "Just a few details and you're ready to start your adventure"
+msgstr "あと少しの詳細を入力するだけで、冒険の準備が整います"
+
+msgid "Trip Details"
+msgstr "旅行の詳細"
+
+msgid "Travel info"
+msgstr "旅行情報"
+
+msgid "Payment"
+msgstr "支払い"
+
+msgid "Secure checkout"
+msgstr "安全な決済"
+
+msgid "Confirmation"
+msgstr "確認"
+
+msgid "All set!"
+msgstr "準備完了！"
+
+msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
+msgstr "以下のエラーを修正してください："
+
+msgid "When and how many guests"
+msgstr "日程と参加人数"
+
+msgid "Choose your preferred starting date"
+msgstr "希望の開始日を選択してください"
+
+msgid "Age 12+"
+msgstr "12歳以上"
+
+msgid "Age 2-11"
+msgstr "2〜11歳"
+
+msgid "Contact Information"
+msgstr "連絡先情報"
+
+msgid "We'll send confirmation to your account"
+msgstr "アカウントに確認をお送りします"
+
+msgid "Edit profile"
+msgstr "プロフィールを編集"
+
+msgid "optional"
+msgstr "任意"
+
+msgid "Dietary needs, accessibility requirements, special occasions..."
+msgstr "食事の要望、バリアフリー要件、特別な機会..."
+
+msgid "Choose payment method on the next step"
+msgstr "次のステップで支払い方法を選択してください"
+
+msgid "Card"
+msgstr "カード"
+
+msgid "Cash"
+msgstr "現金"
+
+msgid "All payments are encrypted and secure"
+msgstr "すべての支払いは暗号化され安全です"
+
+msgid "Terms of Service"
+msgstr "利用規約"
+
+msgid "and"
+msgstr "および"
+
+msgid "Cancellation Policy"
+msgstr "キャンセルポリシー"
+
+msgid "Confirm Booking"
+msgstr "予約を確定"
+
+msgid "Free cancellation up to 3 days before travel date"
+msgstr "旅行日の3日前までキャンセル無料"
+
 msgid "Price Details"
 msgstr "料金の詳細"
 
-#: templates/bookings/booking_create.html:262
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:197
-#: templates/bookings/booking_detail.html:291 templates/home.html:56
 msgid "adults"
 msgstr "大人"
 
-#: templates/bookings/booking_create.html:266
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:198 templates/home.html:56
+msgid "Discount"
+msgstr "割引"
+
+msgid "person"
+msgstr "人"
+
 msgid "children"
 msgstr "子供"
 
-#: templates/bookings/booking_create.html:267
-#: templates/payments/payment_select.html:208
-msgid "Free"
-msgstr "無料"
-
-#: templates/bookings/booking_create.html:270
-#: templates/bookings/booking_detail.html:301
-#: templates/payments/payment_select.html:207
 msgid "Service fee"
 msgstr "サービス料"
 
-#: templates/bookings/booking_create.html:274
 msgid "Taxes"
 msgstr "税金"
 
-#: templates/bookings/booking_create.html:275
-#: templates/bookings/booking_detail.html:297
-#: templates/bookings/booking_detail.html:306 templates/tours/detail.html:164
 msgid "Included"
 msgstr "込み"
 
-#: templates/bookings/booking_create.html:282
-#: templates/bookings/booking_detail.html:312
-#: templates/bookings/booking_list.html:28
-#: templates/bookings/booking_list.html:133
-#: templates/payments/payment_select.html:216 templates/tours/detail.html:311
 msgid "Total"
 msgstr "合計"
 
-#: templates/bookings/booking_create.html:291
-#: templates/bookings/booking_detail.html:366
 msgid "Secure booking"
 msgstr "安全な予約"
 
-#: templates/bookings/booking_create.html:292
-#: templates/bookings/booking_detail.html:367
 msgid "256-bit SSL encryption"
 msgstr "256ビットSSL暗号化"
 
-#: templates/bookings/booking_create.html:298
-#: templates/bookings/booking_detail.html:373
-#: templates/payments/payment_select.html:225
 msgid "Free cancellation"
 msgstr "キャンセル無料"
 
-#: templates/bookings/booking_create.html:299
 msgid "Up to 3 days before"
 msgstr "3日前まで"
 
-#: templates/bookings/booking_create.html:306
 msgid "We're here to help"
 msgstr "サポートいたします"
 
-#: templates/bookings/booking_detail.html:25
-#: templates/bookings/booking_list.html:53
-#: templates/bookings/booking_list.html:84
-#: templates/payments/payment_success.html:37
 msgid "Confirmed"
 msgstr "確定済み"
 
-#: templates/bookings/booking_detail.html:28
 msgid "Pending payment"
 msgstr "支払い待ち"
 
-#: templates/bookings/booking_detail.html:31
-#: templates/bookings/booking_list.html:56
-#: templates/bookings/booking_list.html:85
-#: templates/payments/payment_select.html:26
 msgid "Completed"
 msgstr "完了"
 
-#: templates/bookings/booking_detail.html:42
 msgid "Your trip is booked!"
 msgstr "旅行の予約が完了しました！"
 
-#: templates/bookings/booking_detail.html:43
-#: templates/socialaccount/signup.html:44
 msgid "Almost there!"
 msgstr "もう少しです！"
 
-#: templates/bookings/booking_detail.html:44
 msgid "Welcome back!"
 msgstr "お帰りなさい！"
 
-#: templates/bookings/booking_detail.html:45
 msgid "Booking cancelled"
 msgstr "予約はキャンセルされました"
 
-#: templates/bookings/booking_detail.html:46
 msgid "Booking details"
 msgstr "予約の詳細"
 
-#: templates/bookings/booking_detail.html:50
 msgid "Complete your payment to confirm this booking."
 msgstr "この予約を確定するには、支払いを完了してください。"
 
-#: templates/bookings/booking_detail.html:51
 msgid ""
 "Get ready for an unforgettable journey. We've sent details to your email."
 msgstr "忘れられない旅の準備をしましょう。詳細はメールで送信しました。"
 
-#: templates/bookings/booking_detail.html:52
 msgid "This booking has been cancelled."
 msgstr "この予約はキャンセルされました。"
 
-#: templates/bookings/booking_detail.html:53
 msgid "All your trip information in one place."
 msgstr "旅行情報がすべてここに。"
 
-#: templates/bookings/booking_detail.html:58
-#: templates/payments/payment_success.html:43
 msgid "Booking #"
 msgstr "予約番号"
 
-#: templates/bookings/booking_detail.html:62
-#: templates/bookings/booking_list.html:138
 msgid "Booked"
 msgstr "予約済み"
 
-#: templates/bookings/booking_detail.html:66
-#: templates/payments/payment_success.html:51
 msgid "Travel date"
 msgstr "旅行日"
 
-#: templates/bookings/booking_detail.html:79
 msgid "E-Ticket"
 msgstr "Eチケット"
 
-#: templates/bookings/booking_detail.html:84
-#: templates/bookings/booking_detail.html:216
 msgid "Destination"
 msgstr "目的地"
 
-#: templates/bookings/booking_detail.html:90
 msgid "GUESTS"
 msgstr "ゲスト"
 
-#: templates/bookings/booking_detail.html:94
 msgid "DURATION"
 msgstr "期間"
 
-#: templates/bookings/booking_detail.html:112
 msgid "Back to bookings"
 msgstr "予約一覧に戻る"
 
-#: templates/bookings/booking_detail.html:117
-#: templates/bookings/booking_list.html:147
 msgid "Pay now"
 msgstr "今すぐ支払う"
 
-#: templates/bookings/booking_detail.html:121
 msgid "Print"
 msgstr "印刷"
 
-#: templates/bookings/booking_detail.html:169
 msgid "View tour"
 msgstr "ツアーを見る"
 
-#: templates/bookings/booking_detail.html:180
 msgid "Trip Information"
 msgstr "旅行情報"
 
-#: templates/bookings/booking_detail.html:181
 msgid "Your travel details"
 msgstr "あなたの旅行の詳細"
 
-#: templates/bookings/booking_detail.html:195
-#: templates/bookings/booking_list.html:115
-#: templates/payments/payment_success.html:55 templates/tours/detail.html:285
 msgid "Guests"
 msgstr "ゲスト"
 
-#: templates/bookings/booking_detail.html:206
-#: templates/bookings/booking_list.html:123 templates/home.html:120
-#: templates/tours/detail.html:84 templates/tours/list.html:91
 msgid "Duration"
 msgstr "期間"
 
-#: templates/bookings/booking_detail.html:208
 msgid "nights"
 msgstr "泊"
 
-#: templates/bookings/booking_detail.html:230
 msgid "Booking Info"
 msgstr "予約情報"
 
-#: templates/bookings/booking_detail.html:231
 msgid "Contact and reference"
 msgstr "連絡先と参照番号"
 
-#: templates/bookings/booking_detail.html:246
 msgid "Reference"
 msgstr "参照番号"
 
-#: templates/bookings/booking_detail.html:265
 msgid "Cancellation Details"
 msgstr "キャンセルの詳細"
 
-#: templates/bookings/booking_detail.html:266
 msgid "Cancelled on"
 msgstr "キャンセル日"
 
-#: templates/bookings/booking_detail.html:285
-msgid "Payment Summary"
-msgstr "支払いの概要"
-
-#: templates/bookings/booking_detail.html:286
-msgid "Price breakdown"
-msgstr "料金の内訳"
-
-#: templates/bookings/booking_detail.html:305
-msgid "Tax"
-msgstr "税金"
-
-#: templates/bookings/booking_detail.html:321
-msgid "Payment pending"
-msgstr "支払い待ち"
-
-#: templates/bookings/booking_detail.html:331
-msgid "Complete Payment"
-msgstr "支払いを完了する"
-
-#: templates/bookings/booking_detail.html:339
-#: templates/payments/payment_select.html:234
 msgid "Need help?"
 msgstr "お困りですか？"
 
-#: templates/bookings/booking_detail.html:340
 msgid "Our support team is available 24/7 to assist with your booking."
 msgstr "サポートチームは24時間年中無休で予約のお手伝いをします。"
 
-#: templates/bookings/booking_detail.html:345
 msgid "Email support"
 msgstr "メールサポート"
 
-#: templates/bookings/booking_detail.html:355
 msgid "Live chat"
 msgstr "ライブチャット"
 
-#: templates/bookings/booking_detail.html:374
 msgid "Up to 3 days before travel"
 msgstr "旅行の3日前まで"
 
-#: templates/bookings/booking_detail.html:390
+msgid "Payment Summary"
+msgstr "支払いの概要"
+
+msgid "Price breakdown"
+msgstr "料金の内訳"
+
+msgid "Tax"
+msgstr "税金"
+
+msgid "Payment pending"
+msgstr "支払い待ち"
+
+msgid "Complete Payment"
+msgstr "支払いを完了する"
+
 msgid "Cancel this booking?"
 msgstr "この予約をキャンセルしますか？"
 
-#: templates/bookings/booking_detail.html:391
 msgid ""
 "This action cannot be undone. Refunds depend on the cancellation policy."
 msgstr "この操作は元に戻せません。返金はキャンセルポリシーに基づきます。"
 
-#: templates/bookings/booking_detail.html:396
 msgid "Reason (optional)"
 msgstr "理由（任意）"
 
-#: templates/bookings/booking_detail.html:397
 msgid "Why are you cancelling?"
 msgstr "キャンセルの理由を教えてください"
 
-#: templates/bookings/booking_detail.html:401
 msgid "Keep booking"
 msgstr "予約を保持する"
 
-#: templates/bookings/booking_detail.html:404
 msgid "Confirm cancel"
 msgstr "キャンセルを確定する"
 
-#: templates/bookings/booking_list.html:21
 msgid "Your journeys"
 msgstr "あなたの旅"
 
-#: templates/bookings/booking_list.html:22
 msgid "Track and manage all your bookings in one place"
 msgstr "すべての予約を1か所で追跡・管理"
 
-#: templates/bookings/booking_list.html:38
 msgid "Trips"
 msgstr "旅行"
 
-#: templates/bookings/booking_list.html:46
 msgid "All"
 msgstr "すべて"
 
-#: templates/bookings/booking_list.html:143
 msgid "View details"
 msgstr "詳細を見る"
 
-#: templates/bookings/booking_list.html:165
 msgid "No bookings yet"
 msgstr "まだ予約がありません"
 
-#: templates/bookings/booking_list.html:166
 msgid ""
 "Your adventure is waiting. Browse our handcrafted tours and book your first "
 "trip."
 msgstr "冒険があなたを待っています。手作りのツアーを閲覧し、最初の旅行を予約しましょう。"
 
-#: templates/bookings/booking_list.html:169
-#: templates/messages_app/contact_success.html:13
 msgid "Explore Tours"
 msgstr "ツアーを探索する"
 
-#: templates/bookings/booking_list.html:172
 msgid "Browse Destinations"
 msgstr "目的地を見る"
 
-#: templates/home.html:13
-msgid "Explore the World"
-msgstr "世界を探検する"
+msgid "Luxury Silk Road Travel"
+msgstr "ラグジュアリーなシルクロードの旅"
 
-#: templates/home.html:15
+msgid "Luxury Travel Across the Silk Road"
+msgstr "シルクロードを探索する"
+
 msgid ""
-"Pack your bags and let SoLuna redefine your travel experience. Where every "
-"journey is a story waiting to be told."
-msgstr "荷物をまとめて、SoLunaに旅行体験を再定義させましょう。すべての旅が語られるのを待っている物語です。"
+"Premium curated tours across Uzbekistan and the ancient Silk Road. Expert "
+"guides, boutique experiences, timeless memories."
+msgstr "ウズベキスタンと古のシルクロードを巡る厳選プレミアムツアー。熟練ガイド、ブティック体験、色あせない思い出。"
 
-#: templates/home.html:20
+msgid "Hero"
+msgstr "ヒーロー"
+
+msgid "Uzbekistan · Silk Road · Beyond"
+msgstr "ウズベキスタン · シルクロード · その先へ"
+
+msgid "Where Ancient Routes"
+msgstr "古の道が"
+
+msgid "Become Your Story"
+msgstr "あなたの物語になる"
+
+msgid ""
+"Boutique tours crafted for curious souls — from the minarets of Samarkand to"
+" the sands of the Kyzylkum."
+msgstr "好奇心あふれる魂のためのブティックツアー——サマルカンドのミナレットからクズルクムの砂漠まで。"
+
 msgid "Hotels"
 msgstr "ホテル"
 
-#: templates/home.html:21
 msgid "Tickets"
 msgstr "チケット"
 
-#: templates/home.html:22
 msgid "Rental"
 msgstr "レンタカー"
 
-#: templates/home.html:24
-msgid "Need some help?"
-msgstr "お手伝いが必要ですか？"
+msgid "Where to?"
+msgstr "どこへ？"
 
-#: templates/home.html:29 templates/tours/detail.html:116
-#: templates/tours/detail.html:196
+msgid "Recent searches"
+msgstr "最近の検索"
+
+msgid "Popular destinations"
+msgstr "すべての目的地"
+
+msgid "Most popular"
+msgstr "最も人気"
+
+msgid "tours"
+msgstr "ツアー"
+
+msgid "New"
+msgstr "新着順"
+
+msgid "Quick search"
+msgstr "基本情報"
+
+msgid "Desert"
+msgstr "砂漠"
+
+msgid "Any duration"
+msgstr "期間"
+
+msgid "Add guests"
+msgstr "人のゲスト"
+
+msgid "Age 12 or above"
+msgstr "12歳以上"
+
+msgid "Age 2–11"
+msgstr "2〜11歳"
+
+msgid "Reset"
+msgstr "リセット"
+
+msgid "Done"
+msgstr "完了"
+
+msgid "Hotel booking coming soon"
+msgstr "ホテル予約は近日公開"
+
+msgid "We're partnering with the best hotels. Stay tuned!"
+msgstr "一流ホテルと提携中です。お楽しみに！"
+
+msgid "Tickets coming soon"
+msgstr "チケットは近日公開"
+
+msgid "Train and air tickets will be available soon."
+msgstr "鉄道・航空券は近日提供予定です。"
+
+msgid "Car rental coming soon"
+msgstr "レンタカーは近日公開"
+
+msgid "Explore on your own terms — coming soon!"
+msgstr "自分のスタイルで探索——近日公開！"
+
+msgid "Activity type"
+msgstr "アクティビティ"
+
+msgid "All activities"
+msgstr "アクティビティ"
+
+msgid "Culinary"
+msgstr "美食"
+
+msgid "Wellness"
+msgstr "ウェルネス"
+
 msgid "Location"
 msgstr "場所"
 
-#: templates/home.html:32
-msgid "Samarkand, Uzbekistan"
-msgstr "ウズベキスタン、サマルカンド"
+msgid "Anywhere"
+msgstr "どこでも"
 
-#: templates/home.html:37
-msgid "Check In"
-msgstr "チェックイン"
+msgid "5-star rated"
+msgstr "はここから始まります"
 
-#: templates/home.html:45
-msgid "Check Out"
-msgstr "チェックアウト"
+msgid "Explore"
+msgstr "今すぐ探索"
 
-#: templates/home.html:53
-msgid "Guest"
-msgstr "ゲスト"
+msgid "Top Destinations"
+msgstr "目的地"
 
-#: templates/home.html:72
-msgid "Top Searched Destinations"
-msgstr "検索数の多い目的地"
+msgid "Discover the jewels of the ancient Silk Road"
+msgstr "古のシルクロードの宝を発見"
 
-#: templates/home.html:73
-msgid "Favorite destinations of professional travelers"
-msgstr "プロの旅行者のお気に入りの目的地"
+msgid "Curated"
+msgstr "作成済み"
 
-#: templates/home.html:105
-msgid "Our Featured Tours"
+msgid "Featured Tours"
 msgstr "注目のツアー"
 
-#: templates/home.html:106 templates/home.html:269
-msgid "Favorite destinations based on customer reviews"
-msgstr "カスタマーレビューに基づくお気に入りの目的地"
+msgid "Handpicked experiences based on traveler reviews"
+msgstr "カスタマーレビューに基づくお気に入りのストーリー"
 
-#: templates/home.html:112 templates/tours/list.html:64
-msgid "Categories"
-msgstr "カテゴリー"
+msgid "View All"
+msgstr "すべて表示"
 
-#: templates/home.html:128
-msgid "Price range"
-msgstr "価格帯"
-
-#: templates/home.html:137
-msgid "Clear"
-msgstr "クリア"
-
-#: templates/home.html:156 templates/tours/list.html:141
-msgid "Best Sale"
+msgid "Best Seller"
 msgstr "ベストセラー"
 
-#: templates/home.html:158 templates/regions/detail.html:73
-#: templates/tours/detail.html:28 templates/tours/list.html:137
 msgid "Top Rated"
 msgstr "最高評価"
 
-#: templates/home.html:162 templates/tours/list.html:144
-msgid "Add to favorites"
-msgstr "お気に入りに追加"
+msgid "Featured"
+msgstr "注目のツアー"
 
-#: templates/home.html:171 templates/tours/detail.html:32
-#: templates/tours/detail.html:219 templates/tours/list.html:153
+msgid "Save tour"
+msgstr "保存したツアー"
+
+msgid "Added to wishlist"
+msgstr "ウィッシュリストに追加"
+
+msgid "Removed from wishlist"
+msgstr "ウィッシュリストから削除"
+
+msgid "Error. Try again."
+msgstr "もう一度お試しください"
+
 msgid "reviews"
 msgstr "件のレビュー"
 
-#: templates/home.html:185 templates/regions/detail.html:85
-#: templates/tours/detail.html:278 templates/tours/detail.html:353
-#: templates/tours/list.html:167
-msgid "person"
-msgstr "人"
+msgid "Max"
+msgstr "最大"
 
-#: templates/home.html:187 templates/tours/detail.html:317
-#: templates/tours/list.html:169
-msgid "Book Now"
-msgstr "今すぐ予約"
+msgid "View Tour"
+msgstr "ツアーを見る"
 
-#: templates/home.html:216
-msgid "Easy payment"
-msgstr "簡単な支払い"
+msgid "Our Promise"
+msgstr "私たちのツアー"
 
-#: templates/home.html:218
-msgid "We offer tours in a range of locations"
-msgstr "さまざまな場所でのツアーを提供しています"
-
-#: templates/home.html:220 templates/home.html:306
-msgid ""
-"Choose one style or create a package, fill your passports with adventures "
-"together."
-msgstr "スタイルを選ぶか、パッケージを作成し、一緒に冒険でパスポートを満たしましょう。"
-
-#: templates/home.html:224
-msgid "Security Assurance"
-msgstr "セキュリティ保証"
-
-#: templates/home.html:225
-msgid "Customer Support"
-msgstr "カスタマーサポート"
-
-#: templates/home.html:226
-msgid "Transparent Policies"
-msgstr "透明性のあるポリシー"
-
-#: templates/home.html:227
-msgid "Reputable Affiliations"
-msgstr "信頼できる提携先"
-
-#: templates/home.html:231
-msgid "Payment is secure and safe"
-msgstr "支払いは安全で安心です"
-
-#: templates/home.html:268
-msgid "Top Categories of Tours"
-msgstr "ツアーのトップカテゴリー"
-
-#: templates/home.html:272 templates/home.html:447
-msgid "View More"
-msgstr "さらに表示"
-
-#: templates/home.html:302
-msgid "Why book at SoLuna?"
+msgid "Why Book with SoLuna?"
 msgstr "なぜSoLunaで予約するのですか？"
 
-#: templates/home.html:304
-msgid "Embracing Adventure Since 2025"
-msgstr "2025年から冒険を抱き続けています"
+msgid "Every detail crafted so you focus on the moments that matter."
+msgstr "大切な瞬間に集中できるよう、細部までこだわりました。"
 
-#: templates/home.html:348
-msgid "Install APP & Get discount code"
-msgstr "アプリをインストールして割引コードをゲット"
+msgid "Secure Booking"
+msgstr "安全な予約"
 
-#: templates/home.html:351
-#, python-format
-msgid "Up to 55%% Discount and lots of special gifts"
-msgstr "最大55%%の割引とたくさんの特別なギフト"
+msgid ""
+"Your payments and personal data are protected end-to-end with bank-level "
+"security. Book with complete peace of mind."
+msgstr "お支払いと個人情報は銀行レベルのセキュリティでエンドツーエンド保護。安心してご予約ください。"
 
-#: templates/home.html:382
-msgid "Trending Destinations"
+msgid "24/7 Support"
+msgstr "24時間365日のサポート"
+
+msgid "Our local team is always ready to help."
+msgstr "現地チームがいつでもお手伝いします。"
+
+msgid "No Hidden Fees"
+msgstr "隠れた料金なし"
+
+msgid "Transparent pricing, no surprises."
+msgstr "透明性のあるポリシー"
+
+msgid "Expert Guides"
+msgstr "熟練ガイド"
+
+msgid "Certified local guides with deep Silk Road knowledge."
+msgstr "シルクロードに精通した認定現地ガイド。"
+
+msgid "Tailored Routes"
+msgstr "オーダーメイドのルート"
+
+msgid "Itineraries shaped around how you love to travel."
+msgstr "あなたの旅のスタイルに合わせて作る旅程。"
+
+msgid "Browse by style"
+msgstr "スタイルで探す"
+
+msgid "Tour Categories"
+msgstr "カテゴリー"
+
+msgid "Find your perfect travel experience"
+msgstr "あなたにぴったりの旅を見つけよう"
+
+msgid "Browse All"
+msgstr "ツアーを見る"
+
+msgid "Trending now"
 msgstr "話題の目的地"
 
-#: templates/home.html:383
-msgid "Most popular choices for travelers"
+msgid "Most Searched Destinations"
+msgstr "検索数の多い目的地"
+
+msgid "Top choices among travelers this season"
 msgstr "旅行者に最も人気の選択肢"
 
-#: templates/home.html:411
-msgid "Get inspiration for your next trip"
-msgstr "次の旅行のインスピレーションを得る"
+msgid "Most Popular"
+msgstr "最も人気"
 
-#: templates/home.html:412
-msgid "Favorite stories based on customer reviews"
-msgstr "カスタマーレビューに基づくお気に入りのストーリー"
+msgid "Stay Ahead of Every Adventure"
+msgstr "すべての冒険をいち早く"
 
-#: templates/home.html:438
-msgid "Keep Reading"
-msgstr "続きを読む"
+msgid ""
+"Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to"
+" your inbox. No spam, ever."
+msgstr "限定オファー、隠れた名所、シルクロードの旅のヒントをメールでお届け。スパムは一切なし。"
 
-#: templates/messages_app/contact.html:4
+msgid "Join 2,400+ travelers. Unsubscribe anytime."
+msgstr "2,400人以上の旅行者に仲間入り。いつでも配信停止できます。"
+
 msgid "Contact Us"
 msgstr "お問い合わせ"
 
-#: templates/messages_app/contact.html:17
 msgid "Get in touch"
 msgstr "連絡を取る"
 
-#: templates/messages_app/contact.html:19
-msgid "We'd love to hear from you"
-msgstr "皆様からのご連絡をお待ちしております"
+msgid "Let's plan your journey together"
+msgstr "あなたの旅、"
 
-#: templates/messages_app/contact.html:21
 msgid ""
-"Have a question or need help planning your trip? Our team is here for you."
+"Have a question or need help planning your trip? Our team is here for you — "
+"reach out and we'll reply within 24 hours."
 msgstr "ご質問や旅行計画のお手伝いが必要ですか？私たちのチームがお手伝いします。"
 
-#: templates/messages_app/contact.html:34
-msgid "Mon - Sat, 8AM - 6PM"
-msgstr "月 - 土、午前8時 - 午後6時"
+msgid "Contact information"
+msgstr "連絡先情報"
 
-#: templates/messages_app/contact.html:41
-msgid "We reply within 24 hours"
-msgstr "24時間以内に返信します"
+msgid "Reach us anytime through the channels below."
+msgstr "下記のチャネルからいつでもご連絡ください。"
 
-#: templates/messages_app/contact.html:47
+msgid "Director"
+msgstr "代表"
+
 msgid "Office"
 msgstr "オフィス"
 
-#: templates/messages_app/contact.html:48
-msgid "Visit us in person"
-msgstr "直接お越しください"
+msgid "Working hours"
+msgstr "営業時間"
 
-#: templates/messages_app/contact.html:54
-msgid "Social"
-msgstr "ソーシャル"
-
-#: templates/messages_app/contact.html:55
-msgid "Follow us for updates"
-msgstr "最新情報をフォローする"
-
-#: templates/messages_app/contact.html:63
 msgid "Send us a message"
 msgstr "メッセージを送信"
 
-#: templates/messages_app/contact.html:65
 msgid "Fill out the form and we'll get back to you shortly."
 msgstr "フォームに記入していただければ、すぐにご連絡いたします。"
 
-#: templates/messages_app/contact.html:88
 msgid "Subject"
 msgstr "件名"
 
-#: templates/messages_app/contact.html:94
 msgid "Message"
 msgstr "メッセージ"
 
-#: templates/messages_app/contact.html:99
 msgid "Send Message"
 msgstr "メッセージを送信"
 
-#: templates/messages_app/contact_success.html:3
+msgid "Your details are safe with us and never shared."
+msgstr "お客様の情報は安全に管理され、第三者に共有されることはありません。"
+
+msgid "Office location"
+msgstr "場所"
+
+msgid "Our office location"
+msgstr "オフィスの所在地"
+
+msgid "Visit our office"
+msgstr "タシュケントのオフィスにお越しください"
+
+msgid "Directions"
+msgstr "経路"
+
+msgid "FAQ"
+msgstr "よくある質問"
+
+msgid "Frequently asked questions"
+msgstr "よくあるご質問"
+
+msgid "How quickly will I get a response?"
+msgstr "どのくらいで返信がもらえますか？"
+
+msgid ""
+"We reply to every message within 24 hours, often much sooner during working "
+"hours."
+msgstr "すべてのメッセージに24時間以内、営業時間内はより早く返信します。"
+
+msgid "Can you customize a tour for me?"
+msgstr "ツアーをカスタマイズできますか？"
+
+msgid ""
+"Absolutely. Tell us your dates, interests and budget in the form and our "
+"team will craft a tailored itinerary."
+msgstr "もちろんです。フォームに日程・ご興味・ご予算をお知らせいただければ、専任チームがオーダーメイドの旅程を作成します。"
+
+msgid "Which languages does your team speak?"
+msgstr "チームは何語を話しますか？"
+
+msgid "Our guides and support team speak English, Russian, Uzbek and Korean."
+msgstr "ガイドとサポートチームは英語・ロシア語・ウズベク語・韓国語に対応します。"
+
+msgid "How can I pay for a booking?"
+msgstr "予約の支払いはどうすればよいですか？"
+
+msgid ""
+"We accept VISA, Mastercard, UZCARD and HUMO. Payment details are shared once"
+" your trip is confirmed."
+msgstr "VISA、Mastercard、UZCARD、HUMOに対応。お支払い詳細はご旅行確定後にお知らせします。"
+
 msgid "Message Sent"
 msgstr "メッセージが送信されました"
 
-#: templates/messages_app/contact_success.html:8
 msgid "Message Sent!"
 msgstr "メッセージが送信されました！"
 
-#: templates/messages_app/contact_success.html:10
-msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
+msgid ""
+"Thank you for reaching out. Oygul will get back to you within 24 hours."
 msgstr "お問い合わせありがとうございます。オイグルが24時間以内にご連絡いたします。"
 
-#: templates/messages_app/contact_success.html:14
 msgid "Back to Home"
 msgstr "ホームに戻る"
 
-#: templates/payments/mock_pay.html:4
+msgid "Choose language"
+msgstr "9言語対応"
+
+msgid "Choose currency"
+msgstr "通貨"
+
 msgid "Payment Gateway"
 msgstr "支払いゲートウェイ"
 
-#: templates/payments/mock_pay.html:13
 msgid "TEST MODE"
 msgstr "テストモード"
 
-#: templates/payments/mock_pay.html:14
 msgid "Real payment gateways are not configured. This is a simulation."
 msgstr "実際の支払いゲートウェイは設定されていません。これはシミュレーションです。"
 
-#: templates/payments/mock_pay.html:30 templates/payments/mock_pay.html:129
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_pending.html:32
-#: templates/payments/payment_select.html:63
-#: templates/payments/payment_select.html:162
-#: templates/payments/payment_select.html:204
 msgid "soums"
 msgstr "スム"
 
-#: templates/payments/mock_pay.html:48
 msgid "Payment failed"
 msgstr "支払いに失敗しました"
 
-#: templates/payments/mock_pay.html:58
 msgid "Test cards"
 msgstr "テストカード"
 
-#: templates/payments/mock_pay.html:68
 msgid "Always success"
 msgstr "常に成功"
 
-#: templates/payments/mock_pay.html:75
 msgid "Declined by bank"
 msgstr "銀行による拒否"
 
-#: templates/payments/mock_pay.html:82
 msgid "Insufficient funds"
 msgstr "残高不足"
 
-#: templates/payments/mock_pay.html:92
 msgid "Enter card details"
 msgstr "カード情報を入力"
 
-#: templates/payments/mock_pay.html:96
 msgid "Card number"
 msgstr "カード番号"
 
-#: templates/payments/mock_pay.html:107
 msgid "Expiry"
 msgstr "有効期限"
 
-#: templates/payments/mock_pay.html:119
 msgid "Cardholder name"
 msgstr "カード名義人"
 
-#: templates/payments/mock_pay.html:127
 msgid "Amount to pay"
 msgstr "支払い金額"
 
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_select.html:162
 msgid "Pay"
 msgstr "支払う"
 
-#: templates/payments/mock_pay.html:141
 msgid "Cancel and choose another method"
 msgstr "キャンセルして別の方法を選択する"
 
-#: templates/payments/mock_pay.html:149
 msgid "Secure payment"
 msgstr "安全な支払い"
 
-#: templates/payments/mock_pay.html:150
 msgid ""
 "Your card information is encrypted with 256-bit SSL and never stored on our "
 "servers."
 msgstr "カード情報は256ビットSSLで暗号化され、当社のサーバーに保存されることはありません。"
 
-#: templates/payments/payment_failed.html:4
-#: templates/payments/payment_failed.html:15
 msgid "Payment Failed"
 msgstr "支払いに失敗しました"
 
-#: templates/payments/payment_failed.html:17
 msgid "Something went wrong with your payment. Your card was not charged."
 msgstr "支払いで問題が発生しました。カードには請求されていません。"
 
-#: templates/payments/payment_failed.html:21
 msgid "Possible reasons:"
 msgstr "考えられる理由："
 
-#: templates/payments/payment_failed.html:23
 msgid "Insufficient funds on the card"
 msgstr "カードの残高不足"
 
-#: templates/payments/payment_failed.html:24
 msgid "Card declined by the bank"
 msgstr "銀行によってカードが拒否されました"
 
-#: templates/payments/payment_failed.html:25
 msgid "Incorrect card details"
 msgstr "カード情報が正しくありません"
 
-#: templates/payments/payment_failed.html:26
-#: templates/socialaccount/authentication_error.html:43
 msgid "Network connection issue"
 msgstr "ネットワーク接続の問題"
 
-#: templates/payments/payment_failed.html:32
 msgid "Try Again"
 msgstr "もう一度お試しください"
 
-#: templates/payments/payment_failed.html:35
 msgid "Contact Support"
 msgstr "サポートに連絡"
 
-#: templates/payments/payment_pending.html:4
 msgid "Payment Processing"
 msgstr "支払い処理中"
 
-#: templates/payments/payment_pending.html:16
 msgid "Payment processing..."
 msgstr "支払いを処理しています..."
 
-#: templates/payments/payment_pending.html:18
 msgid ""
-"We are waiting for confirmation from the payment gateway. This usually takes "
-"a few seconds."
+"We are waiting for confirmation from the payment gateway. This usually takes"
+" a few seconds."
 msgstr "支払いゲートウェイからの確認を待っています。これには通常数秒かかります。"
 
-#: templates/payments/payment_pending.html:42
 msgid "Don't close this page. We'll redirect you automatically."
 msgstr "このページを閉じないでください。自動的にリダイレクトされます。"
 
-#: templates/payments/payment_select.html:19
 msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
 msgstr "支払い方法を選択してください。すべての支払いはウズベキスタン・スム (UZS) で行われます。"
 
-#: templates/payments/payment_select.html:62
 msgid "Conversion to UZS"
 msgstr "UZSへの換算"
 
-#: templates/payments/payment_select.html:71
 msgid "Choose payment method"
 msgstr "支払い方法を選択"
 
-#: templates/payments/payment_select.html:72
 msgid "Secure payment in Uzbek Som"
 msgstr "ウズベキスタン・スムでの安全な支払い"
 
-#: templates/payments/payment_select.html:87
 msgid "Pay via Click app, card or balance"
 msgstr "Clickアプリ、カード、または残高で支払う"
 
-#: templates/payments/payment_select.html:108
 msgid "Pay via Payme app or card"
 msgstr "Paymeアプリまたはカードで支払う"
 
-#: templates/payments/payment_select.html:127
+msgid "Bank card"
+msgstr "銀行カード"
+
+msgid "Pay directly with Visa, Mastercard, UZCARD or HUMO"
+msgstr "Visa・Mastercard・UZCARD・HUMOで直接お支払い"
+
 msgid "Pay at office"
 msgstr "オフィスで支払う"
 
-#: templates/payments/payment_select.html:128
 msgid "Visit our Tashkent office"
 msgstr "タシュケントのオフィスにお越しください"
 
-#: templates/payments/payment_select.html:141
 msgid "You'll be redirected"
 msgstr "リダイレクトされます"
 
-#: templates/payments/payment_select.html:142
 msgid ""
 "After clicking Pay, you'll be redirected to the secure gateway page to "
 "complete the transaction."
 msgstr "「支払う」をクリックした後、トランザクションを完了するために安全なゲートウェイページにリダイレクトされます。"
 
-#: templates/payments/payment_select.html:149
 msgid "256-bit SSL"
 msgstr "256ビットSSL"
 
-#: templates/payments/payment_select.html:153
 msgid "PCI DSS"
 msgstr "PCI DSS準拠"
 
-#: templates/payments/payment_select.html:157
 msgid "Money-back guarantee"
 msgstr "返金保証"
 
-#: templates/payments/payment_select.html:168
 msgid "By proceeding, you accept the booking terms."
 msgstr "続行することで、予約条件に同意したことになります。"
 
-#: templates/payments/payment_select.html:199
 msgid "Tour price"
 msgstr "ツアー料金"
 
-#: templates/payments/payment_select.html:203
 msgid "Conversion"
 msgstr "換算"
 
-#: templates/payments/payment_select.html:219
+msgid "Free"
+msgstr "無料"
+
 msgid "soum"
 msgstr "スム"
 
-#: templates/payments/payment_select.html:226
 msgid "Until 3 days before travel"
 msgstr "旅行の3日前まで"
 
-#: templates/payments/payment_select.html:235
-#: templates/socialaccount/authentication_error.html:53
 msgid "Contact support"
 msgstr "サポートに連絡"
 
-#: templates/payments/payment_select.html:366
 msgid ""
 "You will be redirected to Click payment page. Complete the payment via your "
 "card or Click app."
 msgstr "Clickの支払いページにリダイレクトされます。カードまたはClickアプリで支払いを完了してください。"
 
-#: templates/payments/payment_select.html:367
 msgid ""
-"You will be redirected to Payme. Complete the payment via your card or Payme "
-"app."
+"You will be redirected to Payme. Complete the payment via your card or Payme"
+" app."
 msgstr "Paymeにリダイレクトされます。カードまたはPaymeアプリで支払いを完了してください。"
 
-#: templates/payments/payment_select.html:368
+msgid ""
+"Enter your Visa or Mastercard details securely on the next page to complete "
+"payment."
+msgstr "次のページでVisaまたはMastercardの情報を安全に入力してお支払いを完了してください。"
+
 msgid ""
 "Visit our office in Tashkent to complete payment in cash. Your booking will "
 "remain pending until paid."
 msgstr "タシュケントのオフィスにお越しいただき、現金で支払いを完了してください。支払いが完了するまで予約は保留状態になります。"
 
-#: templates/payments/payment_select.html:384
 msgid "Redirecting to gateway..."
 msgstr "ゲートウェイへリダイレクトしています..."
 
-#: templates/payments/payment_success.html:4
 msgid "Payment Successful"
 msgstr "支払い成功"
 
-#: templates/payments/payment_success.html:19
 msgid "Payment Successful!"
 msgstr "支払いが成功しました！"
 
-#: templates/payments/payment_success.html:21
 msgid "Your booking has been confirmed. We've sent the details to your email."
 msgstr "予約が確定しました。詳細はメールで送信しました。"
 
-#: templates/payments/payment_success.html:27
 msgid "Details"
 msgstr "詳細"
 
-#: templates/payments/payment_success.html:47 templates/reviews/form.html:14
 msgid "Tour"
 msgstr "ツアー"
 
-#: templates/payments/payment_success.html:67
 msgid "View Booking Details"
 msgstr "予約の詳細を見る"
 
-#: templates/payments/payment_success.html:70
 msgid "Explore More Tours"
 msgstr "他のツアーを見る"
 
-#: templates/payments/payment_success.html:75
 msgid "What happens next?"
 msgstr "次のステップは？"
 
-#: templates/payments/payment_success.html:77
 msgid "We'll send a confirmation email with full itinerary"
 msgstr "完全な旅程を含む確認メールを送信します"
 
-#: templates/payments/payment_success.html:78
 msgid "Our team will contact you 48 hours before the trip"
 msgstr "担当チームが旅行の48時間前にご連絡します"
 
-#: templates/payments/payment_success.html:79
 msgid "Check your booking anytime in your profile"
 msgstr "いつでもプロフィールから予約を確認できます"
 
-#: templates/regions/detail.html:41
+msgid "Tours & Attractions"
+msgstr "ツアーと観光名所"
+
+msgid "Attractions"
+msgstr "ツアーと観光名所"
+
+msgid "Country"
+msgstr "国"
+
+msgid "Available tours"
+msgstr "すべてのツアー"
+
+msgid "View tours"
+msgstr "ツアーを見る"
+
+msgid "About the region"
+msgstr "もう少しです！"
+
 msgid "About"
 msgstr "概要"
 
-#: templates/regions/detail.html:48
-msgid "Why visit"
-msgstr "訪れる理由"
+msgid "Must-see places"
+msgstr "必見スポット"
 
-#: templates/regions/detail.html:64
+msgid "Top Attractions"
+msgstr "ツアーと観光名所"
+
+msgid "View on map"
+msgstr "すべて表示"
+
 msgid "Tours in"
 msgstr "ツアー："
 
-#: templates/regions/detail.html:65
-msgid "tours"
-msgstr "ツアー"
-
-#: templates/regions/detail.html:86 templates/tours/detail.html:354
 msgid "View"
 msgstr "表示"
 
-#: templates/regions/detail.html:99
+msgid "Browse all tours"
+msgstr "ツアーを見る"
+
 msgid "Quick Facts"
 msgstr "基本情報"
 
-#: templates/regions/detail.html:112
-msgid "Population"
-msgstr "人口"
-
-#: templates/regions/detail.html:121
-msgid "Best time to visit"
-msgstr "ベストシーズン"
-
-#: templates/regions/detail.html:155
 msgid "Need help planning?"
 msgstr "計画のサポートが必要ですか？"
 
-#: templates/regions/detail.html:157
-msgid "Our local experts can craft a custom tour for you."
+msgid "Our local experts can craft a custom tour tailored just for you."
 msgstr "地元の専門家があなただけのカスタムツアーを作成します。"
 
-#: templates/regions/list.html:18
-msgid "Explore the Silk Road"
-msgstr "シルクロードを探索する"
+msgid "Ready to book?"
+msgstr "予約一覧に戻る"
 
-#: templates/regions/list.html:20
-msgid "Discover Uzbekistan's Most Beautiful Destinations"
-msgstr "ウズベキスタンの最も美しい目的地を発見"
-
-#: templates/regions/list.html:22
-msgid ""
-"From ancient Samarkand to the deserts of Karakalpakstan — find your next "
-"adventure."
-msgstr "古代都市サマルカンドからカラカルパクスタンの砂漠まで、次の冒険を見つけましょう。"
-
-#: templates/regions/list.html:48
-msgid "Tours available"
+msgid "These tours are available in"
 msgstr "利用可能なツアー"
 
-#: templates/regions/list.html:59
+msgid "more tours"
+msgstr "ツアーを見る"
+
+msgid "Destinations in Uzbekistan"
+msgstr "目的地"
+
+msgid ""
+"Explore Uzbekistan destinations with SoLuna Travel — Samarkand, Bukhara, "
+"Khiva, Tashkent and more. Discover attractions, regions and Silk Road "
+"highlights."
+msgstr ""
+"SoLuna Travelでウズベキスタンの旅先を探索——サマルカンド、ブハラ、ヒヴァ、タシケントなど。見どころ、地域、シルクロードのハイライトを発見。"
+
+msgid "Discover"
+msgstr "発見"
+
+msgid "Uzbekistan"
+msgstr "ウズベキスタンを探索"
+
+msgid ""
+"Ancient cities, breathtaking landscapes, and warm hospitality — find your "
+"perfect destination."
+msgstr "古都、息をのむ景観、温かいおもてなし——理想の旅先を見つけよう。"
+
+msgid "Regions"
+msgstr "登録"
+
+msgid "Years of history"
+msgstr "年の歴史"
+
+msgid "UNESCO sites"
+msgstr "ユネスコ登録地"
+
+msgid "Scroll to explore"
+msgstr "スクロールして探索"
+
+msgid "All destinations"
+msgstr "すべての目的地"
+
+msgid "Choose your adventure"
+msgstr "次の冒険へ"
+
+msgid "regions"
+msgstr "経路"
+
+msgid "Explore region"
+msgstr "今すぐ探索"
+
 msgid "No destinations yet"
 msgstr "まだ目的地がありません"
 
-#: templates/regions/list.html:60
-msgid "Check back soon for new destinations."
+msgid "Check back soon — new destinations are being added."
 msgstr "新しい目的地については、すぐにもう一度ご確認ください。"
 
-#: templates/reviews/form.html:4
+msgid "Back to home"
+msgstr "ホームに戻る"
+
+msgid "UNESCO Heritage"
+msgstr "ユネスコ遺産"
+
+msgid "4 world heritage sites across the country"
+msgstr "国内に4つの世界遺産"
+
+msgid "Safe Travel"
+msgstr "安全な旅"
+
+msgid "Consistently rated one of the safest destinations in Asia"
+msgstr "アジアで最も安全な旅先の一つとして常に評価"
+
+msgid "Rich Cuisine"
+msgstr "豊かな食文化"
+
+msgid "Plov, samsa, shashlik — unforgettable flavors"
+msgstr "プロフ、サムサ、シャシリク——忘れられない味"
+
+msgid "Warm Hospitality"
+msgstr "温かいおもてなし"
+
+msgid "Famously welcoming locals and vibrant culture"
+msgstr "もてなしで名高い人々と活気ある文化"
+
+msgid "Custom tours"
+msgstr "カスタマーサポート"
+
+msgid "Can't decide where to go?"
+msgstr "行き先を決めかねていますか？"
+
+msgid ""
+"Our local experts will craft a personalised itinerary just for you — no "
+"cookie-cutter trips."
+msgstr "地元の専門家があなただけのオリジナル旅程を作成——ありきたりの旅ではありません。"
+
+msgid "Talk to an expert"
+msgstr "専門家に相談"
+
+msgid "Update Review"
+msgstr "レビューを更新"
+
 msgid "Write a Review"
 msgstr "レビューを書く"
 
-#: templates/reviews/form.html:11
+msgid "Back"
+msgstr "戻る"
+
 msgid "Update Your Review"
 msgstr "レビューを更新"
 
-#: templates/reviews/form.html:11
 msgid "Share Your Experience"
 msgstr "あなたの体験を共有する"
 
-#: templates/reviews/form.html:58
-msgid "Write your detailed review here..."
-msgstr "ここに詳細なレビューを書いてください..."
+msgid "Rating"
+msgstr "評価"
 
-#: templates/reviews/form.html:80
+msgid "stars"
+msgstr "はここから始まります"
+
+msgid "Click to rate"
+msgstr "クリックして評価"
+
+msgid "Title"
+msgstr "タイトル"
+
+msgid "Summarise your experience..."
+msgstr "あなたの体験を共有する"
+
+msgid "Review"
+msgstr "レビュー"
+
+msgid "Tell others about your experience — what did you enjoy most?"
+msgstr "体験を他の人に伝えましょう——一番良かったことは？"
+
+msgid "Minimum 10 characters"
+msgstr "10文字以上"
+
 msgid "Submit Review"
 msgstr "レビューを送信"
 
-#: templates/socialaccount/authentication_error.html:4
+msgid "Poor — not recommended"
+msgstr "悪い——おすすめしません"
+
+msgid "Below average"
+msgstr "普通"
+
+msgid "Average — decent experience"
+msgstr "普通——まずまずの体験"
+
+msgid "Good — would recommend"
+msgstr "良い——おすすめ"
+
+msgid "Excellent — outstanding experience!"
+msgstr "最高——素晴らしい体験！"
+
 msgid "Authentication Error"
 msgstr "認証エラー"
 
-#: templates/socialaccount/authentication_error.html:28
 msgid "Authentication failed"
 msgstr "認証に失敗しました"
 
-#: templates/socialaccount/authentication_error.html:30
 msgid ""
-"Something went wrong while signing you in. Your account is safe — no changes "
-"were made."
+"Something went wrong while signing you in. Your account is safe — no changes"
+" were made."
 msgstr "ログイン中に問題が発生しました。アカウントは安全です — 変更は行われていません。"
 
-#: templates/socialaccount/authentication_error.html:37
 msgid "Possible reasons"
 msgstr "考えられる理由"
 
-#: templates/socialaccount/authentication_error.html:40
 msgid "You cancelled the sign-in process"
 msgstr "サインインプロセスをキャンセルしました"
 
-#: templates/socialaccount/authentication_error.html:41
 msgid "The provider's session expired"
 msgstr "プロバイダーのセッションが切れました"
 
-#: templates/socialaccount/authentication_error.html:42
 msgid "Permission was denied"
 msgstr "アクセス許可が拒否されました"
 
-#: templates/socialaccount/authentication_error.html:58
 msgid "Go to homepage"
 msgstr "ホームページに戻る"
 
-#: templates/socialaccount/authentication_error.html:65
 msgid "Your account is secure"
 msgstr "アカウントは安全です"
 
-#: templates/socialaccount/login.html:4
 #, python-format
 msgid "Sign In via %(provider_name)s"
 msgstr "%(provider_name)s 経由でログイン"
 
-#: templates/socialaccount/login.html:53
 #, python-format
 msgid "Continue with %(provider_name)s"
 msgstr "%(provider_name)s で続行"
 
-#: templates/socialaccount/login.html:56
 #, python-format
 msgid ""
 "You're about to sign in to SoLuna using your %(provider_name)s account. "
 "Click continue to proceed securely."
-msgstr "%(provider_name)s アカウントを使用してSoLunaにサインインしようとしています。「続行」をクリックして安全に進めてください。"
+msgstr ""
+"%(provider_name)s アカウントを使用してSoLunaにサインインしようとしています。「続行」をクリックして安全に進めてください。"
 
-#: templates/socialaccount/login.html:63
 msgid "We'll receive"
 msgstr "私たちが受け取る情報："
 
-#: templates/socialaccount/login.html:66
-msgid "Your email address"
-msgstr "メールアドレス"
-
-#: templates/socialaccount/login.html:67
 msgid "Your name and profile photo"
 msgstr "名前とプロフィール写真"
 
-#: templates/socialaccount/login.html:71
 msgid "We will never post anything without your permission."
 msgstr "あなたの許可なしに投稿することは絶対にありません。"
 
-#: templates/socialaccount/login.html:78
 msgid "Continue"
 msgstr "続行"
 
-#: templates/socialaccount/login.html:91
-#: templates/socialaccount/signup.html:143
 msgid "Secure connection · Your data is encrypted"
 msgstr "安全な接続 · データは暗号化されています"
 
-#: templates/socialaccount/login.html:304
 msgid "Redirecting..."
 msgstr "リダイレクトしています..."
 
-#: templates/socialaccount/signup.html:4
 msgid "Complete sign up"
 msgstr "登録を完了する"
 
-#: templates/socialaccount/signup.html:47
 msgid "Complete your profile"
 msgstr "プロフィールを完成させる"
 
-#: templates/socialaccount/signup.html:49
 msgid ""
 "Just one more step. Please confirm your details to finish creating your "
 "SoLuna account."
 msgstr "あと1ステップです。詳細を確認してSoLunaアカウントの作成を完了してください。"
 
-#: templates/socialaccount/signup.html:79
 msgid "From your social account"
 msgstr "ソーシャルアカウントから"
 
-#: templates/socialaccount/signup.html:104
 msgid "You'll get"
 msgstr "あなたが得られるもの："
 
-#: templates/socialaccount/signup.html:107
 #, python-format
 msgid "5%% off on your first booking"
 msgstr "初回予約で5%%オフ"
 
-#: templates/socialaccount/signup.html:108
 msgid "Exclusive offers and updates"
 msgstr "限定オファー"
 
-#: templates/socialaccount/signup.html:109
 msgid "Personalized travel recommendations"
 msgstr "パーソナライズされた旅行の提案"
 
-#: templates/socialaccount/signup.html:121
 msgid "and consent to receive travel inspiration emails"
 msgstr "旅行のインスピレーションメールを受け取ることに同意します。"
 
-#: templates/socialaccount/signup.html:287
 msgid "Creating account..."
 msgstr "アカウントを作成しています..."
 
-#: templates/tours/detail.html:43
-msgid "Share"
-msgstr "共有"
-
-#: templates/tours/detail.html:44
-msgid "Save"
-msgstr "保存"
-
-#: templates/tours/detail.html:61
-msgid "See all"
-msgstr "すべて見る"
-
-#: templates/tours/detail.html:61
-msgid "photos"
-msgstr "枚の写真"
-
-#: templates/tours/detail.html:91
-msgid "Group Size"
-msgstr "グループサイズ"
-
-#: templates/tours/detail.html:92
-msgid "people"
-msgstr "人"
-
-#: templates/tours/detail.html:98
-msgid "Languages"
-msgstr "言語"
-
-#: templates/tours/detail.html:105
-msgid "Tour Type"
-msgstr "ツアータイプ"
-
-#: templates/tours/detail.html:113 templates/tours/detail.html:122
-msgid "Overview"
-msgstr "概要"
-
-#: templates/tours/detail.html:114 templates/tours/detail.html:140
-msgid "Itinerary"
-msgstr "旅程"
-
-#: templates/tours/detail.html:115 templates/tours/detail.html:160
-msgid "What's included"
-msgstr "含まれるもの"
-
-#: templates/tours/detail.html:128
-msgid "Highlights"
-msgstr "ハイライト"
-
-#: templates/tours/detail.html:145
-msgid "Day"
-msgstr "日目"
-
-#: templates/tours/detail.html:170
-msgid "Professional guide"
-msgstr "プロのガイド"
-
-#: templates/tours/detail.html:171
-msgid "Transport (A/C vehicle)"
-msgstr "交通手段（エアコン付き車両）"
-
-#: templates/tours/detail.html:172
-msgid "Entrance fees"
-msgstr "入場料"
-
-#: templates/tours/detail.html:173
-msgid "Hotel accommodation"
-msgstr "ホテル宿泊"
-
-#: templates/tours/detail.html:179
-msgid "Not Included"
-msgstr "含まれないもの"
-
-#: templates/tours/detail.html:185
-msgid "International flights"
-msgstr "国際線航空券"
-
-#: templates/tours/detail.html:186
-msgid "Travel insurance"
-msgstr "旅行保険"
-
-#: templates/tours/detail.html:187
-msgid "Personal expenses"
-msgstr "個人的な出費"
-
-#: templates/tours/detail.html:223
-msgid "Excellent"
-msgstr "素晴らしい"
-
-#: templates/tours/detail.html:224
-msgid "Good"
-msgstr "良い"
-
-#: templates/tours/detail.html:225
-msgid "Average"
-msgstr "普通"
-
-#: templates/tours/detail.html:226
-msgid "Poor"
-msgstr "悪い"
-
-#: templates/tours/detail.html:227
-msgid "Terrible"
-msgstr "ひどい"
-
-#: templates/tours/detail.html:256
-msgid "No reviews yet. Be the first to share your experience!"
-msgstr "まだレビューがありません。最初のレビューを書いて体験を共有しましょう！"
-
-#: templates/tours/detail.html:263
-msgid "Write a review"
-msgstr "レビューを書く"
-
-#: templates/tours/detail.html:282
-msgid "Date"
-msgstr "日付"
-
-#: templates/tours/detail.html:322
-msgid "Need help booking?"
-msgstr "予約のサポートが必要ですか？"
-
-#: templates/tours/detail.html:338
-msgid "Related tours"
-msgstr "関連ツアー"
-
-#: templates/tours/list.html:21
-msgid "tours found"
-msgstr "件のツアーが見つかりました"
-
-#: templates/tours/list.html:27
-msgid "Sort by"
-msgstr "並べ替え"
-
-#: templates/tours/list.html:33
-msgid "Most Popular"
-msgstr "最も人気"
-
-#: templates/tours/list.html:34
-msgid "Newest"
-msgstr "新着順"
-
-#: templates/tours/list.html:35
-msgid "Price: Low to High"
-msgstr "価格：安い順"
-
-#: templates/tours/list.html:36
-msgid "Price: High to Low"
-msgstr "価格：高い順"
-
-#: templates/tours/list.html:37
-msgid "Highest Rated"
-msgstr "最高評価"
-
-#: templates/tours/list.html:59
-msgid "Search tours..."
-msgstr "ツアーを検索..."
-
-#: templates/tours/list.html:82
-msgid "Price Range"
-msgstr "価格帯"
-
-#: templates/tours/list.html:84
-msgid "Min"
-msgstr "最小"
-
-#: templates/tours/list.html:85
-msgid "Max"
-msgstr "最大"
-
-#: templates/tours/list.html:87
-msgid "Apply"
-msgstr "適用"
-
-#: templates/tours/list.html:101
-msgid "Rating"
-msgstr "評価"
-
-#: templates/tours/list.html:119
-msgid "Clear all"
-msgstr "すべてクリア"
-
-#: templates/tours/list.html:178
 msgid "Pagination"
 msgstr "ページネーション"
 
-#: templates/tours/list.html:205
+msgid "Save to wishlist"
+msgstr "ウィッシュリストに保存"
+
+msgid "from"
+msgstr "〜から"
+
 msgid "No tours found"
 msgstr "ツアーが見つかりませんでした"
 
-#: templates/tours/list.html:206
 msgid "Try adjusting your filters or search criteria."
 msgstr "フィルターや検索条件を調整してみてください。"
 
-#: templates/tours/list.html:207
-msgid "Reset filters"
+msgid "Clear filters"
 msgstr "フィルターをリセット"
-msgid "Director"
-msgstr "代表"
 
-msgid "Directions"
-msgstr "経路"
+msgid "Travel Tour"
+msgstr "旅行情報"
 
-msgid "Tours & Attractions"
-msgstr "ツアーと観光名所"
+msgid "Share"
+msgstr "共有"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "See all"
+msgstr "すべて見る"
+
+msgid "photos"
+msgstr "枚の写真"
+
+msgid "Previous"
+msgstr "件のレビュー"
+
+msgid "Next"
+msgstr "次へ"
+
+msgid "Group Size"
+msgstr "グループサイズ"
+
+msgid "people"
+msgstr "人"
+
+msgid "Difficulty"
+msgstr "難易度"
+
+msgid "Category"
+msgstr "カテゴリー"
+
+msgid "Itinerary"
+msgstr "旅程"
+
+msgid "What's included"
+msgstr "含まれるもの"
+
+msgid "Day"
+msgstr "日目"
+
+msgid "Professional guide"
+msgstr "プロのガイド"
+
+msgid "Transport (A/C vehicle)"
+msgstr "交通手段（エアコン付き車両）"
+
+msgid "Entrance fees"
+msgstr "入場料"
+
+msgid "Hotel accommodation"
+msgstr "ホテル宿泊"
+
+msgid "Not Included"
+msgstr "含まれないもの"
+
+msgid "International flights"
+msgstr "国際線航空券"
+
+msgid "Travel insurance"
+msgstr "旅行保険"
+
+msgid "Personal expenses"
+msgstr "個人的な出費"
+
+msgid "Excellent"
+msgstr "素晴らしい"
+
+msgid "Average"
+msgstr "普通"
+
+msgid "Poor"
+msgstr "悪い"
+
+msgid "Terrible"
+msgstr "ひどい"
+
+msgid "No reviews yet. Be the first to share your experience!"
+msgstr "まだレビューがありません。最初のレビューを書いて体験を共有しましょう！"
+
+msgid "Write a review"
+msgstr "レビューを書く"
+
+msgid "Login to write a review"
+msgstr "レビューを書く"
+
+msgid "Date"
+msgstr "日付"
+
+msgid "Book Now"
+msgstr "今すぐ予約"
+
+msgid "Need help booking?"
+msgstr "予約のサポートが必要ですか？"
+
+msgid "Talk to a travel expert"
+msgstr "旅行の専門家に相談"
+
+msgid ""
+"Not sure which tour fits you? Our local specialists craft the perfect Silk "
+"Road itinerary — free of charge."
+msgstr "どのツアーが合うか迷っていますか？地元の専門家が最適なシルクロードの旅程を無料で作成します。"
+
+msgid "Get free advice"
+msgstr "無料アドバイスを受ける"
+
+msgid "Similar tours"
+msgstr "ツアーを検索..."
+
+msgid "Link copied!"
+msgstr "リンクをコピーしました！"
+
+msgid "Copy failed"
+msgstr "支払いに失敗しました"
+
+msgid "Uzbekistan & Silk Road Tours"
+msgstr "ウズベキスタン＆シルクロードツアー"
+
+msgid ""
+"Browse all SoLuna Travel tours across Uzbekistan and the Great Silk Road — "
+"Samarkand, Bukhara, Khiva and Tashkent. Compare prices, itineraries and book"
+" online."
+msgstr ""
+"ウズベキスタンと偉大なるシルクロードを巡るSoLuna "
+"Travelの全ツアーを閲覧——サマルカンド、ブハラ、ヒヴァ、タシケント。料金と旅程を比較してオンライン予約。"
+
+msgid "Extraordinary"
+msgstr "特別な"
+
+msgid "handcrafted journeys through Uzbekistan"
+msgstr "ウズベキスタンを巡る丹念に仕立てた旅"
+
+msgid "Sort"
+msgstr "並べ替え"
+
+msgid "Newest"
+msgstr "新着順"
+
+msgid "Price: Low → High"
+msgstr "価格：安い順"
+
+msgid "Price: High → Low"
+msgstr "価格：高い順"
+
+msgid "Highest Rated"
+msgstr "最高評価"
+
+msgid "Filters"
+msgstr "フィルターをリセット"
+
+msgid "Clear all"
+msgstr "すべてクリア"
+
+msgid "Search tours..."
+msgstr "ツアーを検索..."
+
+msgid "Categories"
+msgstr "カテゴリー"
+
+msgid "No categories"
+msgstr "カテゴリー"
+
+msgid "Price Range"
+msgstr "価格帯"
+
+msgid "Min"
+msgstr "最小"
+
+msgid "Apply"
+msgstr "適用"
+
+msgid "Min Rating"
+msgstr "評価"
+
+msgid "Type"
+msgstr "ツアータイプ"
+
+msgid "Remove type filter"
+msgstr "フィルターをリセット"
+
+msgid "Error loading tours"
+msgstr "ツアーの読み込みエラー"
+
+msgid "Please try again."
+msgstr "もう一度お試しください"
+
+msgid "Mon"
+msgstr "月"
+
+msgid "Tue"
+msgstr "火"
+
+msgid "Wed"
+msgstr "水"
+
+msgid "Thu"
+msgstr "木"
+
+msgid "Fri"
+msgstr "金"
+
+msgid "Sat"
+msgstr "土"
+
+msgid "Sun"
+msgstr "日"
+
+#~ msgid "City"
+#~ msgstr "市区町村"
+
+#~ msgid "About yourself"
+#~ msgstr "自己紹介"
+
+#~ msgid "Tell us a bit about yourself..."
+#~ msgstr "あなたについて少し教えてください..."
+
+#~ msgid "Your Gateway to Extraordinary Adventures"
+#~ msgstr "非日常の冒険への入り口"
+
+#~ msgid "Unlock the Magic of Travel with SoLuna"
+#~ msgstr "SoLunaで旅行の魔法を解き放とう"
+
+#~ msgid "Settings"
+#~ msgstr "設定"
+
+#~ msgid ""
+#~ "Dive into local recommendations for a truly authentic Silk Road experience "
+#~ "across Uzbekistan."
+#~ msgstr "ウズベキスタンのシルクロードの真の体験のための、地元のおすすめ情報に飛び込みましょう。"
+
+#~ msgid "Tashkent, Uzbekistan"
+#~ msgstr "ウズベキスタン、タシュケント"
+
+#~ msgid "Enter your email"
+#~ msgstr "メールアドレスを入力"
+
+#~ msgid "Explore the World"
+#~ msgstr "世界を探検する"
+
+#~ msgid ""
+#~ "Pack your bags and let SoLuna redefine your travel experience. Where every "
+#~ "journey is a story waiting to be told."
+#~ msgstr "荷物をまとめて、SoLunaに旅行体験を再定義させましょう。すべての旅が語られるのを待っている物語です。"
+
+#~ msgid "Need some help?"
+#~ msgstr "お手伝いが必要ですか？"
+
+#~ msgid "Samarkand, Uzbekistan"
+#~ msgstr "ウズベキスタン、サマルカンド"
+
+#~ msgid "Check In"
+#~ msgstr "チェックイン"
+
+#~ msgid "Check Out"
+#~ msgstr "チェックアウト"
+
+#~ msgid "Guest"
+#~ msgstr "ゲスト"
+
+#~ msgid "Favorite destinations of professional travelers"
+#~ msgstr "プロの旅行者のお気に入りの目的地"
+
+#~ msgid "Favorite destinations based on customer reviews"
+#~ msgstr "カスタマーレビューに基づくお気に入りの目的地"
+
+#~ msgid "Price range"
+#~ msgstr "価格帯"
+
+#~ msgid "Clear"
+#~ msgstr "クリア"
+
+#~ msgid "Add to favorites"
+#~ msgstr "お気に入りに追加"
+
+#~ msgid "Easy payment"
+#~ msgstr "簡単な支払い"
+
+#~ msgid "We offer tours in a range of locations"
+#~ msgstr "さまざまな場所でのツアーを提供しています"
+
+#~ msgid ""
+#~ "Choose one style or create a package, fill your passports with adventures "
+#~ "together."
+#~ msgstr "スタイルを選ぶか、パッケージを作成し、一緒に冒険でパスポートを満たしましょう。"
+
+#~ msgid "Security Assurance"
+#~ msgstr "セキュリティ保証"
+
+#~ msgid "Reputable Affiliations"
+#~ msgstr "信頼できる提携先"
+
+#~ msgid "Payment is secure and safe"
+#~ msgstr "支払いは安全で安心です"
+
+#~ msgid "Top Categories of Tours"
+#~ msgstr "ツアーのトップカテゴリー"
+
+#~ msgid "View More"
+#~ msgstr "さらに表示"
+
+#~ msgid "Embracing Adventure Since 2025"
+#~ msgstr "2025年から冒険を抱き続けています"
+
+#~ msgid "Install APP & Get discount code"
+#~ msgstr "アプリをインストールして割引コードをゲット"
+
+#, python-format
+#~ msgid "Up to 55%% Discount and lots of special gifts"
+#~ msgstr "最大55%%の割引とたくさんの特別なギフト"
+
+#~ msgid "Get inspiration for your next trip"
+#~ msgstr "次の旅行のインスピレーションを得る"
+
+#~ msgid "Keep Reading"
+#~ msgstr "続きを読む"
+
+#~ msgid "We'd love to hear from you"
+#~ msgstr "皆様からのご連絡をお待ちしております"
+
+#~ msgid "Mon - Sat, 8AM - 6PM"
+#~ msgstr "月 - 土、午前8時 - 午後6時"
+
+#~ msgid "We reply within 24 hours"
+#~ msgstr "24時間以内に返信します"
+
+#~ msgid "Visit us in person"
+#~ msgstr "直接お越しください"
+
+#~ msgid "Social"
+#~ msgstr "ソーシャル"
+
+#~ msgid "Follow us for updates"
+#~ msgstr "最新情報をフォローする"
+
+#~ msgid "Why visit"
+#~ msgstr "訪れる理由"
+
+#~ msgid "Population"
+#~ msgstr "人口"
+
+#~ msgid "Best time to visit"
+#~ msgstr "ベストシーズン"
+
+#~ msgid "Discover Uzbekistan's Most Beautiful Destinations"
+#~ msgstr "ウズベキスタンの最も美しい目的地を発見"
+
+#~ msgid ""
+#~ "From ancient Samarkand to the deserts of Karakalpakstan — find your next "
+#~ "adventure."
+#~ msgstr "古代都市サマルカンドからカラカルパクスタンの砂漠まで、次の冒険を見つけましょう。"
+
+#~ msgid "Write your detailed review here..."
+#~ msgstr "ここに詳細なレビューを書いてください..."
+
+#~ msgid "Languages"
+#~ msgstr "言語"
+
+#~ msgid "Highlights"
+#~ msgstr "ハイライト"
+
+#~ msgid "Related tours"
+#~ msgstr "関連ツアー"
+
+#~ msgid "tours found"
+#~ msgstr "件のツアーが見つかりました"

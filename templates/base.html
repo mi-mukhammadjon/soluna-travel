@@ -664,7 +664,7 @@
           <li><i class="ti ti-map-pin"></i> {{ site_settings.address }}</li>
           {% endif %}
           {% if site_settings.work_hours %}
-          <li><i class="ti ti-clock"></i> {% trans "Hours" %}: {{ site_settings.work_hours }}</li>
+          <li><i class="ti ti-clock"></i> {% trans "Hours" %}: {{ site_settings.work_hours|work_hours_i18n }}</li>
           {% endif %}
           {% if site_settings.email_1 %}
           <li><i class="ti ti-mail"></i> {{ site_settings.email_1 }}</li>

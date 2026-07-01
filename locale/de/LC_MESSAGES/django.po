@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-21 01:16+0500\n"
+"POT-Creation-Date: 2026-07-01 12:40+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German <de@li.org>\n"
@@ -18,2345 +18,2367 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/admin.py:18
 msgid "Дополнительная информация"
 msgstr "Zusätzliche Informationen"
 
-#: accounts/admin.py:33 accounts/models.py:12
 msgid "Аватар"
 msgstr "Avatar"
 
-#: accounts/apps.py:7
 msgid "Пользователи и доступы"
 msgstr "Benutzer und Zugriffsrechte"
 
-#: accounts/models.py:8 accounts/models.py:27
 msgid "Пользователь"
 msgstr "Benutzer"
 
-#: accounts/models.py:9
 msgid "Администратор"
 msgstr "Administrator"
 
-#: accounts/models.py:11
 msgid "Номер телефона"
 msgstr "Telefonnummer"
 
-#: accounts/models.py:13
 msgid "Роль"
 msgstr "Rolle"
 
-#: accounts/models.py:15
 msgid "Предпочитаемый язык"
 msgstr "Bevorzugte Sprache"
 
-#: accounts/models.py:24
 msgid "Дата регистрации"
 msgstr "Registrierungsdatum"
 
-#: accounts/models.py:28
 msgid "Все пользователи"
 msgstr "Alle Benutzer"
 
-#: bookings/forms.py:34
 msgid "Dietary needs, accessibility, etc."
 msgstr "Ernährungsbedürfnisse, Barrierefreiheit, etc."
 
-#: bookings/forms.py:38 templates/bookings/booking_create.html:88
-#: templates/bookings/booking_detail.html:188
-#: templates/bookings/booking_list.html:108
 msgid "Travel Date"
 msgstr "Reisedatum"
 
-#: bookings/forms.py:39 templates/bookings/booking_create.html:103
-#: templates/tours/detail.html:288
 msgid "Adults"
 msgstr "Erwachsene"
 
-#: bookings/forms.py:40 templates/bookings/booking_create.html:118
-#: templates/bookings/booking_detail.html:296 templates/tours/detail.html:296
 msgid "Children"
 msgstr "Kinder"
 
-#: bookings/forms.py:41 templates/bookings/booking_create.html:160
-#: templates/bookings/booking_detail.html:253
 msgid "Special Requests"
 msgstr "Sonderwünsche"
 
-#: bookings/forms.py:47
 msgid "Travel date cannot be in the past."
 msgstr "Das Reisedatum darf nicht in der Vergangenheit liegen."
 
-#: bookings/forms.py:53
 msgid "At least 1 adult is required."
 msgstr "Mindestens 1 Erwachsener ist erforderlich."
 
-#: payments/models.py:64
 msgid "Created"
 msgstr "Erstellt"
 
-#: payments/models.py:65 templates/bookings/booking_list.html:50
-#: templates/bookings/booking_list.html:83
 msgid "Pending"
 msgstr "Ausstehend"
 
-#: payments/models.py:66
 msgid "Processing"
 msgstr "In Bearbeitung"
 
-#: payments/models.py:67 templates/bookings/booking_detail.html:323
-#: templates/payments/payment_success.html:60
 msgid "Paid"
 msgstr "Bezahlt"
 
-#: payments/models.py:68
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
-#: payments/models.py:69 templates/bookings/booking_detail.html:34
-#: templates/bookings/booking_list.html:59
-#: templates/bookings/booking_list.html:86
 msgid "Cancelled"
 msgstr "Storniert"
 
-#: payments/models.py:70 templates/bookings/booking_detail.html:325
 msgid "Refunded"
 msgstr "Erstattet"
 
-#: payments/views.py:56
 msgid "Bu bron uchun to'lov allaqachon qabul qilingan."
 msgstr "Die Zahlung für diese Buchung wurde bereits akzeptiert."
 
-#: payments/views.py:83
 msgid "Ofisda to'lov qilishni tanladingiz."
 msgstr "Sie haben die Zahlung im Büro ausgewählt."
 
-#: payments/views.py:102
 msgid "Ushbu to'lov turi hali qo'llanilmaydi."
 msgstr "Diese Zahlungsart wird noch nicht unterstützt."
 
-#: templates/404.html:4
 msgid "Page Not Found"
 msgstr "Seite nicht gefunden"
 
-#: templates/404.html:16
 msgid "Oops! Page not found"
 msgstr "Hoppla! Seite nicht gefunden"
 
-#: templates/404.html:18
 msgid ""
 "The page you are looking for might have been moved or doesn't exist. Let's "
 "get you back on track."
-msgstr "Die gesuchte Seite wurde möglicherweise verschoben oder existiert nicht. Wir bringen Sie wieder auf den richtigen Weg."
+msgstr ""
+"Die gesuchte Seite wurde möglicherweise verschoben oder existiert nicht. Wir"
+" bringen Sie wieder auf den richtigen Weg."
 
-#: templates/404.html:23 templates/500.html:21
 msgid "Go Home"
 msgstr "Zur Startseite"
 
-#: templates/404.html:26
 msgid "Browse Tours"
 msgstr "Touren durchsuchen"
 
-#: templates/404.html:31 templates/base.html:154 templates/base.html:302
-#: templates/base.html:375 templates/regions/detail.html:19
-#: templates/regions/list.html:4 templates/regions/list.html:14
 msgid "Destinations"
 msgstr "Reiseziele"
 
-#: templates/404.html:32 templates/regions/detail.html:160
 msgid "Contact us"
 msgstr "Kontaktieren Sie uns"
 
-#: templates/404.html:33
 msgid "Help center"
 msgstr "Hilfecenter"
 
-#: templates/500.html:4
 msgid "Server Error"
 msgstr "Serverfehler"
 
-#: templates/500.html:14
 msgid "Something went wrong"
 msgstr "Etwas ist schiefgelaufen"
 
-#: templates/500.html:16
 msgid ""
-"We're having trouble loading this page. Our team has been notified and we're "
-"working on it."
-msgstr "Wir haben Probleme beim Laden dieser Seite. Unser Team wurde benachrichtigt und arbeitet daran."
+"We're having trouble loading this page. Our team has been notified and we're"
+" working on it."
+msgstr ""
+"Wir haben Probleme beim Laden dieser Seite. Unser Team wurde benachrichtigt "
+"und arbeitet daran."
 
-#: templates/500.html:24 templates/account/password_reset_done.html:25
-#: templates/socialaccount/authentication_error.html:49
 msgid "Try again"
 msgstr "Erneut versuchen"
 
-#: templates/account/login.html:4 templates/account/login.html:163
-#: templates/accounts/register.html:90 templates/base.html:242
-#: templates/base.html:316
 msgid "Sign In"
 msgstr "Anmelden"
 
-#: templates/account/login.html:23
 msgid "Welcome back to your"
 msgstr "Willkommen zurück zu Ihrem"
 
-#: templates/account/login.html:24
 msgid "next adventure"
 msgstr "nächsten Abenteuer"
 
-#: templates/account/login.html:27
 msgid ""
 "Discover the magic of the Silk Road — ancient cities, breathtaking "
 "landscapes, and unforgettable journeys."
-msgstr "Entdecken Sie die Magie der Seidenstraße — antike Städte, atemberaubende Landschaften und unvergessliche Reisen."
+msgstr ""
+"Entdecken Sie die Magie der Seidenstraße — antike Städte, atemberaubende "
+"Landschaften und unvergessliche Reisen."
 
-#: templates/account/login.html:35
 msgid "Trusted by 50,000+"
 msgstr "Vertraut von 50.000+"
 
-#: templates/account/login.html:36
 msgid "travelers across 9 countries"
 msgstr "Reisenden aus 9 Ländern"
 
-#: templates/account/login.html:42
 msgid "rating"
 msgstr "Bewertung"
 
-#: templates/account/login.html:43
 msgid "from 8,400+ verified reviews"
 msgstr "aus 8.400+ verifizierten Bewertungen"
 
-#: templates/account/login.html:49 templates/bookings/booking_create.html:305
 msgid "24/7 support"
 msgstr "24/7 Support"
 
-#: templates/account/login.html:50
 msgid "in 9 languages"
 msgstr "in 9 Sprachen"
 
-#: templates/account/login.html:56
 msgid "From"
 msgstr "Von"
 
-#: templates/account/login.html:57
 msgid "Tashkent · Samarkand · Bukhara · Khiva"
 msgstr "Taschkent · Samarkand · Buchara · Chiwa"
 
-#: templates/account/login.html:68 templates/account/signup.html:76
-#: templates/accounts/profile.html:11 templates/base.html:111
-#: templates/base.html:300 templates/bookings/booking_create.html:12
-#: templates/bookings/booking_detail.html:12
-#: templates/bookings/booking_list.html:12
-#: templates/messages_app/contact.html:12
-#: templates/payments/payment_select.html:11 templates/regions/detail.html:17
-#: templates/regions/list.html:12 templates/tours/detail.html:12
-#: templates/tours/list.html:12
 msgid "Home"
 msgstr "Startseite"
 
-#: templates/account/login.html:73
 msgid "Welcome back"
 msgstr "Willkommen zurück"
 
-#: templates/account/login.html:75
 msgid "Sign in to access your bookings and exclusive offers."
-msgstr "Melden Sie sich an, um auf Ihre Buchungen und exklusiven Angebote zuzugreifen."
+msgstr ""
+"Melden Sie sich an, um auf Ihre Buchungen und exklusiven Angebote "
+"zuzugreifen."
 
-#: templates/account/login.html:91 templates/account/login.html:106
 msgid "Continue with Google"
 msgstr "Weiter mit Google"
 
-#: templates/account/login.html:111
 msgid "or sign in with email"
 msgstr "oder mit E-Mail anmelden"
 
-#: templates/account/login.html:126 templates/account/signup.html:153
-#: templates/accounts/profile.html:105 templates/accounts/profile_edit.html:58
-#: templates/accounts/register.html:57 templates/base.html:395
-#: templates/messages_app/contact.html:40
-#: templates/messages_app/contact.html:77
-#: templates/socialaccount/signup.html:67
 msgid "Email"
 msgstr "E-Mail"
 
-#: templates/account/login.html:138 templates/account/signup.html:164
-#: templates/accounts/password_change.html:13
-#: templates/accounts/profile.html:48 templates/accounts/register.html:72
 msgid "Password"
 msgstr "Passwort"
 
-#: templates/account/login.html:140
 msgid "Forgot?"
 msgstr "Vergessen?"
 
-#: templates/account/login.html:155
 msgid "Keep me signed in for 30 days"
 msgstr "30 Tage lang angemeldet bleiben"
 
-#: templates/account/login.html:168
 msgid "Don't have an account?"
 msgstr "Haben Sie noch kein Konto?"
 
-#: templates/account/login.html:169
 msgid "Create one"
 msgstr "Konto erstellen"
 
-#: templates/account/login.html:174 templates/account/signup.html:205
-#: templates/account/signup.html:227 templates/base.html:413
-#: templates/socialaccount/signup.html:119
 msgid "Terms"
 msgstr "Nutzungsbedingungen"
 
-#: templates/account/login.html:176 templates/account/signup.html:229
-#: templates/base.html:415
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: templates/account/login.html:178 templates/account/signup.html:231
 msgid "Help"
 msgstr "Hilfe"
 
-#: templates/account/logout.html:4 templates/account/logout.html:23
-#: templates/base.html:236 templates/base.html:312
 msgid "Sign Out"
 msgstr "Abmelden"
 
-#: templates/account/logout.html:10
 msgid "Sign out?"
 msgstr "Abmelden?"
 
-#: templates/account/logout.html:12
 msgid "Are you sure you want to sign out?"
 msgstr "Sind Sie sicher, dass Sie sich abmelden möchten?"
 
-#: templates/account/logout.html:21 templates/accounts/password_change.html:47
-#: templates/accounts/profile_edit.html:85
-#: templates/bookings/booking_detail.html:125 templates/reviews/form.html:83
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: templates/account/password_reset.html:4
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
-#: templates/account/password_reset.html:15
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
-#: templates/account/password_reset.html:17
 msgid "Enter your email and we'll send a link to reset your password."
-msgstr "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts."
+msgstr ""
+"Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum "
+"Zurücksetzen Ihres Passworts."
 
-#: templates/account/password_reset.html:24
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: templates/account/password_reset.html:29
 msgid "Send Reset Link"
 msgstr "Link zum Zurücksetzen senden"
 
-#: templates/account/password_reset.html:35
-#: templates/account/password_reset_done.html:20
-#: templates/account/verification_sent.html:19
-#: templates/socialaccount/login.html:84
-#: templates/socialaccount/signup.html:136
 msgid "Back to sign in"
 msgstr "Zurück zur Anmeldung"
 
-#: templates/account/password_reset_done.html:4
 msgid "Email Sent"
 msgstr "E-Mail gesendet"
 
-#: templates/account/password_reset_done.html:14
 msgid "Check your email"
 msgstr "Überprüfen Sie Ihre E-Mail"
 
-#: templates/account/password_reset_done.html:16
 msgid ""
-"We've sent a password reset link to your email address. The link will expire "
-"in 24 hours."
-msgstr "Wir haben einen Link zum Zurücksetzen des Passworts an Ihre E-Mail-Adresse gesendet. Der Link läuft in 24 Stunden ab."
+"We've sent a password reset link to your email address. The link will expire"
+" in 24 hours."
+msgstr ""
+"Wir haben einen Link zum Zurücksetzen des Passworts an Ihre E-Mail-Adresse "
+"gesendet. Der Link läuft in 24 Stunden ab."
 
-#: templates/account/password_reset_done.html:24
 msgid "Didn't receive an email?"
 msgstr "Keine E-Mail erhalten?"
 
-#: templates/account/signup.html:4 templates/base.html:243
-#: templates/base.html:317
 msgid "Sign Up"
 msgstr "Registrieren"
 
-#: templates/account/signup.html:23
 msgid "Your journey to the"
 msgstr "Ihre Reise zur"
 
-#: templates/account/signup.html:24 templates/base.html:266
 msgid "Silk Road"
 msgstr "Seidenstraße"
 
-#: templates/account/signup.html:24
 msgid "starts here"
 msgstr "beginnt hier"
 
-#: templates/account/signup.html:27
 msgid ""
 "Join thousands of travelers exploring Uzbekistan's ancient cities, vibrant "
 "culture, and timeless landscapes."
-msgstr "Schließen Sie sich Tausenden von Reisenden an und erkunden Sie Usbekistans antike Städte, lebendige Kultur und zeitlose Landschaften."
+msgstr ""
+"Schließen Sie sich Tausenden von Reisenden an und erkunden Sie Usbekistans "
+"antike Städte, lebendige Kultur und zeitlose Landschaften."
 
-#: templates/account/signup.html:36
 msgid "Welcome bonus"
 msgstr "Willkommensbonus"
 
-#: templates/account/signup.html:37
 #, python-format
 msgid "Get 5%% off your first booking"
 msgstr "Erhalten Sie 5%% Rabatt auf Ihre erste Buchung"
 
-#: templates/account/signup.html:43
 msgid "Save favorites"
 msgstr "Favoriten speichern"
 
-#: templates/account/signup.html:44
 msgid "Build your dream itinerary"
 msgstr "Stellen Sie Ihre Traumreise zusammen"
 
-#: templates/account/signup.html:50
 msgid "Exclusive offers"
 msgstr "Exklusive Angebote"
 
-#: templates/account/signup.html:51
 msgid "Early access to seasonal deals"
 msgstr "Früher Zugang zu saisonalen Angeboten"
 
-#: templates/account/signup.html:57
 msgid "Faster checkout"
 msgstr "Schnellerer Checkout"
 
-#: templates/account/signup.html:58
 msgid "Save payment methods securely"
 msgstr "Zahlungsmethoden sicher speichern"
 
-#: templates/account/signup.html:64
 msgid "Free to join"
 msgstr "Kostenlos anmelden"
 
-#: templates/account/signup.html:65
 msgid "No credit card required"
 msgstr "Keine Kreditkarte erforderlich"
 
-#: templates/account/signup.html:81
 msgid "Create your account"
 msgstr "Konto erstellen"
 
-#: templates/account/signup.html:83
 msgid "Sign up in 30 seconds. No credit card required."
 msgstr "In 30 Sekunden registrieren. Keine Kreditkarte erforderlich."
 
-#: templates/account/signup.html:99 templates/account/signup.html:113
-#: templates/accounts/register.html:23
 msgid "Sign up with Google"
 msgstr "Mit Google registrieren"
 
-#: templates/account/signup.html:118
 msgid "or sign up with email"
 msgstr "oder per E-Mail registrieren"
 
-#: templates/account/signup.html:134
 msgid "First name"
 msgstr "Vorname"
 
-#: templates/account/signup.html:142
 msgid "Last name"
 msgstr "Nachname"
 
-#: templates/account/signup.html:168
-msgid "At least 8 characters"
-msgstr "Mindestens 8 Zeichen"
-
-#: templates/account/signup.html:180
-msgid "Password strength"
-msgstr "Passwortstärke"
-
-#: templates/account/signup.html:187
-msgid "Confirm password"
-msgstr "Passwort bestätigen"
-
-#: templates/account/signup.html:191
-msgid "Repeat password"
-msgstr "Passwort wiederholen"
-
-#: templates/account/signup.html:204 templates/bookings/booking_create.html:199
-#: templates/socialaccount/signup.html:118
-msgid "I agree to SoLuna's"
-msgstr "Ich stimme den Bedingungen von SoLuna zu:"
-
-#: templates/account/signup.html:206 templates/bookings/booking_create.html:201
-#: templates/socialaccount/signup.html:120
-msgid "Privacy Policy"
-msgstr "Datenschutzrichtlinie"
-
-#: templates/account/signup.html:207
-msgid "and consent to receiving travel inspiration emails"
-msgstr "und stimme dem Erhalt von Reise-Inspirations-E-Mails zu"
-
-#: templates/account/signup.html:216 templates/accounts/register.html:18
-#: templates/accounts/register.html:85 templates/socialaccount/signup.html:130
-msgid "Create Account"
-msgstr "Konto erstellen"
-
-#: templates/account/signup.html:221 templates/accounts/register.html:89
-msgid "Already have an account?"
-msgstr "Haben Sie bereits ein Konto?"
-
-#: templates/account/signup.html:222
-msgid "Sign in"
-msgstr "Anmelden"
-
-#: templates/account/verification_sent.html:4
-msgid "Verify Email"
-msgstr "E-Mail verifizieren"
-
-#: templates/account/verification_sent.html:14
-msgid "Verify your email"
-msgstr "Verifizieren Sie Ihre E-Mail"
-
-#: templates/account/verification_sent.html:16
-msgid ""
-"We've sent a verification email. Please click the link in the email to "
-"activate your account."
-msgstr "Wir haben eine Verifizierungs-E-Mail gesendet. Bitte klicken Sie auf den Link in der E-Mail, um Ihr Konto zu aktivieren."
-
-#: templates/accounts/password_change.html:4
-#: templates/accounts/password_change.html:17
-msgid "Change Password"
-msgstr "Passwort ändern"
-
-#: templates/accounts/password_change.html:11
-#: templates/accounts/profile.html:13 templates/accounts/profile.html:36
-#: templates/accounts/profile_edit.html:11
-#: templates/bookings/booking_list.html:14
-msgid "Profile"
-msgstr "Profil"
-
-#: templates/accounts/password_change.html:19
-msgid "For security, choose a strong password you haven't used before."
-msgstr "Wählen Sie aus Sicherheitsgründen ein starkes Passwort, das Sie noch nie verwendet haben."
-
-#: templates/accounts/password_change.html:26
-msgid "Current Password"
-msgstr "Aktuelles Passwort"
-
-#: templates/accounts/password_change.html:32
-msgid "New Password"
-msgstr "Neues Passwort"
-
-#: templates/accounts/password_change.html:36
-msgid "At least 8 characters, with letters and numbers."
-msgstr "Mindestens 8 Zeichen, mit Buchstaben und Zahlen."
-
-#: templates/accounts/password_change.html:41
-msgid "Confirm New Password"
-msgstr "Neues Passwort bestätigen"
-
-#: templates/accounts/password_change.html:49
-msgid "Update Password"
-msgstr "Passwort aktualisieren"
-
-#: templates/accounts/profile.html:4 templates/base.html:221
-#: templates/base.html:308
-msgid "My Profile"
-msgstr "Mein Profil"
-
-#: templates/accounts/profile.html:30 templates/accounts/profile_edit.html:4
-#: templates/accounts/profile_edit.html:17
-msgid "Edit Profile"
-msgstr "Profil bearbeiten"
-
-#: templates/accounts/profile.html:39 templates/base.html:224
-#: templates/base.html:309 templates/bookings/booking_detail.html:14
-#: templates/bookings/booking_list.html:4
-#: templates/bookings/booking_list.html:16
-msgid "My Bookings"
-msgstr "Meine Buchungen"
-
-#: templates/accounts/profile.html:42 templates/accounts/profile.html:82
-msgid "Wishlist"
-msgstr "Wunschliste"
-
-#: templates/accounts/profile.html:45
-msgid "My Reviews"
-msgstr "Meine Bewertungen"
-
-#: templates/accounts/profile.html:53
-msgid "Logout"
-msgstr "Abmelden"
-
-#: templates/accounts/profile.html:68
-msgid "Total Bookings"
-msgstr "Gesamte Buchungen"
-
-#: templates/accounts/profile.html:75
-msgid "Completed Trips"
-msgstr "Abgeschlossene Reisen"
-
-#: templates/accounts/profile.html:89 templates/tours/detail.html:117
-#: templates/tours/detail.html:211
-msgid "Reviews"
-msgstr "Bewertungen"
-
-#: templates/accounts/profile.html:97
-msgid "Personal Information"
-msgstr "Persönliche Informationen"
-
-#: templates/accounts/profile.html:99 templates/accounts/profile_edit.html:13
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: templates/accounts/profile.html:103 templates/messages_app/contact.html:73
-msgid "Full Name"
-msgstr "Vollständiger Name"
-
-#: templates/accounts/profile.html:104 templates/accounts/register.html:50
 msgid "Username"
 msgstr "Benutzername"
 
-#: templates/accounts/profile.html:106 templates/accounts/profile_edit.html:64
-#: templates/accounts/register.html:64 templates/messages_app/contact.html:33
-#: templates/messages_app/contact.html:84
-msgid "Phone"
-msgstr "Telefon"
+msgid "At least 8 characters"
+msgstr "Mindestens 8 Zeichen"
 
-#: templates/accounts/profile.html:107
-msgid "Joined"
-msgstr "Beigetreten"
+msgid "Password strength"
+msgstr "Passwortstärke"
 
-#: templates/accounts/profile.html:108 templates/accounts/profile_edit.html:70
-#: templates/regions/detail.html:104
-msgid "Country"
-msgstr "Land"
+msgid "Confirm password"
+msgstr "Passwort bestätigen"
 
-#: templates/accounts/profile.html:115
-msgid "Recent Bookings"
-msgstr "Letzte Buchungen"
+msgid "Repeat password"
+msgstr "Passwort wiederholen"
 
-#: templates/accounts/profile.html:117
-msgid "View all"
-msgstr "Alle ansehen"
+msgid "I agree to SoLuna's"
+msgstr "Ich stimme den Bedingungen von SoLuna zu:"
 
-#: templates/accounts/profile.html:132 templates/payments/mock_pay.html:161
-#: templates/tours/detail.html:307
+msgid "Privacy Policy"
+msgstr "Datenschutzrichtlinie"
+
+msgid "and consent to receiving travel inspiration emails"
+msgstr "und stimme dem Erhalt von Reise-Inspirations-E-Mails zu"
+
+msgid "Create Account"
+msgstr "Konto erstellen"
+
+msgid "Already have an account?"
+msgstr "Haben Sie bereits ein Konto?"
+
+msgid "Sign in"
+msgstr "Anmelden"
+
+msgid "Verify Email"
+msgstr "E-Mail verifizieren"
+
+msgid "Verify your email"
+msgstr "Verifizieren Sie Ihre E-Mail"
+
+msgid ""
+"We've sent a verification email. Please click the link in the email to "
+"activate your account."
+msgstr ""
+"Wir haben eine Verifizierungs-E-Mail gesendet. Bitte klicken Sie auf den "
+"Link in der E-Mail, um Ihr Konto zu aktivieren."
+
 msgid "guests"
 msgstr "Gäste"
 
-#: templates/accounts/profile.html:145
-msgid "You haven't booked any tours yet."
-msgstr "Sie haben noch keine Touren gebucht."
+msgid "Change Password"
+msgstr "Passwort ändern"
 
-#: templates/accounts/profile.html:146
-msgid "Browse tours"
-msgstr "Touren durchsuchen"
+msgid "Profile"
+msgstr "Profil"
 
-#: templates/accounts/profile_edit.html:19
-msgid "Update your personal information and preferences."
-msgstr "Aktualisieren Sie Ihre persönlichen Daten und Einstellungen."
+msgid "For security, choose a strong password you haven't used before."
+msgstr ""
+"Wählen Sie aus Sicherheitsgründen ein starkes Passwort, das Sie noch nie "
+"verwendet haben."
 
-#: templates/accounts/profile_edit.html:35
-msgid "Profile photo"
-msgstr "Profilbild"
+msgid "Current Password"
+msgstr "Aktuelles Passwort"
 
-#: templates/accounts/profile_edit.html:37
-msgid "JPG, PNG. Max 2MB."
-msgstr "JPG, PNG. Max. 2MB."
+msgid "Show password"
+msgstr "Neues Passwort"
 
-#: templates/accounts/profile_edit.html:40
-msgid "Upload"
-msgstr "Hochladen"
+msgid "New Password"
+msgstr "Neues Passwort"
 
-#: templates/accounts/profile_edit.html:48 templates/accounts/register.html:36
-msgid "First Name"
-msgstr "Vorname"
+msgid "At least 8 characters, mixing letters and numbers."
+msgstr "Mindestens 8 Zeichen, mit Buchstaben und Zahlen."
 
-#: templates/accounts/profile_edit.html:52 templates/accounts/register.html:42
-msgid "Last Name"
-msgstr "Nachname"
+msgid "Confirm New Password"
+msgstr "Neues Passwort bestätigen"
 
-#: templates/accounts/profile_edit.html:60
-msgid "Email cannot be changed."
-msgstr "E-Mail kann nicht geändert werden."
+msgid "Update Password"
+msgstr "Passwort aktualisieren"
 
-#: templates/accounts/profile_edit.html:74
-msgid "City"
-msgstr "Stadt"
+msgid "Weak"
+msgstr "Schwach"
 
-#: templates/accounts/profile_edit.html:80
-msgid "About yourself"
-msgstr "Über Sie"
+msgid "Fair"
+msgstr "Mittel"
 
-#: templates/accounts/profile_edit.html:81
-msgid "Tell us a bit about yourself..."
-msgstr "Erzählen Sie uns ein wenig über sich..."
-
-#: templates/accounts/profile_edit.html:87
-msgid "Save Changes"
-msgstr "Änderungen speichern"
-
-#: templates/accounts/register.html:3
-msgid "Register"
-msgstr "Registrieren"
-
-#: templates/accounts/register.html:19
-msgid "Join SoLuna and start planning your journey"
-msgstr "Werden Sie Mitglied bei SoLuna und beginnen Sie mit der Planung Ihrer Reise"
-
-#: templates/accounts/register.html:26
-msgid "or"
-msgstr "oder"
-
-#: templates/accounts/register.html:78
-msgid "Confirm"
-msgstr "Bestätigen"
-
-#: templates/base.html:7 templates/home.html:4 templates/home.html:14
-msgid "Your Gateway to Extraordinary Adventures"
-msgstr "Ihr Tor zu außergewöhnlichen Abenteuern"
-
-#: templates/base.html:8
-msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
-msgstr "SoLuna — Premium-Touren durch Usbekistan und auf der Seidenstraße."
-
-#: templates/base.html:35
-msgid "Skip to content"
-msgstr "Zum Inhalt springen"
-
-#: templates/base.html:56
-msgid "Unlock the Magic of Travel with SoLuna"
-msgstr "Entdecken Sie die Magie des Reisens mit SoLuna"
-
-#: templates/base.html:58
-msgid "Explore Now"
-msgstr "Jetzt entdecken"
-
-#: templates/base.html:67 templates/regions/detail.html:130
-msgid "Language"
-msgstr "Sprache"
-
-#: templates/base.html:80 templates/regions/detail.html:139
-msgid "Currency"
-msgstr "Währung"
-
-#: templates/base.html:92
-msgid "Toggle theme"
-msgstr "Design umschalten"
-
-#: templates/base.html:101
-msgid "Main navigation"
-msgstr "Hauptnavigation"
-
-#: templates/base.html:117 templates/base.html:301 templates/home.html:19
-#: templates/home.html:88 templates/home.html:285 templates/home.html:396
-#: templates/tours/detail.html:14 templates/tours/list.html:14
-msgid "Tours"
-msgstr "Touren"
-
-#: templates/base.html:123 templates/tours/list.html:4
-#: templates/tours/list.html:19
-msgid "All Tours"
-msgstr "Alle Touren"
-
-#: templates/base.html:124
-msgid "Browse our complete catalog"
-msgstr "Durchsuchen Sie unseren kompletten Katalog"
-
-#: templates/base.html:130
-msgid "Cultural"
-msgstr "Kulturell"
-
-#: templates/base.html:131
-msgid "Historic cities and heritage"
-msgstr "Historische Städte und Kulturerbe"
-
-#: templates/base.html:137 templates/base.html:385
-msgid "Adventure"
-msgstr "Abenteuer"
-
-#: templates/base.html:138
-msgid "Mountains, deserts and trekking"
-msgstr "Berge, Wüsten und Trekking"
-
-#: templates/base.html:144
-msgid "Premium"
-msgstr "Premium"
-
-#: templates/base.html:145
-msgid "Luxury experiences"
-msgstr "Luxuserlebnisse"
-
-#: templates/base.html:160
-msgid "All Destinations"
-msgstr "Alle Reiseziele"
-
-#: templates/base.html:161
-msgid "Explore Uzbekistan"
-msgstr "Usbekistan entdecken"
-
-#: templates/base.html:168
-msgid "City of legends"
-msgstr "Stadt der Legenden"
-
-#: templates/base.html:175
-msgid "Holy and ancient"
-msgstr "Heilig und antik"
-
-#: templates/base.html:182
-msgid "Open-air museum"
-msgstr "Freilichtmuseum"
-
-#: templates/base.html:188 templates/base.html:303 templates/home.html:23
-msgid "Activities"
-msgstr "Aktivitäten"
-
-#: templates/base.html:189 templates/base.html:304 templates/base.html:376
-#: templates/messages_app/contact.html:14
-msgid "Contact"
-msgstr "Kontakt"
-
-#: templates/base.html:196 templates/home.html:61 templates/tours/list.html:56
-msgid "Search"
-msgstr "Suche"
-
-#: templates/base.html:227
-msgid "Saved Tours"
-msgstr "Gespeicherte Touren"
-
-#: templates/base.html:230
-msgid "Settings"
-msgstr "Einstellungen"
-
-#: templates/base.html:247
-msgid "Open menu"
-msgstr "Menü öffnen"
-
-#: templates/base.html:258
-msgid "Search tours, destinations, activities..."
-msgstr "Suchen Sie nach Touren, Reisezielen, Aktivitäten..."
-
-#: templates/base.html:259
-msgid "Close search"
-msgstr "Suche schließen"
-
-#: templates/base.html:264 templates/payments/payment_select.html:94
-msgid "Popular"
-msgstr "Beliebt"
-
-#: templates/base.html:282
-msgid "Close menu"
-msgstr "Menü schließen"
-
-#: templates/base.html:299
-msgid "Mobile navigation"
-msgstr "Mobile Navigation"
-
-#: templates/base.html:341
-msgid "Close"
-msgstr "Schließen"
-
-#: templates/base.html:361
-msgid ""
-"Dive into local recommendations for a truly authentic Silk Road experience "
-"across Uzbekistan."
-msgstr "Tauchen Sie ein in lokale Empfehlungen für ein authentisches Erlebnis an der Seidenstraße in ganz Usbekistan."
-
-#: templates/base.html:363
-msgid "Tashkent, Uzbekistan"
-msgstr "Taschkent, Usbekistan"
-
-#: templates/base.html:364
-msgid "Hours"
-msgstr "Öffnungszeiten"
-
-#: templates/base.html:371
-msgid "Company"
-msgstr "Unternehmen"
-
-#: templates/base.html:373
-msgid "About Us"
-msgstr "Über uns"
-
-#: templates/base.html:374
-msgid "Our Tours"
-msgstr "Unsere Touren"
-
-#: templates/base.html:381
-msgid "Services"
-msgstr "Dienstleistungen"
-
-#: templates/base.html:383
-msgid "Tour Booking"
-msgstr "Tourbuchung"
-
-#: templates/base.html:384
-msgid "Premium Tours"
-msgstr "Premium-Touren"
-
-#: templates/base.html:386
-msgid "Help & Support"
-msgstr "Hilfe & Support"
-
-#: templates/base.html:391
-msgid "Newsletter"
-msgstr "Newsletter"
-
-#: templates/base.html:392
-msgid "Get exclusive offers and travel inspiration."
-msgstr "Erhalten Sie exklusive Angebote und Reiseinspirationen."
-
-#: templates/base.html:395
-msgid "Enter your email"
-msgstr "Geben Sie Ihre E-Mail ein"
-
-#: templates/base.html:396
-msgid "Subscribe"
-msgstr "Abonnieren"
-
-#: templates/base.html:401
-msgid "We accept"
-msgstr "Wir akzeptieren"
-
-#: templates/base.html:411
-msgid "All rights reserved."
-msgstr "Alle Rechte vorbehalten."
-
-#: templates/base.html:417
-msgid "Cookies"
-msgstr "Cookies"
-
-#: templates/base.html:420
-msgid "Follow us"
-msgstr "Folgen Sie uns"
-
-#: templates/base.html:432
-msgid "Back to top"
-msgstr "Zurück nach oben"
-
-#: templates/bookings/booking_create.html:4
-msgid "Book"
-msgstr "Buchen"
-
-#: templates/bookings/booking_create.html:16
-#: templates/bookings/booking_detail.html:4
-#: templates/payments/mock_pay.html:155
-msgid "Booking"
-msgstr "Buchung"
-
-#: templates/bookings/booking_create.html:19
-msgid "Complete Your Booking"
-msgstr "Schließen Sie Ihre Buchung ab"
-
-#: templates/bookings/booking_create.html:20
-msgid "Just a few details and you're ready to start your adventure"
-msgstr "Nur noch ein paar Details und Sie können Ihr Abenteuer beginnen"
-
-#: templates/bookings/booking_create.html:27
-#: templates/bookings/booking_create.html:80
-#: templates/payments/payment_select.html:25
-msgid "Trip Details"
-msgstr "Reisedetails"
-
-#: templates/bookings/booking_create.html:28
-msgid "Travel info"
-msgstr "Reiseinformationen"
-
-#: templates/bookings/booking_create.html:35
-#: templates/bookings/booking_create.html:174
-#: templates/payments/payment_select.html:4
-#: templates/payments/payment_select.html:15
-#: templates/payments/payment_select.html:33
-#: templates/payments/payment_success.html:32
-msgid "Payment"
-msgstr "Zahlung"
-
-#: templates/bookings/booking_create.html:36
-#: templates/payments/payment_select.html:18
-#: templates/payments/payment_select.html:34
-msgid "Secure checkout"
-msgstr "Sicherer Checkout"
-
-#: templates/bookings/booking_create.html:43
-#: templates/payments/payment_select.html:41
-msgid "Confirmation"
-msgstr "Bestätigung"
-
-#: templates/bookings/booking_create.html:44
-#: templates/payments/payment_select.html:42
-msgid "All set!"
-msgstr "Alles fertig!"
-
-#: templates/bookings/booking_create.html:58
-msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
-msgstr "Bitte beheben Sie die folgenden Fehler:"
-
-#: templates/bookings/booking_create.html:81
-msgid "When and how many guests"
-msgstr "Wann und wie viele Gäste"
-
-#: templates/bookings/booking_create.html:95
-msgid "Choose your preferred starting date"
-msgstr "Wählen Sie Ihr bevorzugtes Startdatum"
-
-#: templates/bookings/booking_create.html:113
-msgid "Age 12+"
-msgstr "Alter 12+"
-
-#: templates/bookings/booking_create.html:127
-msgid "Age 2-11"
-msgstr "Alter 2-11"
-
-#: templates/bookings/booking_create.html:137
-msgid "Contact Information"
-msgstr "Kontaktinformationen"
-
-#: templates/bookings/booking_create.html:138
-msgid "We'll send confirmation to your account"
-msgstr "Wir senden eine Bestätigung an Ihr Konto"
-
-#: templates/bookings/booking_create.html:152
-msgid "Edit profile"
-msgstr "Profil bearbeiten"
-
-#: templates/bookings/booking_create.html:161
-msgid "optional"
-msgstr "optional"
-
-#: templates/bookings/booking_create.html:164
-msgid "Dietary needs, accessibility requirements, special occasions..."
-msgstr "Ernährungsbedürfnisse, Anforderungen an die Barrierefreiheit, besondere Anlässe..."
-
-#: templates/bookings/booking_create.html:175
-msgid "Choose payment method on the next step"
-msgstr "Zahlungsmethode im nächsten Schritt wählen"
-
-#: templates/bookings/booking_create.html:181
-msgid "Card"
-msgstr "Karte"
-
-#: templates/bookings/booking_create.html:185
-msgid "Cash"
-msgstr "Bargeld"
-
-#: templates/bookings/booking_create.html:189
-msgid "All payments are encrypted and secure"
-msgstr "Alle Zahlungen sind verschlüsselt und sicher"
-
-#: templates/bookings/booking_create.html:200
-msgid "Terms of Service"
-msgstr "Nutzungsbedingungen"
-
-#: templates/bookings/booking_create.html:202
-msgid "and"
-msgstr "und"
-
-#: templates/bookings/booking_create.html:203
-msgid "Cancellation Policy"
-msgstr "Stornierungsbedingungen"
-
-#: templates/bookings/booking_create.html:208
-msgid "Confirm Booking"
-msgstr "Buchung bestätigen"
-
-#: templates/bookings/booking_create.html:214
-msgid "Free cancellation up to 3 days before travel date"
-msgstr "Kostenlose Stornierung bis zu 3 Tage vor Reiseantritt"
-
-#: templates/bookings/booking_create.html:246
-#: templates/bookings/booking_detail.html:165
-#: templates/bookings/booking_detail.html:208
-#: templates/bookings/booking_list.html:124 templates/home.html:121
-#: templates/home.html:122 templates/home.html:123 templates/tours/list.html:93
-#: templates/tours/list.html:94 templates/tours/list.html:95
-#: templates/tours/list.html:96
-msgid "days"
-msgstr "Tage"
-
-#: templates/bookings/booking_create.html:259
-#: templates/payments/payment_select.html:197
-msgid "Price Details"
-msgstr "Preisdetails"
-
-#: templates/bookings/booking_create.html:262
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:197
-#: templates/bookings/booking_detail.html:291 templates/home.html:56
-msgid "adults"
-msgstr "Erwachsene"
-
-#: templates/bookings/booking_create.html:266
-#: templates/bookings/booking_detail.html:167
-#: templates/bookings/booking_detail.html:198 templates/home.html:56
-msgid "children"
-msgstr "Kinder"
-
-#: templates/bookings/booking_create.html:267
-#: templates/payments/payment_select.html:208
-msgid "Free"
-msgstr "Kostenlos"
-
-#: templates/bookings/booking_create.html:270
-#: templates/bookings/booking_detail.html:301
-#: templates/payments/payment_select.html:207
-msgid "Service fee"
-msgstr "Servicegebühr"
-
-#: templates/bookings/booking_create.html:274
-msgid "Taxes"
-msgstr "Steuern"
-
-#: templates/bookings/booking_create.html:275
-#: templates/bookings/booking_detail.html:297
-#: templates/bookings/booking_detail.html:306 templates/tours/detail.html:164
-msgid "Included"
-msgstr "Inbegriffen"
-
-#: templates/bookings/booking_create.html:282
-#: templates/bookings/booking_detail.html:312
-#: templates/bookings/booking_list.html:28
-#: templates/bookings/booking_list.html:133
-#: templates/payments/payment_select.html:216 templates/tours/detail.html:311
-msgid "Total"
-msgstr "Gesamt"
-
-#: templates/bookings/booking_create.html:291
-#: templates/bookings/booking_detail.html:366
-msgid "Secure booking"
-msgstr "Sichere Buchung"
-
-#: templates/bookings/booking_create.html:292
-#: templates/bookings/booking_detail.html:367
-msgid "256-bit SSL encryption"
-msgstr "256-Bit SSL-Verschlüsselung"
-
-#: templates/bookings/booking_create.html:298
-#: templates/bookings/booking_detail.html:373
-#: templates/payments/payment_select.html:225
-msgid "Free cancellation"
-msgstr "Kostenlose Stornierung"
-
-#: templates/bookings/booking_create.html:299
-msgid "Up to 3 days before"
-msgstr "Bis zu 3 Tage vorher"
-
-#: templates/bookings/booking_create.html:306
-msgid "We're here to help"
-msgstr "Wir sind hier, um zu helfen"
-
-#: templates/bookings/booking_detail.html:25
-#: templates/bookings/booking_list.html:53
-#: templates/bookings/booking_list.html:84
-#: templates/payments/payment_success.html:37
-msgid "Confirmed"
-msgstr "Bestätigt"
-
-#: templates/bookings/booking_detail.html:28
-msgid "Pending payment"
-msgstr "Zahlung ausstehend"
-
-#: templates/bookings/booking_detail.html:31
-#: templates/bookings/booking_list.html:56
-#: templates/bookings/booking_list.html:85
-#: templates/payments/payment_select.html:26
-msgid "Completed"
-msgstr "Abgeschlossen"
-
-#: templates/bookings/booking_detail.html:42
-msgid "Your trip is booked!"
-msgstr "Ihre Reise ist gebucht!"
-
-#: templates/bookings/booking_detail.html:43
-#: templates/socialaccount/signup.html:44
-msgid "Almost there!"
-msgstr "Fast geschafft!"
-
-#: templates/bookings/booking_detail.html:44
-msgid "Welcome back!"
-msgstr "Willkommen zurück!"
-
-#: templates/bookings/booking_detail.html:45
-msgid "Booking cancelled"
-msgstr "Buchung storniert"
-
-#: templates/bookings/booking_detail.html:46
-msgid "Booking details"
-msgstr "Buchungsdetails"
-
-#: templates/bookings/booking_detail.html:50
-msgid "Complete your payment to confirm this booking."
-msgstr "Schließen Sie Ihre Zahlung ab, um diese Buchung zu bestätigen."
-
-#: templates/bookings/booking_detail.html:51
-msgid ""
-"Get ready for an unforgettable journey. We've sent details to your email."
-msgstr "Machen Sie sich bereit für eine unvergessliche Reise. Wir haben Details an Ihre E-Mail gesendet."
-
-#: templates/bookings/booking_detail.html:52
-msgid "This booking has been cancelled."
-msgstr "Diese Buchung wurde storniert."
-
-#: templates/bookings/booking_detail.html:53
-msgid "All your trip information in one place."
-msgstr "Alle Ihre Reiseinformationen an einem Ort."
-
-#: templates/bookings/booking_detail.html:58
-#: templates/payments/payment_success.html:43
-msgid "Booking #"
-msgstr "Buchungs-Nr. "
-
-#: templates/bookings/booking_detail.html:62
-#: templates/bookings/booking_list.html:138
-msgid "Booked"
-msgstr "Gebucht"
-
-#: templates/bookings/booking_detail.html:66
-#: templates/payments/payment_success.html:51
-msgid "Travel date"
-msgstr "Reisedatum"
-
-#: templates/bookings/booking_detail.html:79
-msgid "E-Ticket"
-msgstr "E-Ticket"
-
-#: templates/bookings/booking_detail.html:84
-#: templates/bookings/booking_detail.html:216
-msgid "Destination"
-msgstr "Reiseziel"
-
-#: templates/bookings/booking_detail.html:90
-msgid "GUESTS"
-msgstr "GÄSTE"
-
-#: templates/bookings/booking_detail.html:94
-msgid "DURATION"
-msgstr "DAUER"
-
-#: templates/bookings/booking_detail.html:112
-msgid "Back to bookings"
-msgstr "Zurück zu meinen Buchungen"
-
-#: templates/bookings/booking_detail.html:117
-#: templates/bookings/booking_list.html:147
-msgid "Pay now"
-msgstr "Jetzt bezahlen"
-
-#: templates/bookings/booking_detail.html:121
-msgid "Print"
-msgstr "Drucken"
-
-#: templates/bookings/booking_detail.html:169
-msgid "View tour"
-msgstr "Tour ansehen"
-
-#: templates/bookings/booking_detail.html:180
-msgid "Trip Information"
-msgstr "Reiseinformationen"
-
-#: templates/bookings/booking_detail.html:181
-msgid "Your travel details"
-msgstr "Ihre Reisedetails"
-
-#: templates/bookings/booking_detail.html:195
-#: templates/bookings/booking_list.html:115
-#: templates/payments/payment_success.html:55 templates/tours/detail.html:285
-msgid "Guests"
-msgstr "Gäste"
-
-#: templates/bookings/booking_detail.html:206
-#: templates/bookings/booking_list.html:123 templates/home.html:120
-#: templates/tours/detail.html:84 templates/tours/list.html:91
-msgid "Duration"
-msgstr "Dauer"
-
-#: templates/bookings/booking_detail.html:208
-msgid "nights"
-msgstr "Nächte"
-
-#: templates/bookings/booking_detail.html:230
-msgid "Booking Info"
-msgstr "Buchungsinfo"
-
-#: templates/bookings/booking_detail.html:231
-msgid "Contact and reference"
-msgstr "Kontakt und Referenz"
-
-#: templates/bookings/booking_detail.html:246
-msgid "Reference"
-msgstr "Referenz"
-
-#: templates/bookings/booking_detail.html:265
-msgid "Cancellation Details"
-msgstr "Stornierungsdetails"
-
-#: templates/bookings/booking_detail.html:266
-msgid "Cancelled on"
-msgstr "Storniert am"
-
-#: templates/bookings/booking_detail.html:285
-msgid "Payment Summary"
-msgstr "Zahlungsübersicht"
-
-#: templates/bookings/booking_detail.html:286
-msgid "Price breakdown"
-msgstr "Preisaufschlüsselung"
-
-#: templates/bookings/booking_detail.html:305
-msgid "Tax"
-msgstr "Steuer"
-
-#: templates/bookings/booking_detail.html:321
-msgid "Payment pending"
-msgstr "Zahlung ausstehend"
-
-#: templates/bookings/booking_detail.html:331
-msgid "Complete Payment"
-msgstr "Zahlung abschließen"
-
-#: templates/bookings/booking_detail.html:339
-#: templates/payments/payment_select.html:234
-msgid "Need help?"
-msgstr "Brauchen Sie Hilfe?"
-
-#: templates/bookings/booking_detail.html:340
-msgid "Our support team is available 24/7 to assist with your booking."
-msgstr "Unser Support-Team steht Ihnen rund um die Uhr bei Ihrer Buchung zur Verfügung."
-
-#: templates/bookings/booking_detail.html:345
-msgid "Email support"
-msgstr "E-Mail-Support"
-
-#: templates/bookings/booking_detail.html:355
-msgid "Live chat"
-msgstr "Live-Chat"
-
-#: templates/bookings/booking_detail.html:374
-msgid "Up to 3 days before travel"
-msgstr "Bis zu 3 Tage vor Reiseantritt"
-
-#: templates/bookings/booking_detail.html:390
-msgid "Cancel this booking?"
-msgstr "Diese Buchung stornieren?"
-
-#: templates/bookings/booking_detail.html:391
-msgid ""
-"This action cannot be undone. Refunds depend on the cancellation policy."
-msgstr "Diese Aktion kann nicht rückgängig gemacht werden. Rückerstattungen hängen von den Stornierungsbedingungen ab."
-
-#: templates/bookings/booking_detail.html:396
-msgid "Reason (optional)"
-msgstr "Grund (optional)"
-
-#: templates/bookings/booking_detail.html:397
-msgid "Why are you cancelling?"
-msgstr "Warum stornieren Sie?"
-
-#: templates/bookings/booking_detail.html:401
-msgid "Keep booking"
-msgstr "Buchung behalten"
-
-#: templates/bookings/booking_detail.html:404
-msgid "Confirm cancel"
-msgstr "Stornierung bestätigen"
-
-#: templates/bookings/booking_list.html:21
-msgid "Your journeys"
-msgstr "Ihre Reisen"
-
-#: templates/bookings/booking_list.html:22
-msgid "Track and manage all your bookings in one place"
-msgstr "Verfolgen und verwalten Sie alle Ihre Buchungen an einem Ort"
-
-#: templates/bookings/booking_list.html:38
-msgid "Trips"
-msgstr "Reisen"
-
-#: templates/bookings/booking_list.html:46
-msgid "All"
-msgstr "Alle"
-
-#: templates/bookings/booking_list.html:143
-msgid "View details"
-msgstr "Details ansehen"
-
-#: templates/bookings/booking_list.html:165
-msgid "No bookings yet"
-msgstr "Noch keine Buchungen"
-
-#: templates/bookings/booking_list.html:166
-msgid ""
-"Your adventure is waiting. Browse our handcrafted tours and book your first "
-"trip."
-msgstr "Ihr Abenteuer wartet. Durchsuchen Sie unsere handverlesenen Touren und buchen Sie Ihre erste Reise."
-
-#: templates/bookings/booking_list.html:169
-#: templates/messages_app/contact_success.html:13
-msgid "Explore Tours"
-msgstr "Touren erkunden"
-
-#: templates/bookings/booking_list.html:172
-msgid "Browse Destinations"
-msgstr "Reiseziele durchsuchen"
-
-#: templates/home.html:13
-msgid "Explore the World"
-msgstr "Entdecken Sie die Welt"
-
-#: templates/home.html:15
-msgid ""
-"Pack your bags and let SoLuna redefine your travel experience. Where every "
-"journey is a story waiting to be told."
-msgstr "Packen Sie Ihre Koffer und lassen Sie SoLuna Ihr Reiseerlebnis neu definieren. Wo jede Reise eine Geschichte ist, die darauf wartet, erzählt zu werden."
-
-#: templates/home.html:20
-msgid "Hotels"
-msgstr "Hotels"
-
-#: templates/home.html:21
-msgid "Tickets"
-msgstr "Tickets"
-
-#: templates/home.html:22
-msgid "Rental"
-msgstr "Vermietung"
-
-#: templates/home.html:24
-msgid "Need some help?"
-msgstr "Brauchen Sie Hilfe?"
-
-#: templates/home.html:29 templates/tours/detail.html:116
-#: templates/tours/detail.html:196
-msgid "Location"
-msgstr "Ort"
-
-#: templates/home.html:32
-msgid "Samarkand, Uzbekistan"
-msgstr "Samarkand, Usbekistan"
-
-#: templates/home.html:37
-msgid "Check In"
-msgstr "Check-in"
-
-#: templates/home.html:45
-msgid "Check Out"
-msgstr "Check-out"
-
-#: templates/home.html:53
-msgid "Guest"
-msgstr "Gast"
-
-#: templates/home.html:72
-msgid "Top Searched Destinations"
-msgstr "Meistgesuchte Reiseziele"
-
-#: templates/home.html:73
-msgid "Favorite destinations of professional travelers"
-msgstr "Lieblingsziele von professionellen Reisenden"
-
-#: templates/home.html:105
-msgid "Our Featured Tours"
-msgstr "Unsere empfohlenen Touren"
-
-#: templates/home.html:106 templates/home.html:269
-msgid "Favorite destinations based on customer reviews"
-msgstr "Lieblingsziele basierend auf Kundenbewertungen"
-
-#: templates/home.html:112 templates/tours/list.html:64
-msgid "Categories"
-msgstr "Kategorien"
-
-#: templates/home.html:128
-msgid "Price range"
-msgstr "Preisspanne"
-
-#: templates/home.html:137
-msgid "Clear"
-msgstr "Löschen"
-
-#: templates/home.html:156 templates/tours/list.html:141
-msgid "Best Sale"
-msgstr "Bestseller"
-
-#: templates/home.html:158 templates/regions/detail.html:73
-#: templates/tours/detail.html:28 templates/tours/list.html:137
-msgid "Top Rated"
-msgstr "Bestbewertet"
-
-#: templates/home.html:162 templates/tours/list.html:144
-msgid "Add to favorites"
-msgstr "Zu Favoriten hinzufügen"
-
-#: templates/home.html:171 templates/tours/detail.html:32
-#: templates/tours/detail.html:219 templates/tours/list.html:153
-msgid "reviews"
-msgstr "Bewertungen"
-
-#: templates/home.html:185 templates/regions/detail.html:85
-#: templates/tours/detail.html:278 templates/tours/detail.html:353
-#: templates/tours/list.html:167
-msgid "person"
-msgstr "Person"
-
-#: templates/home.html:187 templates/tours/detail.html:317
-#: templates/tours/list.html:169
-msgid "Book Now"
-msgstr "Jetzt buchen"
-
-#: templates/home.html:216
-msgid "Easy payment"
-msgstr "Einfache Zahlung"
-
-#: templates/home.html:218
-msgid "We offer tours in a range of locations"
-msgstr "Wir bieten Touren an verschiedenen Orten an"
-
-#: templates/home.html:220 templates/home.html:306
-msgid ""
-"Choose one style or create a package, fill your passports with adventures "
-"together."
-msgstr "Wählen Sie einen Stil oder erstellen Sie ein Paket, füllen Sie Ihre Pässe gemeinsam mit Abenteuern."
-
-#: templates/home.html:224
-msgid "Security Assurance"
-msgstr "Sicherheitsgarantie"
-
-#: templates/home.html:225
-msgid "Customer Support"
-msgstr "Kundensupport"
-
-#: templates/home.html:226
-msgid "Transparent Policies"
-msgstr "Transparente Richtlinien"
-
-#: templates/home.html:227
-msgid "Reputable Affiliations"
-msgstr "Seriöse Partnerschaften"
-
-#: templates/home.html:231
-msgid "Payment is secure and safe"
-msgstr "Die Zahlung ist sicher und geschützt"
-
-#: templates/home.html:268
-msgid "Top Categories of Tours"
-msgstr "Top-Kategorien von Touren"
-
-#: templates/home.html:272 templates/home.html:447
-msgid "View More"
-msgstr "Mehr anzeigen"
-
-#: templates/home.html:302
-msgid "Why book at SoLuna?"
-msgstr "Warum bei SoLuna buchen?"
-
-#: templates/home.html:304
-msgid "Embracing Adventure Since 2025"
-msgstr "Abenteuer umarmen seit 2025"
-
-#: templates/home.html:348
-msgid "Install APP & Get discount code"
-msgstr "App installieren & Rabattcode erhalten"
-
-#: templates/home.html:351
-#, python-format
-msgid "Up to 55%% Discount and lots of special gifts"
-msgstr "Bis zu 55%% Rabatt und viele besondere Geschenke"
-
-#: templates/home.html:382
-msgid "Trending Destinations"
-msgstr "Beliebte Reiseziele"
-
-#: templates/home.html:383
-msgid "Most popular choices for travelers"
-msgstr "Die beliebtesten Wahlen für Reisende"
-
-#: templates/home.html:411
-msgid "Get inspiration for your next trip"
-msgstr "Lassen Sie sich für Ihre nächste Reise inspirieren"
-
-#: templates/home.html:412
-msgid "Favorite stories based on customer reviews"
-msgstr "Lieblingsgeschichten basierend auf Kundenbewertungen"
-
-#: templates/home.html:438
-msgid "Keep Reading"
-msgstr "Weiterlesen"
-
-#: templates/messages_app/contact.html:4
-msgid "Contact Us"
-msgstr "Kontaktieren Sie uns"
-
-#: templates/messages_app/contact.html:17
-msgid "Get in touch"
-msgstr "Nehmen Sie Kontakt auf"
-
-#: templates/messages_app/contact.html:19
-msgid "We'd love to hear from you"
-msgstr "Wir würden uns freuen, von Ihnen zu hören"
-
-#: templates/messages_app/contact.html:21
-msgid ""
-"Have a question or need help planning your trip? Our team is here for you."
-msgstr "Haben Sie eine Frage oder benötigen Sie Hilfe bei der Planung Ihrer Reise? Unser Team ist für Sie da."
-
-#: templates/messages_app/contact.html:34
-msgid "Mon - Sat, 8AM - 6PM"
-msgstr "Mo - Sa, 8:00 - 18:00 Uhr"
-
-#: templates/messages_app/contact.html:41
-msgid "We reply within 24 hours"
-msgstr "Wir antworten innerhalb von 24 Stunden"
-
-#: templates/messages_app/contact.html:47
-msgid "Office"
-msgstr "Büro"
-
-#: templates/messages_app/contact.html:48
-msgid "Visit us in person"
-msgstr "Besuchen Sie uns persönlich"
-
-#: templates/messages_app/contact.html:54
-msgid "Social"
-msgstr "Soziale Medien"
-
-#: templates/messages_app/contact.html:55
-msgid "Follow us for updates"
-msgstr "Folgen Sie uns für Updates"
-
-#: templates/messages_app/contact.html:63
-msgid "Send us a message"
-msgstr "Senden Sie uns eine Nachricht"
-
-#: templates/messages_app/contact.html:65
-msgid "Fill out the form and we'll get back to you shortly."
-msgstr "Füllen Sie das Formular aus und wir melden uns in Kürze bei Ihnen."
-
-#: templates/messages_app/contact.html:88
-msgid "Subject"
-msgstr "Betreff"
-
-#: templates/messages_app/contact.html:94
-msgid "Message"
-msgstr "Nachricht"
-
-#: templates/messages_app/contact.html:99
-msgid "Send Message"
-msgstr "Nachricht senden"
-
-#: templates/messages_app/contact_success.html:3
-msgid "Message Sent"
-msgstr "Nachricht gesendet"
-
-#: templates/messages_app/contact_success.html:8
-msgid "Message Sent!"
-msgstr "Nachricht gesendet!"
-
-#: templates/messages_app/contact_success.html:10
-msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
-msgstr "Vielen Dank für Ihre Kontaktaufnahme. Oygul wird sich innerhalb von 24 Stunden bei Ihnen melden."
-
-#: templates/messages_app/contact_success.html:14
-msgid "Back to Home"
-msgstr "Zurück zur Startseite"
-
-#: templates/payments/mock_pay.html:4
-msgid "Payment Gateway"
-msgstr "Zahlungsgateway"
-
-#: templates/payments/mock_pay.html:13
-msgid "TEST MODE"
-msgstr "TESTMODUS"
-
-#: templates/payments/mock_pay.html:14
-msgid "Real payment gateways are not configured. This is a simulation."
-msgstr "Echte Zahlungsgateways sind nicht konfiguriert. Dies ist eine Simulation."
-
-#: templates/payments/mock_pay.html:30 templates/payments/mock_pay.html:129
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_pending.html:32
-#: templates/payments/payment_select.html:63
-#: templates/payments/payment_select.html:162
-#: templates/payments/payment_select.html:204
-msgid "soums"
-msgstr "Sum"
-
-#: templates/payments/mock_pay.html:48
-msgid "Payment failed"
-msgstr "Zahlung fehlgeschlagen"
-
-#: templates/payments/mock_pay.html:58
-msgid "Test cards"
-msgstr "Testkarten"
-
-#: templates/payments/mock_pay.html:68
-msgid "Always success"
-msgstr "Immer erfolgreich"
-
-#: templates/payments/mock_pay.html:75
-msgid "Declined by bank"
-msgstr "Von der Bank abgelehnt"
-
-#: templates/payments/mock_pay.html:82
-msgid "Insufficient funds"
-msgstr "Unzureichendes Guthaben"
-
-#: templates/payments/mock_pay.html:92
-msgid "Enter card details"
-msgstr "Kartendetails eingeben"
-
-#: templates/payments/mock_pay.html:96
-msgid "Card number"
-msgstr "Kartennummer"
-
-#: templates/payments/mock_pay.html:107
-msgid "Expiry"
-msgstr "Ablaufdatum"
-
-#: templates/payments/mock_pay.html:119
-msgid "Cardholder name"
-msgstr "Name des Karteninhabers"
-
-#: templates/payments/mock_pay.html:127
-msgid "Amount to pay"
-msgstr "Zu zahlender Betrag"
-
-#: templates/payments/mock_pay.html:136
-#: templates/payments/payment_select.html:162
-msgid "Pay"
-msgstr "Bezahlen"
-
-#: templates/payments/mock_pay.html:141
-msgid "Cancel and choose another method"
-msgstr "Abbrechen und andere Methode wählen"
-
-#: templates/payments/mock_pay.html:149
-msgid "Secure payment"
-msgstr "Sichere Zahlung"
-
-#: templates/payments/mock_pay.html:150
-msgid ""
-"Your card information is encrypted with 256-bit SSL and never stored on our "
-"servers."
-msgstr "Ihre Karteninformationen werden mit 256-Bit-SSL verschlüsselt und niemals auf unseren Servern gespeichert."
-
-#: templates/payments/payment_failed.html:4
-#: templates/payments/payment_failed.html:15
-msgid "Payment Failed"
-msgstr "Zahlung fehlgeschlagen"
-
-#: templates/payments/payment_failed.html:17
-msgid "Something went wrong with your payment. Your card was not charged."
-msgstr "Bei Ihrer Zahlung ist etwas schiefgelaufen. Ihre Karte wurde nicht belastet."
-
-#: templates/payments/payment_failed.html:21
-msgid "Possible reasons:"
-msgstr "Mögliche Gründe:"
-
-#: templates/payments/payment_failed.html:23
-msgid "Insufficient funds on the card"
-msgstr "Unzureichendes Guthaben auf der Karte"
-
-#: templates/payments/payment_failed.html:24
-msgid "Card declined by the bank"
-msgstr "Karte von der Bank abgelehnt"
-
-#: templates/payments/payment_failed.html:25
-msgid "Incorrect card details"
-msgstr "Falsche Kartendetails"
-
-#: templates/payments/payment_failed.html:26
-#: templates/socialaccount/authentication_error.html:43
-msgid "Network connection issue"
-msgstr "Problem mit der Netzwerkverbindung"
-
-#: templates/payments/payment_failed.html:32
-msgid "Try Again"
-msgstr "Erneut versuchen"
-
-#: templates/payments/payment_failed.html:35
-msgid "Contact Support"
-msgstr "Support kontaktieren"
-
-#: templates/payments/payment_pending.html:4
-msgid "Payment Processing"
-msgstr "Zahlungsabwicklung"
-
-#: templates/payments/payment_pending.html:16
-msgid "Payment processing..."
-msgstr "Zahlung wird bearbeitet..."
-
-#: templates/payments/payment_pending.html:18
-msgid ""
-"We are waiting for confirmation from the payment gateway. This usually takes "
-"a few seconds."
-msgstr "Wir warten auf die Bestätigung des Zahlungsgateways. Dies dauert normalerweise ein paar Sekunden."
-
-#: templates/payments/payment_pending.html:42
-msgid "Don't close this page. We'll redirect you automatically."
-msgstr "Schließen Sie diese Seite nicht. Wir leiten Sie automatisch weiter."
-
-#: templates/payments/payment_select.html:19
-msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
-msgstr "Wählen Sie Ihre Zahlungsmethode. Alle Zahlungen erfolgen in usbekischen Sum (UZS)."
-
-#: templates/payments/payment_select.html:62
-msgid "Conversion to UZS"
-msgstr "Umrechnung in UZS"
-
-#: templates/payments/payment_select.html:71
-msgid "Choose payment method"
-msgstr "Zahlungsmethode wählen"
-
-#: templates/payments/payment_select.html:72
-msgid "Secure payment in Uzbek Som"
-msgstr "Sichere Zahlung in usbekischen Sum"
-
-#: templates/payments/payment_select.html:87
-msgid "Pay via Click app, card or balance"
-msgstr "Bezahlen Sie per Click-App, Karte oder Guthaben"
-
-#: templates/payments/payment_select.html:108
-msgid "Pay via Payme app or card"
-msgstr "Bezahlen Sie per Payme-App oder Karte"
-
-#: templates/payments/payment_select.html:127
-msgid "Pay at office"
-msgstr "Im Büro bezahlen"
-
-#: templates/payments/payment_select.html:128
-msgid "Visit our Tashkent office"
-msgstr "Besuchen Sie unser Büro in Taschkent"
-
-#: templates/payments/payment_select.html:141
-msgid "You'll be redirected"
-msgstr "Sie werden weitergeleitet"
-
-#: templates/payments/payment_select.html:142
-msgid ""
-"After clicking Pay, you'll be redirected to the secure gateway page to "
-"complete the transaction."
-msgstr "Nach dem Klicken auf Bezahlen werden Sie zur sicheren Gateway-Seite weitergeleitet, um die Transaktion abzuschließen."
-
-#: templates/payments/payment_select.html:149
-msgid "256-bit SSL"
-msgstr "256-Bit-SSL"
-
-#: templates/payments/payment_select.html:153
-msgid "PCI DSS"
-msgstr "PCI DSS"
-
-#: templates/payments/payment_select.html:157
-msgid "Money-back guarantee"
-msgstr "Geld-zurück-Garantie"
-
-#: templates/payments/payment_select.html:168
-msgid "By proceeding, you accept the booking terms."
-msgstr "Indem Sie fortfahren, akzeptieren Sie die Buchungsbedingungen."
-
-#: templates/payments/payment_select.html:199
-msgid "Tour price"
-msgstr "Tourpreis"
-
-#: templates/payments/payment_select.html:203
-msgid "Conversion"
-msgstr "Umrechnung"
-
-#: templates/payments/payment_select.html:219
-msgid "soum"
-msgstr "Sum"
-
-#: templates/payments/payment_select.html:226
-msgid "Until 3 days before travel"
-msgstr "Bis zu 3 Tage vor Reiseantritt"
-
-#: templates/payments/payment_select.html:235
-#: templates/socialaccount/authentication_error.html:53
-msgid "Contact support"
-msgstr "Support kontaktieren"
-
-#: templates/payments/payment_select.html:366
-msgid ""
-"You will be redirected to Click payment page. Complete the payment via your "
-"card or Click app."
-msgstr "Sie werden zur Click-Zahlungsseite weitergeleitet. Schließen Sie die Zahlung über Ihre Karte oder die Click-App ab."
-
-#: templates/payments/payment_select.html:367
-msgid ""
-"You will be redirected to Payme. Complete the payment via your card or Payme "
-"app."
-msgstr "Sie werden zu Payme weitergeleitet. Schließen Sie die Zahlung über Ihre Karte oder die Payme-App ab."
-
-#: templates/payments/payment_select.html:368
-msgid ""
-"Visit our office in Tashkent to complete payment in cash. Your booking will "
-"remain pending until paid."
-msgstr "Besuchen Sie unser Büro in Taschkent, um die Zahlung in bar abzuschließen. Ihre Buchung bleibt bis zur Zahlung ausstehend."
-
-#: templates/payments/payment_select.html:384
-msgid "Redirecting to gateway..."
-msgstr "Weiterleitung zum Gateway..."
-
-#: templates/payments/payment_success.html:4
-msgid "Payment Successful"
-msgstr "Zahlung erfolgreich"
-
-#: templates/payments/payment_success.html:19
-msgid "Payment Successful!"
-msgstr "Zahlung erfolgreich!"
-
-#: templates/payments/payment_success.html:21
-msgid "Your booking has been confirmed. We've sent the details to your email."
-msgstr "Ihre Buchung wurde bestätigt. Wir haben die Details an Ihre E-Mail gesendet."
-
-#: templates/payments/payment_success.html:27
-msgid "Details"
-msgstr "Details"
-
-#: templates/payments/payment_success.html:47 templates/reviews/form.html:14
-msgid "Tour"
-msgstr "Tour"
-
-#: templates/payments/payment_success.html:67
-msgid "View Booking Details"
-msgstr "Buchungsdetails ansehen"
-
-#: templates/payments/payment_success.html:70
-msgid "Explore More Tours"
-msgstr "Weitere Touren entdecken"
-
-#: templates/payments/payment_success.html:75
-msgid "What happens next?"
-msgstr "Wie geht es weiter?"
-
-#: templates/payments/payment_success.html:77
-msgid "We'll send a confirmation email with full itinerary"
-msgstr "Wir senden eine Bestätigungs-E-Mail mit dem vollständigen Reiseplan"
-
-#: templates/payments/payment_success.html:78
-msgid "Our team will contact you 48 hours before the trip"
-msgstr "Unser Team wird Sie 48 Stunden vor der Reise kontaktieren"
-
-#: templates/payments/payment_success.html:79
-msgid "Check your booking anytime in your profile"
-msgstr "Überprüfen Sie Ihre Buchung jederzeit in Ihrem Profil"
-
-#: templates/regions/detail.html:41
-msgid "About"
-msgstr "Über"
-
-#: templates/regions/detail.html:48
-msgid "Why visit"
-msgstr "Warum besuchen"
-
-#: templates/regions/detail.html:64
-msgid "Tours in"
-msgstr "Touren in"
-
-#: templates/regions/detail.html:65
-msgid "tours"
-msgstr "Touren"
-
-#: templates/regions/detail.html:86 templates/tours/detail.html:354
-msgid "View"
-msgstr "Ansehen"
-
-#: templates/regions/detail.html:99
-msgid "Quick Facts"
-msgstr "Auf einen Blick"
-
-#: templates/regions/detail.html:112
-msgid "Population"
-msgstr "Bevölkerung"
-
-#: templates/regions/detail.html:121
-msgid "Best time to visit"
-msgstr "Beste Reisezeit"
-
-#: templates/regions/detail.html:155
-msgid "Need help planning?"
-msgstr "Brauchen Sie Hilfe bei der Planung?"
-
-#: templates/regions/detail.html:157
-msgid "Our local experts can craft a custom tour for you."
-msgstr "Unsere lokalen Experten können eine maßgeschneiderte Tour für Sie zusammenstellen."
-
-#: templates/regions/list.html:18
-msgid "Explore the Silk Road"
-msgstr "Entdecken Sie die Seidenstraße"
-
-#: templates/regions/list.html:20
-msgid "Discover Uzbekistan's Most Beautiful Destinations"
-msgstr "Entdecken Sie Usbekistans schönste Reiseziele"
-
-#: templates/regions/list.html:22
-msgid ""
-"From ancient Samarkand to the deserts of Karakalpakstan — find your next "
-"adventure."
-msgstr "Vom antiken Samarkand bis zu den Wüsten von Karakalpakstan — finden Sie Ihr nächstes Abenteuer."
-
-#: templates/regions/list.html:48
-msgid "Tours available"
-msgstr "Verfügbare Touren"
-
-#: templates/regions/list.html:59
-msgid "No destinations yet"
-msgstr "Noch keine Reiseziele"
-
-#: templates/regions/list.html:60
-msgid "Check back soon for new destinations."
-msgstr "Schauen Sie bald wieder nach neuen Reisezielen."
-
-#: templates/reviews/form.html:4
-msgid "Write a Review"
-msgstr "Bewertung schreiben"
-
-#: templates/reviews/form.html:11
-msgid "Update Your Review"
-msgstr "Ihre Bewertung aktualisieren"
-
-#: templates/reviews/form.html:11
-msgid "Share Your Experience"
-msgstr "Teilen Sie Ihre Erfahrung"
-
-#: templates/reviews/form.html:58
-msgid "Write your detailed review here..."
-msgstr "Schreiben Sie Ihre ausführliche Bewertung hier..."
-
-#: templates/reviews/form.html:80
-msgid "Submit Review"
-msgstr "Bewertung einreichen"
-
-#: templates/socialaccount/authentication_error.html:4
-msgid "Authentication Error"
-msgstr "Authentifizierungsfehler"
-
-#: templates/socialaccount/authentication_error.html:28
-msgid "Authentication failed"
-msgstr "Authentifizierung fehlgeschlagen"
-
-#: templates/socialaccount/authentication_error.html:30
-msgid ""
-"Something went wrong while signing you in. Your account is safe — no changes "
-"were made."
-msgstr "Beim Anmelden ist etwas schiefgelaufen. Ihr Konto ist sicher — es wurden keine Änderungen vorgenommen."
-
-#: templates/socialaccount/authentication_error.html:37
-msgid "Possible reasons"
-msgstr "Mögliche Gründe"
-
-#: templates/socialaccount/authentication_error.html:40
-msgid "You cancelled the sign-in process"
-msgstr "Sie haben den Anmeldevorgang abgebrochen"
-
-#: templates/socialaccount/authentication_error.html:41
-msgid "The provider's session expired"
-msgstr "Die Sitzung des Anbieters ist abgelaufen"
-
-#: templates/socialaccount/authentication_error.html:42
-msgid "Permission was denied"
-msgstr "Berechtigung wurde verweigert"
-
-#: templates/socialaccount/authentication_error.html:58
-msgid "Go to homepage"
-msgstr "Zur Startseite gehen"
-
-#: templates/socialaccount/authentication_error.html:65
-msgid "Your account is secure"
-msgstr "Ihr Konto ist sicher"
-
-#: templates/socialaccount/login.html:4
-#, python-format
-msgid "Sign In via %(provider_name)s"
-msgstr "Anmelden über %(provider_name)s"
-
-#: templates/socialaccount/login.html:53
-#, python-format
-msgid "Continue with %(provider_name)s"
-msgstr "Weiter mit %(provider_name)s"
-
-#: templates/socialaccount/login.html:56
-#, python-format
-msgid ""
-"You're about to sign in to SoLuna using your %(provider_name)s account. "
-"Click continue to proceed securely."
-msgstr "Sie sind dabei, sich bei SoLuna mit Ihrem %(provider_name)s Konto anzumelden. Klicken Sie auf Weiter, um sicher fortzufahren."
-
-#: templates/socialaccount/login.html:63
-msgid "We'll receive"
-msgstr "Wir erhalten"
-
-#: templates/socialaccount/login.html:66
-msgid "Your email address"
-msgstr "Ihre E-Mail-Adresse"
-
-#: templates/socialaccount/login.html:67
-msgid "Your name and profile photo"
-msgstr "Ihren Namen und Ihr Profilbild"
-
-#: templates/socialaccount/login.html:71
-msgid "We will never post anything without your permission."
-msgstr "Wir werden niemals etwas ohne Ihre Erlaubnis posten."
-
-#: templates/socialaccount/login.html:78
-msgid "Continue"
-msgstr "Weiter"
-
-#: templates/socialaccount/login.html:91
-#: templates/socialaccount/signup.html:143
-msgid "Secure connection · Your data is encrypted"
-msgstr "Sichere Verbindung · Ihre Daten sind verschlüsselt"
-
-#: templates/socialaccount/login.html:304
-msgid "Redirecting..."
-msgstr "Weiterleitung..."
-
-#: templates/socialaccount/signup.html:4
-msgid "Complete sign up"
-msgstr "Registrierung abschließen"
-
-#: templates/socialaccount/signup.html:47
-msgid "Complete your profile"
-msgstr "Vervollständigen Sie Ihr Profil"
-
-#: templates/socialaccount/signup.html:49
-msgid ""
-"Just one more step. Please confirm your details to finish creating your "
-"SoLuna account."
-msgstr "Nur noch ein Schritt. Bitte bestätigen Sie Ihre Daten, um die Erstellung Ihres SoLuna-Kontos abzuschließen."
-
-#: templates/socialaccount/signup.html:79
-msgid "From your social account"
-msgstr "Aus Ihrem Social-Media-Konto"
-
-#: templates/socialaccount/signup.html:104
-msgid "You'll get"
-msgstr "Sie erhalten"
-
-#: templates/socialaccount/signup.html:107
-#, python-format
-msgid "5%% off on your first booking"
-msgstr "5%% Rabatt auf Ihre erste Buchung"
-
-#: templates/socialaccount/signup.html:108
-msgid "Exclusive offers and updates"
-msgstr "Exklusive Angebote und Updates"
-
-#: templates/socialaccount/signup.html:109
-msgid "Personalized travel recommendations"
-msgstr "Personalisierte Reiseempfehlungen"
-
-#: templates/socialaccount/signup.html:121
-msgid "and consent to receive travel inspiration emails"
-msgstr "und stimme dem Erhalt von Reise-Inspirations-E-Mails zu"
-
-#: templates/socialaccount/signup.html:287
-msgid "Creating account..."
-msgstr "Konto wird erstellt..."
-
-#: templates/tours/detail.html:43
-msgid "Share"
-msgstr "Teilen"
-
-#: templates/tours/detail.html:44
-msgid "Save"
-msgstr "Speichern"
-
-#: templates/tours/detail.html:61
-msgid "See all"
-msgstr "Alle ansehen"
-
-#: templates/tours/detail.html:61
-msgid "photos"
-msgstr "Fotos"
-
-#: templates/tours/detail.html:91
-msgid "Group Size"
-msgstr "Gruppengröße"
-
-#: templates/tours/detail.html:92
-msgid "people"
-msgstr "Personen"
-
-#: templates/tours/detail.html:98
-msgid "Languages"
-msgstr "Sprachen"
-
-#: templates/tours/detail.html:105
-msgid "Tour Type"
-msgstr "Tourart"
-
-#: templates/tours/detail.html:113 templates/tours/detail.html:122
-msgid "Overview"
-msgstr "Übersicht"
-
-#: templates/tours/detail.html:114 templates/tours/detail.html:140
-msgid "Itinerary"
-msgstr "Reiseplan"
-
-#: templates/tours/detail.html:115 templates/tours/detail.html:160
-msgid "What's included"
-msgstr "Was ist inbegriffen"
-
-#: templates/tours/detail.html:128
-msgid "Highlights"
-msgstr "Höhepunkte"
-
-#: templates/tours/detail.html:145
-msgid "Day"
-msgstr "Tag"
-
-#: templates/tours/detail.html:170
-msgid "Professional guide"
-msgstr "Professioneller Reiseleiter"
-
-#: templates/tours/detail.html:171
-msgid "Transport (A/C vehicle)"
-msgstr "Transport (klimatisiertes Fahrzeug)"
-
-#: templates/tours/detail.html:172
-msgid "Entrance fees"
-msgstr "Eintrittsgelder"
-
-#: templates/tours/detail.html:173
-msgid "Hotel accommodation"
-msgstr "Hotelunterkunft"
-
-#: templates/tours/detail.html:179
-msgid "Not Included"
-msgstr "Nicht inbegriffen"
-
-#: templates/tours/detail.html:185
-msgid "International flights"
-msgstr "Internationale Flüge"
-
-#: templates/tours/detail.html:186
-msgid "Travel insurance"
-msgstr "Reiseversicherung"
-
-#: templates/tours/detail.html:187
-msgid "Personal expenses"
-msgstr "Persönliche Ausgaben"
-
-#: templates/tours/detail.html:223
-msgid "Excellent"
-msgstr "Hervorragend"
-
-#: templates/tours/detail.html:224
 msgid "Good"
 msgstr "Gut"
 
-#: templates/tours/detail.html:225
-msgid "Average"
-msgstr "Durchschnittlich"
+msgid "Strong"
+msgstr "Stark"
 
-#: templates/tours/detail.html:226
-msgid "Poor"
-msgstr "Mangelhaft"
+msgid "Passwords match"
+msgstr "Passwort"
 
-#: templates/tours/detail.html:227
-msgid "Terrible"
-msgstr "Schrecklich"
+msgid "Passwords do not match"
+msgstr "Passwortstärke"
 
-#: templates/tours/detail.html:256
-msgid "No reviews yet. Be the first to share your experience!"
-msgstr "Noch keine Bewertungen. Teilen Sie als Erster Ihre Erfahrung!"
+msgid "My Profile"
+msgstr "Mein Profil"
 
-#: templates/tours/detail.html:263
-msgid "Write a review"
-msgstr "Bewertung schreiben"
+msgid "Administrator"
+msgstr "Administrator"
 
-#: templates/tours/detail.html:282
-msgid "Date"
-msgstr "Datum"
+msgid "Member"
+msgstr "Mitglied"
 
-#: templates/tours/detail.html:322
-msgid "Need help booking?"
-msgstr "Brauchen Sie Hilfe bei der Buchung?"
+msgid "Joined"
+msgstr "Beigetreten"
 
-#: templates/tours/detail.html:338
-msgid "Related tours"
-msgstr "Ähnliche Touren"
+msgid "Edit Profile"
+msgstr "Profil bearbeiten"
 
-#: templates/tours/list.html:21
-msgid "tours found"
-msgstr "Touren gefunden"
+msgid "Total Bookings"
+msgstr "Gesamte Buchungen"
 
-#: templates/tours/list.html:27
-msgid "Sort by"
-msgstr "Sortieren nach"
+msgid "Completed Trips"
+msgstr "Abgeschlossene Reisen"
 
-#: templates/tours/list.html:33
-msgid "Most Popular"
+msgid "Wishlist"
+msgstr "Wunschliste"
+
+msgid "Reviews"
+msgstr "Bewertungen"
+
+msgid "Overview"
+msgstr "Übersicht"
+
+msgid "My Bookings"
+msgstr "Meine Buchungen"
+
+msgid "My Reviews"
+msgstr "Meine Bewertungen"
+
+msgid "Logout"
+msgstr "Abmelden"
+
+msgid "Personal Information"
+msgstr "Persönliche Informationen"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Preferred Language"
+msgstr "Sprache"
+
+msgid "Recent Bookings"
+msgstr "Letzte Buchungen"
+
+msgid "View all"
+msgstr "Alle ansehen"
+
+msgid "You haven't booked any tours yet."
+msgstr "Sie haben noch keine Touren gebucht."
+
+msgid "Browse tours"
+msgstr "Touren durchsuchen"
+
+msgid "days"
+msgstr "Tage"
+
+msgid "Your wishlist is empty."
+msgstr "Ihre Wunschliste ist leer."
+
+msgid "Awaiting approval"
+msgstr "Wartet auf Freigabe"
+
+msgid "You haven't written any reviews yet."
+msgstr "Sie haben noch keine Touren gebucht."
+
+msgid "Update your personal information and preferences."
+msgstr "Aktualisieren Sie Ihre persönlichen Daten und Einstellungen."
+
+msgid "Profile photo"
+msgstr "Profilbild"
+
+msgid "JPG or PNG, up to 2MB."
+msgstr "JPG, PNG. Max. 2MB."
+
+msgid "Upload new"
+msgstr "Hochladen"
+
+msgid "First Name"
+msgstr "Vorname"
+
+msgid "Your first name"
+msgstr "Vorname"
+
+msgid "Last Name"
+msgstr "Nachname"
+
+msgid "Your last name"
+msgstr "Nachname"
+
+msgid "Email cannot be changed here"
+msgstr "E-Mail kann nicht geändert werden."
+
+msgid "Email cannot be changed here."
+msgstr "E-Mail kann nicht geändert werden."
+
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+msgid "File is too large. Max 2MB."
+msgstr "Datei zu groß. Max. 2 MB."
+
+msgid "Register"
+msgstr "Registrieren"
+
+msgid "Join SoLuna and start planning your journey"
+msgstr ""
+"Werden Sie Mitglied bei SoLuna und beginnen Sie mit der Planung Ihrer Reise"
+
+msgid "or"
+msgstr "oder"
+
+msgid "Confirm"
+msgstr "Bestätigen"
+
+msgid "Change password"
+msgstr "Passwort ändern"
+
+msgid "Log out"
+msgstr "Abmelden?"
+
+msgid "Premium Uzbekistan & Silk Road Tours"
+msgstr "Premium-Touren durch Usbekistan & die Seidenstraße"
+
+msgid ""
+"SoLuna Travel — premium guided tours across Uzbekistan and the Great Silk "
+"Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys "
+"with local experts."
+msgstr ""
+
+msgid ""
+"SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan,"
+" Samarkand tour, Bukhara tour, Khiva tour, Tashkent tour, Central Asia "
+"travel, guided tours, sayohat, tur, Ozbekiston sayohat, туры Узбекистан, "
+"Шелковый путь"
+msgstr ""
+
+msgid "Premium guided tours across Uzbekistan and the Great Silk Road."
+msgstr "SoLuna — Premium-Touren durch Usbekistan und auf der Seidenstraße."
+
+msgid "Premium tours across Uzbekistan and the Silk Road."
+msgstr "SoLuna — Premium-Touren durch Usbekistan und auf der Seidenstraße."
+
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"
+
+msgid "Toggle theme"
+msgstr "Design umschalten"
+
+msgid "Main navigation"
+msgstr "Hauptnavigation"
+
+msgid "Tours"
+msgstr "Touren"
+
+msgid "All Tours"
+msgstr "Alle Touren"
+
+msgid "Browse our complete catalog"
+msgstr "Durchsuchen Sie unseren kompletten Katalog"
+
+msgid "Cultural"
+msgstr "Kulturell"
+
+msgid "Historic cities and heritage"
+msgstr "Historische Städte und Kulturerbe"
+
+msgid "Adventure"
+msgstr "Abenteuer"
+
+msgid "Mountains, deserts and trekking"
+msgstr "Berge, Wüsten und Trekking"
+
+msgid "Premium"
+msgstr "Premium"
+
+msgid "Luxury experiences"
+msgstr "Luxuserlebnisse"
+
+msgid "All Destinations"
+msgstr "Alle Reiseziele"
+
+msgid "Explore Uzbekistan"
+msgstr "Usbekistan entdecken"
+
+msgid "City of legends"
+msgstr "Stadt der Legenden"
+
+msgid "Holy and ancient"
+msgstr "Heilig und antik"
+
+msgid "Open-air museum"
+msgstr "Freilichtmuseum"
+
+msgid "Activities"
+msgstr "Aktivitäten"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Search"
+msgstr "Suche"
+
+msgid "Open menu"
+msgstr "Menü öffnen"
+
+msgid "Search tours, destinations, activities..."
+msgstr "Suchen Sie nach Touren, Reisezielen, Aktivitäten..."
+
+msgid "Close search"
+msgstr "Suche schließen"
+
+msgid "Popular"
+msgstr "Beliebt"
+
+msgid "Close menu"
+msgstr "Menü schließen"
+
+msgid "Mobile navigation"
+msgstr "Mobile Navigation"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid ""
+"Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for "
+"curious travelers, guided by local experts."
+msgstr ""
+"Boutique-Touren durch Usbekistan und die alte Seidenstraße. Für neugierige "
+"Reisende, geführt von lokalen Experten."
+
+msgid "Hours"
+msgstr "Öffnungszeiten"
+
+msgid "Company"
+msgstr "Unternehmen"
+
+msgid "About Us"
+msgstr "Über uns"
+
+msgid "Our Tours"
+msgstr "Unsere Touren"
+
+msgid "Services"
+msgstr "Dienstleistungen"
+
+msgid "Tour Booking"
+msgstr "Tourbuchung"
+
+msgid "Premium Tours"
+msgstr "Premium-Touren"
+
+msgid "Help & Support"
+msgstr "Hilfe & Support"
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Get exclusive offers and Silk Road travel inspiration."
+msgstr "Erhalten Sie exklusive Angebote und Reiseinspirationen."
+
+msgid "Your email address"
+msgstr "Ihre E-Mail-Adresse"
+
+msgid "Subscribe"
+msgstr "Abonnieren"
+
+msgid "We accept"
+msgstr "Wir akzeptieren"
+
+msgid "All rights reserved."
+msgstr "Alle Rechte vorbehalten."
+
+msgid "Cookies"
+msgstr "Cookies"
+
+msgid "Follow us"
+msgstr "Folgen Sie uns"
+
+msgid "Back to top"
+msgstr "Zurück nach oben"
+
+msgid "Book"
+msgstr "Buchen"
+
+msgid "Booking"
+msgstr "Buchung"
+
+msgid "Complete Your Booking"
+msgstr "Schließen Sie Ihre Buchung ab"
+
+msgid "Just a few details and you're ready to start your adventure"
+msgstr "Nur noch ein paar Details und Sie können Ihr Abenteuer beginnen"
+
+msgid "Trip Details"
+msgstr "Reisedetails"
+
+msgid "Travel info"
+msgstr "Reiseinformationen"
+
+msgid "Payment"
+msgstr "Zahlung"
+
+msgid "Secure checkout"
+msgstr "Sicherer Checkout"
+
+msgid "Confirmation"
+msgstr "Bestätigung"
+
+msgid "All set!"
+msgstr "Alles fertig!"
+
+msgid "Iltimos, quyidagi xatolarni to'g'rilang:"
+msgstr "Bitte beheben Sie die folgenden Fehler:"
+
+msgid "When and how many guests"
+msgstr "Wann und wie viele Gäste"
+
+msgid "Choose your preferred starting date"
+msgstr "Wählen Sie Ihr bevorzugtes Startdatum"
+
+msgid "Age 12+"
+msgstr "Alter 12+"
+
+msgid "Age 2-11"
+msgstr "Alter 2-11"
+
+msgid "Contact Information"
+msgstr "Kontaktinformationen"
+
+msgid "We'll send confirmation to your account"
+msgstr "Wir senden eine Bestätigung an Ihr Konto"
+
+msgid "Edit profile"
+msgstr "Profil bearbeiten"
+
+msgid "optional"
+msgstr "optional"
+
+msgid "Dietary needs, accessibility requirements, special occasions..."
+msgstr ""
+"Ernährungsbedürfnisse, Anforderungen an die Barrierefreiheit, besondere "
+"Anlässe..."
+
+msgid "Choose payment method on the next step"
+msgstr "Zahlungsmethode im nächsten Schritt wählen"
+
+msgid "Card"
+msgstr "Karte"
+
+msgid "Cash"
+msgstr "Bargeld"
+
+msgid "All payments are encrypted and secure"
+msgstr "Alle Zahlungen sind verschlüsselt und sicher"
+
+msgid "Terms of Service"
+msgstr "Nutzungsbedingungen"
+
+msgid "and"
+msgstr "und"
+
+msgid "Cancellation Policy"
+msgstr "Stornierungsbedingungen"
+
+msgid "Confirm Booking"
+msgstr "Buchung bestätigen"
+
+msgid "Free cancellation up to 3 days before travel date"
+msgstr "Kostenlose Stornierung bis zu 3 Tage vor Reiseantritt"
+
+msgid "Price Details"
+msgstr "Preisdetails"
+
+msgid "adults"
+msgstr "Erwachsene"
+
+msgid "Discount"
+msgstr "Rabatt"
+
+msgid "person"
+msgstr "Person"
+
+msgid "children"
+msgstr "Kinder"
+
+msgid "Service fee"
+msgstr "Servicegebühr"
+
+msgid "Taxes"
+msgstr "Steuern"
+
+msgid "Included"
+msgstr "Inbegriffen"
+
+msgid "Total"
+msgstr "Gesamt"
+
+msgid "Secure booking"
+msgstr "Sichere Buchung"
+
+msgid "256-bit SSL encryption"
+msgstr "256-Bit SSL-Verschlüsselung"
+
+msgid "Free cancellation"
+msgstr "Kostenlose Stornierung"
+
+msgid "Up to 3 days before"
+msgstr "Bis zu 3 Tage vorher"
+
+msgid "We're here to help"
+msgstr "Wir sind hier, um zu helfen"
+
+msgid "Confirmed"
+msgstr "Bestätigt"
+
+msgid "Pending payment"
+msgstr "Zahlung ausstehend"
+
+msgid "Completed"
+msgstr "Abgeschlossen"
+
+msgid "Your trip is booked!"
+msgstr "Ihre Reise ist gebucht!"
+
+msgid "Almost there!"
+msgstr "Fast geschafft!"
+
+msgid "Welcome back!"
+msgstr "Willkommen zurück!"
+
+msgid "Booking cancelled"
+msgstr "Buchung storniert"
+
+msgid "Booking details"
+msgstr "Buchungsdetails"
+
+msgid "Complete your payment to confirm this booking."
+msgstr "Schließen Sie Ihre Zahlung ab, um diese Buchung zu bestätigen."
+
+msgid ""
+"Get ready for an unforgettable journey. We've sent details to your email."
+msgstr ""
+"Machen Sie sich bereit für eine unvergessliche Reise. Wir haben Details an "
+"Ihre E-Mail gesendet."
+
+msgid "This booking has been cancelled."
+msgstr "Diese Buchung wurde storniert."
+
+msgid "All your trip information in one place."
+msgstr "Alle Ihre Reiseinformationen an einem Ort."
+
+msgid "Booking #"
+msgstr "Buchungs-Nr. "
+
+msgid "Booked"
+msgstr "Gebucht"
+
+msgid "Travel date"
+msgstr "Reisedatum"
+
+msgid "E-Ticket"
+msgstr "E-Ticket"
+
+msgid "Destination"
+msgstr "Reiseziel"
+
+msgid "GUESTS"
+msgstr "GÄSTE"
+
+msgid "DURATION"
+msgstr "DAUER"
+
+msgid "Back to bookings"
+msgstr "Zurück zu meinen Buchungen"
+
+msgid "Pay now"
+msgstr "Jetzt bezahlen"
+
+msgid "Print"
+msgstr "Drucken"
+
+msgid "View tour"
+msgstr "Tour ansehen"
+
+msgid "Trip Information"
+msgstr "Reiseinformationen"
+
+msgid "Your travel details"
+msgstr "Ihre Reisedetails"
+
+msgid "Guests"
+msgstr "Gäste"
+
+msgid "Duration"
+msgstr "Dauer"
+
+msgid "nights"
+msgstr "Nächte"
+
+msgid "Booking Info"
+msgstr "Buchungsinfo"
+
+msgid "Contact and reference"
+msgstr "Kontakt und Referenz"
+
+msgid "Reference"
+msgstr "Referenz"
+
+msgid "Cancellation Details"
+msgstr "Stornierungsdetails"
+
+msgid "Cancelled on"
+msgstr "Storniert am"
+
+msgid "Need help?"
+msgstr "Brauchen Sie Hilfe?"
+
+msgid "Our support team is available 24/7 to assist with your booking."
+msgstr ""
+"Unser Support-Team steht Ihnen rund um die Uhr bei Ihrer Buchung zur "
+"Verfügung."
+
+msgid "Email support"
+msgstr "E-Mail-Support"
+
+msgid "Live chat"
+msgstr "Live-Chat"
+
+msgid "Up to 3 days before travel"
+msgstr "Bis zu 3 Tage vor Reiseantritt"
+
+msgid "Payment Summary"
+msgstr "Zahlungsübersicht"
+
+msgid "Price breakdown"
+msgstr "Preisaufschlüsselung"
+
+msgid "Tax"
+msgstr "Steuer"
+
+msgid "Payment pending"
+msgstr "Zahlung ausstehend"
+
+msgid "Complete Payment"
+msgstr "Zahlung abschließen"
+
+msgid "Cancel this booking?"
+msgstr "Diese Buchung stornieren?"
+
+msgid ""
+"This action cannot be undone. Refunds depend on the cancellation policy."
+msgstr ""
+"Diese Aktion kann nicht rückgängig gemacht werden. Rückerstattungen hängen "
+"von den Stornierungsbedingungen ab."
+
+msgid "Reason (optional)"
+msgstr "Grund (optional)"
+
+msgid "Why are you cancelling?"
+msgstr "Warum stornieren Sie?"
+
+msgid "Keep booking"
+msgstr "Buchung behalten"
+
+msgid "Confirm cancel"
+msgstr "Stornierung bestätigen"
+
+msgid "Your journeys"
+msgstr "Ihre Reisen"
+
+msgid "Track and manage all your bookings in one place"
+msgstr "Verfolgen und verwalten Sie alle Ihre Buchungen an einem Ort"
+
+msgid "Trips"
+msgstr "Reisen"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "View details"
+msgstr "Details ansehen"
+
+msgid "No bookings yet"
+msgstr "Noch keine Buchungen"
+
+msgid ""
+"Your adventure is waiting. Browse our handcrafted tours and book your first "
+"trip."
+msgstr ""
+"Ihr Abenteuer wartet. Durchsuchen Sie unsere handverlesenen Touren und "
+"buchen Sie Ihre erste Reise."
+
+msgid "Explore Tours"
+msgstr "Touren erkunden"
+
+msgid "Browse Destinations"
+msgstr "Reiseziele durchsuchen"
+
+msgid "Luxury Silk Road Travel"
+msgstr "Luxuriöse Seidenstraßen-Reisen"
+
+msgid "Luxury Travel Across the Silk Road"
+msgstr "Entdecken Sie die Seidenstraße"
+
+msgid ""
+"Premium curated tours across Uzbekistan and the ancient Silk Road. Expert "
+"guides, boutique experiences, timeless memories."
+msgstr ""
+"Ausgewählte Premium-Touren durch Usbekistan und die alte Seidenstraße. "
+"Erfahrene Guides, Boutique-Erlebnisse, bleibende Erinnerungen."
+
+msgid "Hero"
+msgstr "Hero"
+
+msgid "Uzbekistan · Silk Road · Beyond"
+msgstr "Usbekistan · Seidenstraße · und mehr"
+
+msgid "Where Ancient Routes"
+msgstr "Wo alte Routen"
+
+msgid "Become Your Story"
+msgstr "zu Ihrer Geschichte werden"
+
+msgid ""
+"Boutique tours crafted for curious souls — from the minarets of Samarkand to"
+" the sands of the Kyzylkum."
+msgstr ""
+"Boutique-Touren für neugierige Seelen — von den Minaretten Samarkands bis zu"
+" den Sanden der Kyzylkum."
+
+msgid "Hotels"
+msgstr "Hotels"
+
+msgid "Tickets"
+msgstr "Tickets"
+
+msgid "Rental"
+msgstr "Vermietung"
+
+msgid "Where to?"
+msgstr "Wohin?"
+
+msgid "Recent searches"
+msgstr "Letzte Suchen"
+
+msgid "Popular destinations"
+msgstr "Alle Reiseziele"
+
+msgid "Most popular"
 msgstr "Beliebteste"
 
-#: templates/tours/list.html:34
-msgid "Newest"
+msgid "tours"
+msgstr "Touren"
+
+msgid "New"
 msgstr "Neueste"
 
-#: templates/tours/list.html:35
-msgid "Price: Low to High"
-msgstr "Preis: Aufsteigend"
+msgid "Quick search"
+msgstr "Auf einen Blick"
 
-#: templates/tours/list.html:36
-msgid "Price: High to Low"
-msgstr "Preis: Absteigend"
+msgid "Desert"
+msgstr "Wüste"
 
-#: templates/tours/list.html:37
-msgid "Highest Rated"
+msgid "Any duration"
+msgstr "Dauer"
+
+msgid "Add guests"
+msgstr "Gäste"
+
+msgid "Age 12 or above"
+msgstr "Ab 12 Jahren"
+
+msgid "Age 2–11"
+msgstr "Alter 2-11"
+
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgid "Done"
+msgstr "Fertig"
+
+msgid "Hotel booking coming soon"
+msgstr "Hotelbuchung bald verfügbar"
+
+msgid "We're partnering with the best hotels. Stay tuned!"
+msgstr "Wir kooperieren mit den besten Hotels. Bleiben Sie dran!"
+
+msgid "Tickets coming soon"
+msgstr "Tickets bald verfügbar"
+
+msgid "Train and air tickets will be available soon."
+msgstr "Zug- und Flugtickets sind bald verfügbar."
+
+msgid "Car rental coming soon"
+msgstr "Autovermietung bald verfügbar"
+
+msgid "Explore on your own terms — coming soon!"
+msgstr "Erkunden Sie nach Ihren Regeln — bald verfügbar!"
+
+msgid "Activity type"
+msgstr "Aktivitäten"
+
+msgid "All activities"
+msgstr "Aktivitäten"
+
+msgid "Culinary"
+msgstr "Kulinarik"
+
+msgid "Wellness"
+msgstr "Wellness"
+
+msgid "Location"
+msgstr "Ort"
+
+msgid "Anywhere"
+msgstr "Überall"
+
+msgid "5-star rated"
+msgstr "beginnt hier"
+
+msgid "Explore"
+msgstr "Jetzt entdecken"
+
+msgid "Top Destinations"
+msgstr "Reiseziele"
+
+msgid "Discover the jewels of the ancient Silk Road"
+msgstr "Entdecken Sie die Juwelen der alten Seidenstraße"
+
+msgid "Curated"
+msgstr "Erstellt"
+
+msgid "Featured Tours"
+msgstr "Unsere empfohlenen Touren"
+
+msgid "Handpicked experiences based on traveler reviews"
+msgstr "Lieblingsgeschichten basierend auf Kundenbewertungen"
+
+msgid "View All"
+msgstr "Alle ansehen"
+
+msgid "Best Seller"
+msgstr "Bestseller"
+
+msgid "Top Rated"
 msgstr "Bestbewertet"
 
-#: templates/tours/list.html:59
-msgid "Search tours..."
-msgstr "Touren suchen..."
+msgid "Featured"
+msgstr "Unsere empfohlenen Touren"
 
-#: templates/tours/list.html:82
-msgid "Price Range"
-msgstr "Preisspanne"
+msgid "Save tour"
+msgstr "Gespeicherte Touren"
 
-#: templates/tours/list.html:84
-msgid "Min"
-msgstr "Min"
+msgid "Added to wishlist"
+msgstr "Zur Wunschliste hinzugefügt"
 
-#: templates/tours/list.html:85
+msgid "Removed from wishlist"
+msgstr "Von Wunschliste entfernt"
+
+msgid "Error. Try again."
+msgstr "Erneut versuchen"
+
+msgid "reviews"
+msgstr "Bewertungen"
+
 msgid "Max"
 msgstr "Max"
 
-#: templates/tours/list.html:87
-msgid "Apply"
-msgstr "Anwenden"
+msgid "View Tour"
+msgstr "Tour ansehen"
 
-#: templates/tours/list.html:101
-msgid "Rating"
-msgstr "Bewertung"
+msgid "Our Promise"
+msgstr "Unsere Touren"
 
-#: templates/tours/list.html:119
-msgid "Clear all"
-msgstr "Alles löschen"
+msgid "Why Book with SoLuna?"
+msgstr "Warum bei SoLuna buchen?"
 
-#: templates/tours/list.html:178
-msgid "Pagination"
-msgstr "Seitennummerierung"
+msgid "Every detail crafted so you focus on the moments that matter."
+msgstr ""
+"Jedes Detail ist durchdacht, damit Sie sich auf die wichtigen Momente "
+"konzentrieren."
 
-#: templates/tours/list.html:205
-msgid "No tours found"
-msgstr "Keine Touren gefunden"
+msgid "Secure Booking"
+msgstr "Sichere Buchung"
 
-#: templates/tours/list.html:206
-msgid "Try adjusting your filters or search criteria."
-msgstr "Versuchen Sie, Ihre Filter oder Suchkriterien anzupassen."
+msgid ""
+"Your payments and personal data are protected end-to-end with bank-level "
+"security. Book with complete peace of mind."
+msgstr ""
+"Ihre Zahlungen und persönlichen Daten sind mit Sicherheit auf Bankniveau "
+"durchgängig geschützt. Buchen Sie ganz beruhigt."
 
-#: templates/tours/list.html:207
-msgid "Reset filters"
-msgstr "Filter zurücksetzen"
+msgid "24/7 Support"
+msgstr "24/7 Support"
+
+msgid "Our local team is always ready to help."
+msgstr "Unser lokales Team hilft Ihnen jederzeit gern."
+
+msgid "No Hidden Fees"
+msgstr "Keine versteckten Gebühren"
+
+msgid "Transparent pricing, no surprises."
+msgstr "Transparente Richtlinien"
+
+msgid "Expert Guides"
+msgstr "Erfahrene Guides"
+
+msgid "Certified local guides with deep Silk Road knowledge."
+msgstr "Zertifizierte lokale Guides mit tiefem Wissen über die Seidenstraße."
+
+msgid "Tailored Routes"
+msgstr "Maßgeschneiderte Routen"
+
+msgid "Itineraries shaped around how you love to travel."
+msgstr "Reiserouten, die zu Ihrem Reisestil passen."
+
+msgid "Browse by style"
+msgstr "Nach Stil stöbern"
+
+msgid "Tour Categories"
+msgstr "Kategorien"
+
+msgid "Find your perfect travel experience"
+msgstr "Finden Sie Ihr perfektes Reiseerlebnis"
+
+msgid "Browse All"
+msgstr "Touren durchsuchen"
+
+msgid "Trending now"
+msgstr "Beliebte Reiseziele"
+
+msgid "Most Searched Destinations"
+msgstr "Meistgesuchte Reiseziele"
+
+msgid "Top choices among travelers this season"
+msgstr "Die beliebtesten Wahlen für Reisende"
+
+msgid "Most Popular"
+msgstr "Beliebteste"
+
+msgid "Stay Ahead of Every Adventure"
+msgstr "Immer einen Schritt voraus bei jedem Abenteuer"
+
+msgid ""
+"Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to"
+" your inbox. No spam, ever."
+msgstr ""
+"Exklusive Angebote, versteckte Schätze und Seidenstraßen-Inspiration — "
+"direkt in Ihr Postfach. Kein Spam, niemals."
+
+msgid "Join 2,400+ travelers. Unsubscribe anytime."
+msgstr "Schließen Sie sich 2.400+ Reisenden an. Jederzeit abbestellbar."
+
+msgid "Contact Us"
+msgstr "Kontaktieren Sie uns"
+
+msgid "Get in touch"
+msgstr "Nehmen Sie Kontakt auf"
+
+msgid "Let's plan your journey together"
+msgstr "Ihre Reise zur"
+
+msgid ""
+"Have a question or need help planning your trip? Our team is here for you — "
+"reach out and we'll reply within 24 hours."
+msgstr ""
+"Haben Sie eine Frage oder benötigen Sie Hilfe bei der Planung Ihrer Reise? "
+"Unser Team ist für Sie da."
+
+msgid "Contact information"
+msgstr "Kontaktinformationen"
+
+msgid "Reach us anytime through the channels below."
+msgstr "Erreichen Sie uns jederzeit über die untenstehenden Kanäle."
+
 msgid "Director"
 msgstr "Direktor"
+
+msgid "Office"
+msgstr "Büro"
+
+msgid "Working hours"
+msgstr "Öffnungszeiten"
+
+msgid "Send us a message"
+msgstr "Senden Sie uns eine Nachricht"
+
+msgid "Fill out the form and we'll get back to you shortly."
+msgstr "Füllen Sie das Formular aus und wir melden uns in Kürze bei Ihnen."
+
+msgid "Subject"
+msgstr "Betreff"
+
+msgid "Message"
+msgstr "Nachricht"
+
+msgid "Send Message"
+msgstr "Nachricht senden"
+
+msgid "Your details are safe with us and never shared."
+msgstr "Ihre Daten sind bei uns sicher und werden niemals weitergegeben."
+
+msgid "Office location"
+msgstr "Ort"
+
+msgid "Our office location"
+msgstr "Standort unseres Büros"
+
+msgid "Visit our office"
+msgstr "Besuchen Sie unser Büro in Taschkent"
 
 msgid "Directions"
 msgstr "Route"
 
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Frequently asked questions"
+msgstr "Häufig gestellte Fragen"
+
+msgid "How quickly will I get a response?"
+msgstr "Wie schnell erhalte ich eine Antwort?"
+
+msgid ""
+"We reply to every message within 24 hours, often much sooner during working "
+"hours."
+msgstr ""
+"Wir antworten auf jede Nachricht innerhalb von 24 Stunden, während der "
+"Öffnungszeiten oft viel schneller."
+
+msgid "Can you customize a tour for me?"
+msgstr "Können Sie eine Tour für mich anpassen?"
+
+msgid ""
+"Absolutely. Tell us your dates, interests and budget in the form and our "
+"team will craft a tailored itinerary."
+msgstr ""
+"Absolut. Nennen Sie uns im Formular Ihre Daten, Interessen und Ihr Budget, "
+"und unser Team erstellt eine maßgeschneiderte Reiseroute."
+
+msgid "Which languages does your team speak?"
+msgstr "Welche Sprachen spricht Ihr Team?"
+
+msgid "Our guides and support team speak English, Russian, Uzbek and Korean."
+msgstr ""
+"Unsere Guides und unser Support-Team sprechen Englisch, Russisch, Usbekisch "
+"und Koreanisch."
+
+msgid "How can I pay for a booking?"
+msgstr "Wie kann ich eine Buchung bezahlen?"
+
+msgid ""
+"We accept VISA, Mastercard, UZCARD and HUMO. Payment details are shared once"
+" your trip is confirmed."
+msgstr ""
+"Wir akzeptieren VISA, Mastercard, UZCARD und HUMO. Die Zahlungsdetails "
+"erhalten Sie nach Bestätigung Ihrer Reise."
+
+msgid "Message Sent"
+msgstr "Nachricht gesendet"
+
+msgid "Message Sent!"
+msgstr "Nachricht gesendet!"
+
+msgid ""
+"Thank you for reaching out. Oygul will get back to you within 24 hours."
+msgstr ""
+"Vielen Dank für Ihre Kontaktaufnahme. Oygul wird sich innerhalb von 24 "
+"Stunden bei Ihnen melden."
+
+msgid "Back to Home"
+msgstr "Zurück zur Startseite"
+
+msgid "Choose language"
+msgstr "in 9 Sprachen"
+
+msgid "Choose currency"
+msgstr "Währung"
+
+msgid "Payment Gateway"
+msgstr "Zahlungsgateway"
+
+msgid "TEST MODE"
+msgstr "TESTMODUS"
+
+msgid "Real payment gateways are not configured. This is a simulation."
+msgstr ""
+"Echte Zahlungsgateways sind nicht konfiguriert. Dies ist eine Simulation."
+
+msgid "soums"
+msgstr "Sum"
+
+msgid "Payment failed"
+msgstr "Zahlung fehlgeschlagen"
+
+msgid "Test cards"
+msgstr "Testkarten"
+
+msgid "Always success"
+msgstr "Immer erfolgreich"
+
+msgid "Declined by bank"
+msgstr "Von der Bank abgelehnt"
+
+msgid "Insufficient funds"
+msgstr "Unzureichendes Guthaben"
+
+msgid "Enter card details"
+msgstr "Kartendetails eingeben"
+
+msgid "Card number"
+msgstr "Kartennummer"
+
+msgid "Expiry"
+msgstr "Ablaufdatum"
+
+msgid "Cardholder name"
+msgstr "Name des Karteninhabers"
+
+msgid "Amount to pay"
+msgstr "Zu zahlender Betrag"
+
+msgid "Pay"
+msgstr "Bezahlen"
+
+msgid "Cancel and choose another method"
+msgstr "Abbrechen und andere Methode wählen"
+
+msgid "Secure payment"
+msgstr "Sichere Zahlung"
+
+msgid ""
+"Your card information is encrypted with 256-bit SSL and never stored on our "
+"servers."
+msgstr ""
+"Ihre Karteninformationen werden mit 256-Bit-SSL verschlüsselt und niemals "
+"auf unseren Servern gespeichert."
+
+msgid "Payment Failed"
+msgstr "Zahlung fehlgeschlagen"
+
+msgid "Something went wrong with your payment. Your card was not charged."
+msgstr ""
+"Bei Ihrer Zahlung ist etwas schiefgelaufen. Ihre Karte wurde nicht belastet."
+
+msgid "Possible reasons:"
+msgstr "Mögliche Gründe:"
+
+msgid "Insufficient funds on the card"
+msgstr "Unzureichendes Guthaben auf der Karte"
+
+msgid "Card declined by the bank"
+msgstr "Karte von der Bank abgelehnt"
+
+msgid "Incorrect card details"
+msgstr "Falsche Kartendetails"
+
+msgid "Network connection issue"
+msgstr "Problem mit der Netzwerkverbindung"
+
+msgid "Try Again"
+msgstr "Erneut versuchen"
+
+msgid "Contact Support"
+msgstr "Support kontaktieren"
+
+msgid "Payment Processing"
+msgstr "Zahlungsabwicklung"
+
+msgid "Payment processing..."
+msgstr "Zahlung wird bearbeitet..."
+
+msgid ""
+"We are waiting for confirmation from the payment gateway. This usually takes"
+" a few seconds."
+msgstr ""
+"Wir warten auf die Bestätigung des Zahlungsgateways. Dies dauert "
+"normalerweise ein paar Sekunden."
+
+msgid "Don't close this page. We'll redirect you automatically."
+msgstr "Schließen Sie diese Seite nicht. Wir leiten Sie automatisch weiter."
+
+msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
+msgstr ""
+"Wählen Sie Ihre Zahlungsmethode. Alle Zahlungen erfolgen in usbekischen Sum "
+"(UZS)."
+
+msgid "Conversion to UZS"
+msgstr "Umrechnung in UZS"
+
+msgid "Choose payment method"
+msgstr "Zahlungsmethode wählen"
+
+msgid "Secure payment in Uzbek Som"
+msgstr "Sichere Zahlung in usbekischen Sum"
+
+msgid "Pay via Click app, card or balance"
+msgstr "Bezahlen Sie per Click-App, Karte oder Guthaben"
+
+msgid "Pay via Payme app or card"
+msgstr "Bezahlen Sie per Payme-App oder Karte"
+
+msgid "Bank card"
+msgstr "Bankkarte"
+
+msgid "Pay directly with Visa, Mastercard, UZCARD or HUMO"
+msgstr "Direkt mit Visa, Mastercard, UZCARD oder HUMO bezahlen"
+
+msgid "Pay at office"
+msgstr "Im Büro bezahlen"
+
+msgid "Visit our Tashkent office"
+msgstr "Besuchen Sie unser Büro in Taschkent"
+
+msgid "You'll be redirected"
+msgstr "Sie werden weitergeleitet"
+
+msgid ""
+"After clicking Pay, you'll be redirected to the secure gateway page to "
+"complete the transaction."
+msgstr ""
+"Nach dem Klicken auf Bezahlen werden Sie zur sicheren Gateway-Seite "
+"weitergeleitet, um die Transaktion abzuschließen."
+
+msgid "256-bit SSL"
+msgstr "256-Bit-SSL"
+
+msgid "PCI DSS"
+msgstr "PCI DSS"
+
+msgid "Money-back guarantee"
+msgstr "Geld-zurück-Garantie"
+
+msgid "By proceeding, you accept the booking terms."
+msgstr "Indem Sie fortfahren, akzeptieren Sie die Buchungsbedingungen."
+
+msgid "Tour price"
+msgstr "Tourpreis"
+
+msgid "Conversion"
+msgstr "Umrechnung"
+
+msgid "Free"
+msgstr "Kostenlos"
+
+msgid "soum"
+msgstr "Sum"
+
+msgid "Until 3 days before travel"
+msgstr "Bis zu 3 Tage vor Reiseantritt"
+
+msgid "Contact support"
+msgstr "Support kontaktieren"
+
+msgid ""
+"You will be redirected to Click payment page. Complete the payment via your "
+"card or Click app."
+msgstr ""
+"Sie werden zur Click-Zahlungsseite weitergeleitet. Schließen Sie die Zahlung"
+" über Ihre Karte oder die Click-App ab."
+
+msgid ""
+"You will be redirected to Payme. Complete the payment via your card or Payme"
+" app."
+msgstr ""
+"Sie werden zu Payme weitergeleitet. Schließen Sie die Zahlung über Ihre "
+"Karte oder die Payme-App ab."
+
+msgid ""
+"Enter your Visa or Mastercard details securely on the next page to complete "
+"payment."
+msgstr ""
+"Geben Sie Ihre Visa- oder Mastercard-Daten auf der nächsten Seite sicher "
+"ein, um die Zahlung abzuschließen."
+
+msgid ""
+"Visit our office in Tashkent to complete payment in cash. Your booking will "
+"remain pending until paid."
+msgstr ""
+"Besuchen Sie unser Büro in Taschkent, um die Zahlung in bar abzuschließen. "
+"Ihre Buchung bleibt bis zur Zahlung ausstehend."
+
+msgid "Redirecting to gateway..."
+msgstr "Weiterleitung zum Gateway..."
+
+msgid "Payment Successful"
+msgstr "Zahlung erfolgreich"
+
+msgid "Payment Successful!"
+msgstr "Zahlung erfolgreich!"
+
+msgid "Your booking has been confirmed. We've sent the details to your email."
+msgstr ""
+"Ihre Buchung wurde bestätigt. Wir haben die Details an Ihre E-Mail gesendet."
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Tour"
+msgstr "Tour"
+
+msgid "View Booking Details"
+msgstr "Buchungsdetails ansehen"
+
+msgid "Explore More Tours"
+msgstr "Weitere Touren entdecken"
+
+msgid "What happens next?"
+msgstr "Wie geht es weiter?"
+
+msgid "We'll send a confirmation email with full itinerary"
+msgstr "Wir senden eine Bestätigungs-E-Mail mit dem vollständigen Reiseplan"
+
+msgid "Our team will contact you 48 hours before the trip"
+msgstr "Unser Team wird Sie 48 Stunden vor der Reise kontaktieren"
+
+msgid "Check your booking anytime in your profile"
+msgstr "Überprüfen Sie Ihre Buchung jederzeit in Ihrem Profil"
+
 msgid "Tours & Attractions"
 msgstr "Touren & Sehenswürdigkeiten"
+
+msgid "Attractions"
+msgstr "Touren & Sehenswürdigkeiten"
+
+msgid "Country"
+msgstr "Land"
+
+msgid "Available tours"
+msgstr "Alle Touren"
+
+msgid "View tours"
+msgstr "Tour ansehen"
+
+msgid "About the region"
+msgstr "Fast geschafft!"
+
+msgid "About"
+msgstr "Über"
+
+msgid "Must-see places"
+msgstr "Sehenswürdigkeiten, die man gesehen haben muss"
+
+msgid "Top Attractions"
+msgstr "Touren & Sehenswürdigkeiten"
+
+msgid "View on map"
+msgstr "Alle ansehen"
+
+msgid "Tours in"
+msgstr "Touren in"
+
+msgid "View"
+msgstr "Ansehen"
+
+msgid "Browse all tours"
+msgstr "Touren durchsuchen"
+
+msgid "Quick Facts"
+msgstr "Auf einen Blick"
+
+msgid "Need help planning?"
+msgstr "Brauchen Sie Hilfe bei der Planung?"
+
+msgid "Our local experts can craft a custom tour tailored just for you."
+msgstr ""
+"Unsere lokalen Experten können eine maßgeschneiderte Tour für Sie "
+"zusammenstellen."
+
+msgid "Ready to book?"
+msgstr "Zurück zu meinen Buchungen"
+
+msgid "These tours are available in"
+msgstr "Verfügbare Touren"
+
+msgid "more tours"
+msgstr "Touren durchsuchen"
+
+msgid "Destinations in Uzbekistan"
+msgstr "Reiseziele"
+
+msgid ""
+"Explore Uzbekistan destinations with SoLuna Travel — Samarkand, Bukhara, "
+"Khiva, Tashkent and more. Discover attractions, regions and Silk Road "
+"highlights."
+msgstr ""
+"Entdecken Sie mit SoLuna Travel Reiseziele in Usbekistan — Samarkand, "
+"Buchara, Chiwa, Taschkent und mehr. Sehenswürdigkeiten, Regionen und "
+"Höhepunkte der Seidenstraße."
+
+msgid "Discover"
+msgstr "Entdecken"
+
+msgid "Uzbekistan"
+msgstr "Usbekistan entdecken"
+
+msgid ""
+"Ancient cities, breathtaking landscapes, and warm hospitality — find your "
+"perfect destination."
+msgstr ""
+"Alte Städte, atemberaubende Landschaften und herzliche Gastfreundschaft — "
+"finden Sie Ihr perfektes Reiseziel."
+
+msgid "Regions"
+msgstr "Registrieren"
+
+msgid "Years of history"
+msgstr "Jahre Geschichte"
+
+msgid "UNESCO sites"
+msgstr "UNESCO-Stätten"
+
+msgid "Scroll to explore"
+msgstr "Zum Entdecken scrollen"
+
+msgid "All destinations"
+msgstr "Alle Reiseziele"
+
+msgid "Choose your adventure"
+msgstr "nächsten Abenteuer"
+
+msgid "regions"
+msgstr "Route"
+
+msgid "Explore region"
+msgstr "Jetzt entdecken"
+
+msgid "No destinations yet"
+msgstr "Noch keine Reiseziele"
+
+msgid "Check back soon — new destinations are being added."
+msgstr "Schauen Sie bald wieder nach neuen Reisezielen."
+
+msgid "Back to home"
+msgstr "Zurück zur Startseite"
+
+msgid "UNESCO Heritage"
+msgstr "UNESCO-Welterbe"
+
+msgid "4 world heritage sites across the country"
+msgstr "4 Welterbestätten im ganzen Land"
+
+msgid "Safe Travel"
+msgstr "Sicheres Reisen"
+
+msgid "Consistently rated one of the safest destinations in Asia"
+msgstr "Durchweg als eines der sichersten Reiseziele Asiens bewertet"
+
+msgid "Rich Cuisine"
+msgstr "Reiche Küche"
+
+msgid "Plov, samsa, shashlik — unforgettable flavors"
+msgstr "Plov, Samsa, Schaschlik — unvergessliche Aromen"
+
+msgid "Warm Hospitality"
+msgstr "Herzliche Gastfreundschaft"
+
+msgid "Famously welcoming locals and vibrant culture"
+msgstr "Berühmt gastfreundliche Einheimische und lebendige Kultur"
+
+msgid "Custom tours"
+msgstr "Kundensupport"
+
+msgid "Can't decide where to go?"
+msgstr "Sie können sich nicht entscheiden, wohin?"
+
+msgid ""
+"Our local experts will craft a personalised itinerary just for you — no "
+"cookie-cutter trips."
+msgstr ""
+"Unsere lokalen Experten erstellen eine persönliche Reiseroute nur für Sie — "
+"keine Reisen von der Stange."
+
+msgid "Talk to an expert"
+msgstr "Mit einem Experten sprechen"
+
+msgid "Update Review"
+msgstr "Ihre Bewertung aktualisieren"
+
+msgid "Write a Review"
+msgstr "Bewertung schreiben"
+
+msgid "Back"
+msgstr "Zurück"
+
+msgid "Update Your Review"
+msgstr "Ihre Bewertung aktualisieren"
+
+msgid "Share Your Experience"
+msgstr "Teilen Sie Ihre Erfahrung"
+
+msgid "Rating"
+msgstr "Bewertung"
+
+msgid "stars"
+msgstr "beginnt hier"
+
+msgid "Click to rate"
+msgstr "Zum Bewerten klicken"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Summarise your experience..."
+msgstr "Teilen Sie Ihre Erfahrung"
+
+msgid "Review"
+msgstr "Bewertungen"
+
+msgid "Tell others about your experience — what did you enjoy most?"
+msgstr ""
+"Erzählen Sie anderen von Ihrem Erlebnis — was hat Ihnen am besten gefallen?"
+
+msgid "Minimum 10 characters"
+msgstr "Mindestens 10 Zeichen"
+
+msgid "Submit Review"
+msgstr "Bewertung einreichen"
+
+msgid "Poor — not recommended"
+msgstr "Schlecht — nicht empfehlenswert"
+
+msgid "Below average"
+msgstr "Durchschnittlich"
+
+msgid "Average — decent experience"
+msgstr "Durchschnittlich — okay"
+
+msgid "Good — would recommend"
+msgstr "Gut — empfehlenswert"
+
+msgid "Excellent — outstanding experience!"
+msgstr "Ausgezeichnet — herausragendes Erlebnis!"
+
+msgid "Authentication Error"
+msgstr "Authentifizierungsfehler"
+
+msgid "Authentication failed"
+msgstr "Authentifizierung fehlgeschlagen"
+
+msgid ""
+"Something went wrong while signing you in. Your account is safe — no changes"
+" were made."
+msgstr ""
+"Beim Anmelden ist etwas schiefgelaufen. Ihr Konto ist sicher — es wurden "
+"keine Änderungen vorgenommen."
+
+msgid "Possible reasons"
+msgstr "Mögliche Gründe"
+
+msgid "You cancelled the sign-in process"
+msgstr "Sie haben den Anmeldevorgang abgebrochen"
+
+msgid "The provider's session expired"
+msgstr "Die Sitzung des Anbieters ist abgelaufen"
+
+msgid "Permission was denied"
+msgstr "Berechtigung wurde verweigert"
+
+msgid "Go to homepage"
+msgstr "Zur Startseite gehen"
+
+msgid "Your account is secure"
+msgstr "Ihr Konto ist sicher"
+
+#, python-format
+msgid "Sign In via %(provider_name)s"
+msgstr "Anmelden über %(provider_name)s"
+
+#, python-format
+msgid "Continue with %(provider_name)s"
+msgstr "Weiter mit %(provider_name)s"
+
+#, python-format
+msgid ""
+"You're about to sign in to SoLuna using your %(provider_name)s account. "
+"Click continue to proceed securely."
+msgstr ""
+"Sie sind dabei, sich bei SoLuna mit Ihrem %(provider_name)s Konto "
+"anzumelden. Klicken Sie auf Weiter, um sicher fortzufahren."
+
+msgid "We'll receive"
+msgstr "Wir erhalten"
+
+msgid "Your name and profile photo"
+msgstr "Ihren Namen und Ihr Profilbild"
+
+msgid "We will never post anything without your permission."
+msgstr "Wir werden niemals etwas ohne Ihre Erlaubnis posten."
+
+msgid "Continue"
+msgstr "Weiter"
+
+msgid "Secure connection · Your data is encrypted"
+msgstr "Sichere Verbindung · Ihre Daten sind verschlüsselt"
+
+msgid "Redirecting..."
+msgstr "Weiterleitung..."
+
+msgid "Complete sign up"
+msgstr "Registrierung abschließen"
+
+msgid "Complete your profile"
+msgstr "Vervollständigen Sie Ihr Profil"
+
+msgid ""
+"Just one more step. Please confirm your details to finish creating your "
+"SoLuna account."
+msgstr ""
+"Nur noch ein Schritt. Bitte bestätigen Sie Ihre Daten, um die Erstellung "
+"Ihres SoLuna-Kontos abzuschließen."
+
+msgid "From your social account"
+msgstr "Aus Ihrem Social-Media-Konto"
+
+msgid "You'll get"
+msgstr "Sie erhalten"
+
+#, python-format
+msgid "5%% off on your first booking"
+msgstr "5%% Rabatt auf Ihre erste Buchung"
+
+msgid "Exclusive offers and updates"
+msgstr "Exklusive Angebote und Updates"
+
+msgid "Personalized travel recommendations"
+msgstr "Personalisierte Reiseempfehlungen"
+
+msgid "and consent to receive travel inspiration emails"
+msgstr "und stimme dem Erhalt von Reise-Inspirations-E-Mails zu"
+
+msgid "Creating account..."
+msgstr "Konto wird erstellt..."
+
+msgid "Pagination"
+msgstr "Seitennummerierung"
+
+msgid "Save to wishlist"
+msgstr "Zur Wunschliste hinzufügen"
+
+msgid "from"
+msgstr "ab"
+
+msgid "No tours found"
+msgstr "Keine Touren gefunden"
+
+msgid "Try adjusting your filters or search criteria."
+msgstr "Versuchen Sie, Ihre Filter oder Suchkriterien anzupassen."
+
+msgid "Clear filters"
+msgstr "Filter zurücksetzen"
+
+msgid "Travel Tour"
+msgstr "Reiseinformationen"
+
+msgid "Share"
+msgstr "Teilen"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "See all"
+msgstr "Alle ansehen"
+
+msgid "photos"
+msgstr "Fotos"
+
+msgid "Previous"
+msgstr "Bewertungen"
+
+msgid "Next"
+msgstr "Weiter"
+
+msgid "Group Size"
+msgstr "Gruppengröße"
+
+msgid "people"
+msgstr "Personen"
+
+msgid "Difficulty"
+msgstr "Schwierigkeit"
+
+msgid "Category"
+msgstr "Kategorien"
+
+msgid "Itinerary"
+msgstr "Reiseplan"
+
+msgid "What's included"
+msgstr "Was ist inbegriffen"
+
+msgid "Day"
+msgstr "Tag"
+
+msgid "Professional guide"
+msgstr "Professioneller Reiseleiter"
+
+msgid "Transport (A/C vehicle)"
+msgstr "Transport (klimatisiertes Fahrzeug)"
+
+msgid "Entrance fees"
+msgstr "Eintrittsgelder"
+
+msgid "Hotel accommodation"
+msgstr "Hotelunterkunft"
+
+msgid "Not Included"
+msgstr "Nicht inbegriffen"
+
+msgid "International flights"
+msgstr "Internationale Flüge"
+
+msgid "Travel insurance"
+msgstr "Reiseversicherung"
+
+msgid "Personal expenses"
+msgstr "Persönliche Ausgaben"
+
+msgid "Excellent"
+msgstr "Hervorragend"
+
+msgid "Average"
+msgstr "Durchschnittlich"
+
+msgid "Poor"
+msgstr "Mangelhaft"
+
+msgid "Terrible"
+msgstr "Schrecklich"
+
+msgid "No reviews yet. Be the first to share your experience!"
+msgstr "Noch keine Bewertungen. Teilen Sie als Erster Ihre Erfahrung!"
+
+msgid "Write a review"
+msgstr "Bewertung schreiben"
+
+msgid "Login to write a review"
+msgstr "Bewertung schreiben"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Book Now"
+msgstr "Jetzt buchen"
+
+msgid "Need help booking?"
+msgstr "Brauchen Sie Hilfe bei der Buchung?"
+
+msgid "Talk to a travel expert"
+msgstr "Mit einem Reiseexperten sprechen"
+
+msgid ""
+"Not sure which tour fits you? Our local specialists craft the perfect Silk "
+"Road itinerary — free of charge."
+msgstr ""
+"Unsicher, welche Tour zu Ihnen passt? Unsere lokalen Spezialisten erstellen "
+"die perfekte Seidenstraßen-Route — kostenlos."
+
+msgid "Get free advice"
+msgstr "Kostenlose Beratung erhalten"
+
+msgid "Similar tours"
+msgstr "Touren suchen..."
+
+msgid "Link copied!"
+msgstr "Link kopiert!"
+
+msgid "Copy failed"
+msgstr "Zahlung fehlgeschlagen"
+
+msgid "Uzbekistan & Silk Road Tours"
+msgstr "Usbekistan- & Seidenstraßen-Touren"
+
+msgid ""
+"Browse all SoLuna Travel tours across Uzbekistan and the Great Silk Road — "
+"Samarkand, Bukhara, Khiva and Tashkent. Compare prices, itineraries and book"
+" online."
+msgstr ""
+"Durchstöbern Sie alle SoLuna-Travel-Touren durch Usbekistan und die Große "
+"Seidenstraße — Samarkand, Buchara, Chiwa und Taschkent. Preise und Routen "
+"vergleichen und online buchen."
+
+msgid "Extraordinary"
+msgstr "Außergewöhnliche"
+
+msgid "handcrafted journeys through Uzbekistan"
+msgstr "handgefertigte Reisen durch Usbekistan"
+
+msgid "Sort"
+msgstr "Sortieren nach"
+
+msgid "Newest"
+msgstr "Neueste"
+
+msgid "Price: Low → High"
+msgstr "Preis: Aufsteigend"
+
+msgid "Price: High → Low"
+msgstr "Preis: Absteigend"
+
+msgid "Highest Rated"
+msgstr "Bestbewertet"
+
+msgid "Filters"
+msgstr "Filter zurücksetzen"
+
+msgid "Clear all"
+msgstr "Alles löschen"
+
+msgid "Search tours..."
+msgstr "Touren suchen..."
+
+msgid "Categories"
+msgstr "Kategorien"
+
+msgid "No categories"
+msgstr "Kategorien"
+
+msgid "Price Range"
+msgstr "Preisspanne"
+
+msgid "Min"
+msgstr "Min"
+
+msgid "Apply"
+msgstr "Anwenden"
+
+msgid "Min Rating"
+msgstr "Bewertung"
+
+msgid "Type"
+msgstr "Tourart"
+
+msgid "Remove type filter"
+msgstr "Filter zurücksetzen"
+
+msgid "Error loading tours"
+msgstr "Fehler beim Laden der Touren"
+
+msgid "Please try again."
+msgstr "Erneut versuchen"
+
+msgid "Mon"
+msgstr "Mo"
+
+msgid "Tue"
+msgstr "Di"
+
+msgid "Wed"
+msgstr "Mi"
+
+msgid "Thu"
+msgstr "Do"
+
+msgid "Fri"
+msgstr "Fr"
+
+msgid "Sat"
+msgstr "Sa"
+
+msgid "Sun"
+msgstr "So"
+
+#~ msgid "City"
+#~ msgstr "Stadt"
+
+#~ msgid "About yourself"
+#~ msgstr "Über Sie"
+
+#~ msgid "Tell us a bit about yourself..."
+#~ msgstr "Erzählen Sie uns ein wenig über sich..."
+
+#~ msgid "Your Gateway to Extraordinary Adventures"
+#~ msgstr "Ihr Tor zu außergewöhnlichen Abenteuern"
+
+#~ msgid "Unlock the Magic of Travel with SoLuna"
+#~ msgstr "Entdecken Sie die Magie des Reisens mit SoLuna"
+
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
+
+#~ msgid ""
+#~ "Dive into local recommendations for a truly authentic Silk Road experience "
+#~ "across Uzbekistan."
+#~ msgstr ""
+#~ "Tauchen Sie ein in lokale Empfehlungen für ein authentisches Erlebnis an der"
+#~ " Seidenstraße in ganz Usbekistan."
+
+#~ msgid "Tashkent, Uzbekistan"
+#~ msgstr "Taschkent, Usbekistan"
+
+#~ msgid "Enter your email"
+#~ msgstr "Geben Sie Ihre E-Mail ein"
+
+#~ msgid "Explore the World"
+#~ msgstr "Entdecken Sie die Welt"
+
+#~ msgid ""
+#~ "Pack your bags and let SoLuna redefine your travel experience. Where every "
+#~ "journey is a story waiting to be told."
+#~ msgstr ""
+#~ "Packen Sie Ihre Koffer und lassen Sie SoLuna Ihr Reiseerlebnis neu "
+#~ "definieren. Wo jede Reise eine Geschichte ist, die darauf wartet, erzählt zu"
+#~ " werden."
+
+#~ msgid "Need some help?"
+#~ msgstr "Brauchen Sie Hilfe?"
+
+#~ msgid "Samarkand, Uzbekistan"
+#~ msgstr "Samarkand, Usbekistan"
+
+#~ msgid "Check In"
+#~ msgstr "Check-in"
+
+#~ msgid "Check Out"
+#~ msgstr "Check-out"
+
+#~ msgid "Guest"
+#~ msgstr "Gast"
+
+#~ msgid "Favorite destinations of professional travelers"
+#~ msgstr "Lieblingsziele von professionellen Reisenden"
+
+#~ msgid "Favorite destinations based on customer reviews"
+#~ msgstr "Lieblingsziele basierend auf Kundenbewertungen"
+
+#~ msgid "Price range"
+#~ msgstr "Preisspanne"
+
+#~ msgid "Clear"
+#~ msgstr "Löschen"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Zu Favoriten hinzufügen"
+
+#~ msgid "Easy payment"
+#~ msgstr "Einfache Zahlung"
+
+#~ msgid "We offer tours in a range of locations"
+#~ msgstr "Wir bieten Touren an verschiedenen Orten an"
+
+#~ msgid ""
+#~ "Choose one style or create a package, fill your passports with adventures "
+#~ "together."
+#~ msgstr ""
+#~ "Wählen Sie einen Stil oder erstellen Sie ein Paket, füllen Sie Ihre Pässe "
+#~ "gemeinsam mit Abenteuern."
+
+#~ msgid "Security Assurance"
+#~ msgstr "Sicherheitsgarantie"
+
+#~ msgid "Reputable Affiliations"
+#~ msgstr "Seriöse Partnerschaften"
+
+#~ msgid "Payment is secure and safe"
+#~ msgstr "Die Zahlung ist sicher und geschützt"
+
+#~ msgid "Top Categories of Tours"
+#~ msgstr "Top-Kategorien von Touren"
+
+#~ msgid "View More"
+#~ msgstr "Mehr anzeigen"
+
+#~ msgid "Embracing Adventure Since 2025"
+#~ msgstr "Abenteuer umarmen seit 2025"
+
+#~ msgid "Install APP & Get discount code"
+#~ msgstr "App installieren & Rabattcode erhalten"
+
+#, python-format
+#~ msgid "Up to 55%% Discount and lots of special gifts"
+#~ msgstr "Bis zu 55%% Rabatt und viele besondere Geschenke"
+
+#~ msgid "Get inspiration for your next trip"
+#~ msgstr "Lassen Sie sich für Ihre nächste Reise inspirieren"
+
+#~ msgid "Keep Reading"
+#~ msgstr "Weiterlesen"
+
+#~ msgid "We'd love to hear from you"
+#~ msgstr "Wir würden uns freuen, von Ihnen zu hören"
+
+#~ msgid "Mon - Sat, 8AM - 6PM"
+#~ msgstr "Mo - Sa, 8:00 - 18:00 Uhr"
+
+#~ msgid "We reply within 24 hours"
+#~ msgstr "Wir antworten innerhalb von 24 Stunden"
+
+#~ msgid "Visit us in person"
+#~ msgstr "Besuchen Sie uns persönlich"
+
+#~ msgid "Social"
+#~ msgstr "Soziale Medien"
+
+#~ msgid "Follow us for updates"
+#~ msgstr "Folgen Sie uns für Updates"
+
+#~ msgid "Why visit"
+#~ msgstr "Warum besuchen"
+
+#~ msgid "Population"
+#~ msgstr "Bevölkerung"
+
+#~ msgid "Best time to visit"
+#~ msgstr "Beste Reisezeit"
+
+#~ msgid "Discover Uzbekistan's Most Beautiful Destinations"
+#~ msgstr "Entdecken Sie Usbekistans schönste Reiseziele"
+
+#~ msgid ""
+#~ "From ancient Samarkand to the deserts of Karakalpakstan — find your next "
+#~ "adventure."
+#~ msgstr ""
+#~ "Vom antiken Samarkand bis zu den Wüsten von Karakalpakstan — finden Sie Ihr "
+#~ "nächstes Abenteuer."
+
+#~ msgid "Write your detailed review here..."
+#~ msgstr "Schreiben Sie Ihre ausführliche Bewertung hier..."
+
+#~ msgid "Languages"
+#~ msgstr "Sprachen"
+
+#~ msgid "Highlights"
+#~ msgstr "Höhepunkte"
+
+#~ msgid "Related tours"
+#~ msgstr "Ähnliche Touren"
+
+#~ msgid "tours found"
+#~ msgstr "Touren gefunden"

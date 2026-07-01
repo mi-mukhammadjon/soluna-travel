@@ -17,6 +17,21 @@ from django.urls import translate_url
 register = template.Library()
 
 
+import re as _re
+from django.utils.translation import gettext as _gt
+
+_DAY_RE = _re.compile(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\b')
+
+
+@register.filter(name='work_hours_i18n')
+def work_hours_i18n(value):
+    """Ish vaqti qiymatidagi inglizcha kun qisqartmalarini (Mon..Sun)
+    joriy tilga tarjima qiladi. Masalan: '8:00 – 18:00, Mon – Sat' -> '... Du – Sh'."""
+    if not value:
+        return value
+    return _DAY_RE.sub(lambda m: _gt(m.group(0)), str(value))
+
+
 @register.simple_tag(takes_context=True)
 def hreflang_alternates(context):
     """Joriy sahifaning barcha tillardagi absolyut URL'lari (SEO hreflang uchun).

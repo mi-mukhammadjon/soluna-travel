@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-25 14:46+0500\n"
+"POT-Creation-Date: 2026-07-01 12:40+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Uzbek <uz@li.org>\n"
@@ -109,8 +109,8 @@ msgid ""
 "The page you are looking for might have been moved or doesn't exist. Let's "
 "get you back on track."
 msgstr ""
-"Siz qidirayotgan sahifa ko'chirilgan yoki mavjud bo'lmasligi mumkin. Keling, "
-"sizni asosiy yo'lga qaytaramiz."
+"Siz qidirayotgan sahifa ko'chirilgan yoki mavjud bo'lmasligi mumkin. Keling,"
+" sizni asosiy yo'lga qaytaramiz."
 
 msgid "Go Home"
 msgstr "Bosh sahifaga qaytish"
@@ -134,11 +134,11 @@ msgid "Something went wrong"
 msgstr "Nimadir xato ketdi"
 
 msgid ""
-"We're having trouble loading this page. Our team has been notified and we're "
-"working on it."
+"We're having trouble loading this page. Our team has been notified and we're"
+" working on it."
 msgstr ""
-"Ushbu sahifani yuklashda muammoga duch kelyapmiz. Jamoamiz xabardor qilingan "
-"va biz bu ustida ishlayapmiz."
+"Ushbu sahifani yuklashda muammoga duch kelyapmiz. Jamoamiz xabardor qilingan"
+" va biz bu ustida ishlayapmiz."
 
 msgid "Try again"
 msgstr "Qaytadan urinib ko'ring"
@@ -262,11 +262,11 @@ msgid "Check your email"
 msgstr "Emailingizni tekshiring"
 
 msgid ""
-"We've sent a password reset link to your email address. The link will expire "
-"in 24 hours."
+"We've sent a password reset link to your email address. The link will expire"
+" in 24 hours."
 msgstr ""
-"Biz sizning emailingizga parolni tiklash havolasini yubordik. Havola 24 soat "
-"davomida amal qiladi."
+"Biz sizning emailingizga parolni tiklash havolasini yubordik. Havola 24 soat"
+" davomida amal qiladi."
 
 msgid "Didn't receive an email?"
 msgstr "Email kelmadimi?"
@@ -385,6 +385,9 @@ msgstr ""
 "Biz tasdiqlash xatini yubordik. Akkauntingizni faollashtirish uchun xatdagi "
 "havolani bosing."
 
+msgid "guests"
+msgstr "mehmonlar"
+
 msgid "Change Password"
 msgstr "Parolni o'zgartirish"
 
@@ -397,10 +400,13 @@ msgstr "Xavfsizlik uchun, avval ishlatilmagan kuchli parol tanlang."
 msgid "Current Password"
 msgstr "Joriy parol"
 
+msgid "Show password"
+msgstr "Yangi parol"
+
 msgid "New Password"
 msgstr "Yangi parol"
 
-msgid "At least 8 characters, with letters and numbers."
+msgid "At least 8 characters, mixing letters and numbers."
 msgstr "Harflar va raqamlardan iborat kamida 8 ta belgi."
 
 msgid "Confirm New Password"
@@ -409,23 +415,38 @@ msgstr "Yangi parolni tasdiqlang"
 msgid "Update Password"
 msgstr "Parolni yangilash"
 
+msgid "Weak"
+msgstr "Zaif"
+
+msgid "Fair"
+msgstr "O'rtacha"
+
+msgid "Good"
+msgstr "Yaxshi"
+
+msgid "Strong"
+msgstr "Kuchli"
+
+msgid "Passwords match"
+msgstr "Parol"
+
+msgid "Passwords do not match"
+msgstr "Parol xavfsizligi darajasi"
+
 msgid "My Profile"
 msgstr "Mening profilim"
 
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Member"
+msgstr "A'zo"
+
+msgid "Joined"
+msgstr "A'zo bo'lgan vaqt"
+
 msgid "Edit Profile"
 msgstr "Profilni tahrirlash"
-
-msgid "My Bookings"
-msgstr "Mening bronlarim"
-
-msgid "Wishlist"
-msgstr "Istaklar ro'yxati"
-
-msgid "My Reviews"
-msgstr "Mening sharhlarim"
-
-msgid "Logout"
-msgstr "Chiqish"
 
 msgid "Total Bookings"
 msgstr "Jami bronlar"
@@ -433,8 +454,23 @@ msgstr "Jami bronlar"
 msgid "Completed Trips"
 msgstr "Tugallangan sayohatlar"
 
+msgid "Wishlist"
+msgstr "Istaklar ro'yxati"
+
 msgid "Reviews"
 msgstr "Sharhlar"
+
+msgid "Overview"
+msgstr "Umumiy ko'rinish"
+
+msgid "My Bookings"
+msgstr "Mening bronlarim"
+
+msgid "My Reviews"
+msgstr "Mening sharhlarim"
+
+msgid "Logout"
+msgstr "Chiqish"
 
 msgid "Personal Information"
 msgstr "Shaxsiy ma'lumotlar"
@@ -448,11 +484,8 @@ msgstr "To'liq ism"
 msgid "Phone"
 msgstr "Telefon"
 
-msgid "Joined"
-msgstr "A'zo bo'lgan vaqt"
-
-msgid "Country"
-msgstr "Davlat"
+msgid "Preferred Language"
+msgstr "Afzal ko'rilgan til"
 
 msgid "Recent Bookings"
 msgstr "So'nggi bronlar"
@@ -460,14 +493,23 @@ msgstr "So'nggi bronlar"
 msgid "View all"
 msgstr "Barchasini ko'rish"
 
-msgid "guests"
-msgstr "mehmonlar"
-
 msgid "You haven't booked any tours yet."
 msgstr "Siz hali birorta ham turni bron qilmadingiz."
 
 msgid "Browse tours"
 msgstr "Turlarni ko'rish"
+
+msgid "days"
+msgstr "kun"
+
+msgid "Your wishlist is empty."
+msgstr "Sevimlilar ro'yxatingiz bo'sh."
+
+msgid "Awaiting approval"
+msgstr "Tasdiqlash kutilmoqda"
+
+msgid "You haven't written any reviews yet."
+msgstr "Siz hali birorta ham turni bron qilmadingiz."
 
 msgid "Update your personal information and preferences."
 msgstr "Shaxsiy ma'lumotlar va sozlamalaringizni yangilang."
@@ -475,32 +517,35 @@ msgstr "Shaxsiy ma'lumotlar va sozlamalaringizni yangilang."
 msgid "Profile photo"
 msgstr "Profil rasmi"
 
-msgid "JPG, PNG. Max 2MB."
+msgid "JPG or PNG, up to 2MB."
 msgstr "JPG, PNG. Maksimal 2MB."
 
-msgid "Upload"
+msgid "Upload new"
 msgstr "Yuklash"
 
 msgid "First Name"
 msgstr "Ism"
 
+msgid "Your first name"
+msgstr "Ism"
+
 msgid "Last Name"
 msgstr "Familiya"
 
-msgid "Email cannot be changed."
+msgid "Your last name"
+msgstr "Familiya"
+
+msgid "Email cannot be changed here"
 msgstr "Emailni o'zgartirib bo'lmaydi."
 
-msgid "City"
-msgstr "Shahar"
-
-msgid "About yourself"
-msgstr "O'zingiz haqingizda"
-
-msgid "Tell us a bit about yourself..."
-msgstr "O'zingiz haqingizda qisqacha ma'lumot bering..."
+msgid "Email cannot be changed here."
+msgstr "Emailni o'zgartirib bo'lmaydi."
 
 msgid "Save Changes"
 msgstr "O'zgarishlarni saqlash"
+
+msgid "File is too large. Max 2MB."
+msgstr "Fayl juda katta. Maksimal 2MB."
 
 msgid "Register"
 msgstr "Ro'yxatdan o'tish"
@@ -514,24 +559,31 @@ msgstr "yoki"
 msgid "Confirm"
 msgstr "Tasdiqlash"
 
-#, fuzzy
-#| msgid "Change Password"
 msgid "Change password"
 msgstr "Parolni o'zgartirish"
 
-#, fuzzy
-#| msgid "Sign out?"
 msgid "Log out"
 msgstr "Tizimdan chiqasizmi?"
 
-msgid "Your Gateway to Extraordinary Adventures"
-msgstr "Favqulodda sarguzashtlar sari ostonangiz"
+msgid "Premium Uzbekistan & Silk Road Tours"
+msgstr "Premium O'zbekiston va Ipak yo'li turlari"
 
-msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
+msgid ""
+"SoLuna Travel — premium guided tours across Uzbekistan and the Great Silk "
+"Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys "
+"with local experts."
+msgstr ""
+
+msgid ""
+"SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan,"
+" Samarkand tour, Bukhara tour, Khiva tour, Tashkent tour, Central Asia "
+"travel, guided tours, sayohat, tur, Ozbekiston sayohat, туры Узбекистан, "
+"Шелковый путь"
+msgstr ""
+
+msgid "Premium guided tours across Uzbekistan and the Great Silk Road."
 msgstr "SoLuna — O'zbekiston va Ipak yo'li bo'ylab premium turlar."
 
-#, fuzzy
-#| msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
 msgid "Premium tours across Uzbekistan and the Silk Road."
 msgstr "SoLuna — O'zbekiston va Ipak yo'li bo'ylab premium turlar."
 
@@ -595,12 +647,6 @@ msgstr "Aloqa"
 msgid "Search"
 msgstr "Qidiruv"
 
-msgid "Saved Tours"
-msgstr "Saqlangan turlar"
-
-msgid "Settings"
-msgstr "Sozlamalar"
-
 msgid "Open menu"
 msgstr "Menyuni ochish"
 
@@ -626,6 +672,8 @@ msgid ""
 "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for "
 "curious travelers, guided by local experts."
 msgstr ""
+"O'zbekiston va qadimiy Ipak yo'li bo'ylab butik turlar. Qiziquvchan "
+"sayohatchilar uchun, mahalliy ekspertlar rahbarligida."
 
 msgid "Hours"
 msgstr "Ish vaqti"
@@ -654,11 +702,10 @@ msgstr "Yordam va qo'llab-quvvatlash"
 msgid "Newsletter"
 msgstr "Yangiliklarga obuna"
 
-#, fuzzy
-#| msgid "Get exclusive offers and travel inspiration."
 msgid "Get exclusive offers and Silk Road travel inspiration."
-msgstr "Maxsus takliflar va Ipak yo'li sayohati ilhomini oling."
-"Maxsus takliflar va sayohat bo'yicha ilhomlantiruvchi ma'lumotlarni oling."
+msgstr ""
+"Maxsus takliflar va Ipak yo'li sayohati ilhomini oling.Maxsus takliflar va "
+"sayohat bo'yicha ilhomlantiruvchi ma'lumotlarni oling."
 
 msgid "Your email address"
 msgstr "Sizning elektron pochta manzilingiz"
@@ -768,20 +815,20 @@ msgstr "Bronni tasdiqlash"
 msgid "Free cancellation up to 3 days before travel date"
 msgstr "Sayohatdan 3 kun oldingacha bepul bekor qilish"
 
-msgid "days"
-msgstr "kun"
-
 msgid "Price Details"
 msgstr "Narx tafsilotlari"
 
 msgid "adults"
 msgstr "kattalar"
 
+msgid "Discount"
+msgstr "Chegirma"
+
+msgid "person"
+msgstr "kishi"
+
 msgid "children"
 msgstr "bolalar"
-
-msgid "Free"
-msgstr "Bepul"
 
 msgid "Service fee"
 msgstr "Xizmat haqi"
@@ -839,7 +886,8 @@ msgstr "Ushbu bronni tasdiqlash uchun to'lovni yakunlang."
 
 msgid ""
 "Get ready for an unforgettable journey. We've sent details to your email."
-msgstr "Unutilmas sayohatga tayyorlaning. Tafsilotlarni emailingizga yubordik."
+msgstr ""
+"Unutilmas sayohatga tayyorlaning. Tafsilotlarni emailingizga yubordik."
 
 msgid "This booking has been cancelled."
 msgstr "Ushbu bron bekor qilingan."
@@ -910,6 +958,24 @@ msgstr "Bekor qilish tafsilotlari"
 msgid "Cancelled on"
 msgstr "Bekor qilingan sana"
 
+msgid "Need help?"
+msgstr "Yordam kerakmi?"
+
+msgid "Our support team is available 24/7 to assist with your booking."
+msgstr ""
+"Qo'llab-quvvatlash jamoasi bronlashda yordam berish uchun 24/7 "
+"mavjud.Qo'llab-quvvatlash jamoamiz broningiz bo'yicha yordam berish uchun "
+"24/7 ishlaydi."
+
+msgid "Email support"
+msgstr "Email orqali yordam"
+
+msgid "Live chat"
+msgstr "Jonli chat"
+
+msgid "Up to 3 days before travel"
+msgstr "Sayohatdan 3 kun oldingacha"
+
 msgid "Payment Summary"
 msgstr "To'lov xulosasi"
 
@@ -924,23 +990,6 @@ msgstr "To'lov kutilmoqda"
 
 msgid "Complete Payment"
 msgstr "To'lovni yakunlash"
-
-msgid "Need help?"
-msgstr "Yordam kerakmi?"
-
-msgid "Our support team is available 24/7 to assist with your booking."
-msgstr "Qo'llab-quvvatlash jamoasi bronlashda yordam berish uchun 24/7 mavjud."
-"Qo'llab-quvvatlash jamoamiz broningiz bo'yicha yordam berish uchun 24/7 "
-"ishlaydi."
-
-msgid "Email support"
-msgstr "Email orqali yordam"
-
-msgid "Live chat"
-msgstr "Jonli chat"
-
-msgid "Up to 3 days before travel"
-msgstr "Sayohatdan 3 kun oldingacha"
 
 msgid "Cancel this booking?"
 msgstr "Ushbu bronni bekor qilasizmi?"
@@ -997,8 +1046,6 @@ msgstr "Manzillarni ko'rish"
 msgid "Luxury Silk Road Travel"
 msgstr "Hashamatli Ipak yo'li sayohati"
 
-#, fuzzy
-#| msgid "Explore the Silk Road"
 msgid "Luxury Travel Across the Silk Road"
 msgstr "Ipak yo'lini kashf eting"
 
@@ -1006,6 +1053,8 @@ msgid ""
 "Premium curated tours across Uzbekistan and the ancient Silk Road. Expert "
 "guides, boutique experiences, timeless memories."
 msgstr ""
+"O'zbekiston va qadimiy Ipak yo'li bo'ylab saralangan premium turlar. "
+"Tajribali gidlar, butik tajribalar, unutilmas xotiralar."
 
 msgid "Hero"
 msgstr "Hero"
@@ -1020,9 +1069,11 @@ msgid "Become Your Story"
 msgstr "Sizing hikoyangizga aylanadi"
 
 msgid ""
-"Boutique tours crafted for curious souls — from the minarets of Samarkand to "
-"the sands of the Kyzylkum."
+"Boutique tours crafted for curious souls — from the minarets of Samarkand to"
+" the sands of the Kyzylkum."
 msgstr ""
+"Qiziquvchan qalblar uchun yaratilgan butik turlar — Samarqand minoralaridan "
+"Qizilqum qumlarigacha."
 
 msgid "Hotels"
 msgstr "Mehmonxonalar"
@@ -1039,47 +1090,33 @@ msgstr "Qayerga?"
 msgid "Recent searches"
 msgstr "So'nggi qidiruvlar"
 
-#, fuzzy
-#| msgid "All Destinations"
 msgid "Popular destinations"
 msgstr "Barcha manzillar"
 
-#, fuzzy
-#| msgid "Most Popular"
 msgid "Most popular"
 msgstr "Eng ommabop"
 
 msgid "tours"
 msgstr "turlar"
 
-#, fuzzy
-#| msgid "Newest"
 msgid "New"
 msgstr "Eng yangi"
 
-#, fuzzy
-#| msgid "Quick Facts"
 msgid "Quick search"
 msgstr "Qisqa faktlar"
 
 msgid "Desert"
 msgstr "Cho'l"
 
-#, fuzzy
-#| msgid "Duration"
 msgid "Any duration"
 msgstr "Davomiyligi"
 
-#, fuzzy
-#| msgid "guests"
 msgid "Add guests"
 msgstr "mehmonlar"
 
 msgid "Age 12 or above"
 msgstr "12 yosh va undan katta"
 
-#, fuzzy
-#| msgid "Age 2-11"
 msgid "Age 2–11"
 msgstr "Yosh 2-11"
 
@@ -1107,13 +1144,9 @@ msgstr "Mashina ijarasi tez orada"
 msgid "Explore on your own terms — coming soon!"
 msgstr "O'z sharoitingizda kashf eting — tez orada!"
 
-#, fuzzy
-#| msgid "Activities"
 msgid "Activity type"
 msgstr "Mashg'ulotlar"
 
-#, fuzzy
-#| msgid "Activities"
 msgid "All activities"
 msgstr "Mashg'ulotlar"
 
@@ -1129,61 +1162,50 @@ msgstr "Manzil"
 msgid "Anywhere"
 msgstr "Har qayerda"
 
-#, fuzzy
-#| msgid "starts here"
 msgid "5-star rated"
 msgstr "shu yerdan boshlanadi"
 
-#, fuzzy
-#| msgid "Explore Now"
 msgid "Explore"
 msgstr "Hoziroq kashf eting"
 
-#, fuzzy
-#| msgid "Destinations"
 msgid "Top Destinations"
 msgstr "Manzillar"
 
 msgid "Discover the jewels of the ancient Silk Road"
 msgstr "Qadimiy Ipak yo'li durdonalarini kashf eting"
 
-#, fuzzy
-#| msgid "Created"
 msgid "Curated"
 msgstr "Yaratilgan"
 
-#, fuzzy
-#| msgid "Our Featured Tours"
 msgid "Featured Tours"
 msgstr "Bizning tavsiya etilgan turlarimiz"
 
-#, fuzzy
-#| msgid "Favorite stories based on customer reviews"
 msgid "Handpicked experiences based on traveler reviews"
 msgstr "Mijozlar sharhlariga asoslangan sevimli hikoyalar"
 
-#, fuzzy
-#| msgid "View all"
 msgid "View All"
 msgstr "Barchasini ko'rish"
 
-#, fuzzy
-#| msgid "Best Sale"
 msgid "Best Seller"
 msgstr "Eng ko'p sotilgan"
 
 msgid "Top Rated"
 msgstr "Yuqori baholangan"
 
-#, fuzzy
-#| msgid "Our Featured Tours"
 msgid "Featured"
 msgstr "Bizning tavsiya etilgan turlarimiz"
 
-#, fuzzy
-#| msgid "Saved Tours"
 msgid "Save tour"
 msgstr "Saqlangan turlar"
+
+msgid "Added to wishlist"
+msgstr "Sevimlilar ro'yxatiga qo'shildi"
+
+msgid "Removed from wishlist"
+msgstr "Sevimlilar ro'yxatidan o'chirildi"
+
+msgid "Error. Try again."
+msgstr "Qaytadan urinib ko'ring"
 
 msgid "reviews"
 msgstr "sharh"
@@ -1191,29 +1213,20 @@ msgstr "sharh"
 msgid "Max"
 msgstr "Maks"
 
-msgid "person"
-msgstr "kishi"
-
-#, fuzzy
-#| msgid "View tour"
 msgid "View Tour"
 msgstr "Turni ko'rish"
 
-#, fuzzy
-#| msgid "Our Tours"
 msgid "Our Promise"
 msgstr "Bizning turlar"
 
-#, fuzzy
-#| msgid "Why book at SoLuna?"
 msgid "Why Book with SoLuna?"
 msgstr "Nega SoLuna dan bron qilish kerak?"
 
 msgid "Every detail crafted so you focus on the moments that matter."
-msgstr "Har bir tafsilot siz muhim daqiqalarga e'tibor qaratishingiz uchun yaratilgan."
+msgstr ""
+"Har bir tafsilot siz muhim daqiqalarga e'tibor qaratishingiz uchun "
+"yaratilgan."
 
-#, fuzzy
-#| msgid "Secure booking"
 msgid "Secure Booking"
 msgstr "Xavfsiz bron qilish"
 
@@ -1221,9 +1234,9 @@ msgid ""
 "Your payments and personal data are protected end-to-end with bank-level "
 "security. Book with complete peace of mind."
 msgstr ""
+"To'lovlaringiz va shaxsiy ma'lumotlaringiz bank darajasidagi xavfsizlik "
+"bilan to'liq himoyalangan. Xotirjam bron qiling."
 
-#, fuzzy
-#| msgid "24/7 support"
 msgid "24/7 Support"
 msgstr "24/7 yordam xizmati"
 
@@ -1233,8 +1246,6 @@ msgstr "Mahalliy jamoamiz har doim yordam berishga tayyor."
 msgid "No Hidden Fees"
 msgstr "Yashirin to'lovlar yo'q"
 
-#, fuzzy
-#| msgid "Transparent Policies"
 msgid "Transparent pricing, no surprises."
 msgstr "Shaffof siyosatlar"
 
@@ -1242,7 +1253,8 @@ msgid "Expert Guides"
 msgstr "Malakali gidlar"
 
 msgid "Certified local guides with deep Silk Road knowledge."
-msgstr "Ipak yo'li bo'yicha chuqur bilimga ega sertifikatlangan mahalliy gidlar."
+msgstr ""
+"Ipak yo'li bo'yicha chuqur bilimga ega sertifikatlangan mahalliy gidlar."
 
 msgid "Tailored Routes"
 msgstr "Moslashtirilgan marshrutlar"
@@ -1253,31 +1265,21 @@ msgstr "Sayohat qilishni yoqtirishingizga qarab shakllantirilgan dasturlar."
 msgid "Browse by style"
 msgstr "Uslub bo'yicha ko'rish"
 
-#, fuzzy
-#| msgid "Categories"
 msgid "Tour Categories"
 msgstr "Toifalar"
 
 msgid "Find your perfect travel experience"
 msgstr "Mukammal sayohat tajribangizni toping"
 
-#, fuzzy
-#| msgid "Browse Tours"
 msgid "Browse All"
 msgstr "Turlarni ko'rish"
 
-#, fuzzy
-#| msgid "Trending Destinations"
 msgid "Trending now"
 msgstr "Ommabop manzillar"
 
-#, fuzzy
-#| msgid "Top Searched Destinations"
 msgid "Most Searched Destinations"
 msgstr "Eng ko'p qidirilgan manzillar"
 
-#, fuzzy
-#| msgid "Most popular choices for travelers"
 msgid "Top choices among travelers this season"
 msgstr "Sayohatchilar uchun eng mashhur tanlovlar"
 
@@ -1288,9 +1290,11 @@ msgid "Stay Ahead of Every Adventure"
 msgstr "Har bir sayohatdan oldinda boring"
 
 msgid ""
-"Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to "
-"your inbox. No spam, ever."
+"Exclusive deals, hidden gems, and Silk Road travel inspiration — straight to"
+" your inbox. No spam, ever."
 msgstr ""
+"Eksklyuziv takliflar, yashirin durdonalar va Ipak yo'li ilhomlari — "
+"to'g'ridan-to'g'ri pochtangizga. Hech qachon spam yo'q."
 
 msgid "Join 2,400+ travelers. Unsubscribe anytime."
 msgstr "2400+ sayohatchiga qo'shiling. Istalgan vaqtda obunani bekor qiling."
@@ -1301,32 +1305,30 @@ msgstr "Biz bilan bog'laning"
 msgid "Get in touch"
 msgstr "Bog'lanish"
 
-msgid "We'd love to hear from you"
-msgstr "Biz sizdan xabar kutib qolamiz"
+msgid "Let's plan your journey together"
+msgstr "Sizning sayohatingiz"
 
 msgid ""
-"Have a question or need help planning your trip? Our team is here for you."
+"Have a question or need help planning your trip? Our team is here for you — "
+"reach out and we'll reply within 24 hours."
 msgstr ""
 "Savolingiz bormi yoki sayohatingizni rejalashtirishda yordam kerakmi? "
 "Bizning jamoamiz siz uchun shu yerda."
 
-msgid "Mon - Sat, 8AM - 6PM"
-msgstr "Dush - Shan, 8:00 - 18:00"
+msgid "Contact information"
+msgstr "Aloqa ma'lumotlari"
 
-msgid "We reply within 24 hours"
-msgstr "Biz 24 soat ichida javob beramiz"
+msgid "Reach us anytime through the channels below."
+msgstr "Quyidagi kanallar orqali istalgan vaqtda biz bilan bog'laning."
+
+msgid "Director"
+msgstr "Direktor"
 
 msgid "Office"
 msgstr "Ofis"
 
-msgid "Visit us in person"
-msgstr "Bizga shaxsan tashrif buyuring"
-
-msgid "Social"
-msgstr "Ijtimoiy tarmoqlar"
-
-msgid "Follow us for updates"
-msgstr "Yangiliklar uchun bizni kuzatib boring"
+msgid "Working hours"
+msgstr "Ish vaqti"
 
 msgid "Send us a message"
 msgstr "Bizga xabar yuboring"
@@ -1343,26 +1345,84 @@ msgstr "Xabar"
 msgid "Send Message"
 msgstr "Xabarni yuborish"
 
+msgid "Your details are safe with us and never shared."
+msgstr "Ma'lumotlaringiz biz bilan xavfsiz va hech kimga berilmaydi."
+
+msgid "Office location"
+msgstr "Manzil"
+
+msgid "Our office location"
+msgstr "Ofisimiz joylashuvi"
+
+msgid "Visit our office"
+msgstr "Toshkentdagi ofisimizga tashrif buyuring"
+
+msgid "Directions"
+msgstr "Yo'nalish"
+
+msgid "FAQ"
+msgstr "Savol-javob"
+
+msgid "Frequently asked questions"
+msgstr "Ko'p beriladigan savollar"
+
+msgid "How quickly will I get a response?"
+msgstr "Qanchalik tez javob olaman?"
+
+msgid ""
+"We reply to every message within 24 hours, often much sooner during working "
+"hours."
+msgstr ""
+"Har bir xabarga 24 soat ichida, ish vaqtida ko'pincha ancha tezroq javob "
+"beramiz."
+
+msgid "Can you customize a tour for me?"
+msgstr "Men uchun turni moslashtira olasizmi?"
+
+msgid ""
+"Absolutely. Tell us your dates, interests and budget in the form and our "
+"team will craft a tailored itinerary."
+msgstr ""
+"Albatta. Formada sanalaringiz, qiziqishlaringiz va byudjetingizni bildiring "
+"— jamoamiz moslashtirilgan dastur tuzadi."
+
+msgid "Which languages does your team speak?"
+msgstr "Jamoangiz qaysi tillarda gaplashadi?"
+
+msgid "Our guides and support team speak English, Russian, Uzbek and Korean."
+msgstr ""
+"Gidlarimiz va qo'llab-quvvatlash jamoamiz ingliz, rus, o'zbek va koreys "
+"tillarida gaplashadi."
+
+msgid "How can I pay for a booking?"
+msgstr "Bronni qanday to'lash mumkin?"
+
+msgid ""
+"We accept VISA, Mastercard, UZCARD and HUMO. Payment details are shared once"
+" your trip is confirmed."
+msgstr ""
+"VISA, Mastercard, UZCARD va HUMO qabul qilamiz. To'lov tafsilotlari sayohat "
+"tasdiqlangach beriladi."
+
 msgid "Message Sent"
 msgstr "Xabar yuborildi"
 
 msgid "Message Sent!"
 msgstr "Xabar yuborildi!"
 
-msgid "Thank you for reaching out. Oygul will get back to you within 24 hours."
-msgstr "Murojaat qilganingiz uchun rahmat. Oygul 24 soat ichida siz bilan bog'lanadi."
-"Bog'langaningiz uchun tashakkur. Oygul 24 soat ichida sizga javob beradi."
+msgid ""
+"Thank you for reaching out. Oygul will get back to you within 24 hours."
+msgstr ""
+"Murojaat qilganingiz uchun rahmat. Oygul 24 soat ichida siz bilan "
+"bog'lanadi.Bog'langaningiz uchun tashakkur. Oygul 24 soat ichida sizga javob"
+" beradi."
 
 msgid "Back to Home"
 msgstr "Asosiy sahifaga qaytish"
 
-#, fuzzy
-#| msgid "in 9 languages"
 msgid "Choose language"
 msgstr "9 xil tilda"
 
-#, fuzzy
-#| msgid "Currency"
 msgid "Choose currency"
 msgstr "Valyuta"
 
@@ -1458,8 +1518,8 @@ msgid "Payment processing..."
 msgstr "To'lov qayta ishlanmoqda..."
 
 msgid ""
-"We are waiting for confirmation from the payment gateway. This usually takes "
-"a few seconds."
+"We are waiting for confirmation from the payment gateway. This usually takes"
+" a few seconds."
 msgstr ""
 "Biz to'lov tizimidan tasdiq kutmoqdamiz. Bu odatda bir necha soniya davom "
 "etadi."
@@ -1468,8 +1528,9 @@ msgid "Don't close this page. We'll redirect you automatically."
 msgstr "Bu sahifani yopmang. Biz sizni avtomatik ravishda yo'naltiramiz."
 
 msgid "Choose your payment method. All payments are in Uzbek Som (UZS)."
-msgstr "To'lov usulingizni tanlang. Barcha to'lovlar O'zbek so'mida (UZS)."
-"To'lov usulingizni tanlang. Barcha to'lovlar o'zbek so'mida (UZS) amalga "
+msgstr ""
+"To'lov usulingizni tanlang. Barcha to'lovlar O'zbek so'mida (UZS).To'lov "
+"usulingizni tanlang. Barcha to'lovlar o'zbek so'mida (UZS) amalga "
 "oshiriladi."
 
 msgid "Conversion to UZS"
@@ -1486,6 +1547,12 @@ msgstr "Click ilovasi, karta yoki balans orqali to'lash"
 
 msgid "Pay via Payme app or card"
 msgstr "Payme ilovasi yoki karta orqali to'lash"
+
+msgid "Bank card"
+msgstr "Bank kartasi"
+
+msgid "Pay directly with Visa, Mastercard, UZCARD or HUMO"
+msgstr "Visa, Mastercard, UZCARD yoki HUMO bilan to'g'ridan-to'g'ri to'lang"
 
 msgid "Pay at office"
 msgstr "Ofisda to'lash"
@@ -1521,6 +1588,9 @@ msgstr "Tur narxi"
 msgid "Conversion"
 msgstr "Konversiya"
 
+msgid "Free"
+msgstr "Bepul"
+
 msgid "soum"
 msgstr "so'm"
 
@@ -1538,11 +1608,18 @@ msgstr ""
 "ilovasi orqali yakunlang."
 
 msgid ""
-"You will be redirected to Payme. Complete the payment via your card or Payme "
-"app."
+"You will be redirected to Payme. Complete the payment via your card or Payme"
+" app."
 msgstr ""
 "Siz Payme-ga yo'naltirilasiz. To'lovni kartangiz yoki Payme ilovasi orqali "
 "yakunlang."
+
+msgid ""
+"Enter your Visa or Mastercard details securely on the next page to complete "
+"payment."
+msgstr ""
+"To'lovni yakunlash uchun keyingi sahifada Visa yoki Mastercard "
+"ma'lumotlaringizni xavfsiz kiriting."
 
 msgid ""
 "Visit our office in Tashkent to complete payment in cash. Your booking will "
@@ -1587,23 +1664,21 @@ msgstr "Bizning jamoamiz sayohatdan 48 soat oldin siz bilan bog'lanadi"
 msgid "Check your booking anytime in your profile"
 msgstr "Broningizni istalgan vaqtda profilingizda tekshiring"
 
-#, fuzzy
-#| msgid "Duration"
+msgid "Tours & Attractions"
+msgstr "Turlar va diqqatga sazovor joylar"
+
 msgid "Attractions"
 msgstr "Davomiyligi"
 
-#, fuzzy
-#| msgid "All Tours"
+msgid "Country"
+msgstr "Davlat"
+
 msgid "Available tours"
 msgstr "Barcha turlar"
 
-#, fuzzy
-#| msgid "View tour"
 msgid "View tours"
 msgstr "Turni ko'rish"
 
-#, fuzzy
-#| msgid "Almost there!"
 msgid "About the region"
 msgstr "Deyarli tayyor!"
 
@@ -1616,8 +1691,6 @@ msgstr "Ko'rinishi shart bo'lgan joylar"
 msgid "Top Attractions"
 msgstr "Eng yaxshi diqqatga sazor joylar"
 
-#, fuzzy
-#| msgid "View all"
 msgid "View on map"
 msgstr "Barchasini ko'rish"
 
@@ -1627,8 +1700,6 @@ msgstr "Turlar hududi:"
 msgid "View"
 msgstr "Ko'rish"
 
-#, fuzzy
-#| msgid "Browse tours"
 msgid "Browse all tours"
 msgstr "Turlarni ko'rish"
 
@@ -1638,31 +1709,33 @@ msgstr "Qisqa faktlar"
 msgid "Need help planning?"
 msgstr "Rejalashtirishda yordam kerakmi?"
 
-#, fuzzy
-#| msgid "Our local experts can craft a custom tour for you."
 msgid "Our local experts can craft a custom tour tailored just for you."
 msgstr "Mahalliy mutaxassislarimiz siz uchun maxsus tur yaratishlari mumkin."
 
-#, fuzzy
-#| msgid "Back to bookings"
 msgid "Ready to book?"
 msgstr "Bronlarga qaytish"
 
-#, fuzzy
-#| msgid "Tours available"
 msgid "These tours are available in"
 msgstr "Mavjud turlar"
 
-#, fuzzy
-#| msgid "Browse tours"
 msgid "more tours"
 msgstr "Turlarni ko'rish"
+
+msgid "Destinations in Uzbekistan"
+msgstr "Manzillar"
+
+msgid ""
+"Explore Uzbekistan destinations with SoLuna Travel — Samarkand, Bukhara, "
+"Khiva, Tashkent and more. Discover attractions, regions and Silk Road "
+"highlights."
+msgstr ""
+"SoLuna Travel bilan O'zbekiston yo'nalishlarini kashf eting — Samarqand, "
+"Buxoro, Xiva, Toshkent va boshqalar. Diqqatga sazovor joylar, regionlar va "
+"Ipak yo'li durdonalari."
 
 msgid "Discover"
 msgstr "Kashf eting"
 
-#, fuzzy
-#| msgid "Explore Uzbekistan"
 msgid "Uzbekistan"
 msgstr "O'zbekistonni kashf eting"
 
@@ -1670,9 +1743,9 @@ msgid ""
 "Ancient cities, breathtaking landscapes, and warm hospitality — find your "
 "perfect destination."
 msgstr ""
+"Qadimiy shaharlar, nafas oluvchi manzaralar va samimiy mehmondo'stlik — "
+"o'zingizga mos yo'nalishni toping."
 
-#, fuzzy
-#| msgid "Register"
 msgid "Regions"
 msgstr "Ro'yxatdan o'tish"
 
@@ -1685,34 +1758,24 @@ msgstr "UNESCO ob'ektlari"
 msgid "Scroll to explore"
 msgstr "Kashf etish uchun aylantiring"
 
-#, fuzzy
-#| msgid "All Destinations"
 msgid "All destinations"
 msgstr "Barcha manzillar"
 
-#, fuzzy
-#| msgid "next adventure"
 msgid "Choose your adventure"
 msgstr "xush kelibsiz"
 
 msgid "regions"
 msgstr "viloyatlar"
 
-#, fuzzy
-#| msgid "Explore Now"
 msgid "Explore region"
 msgstr "Hoziroq kashf eting"
 
 msgid "No destinations yet"
 msgstr "Hozircha manzillar yo'q"
 
-#, fuzzy
-#| msgid "Check back soon for new destinations."
 msgid "Check back soon — new destinations are being added."
 msgstr "Yangi manzillar uchun tez orada yana tekshiring."
 
-#, fuzzy
-#| msgid "Back to Home"
 msgid "Back to home"
 msgstr "Asosiy sahifaga qaytish"
 
@@ -1726,7 +1789,8 @@ msgid "Safe Travel"
 msgstr "Xavfsiz sayohat"
 
 msgid "Consistently rated one of the safest destinations in Asia"
-msgstr "Doimiy ravishda Osiyodagi eng xavfsiz manzillardan biri deb baholanadi"
+msgstr ""
+"Doimiy ravishda Osiyodagi eng xavfsiz manzillardan biri deb baholanadi"
 
 msgid "Rich Cuisine"
 msgstr "Boy oshxona"
@@ -1740,8 +1804,6 @@ msgstr "Issiq mezmondo'stlik"
 msgid "Famously welcoming locals and vibrant culture"
 msgstr "Mashhur mezmondo'st mahalliy aholi va boy madaniyat"
 
-#, fuzzy
-#| msgid "Customer Support"
 msgid "Custom tours"
 msgstr "Mijozlarni qo'llab-quvvatlash"
 
@@ -1752,12 +1814,12 @@ msgid ""
 "Our local experts will craft a personalised itinerary just for you — no "
 "cookie-cutter trips."
 msgstr ""
+"Mahalliy ekspertlarimiz aynan siz uchun shaxsiy dastur tuzadi — bir xil "
+"qolipdagi sayohatlar yo'q."
 
 msgid "Talk to an expert"
 msgstr "Mutaxassis bilan gaplashing"
 
-#, fuzzy
-#| msgid "Update Your Review"
 msgid "Update Review"
 msgstr "Sharhingizni yangilash"
 
@@ -1776,8 +1838,6 @@ msgstr "Tajribangiz bilan o'rtoqlashing"
 msgid "Rating"
 msgstr "Reyting"
 
-#, fuzzy
-#| msgid "starts here"
 msgid "stars"
 msgstr "shu yerdan boshlanadi"
 
@@ -1787,13 +1847,9 @@ msgstr "Baholash uchun bosing"
 msgid "Title"
 msgstr "Sarlavha"
 
-#, fuzzy
-#| msgid "Share Your Experience"
 msgid "Summarise your experience..."
 msgstr "Tajribangiz bilan o'rtoqlashing"
 
-#, fuzzy
-#| msgid "Reviews"
 msgid "Review"
 msgstr "Sharhlar"
 
@@ -1809,8 +1865,6 @@ msgstr "Sharhni yuborish"
 msgid "Poor — not recommended"
 msgstr "Yomon — tavsiya etilmaydi"
 
-#, fuzzy
-#| msgid "Average"
 msgid "Below average"
 msgstr "O'rtacha"
 
@@ -1830,8 +1884,8 @@ msgid "Authentication failed"
 msgstr "Autentifikatsiya amalga oshmadi"
 
 msgid ""
-"Something went wrong while signing you in. Your account is safe — no changes "
-"were made."
+"Something went wrong while signing you in. Your account is safe — no changes"
+" were made."
 msgstr ""
 "Tizimga kirishda nimadir xato ketdi. Hisobingiz xavfsiz — hech qanday "
 "o'zgarishlar qilinmadi."
@@ -1918,8 +1972,9 @@ msgid "Personalized travel recommendations"
 msgstr "Moslashtirilgan sayohat tavsiyalari"
 
 msgid "and consent to receive travel inspiration emails"
-msgstr "va sayohat ilhomini olish uchun email rozilik"
-"va sayohat bo'yicha g'oyalar haqidagi email xabarlarini olishga roziman"
+msgstr ""
+"va sayohat ilhomini olish uchun email rozilikva sayohat bo'yicha g'oyalar "
+"haqidagi email xabarlarini olishga roziman"
 
 msgid "Creating account..."
 msgstr "Hisob yaratilmoqda..."
@@ -1939,10 +1994,11 @@ msgstr "Turlar topilmadi"
 msgid "Try adjusting your filters or search criteria."
 msgstr "Filtrlaringizni yoki qidiruv mezonlarini o'zgartirib ko'ring."
 
-#, fuzzy
-#| msgid "Reset filters"
 msgid "Clear filters"
 msgstr "Filtrlarni tiklash"
+
+msgid "Travel Tour"
+msgstr "Sayohat ma'lumoti"
 
 msgid "Share"
 msgstr "Ulashish"
@@ -1956,6 +2012,12 @@ msgstr "Barchasini ko'rish"
 msgid "photos"
 msgstr "rasm"
 
+msgid "Previous"
+msgstr "sharh"
+
+msgid "Next"
+msgstr "Keyingi"
+
 msgid "Group Size"
 msgstr "Guruh hajmi"
 
@@ -1965,13 +2027,8 @@ msgstr "kishi"
 msgid "Difficulty"
 msgstr "Qiyinchilik"
 
-#, fuzzy
-#| msgid "Categories"
 msgid "Category"
 msgstr "Toifalar"
-
-msgid "Overview"
-msgstr "Umumiy ko'rinish"
 
 msgid "Itinerary"
 msgstr "Marshrut"
@@ -2009,9 +2066,6 @@ msgstr "Shaxsiy xarajatlar"
 msgid "Excellent"
 msgstr "A'lo"
 
-msgid "Good"
-msgstr "Yaxshi"
-
 msgid "Average"
 msgstr "O'rtacha"
 
@@ -2021,18 +2075,14 @@ msgstr "Yomon"
 msgid "Terrible"
 msgstr "Juda yomon"
 
-msgid "Awaiting approval"
-msgstr "Tasdiqlash kutilmoqda"
-
 msgid "No reviews yet. Be the first to share your experience!"
-msgstr "Hali sharhlar yo'q. Birinchi bo'lib tajribangizni ulashing!"
-"Hozircha sharhlar yo'q. O'z tajribangiz bilan birinchi bo'lib o'rtoqlashing!"
+msgstr ""
+"Hali sharhlar yo'q. Birinchi bo'lib tajribangizni ulashing!Hozircha sharhlar"
+" yo'q. O'z tajribangiz bilan birinchi bo'lib o'rtoqlashing!"
 
 msgid "Write a review"
 msgstr "Sharh yozish"
 
-#, fuzzy
-#| msgid "Write a review"
 msgid "Login to write a review"
 msgstr "Sharh yozish"
 
@@ -2052,33 +2102,32 @@ msgid ""
 "Not sure which tour fits you? Our local specialists craft the perfect Silk "
 "Road itinerary — free of charge."
 msgstr ""
+"Qaysi tur sizga mosligini bilmayapsizmi? Mahalliy mutaxassislarimiz mukammal"
+" Ipak yo'li dasturini bepul tuzadi."
 
 msgid "Get free advice"
 msgstr "Bepul maslahat oling"
 
-#, fuzzy
-#| msgid "Search tours..."
 msgid "Similar tours"
 msgstr "Turlarni qidirish..."
 
 msgid "Link copied!"
 msgstr "Havola nusxalandi!"
 
-#, fuzzy
-#| msgid "Payment failed"
 msgid "Copy failed"
 msgstr "To'lov amalga oshmadi"
 
-msgid "Added to wishlist"
-msgstr "Sevimlilar ro'yxatiga qo'shildi"
+msgid "Uzbekistan & Silk Road Tours"
+msgstr "O'zbekiston va Ipak yo'li turlari"
 
-msgid "Removed from wishlist"
-msgstr "Sevimlilar ro'yxatidan o'chirildi"
-
-#, fuzzy
-#| msgid "Try again"
-msgid "Error. Try again."
-msgstr "Qaytadan urinib ko'ring"
+msgid ""
+"Browse all SoLuna Travel tours across Uzbekistan and the Great Silk Road — "
+"Samarkand, Bukhara, Khiva and Tashkent. Compare prices, itineraries and book"
+" online."
+msgstr ""
+"O'zbekiston va Buyuk Ipak yo'li bo'ylab barcha SoLuna Travel turlarini "
+"ko'ring — Samarqand, Buxoro, Xiva, Toshkent. Narxlar va dasturlarni "
+"solishtiring, onlayn bron qiling."
 
 msgid "Extraordinary"
 msgstr "Ajoyib"
@@ -2086,29 +2135,21 @@ msgstr "Ajoyib"
 msgid "handcrafted journeys through Uzbekistan"
 msgstr "O'zbekiston bo'ylab qo'lda yaratilgan sayohatlar"
 
-#, fuzzy
-#| msgid "Sort by"
 msgid "Sort"
 msgstr "Saralash"
 
 msgid "Newest"
 msgstr "Eng yangi"
 
-#, fuzzy
-#| msgid "Price: Low to High"
 msgid "Price: Low → High"
 msgstr "Narx: Arzondan qimmatga"
 
-#, fuzzy
-#| msgid "Price: High to Low"
 msgid "Price: High → Low"
 msgstr "Narx: Qimmatdan arzonga"
 
 msgid "Highest Rated"
 msgstr "Eng yuqori baholangan"
 
-#, fuzzy
-#| msgid "Reset filters"
 msgid "Filters"
 msgstr "Filtrlarni tiklash"
 
@@ -2121,8 +2162,6 @@ msgstr "Turlarni qidirish..."
 msgid "Categories"
 msgstr "Toifalar"
 
-#, fuzzy
-#| msgid "Categories"
 msgid "No categories"
 msgstr "Toifalar"
 
@@ -2135,29 +2174,90 @@ msgstr "Min"
 msgid "Apply"
 msgstr "Qo'llash"
 
-#, fuzzy
-#| msgid "Rating"
 msgid "Min Rating"
 msgstr "Reyting"
+
+msgid "Type"
+msgstr "Tur turi"
+
+msgid "Remove type filter"
+msgstr ""
 
 msgid "Error loading tours"
 msgstr "Turlarni yuklashda xatolik"
 
-#, fuzzy
-#| msgid "Try again"
 msgid "Please try again."
 msgstr "Qaytadan urinib ko'ring"
+
+msgid "Mon"
+msgstr "Du"
+
+msgid "Tue"
+msgstr "Se"
+
+msgid "Wed"
+msgstr "Ch"
+
+msgid "Thu"
+msgstr "Pa"
+
+msgid "Fri"
+msgstr "Ju"
+
+msgid "Sat"
+msgstr "Sh"
+
+msgid "Sun"
+msgstr "Ya"
+
+#~ msgid "City"
+#~ msgstr "Shahar"
+
+#~ msgid "About yourself"
+#~ msgstr "O'zingiz haqingizda"
+
+#~ msgid "Tell us a bit about yourself..."
+#~ msgstr "O'zingiz haqingizda qisqacha ma'lumot bering..."
+
+#~ msgid "Your Gateway to Extraordinary Adventures"
+#~ msgstr "Favqulodda sarguzashtlar sari ostonangiz"
+
+#~ msgid "SoLuna — premium tours across Uzbekistan and the Silk Road."
+#~ msgstr "SoLuna — O'zbekiston va Ipak yo'li bo'ylab premium turlar."
+
+#~ msgid "Saved Tours"
+#~ msgstr "Saqlangan turlar"
+
+#~ msgid "Settings"
+#~ msgstr "Sozlamalar"
+
+#~ msgid "We'd love to hear from you"
+#~ msgstr "Biz sizdan xabar kutib qolamiz"
+
+#~ msgid "Mon - Sat, 8AM - 6PM"
+#~ msgstr "Dush - Shan, 8:00 - 18:00"
+
+#~ msgid "We reply within 24 hours"
+#~ msgstr "Biz 24 soat ichida javob beramiz"
+
+#~ msgid "Visit us in person"
+#~ msgstr "Bizga shaxsan tashrif buyuring"
+
+#~ msgid "Social"
+#~ msgstr "Ijtimoiy tarmoqlar"
+
+#~ msgid "Follow us for updates"
+#~ msgstr "Yangiliklar uchun bizni kuzatib boring"
 
 #~ msgid "Unlock the Magic of Travel with SoLuna"
 #~ msgstr "SoLuna bilan sayohat sehrini kashf eting"
 
-
 #~ msgid ""
-#~ "Dive into local recommendations for a truly authentic Silk Road "
-#~ "experience across Uzbekistan."
+#~ "Dive into local recommendations for a truly authentic Silk Road experience "
+#~ "across Uzbekistan."
 #~ msgstr ""
-#~ "O'zbekiston bo'ylab chinakam Ipak yo'li sayohati uchun mahalliy "
-#~ "tavsiyalar bilan tanishing."
+#~ "O'zbekiston bo'ylab chinakam Ipak yo'li sayohati uchun mahalliy tavsiyalar "
+#~ "bilan tanishing."
 
 #~ msgid "Tashkent, Uzbekistan"
 #~ msgstr "Toshkent, O'zbekiston"
@@ -2169,11 +2269,11 @@ msgstr "Qaytadan urinib ko'ring"
 #~ msgstr "Dunyoni kashf eting"
 
 #~ msgid ""
-#~ "Pack your bags and let SoLuna redefine your travel experience. Where "
-#~ "every journey is a story waiting to be told."
+#~ "Pack your bags and let SoLuna redefine your travel experience. Where every "
+#~ "journey is a story waiting to be told."
 #~ msgstr ""
-#~ "Sumkangizni yig'ing va SoLuna sayohat tajribangizni o'zgartirishiga "
-#~ "ruxsat bering. Har bir sayohat aytib berilishini kutayotgan bir hikoyadir."
+#~ "Sumkangizni yig'ing va SoLuna sayohat tajribangizni o'zgartirishiga ruxsat "
+#~ "bering. Har bir sayohat aytib berilishini kutayotgan bir hikoyadir."
 
 #~ msgid "Need some help?"
 #~ msgstr "Yordam kerakmi?"
@@ -2274,9 +2374,6 @@ msgstr "Qaytadan urinib ko'ring"
 #~ msgid "Languages"
 #~ msgstr "Tillar"
 
-#~ msgid "Tour Type"
-#~ msgstr "Tur turi"
-
 #~ msgid "Highlights"
 #~ msgstr "Asosiy jihatlari"
 
@@ -2287,24 +2384,11 @@ msgstr "Qaytadan urinib ko'ring"
 #~ msgstr "tur topildi"
 
 # ── Added by build_i18n (UI strings) ──
+#~ msgid "5% off on your first booking"
+#~ msgstr "Birinchi buyurtmangizga 5% chegirma"
 
-msgid "5% off on your first booking"
-msgstr "Birinchi buyurtmangizga 5% chegirma"
+#~ msgid "Get 5% off your first booking"
+#~ msgstr "Birinchi buyurtmangizga 5% chegirma oling"
 
-msgid "Get 5% off your first booking"
-msgstr "Birinchi buyurtmangizga 5% chegirma oling"
-
-msgid "Language"
-msgstr "Til"
-
-msgid "Preferred Language"
-msgstr "Afzal ko'rilgan til"
-
-msgid "Director"
-msgstr "Direktor"
-
-msgid "Directions"
-msgstr "Yo'nalish"
-
-msgid "Tours & Attractions"
-msgstr "Turlar va diqqatga sazovor joylar"
+#~ msgid "Language"
+#~ msgstr "Til"
