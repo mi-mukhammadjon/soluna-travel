@@ -155,7 +155,7 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_URL = '/uz/accounts/login/'
+LOGIN_URL = '/accounts/login/'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
