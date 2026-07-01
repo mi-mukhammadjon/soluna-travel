@@ -41,22 +41,21 @@ urlpatterns = [
     # Gateway webhooks — til prefiksisiz (i18n_patterns'dan TASHQARIDA bo'lishi shart,
     # aks holda Click/Payme POST'lari /uz/... ga redirect bo'lib uziladi).
     path('', include('payments.webhook_urls')),
-
-    # ── Auth — til prefiksisiz (i18n_patterns'dan TASHQARIDA) ──────────────
-    # MUHIM: allauth social callback URL'i (/accounts/google/login/callback/)
-    # til prefiksisiz, o'zgarmas bo'lishi kerak — aks holda Google OAuth
-    # redirect_uri_mismatch beradi. Sahifalar baribir aktiv tilda ko'rsatiladi.
-    path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),  # custom, allauth'dan oldin
-    path('accounts/', include('accounts.urls')),                                   # profil/parol, allauth'dan oldin
-    path('accounts/', include('allauth.urls')),                                    # login/logout/social
 ]
 
 urlpatterns += i18n_patterns(
     path("solunasuperuse/dashboard-stats/", dashboard_stats, name="admin-dashboard-stats"),
     path('solunasuperuse/', admin.site.urls),
 
-    # ── Applar ────────────────────────────────────────────
-    # (Auth i18n_patterns'dan TASHQARIGA ko'chirildi — yuqoriga qarang)
+    # ── Auth (i18n prefiksli) ─────────────────────────────
+    # Custom signup — allauth'dan oldin, shunda custom view ishlatiladi
+    path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
+    # Custom accounts app — profil + parol o'zgartirish (allauth'dan OLDIN)
+    path('accounts/', include('accounts.urls')),
+    # Allauth — login, logout, password reset, social login
+    path('accounts/', include('allauth.urls')),
+
+    # ── Boshqa applar ────────────────────────────────────
     path('regions/', include('regions.urls')),
     path('tours/', include('tours.urls')),
     path('bookings/', include('bookings.urls')),
