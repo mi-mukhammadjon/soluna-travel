@@ -1206,3 +1206,101 @@ TOURS = [
         ],
     },
 ]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# UGC-TAS — teskari klassik marshrut: Urganch → Xiva → Buxoro → Samarqand → Toshkent
+# 1090$, har dushanba. Kunlarning aksariyati classic-uzbekistan bilan bir xil,
+# shuning uchun o'sha tur kunlarini qayta ishlatamiz (9 tilli, tekshirilgan matn).
+# ─────────────────────────────────────────────────────────────────────────────
+_classic = next(t for t in TOURS if t["slug"] == "classic-uzbekistan")
+_cd = {d["day"]: d for d in _classic["itinerary"]}
+
+TOURS.append({
+    "slug": "uzbekistan-urgench-tashkent",
+    "category": "classic-tour",
+    "regions": ["urganch", "xiva", "buxoro", "samarqand", "toshkent"],
+    "attractions": list(_classic["attractions"]),
+    "price": 1090, "price_uzs": 14170000,
+    "duration_days": 8, "max_group_size": 16,
+    "difficulty": "easy", "is_featured": False, "is_recommended": True,
+    "cover_image": "tours/classic-uzbekistan__cover.png",
+    "gallery": list(_classic["gallery"]),
+    "title": {
+        "uz": "O'zbekiston — Xivadan Toshkentgacha",
+        "ru": "Узбекистан — от Хивы до Ташкента",
+        "en": "Uzbekistan — Khiva to Tashkent",
+        "zh_hans": "乌兹别克斯坦——从希瓦到塔什干",
+        "ar": "أوزبكستان — من خيوة إلى طشقند",
+        "de": "Usbekistan — von Chiwa nach Taschkent",
+        "fr": "Ouzbékistan — de Khiva à Tachkent",
+        "ja": "ウズベキスタン — ヒヴァからタシケントへ",
+        "ko": "우즈베키스탄 — 히바에서 타슈켄트까지",
+    },
+    "short_description": {
+        "uz": "Urganchga parvoz bilan boshlanadigan 8 kunlik teskari marshrut: Xiva–Buxoro–Samarqand–Toshkent. Har dushanba.",
+        "ru": "8-дневный маршрут в обратном направлении с перелётом в Ургенч: Хива–Бухара–Самарканд–Ташкент. Каждый понедельник.",
+        "en": "An 8-day reverse route starting with a flight to Urgench: Khiva, Bukhara, Samarkand and Tashkent. Every Monday.",
+        "zh_hans": "以飞往乌尔根奇开始的8天反向行程：希瓦—布哈拉—撒马尔罕—塔什干。每周一出发。",
+        "ar": "مسار عكسي لمدة 8 أيام يبدأ برحلة إلى أورغنش: خيوة وبخارى وسمرقند وطشقند. كل اثنين.",
+        "de": "Eine 8-tägige Route in umgekehrter Richtung mit Flug nach Urgentsch: Chiwa, Buchara, Samarkand und Taschkent. Jeden Montag.",
+        "fr": "Un itinéraire inversé de 8 jours débutant par un vol vers Ourguentch : Khiva, Boukhara, Samarcande et Tachkent. Chaque lundi.",
+        "ja": "ウルゲンチへのフライトで始まる8日間の逆ルート：ヒヴァ、ブハラ、サマルカンド、タシケント。毎週月曜出発。",
+        "ko": "우르겐치행 항공편으로 시작하는 8일 역방향 일정: 히바–부하라–사마르칸트–타슈켄트. 매주 월요일.",
+    },
+    "description": {
+        "uz": "O'zbekistonning buyuk shaharlari bo'ylab teskari yo'nalishdagi klassik dastur. Sayohat cho'l qa'ridagi Xiva (Urganch)dan boshlanadi, so'ng Buxoro va Samarqand orqali poytaxt Toshkentga yetib boradi. Ichki aviaparvoz va Afrosiyob tezyurar poyezdi qulaylikni ta'minlaydi. Har dushanba kuni yo'lga chiqamiz.",
+        "ru": "Классическая программа в обратном направлении по великим городам Узбекистана. Путешествие начинается в затерянной в пустыне Хиве (Ургенч), затем через Бухару и Самарканд приводит в столицу Ташкент. Внутренний перелёт и скоростной поезд «Афросиаб» обеспечивают комфорт. Заезды каждый понедельник.",
+        "en": "A classic programme run in reverse across Uzbekistan's great cities. The journey begins in desert-bound Khiva (Urgench), then reaches the capital Tashkent via Bukhara and Samarkand. A domestic flight and the Afrosiyob high-speed train keep things comfortable. Departures every Monday.",
+        "zh_hans": "沿乌兹别克斯坦名城反向而行的经典行程。旅程从沙漠深处的希瓦（乌尔根奇）开始，经布哈拉、撒马尔罕抵达首都塔什干。境内航班与「阿夫罗西亚布」高铁保障舒适。每周一出发。",
+        "ar": "برنامج كلاسيكي بالاتجاه المعاكس عبر مدن أوزبكستان الكبرى. تبدأ الرحلة في خيوة (أورغنش) في عمق الصحراء، ثم تصل إلى العاصمة طشقند عبر بخارى وسمرقند. الرحلة الداخلية وقطار «أفروسياب» السريع يضمنان الراحة. انطلاق كل اثنين.",
+        "de": "Ein klassisches Programm in umgekehrter Richtung durch Usbekistans große Städte. Die Reise beginnt im wüstennahen Chiwa (Urgentsch) und erreicht über Buchara und Samarkand die Hauptstadt Taschkent. Inlandsflug und der Hochgeschwindigkeitszug „Afrosiyob“ sorgen für Komfort. Abreise jeden Montag.",
+        "fr": "Un programme classique parcouru en sens inverse à travers les grandes villes d'Ouzbékistan. Le voyage débute à Khiva (Ourguentch), aux portes du désert, puis rejoint la capitale Tachkent via Boukhara et Samarcande. Le vol intérieur et le train rapide « Afrosiyob » assurent le confort. Départs chaque lundi.",
+        "ja": "ウズベキスタンの名都市を逆ルートで巡る王道プログラム。旅は砂漠の街ヒヴァ（ウルゲンチ）から始まり、ブハラ、サマルカンドを経て首都タシケントへ。国内線と高速鉄道「アフラシヤブ」で快適に。毎週月曜出発。",
+        "ko": "우즈베키스탄의 위대한 도시들을 역방향으로 도는 클래식 일정. 여정은 사막의 도시 히바(우르겐치)에서 시작해 부하라와 사마르칸트를 거쳐 수도 타슈켄트에 도착합니다. 국내선과 아프로시욥 고속열차로 편안하게. 매주 월요일 출발.",
+    },
+    "includes": dict(_classic["includes"]),
+    "excludes": dict(_classic["excludes"]),
+    "itinerary": [
+        {"day": 1,
+         "title": {"uz": "Urganchga parvoz", "ru": "Перелёт в Ургенч", "en": "Flight to Urgench",
+                   "zh_hans": "飞往乌尔根奇", "ar": "الطيران إلى أورغنش", "de": "Flug nach Urgentsch",
+                   "fr": "Vol vers Ourguentch", "ja": "ウルゲンチへ", "ko": "우르겐치로 출발"},
+         "description": {
+             "uz": "Yashash mamlakatingizdan Urganchga parvoz. Tun samolyot bortida.",
+             "ru": "Вылет из страны проживания в Ургенч. Ночь на борту самолёта.",
+             "en": "Depart your home country for Urgench. Overnight on board.",
+             "zh_hans": "从您所在的国家飞往乌尔根奇。在飞机上过夜。",
+             "ar": "المغادرة من بلد إقامتك إلى أورغنش. المبيت على متن الطائرة.",
+             "de": "Abreise aus Ihrem Heimatland nach Urgentsch. Übernachtung an Bord.",
+             "fr": "Départ de votre pays de résidence pour Ourguentch. Nuit à bord.",
+             "ja": "お住まいの国からウルゲンチへ出発。機内泊。",
+             "ko": "거주 국가에서 우르겐치로 출발. 기내에서 1박."}},
+        {"day": 2,
+         "title": {"uz": "Urganch – Xiva", "ru": "Ургенч – Хива", "en": "Urgench – Khiva",
+                   "zh_hans": "乌尔根奇 – 希瓦", "ar": "أورغنش – خيوة", "de": "Urgentsch – Chiwa",
+                   "fr": "Ourguentch – Khiva", "ja": "ウルゲンチ – ヒヴァ", "ko": "우르겐치 – 히바"},
+         "description": {
+             "uz": "Ichan-Qala (UNESCO) qal'asini tomosha qilish: Kalta-Minor, Muhammad Aminxon madrasasi, Juma masjidi, Pahlavon Mahmud maqbarasi, Tosh-Hovli saroyi va karvonsaroy.",
+             "ru": "Осмотр крепости Ичан-Кала (ЮНЕСКО): Кальта-Минор, медресе Мухаммад Амин-хана, Джума-мечеть, мавзолей Пахлавана Махмуда, дворец Таш-Ховли и караван-сарай.",
+             "en": "Explore the Ichan-Kala fortress (UNESCO): Kalta-Minor, the Muhammad Amin-khan madrasah, the Juma mosque, the Pahlavan Mahmud mausoleum, the Tash-Khauli palace and a caravanserai.",
+             "zh_hans": "游览伊昌卡拉城堡（联合国教科文组织）：卡尔塔米诺尔、穆罕默德·阿明汗神学院、聚礼清真寺、帕赫拉万·马哈茂德陵墓、塔什豪利宫和商队驿站。",
+             "ar": "استكشاف قلعة إيتشان قلعة (اليونسكو): كلتا مينار، ومدرسة محمد أمين خان، ومسجد الجمعة، وضريح بهلوان محمود، وقصر تاش خاولي، وكاروان سراي.",
+             "de": "Besichtigung der Festung Itchan Kala (UNESCO): Kalta-Minor, die Muhammad-Amin-Khan-Medrese, die Juma-Moschee, das Pahlavan-Mahmud-Mausoleum, der Tasch-Chauli-Palast und eine Karawanserei.",
+             "fr": "Découverte de la forteresse d'Itchan Kala (UNESCO) : Kalta-Minor, la médersa Mohammed Amin Khan, la mosquée Djouma, le mausolée de Pahlavan Mahmoud, le palais Tach-Khaouli et un caravansérail.",
+             "ja": "イチャン・カラ城塞（ユネスコ）を散策：カルタ・ミナル、ムハンマド・アミン・ハン・メドレセ、ジュマ・モスク、パフラヴァン・マフムード廟、タシュ・ハウリ宮殿、隊商宿。",
+             "ko": "이찬칼라 성채(유네스코) 탐방: 칼타미노르, 무함마드 아민한 마드라사, 주마 모스크, 파흘라반 마흐무드 영묘, 타시하울리 궁전, 카라반사라이."}},
+        {**_cd[4], "day": 3},   # Xiva – Buxoro
+        {**_cd[5], "day": 4},   # Buxoro
+        {**_cd[6], "day": 5},   # Buxoro – Samarqand
+        {**_cd[7], "day": 6,    # Samarqand + tezyurar poyezd Toshkentga
+         "title": {"uz": "Samarqand", "ru": "Самарканд", "en": "Samarkand",
+                   "zh_hans": "撒马尔罕", "ar": "سمرقند", "de": "Samarkand",
+                   "fr": "Samarcande", "ja": "サマルカンド", "ko": "사마르칸트"}},
+        {**_cd[2], "day": 7,    # Toshkentga yetib kelish va shahar bo'ylab ekskursiya
+         "title": {"uz": "Samarqand – Toshkent", "ru": "Самарканд – Ташкент", "en": "Samarkand – Tashkent",
+                   "zh_hans": "撒马尔罕 – 塔什干", "ar": "سمرقند – طشقند", "de": "Samarkand – Taschkent",
+                   "fr": "Samarcande – Tachkent", "ja": "サマルカンド – タシケント", "ko": "사마르칸트 – 타슈켄트"}},
+        {**_cd[8], "day": 8},   # Vatanga qaytish
+    ],
+})
