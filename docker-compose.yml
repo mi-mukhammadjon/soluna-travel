@@ -47,7 +47,10 @@ services:
       # staticfiles — BIND mount: collectstatic to'g'ridan-to'g'ri host ./staticfiles/ ga
       # yozadi, nginx aynan shu papkadan o'qiydi (named volume nginx'ga ko'rinmaydi).
       - ./staticfiles:/app/staticfiles
-      - media:/app/media
+      # media — foydalanuvchi yuklamalari (avatar va h.k.). Serverda .env da
+      # MEDIA_HOST_PATH=/var/www/soluna-travel/media qo'ying — nginx aynan shu
+      # papkadan o'qiydi, Django ham shu yerga yozadi (real-time). Local: ./media.
+      - ${MEDIA_HOST_PATH:-./media}:/app/media
     depends_on:
       db:
         condition: service_healthy
@@ -66,7 +69,10 @@ services:
     command: ["sh", "-c", "python /app/wait_for_db.py && celery -A config worker -l info"]
     volumes:
       - .:/app
-      - media:/app/media
+      # media — foydalanuvchi yuklamalari (avatar va h.k.). Serverda .env da
+      # MEDIA_HOST_PATH=/var/www/soluna-travel/media qo'ying — nginx aynan shu
+      # papkadan o'qiydi, Django ham shu yerga yozadi (real-time). Local: ./media.
+      - ${MEDIA_HOST_PATH:-./media}:/app/media
     depends_on:
       db:
         condition: service_healthy
@@ -99,4 +105,4 @@ services:
 volumes:
   postgres_data:
   redis_data:
-  media:
+  # 'media' named volume olib tashlandi — endi bind mount (MEDIA_HOST_PATH env)
