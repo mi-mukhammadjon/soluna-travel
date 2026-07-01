@@ -11,8 +11,30 @@ Templatega yuklash:
   {% load lang_tags %}
 """
 from django import template
+from django.conf import settings
+from django.urls import translate_url
 
 register = template.Library()
+
+
+@register.simple_tag(takes_context=True)
+def hreflang_alternates(context):
+    """Joriy sahifaning barcha tillardagi absolyut URL'lari (SEO hreflang uchun).
+
+    Qaytadi: [{'code': 'uz', 'url': 'https://.../uz/...'}, ...]
+    i18n_patterns bilan ishlaydi — til prefiksini almashtiradi.
+    """
+    request = context.get('request')
+    if request is None:
+        return []
+    path = request.path
+    out = []
+    for code, _name in settings.LANGUAGES:
+        try:
+            out.append({'code': code, 'url': request.build_absolute_uri(translate_url(path, code))})
+        except Exception:
+            continue
+    return out
 
 # Har bir tilning O'Z TILIDA yozilgan nomi
 NATIVE_NAMES = {

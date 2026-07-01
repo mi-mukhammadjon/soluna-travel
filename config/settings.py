@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',           # allauth uchun shart
+    'django.contrib.sitemaps',        # SEO — sitemap.xml
 
     # Third-party
     'rest_framework',

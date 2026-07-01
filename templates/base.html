@@ -4,12 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#c9a84c">
-  <title>{% block title %}SoLuna — {% trans "Your Gateway to Extraordinary Adventures" %}{% endblock %}</title>
-  <meta name="description" content="{% block meta_desc %}{% trans 'SoLuna — premium tours across Uzbekistan and the Silk Road.' %}{% endblock %}">
-  <meta property="og:title" content="{% block og_title %}SoLuna{% endblock %}">
-  <meta property="og:description" content="{% block og_desc %}{% trans 'Premium tours across Uzbekistan and the Silk Road.' %}{% endblock %}">
-  <meta property="og:type" content="website">
+
+  {# ══════════ SEO ══════════ #}
+  <title>{% block title %}SoLuna Travel — {% trans "Premium Uzbekistan & Silk Road Tours" %}{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}{% trans 'SoLuna Travel — premium guided tours across Uzbekistan and the Great Silk Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys with local experts.' %}{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}{% trans 'SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan, Samarkand tour, Bukhara tour, Khiva tour, Tashkent tour, Central Asia travel, guided tours, sayohat, tur, Ozbekiston sayohat, туры Узбекистан, Шелковый путь' %}{% endblock %}">
+  <meta name="author" content="SoLuna Travel">
+  <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large, max-snippet:-1{% endblock %}">
+  <link rel="canonical" href="{% block canonical %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
+
+  {# hreflang — 9 til (ko'p tilli SEO) #}
+  {% hreflang_alternates as seo_alts %}
+  {% for a in seo_alts %}<link rel="alternate" hreflang="{{ a.code }}" href="{{ a.url }}">
+  {% endfor %}{% for a in seo_alts %}{% if a.code == 'en' %}<link rel="alternate" hreflang="x-default" href="{{ a.url }}">
+  {% endif %}{% endfor %}
+
+  {# Open Graph #}
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:site_name" content="SoLuna Travel">
+  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+  <meta property="og:title" content="{% block og_title %}SoLuna Travel — {% trans 'Premium Uzbekistan & Silk Road Tours' %}{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}{% trans 'Premium guided tours across Uzbekistan and the Great Silk Road.' %}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/hero-samarkand.jpg' %}{% endblock %}">
+  <meta property="og:locale" content="{{ LANGUAGE_CODE }}">
+  {% for a in seo_alts %}{% if a.code != LANGUAGE_CODE %}<meta property="og:locale:alternate" content="{{ a.code }}">
+  {% endif %}{% endfor %}
+
+  {# Twitter #}
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block tw_title %}SoLuna Travel{% endblock %}">
+  <meta name="twitter:description" content="{% block tw_desc %}{% trans 'Premium tours across Uzbekistan and the Silk Road.' %}{% endblock %}">
+  <meta name="twitter:image" content="{% block tw_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/hero-samarkand.jpg' %}{% endblock %}">
+
+  {# Structured data — Google TravelAgency #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "SoLuna Travel",
+    "url": "{{ request.scheme }}://{{ request.get_host }}/",
+    "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/site-icon.svg' %}",
+    "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/hero-samarkand.jpg' %}",
+    "description": "{% trans 'Premium guided tours across Uzbekistan and the Great Silk Road.' %}",
+    "areaServed": "Uzbekistan"{% if site_settings.phone_1 %},
+    "telephone": "{{ site_settings.phone_1 }}"{% endif %}{% if site_settings.email %},
+    "email": "{{ site_settings.email }}"{% endif %}
+  }
+  </script>
 
   {# Favicon — sayt logotipi (site-icon.svg). ?v= — brauzer cache'ni yangilash uchun #}
   <link rel="icon" type="image/svg+xml" href="{% static 'img/site-icon.svg' %}?v=2">

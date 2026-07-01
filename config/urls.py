@@ -4,12 +4,19 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView
 from config.admin_dashboard import dashboard_stats
+from config.sitemaps import SITEMAPS
 from accounts.views import CustomSignupView
 
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+
+    # SEO — til prefiksisiz (i18n_patterns'dan TASHQARIDA)
+    path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'), name='robots'),
 
     # Gateway webhooks — til prefiksisiz (i18n_patterns'dan TASHQARIDA bo'lishi shart,
     # aks holda Click/Payme POST'lari /uz/... ga redirect bo'lib uziladi).

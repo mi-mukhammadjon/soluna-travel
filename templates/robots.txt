@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /solunasuperuse/
+Disallow: /accounts/
+Disallow: /tours/api/
+Disallow: /i18n/
+
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml
