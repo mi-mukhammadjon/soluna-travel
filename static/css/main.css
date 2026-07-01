@@ -1467,30 +1467,38 @@ body.popover-open { overflow: hidden; }
 .delay-3 { transition-delay: 0.24s; }
 .delay-4 { transition-delay: 0.32s; }
 
-/* ── Brand splash (zastavka) — Higgsfield-rendered gold coin, no backdrop ── */
+/* ── Brand splash (zastavka) — zamonaviy: logo + oltin progress sweep ── */
 .page-transition {
   position: fixed; inset: 0; z-index: 9998;
   display: flex; align-items: center; justify-content: center;
-  background: transparent;
+  background:
+    radial-gradient(120% 90% at 50% 42%, rgba(201,168,76,.10), transparent 60%),
+    var(--c-bg, #faf6ee);
   opacity: 0;
   pointer-events: none;
-  animation: pt-out 1.5s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation: pt-out 1.3s cubic-bezier(0.22,1,0.36,1) forwards;
 }
-/* parent gives 3D depth + a gentle float */
-.pt-logo {
-  display: flex; align-items: center; justify-content: center;
-  perspective: 900px;
-  animation: pt-bob 3.4s ease-in-out infinite;
+.pt-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 22px;
 }
-/* the real coin image, slowly flipping left→right around its vertical axis */
-.pt-coin {
-  width: 104px; height: 104px;
-  object-fit: contain;
-  filter: drop-shadow(0 16px 32px rgba(201,168,76,.4)) drop-shadow(0 6px 14px rgba(0,0,0,.32));
-  transform-style: preserve-3d;
-  backface-visibility: visible;
-  animation: pt-spin 2.4s linear infinite;
-  will-change: transform;
+/* logo — yumshoq kirib kelish + nafas olayotgandek pulsatsiya */
+.pt-logo-img {
+  width: 82px; height: 82px; object-fit: contain;
+  filter: drop-shadow(0 14px 30px rgba(201,168,76,.30)) drop-shadow(0 4px 10px rgba(0,0,0,.14));
+  animation: pt-pop .8s cubic-bezier(0.22,1,0.36,1) both,
+             pt-breathe 2.6s ease-in-out .8s infinite;
+  will-change: transform, opacity;
+}
+/* ingichka oltin progress chizig'i (indeterminate) */
+.pt-bar {
+  position: relative; width: 132px; height: 3px; border-radius: 4px;
+  background: rgba(201,168,76,.16); overflow: hidden;
+}
+.pt-bar > i {
+  position: absolute; top: 0; left: -45%; height: 100%; width: 45%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold, #c9a84c), transparent);
+  animation: pt-sweep 1.05s ease-in-out infinite;
 }
 
 @keyframes pt-out {
@@ -1498,10 +1506,9 @@ body.popover-open { overflow: hidden; }
   70%  { opacity: 1; }
   100% { opacity: 0; visibility: hidden; }
 }
-/* slow coin flip — left to right */
-@keyframes pt-spin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
-/* subtle vertical float */
-@keyframes pt-bob  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes pt-pop     { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
+@keyframes pt-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes pt-sweep   { from { left: -45%; } to { left: 100%; } }
 
 /* Leaving state (link click): fade the splash IN over the old page before navigating */
 .page-transition.is-leaving {
@@ -1509,11 +1516,16 @@ body.popover-open { overflow: hidden; }
   opacity: 1; visibility: visible;
   transition: opacity .35s cubic-bezier(0.22,1,0.36,1);
 }
+/* history back / bfcache — splashni majburan yashirish (abadiy yuklanmasin) */
+.page-transition.pt-hidden {
+  animation: none !important;
+  opacity: 0 !important; visibility: hidden !important;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .page-transition { animation: none; opacity: 0; visibility: hidden; }
   .page-transition.is-leaving { transition: none; opacity: 0; }
-  .pt-coin, .pt-logo { animation: none; }
+  .pt-logo-img, .pt-bar > i { animation: none; }
 }
 
 /* ════════════════════════════════════════════════════════════

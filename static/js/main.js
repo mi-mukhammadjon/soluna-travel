@@ -163,9 +163,16 @@
         link.addEventListener('click', (e) => {
           if (e.metaKey || e.ctrlKey || e.shiftKey) return; // open in new tab
           e.preventDefault();
+          pageTransition.classList.remove('pt-hidden');
           pageTransition.classList.add('is-leaving');
           setTimeout(() => { window.location.href = href; }, 350);
         });
+      });
+
+      // history back / bfcache — splash abadiy yuklanib qolmasligi uchun majburan yashiramiz
+      window.addEventListener('pageshow', (e) => {
+        pageTransition.classList.remove('is-leaving', 'is-entering', 'pt-hidden');
+        if (e.persisted) pageTransition.classList.add('pt-hidden');
       });
     }
 
