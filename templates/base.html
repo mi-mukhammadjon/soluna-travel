@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#c9a84c">
 
+  {# Qidiruv tizimlari tasdiqlash (Google Search Console / Yandex Webmaster) #}
+  {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
+  {% if yandex_verification %}<meta name="yandex-verification" content="{{ yandex_verification }}">{% endif %}
+
   {# ══════════ SEO ══════════ #}
   <title>{% block title %}SoLuna Travel — {% trans "Premium Uzbekistan & Silk Road Tours" %}{% endblock %}</title>
   <meta name="description" content="{% block meta_desc %}{% trans 'SoLuna Travel — premium guided tours across Uzbekistan and the Great Silk Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys with local experts.' %}{% endblock %}">

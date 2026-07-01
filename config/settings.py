@@ -134,6 +134,11 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+# SEO — qidiruv tizimlari tasdiqlash kodlari (HTML meta-tag usuli).
+# .env ga qo'ying: GOOGLE_SITE_VERIFICATION=..., YANDEX_VERIFICATION=...
+GOOGLE_SITE_VERIFICATION = os.getenv('GOOGLE_SITE_VERIFICATION', '')
+YANDEX_VERIFICATION = os.getenv('YANDEX_VERIFICATION', '')
+
 # --------------------------------------------------------------------------
 # django-allauth sozlamalari
 # --------------------------------------------------------------------------
