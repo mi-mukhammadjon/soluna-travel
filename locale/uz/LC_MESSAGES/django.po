@@ -2245,6 +2245,9 @@ msgstr "Qo'ng'iroq"
 msgid "Website"
 msgstr "Veb-sayt"
 
+msgid "Please choose an image file."
+msgstr "Iltimos, rasm faylini tanlang."
+
 #~ msgid "City"
 #~ msgstr "Shahar"
 

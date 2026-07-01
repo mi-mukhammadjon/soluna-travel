@@ -2152,6 +2152,9 @@ msgstr "拨打"
 msgid "Website"
 msgstr "网站"
 
+msgid "Please choose an image file."
+msgstr "请选择图片文件。"
+
 #~ msgid "City"
 #~ msgstr "城市"
 

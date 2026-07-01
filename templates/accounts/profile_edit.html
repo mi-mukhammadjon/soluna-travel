@@ -44,7 +44,7 @@
             <div class="pe-avatar-actions">
               <label class="pe-btn-soft">
                 <i class="ti ti-upload"></i> {% trans "Upload new" %}
-                <input type="file" name="avatar" accept="image/png,image/jpeg,image/webp" hidden id="avatarInput">
+                <input type="file" name="avatar" accept="image/*" hidden id="avatarInput">
               </label>
               <span class="pe-file-name" id="avatarName"></span>
             </div>
@@ -184,19 +184,51 @@
   var prev = document.getElementById('avatarPreview');
   var nameEl = document.getElementById('avatarName');
   if (!input) return;
+  var MAX_PX = 512; // avatar tomonlarining maksimal o'lchami
+
+  function showPreview(url, name) {
+    if (nameEl) nameEl.textContent = name || '';
+    if (prev) prev.innerHTML = '<img src="' + url + '" alt="">';
+  }
+
   input.addEventListener('change', function () {
     var file = input.files && input.files[0];
     if (!file) return;
-    if (file.size > 2 * 1024 * 1024) {
-      nameEl.textContent = '';
+    if (!/^image\//.test(file.type)) {
+      alert('{% trans "Please choose an image file." %}');
       input.value = '';
-      alert('{% trans "File is too large. Max 2MB." %}');
       return;
     }
-    nameEl.textContent = file.name;
     var reader = new FileReader();
     reader.onload = function (e) {
-      prev.innerHTML = '<img src="' + e.target.result + '" alt="">';
+      var img = new Image();
+      img.onload = function () {
+        // Har qanday hajmdagi rasmni MAX_PX ga kichraytiramiz (proporsiya saqlanadi)
+        var scale = Math.min(1, MAX_PX / Math.max(img.width, img.height));
+        var cw = Math.max(1, Math.round(img.width * scale));
+        var ch = Math.max(1, Math.round(img.height * scale));
+        var canvas = document.createElement('canvas');
+        canvas.width = cw; canvas.height = ch;
+        canvas.getContext('2d').drawImage(img, 0, 0, cw, ch);
+        try {
+          canvas.toBlob(function (blob) {
+            if (blob && window.DataTransfer) {
+              var resized = new File([blob], 'avatar.jpg', { type: 'image/jpeg' });
+              var dt = new DataTransfer();
+              dt.items.add(resized);
+              input.files = dt.files;   // formaga kichraytirilgan faylni qo'yamiz
+              showPreview(canvas.toDataURL('image/jpeg', 0.9), resized.name);
+            } else {
+              // fallback — asl faylni qoldiramiz
+              showPreview(e.target.result, file.name);
+            }
+          }, 'image/jpeg', 0.88);
+        } catch (err) {
+          showPreview(e.target.result, file.name);
+        }
+      };
+      img.onerror = function () { showPreview(e.target.result, file.name); };
+      img.src = e.target.result;
     };
     reader.readAsDataURL(file);
   });

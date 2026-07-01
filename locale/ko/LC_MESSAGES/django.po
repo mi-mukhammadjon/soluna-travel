@@ -2158,6 +2158,9 @@ msgstr "전화"
 msgid "Website"
 msgstr "웹사이트"
 
+msgid "Please choose an image file."
+msgstr "이미지 파일을 선택해 주세요."
+
 #~ msgid "City"
 #~ msgstr "도시"
 

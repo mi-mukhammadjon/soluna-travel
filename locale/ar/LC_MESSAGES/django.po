@@ -2193,6 +2193,9 @@ msgstr "اتصال"
 msgid "Website"
 msgstr "الموقع الإلكتروني"
 
+msgid "Please choose an image file."
+msgstr "يرجى اختيار ملف صورة."
+
 #~ msgid "City"
 #~ msgstr "المدينة"
 

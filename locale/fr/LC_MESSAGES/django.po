@@ -2249,6 +2249,9 @@ msgstr "Appeler"
 msgid "Website"
 msgstr "Site web"
 
+msgid "Please choose an image file."
+msgstr "Veuillez choisir un fichier image."
+
 #~ msgid "City"
 #~ msgstr "Ville"
 

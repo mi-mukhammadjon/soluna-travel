@@ -2121,7 +2121,7 @@ msgstr ""
 "онлайн."
 
 msgid "Extraordinary"
-msgstr "Незабываемо"
+msgstr "Незабываемые"
 
 msgid "handcrafted journeys through Uzbekistan"
 msgstr "авторские путешествия по Узбекистану"
@@ -2231,6 +2231,9 @@ msgstr "Позвонить"
 
 msgid "Website"
 msgstr "Сайт"
+
+msgid "Please choose an image file."
+msgstr "Пожалуйста, выберите файл изображения."
 
 #~ msgid "City"
 #~ msgstr "Город"
