@@ -68,6 +68,21 @@ echo ""
 echo "[6/6] Collectstatic..."
 docker compose exec -T web python3.11 manage.py collectstatic --noinput --verbosity 0
 
+# 10. Static'ni nginx papkasiga sync qilish
+#     collectstatic  -> ./staticfiles/  (bind mount, /root/soluna-travel/staticfiles)
+#     nginx o'qiydi  -> /var/www/soluna-travel/staticfiles/
+#     Ular boshqa papka, shuning uchun nusxalaymiz (aks holda yangi static ko'rinmaydi).
+NGINX_STATIC="/var/www/soluna-travel/staticfiles"
+if [ -d "$NGINX_STATIC" ]; then
+    echo ""
+    echo "      Static -> nginx papkasiga ($NGINX_STATIC)..."
+    if command -v rsync >/dev/null 2>&1; then
+        rsync -a --delete ./staticfiles/ "$NGINX_STATIC"/
+    else
+        cp -a ./staticfiles/. "$NGINX_STATIC"/
+    fi
+fi
+
 echo ""
 echo "═══════════════════════════════════════════════════════"
 echo "  Deploy tugadi!"
