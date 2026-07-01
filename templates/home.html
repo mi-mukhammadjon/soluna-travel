@@ -457,6 +457,8 @@
 
 /* Theme-swapped hero photos — only the active theme's image is fetched (display:none skips load) */
 .mac-hero-pic { position: absolute; inset: 0; background-size: cover; background-position: center; }
+/* Light hero rasmi juda oqarib ketmasligi uchun yengil kontrast/to'yinganlik */
+.mac-hero-pic--light { filter: contrast(1.08) saturate(1.08) brightness(0.98); }
 .mac-hero-pic--dark { display: none; }
 [data-theme="dark"] .mac-hero-pic--light { display: none; }
 [data-theme="dark"] .mac-hero-pic--dark { display: block; }
@@ -465,10 +467,10 @@
 .mac-hero-scrim {
   position: absolute; inset: 0;
   background: linear-gradient(to bottom,
-    rgba(245,241,232,.55) 0%,
-    rgba(245,241,232,.32) 30%,
-    rgba(245,241,232,.55) 68%,
-    rgba(245,241,232,.85) 100%);
+    rgba(245,241,232,.38) 0%,
+    rgba(245,241,232,.12) 32%,
+    rgba(245,241,232,.40) 70%,
+    rgba(245,241,232,.82) 100%);
 }
 [data-theme="dark"] .mac-hero-scrim {
   background:
