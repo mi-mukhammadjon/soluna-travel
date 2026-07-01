@@ -1,4 +1,5 @@
 from django.views.generic import ListView, DetailView
+from places.models import NearbyPlace
 from .models import Region
 
 
@@ -18,4 +19,11 @@ class RegionDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['attractions'] = self.object.attractions.filter(is_active=True)
         context['tours'] = self.object.tours.filter(is_active=True)
+        # Yaqin atrofdagi joylar — shu regiondagi diqqatga sazovor joylar atrofida
+        context['nearby_places'] = (
+            NearbyPlace.objects
+            .filter(attraction__region=self.object, is_active=True)
+            .select_related('attraction')
+            .order_by('category', '-rating', 'name')
+        )
         return context

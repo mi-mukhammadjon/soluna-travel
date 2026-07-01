@@ -2231,6 +2231,25 @@ msgstr "Zu viele Nachrichten. Bitte versuchen Sie es später erneut."
 msgid "Please confirm you are not a robot."
 msgstr "Bitte bestätigen Sie, dass Sie kein Roboter sind."
 
+msgid "Around the region"
+msgstr "Rund um die Region"
+
+msgid "Nearby Places"
+msgstr "Orte in der Nähe"
+
+msgid "Hotels, cafés and useful spots close to the main sights."
+msgstr ""
+"Hotels, Cafés und nützliche Orte in der Nähe der Hauptsehenswürdigkeiten."
+
+msgid "Map"
+msgstr "Karte"
+
+msgid "Call"
+msgstr "Anrufen"
+
+msgid "Website"
+msgstr "Webseite"
+
 #~ msgid "City"
 #~ msgstr "Stadt"
 

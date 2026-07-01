@@ -2140,6 +2140,24 @@ msgstr "メッセージが多すぎます。後でもう一度お試しくださ
 msgid "Please confirm you are not a robot."
 msgstr "ロボットでないことを確認してください。"
 
+msgid "Around the region"
+msgstr "地域周辺"
+
+msgid "Nearby Places"
+msgstr "近くの場所"
+
+msgid "Hotels, cafés and useful spots close to the main sights."
+msgstr "主要な見どころ近くのホテル、カフェ、便利なスポット。"
+
+msgid "Map"
+msgstr "地図"
+
+msgid "Call"
+msgstr "電話"
+
+msgid "Website"
+msgstr "ウェブサイト"
+
 #~ msgid "City"
 #~ msgstr "市区町村"
 

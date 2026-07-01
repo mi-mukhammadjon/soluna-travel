@@ -141,6 +141,52 @@
         </section>
         {% endif %}
 
+        {# Nearby places #}
+        {% if nearby_places %}
+        <section class="rd-section" id="nearby">
+          <div class="rd-section-eyebrow">{% trans "Around the region" %}</div>
+          <h2>{% trans "Nearby Places" %}</h2>
+          <p class="rd-section-lead">{% trans "Hotels, cafés and useful spots close to the main sights." %}</p>
+
+          <div class="rd-nearby-grid">
+            {% for np in nearby_places %}
+            <div class="rd-nearby-card reveal">
+              <div class="rd-nearby-icon rd-nearby-icon--{{ np.category }}">
+                <i class="ti {{ np.category_icon }}"></i>
+              </div>
+              <div class="rd-nearby-body">
+                <div class="rd-nearby-top">
+                  <h4>{{ np.name }}</h4>
+                  {% if np.rating %}
+                  <span class="rd-nearby-rating"><i class="ti ti-star-filled"></i> {{ np.rating }}</span>
+                  {% endif %}
+                </div>
+                <span class="rd-nearby-cat">{{ np.get_category_display }}</span>
+                {% if np.attraction %}
+                <div class="rd-nearby-near"><i class="ti ti-map-pin"></i> {{ np.attraction.name }}</div>
+                {% endif %}
+                {% if np.address %}
+                <div class="rd-nearby-addr">{{ np.address }}</div>
+                {% endif %}
+                <div class="rd-nearby-actions">
+                  <a class="rd-nearby-btn" target="_blank" rel="noopener"
+                     href="https://www.google.com/maps?q={{ np.latitude }},{{ np.longitude }}">
+                    <i class="ti ti-map-2"></i> {% trans "Map" %}
+                  </a>
+                  {% if np.phone %}
+                  <a class="rd-nearby-btn" href="tel:{{ np.phone|cut:' ' }}"><i class="ti ti-phone"></i> {% trans "Call" %}</a>
+                  {% endif %}
+                  {% if np.website %}
+                  <a class="rd-nearby-btn" target="_blank" rel="noopener" href="{{ np.website }}"><i class="ti ti-world"></i> {% trans "Website" %}</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+
         {# Tours #}
         {% if tours %}
         <section class="rd-section" id="tours">
@@ -492,6 +538,50 @@
   margin-bottom: 24px;
   letter-spacing: -.02em;
 }
+.rd-section-lead { color: var(--c-text-muted, #6b6b78); font-size: 1rem; margin: -12px 0 26px; max-width: 640px; }
+
+/* ── Nearby places ── */
+.rd-nearby-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 760px) { .rd-nearby-grid { grid-template-columns: 1fr; } }
+.rd-nearby-card {
+  display: flex; gap: 14px; padding: 16px;
+  background: var(--c-surface, #fff);
+  border: 1px solid var(--c-border, #e8e0d4);
+  border-radius: 16px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.rd-nearby-card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.1); border-color: var(--gold, #c9a84c); }
+.rd-nearby-icon {
+  flex-shrink: 0; width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; color: #fff; background: var(--gold, #c9a84c);
+}
+.rd-nearby-icon--hotel { background: #4c6ef5; }
+.rd-nearby-icon--cafe { background: #e8590c; }
+.rd-nearby-icon--museum { background: #7048e8; }
+.rd-nearby-icon--pharmacy { background: #37b24d; }
+.rd-nearby-icon--atm { background: #0ca678; }
+.rd-nearby-icon--transport { background: #1c7ed6; }
+.rd-nearby-icon--other { background: #868e96; }
+.rd-nearby-body { flex: 1; min-width: 0; }
+.rd-nearby-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.rd-nearby-top h4 { font-size: 1.02rem; font-weight: 700; margin: 0; }
+.rd-nearby-rating { flex-shrink: 0; font-size: .82rem; font-weight: 700; color: var(--gold-ink, #8f7327); display: inline-flex; align-items: center; gap: 3px; }
+.rd-nearby-rating i { color: #f1b400; font-size: .85rem; }
+.rd-nearby-cat { display: inline-block; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--c-text-muted, #6b6b78); margin-top: 3px; }
+.rd-nearby-near { font-size: .82rem; color: var(--c-text-muted, #6b6b78); margin-top: 6px; display: flex; align-items: center; gap: 5px; }
+.rd-nearby-near i { color: var(--gold, #c9a84c); font-size: .9rem; }
+.rd-nearby-addr { font-size: .85rem; color: var(--c-text-muted, #6b6b78); margin-top: 4px; line-height: 1.4; }
+.rd-nearby-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.rd-nearby-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .8rem; font-weight: 600;
+  padding: 6px 12px; border-radius: 8px;
+  background: var(--c-bg-alt, rgba(0,0,0,.04)); color: var(--c-text, #1a1a2a);
+  border: 1px solid var(--c-border, #e8e0d4); text-decoration: none;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.rd-nearby-btn:hover { background: var(--gold, #c9a84c); color: #1c1c1e; border-color: var(--gold, #c9a84c); }
 .rd-prose p {
   font-size: 1.05rem;
   line-height: 1.8;

@@ -2225,6 +2225,26 @@ msgstr "Xabarlar juda ko'p. Iltimos, keyinroq urinib ko'ring."
 msgid "Please confirm you are not a robot."
 msgstr "Iltimos, robot emasligingizni tasdiqlang."
 
+msgid "Around the region"
+msgstr "Region atrofida"
+
+msgid "Nearby Places"
+msgstr "Yaqin atrofdagi joylar"
+
+msgid "Hotels, cafés and useful spots close to the main sights."
+msgstr ""
+"Asosiy diqqatga sazovor joylar yaqinidagi mehmonxona, kafe va foydali "
+"joylar."
+
+msgid "Map"
+msgstr "Xarita"
+
+msgid "Call"
+msgstr "Qo'ng'iroq"
+
+msgid "Website"
+msgstr "Veb-sayt"
+
 #~ msgid "City"
 #~ msgstr "Shahar"
 

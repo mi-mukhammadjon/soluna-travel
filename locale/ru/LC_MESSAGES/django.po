@@ -2213,6 +2213,25 @@ msgstr "Слишком много сообщений. Пожалуйста, по
 msgid "Please confirm you are not a robot."
 msgstr "Пожалуйста, подтвердите, что вы не робот."
 
+msgid "Around the region"
+msgstr "Вокруг региона"
+
+msgid "Nearby Places"
+msgstr "Места поблизости"
+
+msgid "Hotels, cafés and useful spots close to the main sights."
+msgstr ""
+"Отели, кафе и полезные места рядом с главными достопримечательностями."
+
+msgid "Map"
+msgstr "Карта"
+
+msgid "Call"
+msgstr "Позвонить"
+
+msgid "Website"
+msgstr "Сайт"
+
 #~ msgid "City"
 #~ msgstr "Город"
 

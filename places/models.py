@@ -38,3 +38,16 @@ class NearbyPlace(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.get_category_display()})"
+
+    @property
+    def category_icon(self):
+        """Tabler icon klassi — kategoriya bo'yicha (UI uchun)."""
+        return {
+            'cafe': 'ti-coffee',
+            'hotel': 'ti-bed',
+            'museum': 'ti-building-monument',
+            'pharmacy': 'ti-first-aid-kit',
+            'atm': 'ti-cash',
+            'transport': 'ti-bus',
+            'other': 'ti-map-pin',
+        }.get(self.category, 'ti-map-pin')

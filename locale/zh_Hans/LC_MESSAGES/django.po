@@ -2134,6 +2134,24 @@ msgstr "消息过多，请稍后再试。"
 msgid "Please confirm you are not a robot."
 msgstr "请确认您不是机器人。"
 
+msgid "Around the region"
+msgstr "地区周边"
+
+msgid "Nearby Places"
+msgstr "附近地点"
+
+msgid "Hotels, cafés and useful spots close to the main sights."
+msgstr "主要景点附近的酒店、咖啡馆和实用场所。"
+
+msgid "Map"
+msgstr "地图"
+
+msgid "Call"
+msgstr "拨打"
+
+msgid "Website"
+msgstr "网站"
+
 #~ msgid "City"
 #~ msgstr "城市"
 

@@ -2140,6 +2140,24 @@ msgstr "메시지가 너무 많습니다. 나중에 다시 시도해 주세요."
 msgid "Please confirm you are not a robot."
 msgstr "로봇이 아님을 확인해 주세요."
 
+msgid "Around the region"
+msgstr "지역 주변"
+
+msgid "Nearby Places"
+msgstr "주변 장소"
+
+msgid "Hotels, cafés and useful spots close to the main sights."
+msgstr "주요 명소 근처의 호텔, 카페, 유용한 장소."
+
+msgid "Map"
+msgstr "지도"
+
+msgid "Call"
+msgstr "전화"
+
+msgid "Website"
+msgstr "웹사이트"
+
 #~ msgid "City"
 #~ msgstr "도시"
 

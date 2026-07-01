@@ -2175,6 +2175,24 @@ msgstr "رسائل كثيرة جدًا. يرجى المحاولة لاحقًا."
 msgid "Please confirm you are not a robot."
 msgstr "يرجى تأكيد أنك لست روبوتًا."
 
+msgid "Around the region"
+msgstr "حول المنطقة"
+
+msgid "Nearby Places"
+msgstr "أماكن قريبة"
+
+msgid "Hotels, cafés and useful spots close to the main sights."
+msgstr "فنادق ومقاهٍ وأماكن مفيدة قرب أبرز المعالم."
+
+msgid "Map"
+msgstr "خريطة"
+
+msgid "Call"
+msgstr "اتصال"
+
+msgid "Website"
+msgstr "الموقع الإلكتروني"
+
 #~ msgid "City"
 #~ msgstr "المدينة"
 
