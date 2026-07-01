@@ -1,7 +1,43 @@
 {% extends 'base.html' %}
 {% load static i18n l10n lang_tags %}
 
-{% block title %}{{ tour.title }} | SoLuna{% endblock %}
+{# ── SEO (individual tur sahifasi) ── #}
+{% block title %}{{ tour.title }} — {{ tour.duration_days }} {% trans "days" %} | SoLuna Travel{% endblock %}
+{% block meta_desc %}{{ tour.short_description|default:tour.description|striptags|truncatewords:28 }}{% endblock %}
+{% block meta_keywords %}{{ tour.title }}, {% for r in tour.regions.all %}{{ r.name }}{% if not forloop.last %}, {% endif %}{% endfor %}, Uzbekistan tour, Silk Road, SoLuna Travel{% endblock %}
+{% block og_type %}product{% endblock %}
+{% block og_title %}{{ tour.title }} — SoLuna Travel{% endblock %}
+{% block og_desc %}{{ tour.short_description|default:tour.description|striptags|truncatewords:28 }}{% endblock %}
+{% block og_image %}{% if tour.cover_image %}{{ request.scheme }}://{{ request.get_host }}{{ tour.cover_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/hero-samarkand.jpg' %}{% endif %}{% endblock %}
+{% block tw_title %}{{ tour.title }} — SoLuna Travel{% endblock %}
+{% block tw_desc %}{{ tour.short_description|default:tour.description|striptags|truncatewords:28 }}{% endblock %}
+{% block tw_image %}{% if tour.cover_image %}{{ request.scheme }}://{{ request.get_host }}{{ tour.cover_image.url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/hero-samarkand.jpg' %}{% endif %}{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ tour.title|escapejs }}",
+  "description": "{{ tour.short_description|default:tour.description|striptags|escapejs }}",
+  {% if tour.cover_image %}"image": "{{ request.scheme }}://{{ request.get_host }}{{ tour.cover_image.url }}",{% endif %}
+  "brand": {"@type": "Brand", "name": "SoLuna Travel"},
+  "category": "{% trans 'Travel Tour' %}",
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ tour.discounted_price|stringformat:'.0f' }}",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
+  }{% if tour.review_count %},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ tour.avg_rating|stringformat:'.1f' }}",
+    "reviewCount": "{{ tour.review_count }}"
+  }{% endif %}
+}
+</script>
+{% endblock %}
 
 {% block content %}
 
