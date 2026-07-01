@@ -44,7 +44,9 @@ services:
       - "8008:8008"
     volumes:
       - .:/app
-      - staticfiles:/app/staticfiles
+      # staticfiles — BIND mount: collectstatic to'g'ridan-to'g'ri host ./staticfiles/ ga
+      # yozadi, nginx aynan shu papkadan o'qiydi (named volume nginx'ga ko'rinmaydi).
+      - ./staticfiles:/app/staticfiles
       - media:/app/media
     depends_on:
       db:
@@ -97,5 +99,4 @@ services:
 volumes:
   postgres_data:
   redis_data:
-  staticfiles:
   media:

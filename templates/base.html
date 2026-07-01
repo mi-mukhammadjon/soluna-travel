@@ -160,6 +160,9 @@
     }
     .header--hero:not(.is-scrolled) .logo-text { color: var(--c-text) !important; }
     .header--hero:not(.is-scrolled) .logo-mark { color: var(--gold) !important; }
+    /* Logo belgisi — site-icon.svg (oltin badge o'rniga logotip rasmi) */
+    .logo-mark { background: transparent !important; border-radius: 0 !important; overflow: visible !important; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .header--hero:not(.is-scrolled) .nav-link { color: var(--c-text) !important; }
     .header--hero:not(.is-scrolled) .nav-link:hover,
     .header--hero:not(.is-scrolled) .nav-link.is-active { background: var(--c-bg-alt) !important; }
@@ -356,7 +359,7 @@
   <nav class="navbar" aria-label="{% trans 'Main navigation' %}">
 
     <a href="{% url 'home' %}" class="logo" data-no-transition>
-      <span class="logo-mark">☾</span>
+      <span class="logo-mark"><img src="{% static 'img/site-icon.svg' %}" alt="SoLuna"></span>
       <span class="logo-text">SoLuna</span>
     </a>
 
@@ -517,7 +520,7 @@
 <aside class="drawer" id="drawer" aria-hidden="true">
   <div class="drawer-head">
     <a href="{% url 'home' %}" class="logo">
-      <span class="logo-mark">☾</span>
+      <span class="logo-mark"><img src="{% static 'img/site-icon.svg' %}" alt="SoLuna"></span>
       <span class="logo-text">SoLuna</span>
     </a>
     <button type="button" class="drawer-close" id="drawerClose" aria-label="{% trans 'Close menu' %}">
@@ -606,7 +609,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="{% url 'home' %}" class="logo">
-          <span class="logo-mark">☾</span>
+          <span class="logo-mark"><img src="{% static 'img/site-icon.svg' %}" alt="SoLuna"></span>
           <span class="logo-text">{{ site_settings.site_name }}</span>
         </a>
         <p>{% trans "Boutique tours across Uzbekistan and the ancient Silk Road. Crafted for curious travelers, guided by local experts." %}</p>
