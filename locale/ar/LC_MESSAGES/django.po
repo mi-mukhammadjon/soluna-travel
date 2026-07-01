@@ -569,6 +569,8 @@ msgid ""
 "Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys "
 "with local experts."
 msgstr ""
+"SoLuna Travel — جولات فاخرة بمرشدين عبر أوزبكستان وطريق الحرير العظيم: "
+"سمرقند وبخارى وخيوة وطشقند. احجز رحلات لا تُنسى مع خبراء محليين."
 
 msgid ""
 "SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan,"

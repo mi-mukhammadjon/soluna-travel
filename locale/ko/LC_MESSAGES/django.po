@@ -561,6 +561,8 @@ msgid ""
 "Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys "
 "with local experts."
 msgstr ""
+"SoLuna Travel — 우즈베키스탄과 위대한 실크로드를 아우르는 프리미엄 가이드 투어: 사마르칸트, 부하라, 히바, 타슈켄트. 현지"
+" 전문가와 함께 잊지 못할 여행을 예약하세요."
 
 msgid ""
 "SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan,"

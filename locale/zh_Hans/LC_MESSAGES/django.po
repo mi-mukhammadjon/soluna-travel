@@ -560,7 +560,7 @@ msgid ""
 "SoLuna Travel — premium guided tours across Uzbekistan and the Great Silk "
 "Road: Samarkand, Bukhara, Khiva and Tashkent. Book unforgettable journeys "
 "with local experts."
-msgstr ""
+msgstr "SoLuna Travel——畅游乌兹别克斯坦与伟大丝绸之路的高端向导旅游：撒马尔罕、布哈拉、希瓦和塔什干。与当地专家一起预订难忘的旅程。"
 
 msgid ""
 "SoLuna, SoLuna Travel, Uzbekistan tours, Silk Road tours, travel Uzbekistan,"
