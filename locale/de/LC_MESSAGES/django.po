@@ -2218,6 +2218,19 @@ msgstr "Sa"
 msgid "Sun"
 msgstr "So"
 
+msgid "Spam detected."
+msgstr "Spam erkannt."
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr ""
+"Das Formular wurde zu schnell abgeschickt. Bitte versuchen Sie es erneut."
+
+msgid "Too many messages. Please try again later."
+msgstr "Zu viele Nachrichten. Bitte versuchen Sie es später erneut."
+
+msgid "Please confirm you are not a robot."
+msgstr "Bitte bestätigen Sie, dass Sie kein Roboter sind."
+
 #~ msgid "City"
 #~ msgstr "Stadt"
 

@@ -2219,6 +2219,18 @@ msgstr "Sam"
 msgid "Sun"
 msgstr "Dim"
 
+msgid "Spam detected."
+msgstr "Spam détecté."
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr "Le formulaire a été envoyé trop rapidement. Veuillez réessayer."
+
+msgid "Too many messages. Please try again later."
+msgstr "Trop de messages. Veuillez réessayer plus tard."
+
+msgid "Please confirm you are not a robot."
+msgstr "Veuillez confirmer que vous n'êtes pas un robot."
+
 #~ msgid "City"
 #~ msgstr "Ville"
 

@@ -102,6 +102,12 @@
         <form method="post" action="{% url 'messages_app:contact' %}" novalidate class="ctx-form">
           {% csrf_token %}
 
+          {# ── Anti-bot: honeypot + time-trap (odam ko'rmaydi) ── #}
+          <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden;">
+            {{ form.website }}
+          </div>
+          {{ form.ts }}
+
           {% if form.non_field_errors %}
             <div class="ctx-form-error">{{ form.non_field_errors }}</div>
           {% endif %}
@@ -137,6 +143,12 @@
             {{ form.body }}
             {% if form.body.errors %}<small class="ctx-field-error">{{ form.body.errors|striptags }}</small>{% endif %}
           </div>
+
+          {% if turnstile_site_key %}
+          {# ── Cloudflare Turnstile (zamonaviy, ko'rinmas anti-bot) ── #}
+          <div class="cf-turnstile" data-sitekey="{{ turnstile_site_key }}" data-theme="auto" style="margin:6px 0 14px;"></div>
+          <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+          {% endif %}
 
           <button type="submit" class="ctx-submit">
             {% trans "Send Message" %} <i class="ti ti-send"></i>

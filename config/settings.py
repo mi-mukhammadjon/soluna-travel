@@ -139,6 +139,11 @@ SITE_ID = 1
 GOOGLE_SITE_VERIFICATION = os.getenv('GOOGLE_SITE_VERIFICATION', '')
 YANDEX_VERIFICATION = os.getenv('YANDEX_VERIFICATION', '')
 
+# Anti-bot — Cloudflare Turnstile (ixtiyoriy). Kalitlar bo'lsa contact formada yoqiladi.
+# .env: TURNSTILE_SITE_KEY=..., TURNSTILE_SECRET_KEY=...  (dash.cloudflare.com dan)
+TURNSTILE_SITE_KEY = os.getenv('TURNSTILE_SITE_KEY', '')
+TURNSTILE_SECRET_KEY = os.getenv('TURNSTILE_SECRET_KEY', '')
+
 # --------------------------------------------------------------------------
 # django-allauth sozlamalari
 # --------------------------------------------------------------------------

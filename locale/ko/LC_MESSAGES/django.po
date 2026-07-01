@@ -2128,6 +2128,18 @@ msgstr "토"
 msgid "Sun"
 msgstr "일"
 
+msgid "Spam detected."
+msgstr "스팸이 감지되었습니다."
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr "양식이 너무 빨리 제출되었습니다. 다시 시도해 주세요."
+
+msgid "Too many messages. Please try again later."
+msgstr "메시지가 너무 많습니다. 나중에 다시 시도해 주세요."
+
+msgid "Please confirm you are not a robot."
+msgstr "로봇이 아님을 확인해 주세요."
+
 #~ msgid "City"
 #~ msgstr "도시"
 

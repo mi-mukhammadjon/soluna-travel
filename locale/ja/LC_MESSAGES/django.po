@@ -2128,6 +2128,18 @@ msgstr "土"
 msgid "Sun"
 msgstr "日"
 
+msgid "Spam detected."
+msgstr "スパムが検出されました。"
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr "フォームの送信が早すぎます。もう一度お試しください。"
+
+msgid "Too many messages. Please try again later."
+msgstr "メッセージが多すぎます。後でもう一度お試しください。"
+
+msgid "Please confirm you are not a robot."
+msgstr "ロボットでないことを確認してください。"
+
 #~ msgid "City"
 #~ msgstr "市区町村"
 

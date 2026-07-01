@@ -2213,6 +2213,18 @@ msgstr "Sh"
 msgid "Sun"
 msgstr "Ya"
 
+msgid "Spam detected."
+msgstr "Spam aniqlandi."
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr "Forma juda tez yuborildi. Iltimos, qayta urinib ko'ring."
+
+msgid "Too many messages. Please try again later."
+msgstr "Xabarlar juda ko'p. Iltimos, keyinroq urinib ko'ring."
+
+msgid "Please confirm you are not a robot."
+msgstr "Iltimos, robot emasligingizni tasdiqlang."
+
 #~ msgid "City"
 #~ msgstr "Shahar"
 

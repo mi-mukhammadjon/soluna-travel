@@ -2122,6 +2122,18 @@ msgstr "周六"
 msgid "Sun"
 msgstr "周日"
 
+msgid "Spam detected."
+msgstr "检测到垃圾信息。"
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr "表单提交过快，请重试。"
+
+msgid "Too many messages. Please try again later."
+msgstr "消息过多，请稍后再试。"
+
+msgid "Please confirm you are not a robot."
+msgstr "请确认您不是机器人。"
+
 #~ msgid "City"
 #~ msgstr "城市"
 

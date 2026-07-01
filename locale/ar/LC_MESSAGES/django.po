@@ -2163,6 +2163,18 @@ msgstr "السبت"
 msgid "Sun"
 msgstr "الأحد"
 
+msgid "Spam detected."
+msgstr "تم رصد رسائل مزعجة."
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr "تم إرسال النموذج بسرعة كبيرة. يرجى المحاولة مرة أخرى."
+
+msgid "Too many messages. Please try again later."
+msgstr "رسائل كثيرة جدًا. يرجى المحاولة لاحقًا."
+
+msgid "Please confirm you are not a robot."
+msgstr "يرجى تأكيد أنك لست روبوتًا."
+
 #~ msgid "City"
 #~ msgstr "المدينة"
 

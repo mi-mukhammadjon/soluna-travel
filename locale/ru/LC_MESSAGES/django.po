@@ -2201,6 +2201,18 @@ msgstr "Сб"
 msgid "Sun"
 msgstr "Вс"
 
+msgid "Spam detected."
+msgstr "Обнаружен спам."
+
+msgid "The form was submitted too quickly. Please try again."
+msgstr "Форма отправлена слишком быстро. Пожалуйста, попробуйте ещё раз."
+
+msgid "Too many messages. Please try again later."
+msgstr "Слишком много сообщений. Пожалуйста, попробуйте позже."
+
+msgid "Please confirm you are not a robot."
+msgstr "Пожалуйста, подтвердите, что вы не робот."
+
 #~ msgid "City"
 #~ msgstr "Город"
 
