@@ -2151,8 +2151,6 @@ msgstr "Qaytadan urinib ko'ring"
 #~ msgid "Unlock the Magic of Travel with SoLuna"
 #~ msgstr "SoLuna bilan sayohat sehrini kashf eting"
 
-#~ msgid "Language"
-#~ msgstr "Til"
 
 #~ msgid ""
 #~ "Dive into local recommendations for a truly authentic Silk Road "
@@ -2301,3 +2299,12 @@ msgstr "Til"
 
 msgid "Preferred Language"
 msgstr "Afzal ko'rilgan til"
+
+msgid "Director"
+msgstr "Direktor"
+
+msgid "Directions"
+msgstr "Yo'nalish"
+
+msgid "Tours & Attractions"
+msgstr "Turlar va diqqatga sazovor joylar"

@@ -2352,3 +2352,11 @@ msgstr "필터나 검색 조건을 조정해 보세요."
 #: templates/tours/list.html:207
 msgid "Reset filters"
 msgstr "필터 초기화"
+msgid "Director"
+msgstr "대표"
+
+msgid "Directions"
+msgstr "길찾기"
+
+msgid "Tours & Attractions"
+msgstr "투어 및 명소"

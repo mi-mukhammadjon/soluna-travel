@@ -2353,3 +2353,11 @@ msgstr "حاول تعديل فلاتر التصفية أو معايير البح
 #: templates/tours/list.html:207
 msgid "Reset filters"
 msgstr "إعادة تعيين الفلاتر"
+msgid "Director"
+msgstr "المدير"
+
+msgid "Directions"
+msgstr "الاتجاهات"
+
+msgid "Tours & Attractions"
+msgstr "الجولات والمعالم"

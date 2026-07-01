@@ -2352,3 +2352,11 @@ msgstr "Versuchen Sie, Ihre Filter oder Suchkriterien anzupassen."
 #: templates/tours/list.html:207
 msgid "Reset filters"
 msgstr "Filter zurücksetzen"
+msgid "Director"
+msgstr "Direktor"
+
+msgid "Directions"
+msgstr "Route"
+
+msgid "Tours & Attractions"
+msgstr "Touren & Sehenswürdigkeiten"

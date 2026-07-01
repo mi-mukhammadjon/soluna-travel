@@ -2352,3 +2352,11 @@ msgstr "请尝试调整您的筛选条件或搜索条件。"
 #: templates/tours/list.html:207
 msgid "Reset filters"
 msgstr "重置筛选"
+msgid "Director"
+msgstr "总经理"
+
+msgid "Directions"
+msgstr "路线"
+
+msgid "Tours & Attractions"
+msgstr "旅游与景点"

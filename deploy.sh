@@ -53,10 +53,11 @@ echo ""
 echo "      Web konteyner kutilmoqda..."
 sleep 5
 
-# 7. Migrations
+# 7. Migrations + tarjimalarni kompilyatsiya
 echo ""
-echo "[4/6] Migrations..."
+echo "[4/6] Migrations + tarjimalar (compilemessages)..."
 docker compose exec -T web python3.11 manage.py migrate --noinput
+docker compose exec -T web python3.11 manage.py compilemessages 2>/dev/null || true
 
 # 8. Sample turlarni DB'ga yozish + 9 tilda tarjima (idempotent)
 echo ""
@@ -82,6 +83,12 @@ if [ -d "$NGINX_STATIC" ]; then
         cp -a ./staticfiles/. "$NGINX_STATIC"/
     fi
 fi
+
+# 11. Web'ni qayta ishga tushirish — yangi kod/template/tarjima (.mo) yuklansin
+#     (bind-mount kod o'zgarishlari gunicorn xotirasida eski qoladi — restart shart).
+echo ""
+echo "      Web qayta ishga tushirilmoqda (yangi kod/tarjima)..."
+docker compose restart web
 
 echo ""
 echo "═══════════════════════════════════════════════════════"

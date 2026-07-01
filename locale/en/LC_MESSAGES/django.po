@@ -2809,3 +2809,12 @@ msgstr "regions"
 
 msgid "stars"
 msgstr "stars"
+
+msgid "Director"
+msgstr "Director"
+
+msgid "Directions"
+msgstr "Directions"
+
+msgid "Tours & Attractions"
+msgstr "Tours & Attractions"

@@ -2809,3 +2809,12 @@ msgstr "регионы"
 
 msgid "stars"
 msgstr "звёзд"
+
+msgid "Director"
+msgstr "Директор"
+
+msgid "Directions"
+msgstr "Маршрут"
+
+msgid "Tours & Attractions"
+msgstr "Туры и достопримечательности"
