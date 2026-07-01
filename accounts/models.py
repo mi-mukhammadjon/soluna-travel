@@ -44,7 +44,13 @@ class SiteSettings(models.Model):
     email_1 = models.EmailField('Email 1', default='solunadmc@gmail.com')
     email_2 = models.EmailField('Email 2', blank=True)
 
+    director = models.CharField('Direktor (F.I.SH.)', max_length=120, blank=True, default='Axatova Oygul')
     address = models.CharField('Manzil', max_length=300, default='Tashkent, Uzbekistan')
+    map_coords = models.CharField(
+        'Xarita koordinatalari (lat,lng)', max_length=60, blank=True,
+        default='41.24087217365655,69.31545925558227',
+        help_text="Google Maps'dan lat,lng — masalan: 41.240872,69.315459",
+    )
     work_hours = models.CharField('Ish vaqti', max_length=100, default='8:00 – 18:00, Mon – Sat')
 
     instagram = models.URLField('Instagram', blank=True, default='https://instagram.com/Oygul.axatova')

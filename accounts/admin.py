@@ -41,7 +41,8 @@ class SiteSettingsAdmin(admin.ModelAdmin):
             'fields': ('site_name', 'site_tagline')
         }),
         ('Aloqa ma\'lumotlari', {
-            'fields': ('phone_1', 'phone_2', 'email_1', 'email_2', 'address', 'work_hours')
+            'fields': ('director', 'phone_1', 'phone_2', 'email_1', 'email_2',
+                       'address', 'map_coords', 'work_hours')
         }),
         ('Ijtimoiy tarmoqlar', {
             'fields': ('instagram', 'telegram', 'whatsapp', 'facebook')

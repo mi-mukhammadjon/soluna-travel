@@ -35,6 +35,15 @@
         </div>
 
         <ul class="ctx-details">
+          {% if site_settings.director %}
+          <li>
+            <span class="ctx-d-icon"><i class="ti ti-user-star"></i></span>
+            <div>
+              <small>{% trans "Director" %}</small>
+              <span class="ctx-d-static">{{ site_settings.director }}</span>
+            </div>
+          </li>
+          {% endif %}
           {% if site_settings.phone_1 %}
           <li>
             <span class="ctx-d-icon"><i class="ti ti-phone"></i></span>
@@ -142,7 +151,7 @@
 {# ═══════════════ MAP — full width ═══════════════ #}
 <section class="ctx-map">
   <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="{% trans 'Office location' %}"
-    src="https://maps.google.com/maps?q={{ site_settings.address|default:'Tashkent'|urlencode }}&z=13&output=embed"></iframe>
+    src="https://maps.google.com/maps?q={{ site_settings.map_coords|default:site_settings.address|default:'Tashkent' }}&z=16&output=embed"></iframe>
   <div class="container ctx-map-overlay">
     <div class="ctx-map-card">
       <div class="ctx-map-card-img">
@@ -154,7 +163,7 @@
           <span>{{ site_settings.address|default:"Tashkent, Uzbekistan" }}</span>
         </div>
         <a class="ctx-map-btn" target="_blank" rel="noopener"
-           href="https://maps.google.com/maps?q={{ site_settings.address|default:'Tashkent'|urlencode }}">
+           href="https://www.google.com/maps?q={{ site_settings.map_coords|default:site_settings.address|default:'Tashkent' }}">
           <span class="ctx-map-btn-text">{% trans "Directions" %}</span>
           <i class="ti ti-arrow-up-right"></i>
         </a>
