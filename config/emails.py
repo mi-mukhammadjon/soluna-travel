@@ -1,5 +1,6 @@
 """Brendli, ko'p tilli HTML email yuborish yordamchisi (SoLuna)."""
 import logging
+from email.utils import parseaddr, formataddr
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -7,6 +8,13 @@ from django.utils import translation
 from django.utils.html import strip_tags
 
 logger = logging.getLogger(__name__)
+
+
+def _from_email(brand):
+    """'SoLuna <noreply@solunatravel.uz>' — ko'rsatiladigan nom brend nomidan."""
+    _, addr = parseaddr(settings.DEFAULT_FROM_EMAIL)
+    addr = addr or settings.DEFAULT_FROM_EMAIL
+    return formataddr((brand, addr))
 
 
 def _site():
@@ -42,7 +50,7 @@ def send_branded_email(to, subject, template, context=None, lang=None):
             subj = str(subject)  # gettext_lazy shu yerda aktiv tilda hal bo'ladi
             html = render_to_string(template, ctx)
         text = strip_tags(html)
-        msg = EmailMultiAlternatives(subj, text, settings.DEFAULT_FROM_EMAIL, recipients)
+        msg = EmailMultiAlternatives(subj, text, _from_email(brand), recipients)
         msg.attach_alternative(html, 'text/html')
         msg.send(fail_silently=False)
         return True
