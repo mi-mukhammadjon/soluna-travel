@@ -1,37 +1,96 @@
+import logging
 from celery import shared_task
 from django.core.mail import send_mail
+from django.core.cache import cache
 from django.conf import settings
 from django.utils import timezone
 import requests
 
+logger = logging.getLogger(__name__)
+
+ESKIZ_BASE = 'https://notify.eskiz.uz/api'
+_TOKEN_CACHE_KEY = 'eskiz_token'
+
+
+def _eskiz_token(force_refresh=False):
+    """Eskiz tokenini Redis'da keshlaydi (~25 kun). Har SMS'da qayta login qilmaymiz."""
+    if not (settings.ESKIZ_EMAIL and settings.ESKIZ_PASSWORD):
+        return None
+    if not force_refresh:
+        tok = cache.get(_TOKEN_CACHE_KEY)
+        if tok:
+            return tok
+    try:
+        r = requests.post(
+            f'{ESKIZ_BASE}/auth/login',
+            data={'email': settings.ESKIZ_EMAIL, 'password': settings.ESKIZ_PASSWORD},
+            timeout=10,
+        )
+        tok = (r.json().get('data') or {}).get('token')
+        if tok:
+            cache.set(_TOKEN_CACHE_KEY, tok, 60 * 60 * 24 * 25)
+            return tok
+        logger.warning('Eskiz auth: token qaytmadi [%s] %s', r.status_code, r.text[:300])
+    except Exception as e:
+        logger.warning('Eskiz auth xatosi: %s', e)
+    return None
+
+
+def _normalize_phone(phone):
+    """Har qanday formatni Eskiz talab qiladigan 998XXXXXXXXX ga keltiradi."""
+    d = ''.join(ch for ch in (phone or '') if ch.isdigit())
+    if len(d) == 9:                       # 901234567
+        d = '998' + d
+    return d
+
 
 def send_sms_eskiz(phone, message):
-    """Eskiz.uz orqali SMS yuborish"""
-    try:
-        # Token olish
-        auth = requests.post(
-            'https://notify.eskiz.uz/api/auth/login',
-            data={'email': settings.ESKIZ_EMAIL, 'password': settings.ESKIZ_PASSWORD},
-            timeout=10
-        )
-        token = auth.json().get('data', {}).get('token')
-        if not token:
-            return False
-
-        # SMS yuborish
-        resp = requests.post(
-            'https://notify.eskiz.uz/api/message/sms/send',
-            headers={'Authorization': f'Bearer {token}'},
-            data={
-                'mobile_phone': phone.replace('+', '').replace(' ', ''),
-                'message': message,
-                'from': '4546',
-            },
-            timeout=10
-        )
-        return resp.status_code == 200
-    except Exception:
+    """Eskiz.uz orqali SMS. Token keshlanadi, telefon normallashtiriladi, xatolar logga yoziladi.
+    MUHIM: production'da SMS matni Eskiz kabinetida tasdiqlangan (moderatsiyadan o'tgan)
+    bo'lishi va ESKIZ_FROM tasdiqlangan nick bo'lishi shart — aks holda haqiqiy raqamlarga yetmaydi."""
+    mobile = _normalize_phone(phone)
+    if len(mobile) != 12 or not mobile.startswith('998'):
+        logger.warning("Eskiz: telefon formati noto'g'ri: %r", phone)
         return False
+
+    token = _eskiz_token()
+    if not token:
+        logger.info("Eskiz: kredensiallar sozlanmagan yoki token yo'q — SMS o'tkazib yuborildi")
+        return False
+
+    for attempt in (1, 2):
+        try:
+            resp = requests.post(
+                f'{ESKIZ_BASE}/message/sms/send',
+                headers={'Authorization': f'Bearer {token}'},
+                data={'mobile_phone': mobile, 'message': message,
+                      'from': getattr(settings, 'ESKIZ_FROM', '4546')},
+                timeout=15,
+            )
+            if resp.status_code == 401 and attempt == 1:
+                token = _eskiz_token(force_refresh=True)   # token eskirgan — yangilaymiz
+                if not token:
+                    return False
+                continue
+            data = resp.json() if resp.content else {}
+            status = str(data.get('status', '')).lower()
+            ok = resp.status_code == 200 and (status in ('waiting', 'success') or 'id' in data)
+            if not ok:
+                logger.warning('Eskiz SMS muvaffaqiyatsiz [%s]: %s', resp.status_code, resp.text[:300])
+            return ok
+        except Exception as e:
+            logger.warning('Eskiz SMS xatosi: %s', e)
+            return False
+    return False
+
+
+def _brand():
+    """SMS matnlari uchun sayt nomi (admin'dan)."""
+    try:
+        from accounts.models import SiteSettings
+        return SiteSettings.load().site_name or 'SoLuna Travel'
+    except Exception:
+        return 'SoLuna Travel'
 
 
 @shared_task
@@ -93,7 +152,7 @@ def send_reply_email(message_id):
 
         # SMS ham yuborish (telefon bo'lsa)
         if msg.phone:
-            sms_text = f"TourUzbekistan: Xabringizga javob berildi. Email: {msg.email}"
+            sms_text = f"{_brand()}: so'rovingizga javob berdik. Batafsil ma'lumot emailingizga yuborildi."
             send_sms_eskiz(msg.phone, sms_text)
 
     except ContactMessage.DoesNotExist:
@@ -111,9 +170,8 @@ def send_booking_sms(booking_id):
             return
 
         text = (
-            f"TourUzbekistan: Broningiz tasdiqlandi! "
+            f"{_brand()}: broningiz tasdiqlandi! "
             f"Raqam: {booking.booking_number}, "
-            f"Tur: {booking.tour.title[:20]}, "
             f"Sana: {booking.travel_date}"
         )
         send_sms_eskiz(phone, text)

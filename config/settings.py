@@ -236,6 +236,9 @@ SITE_URL = os.getenv('SITE_URL', 'http://localhost:8000')
 
 ESKIZ_EMAIL = os.getenv('ESKIZ_EMAIL', '')
 ESKIZ_PASSWORD = os.getenv('ESKIZ_PASSWORD', '')
+# Eskiz sender/nickname — productionda tasdiqlangan nick (masalan "SoLuna").
+# Tasdiqlanmaguncha faqat "4546" test rejimida ishlaydi (haqiqiy raqamlarga bormaydi).
+ESKIZ_FROM = os.getenv('ESKIZ_FROM', '4546')
 
 CLICK_MERCHANT_ID = os.environ.get('CLICK_MERCHANT_ID', '')
 CLICK_SERVICE_ID = os.environ.get('CLICK_SERVICE_ID', '')
