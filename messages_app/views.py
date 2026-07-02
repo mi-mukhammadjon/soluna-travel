@@ -109,7 +109,10 @@ class MessageReplyView(UserPassesTestMixin, View):
 
     def get(self, request, pk):
         msg = get_object_or_404(ContactMessage, pk=pk)
-        form = ReplyForm(instance=msg)
+        initial = {}
+        if not msg.reply_subject:
+            initial['reply_subject'] = f"Re: {msg.subject}"
+        form = ReplyForm(instance=msg, initial=initial)
         return render(request, 'messages_app/reply.html', {'msg': msg, 'form': form})
 
     def post(self, request, pk):

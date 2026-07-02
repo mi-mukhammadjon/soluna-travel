@@ -63,10 +63,12 @@ class ContactForm(forms.ModelForm):
 class ReplyForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
-        fields = ['reply_text']
+        fields = ['reply_subject', 'reply_text']
         widgets = {
-            'reply_text': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Javob matni...'})
+            'reply_subject': forms.TextInput(attrs={'placeholder': 'Mavzu...'}),
+            'reply_text': forms.Textarea(attrs={'rows': 7, 'placeholder': 'Javob matni...'}),
         }
         labels = {
-            'reply_text': 'Javob'
+            'reply_subject': 'Mavzu',
+            'reply_text': 'Javob',
         }

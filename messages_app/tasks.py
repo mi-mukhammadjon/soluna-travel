@@ -136,9 +136,10 @@ def send_reply_email(message_id):
     from .models import ContactMessage
     try:
         msg = ContactMessage.objects.get(pk=message_id)
+        subject = msg.reply_subject or (_("Re: %(subject)s") % {'subject': msg.subject})
         send_branded_email(
             to=msg.email,
-            subject=_("Re: %(subject)s") % {'subject': msg.subject},
+            subject=subject,
             template="emails/reply.html",
             context={"name": msg.name, "reply": msg.reply_text, "original": msg.body},
             lang=msg.language or None,

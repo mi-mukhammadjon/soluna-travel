@@ -2331,6 +2331,18 @@ msgstr "Ответ будет отправлен отправителю по ema
 msgid "Send reply"
 msgstr "Отправить ответ"
 
+msgid "Subject…"
+msgstr "Тема…"
+
+msgid "The reply will be emailed to %(email)s in %(lang)s from SoLuna."
+msgstr "Ответ будет отправлен на %(email)s на языке %(lang)s от имени SoLuna."
+
+msgid "Copied to clipboard"
+msgstr "Скопировано"
+
+msgid "Copy"
+msgstr "Копировать"
+
 #~ msgid "City"
 #~ msgstr "Город"
 

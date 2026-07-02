@@ -2344,6 +2344,18 @@ msgstr "Javob yuboruvchiga o'z tilida (%(lang)s) email orqali yuboriladi."
 msgid "Send reply"
 msgstr "Javob yuborish"
 
+msgid "Subject…"
+msgstr "Mavzu…"
+
+msgid "The reply will be emailed to %(email)s in %(lang)s from SoLuna."
+msgstr "Javob %(email)s manziliga %(lang)s tilida SoLuna nomidan yuboriladi."
+
+msgid "Copied to clipboard"
+msgstr "Nusxalandi"
+
+msgid "Copy"
+msgstr "Nusxalash"
+
 #~ msgid "City"
 #~ msgstr "Shahar"
 
