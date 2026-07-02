@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
@@ -38,10 +39,11 @@ class User(AbstractUser):
 class SiteSettings(models.Model):
     site_name = models.CharField('Sayt nomi', max_length=100, default='SoLuna')
     site_tagline = models.CharField('Slogan', max_length=200, default='Your Gateway to Extraordinary Adventures')
-    logo = models.ImageField(
+    logo = models.FileField(
         'Logotip', upload_to='site/', blank=True, null=True,
-        help_text="Sayt logotipi — butun saytda (header, footer, auth sahifalari, favicon) "
-                  "ishlatiladi. Bo'sh bo'lsa standart site-icon.svg ko'rsatiladi.",
+        validators=[FileExtensionValidator(['svg', 'png', 'jpg', 'jpeg', 'webp', 'gif'])],
+        help_text="Sayt logotipi (SVG/PNG/JPG/WEBP) — butun saytda (header, footer, auth "
+                  "sahifalari, favicon) ishlatiladi. Bo'sh bo'lsa standart site-icon.svg.",
     )
 
     phone_1 = models.CharField('Telefon 1', max_length=20, default='+998 99 895 35 36')
@@ -68,7 +70,9 @@ class SiteSettings(models.Model):
 
     promo_text = models.CharField('Promo matn', max_length=200, default='Unlock the Magic of Travel with SoLuna')
     promo_cta_text = models.CharField('Promo tugma matni', max_length=50, default='Explore Now')
-    promo_cta_url = models.URLField('Promo tugma URL', blank=True, default='/tours/')
+    promo_cta_url = models.CharField(
+        'Promo tugma URL', max_length=300, blank=True, default='/tours/',
+        help_text="Nisbiy yo'l (masalan /tours/) yoki to'liq URL (https://...) bo'lishi mumkin.")
 
     class Meta:
         verbose_name = 'Sayt sozlamalari'
