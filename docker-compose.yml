@@ -40,6 +40,9 @@ services:
     build: .
     restart: unless-stopped
     env_file: .env
+    # host'dagi Postfix'ga ulanish uchun (EMAIL_HOST=host.docker.internal)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "8008:8008"
     volumes:
@@ -66,6 +69,9 @@ services:
     build: .
     restart: unless-stopped
     env_file: .env
+    # host'dagi Postfix'ga ulanish uchun (email tasklari shu yerda ishlaydi)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: ["sh", "-c", "python /app/wait_for_db.py && celery -A config worker -l info"]
     volumes:
       - .:/app
