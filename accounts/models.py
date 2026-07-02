@@ -48,6 +48,9 @@ class SiteSettings(models.Model):
     phone_2 = models.CharField('Telefon 2', max_length=20, blank=True)
     email_1 = models.EmailField('Email 1', default='solunadmc@gmail.com')
     email_2 = models.EmailField('Email 2', blank=True)
+    notify_email = models.EmailField(
+        'Xabar bildirishnomalari uchun email', default='solunadmc@gmail.com', blank=True,
+        help_text="Sayt orqali yozilgan xabarlar shu manzilga (asl holida) yuboriladi.")
 
     director = models.CharField('Direktor (F.I.SH.)', max_length=120, blank=True, default='Axatova Oygul')
     address = models.CharField('Manzil', max_length=300, default='Tashkent, Uzbekistan')

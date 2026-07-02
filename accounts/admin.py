@@ -42,7 +42,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
         }),
         ('Aloqa ma\'lumotlari', {
             'fields': ('director', 'phone_1', 'phone_2', 'email_1', 'email_2',
-                       'address', 'map_coords', 'work_hours')
+                       'notify_email', 'address', 'map_coords', 'work_hours')
         }),
         ('Ijtimoiy tarmoqlar', {
             'fields': ('instagram', 'telegram', 'whatsapp', 'facebook')

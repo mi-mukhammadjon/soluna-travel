@@ -96,36 +96,52 @@ def _brand():
 @shared_task
 def notify_admin_new_message(message_id):
     """Admin ga yangi xabar kelganda email yuborish"""
+    from django.core.mail import EmailMessage
     from .models import ContactMessage
-    from django.contrib.auth import get_user_model
-    User = get_user_model()
-
     try:
         msg = ContactMessage.objects.get(pk=message_id)
-        admins = User.objects.filter(is_staff=True, email__isnull=False).exclude(email='')
-
-        subject = f"Yangi xabar: {msg.subject}"
-        
-        # Telefon raqamini oldindan tayyorlab olamiz (f-stringdan tashqarida)
-        phone_text = msg.phone or "Ko'rsatilmagan"
-        
-        body = (
-            f"Kimdan: {msg.name} ({msg.email})\n"
-            f"Telefon: {phone_text}\n"  # <--- Endi bu yerda hech qanday muammo bo'lmaydi
-            f"Mavzu: {msg.subject}\n\n"
-            f"Xabar:\n{msg.body}"
-        )
-
-        for admin in admins:
-            send_mail(
-                subject=subject,
-                message=body,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[admin.email],
-                fail_silently=True,
-            )
     except ContactMessage.DoesNotExist:
+        return
+
+    # Qabul qiluvchi(lar) — admin paneldan boshqariladi (SiteSettings.notify_email)
+    recipients = []
+    try:
+        from accounts.models import SiteSettings
+        s = SiteSettings.load()
+        for e in (s.notify_email, s.email_1, s.email_2):
+            e = (e or '').strip()
+            if e and e not in recipients:
+                recipients.append(e)
+    except Exception:
         pass
+    if not recipients:  # zaxira — staff foydalanuvchilar
+        from django.contrib.auth import get_user_model
+        recipients = list(get_user_model().objects.filter(is_staff=True)
+                          .exclude(email='').values_list('email', flat=True))
+    if not recipients:
+        return
+
+    phone_text = msg.phone or "—"
+    body = (
+        f"Sayt orqali yangi xabar — solunatravel.uz\n"
+        f"{'-' * 40}\n"
+        f"Kimdan:  {msg.name} <{msg.email}>\n"
+        f"Telefon: {phone_text}\n"
+        f"Til:     {msg.language or '—'}\n"
+        f"Vaqt:    {msg.created_at:%d.%m.%Y %H:%M}\n"
+        f"Mavzu:   {msg.subject}\n"
+        f"{'-' * 40}\n\n"
+        f"{msg.body}\n"
+    )
+    # Reply-To = yuboruvchi: Gmail'da "Reply" bosilsa to'g'ridan-to'g'ri mijozga javob ketadi
+    email = EmailMessage(
+        subject=f"[SoLuna] {msg.subject}",
+        body=body,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=recipients,
+        reply_to=[msg.email] if msg.email else None,
+    )
+    email.send(fail_silently=True)
 
 
 @shared_task
