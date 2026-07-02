@@ -2326,6 +2326,24 @@ msgstr "Ko'rsatilmagan"
 msgid "Reason"
 msgstr "Sabab"
 
+msgid "Reply to message"
+msgstr "Xabarga javob"
+
+msgid "Back to messages"
+msgstr "Xabarlarga qaytish"
+
+msgid "Your reply"
+msgstr "Javobingiz"
+
+msgid "Write your reply…"
+msgstr "Javob yozing…"
+
+msgid "The reply will be emailed to the sender in their language (%(lang)s)."
+msgstr "Javob yuboruvchiga o'z tilida (%(lang)s) email orqali yuboriladi."
+
+msgid "Send reply"
+msgstr "Javob yuborish"
+
 #~ msgid "City"
 #~ msgstr "Shahar"
 

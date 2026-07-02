@@ -2313,6 +2313,24 @@ msgstr "Не указано"
 msgid "Reason"
 msgstr "Причина"
 
+msgid "Reply to message"
+msgstr "Ответ на сообщение"
+
+msgid "Back to messages"
+msgstr "Назад к сообщениям"
+
+msgid "Your reply"
+msgstr "Ваш ответ"
+
+msgid "Write your reply…"
+msgstr "Напишите ответ…"
+
+msgid "The reply will be emailed to the sender in their language (%(lang)s)."
+msgstr "Ответ будет отправлен отправителю по email на его языке (%(lang)s)."
+
+msgid "Send reply"
+msgstr "Отправить ответ"
+
 #~ msgid "City"
 #~ msgstr "Город"
 
