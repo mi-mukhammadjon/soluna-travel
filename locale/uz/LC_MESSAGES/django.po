@@ -2248,6 +2248,84 @@ msgstr "Veb-sayt"
 msgid "Please choose an image file."
 msgstr "Iltimos, rasm faylini tanlang."
 
+msgid "Warm regards,"
+msgstr "Hurmat bilan,"
+
+msgid "Welcome, %(name)s!"
+msgstr "Xush kelibsiz, %(name)s!"
+
+msgid ""
+"Thank you for joining %(brand)s — your gateway to the wonders of Uzbekistan."
+msgstr ""
+"%(brand)s'ga qo'shilganingiz uchun rahmat — O'zbekiston mo''jizalariga "
+"darvozangiz."
+
+msgid "Now you can:"
+msgstr "Endi siz:"
+
+msgid "Discover our finest curated tours"
+msgstr "Eng saralangan turlarimizni kashf etishingiz"
+
+msgid "Book your journey in just a few clicks"
+msgstr "Sayohatingizni bir necha bosishда bron qilishingiz"
+
+msgid "Share your reviews and experiences"
+msgstr "Fikr va taassurotlaringizni ulashishingiz"
+
+msgid "Hello %(name)s,"
+msgstr "Salom %(name)s,"
+
+msgid "Thank you for reaching out. Here is our reply to your message:"
+msgstr "Murojaatingiz uchun rahmat. Xabaringizga javobimiz:"
+
+msgid "If you have any further questions, simply reply to this email."
+msgstr "Qo'shimcha savollaringiz bo'lsa, shu xatga javob yozing."
+
+msgid "Your booking is confirmed"
+msgstr "Broningiz tasdiqlandi"
+
+msgid "Dear %(name)s, we are delighted to confirm your booking."
+msgstr "Hurmatli %(name)s, broningizni tasdiqlashdan mamnunmiz."
+
+msgid "Booking number"
+msgstr "Bron raqami"
+
+msgid "Travellers"
+msgstr "Sayohatchilar"
+
+msgid "If you have any questions, feel free to contact us."
+msgstr "Savollaringiz bo'lsa, biz bilan bog'laning."
+
+msgid "Your booking has been cancelled"
+msgstr "Broningiz bekor qilindi"
+
+msgid "Dear %(name)s, your booking has been cancelled."
+msgstr "Hurmatli %(name)s, broningiz bekor qilindi."
+
+msgid "We hope to welcome you on another journey soon."
+msgstr "Sizni yana sayohatda kutib qolamiz."
+
+msgid "Welcome to SoLuna Travel!"
+msgstr "SoLuna Travel'ga xush kelibsiz!"
+
+msgid "Re: %(subject)s"
+msgstr "Javob: %(subject)s"
+
+msgid "Booking confirmed — %(num)s"
+msgstr "Bron tasdiqlandi — %(num)s"
+
+msgid "Booking cancelled — %(num)s"
+msgstr "Bron bekor qilindi — %(num)s"
+
+msgid "%(adults)d adult(s), %(children)d child(ren)"
+msgstr "%(adults)d katta, %(children)d bola"
+
+msgid "Not specified"
+msgstr "Ko'rsatilmagan"
+
+msgid "Reason"
+msgstr "Sabab"
+
 #~ msgid "City"
 #~ msgstr "Shahar"
 

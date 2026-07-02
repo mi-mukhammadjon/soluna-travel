@@ -1,0 +1,16 @@
+{% extends "emails/base_email.html" %}{% load i18n %}
+{% block content %}
+<h1 style="margin:0 0 14px;font-size:23px;font-weight:700;color:#2a2620;">{% blocktrans %}Welcome, {{ name }}!{% endblocktrans %} 🎉</h1>
+<p style="margin:0 0 16px;font-size:15px;line-height:1.7;color:#4a4438;">
+  {% blocktrans %}Thank you for joining {{ brand }} — your gateway to the wonders of Uzbekistan.{% endblocktrans %}
+</p>
+<p style="margin:0 0 8px;font-size:15px;line-height:1.7;color:#4a4438;">{% trans "Now you can:" %}</p>
+<ul style="margin:0 0 8px;font-size:15px;line-height:1.9;color:#4a4438;padding-left:20px;">
+  <li>{% trans "Discover our finest curated tours" %}</li>
+  <li>{% trans "Book your journey in just a few clicks" %}</li>
+  <li>{% trans "Share your reviews and experiences" %}</li>
+</ul>
+<p style="text-align:center;margin:28px 0 8px;">
+  <a href="{{ site_url }}/tours/" style="background:#c9a84c;color:#1c1a17;text-decoration:none;font-weight:700;padding:13px 32px;border-radius:10px;display:inline-block;font-size:15px;">{% trans "Explore Tours" %}</a>
+</p>
+{% endblock %}

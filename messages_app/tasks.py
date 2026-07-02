@@ -130,24 +130,18 @@ def notify_admin_new_message(message_id):
 
 @shared_task
 def send_reply_email(message_id):
-    """Foydalanuvchiga javob emaili yuborish"""
+    """Foydalanuvchiga elegant, brendli javob emaili — o'z tilida."""
+    from django.utils.translation import gettext_lazy as _
+    from config.emails import send_branded_email
     from .models import ContactMessage
     try:
         msg = ContactMessage.objects.get(pk=message_id)
-        subject = f"Xabringizga javob: {msg.subject}"
-        body = (
-            f"Hurmatli {msg.name},\n\n"
-            f"Xabringizga javob:\n\n"
-            f"{msg.reply_text}\n\n"
-            f"Hurmat bilan,\n"
-            f"TourUzbekistan jamoasi"
-        )
-        send_mail(
-            subject=subject,
-            message=body,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[msg.email],
-            fail_silently=True,
+        send_branded_email(
+            to=msg.email,
+            subject=_("Re: %(subject)s") % {'subject': msg.subject},
+            template="emails/reply.html",
+            context={"name": msg.name, "reply": msg.reply_text, "original": msg.body},
+            lang=msg.language or None,
         )
 
         # SMS ham yuborish (telefon bo'lsa)

@@ -21,6 +21,7 @@ class ContactMessage(models.Model):
     subject = models.CharField(max_length=300)
     body = models.TextField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
+    language = models.CharField(max_length=10, blank=True, default='')  # javob shu tilda yuboriladi
     reply_text = models.TextField(blank=True)
     replied_at = models.DateTimeField(null=True, blank=True)
     replied_by = models.ForeignKey(

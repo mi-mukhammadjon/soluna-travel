@@ -1,7 +1,6 @@
 from celery import shared_task
-from django.core.mail import send_mail
-from django.conf import settings
-from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
+from config.emails import send_branded_email
 
 
 @shared_task
@@ -9,27 +8,14 @@ def send_welcome_email(user_id):
     from .models import User
     try:
         user = User.objects.get(pk=user_id)
-        subject = "TourUzbekistan ga xush kelibsiz!"
-        message = f"""
-        Salom {user.get_full_name()},
-
-        TourUzbekistan ga xush kelibsiz! 🎉
-
-        Endi siz:
-        - O'zbekistonning eng yaxshi turlarini ko'rishingiz
-        - Bronlar qilishingiz
-        - Izohlar qoldirishingiz mumkin.
-
-        Saytimizga tashrif buyuring: {settings.SITE_URL}
-
-        TourUzbekistan jamoasi
-        """
-        send_mail(
-            subject=subject,
-            message=message.strip(),
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            fail_silently=True,
+        if not user.email:
+            return
+        send_branded_email(
+            to=user.email,
+            subject=_("Welcome to SoLuna Travel!"),
+            template="emails/welcome.html",
+            context={"name": user.get_full_name() or user.username},
+            lang=getattr(user, "preferred_language", None),
         )
     except User.DoesNotExist:
         pass

@@ -2235,6 +2235,84 @@ msgstr "Сайт"
 msgid "Please choose an image file."
 msgstr "Пожалуйста, выберите файл изображения."
 
+msgid "Warm regards,"
+msgstr "С уважением,"
+
+msgid "Welcome, %(name)s!"
+msgstr "Добро пожаловать, %(name)s!"
+
+msgid ""
+"Thank you for joining %(brand)s — your gateway to the wonders of Uzbekistan."
+msgstr ""
+"Спасибо, что присоединились к %(brand)s — вашему проводнику в чудеса "
+"Узбекистана."
+
+msgid "Now you can:"
+msgstr "Теперь вы можете:"
+
+msgid "Discover our finest curated tours"
+msgstr "Открывать наши лучшие авторские туры"
+
+msgid "Book your journey in just a few clicks"
+msgstr "Бронировать путешествие в пару кликов"
+
+msgid "Share your reviews and experiences"
+msgstr "Делиться отзывами и впечатлениями"
+
+msgid "Hello %(name)s,"
+msgstr "Здравствуйте, %(name)s,"
+
+msgid "Thank you for reaching out. Here is our reply to your message:"
+msgstr "Спасибо за обращение. Наш ответ на ваше сообщение:"
+
+msgid "If you have any further questions, simply reply to this email."
+msgstr "Если у вас остались вопросы, просто ответьте на это письмо."
+
+msgid "Your booking is confirmed"
+msgstr "Ваше бронирование подтверждено"
+
+msgid "Dear %(name)s, we are delighted to confirm your booking."
+msgstr "Уважаемый(ая) %(name)s, рады подтвердить ваше бронирование."
+
+msgid "Booking number"
+msgstr "Номер брони"
+
+msgid "Travellers"
+msgstr "Путешественники"
+
+msgid "If you have any questions, feel free to contact us."
+msgstr "Если у вас есть вопросы, свяжитесь с нами."
+
+msgid "Your booking has been cancelled"
+msgstr "Ваше бронирование отменено"
+
+msgid "Dear %(name)s, your booking has been cancelled."
+msgstr "Уважаемый(ая) %(name)s, ваше бронирование отменено."
+
+msgid "We hope to welcome you on another journey soon."
+msgstr "Надеемся снова видеть вас в путешествии."
+
+msgid "Welcome to SoLuna Travel!"
+msgstr "Добро пожаловать в SoLuna Travel!"
+
+msgid "Re: %(subject)s"
+msgstr "Ответ: %(subject)s"
+
+msgid "Booking confirmed — %(num)s"
+msgstr "Бронь подтверждена — %(num)s"
+
+msgid "Booking cancelled — %(num)s"
+msgstr "Бронь отменена — %(num)s"
+
+msgid "%(adults)d adult(s), %(children)d child(ren)"
+msgstr "%(adults)d взрослых, %(children)d детей"
+
+msgid "Not specified"
+msgstr "Не указано"
+
+msgid "Reason"
+msgstr "Причина"
+
 #~ msgid "City"
 #~ msgstr "Город"
 

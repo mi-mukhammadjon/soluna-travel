@@ -81,6 +81,7 @@ class ContactView(CreateView):
         msg = form.save(commit=False)
         if self.request.user.is_authenticated:
             msg.user = self.request.user
+        msg.language = getattr(self.request, 'LANGUAGE_CODE', '') or ''
         msg.save()
 
         # rate-limit hisoblagichini oshiramiz
